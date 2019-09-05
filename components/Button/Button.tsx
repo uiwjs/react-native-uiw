@@ -5,17 +5,30 @@ import { red, green, white, black } from '../styles/colors';
 
 export interface ButtonProps extends TouchableOpacityProps {
   color?: string;
+  /**
+   * 设置禁用
+   */
   disabled?: boolean;
+  /**
+   * 加载状态
+   */
   loading?: boolean;
+  /**
+   * 按钮类型，可选值为
+   */
   type?: 'primary' | 'warning';
+  /**
+   * 是否内联
+   */
+  inline?: boolean;
 }
 
 export default class ButtonView extends Component<ButtonProps> {
   static defaultProps: ButtonProps = {
-    activeOpacity: .9
+    activeOpacity: .5
   };
   render() {
-    const { children, style, type, disabled, loading, activeOpacity, ...restProps } = this.props;
+    const { children, style, color: buttonColor, type, disabled, loading, ...restProps } = this.props;
     let backgroundColor, textColor, borderColor, borderWidth;
     if (type === 'warning') {
       backgroundColor = color(red).rgb().string();
@@ -32,13 +45,16 @@ export default class ButtonView extends Component<ButtonProps> {
     if (disabled) {
       textColor = color(textColor).alpha(0.3).rgb().string();
     }
+    if (buttonColor) {
+      backgroundColor = color(buttonColor).rgb().string();
+      textColor = color(buttonColor).isLight() ? color(buttonColor).darken(0.9).string() : color(buttonColor).lighten(0.9).string();
+    }
     const buttonStyle = { backgroundColor, borderColor, borderWidth };
     const textStyle = { color: textColor };
     return (
       <TouchableOpacity
         style={[styles.button, styles.content, buttonStyle, style]}
         disabled={disabled}
-        activeOpacity={activeOpacity}
         {...restProps}
       >
         {loading && (
@@ -48,7 +64,9 @@ export default class ButtonView extends Component<ButtonProps> {
             style={styles.icon}
           />
         )}
-        {React.isValidElement(children) ? children : <Text style={[textStyle, styles.label]}>{children}</Text>}
+        {React.isValidElement(children) ? children : (
+          <Text style={[textStyle, styles.label]}>{children}</Text>
+        )}
       </TouchableOpacity>
     );
   }
