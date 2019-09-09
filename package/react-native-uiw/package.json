@@ -1,0 +1,37 @@
+{
+  "name": "@uiw/react-native",
+  "version": "1.0.0",
+  "description": "UIW for React Native",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node script/build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uiwjs/react-natvie-uiw"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@babel/runtime": "^7.6.0",
+    "react": "^16.9.0"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-native": "^0.60.0",
+    "react-native-vector-icons": "^6.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "babel-preset-react-native": "^4.0.1",
+    "fs-extra": "^8.1.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-native": "^0.60.5",
+    "react-native-vector-icons": "^6.6.0"
+  }
+}
