@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+import {Icon} from '../../components';
 
 import {
   Header,
@@ -15,13 +16,9 @@ export default class HomeScreen extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <StatusBar barStyle="dark-content" />
-        <Icon.Button
-          name="facebook"
-          backgroundColor="#3b5998"
-        >
-          Login with Facebook
-        </Icon.Button>
-
+        <Icon name="user" underlayColor="red" onPress={() => {}} />
+        <Icon name="pptfile1" size={25} />
+        <Icon type="font-awesome" name="rocket" />
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
