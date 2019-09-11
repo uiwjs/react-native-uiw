@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   ViewStyle,
+  SafeAreaView,
   ScrollView,
   Text,
   TextStyle,
@@ -82,6 +83,18 @@ const Card = (props: CardProps) => {
       </View>
     </View>
   );
+}
+
+export interface ContainerProps {
+  children?: React.ReactNode;
+}
+
+export const Container = (props: ContainerProps) => {
+  return (
+    <SafeAreaView>
+      <ScrollView style={{ height: '100%' }}>{props.children}</ScrollView>
+    </SafeAreaView>
+  )
 }
 
 export default class Layout extends PureComponent {

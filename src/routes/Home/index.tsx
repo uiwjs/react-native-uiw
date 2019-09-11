@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StatusBar, StyleSheet, SectionList } from 'react-native';
 import { NativeViewGestureHandler, RectButton, } from 'react-native-gesture-handler';
 import { ThemeColors, ThemeContext, Themed, createAppContainer, } from 'react-navigation';
-import { routes, Routes, routesInfo, RoutesInfo } from '../../routes';
+import { routes, Routes } from '../../routes';
 import { Header, LearnMoreLinks, Colors, DebugInstructions, ReloadInstructions, } from 'react-native/Libraries/NewAppScreen';
 
 export interface HomeScreenProps {
@@ -22,21 +22,18 @@ export default class HomeScreen extends React.Component<HomeScreenProps> {
             <RectButton
               key={idx}
               activeOpacity={0.1}
-              onPress={() => {
+              onPress={(pointerInside) => {
                 const route = routes[routeName as keyof Routes];
-                if (route.screen || route.path || route.params) {
-                  const { path, params, screen } = route;
-                  const { router } = screen;
-                  const action = path && router.getActionForPathAndParams(path, params);
-                  navigation.navigate(routeName, {}, action);
+                if (route.path) {
+                  navigation.push(route.path);
                 } else {
                   navigation.navigate(routeName);
                 }
               }}
             >
               <View style={styles.item}>
-                <Themed.Text style={styles.title}>{routesInfo[routeName as keyof RoutesInfo].name}</Themed.Text>
-                <Themed.Text style={styles.description}>{routesInfo[routeName as keyof RoutesInfo].description}</Themed.Text>
+                <Themed.Text style={styles.title}>{routes[routeName as keyof Routes].navigationOptions.title}</Themed.Text>
+                <Themed.Text style={styles.description}>{routes[routeName as keyof Routes].params.description}</Themed.Text>
               </View>
             </RectButton>
           ))}
@@ -69,12 +66,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: Colors.black,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
   highlight: {
     fontWeight: '700',
   },
@@ -88,6 +79,7 @@ const styles = StyleSheet.create({
   },
   description: {
     color: '#999',
+    paddingTop: 6,
     fontSize: 13,
   },
   title: {
