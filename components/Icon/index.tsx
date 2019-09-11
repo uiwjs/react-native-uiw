@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableWithoutFeedbackProps, TouchableHighlight, TouchableHighlightProps, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableHighlight, TouchableHighlightProps, StyleSheet } from 'react-native';
 import getIconType, {IconType} from './getIconType';
 
 const styles = StyleSheet.create({

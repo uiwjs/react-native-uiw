@@ -7,6 +7,8 @@ Icon 图标
 
 <!--DemoStart--> 
 ```js
+import { Icon } from '@uiw/react-native';
+
 class Demo extends Component {
   render() {
     return (

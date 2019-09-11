@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, ActivityIndicator, TouchableOpacityProps } from 'react-native';
-import color from 'color';
-import { red, green, white, black } from '../styles/colors';
+import { color, colors } from '../utils';
 
 export interface ButtonProps extends TouchableOpacityProps {
   color?: string;
@@ -17,13 +16,9 @@ export interface ButtonProps extends TouchableOpacityProps {
    * 按钮类型，可选值为
    */
   type?: 'primary' | 'warning';
-  /**
-   * 是否内联
-   */
-  inline?: boolean;
 }
 
-export default class ButtonView extends Component<ButtonProps> {
+export default class ButtonView extends React.Component<ButtonProps> {
   static defaultProps: ButtonProps = {
     activeOpacity: .5
   };
@@ -31,15 +26,15 @@ export default class ButtonView extends Component<ButtonProps> {
     const { children, style, color: buttonColor, type, disabled, loading, ...restProps } = this.props;
     let backgroundColor, textColor, borderColor, borderWidth;
     if (type === 'warning') {
-      backgroundColor = color(red).rgb().string();
-      textColor = color(white).rgb().string();
+      backgroundColor = color(colors.red).rgb().string();
+      textColor = color(colors.white).rgb().string();
     }
     if (type === 'primary') {
-      backgroundColor = color(green).rgb().string();
-      textColor = color(white).rgb().string();
+      backgroundColor = color(colors.green).rgb().string();
+      textColor = color(colors.white).rgb().string();
     }
     if(!type) {
-      borderColor = color(black).alpha(0.32).rgb().string();
+      borderColor = color(colors.black).alpha(0.32).rgb().string();
       borderWidth = 1;
     }
     if (disabled) {
