@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StatusBar, StyleSheet, SectionList } from 'react-native';
 import { NativeViewGestureHandler, RectButton, } from 'react-native-gesture-handler';
 import { ThemeColors, ThemeContext, Themed, createAppContainer, } from 'react-navigation';
-import { routes, Routes, routesInfo, RoutesInfo } from '../routes';
+import { routes, Routes, routesInfo, RoutesInfo } from '../../routes';
 import { Header, LearnMoreLinks, Colors, DebugInstructions, ReloadInstructions, } from 'react-native/Libraries/NewAppScreen';
 
 export interface HomeScreenProps {

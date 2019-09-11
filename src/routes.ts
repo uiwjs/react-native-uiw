@@ -1,5 +1,5 @@
-import Button from './Button';
-import Icon from './Icon';
+import Button from './routes/Button';
+import Icon from './routes/Icon';
 
 export type Routes = {
   [key: string]: any;

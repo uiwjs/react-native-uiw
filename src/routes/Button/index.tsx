@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, ScrollView, SafeAreaView } from 'react-native';
-import { Button, Spacing } from '../../components';
-import Layout from '../Layout';
+import { Button, Spacing } from '../../../components';
+// import { Button, Spacing } from 'components';
+import Layout from '../../Layout';
 const { Header, Body, Card, Footer } = Layout;
 
 export default class ButtonView extends React.Component {
