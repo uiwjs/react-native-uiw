@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import {
   StyleSheet,
   View,
+  ViewProps,
   ViewStyle,
   SafeAreaView,
   ScrollView,
@@ -65,20 +66,21 @@ const Footer = (props: FooterProps) => {
   );
 }
 
-export type CardProps = {
+export interface CardProps extends ViewProps {
   showTitle?: boolean;
   title?: string;
   titleStyle?: StyleProp<TextStyle>;
+  bodyStyle?: StyleProp<ViewStyle>;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
 }
 
 const Card = (props: CardProps) => {
-  const { title, titleStyle, children, style, showTitle, ...other } = props;
+  const { title, titleStyle, bodyStyle, children, style, showTitle, ...other } = props;
   return (
     <View style={style} {...other}>
       {showTitle && <Text style={titleStyle ? [styles.cardTitle, titleStyle] : [styles.cardTitle]}>{title}</Text>}
-      <View style={styles.cardBody}>
+      <View style={bodyStyle ? [styles.cardBody, bodyStyle] : [styles.cardBody]}>
         {children}
       </View>
     </View>
@@ -133,11 +135,11 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F7F7F7',
+    // backgroundColor: '#F7F7F7',
     shadowColor: '#E6E6E6',
-    shadowOffset: { width: 0, height: -3 },
-    shadowRadius: 3,
-    shadowOpacity: 0.8,
+    // shadowOffset: { width: 0, height: -3 },
+    // shadowRadius: 3,
+    // shadowOpacity: 0.8,
     zIndex: 999
   },
   logo: {
@@ -166,11 +168,13 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingTop: 12,
     paddingBottom: 12,
+    marginBottom: 16,
     color: '#9A9A9A'
   },
   cardBody: {
     paddingLeft: 16,
     paddingRight: 16,
+    paddingBottom: 16,
   }
 });
 

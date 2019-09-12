@@ -17,7 +17,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Card showTitle={false}>
+            <Card title="基础实例">
               <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap-reverse' }}>
                 <Button>默认按钮</Button>
                 <Button>默认按钮</Button>
@@ -41,10 +41,10 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Button type="warning" loading disabled>警告按钮</Button>
               <Spacing />
               <Button loading>默认按钮</Button>
+              <Spacing />
+              <Button loading disabled>默认按钮 禁用</Button>
             </Card>
             <Card title="自定义颜色">
-              <Button loading disabled>默认按钮 禁用</Button>
-              <Spacing />
               <Button color="#333">自定义颜色按钮</Button>
               <Spacing />
               <Button color="#393E48">自定义颜色按钮</Button>
