@@ -1,5 +1,7 @@
-React Native UIW
-----
+UIW Design for React Native
+---
+
+(Android & iOS)
 
 ## Install
 
