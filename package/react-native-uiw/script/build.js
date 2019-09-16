@@ -1,4 +1,5 @@
 const babel = require('@babel/core');
+const {spawn} = require('child_process');
 const path = require('path');
 const fs = require('fs-extra');
 
@@ -38,4 +39,31 @@ function getPath(rootPath, result = []) {
       console.log(`♻️: ${itemPath.replace(process.cwd(), '').replace(/^\//, '')} -> ${outputFile.replace(process.cwd(), '').replace(/^\//, '')}`);
     }
   });
+  await execute('npm publish');
+  await fs.remove(root);
+  await fs.remove(output);
+  await fs.remove(path.join(process.cwd(), 'package-lock.json'));
 })();
+
+function execute(command) {
+  return new Promise((resolve, reject) => {
+    const subProcess = spawn('bash');
+    function onData(data) {
+      process.stdout.write(data);
+    }
+    subProcess.on('error', error => {
+      reject(
+        new Error(
+          `command failed: ${command}; ${error.message ? error.message : ''}`,
+        ),
+      );
+    });
+    subProcess.stdout.on('data', onData);
+    subProcess.stderr.on('data', onData);
+    subProcess.on('close', code => {
+      resolve(code);
+    });
+    subProcess.stdin.write(`${command} \n`);
+    subProcess.stdin.end();
+  });
+}
