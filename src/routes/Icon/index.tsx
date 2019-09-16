@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Linking, Button, TouchableOpacity } from 'react-native';
 import { ComProps } from '../../typings';
 import { Icon } from '../../../components';
 import Layout, { Container } from '../../Layout';
@@ -9,11 +9,9 @@ const styles = StyleSheet.create({
   list: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap' 
+    flexWrap: 'wrap',
   },
   item: {
-    // borderColor: 'red',
-    // borderWidth: 1,
     width: '50%',
     flexDirection: 'row',
     alignItems: 'center',
@@ -27,37 +25,20 @@ const styles = StyleSheet.create({
 
 export interface IconProps extends ComProps {}
 
-const iconData = ['stepforward', 'stepbackward', 'forward', 'banckward', 'caretright', 'caretleft', 'caretdown', 'caretup',
-'rightcircle', 'leftcircle', 'upcircle', 'downcircle', 'rightcircleo', 'leftcircleo', 'upcircleo', 'downcircleo',
-'verticleleft', 'verticleright', 'back', 'retweet', 'shrink', 'arrowsalt', 'doubleright', 'doubleleft', 'arrowdown',
-'arrowup', 'arrowright', 'arrowleft', 'down', 'up', 'right', 'left', 'minussquareo', 'minuscircle',
-'minuscircleo', 'minus', 'pluscircleo', 'pluscircle', 'plus', 'infocirlce', 'infocirlceo', 'info',
-'exclamation', 'exclamationcircle', 'exclamationcircleo', 'closecircle', 'closecircleo', 'checkcircle',
-'checkcircleo', 'check', 'close', 'customerservice', 'creditcard', 'codesquareo', 'book', 'barschart', 'bars',
-'question', 'questioncircle', 'questioncircleo', 'pause', 'pausecircle', 'pausecircleo', 'clockcircle',
-'clockcircleo', 'swap', 'swapleft', 'swapright', 'plussquareo', 'frown', 'menufold', 'mail', 'link',
-'areachart', 'linechart', 'home', 'laptop', 'star', 'staro', 'filter', 'meho', 'meh', 'shoppingcart',
-'save', 'user', 'videocamera', 'totop', 'team', 'sharealt', 'setting', 'picture', 'phone', 'paperclip',
-'notification', 'menuunfold', 'inbox', 'lock', 'qrcode', 'tags', 'tagso', 'cloudo', 'cloud', 'cloudupload',
-'clouddownload', 'clouddownloado', 'clouduploado', 'enviroment', 'enviromento', 'eye', 'eyeo', 'camera',
-'camerao', 'windows', 'export2', 'export', 'circledowno', 'circledown', 'hdd', 'ie', 'delete', 'enter',
-'pushpino', 'pushpin', 'heart', 'hearto', 'smileo', 'frowno', 'calculator', 'chrome', 'github', 'iconfontdesktop',
-'caretcircleoup', 'upload', 'download', 'piechart', 'lock1', 'unlock', 'windowso', 'dotchart', 'barchart',
-'codesquare', 'plussquare', 'minussquare', 'closesquare', 'closesquareo', 'checksquare', 'checksquareo',
-'fastbackward', 'fastforward', 'upsquare', 'downsquare', 'leftsquare', 'rightsquare', 'rightsquareo',
-'leftsquareo', 'down', 'up', 'play', 'playcircleo', 'tag', 'tago', 'addfile', 'folder1', 'file1', 'switcher',
-'addfolder', 'folderopen', 'search1', 'ellipsis1', 'calendar', 'filetext1', 'copy1', 'jpgfile1', 'pdffile1',
-'exclefile1', 'pptfile1', 'unknowfile1', 'wordfile1', 'dingding', 'dingding', 'mobile1', 'tablet1', 'bells',
-'disconnect', 'database', 'barcode', 'hourglass', 'key', 'flag', 'layout', 'printer', 'USB', 'skin', 'tool',
-'car', 'addusergroup', 'carryout', 'deleteuser', 'deleteusergroup', 'man', 'isv', 'gift', 'idcard',
-'medicinebox', 'redenvelopes', 'rest', 'Safety', 'wallet', 'woman', 'adduser', 'bank', 'Trophy', 'loading1',
-'loading2', 'like2', 'dislike2', 'like1', 'dislike1', 'bulb1', 'rocket1', 'select1', 'apple1', 'android1',
-'android', 'aliwangwang', 'poweroff', 'trademark', 'find', 'copyright', 'sound', 'earth', 'wifi', 'sync',
-'login', 'logout', 'reload1', 'message1', 'shake', 'API', 'appstore1', 'scan1', 'exception1', 'contacts',
-'solution1', 'fork', 'edit', 'form', 'warning', 'table', 'profile', 'dashboard', 'antdesign', 'codepen',
-'google', 'amazon', 'codepen', 'dropbox', 'googleplus', 'gitlab', 'QQ', 'skype', 'youtube', 'wechat',
-'twitter', 'weibo', 'HTML', 'CodeSandbox', 'aliyun', 'zhihu', 'behance', 'dribbble',
-'behance', 'instagram', 'yuque', 'slack']
+const iconData = [
+  'adobe', 'ali-pay', 'aliwangwang', 'android-o', 'android', 'apple', 'appstore-o', 'appstore', 'area-chart', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'arrows-alt', 'asterisk', 'backward', 'baidu', 'bar-chart', 'barcode', 'bell',
+  'camera-o', 'caret-down', 'caret-left', 'caret-right', 'caret-up', 'check-square-o', 'check-square', 'check', 'chrome', 'circle-check-o', 'circle-check', 'circle-close-o', 'circle-close', 'close-square-o', 'close-square', 'close',
+  'cloud-download-o', 'cloud-download', 'cloud-upload-o', 'cloud-upload', 'coffee', 'component', 'copy', 'copyright', 'css3', 'cut',
+  'd-arrow-left', 'd-arrow-right', 'd-caret', 'dashboard', 'date', 'delete', 'dingding', 'dislike-o', 'document', 'dot-chart', 'down-circle-o', 'down-circle', 'down-square-o', 'down-square', 'download', 'edit', 'enter', 'environment-o', 'environment', 'eye-o', 'eye',
+  'facebook', 'file-add', 'file-excel', 'file-jpg', 'file-pdf', 'file-text', 'file-unknown', 'filter', 'firefox', 'folder-add', 'folder-open', 'folder', 'forward', 'foursquare', 'frown-o', 'frown', 'github-o', 'github', 'global',
+  'heart-off', 'heart-on', 'home', 'html5', 'ie', 'inbox', 'information-o', 'information', 'laptop', 'left-circle-o', 'left-circle', 'left-square-o', 'left-square', 'like-o', 'link', 'linkedin', 'linux', 'loading', 'lock', 'login', 'logout',
+  'man', 'map', 'meh-o', 'meh', 'menu-fold', 'menu-unfold', 'menu', 'message-o', 'message', 'minus-circle-o', 'minus-circle', 'minus-square-o', 'minus-square', 'minus',
+  'mobile', 'more', 'notification', 'opera', 'paper-clip', 'pause-circle-o', 'pause-circle', 'pause', 'pay-circle-o', 'pay', 'picasa', 'picture',
+  'pie-chart', 'pinterest', 'play-circle-o', 'play-circle', 'plus-circle-o', 'plus-circle', 'plus-square-o', 'plus-square', 'plus', 'poweroff', 'printer', 'qq', 'qrcode', 'question-circle-o', 'question-circle',
+  'reddit', 'reload', 'right-circle-o', 'right-circle', 'right-square-o', 'right-square', 'rollback', 'safari', 'safety', 'save', 'search', 'setting-o', 'setting', 'share',
+  'shopping-cart', 'shrink', 'smile-o', 'smile', 'star-off', 'star-on', 'swap-left', 'swap-right', 'swap', 'table', 'tag-o', 'tag', 'tags-o', 'tags', 'taobao', 'time-o', 'time', 'twitter', 'uiw', 'unlock',
+  'up-circle-o', 'up-circle', 'up-square-o', 'up-square', 'upload', 'user-add', 'user-delete', 'user', 'usergroup-add', 'usergroup-delete', 'verification',
+  'verticle-left', 'verticle-right', 'video-camera', 'warning-o', 'warning', 'weibo', 'weixin', 'wifi', 'windows', 'woman', 'zoom-in', 'zoom-out']
 
 export default class IconPage extends React.Component<IconProps> {
   render() {
@@ -69,12 +50,19 @@ export default class IconPage extends React.Component<IconProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Card title="Ant Design font">
+            <Card
+              title="UIW Icon"
+              extra={
+                <TouchableOpacity onPress={() => Linking.openURL('https://uiwjs.github.io/icons/')}>
+                  <Text>图标 web 预览</Text>
+                </TouchableOpacity>
+              }
+            >
               <View style={styles.list}>
                 {iconData.map((keyName, key) => {
                   return (
                     <View key={key} style={styles.item}>
-                      <Icon name={keyName} style={styles.icon}/>
+                      <Icon name={keyName} size={18} style={styles.icon} />
                       <Text>{keyName}</Text>
                     </View>
                   );

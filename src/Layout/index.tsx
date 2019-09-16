@@ -72,14 +72,24 @@ export interface CardProps extends ViewProps {
   titleStyle?: StyleProp<TextStyle>;
   bodyStyle?: StyleProp<ViewStyle>;
   style?: StyleProp<ViewStyle>;
+  extra?: React.ReactNode;
   children?: React.ReactNode;
 }
 
 const Card = (props: CardProps) => {
-  const { title, titleStyle, bodyStyle, children, style, showTitle, ...other } = props;
+  const { title, titleStyle, bodyStyle, children, style, showTitle, extra, ...other } = props;
   return (
     <View style={style} {...other}>
-      {showTitle && <Text style={titleStyle ? [styles.cardTitle, titleStyle] : [styles.cardTitle]}>{title}</Text>}
+      {extra ? (
+        <View style={[styles.extra, styles.cardTitle]}>
+          {showTitle && (
+            <View style={{ flex: 2 }}><Text style={[titleStyle]}>{title}</Text></View>
+          )}
+          <View>{extra}</View>
+        </View>
+      ) : (
+        showTitle && <Text style={titleStyle ? [styles.cardTitle, titleStyle] : [styles.cardTitle]}>{title}</Text>
+      )}
       <View style={bodyStyle ? [styles.cardBody, bodyStyle] : [styles.cardBody]}>
         {children}
       </View>
@@ -175,6 +185,12 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 16,
     paddingBottom: 16,
+  },
+  extra: {
+    backgroundColor: '#F7F7F7',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap' 
   }
 });
 

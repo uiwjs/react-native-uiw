@@ -1,28 +1,42 @@
 import React from 'react';
-import { View, TouchableHighlight, TouchableHighlightProps, StyleSheet } from 'react-native';
-import getIconType, {IconType} from './getIconType';
+import Svg, { SvgXml, SvgProps, Path } from 'react-native-svg';
+import svgPaths from 'uiw-iconfont/fonts/w-icon.json';
 
-const styles = StyleSheet.create({
-  button: { }
-});
-
-export interface IconProps extends TouchableHighlightProps {
-  name: string;
-  color?: string;
-  type?: IconType;
+export interface IconsProps extends SvgProps {
+  name?: string;
   size?: number;
+  fill?: string;
+  stroke?: string;
+  /**
+   * Svg 图标字符串
+   */
+  xml?: string;
 }
 
-export default function Icon(props: IconProps) {
-  const { type, name, size, color, ...otherProps } = props;
-  const Component: keyof JSX.IntrinsicElements | any = props.onPress ? TouchableHighlight : View;
-  const VecIcon = getIconType(type);
-  return (
-    <Component
-      style={[styles.button]}
-      {...otherProps}
-    >
-      <VecIcon color={color} name={name} size={size || 24} />
-    </Component>
-  )
+export default class Icons extends React.Component<IconsProps> {
+  static defaultProps: IconsProps = {
+    size: 26
+  }
+  render() {
+    const { name, size, fill, stroke, xml, ...otherProps } = this.props;
+    if (xml) {
+      return <SvgXml xml={xml} height={size} width={size} {...otherProps} />;
+    }
+    if (!name || !(svgPaths as any)[name]) {
+      return null
+    }
+    const paths = (svgPaths as any)[name] as string[];
+    return (
+      <Svg
+        fill={fill}
+        stroke={stroke}
+        height={size}
+        width={size}
+        viewBox="0 0 20 20"
+        {...otherProps}
+      >
+        {paths.map((d: string, i: number) => <Path key={i} d={d} fillRule="evenodd" />)}
+      </Svg>
+    );
+  }
 }
