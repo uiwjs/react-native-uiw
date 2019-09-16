@@ -8,6 +8,10 @@ export interface IconsProps extends SvgProps {
   fill?: string;
   stroke?: string;
   /**
+   * SVG path d=`paths`
+   */
+  paths?: string[];
+  /**
    * Svg 图标字符串
    */
   xml?: string;
@@ -18,14 +22,17 @@ export default class Icons extends React.Component<IconsProps> {
     size: 26
   }
   render() {
-    const { name, size, fill, stroke, xml, ...otherProps } = this.props;
+    const { name, size, fill, stroke, xml, paths, ...otherProps } = this.props;
     if (xml) {
       return <SvgXml xml={xml} height={size} width={size} {...otherProps} />;
     }
-    if (!name || !(svgPaths as any)[name]) {
-      return null
+    let pathData = paths;
+    if (!pathData) {
+      if (!name || !(svgPaths as any)[name]) {
+        return null
+      }
+      pathData = (svgPaths as any)[name] as string[];
     }
-    const paths = (svgPaths as any)[name] as string[];
     return (
       <Svg
         fill={fill}
@@ -35,7 +42,7 @@ export default class Icons extends React.Component<IconsProps> {
         viewBox="0 0 20 20"
         {...otherProps}
       >
-        {paths.map((d: string, i: number) => <Path key={i} d={d} fillRule="evenodd" />)}
+        {pathData.map((d: string, i: number) => <Path key={i} d={d} fillRule="evenodd" />)}
       </Svg>
     );
   }
