@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-native",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "UIW for React Native",
   "main": "lib/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uiwjs/react-natvie-uiw"
+    "url": "https://github.com/uiwjs/react-native-uiw"
   },
   "files": [
     "lib"
