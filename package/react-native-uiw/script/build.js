@@ -43,6 +43,7 @@ function getPath(rootPath, result = []) {
   await fs.remove(root);
   await fs.remove(output);
   await fs.remove(path.join(process.cwd(), 'package-lock.json'));
+  await fs.remove(path.join(process.cwd(), 'node_modules'));
 })();
 
 function execute(command) {
