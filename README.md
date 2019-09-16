@@ -1,6 +1,31 @@
 React Native UIW
 ----
 
+## Install
+
+```bash
+npm i @uiw/react-native
+```
+
+## Basic Usage
+
+```jsx
+import React from 'react';
+import { View } from 'react-native';
+import { Icon } from '@uiw/react-native'
+
+export default class Demo extends React.Component {
+  render() {
+    return (
+      <View>
+        <Icon name='apple' size={46} color='#50CB42' />
+      </View>
+    )
+  }
+}
+
+```
+
 ## Development
 
 ```bash
