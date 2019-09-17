@@ -99,12 +99,16 @@ const Card = (props: CardProps) => {
 
 export interface ContainerProps {
   children?: React.ReactNode;
+  isScroll?: boolean;
 }
 
 export const Container = (props: ContainerProps) => {
   return (
     <SafeAreaView>
-      <ScrollView style={{ height: '100%' }}>{props.children}</ScrollView>
+      {props.isScroll ? (<ScrollView style={{ height: '100%' }}>{props.children}</ScrollView>) : (
+        <View style={{ height: '100%' }}>{props.children}</View>
+      )}
+      
     </SafeAreaView>
   )
 }
@@ -230,4 +234,13 @@ Card.propTypes = {
 
 Card.defaultProps = {
   showTitle: true
+};
+
+Container.propTypes = {
+  isScroll: PropTypes.bool,
+};
+
+Container.defaultProps = {
+  children: null,
+  isScroll: true,
 };

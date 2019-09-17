@@ -69,9 +69,7 @@ class Demo extends Component {
 ```
 <!--End-->
 
-## 参数
-
-### Icon
+## Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|

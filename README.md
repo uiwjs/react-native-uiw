@@ -52,8 +52,14 @@ export default class Demo extends React.Component {
     )
   }
 }
-
 ```
+
+## Components
+
+- [Button](components/Button/README.md)
+- [Icon](components/Icon/README.md)
+- [List](components/List/README.md)
+- [Spacing](components/Spacing/README.md)
 
 ## Development
 
@@ -63,7 +69,6 @@ Run instructions for iOS:
   - or -
   • Open ReactNativeUIW/ios/ReactNativeUIW.xcworkspace in Xcode or run "xed -b ios"
   • Hit the Run button
-
 Run instructions for Android:
   • Have an Android emulator running (quickest way to get started), or a device connected.
   • cd react-native-uiw && react-native run-android

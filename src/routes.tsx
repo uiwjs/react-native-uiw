@@ -3,6 +3,7 @@ import { Text, StyleProp, TextStyle } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import Button from './routes/Button';
 import Icon from './routes/Icon';
+import List from './routes/List';
 import { ComProps } from './typings';
 
 export type Otions = (props: ComProps) => void;
@@ -81,5 +82,17 @@ export const routes: Routes = {
       title: 'Icon 图标',
       ...navOtions,
     },
-  }
+  },
+  List: {
+    screen: List,
+    path: 'List',
+    params: {
+      title: 'List 列表',
+      description: '一个高性能的界面，用于呈现分段列表。'
+    },
+    navigationOptions: {
+      title: 'List 按钮',
+      ...navOtions,
+    },
+  },
 };
