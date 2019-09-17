@@ -25,6 +25,6 @@ class Demo extends Component {
 继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
 
 | 参数 | 说明 | 类型 | 默认值|
-|------|------|-----|------|------|
+|------|------|-----|------|
 | size | 按钮大小 | Enum{'small', 'default', 'large'} | default |
 | gutter | 间距值 | number | `10` |

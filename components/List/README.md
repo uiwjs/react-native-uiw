@@ -65,10 +65,10 @@ export default function Demo() {
 
 继承 [`FlatList`](https://facebook.github.io/react-native/docs/flatlist#props) 组件。如果使用 `data` 和 `renderItem` 则 `<List.Item />` 将不起作用
 
-| 参数 | 说明 | 类型 | 默认值| 备注 |
-|------|------|-----|------|------|
-| data | 渲染头部 | () => { } | - | 需要返回元素 |
-| renderItem | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - | 需要返回元素 |
+| 参数 | 说明 | 类型 | 默认值|
+|------|------|-----|------|
+| data | 渲染头部 | () => { } | - |
+| renderItem | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
 
 ### List.Item
 
