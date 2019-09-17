@@ -1,7 +1,7 @@
 Icon 图标
 ---
 
-图标组件基于 [`react-native-vector-icons`](https://github.com/oblador/react-native-vector-icons), [所有的图标](https://oblador.github.io/react-native-vector-icons/)
+图标组件基于 [`react-native-svg`](https://github.com/react-native-community/react-native-svg) 支持 svg 图标，通过这一特性封装的图标组件库, 预览[所有的图标](https://uiwjs.github.io/icons)
 
 ### 基础示例
 
