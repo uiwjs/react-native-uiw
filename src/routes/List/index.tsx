@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, RefreshControl, SectionList } from 'react-native';
+import { View, Text } from 'react-native';
 import { List, Icon } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
