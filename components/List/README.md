@@ -67,9 +67,17 @@ export default function Demo() {
 
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
-| data | 渲染头部 | () => { } | - |
-| renderItem | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
+| `data` | 渲染头部 | () => { } | - |
+| `paddingLeft` | 设置所有 `Item` 左边补白 | Number | `16` |
+| `renderItem` | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
 
 ### List.Item
 
-继承 [`ViewProps`](http://localhost:1987/react-native/docs/view#props) 。
+继承 [`ViewProps`](https://facebook.github.io/react-native/docs/view#props) 当 `onPress` 存在则继承 [`TouchableHighlight`](https://facebook.github.io/react-native/docs/touchablehighlight#props)。
+
+
+| 参数 | 说明 | 类型 | 默认值|
+|------|------|-----|------|
+| `paddingLeft` | 左边补白 | Number | `16` |
+| `onPress` | 释放触摸时调用，但如果取消则不调用（例如通过窃取响应者锁定的滚动）。 | (event: GestureResponderEvent) => void | - |
+| `underlayColor` | 当 `onPress` 存在设置 `underlayColor` 点击后的激活颜色 | String | `#DADADA` |
