@@ -4,15 +4,15 @@ import { StyleSheet, Text, TextProps } from 'react-native';
 
 const styles = StyleSheet.create({
   default: {
-    textDecorationLine: 'line-through',
+    textDecorationLine: 'underline',
   },
 });
 
-export interface SProps extends TextProps {
+export interface UProps extends TextProps {
   children?: React.ReactNode;
 }
 
-export default function S(props: SProps) {
+export default function U(props: UProps) {
   return (
     <Text {...props} style={[styles.default, props.style]}>
       {props.children}
@@ -20,7 +20,7 @@ export default function S(props: SProps) {
   );
 }
 
-S.propTypes = {
+U.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -28,4 +28,4 @@ S.propTypes = {
   ]),
   style: PropTypes.any,
 };
-S.defaultProps = {};
+U.defaultProps = {};
