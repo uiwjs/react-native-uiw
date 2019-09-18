@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { FlatList, FlatListProps, Text, View, ListRenderItemInfo } from 'react-native';
-import Item, { ListItemProps } from './Item';
+import Item from './Item';
 
 const noop = () => null;
 
-export interface ListState {
-  data: ListProps['data'];
-}
-
 export interface ListProps extends FlatListProps<{}> {
   paddingLeft?: number;
+  /**
+   * 标题
+   */
+  title?: React.ReactNode;
+}
+
+export interface ListState {
+  data: ListProps['data'];
 }
 
 export default class List extends Component<ListProps, ListState> {
@@ -17,6 +21,7 @@ export default class List extends Component<ListProps, ListState> {
   static defaultProps: ListProps = {
     data: [],
     renderItem: noop,
+    paddingLeft: 16,
   }
   constructor(props: ListProps) {
     super(props);
@@ -38,7 +43,7 @@ export default class List extends Component<ListProps, ListState> {
     return props.item as React.ReactElement;
   }
   render() {
-    const { renderItem, data, children, paddingLeft, ...otherProps} = this.props;
+    const { renderItem, data, children, paddingLeft, ListHeaderComponent, title, ...otherProps} = this.props;
     const props = {} as ListProps;
     if (renderItem !== noop) {
       props.data = data;
@@ -47,8 +52,17 @@ export default class List extends Component<ListProps, ListState> {
       props.data = this.state.data;
       props.renderItem = this.renderItemChild.bind(this);
     }
+    let header = ListHeaderComponent;
+    if (title) {
+      header = (
+        <View style={[{ paddingLeft, paddingVertical: 12 }]}>
+          {typeof title == 'string' ? <Text style={{ color: '#808080' }}>{title}</Text> : <View>{title}</View>}
+        </View>
+      );
+    }
     return (
       <FlatList
+        ListHeaderComponent={header}
         keyExtractor={(__, index) => index.toString()}
         {...otherProps}
         {...props}

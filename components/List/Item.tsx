@@ -23,7 +23,7 @@ export default class ListItem extends Component<ListItemProps> {
       )
     }
     return (
-      <View style={{ paddingLeft }}>
+      <View style={[{ paddingLeft }, styles.warpper]}>
         <View style={[styles.border, style]} {...otherProps}>{typeof children === 'string' ? <Text>{children}</Text> : children}</View>
       </View>
     );
@@ -31,7 +31,9 @@ export default class ListItem extends Component<ListItemProps> {
 }
 
 const styles = StyleSheet.create({
-  warpper: {},
+  warpper: {
+    backgroundColor: '#fff',
+  },
   border: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#CDCDCD',

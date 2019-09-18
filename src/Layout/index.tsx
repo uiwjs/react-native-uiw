@@ -41,9 +41,9 @@ export interface BodyProps {
 }
 
 const Body = (props: BodyProps) => {
-  const { children, style } = props;
+  const { children, style, ...other } = props;
   return (
-    <ScrollView style={[style]} automaticallyAdjustContentInsets={false}>
+    <ScrollView style={[styles.body, style]} automaticallyAdjustContentInsets={false} {...other}>
       {children}
     </ScrollView>
   );
@@ -130,7 +130,7 @@ export default class Layout extends PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#ededed',
     flexDirection: 'column',
     flex: 1,
   },
@@ -155,6 +155,9 @@ const styles = StyleSheet.create({
     // shadowRadius: 3,
     // shadowOpacity: 0.8,
     zIndex: 999
+  },
+  body: {
+    backgroundColor: '#ededed',
   },
   logo: {
     flex: 1,
