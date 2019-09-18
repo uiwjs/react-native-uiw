@@ -18,3 +18,4 @@ export { default as Del } from './Typography/S';
 export { default as U } from './Typography/U';
 export { default as P } from './Typography/P';
 export { default as Br } from './Typography/Br';
+export { default as Hr } from './Typography/Hr';
