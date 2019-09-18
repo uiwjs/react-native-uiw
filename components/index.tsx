@@ -12,6 +12,8 @@ export { default as H3 } from './Typography/H3';
 export { default as H4 } from './Typography/H4';
 export { default as H5 } from './Typography/H5';
 export { default as H6 } from './Typography/H6';
+export { default as Strong } from './Typography/Strong';
 export { default as S } from './Typography/S';
 export { default as Del } from './Typography/S';
 export { default as U } from './Typography/U';
+export { default as P } from './Typography/P';
