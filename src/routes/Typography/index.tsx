@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { H1, H2, H3, H4, H5, H6, S, Del, U, P, Strong, Br, Hr } from '../../../components';
+import { H1, H2, H3, H4, H5, H6, S, Del, U, P, Strong, Br, Hr, Em } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
 const { Header, Body, Card, Footer } = Layout;
@@ -35,6 +35,9 @@ export default class TypographyView extends React.Component<TypographyViewProps>
             <Card title="换行<Br />">
               <Text>文本开始<Br />换行结束</Text>
               <Text>上面两行文本使用 {`<Text>文本开始<Br />换行结束</Text>`} 组件换行</Text>
+            </Card>
+            <Card title="斜体强调<Em />">
+              <Em>斜体强调 fontStyle: 'italic' 中文失效</Em>
             </Card>
             <Card title="水平线<Hr />">
               <Text>一段文本</Text>
