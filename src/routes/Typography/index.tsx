@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { H1, H2, H3, H4, H5, H6, S, Del, U, P, Strong } from '../../../components';
+import { H1, H2, H3, H4, H5, H6, S, Del, U, P, Strong, Br } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
 const { Header, Body, Card, Footer } = Layout;
@@ -28,6 +28,8 @@ export default class TypographyView extends React.Component<TypographyViewProps>
             <U>这段文字下面有条下划线{`<U>`}</U>
             <P>这是一个段落{`<P>`}</P>
             <Strong>这段文本加粗的{`<Strong>`}</Strong>
+            <Text>文本开始<Br />换行结束</Text>
+            <Text>上面两行文本使用 {`<Text>文本开始<Br />换行结束</Text>`} 组件换行</Text>
           </Body>
           <Footer />
         </Layout>
