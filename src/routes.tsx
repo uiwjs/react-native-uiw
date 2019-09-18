@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, StyleProp, TextStyle } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import Button from './routes/Button';
-import Title from './routes/Title';
+import Typography from './routes/Typography';
 import Icon from './routes/Icon';
 import List from './routes/List';
 import { ComProps } from './typings';
@@ -72,15 +72,15 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
-  Title: {
-    screen: Title,
-    path: 'Title',
+  Typography: {
+    screen: Typography,
+    path: 'Typography',
     params: {
-      title: 'Title 标题',
-      description: '标题包含 H1~H6 类似于 HTML 中的标签。'
+      title: 'Typography 排版',
+      description: '包含 H1~H6,<U>,<S>,<P>等，类似于 HTML 中的标签。'
     },
     navigationOptions: {
-      title: 'Title 标题',
+      title: 'Typography 排版',
       ...navOtions,
     },
   },

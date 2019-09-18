@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { H1, H2, H3, H4, H5, H6 } from '../../../components';
+import { H1, H2, H3, H4, H5, H6, S, Del } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
 const { Header, Body, Card, Footer } = Layout;
 
-export interface ListViewProps extends ComProps { }
+export interface TypographyViewProps extends ComProps { }
 
-export default class ListView extends React.Component<ListViewProps> {
+export default class TypographyView extends React.Component<TypographyViewProps> {
   render() {
     const { navigation } = this.props;
     const description = navigation.getParam('description');
@@ -23,6 +23,8 @@ export default class ListView extends React.Component<ListViewProps> {
             <H4>这是标题二</H4>
             <H5>这是标题二</H5>
             <H6>这是标题二</H6>
+            <S>这段字符串中间有条删除线{`<S>`}</S>
+            <Del>这段字符串中间有条删除线{`<Del>`}</Del>
           </Body>
           <Footer />
         </Layout>
