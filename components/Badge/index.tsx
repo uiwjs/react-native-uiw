@@ -18,12 +18,11 @@ const styles = StyleSheet.create({
 });
 
 
-export interface BadgeProps extends ViewProps{
+export interface BadgeProps extends ViewProps {
   children?: React.ReactNode;
   color?: colors.Colors | string;
   text?: string;
   textStyles?: StyleProp<TextStyle>
-  style?: StyleProp<ViewStyle>
 }
 
 export default function Badge(props: BadgeProps) {
