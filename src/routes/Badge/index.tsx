@@ -23,7 +23,10 @@ export default class TypographyView extends React.Component<TypographyViewProps>
               <List.Item>Git 版本控制的核心概念</List.Item>
               <List.Item>HTTP Referer 和 Referrer Policy</List.Item>
               <List.Item>何解？浪费一年时间，我学了假人工智能</List.Item>
-              <List.Item>超燃！高效 MacBook 工作环境配置，超实用</List.Item>
+              <List.Item>
+                <Text>超燃！高效 MacBook 工作环境配置，超实用</Text>
+                <Badge text="450k" color="green" />
+              </List.Item>
               <List.Item>
                 <Text>一文带你搞懂 API 网关</Text>
                 <Badge text="标记" color="red" />
