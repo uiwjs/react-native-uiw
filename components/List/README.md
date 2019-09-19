@@ -67,7 +67,8 @@ export default function Demo() {
 
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
-| `data` | 渲染头部 | () => { } | - |
+| `data` | 渲染头部 | [] | - |
+| `extra` | 额外内容，展示右侧内容 | ReactNode | - |
 | `paddingLeft` | 设置所有 `Item` 左边补白 | Number | `16` |
 | `renderItem` | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
 | `title` | 设置所有 `Item` 左边补白 | Number | `16` |

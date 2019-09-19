@@ -4,6 +4,7 @@ import { View, ViewProps, StyleSheet, TouchableHighlight, TouchableWithoutFeedba
 export interface ListItemProps extends ViewProps, TouchableWithoutFeedbackProps {
   paddingLeft?: number;
   underlayColor?: string;
+  extra?: React.ReactNode;
 }
 
 export default class ListItem extends Component<ListItemProps> {
@@ -12,19 +13,31 @@ export default class ListItem extends Component<ListItemProps> {
     paddingLeft: 16,
   }
   render() {
-    const { children, style, onPress, paddingLeft, underlayColor, ...otherProps } = this.props;
+    const { children, style, onPress, paddingLeft, underlayColor, extra, ...otherProps } = this.props;
     if (onPress) {
       return (
         <TouchableHighlight underlayColor={underlayColor} style={[styles.warpper]} onPress={onPress} {...otherProps}>
-          <View style={{ paddingLeft }}>
-            <View style={[styles.border, style]} {...otherProps}>{typeof children === 'string' ? <Text>{children}</Text> : children}</View>
+          <View style={[styles.border, { flex: 1, paddingLeft }, style]} {...otherProps}>
+            <View style={{ flexDirection: 'row', flex: 1 }}>
+              {typeof children === 'string' ? <Text>{children}</Text> : children}
+            </View>
+            <View style={{ paddingRight: 10 }}>
+              {typeof extra === 'string' ? <Text>{extra}</Text> : <View>{extra}</View>}
+            </View>
           </View>
         </TouchableHighlight>
       )
     }
     return (
       <View style={[{ paddingLeft }, styles.warpper]}>
-        <View style={[styles.border, style]} {...otherProps}>{typeof children === 'string' ? <Text>{children}</Text> : children}</View>
+        <View style={[styles.border, style]} {...otherProps}>
+          <View style={{ flexDirection: 'row', flex: 1 }}>
+            {typeof children === 'string' ? <Text>{children}</Text> : children}
+          </View>
+          <View style={{ paddingRight: 10 }}>
+            {typeof extra === 'string' ? <Text>{extra}</Text> : <View>{extra}</View>}
+          </View>
+        </View>
       </View>
     );
   }
@@ -32,7 +45,7 @@ export default class ListItem extends Component<ListItemProps> {
 
 const styles = StyleSheet.create({
   warpper: {
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
   border: {
     borderBottomWidth: StyleSheet.hairlineWidth,

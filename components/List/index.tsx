@@ -10,6 +10,10 @@ export interface ListProps extends FlatListProps<{}> {
    * 标题
    */
   title?: React.ReactNode;
+  /**
+   * 额外内容，展示右侧内容;
+   */
+  extra?: React.ReactNode;
 }
 
 export interface ListState {
