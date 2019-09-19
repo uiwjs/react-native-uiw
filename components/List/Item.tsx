@@ -16,8 +16,8 @@ export default class ListItem extends Component<ListItemProps> {
     const { children, style, onPress, paddingLeft, underlayColor, extra, ...otherProps } = this.props;
     if (onPress) {
       return (
-        <TouchableHighlight underlayColor={underlayColor} style={[styles.warpper]} onPress={onPress} {...otherProps}>
-          <View style={[styles.border, { flex: 1, paddingLeft }, style]} {...otherProps}>
+        <TouchableHighlight underlayColor={underlayColor} style={[styles.warpper, { paddingLeft }]} onPress={onPress} {...otherProps}>
+          <View style={[styles.border, { flex: 1 }, style]} {...otherProps}>
             <View style={{ flexDirection: 'row', flex: 1 }}>
               {typeof children === 'string' ? <Text>{children}</Text> : children}
             </View>

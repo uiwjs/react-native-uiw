@@ -99,29 +99,27 @@ const Card = (props: CardProps) => {
 
 export interface ContainerProps {
   children?: React.ReactNode;
-  isScroll?: boolean;
 }
 
 export const Container = (props: ContainerProps) => {
   return (
-    <SafeAreaView>
-      {props.isScroll ? (<ScrollView style={{ height: '100%' }}>{props.children}</ScrollView>) : (
-        <View style={{ height: '100%' }}>{props.children}</View>
-      )}
-      
+    <SafeAreaView style={{ backgroundColor: '#ededed' }}>
+      <ScrollView style={{ height: '100%' }}>{props.children}</ScrollView>
     </SafeAreaView>
   )
 }
 
-export default class Layout extends PureComponent {
+export interface LayoutProps extends ViewProps {}
+
+export default class Layout extends PureComponent<LayoutProps> {
   static Header = Header;
   static Body = Body;
   static Footer = Footer;
   static Card = Card;
   render() {
-    const { children } = this.props;
+    const { children, style } = this.props;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, style]}>
         {children}
       </View >
     );
@@ -131,8 +129,8 @@ export default class Layout extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ededed',
+    minHeight: '100%',
     flexDirection: 'column',
-    flex: 1,
   },
   header: {
     paddingTop: 25,
@@ -239,11 +237,8 @@ Card.defaultProps = {
   showTitle: true
 };
 
-Container.propTypes = {
-  isScroll: PropTypes.bool,
-};
+Container.propTypes = { };
 
 Container.defaultProps = {
   children: null,
-  isScroll: true,
 };

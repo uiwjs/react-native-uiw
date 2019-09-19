@@ -13,7 +13,7 @@ export default class ListView extends React.Component<ListViewProps> {
     const description = navigation.getParam('description');
     const title = navigation.getParam('title');
     return (
-      <Container isScroll={false}>
+      <Container>
         <Layout>
           <Header title={title} description={description} />
           <Body>
