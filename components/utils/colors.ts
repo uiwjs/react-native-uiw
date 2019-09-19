@@ -1,4 +1,6 @@
 
+export type Colors = 'green' | 'blue' | 'cyan' | 'navy' | 'yellow' | 'orange' | 'red';
+
 export const green = '#28a745'; // 成功-绿色
 export const blue = '#008EF0'; // 主要-蓝色
 export const cyan = '#1EABCD'; // 信息-青色

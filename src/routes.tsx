@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, StyleProp, TextStyle } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import Button from './routes/Button';
+import Badge from './routes/Badge';
 import Typography from './routes/Typography';
 import Icon from './routes/Icon';
 import List from './routes/List';
@@ -60,6 +61,18 @@ const navOtions = {
 }
 
 export const routes: Routes = {
+  Badge: {
+    screen: Badge,
+    path: 'Badge',
+    params: {
+      title: 'Badge 标记',
+      description: '出现在按钮、图标旁的数字或状态标记。'
+    },
+    navigationOptions: {
+      title: 'Badge 标记',
+      ...navOtions,
+    },
+  },
   Button: {
     screen: Button,
     path: 'Button',
