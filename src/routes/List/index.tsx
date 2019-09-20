@@ -18,10 +18,10 @@ export default class ListView extends React.Component<ListViewProps> {
           <Header title={title} description={description} />
           <Body>
             <List>
-              <List.Item extra={<Icon name="apple" size={14} />} onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
+              <List.Item extra={<Icon name="left" size={14} />} onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
               <List.Item extra={<Icon name="apple" size={14} />}>Protobuf 生成 Go代码指南</List.Item>
               <List.Item extra="说明">Git 版本控制的核心概念</List.Item>
-              <List.Item>HTTP Referer 和 Referrer Policy</List.Item>
+              <List.Item extra={<Icon name="left" size={14} />}>HTTP Referer 和 Referrer Policy</List.Item>
               <List.Item>何解？浪费一年时间，我学了假人工智能</List.Item>
               <List.Item>超燃！高效 MacBook 工作环境配置，超实用</List.Item>
               <List.Item>一文带你搞懂 API 网关</List.Item>

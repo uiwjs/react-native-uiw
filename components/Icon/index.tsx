@@ -1,6 +1,6 @@
 import React from 'react';
 import Svg, { SvgXml, SvgProps, Path } from 'react-native-svg';
-import svgPaths from 'uiw-iconfont/fonts/w-icon.json';
+import svgPaths from '@uiw/icons/fonts/w-icon.json';
 
 export interface IconsProps extends SvgProps {
   name?: string;
