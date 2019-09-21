@@ -21,7 +21,7 @@ export interface ButtonProps extends TouchableOpacityProps {
    */
   rounded?: boolean | number;
   /**
-   * 
+   * 设置是否显示边框
    */
   bordered?: boolean;
 }
@@ -75,7 +75,9 @@ export default class ButtonView extends React.Component<ButtonProps> {
             style={styles.icon}
           />
         )}
-        {React.isValidElement(children) ? children : (
+        {React.isValidElement(children) ? React.cloneElement(children, {
+          style: [textStyle, styles.label]
+        }) : (
           <Text style={[textStyle, styles.label]}>{children}</Text>
         )}
       </TouchableOpacity>

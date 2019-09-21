@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, ScrollView, SafeAreaView } from 'react-native';
-import { Button, Spacing } from '../../../components';
+import { Button, Spacing, Icon } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
 const { Header, Body, Card, Footer } = Layout;
@@ -66,6 +66,28 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Button bordered={false} color="#f6f8fa">不显示边框{`bordered={false}`}</Button>
               <Spacing />
               <Button bordered={false} color="#ffc107">不显示边框{`bordered={false}`}</Button>
+            </Card>
+            <Card title="显示图标">
+              <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap-reverse' }}>
+                <Button bordered={false} color="#fff">
+                  <Icon name="apple" size={17} />
+                  <Text> 首页</Text>
+                </Button>
+                <Button bordered={false} color="#fff">
+                  <Icon name="menu-fold" size={17} />
+                  <Text> 菜单</Text>
+                </Button>
+              </View>
+              <Spacing />
+              <Button bordered={false} color="#ffc107">
+                <Icon name="warning" size={17} />
+                <Text> 菜单</Text>
+              </Button>
+              <Spacing />
+              <Button bordered={false} type="warning">
+                <Icon name="warning" fill="#fff" size={17} />
+                <Text> 菜单</Text>
+              </Button>
             </Card>
           </Body>
           <Footer />

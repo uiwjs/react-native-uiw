@@ -19,7 +19,7 @@ export interface IconsProps extends SvgProps {
 
 export default class Icons extends React.Component<IconsProps> {
   static defaultProps: IconsProps = {
-    size: 26
+    size: 26,
   }
   render() {
     const { name, size, fill, stroke, xml, paths, ...otherProps } = this.props;
