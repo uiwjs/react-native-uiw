@@ -44,6 +44,15 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Spacing />
               <Button loading disabled>默认按钮 禁用</Button>
             </Card>
+            <Card title="按钮圆角设置">
+              <Button rounded={false} color="#333">设置圆角 {`rounded={false}`}</Button>
+              <Spacing />
+              <Button rounded={23} color="#393E48">自定义颜色按钮 {`rounded={23}`}</Button>
+              <Spacing />
+              <Button rounded={10} color="#f6f8fa">自定义颜色按钮 {`rounded={10}`}</Button>
+              <Spacing />
+              <Button rounded={16} color="#ffc107">自定义颜色按钮 {`rounded={16}`}</Button>
+            </Card>
             <Card title="自定义颜色">
               <Button color="#333">自定义颜色按钮</Button>
               <Spacing />
