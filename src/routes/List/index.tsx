@@ -17,7 +17,7 @@ export default class ListView extends React.Component<ListViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <List>
+            <List extra="test">
               <List.Item extra={<Icon name="left" size={14} />} onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
               <List.Item extra={<Icon name="apple" size={14} />}>Protobuf 生成 Go代码指南</List.Item>
               <List.Item extra="说明">Git 版本控制的核心概念</List.Item>
@@ -32,7 +32,7 @@ export default class ListView extends React.Component<ListViewProps> {
                 </View>
               </List.Item>
             </List>
-            <List title="新闻列表">
+            <List extra={<Icon name="left" fill="#abb0b5" size={14} />} title="新闻列表">
               <List.Item onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
               <List.Item>Protobuf 生成 Go代码指南</List.Item>
               <List.Item>Git 版本控制的核心概念</List.Item>
