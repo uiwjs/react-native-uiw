@@ -53,14 +53,31 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Spacing />
               <Button rounded={16} color="#ffc107">自定义圆角 {`rounded={16}`}</Button>
             </Card>
+            <Card title="按钮尺寸 size={'small', 'default', 'large'}">
+              <Button size="small" color="#333">按钮尺寸 {`size="small"`}</Button>
+              <Spacing />
+              <Button color="#393E48">按钮尺寸 {`rounded={23}`}</Button>
+              <Spacing />
+              <Button size="large" color="#f6f8fa">自定义圆角 {`size="large"`}</Button>
+            </Card>
             <Card title="自定义颜色">
               <Button color="#333">自定义颜色{`color="#333"`}</Button>
               <Spacing />
+              <Button color="#28a745">自定义颜色{`color="#28a745"`}</Button>
+              <Spacing />
+              <Button color="#008EF0">自定义颜色{`color="#008EF0"`}</Button>
+              <Spacing />
+              <Button color="#1EABCD">自定义颜色{`color="#1EABCD"`}</Button>
+              <Spacing />
               <Button color="#393E48">自定义颜色{`color="#393E48"`}</Button>
               <Spacing />
-              <Button color="#f6f8fa">自定义颜色{`color="#f6f8fa"`}</Button>
-              <Spacing />
               <Button color="#ffc107">自定义颜色{`color="#ffc107"`}</Button>
+              <Spacing />
+              <Button color="#F95C2B">自定义颜色{`color="#F95C2B"`}</Button>
+              <Spacing />
+              <Button color="#dc3545">自定义颜色{`color="#dc3545"`}</Button>
+              <Spacing />
+              <Button color="#f6f8fa">自定义颜色{`color="#f6f8fa"`}</Button>
             </Card>
             <Card title="设置边框">
               <Button bordered={false} color="#f6f8fa">不显示边框{`bordered={false}`}</Button>

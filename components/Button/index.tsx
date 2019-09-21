@@ -65,6 +65,10 @@ export default class ButtonView extends React.Component<ButtonProps> {
     if (rounded && typeof rounded === 'number') {
       borderRadius = rounded;
     }
+    if (backgroundColor) {
+      borderColor = color(backgroundColor).darken(0.1).string();
+      borderWidth = 1;
+    }
     const buttonStyle = { backgroundColor, borderColor, borderWidth, borderRadius };
     const textStyle = { color: textColor };
     let sizeStyle = {};

@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, StyleProp, TextStyle } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import Button from './routes/Button';
+import ButtonGroup from './routes/ButtonGroup';
 import Badge from './routes/Badge';
 import Typography from './routes/Typography';
 import Icon from './routes/Icon';
@@ -82,6 +83,18 @@ export const routes: Routes = {
     },
     navigationOptions: {
       title: 'Button 按钮',
+      ...navOtions,
+    },
+  },
+  ButtonGroup: {
+    screen: ButtonGroup,
+    path: 'ButtonGroup',
+    params: {
+      title: 'ButtonGroup 按钮组',
+      description: '用于一组按钮。'
+    },
+    navigationOptions: {
+      title: 'ButtonGroup 按钮组',
       ...navOtions,
     },
   },
