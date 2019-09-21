@@ -17,18 +17,23 @@ export interface ButtonProps extends TouchableOpacityProps {
    */
   type?: 'primary' | 'warning';
   /**
-   * 是否有圆角
+   * 设置按钮圆角
    */
   rounded?: boolean | number;
+  /**
+   * 
+   */
+  bordered?: boolean;
 }
 
 export default class ButtonView extends React.Component<ButtonProps> {
   static defaultProps: ButtonProps = {
     activeOpacity: .5,
     rounded: 5,
+    bordered: true,
   };
   render() {
-    const { children, style, rounded, color: buttonColor, type, disabled, loading, ...restProps } = this.props;
+    const { children, style, rounded, bordered, color: buttonColor, type, disabled, loading, ...restProps } = this.props;
     let backgroundColor, textColor, borderColor, borderWidth, borderRadius;
     if (type === 'warning') {
       backgroundColor = color(colors.red).rgb().string();
@@ -49,8 +54,11 @@ export default class ButtonView extends React.Component<ButtonProps> {
       backgroundColor = color(buttonColor).rgb().string();
       textColor = color(buttonColor).isLight() ? color(buttonColor).darken(0.9).string() : color(buttonColor).lighten(0.9).string();
     }
-    if (rounded) {
-      borderRadius = typeof rounded === 'number' ? rounded : 0;
+    if (!bordered) {
+      borderWidth = 0;
+    }
+    if (rounded && typeof rounded === 'number') {
+      borderRadius = rounded;
     }
     const buttonStyle = { backgroundColor, borderColor, borderWidth, borderRadius };
     const textStyle = { color: textColor };
@@ -78,7 +86,6 @@ export default class ButtonView extends React.Component<ButtonProps> {
 const styles = StyleSheet.create({
   button: {
     padding: 3,
-    borderRadius: 5,
     borderStyle: 'solid',
   },
   content: {

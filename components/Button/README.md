@@ -99,7 +99,6 @@ class Demo extends Component {
 ```
 <!--End-->
 
-
 ## Props
 
 组件继承 [`TouchableOpacity`](https://facebook.github.io/react-native/docs/touchableopacity#docsNav)
@@ -109,5 +108,7 @@ class Demo extends Component {
 | color | 设置按钮颜色 | String | - |
 | disabled | 设置禁用 | Boolean | - |
 | loading | 加载状态 | Boolean | - |
+| rounded | 设置圆角 | Boolean/Number | `5` |
+| bordered | 是否有边框 | Boolean | `true` |
 | type | 按钮类型，可选值为 | `primary`,`warning` | - |
 
