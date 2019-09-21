@@ -99,6 +99,39 @@ class Demo extends Component {
 ```
 <!--End-->
 
+
+## 显示边框
+
+```jsx
+import { Button } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <Button bordered={false} color="#f6f8fa">不显示边框{`bordered={false}`}</Button>
+  );
+}
+```
+
+## 自定义圆角
+
+```jsx
+import { Button } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <>
+      <Button rounded={false} color="#333">设置圆角</Button>
+      <Spacing />
+      <Button rounded={23} color="#393E48">自定义圆角</Button>
+      <Spacing />
+      <Button rounded={10} color="#f6f8fa">自定义圆角</Button>
+      <Spacing />
+      <Button rounded={16} color="#ffc107">自定义圆角</Button>
+    </>
+  );
+}
+```
+
 ## Props
 
 组件继承 [`TouchableOpacity`](https://facebook.github.io/react-native/docs/touchableopacity#docsNav)
