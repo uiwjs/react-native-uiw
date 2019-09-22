@@ -26,31 +26,23 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
             </Card>
             <Card title="尺寸">
               <ButtonGroup size="small">
-                <Button>警告</Button>
-                <Button>警告</Button>
-                <Button>主要</Button>
-                <Button>警告</Button>
+                <Button>小尺寸按钮</Button>
+                <Button>小尺寸按钮</Button>
               </ButtonGroup>
               <Spacing />
               <ButtonGroup color="#ffc107" size="default">
-                <Button>警告</Button>
-                <Button>警告</Button>
-                <Button>主要</Button>
-                <Button>警告</Button>
+                <Button>默认尺寸按钮</Button>
+                <Button>默认尺寸按钮</Button>
               </ButtonGroup>
               <Spacing />
               <ButtonGroup type="warning" size="large">
-                <Button>警告</Button>
-                <Button>警告</Button>
-                <Button>主要</Button>
-                <Button>警告</Button>
+                <Button>大尺寸按钮</Button>
+                <Button>大尺寸按钮</Button>
               </ButtonGroup>
               <Spacing />
               <ButtonGroup color="#008EF0" size="small">
-                <Button>警告</Button>
-                <Button>警告</Button>
-                <Button>主要</Button>
-                <Button>警告</Button>
+                <Button>小尺寸蓝色按钮</Button>
+                <Button>小尺寸蓝色按钮</Button>
               </ButtonGroup>
               <Spacing />
               <ButtonGroup color="#28a745" size="small">
@@ -80,7 +72,7 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
                 <Button>警告</Button>
               </ButtonGroup>
               <Spacing />
-              <ButtonGroup bordered={false} type="warning">
+              <ButtonGroup bordered={false} type="danger">
                 <Button>警告</Button>
                 <Button>警告</Button>
                 <Button>警告</Button>
