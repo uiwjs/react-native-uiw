@@ -143,5 +143,5 @@ function Demo() {
 | loading | 加载状态 | Boolean | - |
 | rounded | 设置圆角 | Boolean/Number | `5` |
 | bordered | 是否有边框 | Boolean | `true` |
-| type | 按钮类型，可选值为 | `primary`,`warning` | - |
+| type | 按钮类型，可选值为 | `primary`, `success`, `warning`, `danger`, `light`, `dark` | - |
 

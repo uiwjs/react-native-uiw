@@ -28,17 +28,17 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Spacing />
               <Button disabled>默认禁用按钮</Button>
               <Spacing />
-              <Button type="primary">主要按钮</Button>
+              <Button type="primary">主要按钮 primary </Button>
               <Spacing />
-              <Button type="primary" disabled>主要禁用</Button>
+              <Button type="danger" disabled>错误按钮 danger</Button>
               <Spacing />
-              <Button type="warning">警告按钮</Button>
+              <Button type="success">成功按钮 success</Button>
               <Spacing />
-              <Button type="warning" disabled>警告禁用按钮</Button>
+              <Button type="warning" disabled>警告禁用按钮 warning</Button>
               <Spacing />
-              <Button type="warning" loading>警告</Button>
+              <Button type="light" loading>亮按钮 light</Button>
               <Spacing />
-              <Button type="warning" loading disabled>警告按钮</Button>
+              <Button type="dark" loading disabled>暗按钮 dark</Button>
               <Spacing />
               <Button loading>默认按钮</Button>
               <Spacing />
@@ -82,7 +82,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
             <Card title="设置边框">
               <Button bordered={false} color="#f6f8fa">不显示边框{`bordered={false}`}</Button>
               <Spacing />
-              <Button bordered={false} color="#ffc107">不显示边框{`bordered={false}`}</Button>
+              <Button bordered={false} color="#28a745">不显示边框{`bordered={false}`}</Button>
             </Card>
             <Card title="显示图标">
               <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap-reverse' }}>
@@ -101,7 +101,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                 <Text> 菜单</Text>
               </Button>
               <Spacing />
-              <Button bordered={false} type="warning">
+              <Button bordered={false} type="danger">
                 <Icon name="warning" fill="#fff" size={17} />
                 <Text> 菜单</Text>
               </Button>
