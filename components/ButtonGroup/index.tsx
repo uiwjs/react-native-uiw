@@ -49,6 +49,3 @@ export default class ButtonGroup extends Component<ButtonGroupProps> {
   }
 }
 
-// ButtonGroup.defaultProps = {
-//   bordered: true
-// };

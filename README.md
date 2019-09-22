@@ -58,6 +58,7 @@ export default class Demo extends React.Component {
 
 - [Badge](components/Badge/README.md)
 - [Button](components/Button/README.md)
+- [ButtonGroup](components/ButtonGroup/README.md)
 - [Icon](components/Icon/README.md)
 - [List](components/List/README.md)
 - [Spacing](components/Spacing/README.md)
