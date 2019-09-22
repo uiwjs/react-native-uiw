@@ -67,25 +67,29 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
                 <Button>警告</Button>
               </ButtonGroup>
             </Card>
-            <Card title="边框">
+            <Card title="边框 bordered?: boolean">
               <ButtonGroup bordered={false}>
-                <Button>警告</Button>
-                <Button>警告</Button>
-                <Button>主要</Button>
-                <Button>警告</Button>
+                <Button>边框</Button>
+                <Button>边框</Button>
+                <Button>边框</Button>
               </ButtonGroup>
               <Spacing />
               <ButtonGroup bordered={false} color="#ffc107">
                 <Button>警告</Button>
                 <Button>警告</Button>
-                <Button>主要</Button>
                 <Button>警告</Button>
               </ButtonGroup>
               <Spacing />
               <ButtonGroup bordered={false} type="warning">
                 <Button>警告</Button>
                 <Button>警告</Button>
-                <Button>主要</Button>
+                <Button>警告</Button>
+              </ButtonGroup>
+            </Card>
+            <Card title="按钮间距 gutter?: number">
+              <ButtonGroup gutter={5} type="warning" bordered={false}>
+                <Button>警告</Button>
+                <Button>警告</Button>
                 <Button>警告</Button>
               </ButtonGroup>
             </Card>
