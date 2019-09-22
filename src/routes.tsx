@@ -1,13 +1,14 @@
 import React from 'react';
-import { Text, StyleProp, TextStyle } from 'react-native';
-import { NavigationScreenProp } from 'react-navigation';
+import { StyleProp, TextStyle } from 'react-native';
+import { ComProps } from './typings';
+// import { NavigationScreenProp } from 'react-navigation';
 import Button from './routes/Button';
 import ButtonGroup from './routes/ButtonGroup';
 import Badge from './routes/Badge';
 import Typography from './routes/Typography';
 import Icon from './routes/Icon';
 import List from './routes/List';
-import { ComProps } from './typings';
+import Loader from './routes/Loader';
 
 export type Otions = (props: ComProps) => void;
 
@@ -91,7 +92,7 @@ export const routes: Routes = {
     path: 'ButtonGroup',
     params: {
       title: 'ButtonGroup 按钮组',
-      description: '用于一组按钮。'
+      description: '用于一组按钮的排版展示。'
     },
     navigationOptions: {
       title: 'ButtonGroup 按钮组',
@@ -131,6 +132,18 @@ export const routes: Routes = {
     },
     navigationOptions: {
       title: 'List 按钮',
+      ...navOtions,
+    },
+  },
+  Loader: {
+    screen: Loader,
+    path: 'Loader',
+    params: {
+      title: 'Loader 加载器',
+      description: '用于页面和区块的加载中状态。'
+    },
+    navigationOptions: {
+      title: 'Loader 按钮',
       ...navOtions,
     },
   },
