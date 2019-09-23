@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { List, Icon } from '../../../components';
+import { List, Icon, Badge } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
 const { Header, Body, Card, Footer } = Layout;
@@ -42,6 +42,25 @@ export default class ListView extends React.Component<ListViewProps> {
               <List.Item onPress={() => navigation.goBack()}>尺寸大小设置</List.Item>
               <List.Item onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
               <List.Item size="large" onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
+            </List>
+            <List title="单元格大小">
+              <List.Item
+                extra={<Icon name="left" fill="#abb0b5" size={14} />}
+                onPress={() => navigation.goBack()}>
+                <Text>单元格</Text>
+                <Badge text="450k" color="green" />
+              </List.Item>
+              <List.Item
+                size="small"
+                extra={<><Badge text="450k" color="green" /><Icon name="left" fill="#abb0b5" size={14} /></>}
+                onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
+              <List.Item
+                onPress={() => navigation.goBack()}
+                extra={<><Icon name="search" fill="#abb0b5" size={14} /></>}
+              >
+                <Icon size={14} name="shopping-cart" fill="#008EF0" style={{ marginRight: 5 }} />
+                <Text>单元格</Text>
+              </List.Item>
             </List>
           </Body>
           <Footer />

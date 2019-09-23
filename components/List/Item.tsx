@@ -18,14 +18,13 @@ export default class ListItem extends Component<ListItemProps> {
   }
   render() {
     const { children, style, onPress, paddingLeft, underlayColor, extra, size, ...otherProps } = this.props;
-    console.log('size:', size)
     const cell = (
       <>
-        <View style={{ flexDirection: 'row', flex: 1 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
           {typeof children === 'string' ? <Text>{children}</Text> : children}
         </View>
         <View style={{ paddingRight: 10 }}>
-          {typeof extra === 'string' ? <Text>{extra}</Text> : <View>{extra}</View>}
+          {typeof extra === 'string' ? <Text>{extra}</Text> : <View style={{ flexDirection: 'row', alignItems: 'center' }}>{extra}</View>}
         </View>
       </>
     );
