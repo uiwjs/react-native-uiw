@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
   button: {
     padding: 3,
     borderStyle: 'solid',
+    display: 'flex',
   },
   content: {
     flexDirection: 'row',

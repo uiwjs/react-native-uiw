@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   default: {
     display: 'flex',
     flexDirection: 'row',
+    flex: 1,
   }
 });
 
@@ -27,7 +28,7 @@ export default class ButtonGroup extends Component<ButtonGroupProps> {
       <View style={[styles.default, style]} {...otherProps}>
         {children && React.Children.map(children, (child: React.ReactNode, idx: number) => {
           if (!React.isValidElement(child)) return null;
-          const childStyle: ButtonProps['style'] = {};
+          const childStyle: ButtonProps['style'] = { flex: 1 };
           if (!gutter) {
             if (idx === 0 || idx < (children as ButtonProps[]).length - 1) {
               childStyle.borderTopRightRadius = 0;
@@ -52,7 +53,7 @@ export default class ButtonGroup extends Component<ButtonGroupProps> {
           if (gutter) {
             childStyle.marginLeft = gutter;
           }
-          return React.cloneElement(child, { ...child.props, ...porps, style: [child.props.style, childStyle] });
+          return React.cloneElement(child, { ...child.props, ...porps, style: [childStyle, child.props.style] });
         })}
       </View>
     );
