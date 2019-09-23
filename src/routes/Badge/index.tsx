@@ -19,7 +19,10 @@ export default class TypographyView extends React.Component<TypographyViewProps>
           <Body>
             <List>
               <List.Item onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
-              <List.Item extra={<Badge text="450k" color="green" />}>Protobuf 生成 Go代码指南</List.Item>
+              <List.Item extra={<Badge text="450k" color="green" />}>
+                <Badge type="dot" text="450k" color="green" />
+                <Text>Protobuf 生成 Go代码指南</Text>
+              </List.Item>
               <List.Item extra={<Badge text="10" color="green" />}>Git 版本控制的核心概念</List.Item>
               <List.Item extra={<Badge text="450k" color="green" />}>HTTP Referer 和 Referrer Policy</List.Item>
               <List.Item extra={<Badge text="450k" color="yellow" />}>何解？浪费一年时间，我学了假人工智能</List.Item>
@@ -28,6 +31,13 @@ export default class TypographyView extends React.Component<TypographyViewProps>
               </List.Item>
               <List.Item extra={<Badge text="标记" color="red" />}>
                 <Text>一文带你搞懂 API 网关</Text>
+              </List.Item>
+            </List>
+            <List title="设置类型 type?: 'dot' | 'text'">
+              <List.Item extra={<Badge type="dot" text="450k" color="red" />} onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
+              <List.Item extra={<Badge text="450k" color="red" />}>
+                <Badge type="dot" text="450k" color="green" />
+                <Text>Protobuf 生成 Go代码指南</Text>
               </List.Item>
             </List>
           </Body>

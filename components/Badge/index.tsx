@@ -15,20 +15,31 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 14,
   },
+  dot: {
+    height: 6,
+    width: 6,
+    marginHorizontal: 4,
+    borderRadius: 3,
+  }
 });
-
 
 export interface BadgeProps extends ViewProps {
   children?: React.ReactNode;
   color?: colors.Colors | string;
   text?: string;
+  type?: 'dot' | 'text';
   textStyles?: StyleProp<TextStyle>
 }
 
 export default function Badge(props: BadgeProps) {
-  const { children, color: $color, style, textStyles, ...passProps } = props;
+  const { children, color: $color, style, type, textStyles, ...passProps } = props;
   const colorObj = color(colors[$color as colors.Colors] || $color);
   const luminosTextColor = colorObj.luminosity() < 0.5 ? '#fff' : '#000';
+  if (type === 'dot') {
+    return (
+      <View style={[styles.dot, { backgroundColor: $color }]} />
+    )
+  }
   const content = children || (
     <Text style={[styles.text, { color: luminosTextColor }, textStyles]}>
       {props.text}
@@ -60,4 +71,5 @@ Badge.propTypes = {
 };
 Badge.defaultProps = {
   color: 'primary',
+  type: 'text',
 };
