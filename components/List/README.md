@@ -68,8 +68,6 @@ export default function Demo() {
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
 | `data` | 渲染头部 | [] | - |
-| `extra` | 额外内容，展示右侧内容 | ReactNode | - |
-| `paddingLeft` | 设置所有 `Item` 左边补白 | Number | `16` |
 | `renderItem` | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
 | `title` | 设置所有 `Item` 左边补白 | Number | `16` |
 | `ListHeaderComponent` | 呈现在列表的顶部。如果设置了 `title` 标题，这个参数将失效  | ReactNode | - |
@@ -81,6 +79,13 @@ export default function Demo() {
 
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
-| `paddingLeft` | 左边补白 | Number | `16` |
 | `onPress` | 释放触摸时调用，但如果取消则不调用（例如通过窃取响应者锁定的滚动）。 | (event: GestureResponderEvent) => void | - |
 | `underlayColor` | 当 `onPress` 存在设置 `underlayColor` 点击后的激活颜色 | String | `#DADADA` |
+
+### 共同属性
+
+| 参数 | 说明 | 类型 | 默认值|
+|------|------|-----|------|
+| `size` | 单元格大小 | `small`, `default`, `large` | List`default`, List.Item '-' |
+| `extra` | 额外内容，展示右侧内容 | ReactNode | - |
+| `paddingLeft` | 左边补白 | Number | `16` |

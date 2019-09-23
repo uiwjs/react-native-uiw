@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { View, ViewProps, StyleSheet, TouchableHighlight, TouchableWithoutFeedbackProps, Text } from 'react-native';
 
 export interface ListItemProps extends ViewProps, TouchableWithoutFeedbackProps {
-  paddingLeft?: number;
   underlayColor?: string;
+  paddingLeft?: number;
   extra?: React.ReactNode;
+  /**
+   * 单元格大小
+   */
+  size?: 'small' | 'default' | 'large';
 }
 
 export default class ListItem extends Component<ListItemProps> {
@@ -13,30 +17,36 @@ export default class ListItem extends Component<ListItemProps> {
     paddingLeft: 16,
   }
   render() {
-    const { children, style, onPress, paddingLeft, underlayColor, extra, ...otherProps } = this.props;
+    const { children, style, onPress, paddingLeft, underlayColor, extra, size, ...otherProps } = this.props;
+    console.log('size:', size)
+    const cell = (
+      <>
+        <View style={{ flexDirection: 'row', flex: 1 }}>
+          {typeof children === 'string' ? <Text>{children}</Text> : children}
+        </View>
+        <View style={{ paddingRight: 10 }}>
+          {typeof extra === 'string' ? <Text>{extra}</Text> : <View>{extra}</View>}
+        </View>
+      </>
+    );
+
+    let sizeStyle = {};
+    if (size && styles[size]) {
+      sizeStyle = styles[size];
+    }
     if (onPress) {
       return (
         <TouchableHighlight underlayColor={underlayColor} style={[styles.warpper, { paddingLeft }]} onPress={onPress} {...otherProps}>
-          <View style={[styles.border, { flex: 1 }, style]} {...otherProps}>
-            <View style={{ flexDirection: 'row', flex: 1 }}>
-              {typeof children === 'string' ? <Text>{children}</Text> : children}
-            </View>
-            <View style={{ paddingRight: 10 }}>
-              {typeof extra === 'string' ? <Text>{extra}</Text> : <View>{extra}</View>}
-            </View>
+          <View style={[styles.border, { flex: 1 }, sizeStyle, style]} {...otherProps}>
+            {cell}
           </View>
         </TouchableHighlight>
       )
     }
     return (
       <View style={[{ paddingLeft }, styles.warpper]}>
-        <View style={[styles.border, style]} {...otherProps}>
-          <View style={{ flexDirection: 'row', flex: 1 }}>
-            {typeof children === 'string' ? <Text>{children}</Text> : children}
-          </View>
-          <View style={{ paddingRight: 10 }}>
-            {typeof extra === 'string' ? <Text>{extra}</Text> : <View>{extra}</View>}
-          </View>
+        <View style={[styles.border, sizeStyle, style]} {...otherProps}>
+          {cell}
         </View>
       </View>
     );
@@ -53,6 +63,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  default: {
     paddingVertical: 12
-  }
+  },
+  small: {
+    paddingVertical: 6
+  },
+  large: {
+    paddingVertical: 16
+  },
 });
