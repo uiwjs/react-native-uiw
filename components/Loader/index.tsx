@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator, ActivityIndicatorProps } from 'react-native';
-// import { color } from '../utils';
 
 const styles = StyleSheet.create({
   defalut: {
@@ -40,6 +39,10 @@ export interface LoaderProps {
    */
   loading?: boolean;
   /**
+   * 动画图标与文字垂直显示
+   */
+  vertical?: boolean;
+  /**
    * 设置按钮圆角，用于加载内容为圆角的情况
    */
   rounded?: number;
@@ -56,13 +59,16 @@ export default class Loader extends Component<LoaderProps> {
     color: 'gray',
   }
   render() {
-    const { children, color: loaderColor, maskColor, rounded, loading, tip, size } = this.props;
+    const { children, color: loaderColor, maskColor, rounded, loading, tip, size, vertical } = this.props;
     let styleProps: ActivityIndicatorProps['style'] = {};
     if (maskColor) {
       styleProps.backgroundColor = maskColor;
     }
     if (rounded) {
       styleProps.borderRadius = rounded;
+    }
+    if (vertical) {
+      styleProps.flexDirection = 'column';
     }
     return (
       <View>

@@ -30,9 +30,15 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
               <Loader rounded={5} tip="加载中...">
                 <List extra={<Icon name="left" fill="#abb0b5" size={14} />} title="新闻列表">
                   <List.Item onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
-                  <List.Item>Protobuf 生成 Go代码指南</List.Item>
                   <List.Item>Git 版本控制的核心概念</List.Item>
                   <List.Item>HTTP Referer 和 Referrer Policy</List.Item>
+                </List>
+              </Loader>
+              <Spacing />
+              <Loader vertical rounded={5} tip="加载中...">
+                <List extra={<Icon name="left" fill="#abb0b5" size={14} />}>
+                  <List.Item onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
+                  <List.Item>Protobuf 生成 Go代码指南</List.Item>
                   <List.Item>何解？浪费一年时间，我学了假人工智能</List.Item>
                 </List>
               </Loader>

@@ -124,7 +124,7 @@ class Demo extends Component {
 
 ## Props
 
-集成继承 `Button` 组件自定义属性，外层包裹内容样式集成 [`ViewProps`](https://facebook.github.io/react-native/docs/view#props) 。
+集成继承 `Button` 组件自定义属性，外层包裹内容样式继承 [`ViewProps`](https://facebook.github.io/react-native/docs/view#props) 。
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
