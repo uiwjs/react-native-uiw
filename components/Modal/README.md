@@ -51,14 +51,4 @@ export default class ButtonGroupView extends Component {
 
 ## Props
 
-继承 `ActivityIndicator` 组件属性 [`ActivityIndicatorProps`](https://facebook.github.io/react-native/docs/activityindicator#props)，比原生组件 `ActivityIndicator` 多出更多丰富功能。
-
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|-----|------|
-| color | 微调器的前景色 | `String` | `gray` |
-| maskColor | 遮罩层颜色 | `String` | `rgba(255, 255, 255, 0.85)` |
-| size | Loader 图标的大小（默认为 `small`） | `large`, `small` | - |
-| loading | 是显示`Indicator`（true）还是隐藏`Indicator`（false） | `Boolean` | `true` |
-| vertical | 动画图标与文字垂直显示 | `Boolean` | - |
-| rounded | 设置按钮圆角，用于加载内容为圆角的情况） | `Number` | - |
-| tip | 当作为包裹元素时，可以自定义描述文案 | `String`, `ReactNode` | - |
+继承原生 Modal 属性 [`ModalProps`](https://facebook.github.io/react-native/docs/modal.html#props)
