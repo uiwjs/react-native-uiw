@@ -9,6 +9,7 @@ import Typography from './routes/Typography';
 import Icon from './routes/Icon';
 import List from './routes/List';
 import Loader from './routes/Loader';
+import Modal from './routes/Modal';
 
 export type Otions = (props: ComProps) => void;
 
@@ -144,6 +145,18 @@ export const routes: Routes = {
     },
     navigationOptions: {
       title: 'Loader 按钮',
+      ...navOtions,
+    },
+  },
+  Modal: {
+    screen: Modal,
+    path: 'Modal',
+    params: {
+      title: 'Modal 模态对话框',
+      description: '模态对话框，React Native 原生组件。'
+    },
+    navigationOptions: {
+      title: 'Modal 模态对话框',
       ...navOtions,
     },
   },

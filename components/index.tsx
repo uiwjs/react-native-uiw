@@ -4,6 +4,7 @@ export { default as Badge } from './Badge';
 export { default as Icon } from './Icon';
 export { default as List } from './List';
 export { default as Loader } from './Loader';
+export { default as Modal } from './Modal';
 export { default as Spacing } from './Spacing';
 
 /**
