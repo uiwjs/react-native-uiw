@@ -2,6 +2,7 @@ lib
 src
 node_modules
 package-lock.json
+tsconfig.json
 yarn.lock
 
 # OSX

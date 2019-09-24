@@ -1,10 +1,11 @@
 {
   "name": "@uiw/react-native",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "UIW for React Native",
   "main": "lib/index.js",
   "scripts": {
-    "start": "node script/build.js"
+    "start": "node script/build.js",
+    "type": "tsbb types"
   },
   "keywords": [],
   "author": "",
@@ -34,7 +35,8 @@
     "@babel/preset-typescript": "^7.6.0",
     "babel-preset-react-native": "^4.0.1",
     "fs-extra": "^8.1.0",
+    "metro-react-native-babel-preset": "^0.56.0",
     "react-native": "^0.60.0",
-    "metro-react-native-babel-preset": "^0.56.0"
+    "tsbb": "^1.1.3"
   }
 }
