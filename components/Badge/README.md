@@ -23,6 +23,6 @@ function Demo() {
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
-| text | 文本内容 | String | - |
-| color | 标记颜色 | String | - |
-| textStyles | 文本样式 | String | - |
+| `text` | 文本内容 | String | - |
+| `color` | 标记颜色 | String | - |
+| `textStyles` | 文本样式 | String | - |

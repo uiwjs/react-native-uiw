@@ -43,5 +43,5 @@ function Demo() {
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
-| label | 分割线标题，文本内容 | String | - |
-| type | 水平还是垂直类型 | `horizontal`, `vertical` | `horizontal` |
+| `label` | 分割线标题，文本内容 | String | - |
+| `type` | 水平还是垂直类型 | `horizontal`, `vertical` | `horizontal` |

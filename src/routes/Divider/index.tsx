@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Badge, List, Divider } from '../../../components';
+import { Divider } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
 

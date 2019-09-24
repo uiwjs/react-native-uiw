@@ -128,4 +128,4 @@ class Demo extends Component {
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
-| gutter | 按钮间隔间距 | Number | - |
+| `gutter` | 按钮间隔间距 | Number | - |

@@ -2,6 +2,7 @@ export { default as Button } from './Button';
 export { default as ButtonGroup } from './ButtonGroup';
 export { default as Badge } from './Badge';
 export { default as Divider } from './Divider';
+export { default as Flex } from './Flex';
 export { default as Icon } from './Icon';
 export { default as List } from './List';
 export { default as Loader } from './Loader';

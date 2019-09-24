@@ -103,6 +103,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Flex: {
+    screen: require('./routes/Flex').default,
+    path: 'Flex',
+    params: {
+      title: 'Flex Flex布局',
+      description: 'Flex 是 React Native CSS flex 布局的一个封装。'
+    },
+    navigationOptions: {
+      title: 'Flex Flex布局',
+      ...navOtions,
+    },
+  },
   Icon: {
     screen: require('./routes/Icon').default,
     path: 'Icon',
