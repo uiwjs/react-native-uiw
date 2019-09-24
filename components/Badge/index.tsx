@@ -32,7 +32,7 @@ export interface BadgeProps extends ViewProps {
 }
 
 export default function Badge(props: BadgeProps) {
-  const { children, color: $color, style, type, textStyles, ...passProps } = props;
+  const { children, color: $color, style, type, textStyles, ...restProps } = props;
   const colorObj = color(colors[$color as colors.Colors] || $color);
   const luminosTextColor = colorObj.luminosity() < 0.5 ? '#fff' : '#000';
   if (type === 'dot') {
@@ -52,7 +52,7 @@ export default function Badge(props: BadgeProps) {
   return (
     <View
       style={[styles.base, { backgroundColor: colorObj.rgb().string()}, style]}
-      {...passProps}
+      {...restProps}
     >
       {content}
     </View>

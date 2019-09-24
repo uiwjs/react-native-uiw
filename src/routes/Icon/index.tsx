@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export interface IconProps extends ComProps {}
+export interface IconPageProps extends ComProps {}
 
 const iconData = [
   'adobe', 'ali-pay', 'aliwangwang', 'android-o', 'android', 'apple', 'appstore-o', 'appstore', 'area-chart', 'down', 'left', 'right', 'up', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'arrows-alt', 'asterisk', 'backward', 'baidu', 'bar-chart', 'barcode', 'bell',
@@ -40,7 +40,7 @@ const iconData = [
   'up-circle-o', 'up-circle', 'up-square-o', 'up-square', 'upload', 'user-add', 'user-delete', 'user', 'usergroup-add', 'usergroup-delete', 'verification',
   'verticle-left', 'verticle-right', 'video-camera', 'warning-o', 'warning', 'weibo', 'weixin', 'wifi', 'windows', 'woman', 'zoom-in', 'zoom-out']
 
-export default class IconPage extends React.Component<IconProps> {
+export default class IconPage extends React.Component<IconPageProps> {
   render() {
     const { navigation } = this.props;
     const description = navigation.getParam('description');

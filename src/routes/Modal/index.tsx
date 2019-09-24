@@ -5,9 +5,9 @@ import { Modal, Button, Loader, List, Icon, Spacing } from '../../../components'
 import { ComProps } from '../../typings';
 const { Header, Body, Card, Footer } = Layout;
 
-export interface ButtonGroupViewProps extends ComProps { }
+export interface ModalViewProps extends ComProps { }
 
-export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
+export default class ModalView extends Component<ModalViewProps> {
   state = {
     modalVisible: false,
   };

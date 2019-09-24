@@ -5,6 +5,7 @@ import { ComProps } from './typings';
 import Button from './routes/Button';
 import ButtonGroup from './routes/ButtonGroup';
 import Badge from './routes/Badge';
+import Divider from './routes/Divider';
 import Typography from './routes/Typography';
 import Icon from './routes/Icon';
 import List from './routes/List';
@@ -97,6 +98,18 @@ export const routes: Routes = {
     },
     navigationOptions: {
       title: 'ButtonGroup 按钮组',
+      ...navOtions,
+    },
+  },
+  Divider: {
+    screen: Divider,
+    path: 'Divider',
+    params: {
+      title: 'Divider 分割线',
+      description: '区隔内容的分割线。'
+    },
+    navigationOptions: {
+      title: 'Divider 分割线',
       ...navOtions,
     },
   },

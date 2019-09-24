@@ -5,9 +5,9 @@ import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
 const { Header, Body, Card, Footer } = Layout;
 
-export interface TypographyViewProps extends ComProps { }
+export interface BadgeViewProps extends ComProps { }
 
-export default class TypographyView extends React.Component<TypographyViewProps> {
+export default class BadgeView extends React.Component<BadgeViewProps> {
   render() {
     const { navigation } = this.props;
     const description = navigation.getParam('description');
