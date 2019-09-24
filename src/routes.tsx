@@ -1,16 +1,6 @@
 import React from 'react';
 import { StyleProp, TextStyle } from 'react-native';
 import { ComProps } from './typings';
-// import { NavigationScreenProp } from 'react-navigation';
-import Button from './routes/Button';
-import ButtonGroup from './routes/ButtonGroup';
-import Badge from './routes/Badge';
-import Divider from './routes/Divider';
-import Typography from './routes/Typography';
-import Icon from './routes/Icon';
-import List from './routes/List';
-import Loader from './routes/Loader';
-import Modal from './routes/Modal';
 
 export type Otions = (props: ComProps) => void;
 
@@ -66,7 +56,7 @@ const navOtions = {
 
 export const routes: Routes = {
   Badge: {
-    screen: Badge,
+    screen: require('./routes/Badge').default,
     path: 'Badge',
     params: {
       title: 'Badge 标记',
@@ -78,7 +68,7 @@ export const routes: Routes = {
     },
   },
   Button: {
-    screen: Button,
+    screen: require('./routes/Button').default,
     path: 'Button',
     params: {
       title: 'Button 按钮',
@@ -90,7 +80,7 @@ export const routes: Routes = {
     },
   },
   ButtonGroup: {
-    screen: ButtonGroup,
+    screen: require('./routes/ButtonGroup').default,
     path: 'ButtonGroup',
     params: {
       title: 'ButtonGroup 按钮组',
@@ -102,7 +92,7 @@ export const routes: Routes = {
     },
   },
   Divider: {
-    screen: Divider,
+    screen: require('./routes/Divider').default,
     path: 'Divider',
     params: {
       title: 'Divider 分割线',
@@ -113,20 +103,8 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
-  Typography: {
-    screen: Typography,
-    path: 'Typography',
-    params: {
-      title: 'Typography 排版',
-      description: '包含 H1~H6,<U>,<S>,<P>等，类似于 HTML 中的标签。'
-    },
-    navigationOptions: {
-      title: 'Typography 排版',
-      ...navOtions,
-    },
-  },
   Icon: {
-    screen: Icon,
+    screen: require('./routes/Icon').default,
     path: 'Icon',
     params: {
       title: 'Icon 图标',
@@ -138,7 +116,7 @@ export const routes: Routes = {
     },
   },
   List: {
-    screen: List,
+    screen: require('./routes/List').default,
     path: 'List',
     params: {
       title: 'List 列表',
@@ -150,7 +128,7 @@ export const routes: Routes = {
     },
   },
   Loader: {
-    screen: Loader,
+    screen: require('./routes/Loader').default,
     path: 'Loader',
     params: {
       title: 'Loader 加载器',
@@ -162,7 +140,7 @@ export const routes: Routes = {
     },
   },
   Modal: {
-    screen: Modal,
+    screen: require('./routes/Modal').default,
     path: 'Modal',
     params: {
       title: 'Modal 模态对话框',
@@ -170,6 +148,30 @@ export const routes: Routes = {
     },
     navigationOptions: {
       title: 'Modal 模态对话框',
+      ...navOtions,
+    },
+  },
+  Spacing: {
+    screen: require('./routes/Spacing').default,
+    path: 'Spacing',
+    params: {
+      title: 'Spacing 间距',
+      description: '组件之间的间距。'
+    },
+    navigationOptions: {
+      title: 'Spacing 间距',
+      ...navOtions,
+    },
+  },
+  Typography: {
+    screen: require('./routes/Typography').default,
+    path: 'Typography',
+    params: {
+      title: 'Typography 排版',
+      description: '包含 H1~H6,<U>,<S>,<P>等，类似于 HTML 中的标签。'
+    },
+    navigationOptions: {
+      title: 'Typography 排版',
       ...navOtions,
     },
   },

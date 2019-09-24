@@ -6,17 +6,16 @@ Spacing 间距
 ```jsx
 import { Spacing, Button } from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
-    return (
-      <View>
-        <Button>默认按钮</Button>
-        <Spacing />
-        <Button>默认按钮</Button>
-        <Spacing />
-      </View>
-    )
-  }
+function Demo() {
+  return (
+    <>
+      <Button>按钮之间的间距</Button>
+      <Spacing />
+      <Button type="primary">按钮之间的间距</Button>
+      <Spacing />
+      <Button type="danger">按钮之间的间距</Button>
+    </>
+  );
 }
 ```
 
@@ -26,5 +25,6 @@ class Demo extends Component {
 
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
-| size | 按钮大小 | Enum{'small', 'default', 'large'} | default |
-| gutter | 间距值 | number | `10` |
+| `type` | 水平还是垂直间距类型 | `horizontal`, `vertical` | `vertical` |
+| `size` | 按钮大小 | Enum{`small`, `default`, `large`} | `default` |
+| `gutter` | 间距值 | number | `10` |
