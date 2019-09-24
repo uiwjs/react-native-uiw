@@ -187,4 +187,16 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  WingBlank: {
+    screen: require('./routes/WingBlank').default,
+    path: 'WingBlank',
+    params: {
+      title: 'WingBlank 两翼留白',
+      description: '布局控件。'
+    },
+    navigationOptions: {
+      title: 'WingBlank 两翼留白',
+      ...navOtions,
+    },
+  },
 };

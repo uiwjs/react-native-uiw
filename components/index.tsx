@@ -8,6 +8,7 @@ export { default as List } from './List';
 export { default as Loader } from './Loader';
 export { default as Modal } from './Modal';
 export { default as Spacing } from './Spacing';
+export { default as WingBlank } from './WingBlank';
 
 /**
  * Typography
