@@ -96,3 +96,6 @@ pod install --repo-update --verbose
 # Run Project
 yarn run ios
 ```
+
+- [React Native upgrade helper](https://react-native-community.github.io/upgrade-helper/)
+
