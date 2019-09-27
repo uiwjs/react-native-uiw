@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-native",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "UIW for React Native",
   "main": "lib/index.js",
   "scripts": {
@@ -26,9 +26,9 @@
     "react-native-svg": "^9.9.3"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-native": "^0.60.0",
-    "react-native-svg": "^9.9.3"
+    "react": ">=16.9.0",
+    "react-native": ">=0.60.0",
+    "react-native-svg": ">=9.9.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
