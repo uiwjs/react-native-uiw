@@ -63,11 +63,12 @@ export default function Demo() {
 
 ### List
 
-继承 [`FlatList`](https://facebook.github.io/react-native/docs/flatlist#props) 组件。如果使用 `data` 和 `renderItem` 则 `<List.Item />` 将不起作用
+`flat={true}` 继承 [`FlatList`](https://facebook.github.io/react-native/docs/flatlist#props) 组件。如果使用 `data` 和 `renderItem` 则 `<List.Item />` 将不起作用，`flat={false}` 时继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
 
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
 | `data` | 渲染头部 | [] | - |
+| `flat` | 当值为 `true` 使用 `FlatList` 组件渲染列表，当值为 `false` 时，使用 `View` 渲染界面 | Boolean | `true` |
 | `renderItem` | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
 | `title` | 设置所有 `Item` 左边补白 | Number | `16` |
 | `ListHeaderComponent` | 呈现在列表的顶部。如果设置了 `title` 标题，这个参数将失效  | ReactNode | - |

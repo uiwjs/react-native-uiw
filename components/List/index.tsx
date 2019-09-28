@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
-import { FlatList, FlatListProps, Text, View, ListRenderItemInfo } from 'react-native';
+import { FlatList, FlatListProps, Text, View } from 'react-native';
 import Item, { ListItemProps } from './Item';
 
 const noop = () => null;
 
-export interface ListProps extends FlatListProps<{}> {
+/**
+ * @see https://facebook.github.io/react-native/docs/flatlist.html#props
+ */
+export interface ListRenderItemInfoCustom<ItemT> {
+  item: ItemT;
+  index?: number;
+  separators?: {
+    highlight: () => void;
+    unhighlight: () => void;
+    updateProps: (select: 'leading' | 'trailing', newProps: any) => void;
+  };
+}
+
+export interface ListProps extends Omit<FlatListProps<{}>, 'renderItem'> {
+  children?: React.ReactNode;
+  renderItem?: (info: ListRenderItemInfoCustom<{}>) => React.ReactElement | null;
+  /**
+   * flat default: `true`
+   * - flat = `true` => `FlatList`
+   * - flat = `false` => `<View>` 上拉下拉刷新失效，是一个简单的 `List`
+   */
+  flat?: boolean;
   /**
    * 标题
    */
@@ -25,8 +46,8 @@ export default class List extends Component<ListProps, ListState> {
   static Item = Item;
   static defaultProps: ListProps = {
     data: [],
-    renderItem: noop,
     paddingLeft: 16,
+    flat: true,
     size: 'default',
   }
   constructor(props: ListProps) {
@@ -35,8 +56,8 @@ export default class List extends Component<ListProps, ListState> {
       data: [],
     }
   }
-  getData() {
-    const { size, extra, paddingLeft, children } = this.props;
+  getData(nextProps?: ListProps) {
+    const { size, extra, paddingLeft, children } = nextProps || this.props;
     const dataSource = React.Children.toArray(children).map((child: React.ReactNode, index: number) => {
       if (!React.isValidElement(child)) return null;
       const props = { size, ...child.props }
@@ -45,27 +66,27 @@ export default class List extends Component<ListProps, ListState> {
     this.setState({ data: dataSource as ListProps['data'] });
   }
   componentDidMount() {
-    if (this.props.renderItem === noop) {
+    if (!this.props.renderItem) {
       this.getData();
     }
   }
   UNSAFE_componentWillReceiveProps(nextProps: ListProps) {
-    if (nextProps.data !== this.props.data && nextProps.renderItem === noop) {
-      this.getData();
+    if (nextProps.data !== this.props.data) {
+      this.getData(nextProps);
     }
   }
-  renderItemChild(props: ListRenderItemInfo<{}>): React.ReactElement {
+  renderItemChild(props: ListRenderItemInfoCustom<{}>): React.ReactElement {
     return props.item as React.ReactElement;
   }
   render() {
-    const { renderItem, data, children, paddingLeft, size, extra, ListHeaderComponent, title, ...otherProps} = this.props;
-    const props = {} as ListProps;
-    if (renderItem !== noop) {
-      props.data = data;
-      props.renderItem = (props) => <Item paddingLeft={paddingLeft} size={size} extra={extra}>{renderItem(props)}</Item>;
-    } else {
+    const { renderItem, data, children, paddingLeft, flat, size, extra, ListHeaderComponent, title, ...otherProps} = this.props;
+    const props = {} as ListProps & FlatListProps<{}>;
+    if (!renderItem) {
       props.data = this.state.data;
       props.renderItem = this.renderItemChild.bind(this);
+    } else if (typeof renderItem === 'function') {
+      props.data = data;
+      props.renderItem = (itemProps: ListRenderItemInfoCustom<{}>) => <Item paddingLeft={paddingLeft} size={size} extra={extra}>{renderItem(itemProps)}</Item>;
     }
     let header = ListHeaderComponent;
     if (title) {
@@ -74,6 +95,17 @@ export default class List extends Component<ListProps, ListState> {
           {typeof title == 'string' ? <Text style={{ color: '#808080' }}>{title}</Text> : <View>{title}</View>}
         </View>
       );
+    }
+    if (!props.renderItem) {
+      props.renderItem = noop;
+    }
+    if (!flat) {
+      return (
+        <View {...otherProps}>
+          {header}
+          {(props.data || []).map((item, idx) => React.cloneElement(props.renderItem({ item }) || <View />, {key: idx}))}
+        </View>
+      )
     }
     return (
       <FlatList

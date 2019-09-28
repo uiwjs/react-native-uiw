@@ -36,12 +36,13 @@ const Header = (props: HeaderProps) => {
 }
 
 export interface BodyProps {
-  style?: StyleProp<ViewStyle>,
+  style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
+  isScroll?: boolean;
 }
 
 const Body = (props: BodyProps) => {
-  const { children, style, ...other } = props;
+  const { children, style, isScroll, ...other } = props;
   return (
     <ScrollView style={[styles.body, style]} automaticallyAdjustContentInsets={false} {...other}>
       {children}
@@ -99,6 +100,7 @@ const Card = (props: CardProps) => {
 
 export interface ContainerProps {
   children?: React.ReactNode;
+  isScroll?: boolean;
 }
 
 export const Container = (props: ContainerProps) => {
