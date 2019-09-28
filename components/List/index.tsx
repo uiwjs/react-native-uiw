@@ -36,14 +36,10 @@ export default class List extends Component<ListProps, ListState> {
     }
   }
   getData() {
-    const { size, extra, paddingLeft } = this.props;
-    const dataSource = React.Children.map(this.props.children, (child: React.ReactNode, index: number) => {
+    const { size, extra, paddingLeft, children } = this.props;
+    const dataSource = React.Children.toArray(children).map((child: React.ReactNode, index: number) => {
       if (!React.isValidElement(child)) return null;
       const props = { size, ...child.props }
-      console.log('props:', props)
-      // if (size && child.props && child.props.size === 'default') {
-      //   props.size = size;
-      // }
       return React.cloneElement(<Item paddingLeft={paddingLeft} extra={extra} {...props} />);
     }).filter(Boolean);
     this.setState({ data: dataSource as ListProps['data'] });
