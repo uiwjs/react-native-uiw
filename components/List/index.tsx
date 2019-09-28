@@ -45,7 +45,14 @@ export default class List extends Component<ListProps, ListState> {
     this.setState({ data: dataSource as ListProps['data'] });
   }
   componentDidMount() {
-    this.getData();
+    if (this.props.renderItem === noop) {
+      this.getData();
+    }
+  }
+  UNSAFE_componentWillReceiveProps(nextProps: ListProps) {
+    if (nextProps.data !== this.props.data && nextProps.renderItem === noop) {
+      this.getData();
+    }
   }
   renderItemChild(props: ListRenderItemInfo<{}>): React.ReactElement {
     return props.item as React.ReactElement;

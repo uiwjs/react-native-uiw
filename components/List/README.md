@@ -71,6 +71,10 @@ export default function Demo() {
 | `renderItem` | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
 | `title` | 设置所有 `Item` 左边补白 | Number | `16` |
 | `ListHeaderComponent` | 呈现在列表的顶部。如果设置了 `title` 标题，这个参数将失效  | ReactNode | - |
+| `refreshing` | 等待刷新之前的新数据时，将其设置为 `true`。 | Boolean | - |
+| `onRefresh` | 下拉刷新，配合 `refreshing` 使用。 | () => void | - |
+| `onEndReached` | 滚动位置位于渲染内容的 `onEndReachedThreshold` 范围内时调用一次。 | (info: {distanceFromEnd: number}) => void | - |
+| `onEndReachedThreshold` | 要触发 `onEndReached` 回调，列表的底边必须与内容的末尾相距多远（以列表的可见长度为单位）。 因此，当内容的结尾在列表的可见长度的一半以内时，值为 `0.5` 将触发 `onEndReached`。 | Number | - |
 
 ### List.Item
 
