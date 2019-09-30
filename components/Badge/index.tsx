@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   base: {
     paddingHorizontal: 8,
     paddingVertical: 2,
-    borderRadius: 50,
+    borderRadius: 12,
   },
   text: {
     backgroundColor: 'transparent',
@@ -27,12 +27,16 @@ export interface BadgeProps extends ViewProps {
   children?: React.ReactNode;
   color?: colors.Colors | string;
   text?: string;
+  /**
+   * 设置圆角，默认 `12`
+   */
+  rounded?: number;
   type?: 'dot' | 'text';
   textStyles?: StyleProp<TextStyle>
 }
 
 export default function Badge(props: BadgeProps) {
-  const { children, color: $color, style, type, textStyles, ...restProps } = props;
+  const { children, rounded, color: $color, style, type, textStyles, ...restProps } = props;
   const colorObj = color(colors[$color as colors.Colors] || $color);
   const luminosTextColor = colorObj.luminosity() < 0.5 ? '#fff' : '#000';
   if (type === 'dot') {
@@ -45,13 +49,13 @@ export default function Badge(props: BadgeProps) {
       {props.text}
     </Text>
   );
-  const bgStyl: StyleProp<ViewStyle> = {};
-  if (color) {
-    bgStyl.backgroundColor = $color;
+  const bgStyl: StyleProp<ViewStyle> = { borderRadius: rounded || 12 };
+  if ($color) {
+    bgStyl.backgroundColor = colorObj.rgb().string();
   }
   return (
     <View
-      style={[styles.base, { backgroundColor: colorObj.rgb().string()}, style]}
+      style={[styles.base, bgStyl, style]}
       {...restProps}
     >
       {content}

@@ -25,4 +25,5 @@ function Demo() {
 |------|------|-----|------|
 | `text` | 文本内容 | String | - |
 | `color` | 标记颜色 | String | - |
+| `rounded` | 设置圆角 | Number | `5` |
 | `textStyles` | 文本样式 | String | - |
