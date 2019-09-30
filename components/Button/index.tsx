@@ -1,9 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, ActivityIndicator, TouchableOpacityProps } from 'react-native';
+import { StyleSheet, Text, TextProps, TouchableOpacity, ActivityIndicator, TouchableOpacityProps } from 'react-native';
 import { color, colors } from '../utils';
 
 export interface ButtonProps extends TouchableOpacityProps {
   color?: string;
+  /**
+   * 如果子节点是文本，修改文本样式
+   */
+  textStyle?: TextProps['style'],
   /**
    * 设置禁用
    */
@@ -38,7 +42,7 @@ export default class ButtonView extends React.Component<ButtonProps> {
     size: 'default',
   };
   render() {
-    const { children, style, rounded, bordered, color: buttonColor, type, size, disabled, loading, ...restProps } = this.props;
+    const { children, style, textStyle: childStyle, rounded, bordered, color: buttonColor, type, size, disabled, loading, ...restProps } = this.props;
     let backgroundColor, textColor, borderColor, borderWidth, borderRadius;
 
     switch (type) {
@@ -96,10 +100,10 @@ export default class ButtonView extends React.Component<ButtonProps> {
             style={styles.icon}
           />
         )}
-        {React.isValidElement(children) ? React.cloneElement(children, {
+        {React.isValidElement(children) && children && children.type && (children.type as any).displayName !== 'Text' ? React.cloneElement(children, {
           style: [textStyle, styles.label]
         }) : (
-          <Text style={[sizeStyle, textStyle, styles.label]}>{children}</Text>
+            <Text style={[sizeStyle, textStyle, styles.label, childStyle]}>{children}</Text>
         )}
       </TouchableOpacity>
     );

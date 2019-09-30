@@ -139,6 +139,7 @@ function Demo() {
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `color` | 设置按钮颜色 | String | - |
+| `textStyle` | 如果按钮内是文本，此样式可以设置文本样式 | `TextProps.Style` | - |
 | `disabled` | 设置禁用 | Boolean | - |
 | `loading` | 加载状态 | Boolean | - |
 | `rounded` | 设置圆角 | Boolean/Number | `5` |
