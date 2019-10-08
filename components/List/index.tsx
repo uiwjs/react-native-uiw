@@ -71,7 +71,7 @@ export default class List extends Component<ListProps, ListState> {
     }
   }
   UNSAFE_componentWillReceiveProps(nextProps: ListProps) {
-    if (nextProps.data !== this.props.data) {
+    if (nextProps !== this.props) {
       this.getData(nextProps);
     }
   }
