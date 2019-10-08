@@ -1,7 +1,7 @@
 Icon 图标
 ---
 
-图标组件基于 [`react-native-svg`](https://github.com/react-native-community/react-native-svg) 支持 svg 图标，通过这一特性封装的图标组件库, 预览[所有的图标](https://uiwjs.github.io/icons)
+图标组件通过 [`react-native-svg`](https://github.com/react-native-community/react-native-svg) 支持 svg 图标，基于这一特性封装图标组件库，它不是基于字体文件封装的组件，相比字体图标组件易于扩展体积较小。预览[所有的图标](https://uiwjs.github.io/icons)。
 
 ### 基础示例
 
