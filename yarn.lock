@@ -1194,10 +1194,10 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@uiw/icons@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@uiw/icons/-/icons-2.0.0.tgz#b6399a576ff8d29d54eabd9921ed21c2d9af5730"
-  integrity sha512-J/5/BbpKAcp1NuxIWWY8tsudL+I23uT+cckqxmF4kK0U7kUwQPHUCN34JvQmv1+emqnf1+UCEoJ2UxL/S6ts6g==
+"@uiw/icons@2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@uiw/icons/-/icons-2.2.1.tgz#6b7bc116ed93adf420bd892080945b379b5a9d09"
+  integrity sha512-HjqEyiKdbfaiDYpQ0IDlSTi7P1URFUJg4+92LTi1XjbRRmtyPD1PXzPvRTB7LauqsxycIBDr4oz/lXgdPhXjHg==
 
 abab@^2.0.0:
   version "2.0.1"
