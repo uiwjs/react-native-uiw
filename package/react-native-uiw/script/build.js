@@ -75,6 +75,7 @@ const tsc = {
   await fs.remove(output);
   await fs.remove(tscPath);
   await fs.remove(path.join(process.cwd(), 'package-lock.json'));
+  await fs.remove(path.join(process.cwd(), 'yarn.lock'));
   await fs.remove(path.join(process.cwd(), 'node_modules'));
 })();
 
