@@ -3,6 +3,7 @@ import { View, Text, ViewProps, TextProps, StyleSheet } from 'react-native';
 
 export interface DividerProps extends ViewProps {
   label?: string;
+  gutter?: number;
   style?: ViewProps['style'];
   lineStyle?: ViewProps['style'];
   labelStyle?: TextProps['style'];
@@ -12,25 +13,25 @@ export interface DividerProps extends ViewProps {
 export default class Divider extends Component<DividerProps> {
   static defaultProps: DividerProps = {
     type: 'horizontal',
+    gutter: 8,
   }
   render() {
-    let { children, style, label, lineStyle, labelStyle, type, ...restProps } =  this.props;
+    let { children, style, gutter, label, lineStyle, labelStyle, type, ...restProps } =  this.props;
     if (typeof children === 'string') {
       label = children;
       children = null;
     }
     const lineStyleArr = [];
     const warpperStyles = [];
-    const labelStylesArr = [];
     if (type === 'horizontal') {
-      lineStyleArr.unshift(styles.lineHorizontal);
       warpperStyles.unshift(styles.horizontal);
-      labelStylesArr.push(styles.lineHorizontal);
+      lineStyleArr.unshift(styles.lineHorizontal);
+      lineStyleArr.unshift({ marginHorizontal: gutter });
     }
     if (type === 'vertical') {
-      lineStyleArr.unshift(styles.lineVertical);
       warpperStyles.unshift(styles.vertical);
-      labelStylesArr.push(styles.lineVertical);
+      lineStyleArr.unshift(styles.lineVertical);
+      lineStyleArr.unshift({ marginVertical: gutter });
     }
     if (!children && label) {
       if (labelStyle && typeof labelStyle === 'number') {

@@ -45,3 +45,4 @@ function Demo() {
 |------|------|-----|------|
 | `label` | 分割线标题，文本内容 | String | - |
 | `type` | 水平还是垂直类型 | `horizontal`, `vertical` | `horizontal` |
+| `gutter` | 间距，更具 `type` 来设置上下或者左右间距 | Number | `8` |
