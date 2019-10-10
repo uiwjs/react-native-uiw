@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ViewProps,
+  ViewStyle,
   Dimensions,
   GestureResponderEvent,
 } from 'react-native';
@@ -15,6 +16,7 @@ export interface DrawerProps extends ViewProps {
   isOpen?: boolean;
   placement?: 'right' | 'left';
   drawerWidth?: number;
+  maskProps?: ViewStyle;
   drawerBackgroundColor?: string;
   onChange?: (isOpen: boolean) => void;
   openDrawer?: (isOpen: boolean) => void;
@@ -62,7 +64,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     this.closeDrawer()
   };
   render() {
-    const { isOpen, drawerWidth, drawerBackgroundColor, placement } = this.props;
+    const { isOpen, style, drawerWidth, drawerBackgroundColor, maskProps, placement } = this.props;
     const { drawerValue, overlayValue, zIndexValue } = this.state;
     const dynamicDrawerStyles = {
       backgroundColor: drawerBackgroundColor,
@@ -79,7 +81,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     return (
       <>
         <Animated.View
-          style={[styles.drawer, dynamicDrawerStyles, {
+          style={[styles.drawer, dynamicDrawerStyles, style, {
             width: drawerWidth,
             transform: [
               { translateX: drawerValue.x }, // x轴移动
@@ -90,7 +92,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
         </Animated.View>
         <Animated.View
           pointerEvents={isOpen ? 'auto' : 'none'}
-          style={[styles.overlay, styles.positionFull, {
+          style={[styles.overlay, styles.positionFull, maskProps, {
             // opacity: overlayValue,
             opacity: overlayOpacity,
             zIndex: zIndexValue,
