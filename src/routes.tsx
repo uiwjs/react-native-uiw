@@ -103,6 +103,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Drawer: {
+    screen: require('./routes/Drawer').default,
+    path: 'Drawer',
+    params: {
+      title: 'Drawer 抽屉',
+      description: '用于在屏幕边缘显示应用导航等内容的面板。'
+    },
+    navigationOptions: {
+      title: 'Drawer 抽屉',
+      ...navOtions,
+    },
+  },
   Flex: {
     screen: require('./routes/Flex').default,
     path: 'Flex',
