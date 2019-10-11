@@ -40,19 +40,16 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
   }
   constructor(props: DrawerProps) {
     super(props);
-
-    const xy = { x: 0, y: 0 };
-    if (props.placement === 'left') {
-      xy.x = -(props.drawerWidth || 0);
-    }
-    if (props.placement === 'right') {
-      xy.x = (DEVICE_WIDTH || 0);
-    }
     this.state = {
       zIndexValue: 0,
       overlayValue: new Animated.Value(0),
-      drawerValue: new Animated.ValueXY({ ...(this.getPosition()) }),
+      drawerValue: new Animated.ValueXY({ ...(this.getInitPosition()) }),
     };
+  }
+  componentDidMount() {
+    if (this.props.isOpen) {
+      this.openDrawer();
+    }
   }
   UNSAFE_componentWillReceiveProps(nextProps: DrawerProps) {
     if (nextProps.isOpen !== this.props.isOpen) {
@@ -113,7 +110,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
   handleDrawer(isOpen: boolean) {
     isOpen ? this.openDrawer() : this.closeDrawer();
   }
-  getPosition() {
+  getInitPosition() {
     const { drawerWidth, placement } = this.props;
     const xy = { x: 0, y: 0 };
     if (placement === 'left') {
@@ -142,19 +139,11 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     });
   }
   closeDrawer() {
-    const { drawerWidth, placement } = this.props;
     const { drawerValue, overlayValue } = this.state;
-    const xy = { x: 0, y: 0 };
-    if (placement === 'left') {
-      xy.x = -(drawerWidth || 0);
-    }
-    if (placement === 'right') {
-      xy.x = (DEVICE_WIDTH || 0);
-    }
     Animated.parallel([
       Animated.spring(drawerValue,
         {
-          toValue: { ...(this.getPosition()) },
+          toValue: { ...(this.getInitPosition()) },
           overshootClamping: true,
         }
       ),
