@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-native",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "UIW for React Native",
   "main": "lib/index.js",
   "scripts": {
