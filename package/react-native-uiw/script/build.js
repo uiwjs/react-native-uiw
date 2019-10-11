@@ -2,6 +2,7 @@ const babel = require('@babel/core');
 const {spawn} = require('child_process');
 const path = require('path');
 const fs = require('fs-extra');
+const pkg = require('../package.json');
 
 function transform(filePath) {
   const {code} = babel.transformFileSync(filePath, {
@@ -77,6 +78,10 @@ const tsc = {
   await fs.remove(path.join(process.cwd(), 'package-lock.json'));
   await fs.remove(path.join(process.cwd(), 'yarn.lock'));
   await fs.remove(path.join(process.cwd(), 'node_modules'));
+  await execute(`git tag -a v${pkg.version} -m "released v${pkg.version}"`);
+  await execute('git push --tags');
+  await execute('git add .');
+  await execute(`git commit -m "released v${pkg.version}"`);
 })();
 
 function execute(command) {
