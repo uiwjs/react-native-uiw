@@ -14,6 +14,7 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 
 export interface DrawerProps extends ViewProps {
   isOpen?: boolean;
+  maskClosable?: boolean;
   placement?: 'right' | 'left';
   drawerWidth?: number;
   maskProps?: ViewStyle;
@@ -33,6 +34,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     placement: 'left',
     drawerBackgroundColor: '#fff',
     drawerWidth: 300,
+    maskClosable: true,
     isOpen: false,
     onChange: () => null,
     openDrawer: () => null,
@@ -56,7 +58,9 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
       this.handleDrawer(!!nextProps.isOpen);
     }
   }
-  onOverlayClick = (e: GestureResponderEvent) =>{
+  onOverlayClick = (e: GestureResponderEvent) => {
+    const { maskClosable } = this.props;
+    if (!maskClosable) return false;
     e.stopPropagation();
     this.closeDrawer()
   };

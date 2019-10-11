@@ -61,6 +61,7 @@ function Demo() {
 | `drawerWidth` | 抽屉宽度 | Number | `300` |
 | `style` | 设置 `Drawer` 样式 | ViewStyle | - |
 | `maskProps` | 遮罩层样式 | ViewStyle | - |
+| `maskClosable` | 点击遮罩层是否允许关闭 | Boollean | `true` |
 | `drawerBackgroundColor` | 指定抽屉背景色 | String | `#fff` |
 | `onChange` | open 状态切换时调用 | (isOpen: boolean): void | - |
 | `openDrawer` | 打开函数 | (isOpen: boolean): void | - |
