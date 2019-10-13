@@ -34,5 +34,5 @@ function Demo() {
 | `value` | 开关的值。 如果为`true`，则开关将打开。 默认值为`false`。 | Boolean | `false` |
 | `disabled` | 如果为`true`，则用户将无法切换开关。 | Boolean | `false` |
 | `trackStyle` | 设置背景样式。 | ViewStyle | - |
-| `thumbStyle` | 设置背景样式。 | ViewStyle | - |
+| `thumbStyle` | 前景开关手柄的颜色。 | ViewStyle | - |
 | `onValueChange` | 当用户尝试更改开关的值时调用。 接收新值作为参数。 | (value: Boolean) => void | `false` |
