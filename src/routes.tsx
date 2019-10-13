@@ -175,6 +175,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Slider: {
+    screen: require('./routes/Slider').default,
+    path: 'Slider',
+    params: {
+      title: 'Slider 间距',
+      description: '组件之间的间距。'
+    },
+    navigationOptions: {
+      title: 'Slider 间距',
+      ...navOtions,
+    },
+  },
   Spacing: {
     screen: require('./routes/Spacing').default,
     path: 'Spacing',
