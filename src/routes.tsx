@@ -179,11 +179,11 @@ export const routes: Routes = {
     screen: require('./routes/Slider').default,
     path: 'Slider',
     params: {
-      title: 'Slider 间距',
-      description: '组件之间的间距。'
+      title: 'Slider 滑块输入条',
+      description: '允许用户在一个区间中选择特定值。'
     },
     navigationOptions: {
-      title: 'Slider 间距',
+      title: 'Slider 滑块输入条',
       ...navOtions,
     },
   },

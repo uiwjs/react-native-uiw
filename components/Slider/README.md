@@ -6,6 +6,7 @@ Slider 滑块输入条
 ## 基础示例
 
 ```jsx
+import { Text } from 'react-native';
 import { Drawer } from '@uiw/react-native';
 
 function Demo() {
@@ -16,6 +17,7 @@ function Demo() {
         value={value}
         onChange={(cValue) => setValue(cValue)}
       />
+      <Text>值：{value.toFixed(1)}</Text>
     </>
   );
 }

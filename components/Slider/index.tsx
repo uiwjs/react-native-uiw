@@ -80,7 +80,7 @@ export default class Slider extends Component<SliderProps, SliderState> {
     vertical: false,
     shownThumb: true,
     thumbSize: { width: 20, height: 20 },
-    maximumTrackTintColor: '#b3b3b3',
+    maximumTrackTintColor: '#cacaca',
     minimumTrackTintColor: '#008EF0',
     thumbTintColor: '#fff',
     animationType: 'timing',
@@ -148,10 +148,16 @@ export default class Slider extends Component<SliderProps, SliderState> {
   }
   getCurrentValue = () => (this.state.value as any).__getValue();
   handlePanResponderGrant = () => {
+    if (this.props.disabled) {
+      return;
+    }
     this._previousLeft = this.getThumbLeft(this.getCurrentValue());
     this.props.onSlidingStart!(this.getCurrentValue());
   }
   handlePanResponderEnd = () => {
+    if (this.props.disabled) {
+      return;
+    }
     this.props.onSlidingComplete!(this.getCurrentValue());
   }
   handlePanResponderMove = (_: any, gestureState: PanResponderGestureState) => {
@@ -237,7 +243,11 @@ export default class Slider extends Component<SliderProps, SliderState> {
     ];
   }
   render() {
-    const { style, vertical, maxValue, minValue, shownThumb, trackStyle, thumbStyle, minimumTrackTintColor, maximumTrackTintColor, thumbTintColor } = this.props;
+    const {
+      style, vertical, step, maxValue, minValue, disabled, shownThumb, animationType, animateTransitions, animationConfig,
+      trackStyle, thumbStyle, minimumTrackTintColor, maximumTrackTintColor, thumbTintColor, onChange, onSlidingComplete, onSlidingStart,
+      ...otherProps
+    } = this.props;
     const { value, thumbSize, containerSize } = this.state;
     const touchOverflowStyle = {} as ViewStyle;
     const thumbStart = value.interpolate({
@@ -247,7 +257,7 @@ export default class Slider extends Component<SliderProps, SliderState> {
     });
     const minimumTrackStyle = {
       ...this.getMinimumTrackStyles(thumbStart),
-      backgroundColor: minimumTrackTintColor,
+      backgroundColor: disabled ? '#a0a5b1' : minimumTrackTintColor,
     }
     const valueVisibleStyle = {};
     const thumbStyleTransform = (thumbStyle && (thumbStyle as TransformsStyle).transform) || [];
@@ -263,6 +273,7 @@ export default class Slider extends Component<SliderProps, SliderState> {
     return (
       <View
         onLayout={this.measureContainer}
+        {...otherProps}
         style={StyleSheet.flatten([
           vertical ? styles.containerVertical : styles.containerHorizontal,
           style,
