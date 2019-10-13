@@ -1,7 +1,11 @@
 import React from 'react';
-import { TouchableOpacity, Animated, SwitchProps as SwitchPropsDefault, View, LayoutChangeEvent, StyleSheet } from 'react-native';
+import { TouchableOpacity, Animated, SwitchProps as SwitchPropsDefault, View, ViewStyle, LayoutChangeEvent, StyleSheet } from 'react-native';
 
-export interface SwitchProps extends SwitchPropsDefault { }
+export interface SwitchProps extends SwitchPropsDefault {
+  trackStyle?: ViewStyle,
+  thumbStyle?: ViewStyle,
+}
+
 export interface SwitchState {
   borderValue: Animated.Value;
   translateXValue: Animated.Value;
@@ -15,6 +19,7 @@ export interface SwitchState {
 export default class Switch extends React.Component<SwitchProps, SwitchState> {
   translateXValue: number = 2;
   static defaultProps: SwitchProps = {
+    value: false,
     thumbColor: '#fff',
     onValueChange: () => {},
   }
@@ -26,6 +31,9 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
       translateXValue: new Animated.Value(2),
       bgOpacity: new Animated.Value(props.value ? 1 : 0),
     }
+  }
+  componentDidMount() {
+    this.animatedStart(!!this.props.value);
   }
   UNSAFE_componentWillReceiveProps(nextProps: SwitchProps) {
     if(this.props.value !== nextProps.value) {
@@ -77,7 +85,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     this.setState({ ...state });
   }
   render() {
-    const { style, value, thumbColor } = this.props;
+    const { style, value, disabled, thumbColor, trackStyle, thumbStyle } = this.props;
     const { containerSize } = this.state;
     const bgBorder = this.state.borderValue.interpolate({
       inputRange: [2, 16],
@@ -86,18 +94,18 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     });
     return (
       <View onLayout={this.measureContainer} style={[styles.warpper, style]}>
+        {disabled && <View style={[styles.position, styles.disabled]} />}
         <Animated.View
           style={[
             styles.bg,
             styles.position,
+            trackStyle,
             { borderWidth: bgBorder },
           ]}
         >
         </Animated.View>
         <TouchableOpacity
-          style={[styles.position, {
-            zIndex: 3003,
-          }]}
+          style={[styles.position, { zIndex: 1 }]}
           onPress={this.onPress}
         >
         </TouchableOpacity>
@@ -106,12 +114,10 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
           { backgroundColor: value ? '#4DD964' : '', borderRadius: 16, opacity: this.state.bgOpacity }
         ]} />
         <Animated.View style={[
-          styles.grip,
-          { borderRadius: 16, backgroundColor: thumbColor, width: containerSize.width, height: containerSize.height },
+          styles.grip, thumbStyle, disabled ? styles.shadowDisable : styles.shadow,
+          { backgroundColor: thumbColor, width: containerSize.width, height: containerSize.height },
           {
-            transform: [
-              { translateX: this.state.translateXValue }
-            ]
+            transform: [ { translateX: this.state.translateXValue } ]
           }
         ]} />
       </View>
@@ -121,15 +127,20 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
 
 const styles = StyleSheet.create({
   warpper: {
-    backgroundColor: '#EDEDED',
     height: 32,
     borderRadius: 16,
     width: 52,
+  },
+  disabled: {
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    zIndex: 22,
+    borderRadius: 16,
   },
   bg: {
     borderRadius: 16,
     borderWidth: 2,
     borderColor: '#E6E6E6',
+    backgroundColor: '#EDEDED',
   },
   position: {
     position: 'absolute',
@@ -141,5 +152,24 @@ const styles = StyleSheet.create({
   },
   grip: {
     top: 2,
+    borderRadius: 16,
   },
+  shadowDisable: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 10,
+      height: 10,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+  },
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 6,
+      height: 6,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+  }
 });

@@ -29,10 +29,10 @@ function Demo() {
 
 ## props
 
-继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
-
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
-| `type` | 水平还是垂直间距类型 | `horizontal`, `vertical` | `vertical` |
-| `size` | 按钮大小 | Enum{`small`, `default`, `large`} | `default` |
-| `gutter` | 间距值 | number | `10` |
+| `value` | 开关的值。 如果为`true`，则开关将打开。 默认值为`false`。 | Boolean | `false` |
+| `disabled` | 如果为`true`，则用户将无法切换开关。 | Boolean | `false` |
+| `trackStyle` | 设置背景样式。 | ViewStyle | - |
+| `thumbStyle` | 设置背景样式。 | ViewStyle | - |
+| `onValueChange` | 当用户尝试更改开关的值时调用。 接收新值作为参数。 | (value: Boolean) => void | `false` |

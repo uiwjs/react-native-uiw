@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Text, View, Switch as SwitchDefault } from 'react-native';
-import { Spacing, WingBlank, Switch } from '../../../components';
+import { Spacing, WingBlank, Switch, Flex } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
 
@@ -15,7 +15,7 @@ export default class Example extends React.Component<ExampleProps, ExampleState>
   constructor(props: ExampleProps) {
     super(props)
     this.state = {
-      checked: true,
+      checked: false,
     }
   }
   handleChange = (checked: boolean) =>{
@@ -30,16 +30,22 @@ export default class Example extends React.Component<ExampleProps, ExampleState>
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Card title={`自带Swith(已过时，将很快删除。)展示，value=${this.state.checked}`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+            <Card title={`实例展示，value=${this.state.checked}`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
               <WingBlank>
-                <SwitchDefault value={this.state.checked} onValueChange={this.handleChange} />
-                <SwitchDefault value={this.state.checked} onValueChange={this.handleChange} />
-                <SwitchDefault disabled value={this.state.checked} onValueChange={this.handleChange} />
+                <Flex direction="row">
+                  <Switch value={this.state.checked} onValueChange={this.handleChange} />
+                  <Spacing type="horizontal" />
+                  <Switch value={this.state.checked} onValueChange={this.handleChange} />
+                </Flex>
               </WingBlank>
             </Card>
-            <Card title={`uiw Switch 实例展示，value=${this.state.checked}`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+            <Card title={`禁用无法切换，disabled={true}`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
               <WingBlank>
-                <Switch value={this.state.checked} onValueChange={this.handleChange} />
+                <Flex direction="row">
+                  <Switch value={this.state.checked} onValueChange={this.handleChange} disabled />
+                  <Spacing type="horizontal" />
+                  <Switch value={this.state.checked} onValueChange={this.handleChange} disabled />
+                </Flex>
               </WingBlank>
             </Card>
           </Body>
