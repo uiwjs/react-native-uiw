@@ -6,18 +6,19 @@ Divider 分割线
 ## 基础示例
 
 ```jsx
+import { Fragment } from 'react';
 import { View, Text } from 'react-native';
 import { Divider } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <>
+    <Fragment>
       <Text>分割线</Text>
       <Divider label="OR" />
       <Text>横向分割线</Text>
       <Divider />
       <Text>分割线</Text>
-    </>
+    </Fragment>
   );
 }
 ```

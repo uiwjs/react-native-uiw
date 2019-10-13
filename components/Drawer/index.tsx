@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   Animated,
   StyleSheet,
@@ -80,7 +80,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
       extrapolate: 'clamp',
     });
     return (
-      <>
+      <Fragment>
         <Animated.View
           style={[styles.drawer, dynamicDrawerStyles, style, {
             width: drawerWidth,
@@ -108,7 +108,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
           >
           </TouchableOpacity>
         </Animated.View>
-      </>
+      </Fragment>
     );
   }
   handleDrawer(isOpen: boolean) {

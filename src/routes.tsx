@@ -199,6 +199,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Switch: {
+    screen: require('./routes/Switch').default,
+    path: 'Switch',
+    params: {
+      title: 'Switch 开关',
+      description: '表示两种相互对立的状态间的切换，多用于触发「开/关」。'
+    },
+    navigationOptions: {
+      title: 'Switch 开关',
+      ...navOtions,
+    },
+  },
   Typography: {
     screen: require('./routes/Typography').default,
     path: 'Typography',

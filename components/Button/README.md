@@ -115,11 +115,12 @@ function Demo() {
 ## 自定义圆角
 
 ```jsx
+import { Fragment } from 'react';
 import { Button } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <>
+    <Fragment>
       <Button rounded={false} color="#333">设置圆角</Button>
       <Spacing />
       <Button rounded={23} color="#393E48">自定义圆角</Button>
@@ -127,7 +128,7 @@ function Demo() {
       <Button rounded={10} color="#f6f8fa">自定义圆角</Button>
       <Spacing />
       <Button rounded={16} color="#ffc107">自定义圆角</Button>
-    </>
+    </Fragment>
   );
 }
 ```

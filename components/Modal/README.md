@@ -7,7 +7,7 @@ Modal 模态框
 
 <!--DemoStart--> 
 ```jsx
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { View, Text, Alert, SafeAreaView } from 'react-native';
 import { Modal, Button } from '@uiw/react-native';
 
@@ -22,7 +22,7 @@ export default class ButtonGroupView extends Component {
 
   render() {
     return (
-      <>
+      <Fragment>
         <Modal
           animationType="none"
           transparent={false}
@@ -42,7 +42,7 @@ export default class ButtonGroupView extends Component {
         <Button onPress={() => this.setModalVisible(true)}>
           显示模态框
         </Button>
-      </>
+      </Fragment>
     );
   }
 }

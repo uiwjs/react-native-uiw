@@ -6,13 +6,14 @@ Drawer 抽屉
 ## 基础示例
 
 ```jsx
+import { Fragment } from 'react';
 import { View, Text } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
 
 function Demo() {
   const [visible, setVisible] = useState(false);
   return (
-    <>
+    <Fragment>
       <Drawer
         isOpen={visible}
         onChange={(isOpen) => setVisible(isOpen)}
@@ -22,7 +23,7 @@ function Demo() {
         </View>
       </Drawer>
       <Button onPress={() => setVisible(!visible)}>左边打开抽屉</Button>
-    </>
+    </Fragment>
   );
 }
 ```
@@ -30,13 +31,14 @@ function Demo() {
 ## 右边展示
 
 ```jsx
+import { Fragment } from 'react';
 import { View, Text } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
 
 function Demo() {
   const [visible, setVisible] = useState(false);
   return (
-    <>
+    <Fragment>
       <Drawer
         isOpen={visible}
         placement="right"
@@ -47,7 +49,7 @@ function Demo() {
         </View>
       </Drawer>
       <Button onPress={() => setVisible(!visible)}>左边打开抽屉</Button>
-    </>
+    </Fragment>
   );
 }
 ```

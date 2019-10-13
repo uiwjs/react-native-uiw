@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { View, Text } from 'react-native';
 import { List, Icon, Badge } from '../../../components';
 import { ComProps } from '../../typings';
@@ -52,11 +52,11 @@ export default class ListView extends React.Component<ListViewProps> {
               </List.Item>
               <List.Item
                 size="small"
-                extra={<><Badge text="450k" color="green" /><Icon name="left" fill="#abb0b5" size={14} /></>}
+                extra={<Fragment><Badge text="450k" color="green" /><Icon name="left" fill="#abb0b5" size={14} /></Fragment>}
                 onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
               <List.Item
                 onPress={() => navigation.goBack()}
-                extra={<><Icon name="search" fill="#abb0b5" size={14} /></>}
+                extra={<Fragment><Icon name="search" fill="#abb0b5" size={14} /></Fragment>}
               >
                 <Icon size={14} name="shopping-cart" fill="#008EF0" style={{ marginRight: 5 }} />
                 <Text>单元格</Text>

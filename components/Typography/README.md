@@ -8,18 +8,19 @@ Typography 排版
 ## 标题
 
 ```jsx
+import { Fragment } from 'react';
 import { H1, H2, H3, H4, H5, H6 } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <>
+    <Fragment>
       <H1>这是标题一</H1>
       <H2>这是标题二</H2>
       <H3>这是标题二</H3>
       <H4>这是标题二</H4>
       <H5>这是标题二</H5>
       <H6>这是标题二</H6>
-    </>
+    </Fragment>
   );
 }
 ```
@@ -29,14 +30,15 @@ function Demo() {
 `<s>` 标签是 `<strike>` 标签的缩写版本
 
 ```jsx
+import { Fragment } from 'react';
 import { Del, S } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <>
+    <Fragment>
       <S>这段字符串中间有条删除线</S>
       <Del>这段字符串中间有条删除线</Del>
-    </>
+    </Fragment>
   );
 }
 ```

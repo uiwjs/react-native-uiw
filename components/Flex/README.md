@@ -7,11 +7,12 @@ Flex 是 React Native CSS flex 布局的一个封装。
 ## 基础示例
 
 ```jsx
+import { Fragment } from 'react';
 import { Flex, Button } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <>
+    <Fragment>
       <Flex>
         <Flex.Item>
           <Button size="small">按钮1</Button>
@@ -23,7 +24,7 @@ function Demo() {
           <Button size="small">按钮3</Button>
         </Flex.Item>
       </Flex>
-    </>
+    </Fragment>
   );
 }
 ```
@@ -31,6 +32,7 @@ function Demo() {
 ## 对齐方式
 
 ```jsx
+import { Fragment } from 'react';
 import { Flex, Button } from '@uiw/react-native';
 
 const Circle = (props: any) => {
@@ -47,7 +49,7 @@ const Circle = (props: any) => {
 
 function Demo() {
   return (
-    <>
+    <Fragment>
       <Flex justify="start">
         <Circle /> <Circle /> <Circle /> <Circle /> <Circle />
       </Flex>
@@ -57,7 +59,7 @@ function Demo() {
       <Flex justify="end">
         <Circle /> <Circle /> <Circle /> <Circle /> <Circle />
       </Flex>
-    </>
+    </Fragment>
   );
 }
 ```

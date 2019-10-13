@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { View, Text, Alert, SafeAreaView } from 'react-native';
 import Layout, { Container } from '../../Layout';
 import { Modal, Button, Loader, Drawer, Icon, Spacing, WingBlank } from '../../../components';
@@ -13,7 +13,7 @@ export default function DrawerView({ navigation }: DrawerViewProps) {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
   return (
-    <>
+    <Fragment>
       <Drawer
         isOpen={visible2}
         placement="right"
@@ -46,6 +46,6 @@ export default function DrawerView({ navigation }: DrawerViewProps) {
           <Footer />
         </Layout>
       </Container>
-    </>
+    </Fragment>
   )
 }

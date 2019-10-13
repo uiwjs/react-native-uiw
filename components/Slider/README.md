@@ -1,24 +1,25 @@
 Slider 滑块输入条
 ---
 
-允许用户在一个区间中选择特定值
+允许用户在一个区间中选择特定值。自带 Slider 已经过时，交于社区维护 [`react-native-slider`](https://github.com/react-native-community/react-native-slider)，当前组件是重新封装保持 iOS/android 效果一致。
 
 ## 基础示例
 
 ```jsx
+import { Fragment } from 'react';
 import { Text } from 'react-native';
 import { Drawer } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState(0.3);
   return (
-    <>
+    <Fragment>
       <Slider
         value={value}
         onChange={(cValue) => setValue(cValue)}
       />
       <Text>值：{value.toFixed(1)}</Text>
-    </>
+    </Fragment>
   );
 }
 ```
@@ -31,13 +32,13 @@ import { Drawer } from '@uiw/react-native';
 function Demo() {
   const [value, setValue] = useState(0.3);
   return (
-    <>
+    <Fragment>
       <Slider
         shownThumb={false}
         value={value}
         onChange={(cValue) => setValue(cValue)}
       />
-    </>
+    </Fragment>
   );
 }
 ```
@@ -50,14 +51,14 @@ import { Drawer } from '@uiw/react-native';
 function Demo() {
   const [value, setValue] = useState(0.3);
   return (
-    <>
+    <Fragment>
       <Slider
         step={0.2}
         shownThumb={false}
         value={value}
         onChange={(cValue) => setValue(cValue)}
       />
-    </>
+    </Fragment>
   );
 }
 ```

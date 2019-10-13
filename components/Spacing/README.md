@@ -4,17 +4,18 @@ Spacing 间距
 ## 基础示例
 
 ```jsx
+import { Fragment } from 'react';
 import { Spacing, Button } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <>
+    <Fragment>
       <Button>按钮之间的间距</Button>
       <Spacing />
       <Button type="primary">按钮之间的间距</Button>
       <Spacing />
       <Button type="danger">按钮之间的间距</Button>
-    </>
+    </Fragment>
   );
 }
 ```

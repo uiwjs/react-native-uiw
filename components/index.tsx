@@ -10,6 +10,7 @@ export { default as Loader } from './Loader';
 export { default as Modal } from './Modal';
 export { default as Slider } from './Slider';
 export { default as Spacing } from './Spacing';
+export { default as Switch } from './Switch';
 export { default as WingBlank } from './WingBlank';
 
 /**
