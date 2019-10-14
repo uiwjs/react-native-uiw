@@ -44,8 +44,8 @@ export default class Flex extends Component<FlexProps> {
           if (!React.isValidElement(child)) return null;
           if (child.type && (child.type as any).displayName === 'FlexItem') {
             return React.cloneElement(<FlexItem />, {
-              style: [{ flex: 1 }, child.props.style],
               ...child.props,
+              style: [{ flex: 1 }, child.props.style],
             });
           }
           return child;
