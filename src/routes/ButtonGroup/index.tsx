@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import Layout, { Container } from '../../Layout';
 import { ButtonGroup, Button, Spacing } from '../../../components';
 import { ComProps } from '../../typings';
@@ -18,10 +18,6 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
           <Header title={title} description={description} />
           <Body>
             <Card title="基础实例">
-              <ButtonGroup bordered={false} color="#F95C2B" rounded={30}>
-                <Button>重置</Button>
-                <Button color="#28a745">确定</Button>
-              </ButtonGroup>
               <ButtonGroup>
                 <Button type="warning">警告</Button>
                 <Button type="warning">警告</Button>
@@ -57,7 +53,7 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
                 <Button>警告</Button>
               </ButtonGroup>
               <Spacing />
-              <ButtonGroup color="#F95C2B" size="small">
+              <ButtonGroup color="#F95C2B" textStyle={{color: '#fff'}} size="small">
                 <Button>警告</Button>
                 <Button>警告</Button>
                 <Button>主要</Button>

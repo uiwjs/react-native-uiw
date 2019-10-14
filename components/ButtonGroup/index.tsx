@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
   default: {
     display: 'flex',
     flexDirection: 'row',
-    flex: 1,
   }
 });
 
@@ -22,19 +21,20 @@ export default class ButtonGroup extends Component<ButtonGroupProps> {
     bordered: true,
   }
   render() {
-    const { style, children, gutter, color, size, type, rounded, bordered, disabled, loading, ...otherProps } = this.props;
-    const porps = { color, type, bordered, disabled };
+    const { style, children, gutter, color, textStyle, size, type, rounded, bordered, disabled, loading, ...otherProps } = this.props;
+    const porps = { color, type, bordered, disabled, textStyle };
+    const childs = React.Children.toArray(children);
     return (
       <View style={[styles.default, style]} {...otherProps}>
-        {children && React.Children.map(children, (child: React.ReactNode, idx: number) => {
+        {childs.map((child: React.ReactNode, idx: number) => {
           if (!React.isValidElement(child)) return null;
           const childStyle: ButtonProps['style'] = { flex: 1 };
           if (!gutter) {
-            if (idx === 0 || idx < (children as ButtonProps[]).length - 1) {
+            if (childs.length !== 1 && (idx === 0 || idx < childs.length - 1)) {
               childStyle.borderTopRightRadius = 0;
               childStyle.borderBottomRightRadius = 0;
             }
-            if ((children as ButtonProps[]).length > 0 && idx !== 0) {
+            if (childs.length > 0 && idx !== 0) {
               childStyle.borderTopLeftRadius = 0;
               childStyle.borderBottomLeftRadius = 0;
             }
