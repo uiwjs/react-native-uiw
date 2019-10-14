@@ -23,7 +23,7 @@ export default class ButtonGroup extends Component<ButtonGroupProps> {
   }
   render() {
     const { style, children, gutter, color, size, type, rounded, bordered, disabled, loading, ...otherProps } = this.props;
-    const porps = { color, size, type, rounded, bordered, disabled };
+    const porps = { color, type, bordered, disabled };
     return (
       <View style={[styles.default, style]} {...otherProps}>
         {children && React.Children.map(children, (child: React.ReactNode, idx: number) => {
@@ -53,7 +53,7 @@ export default class ButtonGroup extends Component<ButtonGroupProps> {
           if (gutter) {
             childStyle.marginLeft = gutter;
           }
-          return React.cloneElement(child, { ...child.props, ...porps, style: [childStyle, child.props.style] });
+          return React.cloneElement(child, { ...porps, ...child.props, size, rounded, style: [childStyle, child.props.style] });
         })}
       </View>
     );
