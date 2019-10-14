@@ -101,9 +101,9 @@ export default class ButtonView extends React.Component<ButtonProps> {
           />
         )}
         {React.isValidElement(children) && children && children.type && (children.type as any).displayName !== 'Text' ? React.cloneElement(children, {
-          style: [textStyle, styles.label]
+          style: [styles.label, textStyle, childStyle]
         }) : (
-            <Text style={[sizeStyle, textStyle, styles.label, childStyle]}>{children}</Text>
+            <Text style={[sizeStyle, styles.label, textStyle, childStyle]}>{children}</Text>
         )}
       </TouchableOpacity>
     );
