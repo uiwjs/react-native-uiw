@@ -25,7 +25,13 @@ export default class ListItem extends Component<ListItemProps> {
     const cell = (
       <View style={[styles.border, sizeStyle, style]} {...otherProps}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          {typeof children === 'string' ? <Text>{children}</Text> : children}
+          {React.Children.toArray(children).map(child => {
+            if (!React.isValidElement(child)) return null;
+            if (typeof children === 'string') {
+              return <Text>{children}</Text>;
+            }
+            return child;
+          })}
         </View>
         {extra && (
           <View style={{ paddingRight: 10 }}>
