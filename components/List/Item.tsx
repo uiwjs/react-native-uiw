@@ -25,12 +25,12 @@ export default class ListItem extends Component<ListItemProps> {
     const cell = (
       <View style={[styles.border, sizeStyle, style]} {...otherProps}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          {React.Children.toArray(children).map(child => {
-            if (!React.isValidElement(child)) return null;
+          {React.Children.toArray(children).map((child, idx) => {
             if (typeof children === 'string') {
-              return <Text>{children}</Text>;
+              return <Text key={idx}>{children}</Text>;
             }
-            return child;
+            if (!React.isValidElement(child)) return null;
+            return React.cloneElement(child, { key: idx });
           })}
         </View>
         {extra && (
