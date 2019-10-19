@@ -93,4 +93,5 @@ export default function Demo() {
 |------|------|-----|------|
 | `size` | 单元格大小 | `small`, `default`, `large` | List`default`, List.Item '-' |
 | `extra` | 额外内容，展示右侧内容 | ReactNode | - |
+| `extraStyle` | 设置 `extra` 包裹样式 | ViewProps['style'] | TextProps['style'] | - |
 | `paddingLeft` | 左边补白 | Number | `16` |
