@@ -103,6 +103,7 @@ export default class List extends Component<ListProps, ListState> {
       return (
         <View {...otherProps}>
           {header}
+          {(renderItem && (!data || data.length == 0) || (!renderItem && (!children || React.Children.toArray(children).length === 0))) && otherProps.ListEmptyComponent}
           {(props.data || []).map((item, idx) => React.cloneElement(props.renderItem({ item }) || <View />, {key: idx}))}
         </View>
       )

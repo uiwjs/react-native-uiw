@@ -72,6 +72,7 @@ export default function Demo() {
 | `renderItem` | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
 | `title` | 设置所有 `Item` 左边补白 | Number | `16` |
 | `ListHeaderComponent` | 呈现在列表的顶部。如果设置了 `title` 标题，这个参数将失效  | ReactNode | - |
+| `ListEmptyComponent` | 当列表数据为空的时候显示，条件是`renderItem` 存在 `data` 为 `0` 或者 `空`，或者是 `renderItem` 不存在 `children` 数量为 `0` | ReactNode | - |
 | `refreshing` | 等待刷新之前的新数据时，将其设置为 `true`。 | Boolean | - |
 | `onRefresh` | 下拉刷新，配合 `refreshing` 使用。 | () => void | - |
 | `onEndReached` | 滚动位置位于渲染内容的 `onEndReachedThreshold` 范围内时调用一次。 | (info: {distanceFromEnd: number}) => void | - |

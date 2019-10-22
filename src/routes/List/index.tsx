@@ -18,10 +18,10 @@ export default class ListView extends React.Component<ListViewProps> {
           <Header title={title} description={description} />
           <Body>
             <List flat={false} extra="test">
-              <List.Item extra={<Icon name="left" fill="#abb0b5" size={14} />} onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
+              <List.Item extra={<Icon name="right" fill="#abb0b5" size={14} />} onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
               <List.Item extra={<Icon name="apple" size={14} />}>Protobuf 生成 Go代码指南</List.Item>
               <List.Item extra="说明">Git 版本控制的核心概念</List.Item>
-              <List.Item extra={<Icon name="left" fill="#abb0b5" size={14} />}>HTTP Referer 和 Referrer Policy</List.Item>
+              <List.Item extra={<Icon name="right" fill="#abb0b5" size={14} />}>HTTP Referer 和 Referrer Policy</List.Item>
               <List.Item>
                 <Icon name="apple" size={14} />
                 <View>
@@ -29,30 +29,30 @@ export default class ListView extends React.Component<ListViewProps> {
                 </View>
               </List.Item>
             </List>
-            <List flat={false} extra={<Icon name="left" fill="#abb0b5" size={14} />} title="展示箭头">
+            <List flat={false} extra={<Icon name="right" fill="#abb0b5" size={14} />} title="展示箭头">
               <List.Item onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
               <List.Item onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
             </List>
-            <List flat={false} extra={<Icon name="left" fill="#abb0b5" size={14} />} title="单元格大小">
+            <List flat={false} extra={<Icon name="right" fill="#abb0b5" size={14} />} title="单元格大小">
               <List.Item size="small" onPress={() => navigation.goBack()}>尺寸大小设置</List.Item>
               <List.Item size="default" onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
               <List.Item size="large" onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
             </List>
-            <List flat={false} size="small" extra={<Icon name="left" fill="#abb0b5" size={14} />} title="单元格大小">
+            <List flat={false} size="small" extra={<Icon name="right" fill="#abb0b5" size={14} />} title="单元格大小">
               <List.Item onPress={() => navigation.goBack()}>尺寸大小设置</List.Item>
               <List.Item onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
               <List.Item size="large" onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
             </List>
             <List flat={false} title="单元格大小">
               <List.Item
-                extra={<Icon name="left" fill="#abb0b5" size={14} />}
+                extra={<Icon name="right" fill="#abb0b5" size={14} />}
                 onPress={() => navigation.goBack()}>
                 <Text>单元格</Text>
                 <Badge text="450k" color="green" />
               </List.Item>
               <List.Item
                 size="small"
-                extra={<Fragment><Badge text="450k" color="green" /><Icon name="left" fill="#abb0b5" size={14} /></Fragment>}
+                extra={<Fragment><Badge text="450k" color="green" /><Icon name="right" fill="#abb0b5" size={14} /></Fragment>}
                 onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
               <List.Item
                 onPress={() => navigation.goBack()}
