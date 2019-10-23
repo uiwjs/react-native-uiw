@@ -10,6 +10,7 @@ Grid 宫格
 ```jsx
 import { Grid } from '@uiw/react-native';
 
+const uri = 'https://xx.images.com/xxx/icon.png';
 const data = Array.from(new Array(10)).map((_val, i) => {
   if(i === 0) {
     return { icon: require('./1.png'), text: `Name${i}` };

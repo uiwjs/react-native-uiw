@@ -55,6 +55,18 @@ const navOtions = {
 }
 
 export const routes: Routes = {
+  Avatar: {
+    screen: require('./routes/Avatar').default,
+    path: 'Avatar',
+    params: {
+      title: 'Avatar 头像',
+      description: '用来代表用户或事物，支持图片展示。'
+    },
+    navigationOptions: {
+      title: 'Avatar 头像',
+      ...navOtions,
+    },
+  },
   Badge: {
     screen: require('./routes/Badge').default,
     path: 'Badge',
