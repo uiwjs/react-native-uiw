@@ -82,7 +82,7 @@ export default class Demo extends React.Component {
 - [Grid](components/Grid/README.md)
 - [Icon](components/Icon/README.md)
 - [List](components/List/README.md)
-- [Typography](components/Typography/README.md) [`H1~H6`](components/Typography/README.md#标题) · [`<Del>`](components/Typography/README.md#删除线) · [`<S>`](components/Typography/README.md#删除线) · [`<U>`](components/Typography/README.md#下划线) · [`<Strong>`](components/Typography/README.md#加粗) · [`<Br />`](components/Typography/README.md#换行) · [`<P />`](components/Typography/README.md#段落) · [`<Hr />`](components/Typography/README.md#水平线)
+- [Typography](components/Typography/README.md) [`H1~H6`](components/Typography/README.md#标题) · [`<Del>`](components/Typography/README.md#删除线) · [`<S>`](components/Typography/README.md#删除线) · [`<U>`](components/Typography/README.md#下划线) · [`<Strong>`](components/Typography/README.md#加粗) · [`<Br />`](components/Typography/README.md#换行) · [`<P />`](components/Typography/README.md#段落) · [`<Hr />`](components/Typography/README.md#水平线) · [`<Div />`](components/Typography/README.md#div)
 
 #### Feedback
 
