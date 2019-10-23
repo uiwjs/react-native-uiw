@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text, View } from 'react-native';
 import { Spacing, Avatar, Flex } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
@@ -19,7 +18,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Card title={`头像`}>
+            <Card title="默认头像">
               <Flex>
                 <Avatar />
                 <Spacing type="horizontal" />
@@ -46,6 +45,17 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
                 <Avatar size={24} shape="circle" src={uri} />
                 <Spacing type="horizontal" />
                 <Avatar size={18} shape="circle" src={uri} />
+              </Flex>
+            </Card>
+            <Card title={`设置头像圆角 rounded?: number`}>
+              <Flex>
+                <Avatar size={40} rounded={10} />
+                <Spacing type="horizontal" />
+                <Avatar size={30} rounded={10} src={uri} />
+                <Spacing type="horizontal" />
+                <Avatar size={24} rounded={10} src={uri} />
+                <Spacing type="horizontal" />
+                <Avatar size={18} rounded={10} src={uri} />
               </Flex>
             </Card>
           </Body>

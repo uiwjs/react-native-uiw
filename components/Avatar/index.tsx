@@ -27,7 +27,6 @@ export default class Avatar extends Component<AvatarProps> {
   }
   render() {
     const { style, src, size, shape, rounded, imageProps, ...otherProps } = this.props;
-    console.log('defaultImage:', defaultImage)
     return (
       <View
         style={[
