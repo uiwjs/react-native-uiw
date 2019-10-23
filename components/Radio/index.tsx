@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
 
 export interface RadioProps extends ViewProps {
   checked?: boolean;
-  value?: string | number;
   circleSize?: number;
   thumbSize?: number;
   onPress?: (event: GestureResponderEvent) => void;
@@ -53,7 +52,6 @@ export default class Radio extends Component<RadioProps, RadioState> {
     checked: false,
     circleSize: 20,
     thumbSize: 12,
-    value: '',
   }
   constructor(props: RadioProps) {
     super(props);
