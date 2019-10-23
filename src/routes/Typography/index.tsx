@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { H1, H2, H3, H4, H5, H6, S, Del, U, P, Strong, Br, Hr, Em } from '../../../components';
+import { Text, View } from 'react-native';
+import { H1, H2, H3, H4, H5, H6, S, Del, U, P, Strong, Br, Div, Hr, Em } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
 const { Header, Body, Card, Footer } = Layout;
@@ -28,6 +28,12 @@ export default class TypographyView extends React.Component<TypographyViewProps>
               <Del>这段字符串中间有条删除线{`<Del>`}</Del>
               <U>这段文字下面有条下划线{`<U>`}</U>
               <P>这是一个段落{`<P>`}</P>
+              <Div>这是一段文本{`<Div>`}</Div>
+              <Div>
+                <View>
+                  <Text>既可以是 View/Text 组件 也可以是纯字符串 </Text>
+                </View>
+              </Div>
             </Card>
             <Card title="加粗<Strong>">
               <Strong>这段文本加粗的{`<Strong>`}</Strong>
