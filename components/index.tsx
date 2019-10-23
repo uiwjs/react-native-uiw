@@ -4,6 +4,7 @@ export { default as Badge } from './Badge';
 export { default as Divider } from './Divider';
 export { default as Drawer } from './Drawer';
 export { default as Flex } from './Flex';
+export { default as Grid } from './Grid';
 export { default as Icon } from './Icon';
 export { default as List } from './List';
 export { default as Loader } from './Loader';

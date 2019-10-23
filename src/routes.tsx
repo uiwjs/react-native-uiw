@@ -127,6 +127,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Grid: {
+    screen: require('./routes/Grid').default,
+    path: 'Grid',
+    params: {
+      title: 'Grid 宫格',
+      description: '在水平和垂直方向，将布局切分成若干等大的区块。'
+    },
+    navigationOptions: {
+      title: 'Grid 宫格',
+      ...navOtions,
+    },
+  },
   Icon: {
     screen: require('./routes/Icon').default,
     path: 'Icon',
