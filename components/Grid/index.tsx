@@ -27,6 +27,7 @@ interface ItemData {
 export interface GridProps extends ViewProps {
   data?: ItemData[],
   columns?: number;
+  hasLine?: boolean;
   itemStyle?: ViewProps['style']
   iconStyle?: ImageProps['style']
   renderItem?: (data: ItemData, index: number, row: number) => React.ReactNode;
@@ -36,9 +37,10 @@ export interface GridProps extends ViewProps {
 export default class Grid extends Component<GridProps> {
   static defaultProps: GridProps = {
     data: [],
+    hasLine: true,
   }
   render() {
-    const { style, data, iconStyle, itemStyle, renderItem, columns = 4, ...otherProps } = this.props;
+    const { style, data, iconStyle, itemStyle, renderItem, hasLine, columns = 4, ...otherProps } = this.props;
     if (!Array.isArray(data)) return null;
     const childs: React.ReactNode[][] = []
     let childItem: React.ReactNode[] = [];
@@ -80,10 +82,21 @@ export default class Grid extends Component<GridProps> {
     return (
       <View style={[styles.defalut, style]} {...otherProps}>
         {childs.map((rowitem, rowidx) => (
-          <Flex justify="between" key={rowidx}>
+          <Flex justify="start" key={rowidx}>
             {rowitem.map((item, idx) => {
               if (!React.isValidElement(item)) return null;
-              return React.cloneElement(item as React.ReactElement, { key: idx });
+              const itemBorderStyle: ViewProps['style'] = {};
+              if (hasLine) {
+                const hairLineWidth = StyleSheet.hairlineWidth;
+                itemBorderStyle.borderBottomWidth = childs.length - 1 === rowidx ? 0 : hairLineWidth;
+                itemBorderStyle.borderRightWidth = rowitem.length - 1 === idx && rowitem.length === columns ? 0 : hairLineWidth;
+                itemBorderStyle.borderBottomColor = '#ddd';
+                itemBorderStyle.borderRightColor = '#ddd';
+              }
+              return React.cloneElement(item as React.ReactElement, {
+                key: idx,
+                style: [itemBorderStyle, item.props.style],
+              });
             })}
           </Flex>
         ))}
