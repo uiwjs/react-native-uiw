@@ -6,14 +6,14 @@ import Layout, { Container } from '../../Layout';
 
 const { Header, Body, Card, Footer } = Layout;
 
-interface ExampleProps extends ComProps { }
-interface ExampleState {
+interface SliderViewProps extends ComProps { }
+interface SliderViewState {
   sliderValue: number;
   stepValue: number;
 }
 
-export default class Example extends React.Component<ExampleProps, ExampleState> {
-  constructor(props: ExampleProps) {
+export default class SliderView extends React.Component<SliderViewProps, SliderViewState> {
+  constructor(props: SliderViewProps) {
     super(props)
     this.state = {
       sliderValue: 0.3,

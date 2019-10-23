@@ -45,9 +45,9 @@ const Span = (props: any) => {
   )
 }
 
-export interface DividerViewProps extends ComProps { }
+export interface FlexViewProps extends ComProps { }
 
-export default class DividerView extends React.Component<DividerViewProps> {
+export default class FlexView extends React.Component<FlexViewProps> {
   render() {
     const { navigation } = this.props;
     const description = navigation.getParam('description');

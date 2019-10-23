@@ -5,9 +5,9 @@ import { Modal, Button, Loader, List, Icon, Spacing } from '../../../components'
 import { ComProps } from '../../typings';
 const { Header, Body, Card, Footer } = Layout;
 
-export interface ModalViewProps extends ComProps { }
+export interface SpacingViewProps extends ComProps { }
 
-export default class ModalView extends Component<ModalViewProps> {
+export default class SpacingView extends Component<SpacingViewProps> {
   render() {
     const { navigation } = this.props;
     const description = navigation.getParam('description');

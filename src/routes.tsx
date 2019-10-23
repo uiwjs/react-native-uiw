@@ -199,6 +199,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Radio: {
+    screen: require('./routes/Radio').default,
+    path: 'Radio',
+    params: {
+      title: 'Radio 单选框',
+      description: '单选框，在一组备选项中进行单选。'
+    },
+    navigationOptions: {
+      title: 'Radio 单选框',
+      ...navOtions,
+    },
+  },
   Result: {
     screen: require('./routes/Result').default,
     path: 'Result',

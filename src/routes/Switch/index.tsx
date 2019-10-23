@@ -6,13 +6,13 @@ import Layout, { Container } from '../../Layout';
 
 const { Header, Body, Card, Footer } = Layout;
 
-interface ExampleProps extends ComProps { }
-interface ExampleState {
+interface SwitchViewProps extends ComProps { }
+interface SwitchViewState {
   checked: boolean;
 }
 
-export default class Example extends React.Component<ExampleProps, ExampleState> {
-  constructor(props: ExampleProps) {
+export default class SwitchView extends React.Component<SwitchViewProps, SwitchViewState> {
+  constructor(props: SwitchViewProps) {
     super(props)
     this.state = {
       checked: false,

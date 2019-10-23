@@ -6,9 +6,9 @@ import Layout, { Container } from '../../Layout';
 
 const { Header, Body, Card, Footer } = Layout;
 
-interface ExampleProps extends ComProps { }
+interface WingBlankViewProps extends ComProps { }
 
-export default class Example extends React.Component<ExampleProps> {
+export default class WingBlankView extends React.Component<WingBlankViewProps> {
   render() {
     const { navigation } = this.props;
     const description = navigation.getParam('description');

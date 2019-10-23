@@ -89,6 +89,6 @@ const styles = StyleSheet.create({
   },
   label: {
     color: 'rgba(0, 0, 0, 0.54)',
-    fontSize: 12,
+    fontSize: 14,
   },
 });
