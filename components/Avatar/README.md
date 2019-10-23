@@ -31,4 +31,5 @@ function Demo() {
 | `src` | 图像源（远程URL或本地文件资源）。 | String/Number | - |
 | `imageProps` | React Native `Image` 组件 Props | ImageProps | - |
 | `size` | 设置圆角 | Number | `40` |
+| `rounded` | 设置圆角 | Number | `3` |
 | `shape` | 指定头像的形状 `square` 正方形或者 `circle` 圆 | `circle`/`square` | `square` |

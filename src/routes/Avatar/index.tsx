@@ -21,7 +21,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
           <Body>
             <Card title={`头像`}>
               <Flex>
-                <Avatar src="https://xx.images.com/xxx/icon.png" />
+                <Avatar />
                 <Spacing type="horizontal" />
                 <Avatar src={uri} />
                 <Spacing type="horizontal" />
@@ -30,7 +30,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
             </Card>
             <Card title={`设置圆形头像 shape?: 'circle' | 'square'`}>
               <Flex>
-                <Avatar shape="circle" src="https://xx.images.com/xxx/icon.png" />
+                <Avatar shape="circle" />
                 <Spacing type="horizontal" />
                 <Avatar shape="circle" src={uri} />
                 <Spacing type="horizontal" />
