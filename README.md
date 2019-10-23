@@ -65,6 +65,8 @@ export default class Demo extends React.Component {
 - [Flex](components/Flex/README.md)
 - [List](components/List/README.md)
 - [Loader](components/Loader/README.md)
+- [Modal](components/Modal/README.md)
+- [Result](components/Result/README.md)
 - [Slider](components/Slider/README.md)
 - [Spacing](components/Spacing/README.md)
 - [Switch](components/Switch/README.md)

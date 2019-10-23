@@ -175,6 +175,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Result: {
+    screen: require('./routes/Result').default,
+    path: 'Result',
+    params: {
+      title: 'Result 结果页',
+      description: '在整张页面中组织插画、图标、文字等内容，向用户反馈操作结果。'
+    },
+    navigationOptions: {
+      title: 'Result 结果页',
+      ...navOtions,
+    },
+  },
   Slider: {
     screen: require('./routes/Slider').default,
     path: 'Slider',
