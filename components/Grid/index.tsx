@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, ViewProps, Text, Image, ImageProps, TextProps, StyleSheet } from 'react-native';
+import React, { Component, Fragment } from 'react';
+import { View, ViewProps, Text, Image, ImageProps, TextProps, TouchableOpacity, GestureResponderEvent, StyleSheet } from 'react-native';
 import Flex from '../Flex';
 
 interface MaybeTextOrViewProps {
@@ -31,7 +31,7 @@ export interface GridProps extends ViewProps {
   itemStyle?: ViewProps['style']
   iconStyle?: ImageProps['style']
   renderItem?: (data: ItemData, index: number, row: number) => React.ReactNode;
-  onPress?: (data: ItemData, index: number, row: number) => void;
+  onPress?: (data: ItemData, index: number, row: number, event: GestureResponderEvent) => void;
 }
 
 export default class Grid extends Component<GridProps> {
@@ -40,7 +40,7 @@ export default class Grid extends Component<GridProps> {
     hasLine: true,
   }
   render() {
-    const { style, data, iconStyle, itemStyle, renderItem, hasLine, columns = 4, ...otherProps } = this.props;
+    const { style, data, iconStyle, itemStyle, renderItem, hasLine, columns = 4, onPress, ...otherProps } = this.props;
     if (!Array.isArray(data)) return null;
     const childs: React.ReactNode[][] = []
     let childItem: React.ReactNode[] = [];
@@ -63,6 +63,12 @@ export default class Grid extends Component<GridProps> {
       if (renderItem && typeof renderItem === 'function') {
         childItem!.push(renderItem(item, idx, parseInt((idx / columns).toString(), 10) + 1));
       } else {
+        const itemContent = (
+          <Fragment>
+            {icon && <MaybeTextOrView>{icon}</MaybeTextOrView>}
+            <MaybeTextOrView style={{ marginTop: 9, fontSize: 12 }}>{item.text}</MaybeTextOrView>
+          </Fragment>
+        )
         childItem!.push(
           <Flex
             direction="column"
@@ -70,8 +76,11 @@ export default class Grid extends Component<GridProps> {
             justify="center"
             style={[{ height: 120 }, StyleSheet.flatten(itemStyle), { width: `${100 / columns}%` }]}
           >
-            {icon && <MaybeTextOrView>{icon}</MaybeTextOrView>}
-            <MaybeTextOrView style={{ marginTop: 9, fontSize: 12 }}>{item.text}</MaybeTextOrView>
+            {onPress ? (
+              <TouchableOpacity onPress={onPress.bind(this, item, idx, parseInt((idx / columns).toString(), 10) + 1)}>
+                {itemContent}
+              </TouchableOpacity>
+            ) : itemContent}
           </Flex>
         );
       }
