@@ -140,9 +140,11 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 16,
     shadowColor: '#E6E6E6',
+    backgroundColor: 'transparent',
     shadowOffset: { width: 0, height: 3 },
     shadowRadius: 3,
-    shadowOpacity: 0.8,
+    // shadowOpacity: 0.8,
+    shadowOpacity: 0,
     zIndex: 999
   },
   footer: {
