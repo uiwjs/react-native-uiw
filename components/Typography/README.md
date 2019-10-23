@@ -3,7 +3,7 @@ Typography 排版
 
 包含 H1~H6,`<U>`, `<S>`, `<P>` 等，类似于 HTML 中的标签。
 
-[`H1~H6`](#标题) · [`<Del>`](#删除线) · [`<S>`](#删除线) · [`<U>`](#下划线) · [`<Strong>`](#加粗) · [`<P />`](#段落) · [`<Br />`](#换行) · [`<Hr />`](#水平线)
+[`H1~H6`](#标题) · [`<Del>`](#删除线) · [`<S>`](#删除线) · [`<U>`](#下划线) · [`<Strong>`](#加粗) · [`<P />`](#段落) · [`<Br />`](#换行) · [`<Hr />`](#水平线) · [`<Div />`](#div)
 
 ## 标题
 
@@ -104,9 +104,30 @@ function Demo() {
 }
 ```
 
+## Div
+
+```jsx
+import { View, Text } from 'react-native';
+import { Div } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <View>
+      <Div>这是一段文本{`<Div>`}</Div>
+      <Div>
+        <View>
+          <Text>既可以是 View/Text 组件 也可以是纯字符串 </Text>
+        </View>
+      </Div>
+    </View>
+  );
+}
+```
+
 ## 水平线
 
 ```jsx
+import { View, Text } from 'react-native';
 import { Hr } from '@uiw/react-native';
 
 function Demo() {
