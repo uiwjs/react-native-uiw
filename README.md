@@ -63,6 +63,7 @@ export default class Demo extends React.Component {
 - [Divider](components/Divider/README.md)
 - [Drawer](components/Drawer/README.md)
 - [Flex](components/Flex/README.md)
+- [Grid](components/Grid/README.md)
 - [List](components/List/README.md)
 - [Loader](components/Loader/README.md)
 - [Modal](components/Modal/README.md)

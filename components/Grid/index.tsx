@@ -54,7 +54,7 @@ export default class Grid extends Component<GridProps> {
         icon = (
           <Image
             style={[{ width: 36, height: 36 }, StyleSheet.flatten(iconStyle)]}
-            source={{ uri: item.icon as string }}
+            source={typeof item.icon === 'number' ? item.icon:{ uri: item.icon as string }}
           />
         );
       }
