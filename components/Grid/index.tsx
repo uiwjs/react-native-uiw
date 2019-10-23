@@ -17,6 +17,12 @@ const styles = StyleSheet.create({
   defalut: {
     backgroundColor: '#fff',
   },
+  touchWarpper: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 interface ItemData {
@@ -77,7 +83,7 @@ export default class Grid extends Component<GridProps> {
             style={[{ height: 120 }, StyleSheet.flatten(itemStyle), { width: `${100 / columns}%` }]}
           >
             {onPress ? (
-              <TouchableOpacity onPress={onPress.bind(this, item, idx, parseInt((idx / columns).toString(), 10) + 1)}>
+              <TouchableOpacity style={styles.touchWarpper} onPress={onPress.bind(this, item, idx, parseInt((idx / columns).toString(), 10) + 1)}>
                 {itemContent}
               </TouchableOpacity>
             ) : itemContent}

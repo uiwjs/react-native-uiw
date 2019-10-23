@@ -31,7 +31,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Grid data={data} />
+            <Grid data={data} itemStyle={{ height: 100 }} onPress={() => navigation.goBack()} />
             <Spacing />
             <Grid data={data2} columns={3} />
           </Body>
