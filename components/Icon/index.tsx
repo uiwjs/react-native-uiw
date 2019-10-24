@@ -2,8 +2,10 @@ import React from 'react';
 import Svg, { SvgXml, SvgProps, Path } from 'react-native-svg';
 import svgPaths from '@uiw/icons/fonts/w-icon.json';
 
+export type IconsName = keyof typeof svgPaths;
+
 export interface IconsProps extends SvgProps {
-  name?: string;
+  name?: IconsName;
   size?: number;
   fill?: string;
   stroke?: string;
@@ -28,10 +30,10 @@ export default class Icons extends React.Component<IconsProps> {
     }
     let pathData = paths;
     if (!pathData) {
-      if (!name || !(svgPaths as any)[name]) {
-        return null
+      if (!name || !svgPaths[name]) {
+        return null;
       }
-      pathData = (svgPaths as any)[name] as string[];
+      pathData = svgPaths[name] as string[];
     }
     return (
       <Svg
