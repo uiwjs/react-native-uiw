@@ -7,22 +7,48 @@ Switch 开关
 
 ## 基础示例
 
+```jsx
+import { Spacing,Flex, Switch } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <Switch />
+  );
+}
+```
+
+## 尺寸大小
+
 这是一个受控组件，需要一个 `onValueChange` 回调来更新值属性，以使该组件反映用户操作。
 
 ```jsx
-import { Fragment } from 'react';
-import { Spacing, Switch } from '@uiw/react-native';
+import { Spacing, Flex, Switch } from '@uiw/react-native';
 
 function Demo() {
-  const [value, setValue] = useState(true);
   return (
-    <Fragment>
-      <Switch
-        value={value}
-        onValueChange={(cValue) => setValue(cValue)}
-      />
-      <Text>值：{value.toFixed(1)}</Text>
-    </Fragment>
+    <Flex direction="row">
+      <Switch size="small" />
+      <Spacing type="horizontal" />
+      <Switch />
+      <Spacing type="horizontal" />
+      <Switch size="large" />
+    </Flex>
+  );
+}
+```
+
+## 受控组件
+
+这是一个受控组件，需要一个 `onValueChange` 回调来更新值属性，以使该组件反映用户操作。
+
+```jsx
+import { useState } from 'react';
+import { Spacing,Flex, Switch } from '@uiw/react-native';
+
+function Demo() {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Switch  checked={checked} onValueChange={() => setChecked(!checked)} />
   );
 }
 ```
@@ -31,7 +57,8 @@ function Demo() {
 
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
-| `value` | 开关的值。 如果为`true`，则开关将打开。 默认值为`false`。 | Boolean | `false` |
+| `checked` | 是否被选中 | Boolean | `false` |
+| `size` | 尺寸大小 | `small`, `default`, `large` | `default` |
 | `disabled` | 如果为`true`，则用户将无法切换开关。 | Boolean | `false` |
 | `trackStyle` | 设置背景样式。 | ViewStyle | - |
 | `thumbStyle` | 前景开关手柄的颜色。 | ViewStyle | - |

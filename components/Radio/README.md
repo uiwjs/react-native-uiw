@@ -18,6 +18,7 @@ function Demo() {
 ## 受控组件
 
 ```jsx
+import { useState } from 'react';
 import { Radio } from '@uiw/react-native';
 
 function Demo() {
@@ -38,6 +39,7 @@ function Demo() {
 ## 单选
 
 ```jsx
+import { useState } from 'react';
 import { View } from 'react-native';
 import { Radio } from '@uiw/react-native';
 
