@@ -5,6 +5,10 @@ export interface SwitchProps extends SwitchPropsDefault {
   trackStyle?: ViewStyle;
   thumbStyle?: ViewStyle;
   checked?: boolean;
+  /**
+   * 设置大小
+   */
+  size?: 'small' | 'default' | 'large';
 }
 
 export interface SwitchState {
@@ -20,29 +24,29 @@ export interface SwitchState {
 
 export default class Switch extends React.Component<SwitchProps, SwitchState> {
   translateXValue: number = 2;
+  height: number = 16;
   static defaultProps: SwitchProps = {
     checked: false,
+    size: 'default',
     thumbColor: '#fff',
     onValueChange: () => {},
   }
   constructor(props: SwitchProps) {
     super(props);
     this.state = {
-      checked: false,
+      checked: !!this.props.checked,
       containerSize: { width: 0, height: 0 },
       borderValue: new Animated.Value(0),
       translateXValue: new Animated.Value(2),
       bgOpacity: new Animated.Value(props.value ? 1 : 0),
     };
-  }
-  componentDidMount() {
     this.animatedStart(!!this.props.checked);
-    this.setState({ checked: !!this.props.checked});
   }
   UNSAFE_componentWillReceiveProps(nextProps: SwitchProps) {
     if (this.props.checked !== nextProps.checked) {
-      this.setState({ checked: !!nextProps.checked });
-      this.animatedStart(!!nextProps.checked);
+      this.setState({ checked: !!nextProps.checked }, () => {
+        this.animatedStart(!!nextProps.checked);
+      });
     }
   }
   animatedStart(checked: boolean) {
@@ -50,7 +54,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
       Animated.parallel([
         Animated.sequence([
           Animated.spring(this.state.borderValue,
-            { toValue: 16, overshootClamping: true }
+            { toValue: this.height, overshootClamping: true }
           ),
           Animated.spring(this.state.bgOpacity,
             { toValue: 1, overshootClamping: true }
@@ -90,21 +94,39 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     const height = layoutHeight - 4;
     const width = height;
     const size = { width, height };
+    this.height = height / 2;
     const state = { containerSize: size };
     this.translateXValue = layoutWidth - 2 - width;
     translateXValue.setValue(checked ? layoutWidth - 2 - width : 2);
-    this.setState({ ...state });
+    this.setState({ ...state }, () => {
+      this.animatedStart(!!this.props.checked);
+    });
   }
   render() {
-    const { style, checked, disabled, thumbColor, trackStyle, thumbStyle } = this.props;
+    const { style, size, checked, disabled, thumbColor, trackStyle, thumbStyle, ...otherProps } = this.props;
     const { containerSize } = this.state;
     const bgBorder = this.state.borderValue.interpolate({
-      inputRange: [2, 16],
-      outputRange: [2, 16],
+      inputRange: [2, this.height],
+      outputRange: [2, this.height],
       // extrapolate: 'clamp',
     });
+    const sizeStyl: ViewStyle = {};
+    switch (size) {
+      case 'small':
+        sizeStyl.height = 20;
+        sizeStyl.width = 30;
+        break;
+      case 'large':
+        sizeStyl.height = 30;
+        sizeStyl.width = 48;
+        break;
+      default:
+        sizeStyl.height = 26;
+        sizeStyl.width = 38;
+        break;
+    }
     return (
-      <View onLayout={this.measureContainer} style={[styles.warpper, style]}>
+      <View {...otherProps} onLayout={this.measureContainer} style={[styles.warpper, sizeStyl, style]}>
         {disabled && <View style={[styles.position, styles.disabled]} />}
         <Animated.View
           style={[
@@ -118,8 +140,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
         <TouchableOpacity
           style={[styles.position, { zIndex: 1 }]}
           onPress={this.onPress}
-        >
-        </TouchableOpacity>
+        />
         <Animated.View style={[
           styles.position,
           { backgroundColor: this.state.checked ? '#4DD964' : '', borderRadius: 16, opacity: this.state.bgOpacity }
@@ -138,20 +159,19 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
 
 const styles = StyleSheet.create({
   warpper: {
-    height: 32,
+    position: 'relative',
     borderRadius: 16,
-    width: 52,
+    backgroundColor: '#E6E6E6'
   },
   disabled: {
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
-    zIndex: 22,
     borderRadius: 16,
+    zIndex: 22,
   },
   bg: {
     borderRadius: 16,
     borderWidth: 2,
     borderColor: '#E6E6E6',
-    backgroundColor: '#EDEDED',
   },
   position: {
     position: 'absolute',
@@ -177,10 +197,10 @@ const styles = StyleSheet.create({
   shadow: {
     shadowColor: '#000',
     shadowOffset: {
-      width: 6,
-      height: 6,
+      width: 4,
+      height: 4,
     },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.2,
     shadowRadius: 3,
   }
 });

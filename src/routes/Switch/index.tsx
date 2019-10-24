@@ -15,7 +15,7 @@ export default class SwitchView extends React.Component<SwitchViewProps, SwitchV
   constructor(props: SwitchViewProps) {
     super(props)
     this.state = {
-      checked: false,
+      checked: true,
     }
   }
   handleChange = (checked: boolean) =>{
@@ -48,15 +48,35 @@ export default class SwitchView extends React.Component<SwitchViewProps, SwitchV
                 </Flex>
               </WingBlank>
             </Card>
-            <Card title={`列表中展示，不受控组件`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+            <Card title={`列表中展示，不受控组件`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }} />
+            <List flat={false} extra={<Switch style={{ position: 'absolute', right: 0 }} />}>
+              <List.Item extra={<Switch checked style={{ position: 'absolute', right: 0 }} />}>自动设置</List.Item>
+              <List.Item>24小时制</List.Item>
+              <List.Item>12小时制</List.Item>
+            </List>
+            <Spacing />
+            <Card title={`尺寸大小，size?: 'small' | 'default' | 'large';`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+              <WingBlank>
+                <Flex direction="row">
+                  <Switch size="small" />
+                  <Spacing type="horizontal" />
+                  <Switch />
+                  <Spacing type="horizontal" />
+                  <Switch size="large" />
+                </Flex>
+              </WingBlank>
             </Card>
-
-            <List flat={false} extra="test">
-              <List.Item extra={<Switch />}>Git 版本控制的核心概念</List.Item>
-            </List>
-            <List flat={false} extra="test">
-              <List.Item>Git 版本控制的核心概念</List.Item>
-            </List>
+            <Card title={`尺寸大小，通过设置高宽来定制尺寸`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+              <WingBlank>
+                <Flex direction="row">
+                  <Switch style={{ height: 23, width: 34 }} />
+                  <Spacing type="horizontal" />
+                  <Switch style={{ height: 28, width: 42 }}/>
+                  <Spacing type="horizontal" />
+                  <Switch />
+                </Flex>
+              </WingBlank>
+            </Card>
           </Body>
           <Footer />
         </Layout>
