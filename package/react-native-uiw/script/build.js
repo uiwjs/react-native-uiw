@@ -62,7 +62,7 @@ const tsc = {
       // eslint-disable-next-line prettier/prettier
       console.log(`♻️: ${itemPath.replace(process.cwd(), '').replace(/^\//, '')} -> ${outputFile.replace(process.cwd(), '').replace(/^\//, '').replace(/\.tsx$/, '.js')}`);
     }
-    if (/.(md)$/.test(itemPath)) {
+    if (/.(md|png)$/.test(itemPath)) {
       const outputMd = itemPath.replace(root, output);
       fs.ensureFileSync(outputMd);
       fs.copyFileSync(itemPath, outputMd);
