@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
 
 export interface RadioProps extends ViewProps {
   checked?: boolean;
+  disabled?: boolean;
   circleSize?: number;
   thumbSize?: number;
   onPress?: (event: GestureResponderEvent) => void;
@@ -90,19 +91,21 @@ export default class Radio extends Component<RadioProps, RadioState> {
     });
   }
   render() {
-    const { style, circleSize, thumbSize, ...otherProps } = this.props;
+    const { style, circleSize, thumbSize, disabled, ...otherProps } = this.props;
     const sizeValue = this.state.sizeValue.interpolate({
       inputRange: [0, thumbSize!],
       outputRange: [0, thumbSize!],
       // extrapolate: 'clamp',
     });
+    const backgroundColor = disabled ? '#c3c5c7' : '#4DD964';
+    const borderColor = disabled ? '#c3c5c7' : '#bdc1cc';
     return (
       <View style={[styles.defalut, style]} {...otherProps}>
-        <TouchableOpacity style={[styles.touch]} onPress={this.handlePress}>
-          <Animated.View style={[styles.checkBg, { width: circleSize, height: circleSize }]} >
-            <Animated.View style={[styles.check, { width: sizeValue, height: sizeValue }]} />
+        <TouchableOpacity disabled={disabled} style={[styles.touch]} onPress={this.handlePress}>
+          <Animated.View style={[styles.checkBg, { width: circleSize, height: circleSize, borderColor }]} >
+            <Animated.View style={[styles.check, { width: sizeValue, height: sizeValue, backgroundColor }]} />
           </Animated.View>
-          {this.props.children && <MaybeTextOrView style={styles.label}>{this.props.children}</MaybeTextOrView>}
+          {this.props.children && <MaybeTextOrView style={[styles.label, { opacity: disabled ? .3 : 1 }]}>{this.props.children}</MaybeTextOrView>}
         </TouchableOpacity>
       </View>
     );

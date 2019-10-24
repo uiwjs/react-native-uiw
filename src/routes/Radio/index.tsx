@@ -63,6 +63,11 @@ export default class RadioView extends React.Component<RadioViewProps, RadioView
                 );
               })}
             </Card>
+            <Card title="禁用 checked?: boolean;">
+              <Radio disabled>所有人可见</Radio>
+              <Spacing />
+              <Radio disabled checked={true}>超级管理员</Radio>
+            </Card>
           </Body>
           <Footer />
         </Layout>

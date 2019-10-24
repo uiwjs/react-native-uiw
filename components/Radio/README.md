@@ -76,6 +76,7 @@ function Demo() {
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `checked` | Radio 是否被选中 | Boolean | `false` |
+| `disabled` | 禁用 | Boolean | `false` |
 | `circleSize` | Radio 大小 | Number | `20` |
 | `thumbSize` | Radio 选中部分大小 | Number | `12` |
 | `onPress` | 点击 Radio 的点击回调函数 | (event) => void | - |
