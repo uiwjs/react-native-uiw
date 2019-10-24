@@ -48,13 +48,14 @@ export default class SwitchView extends React.Component<SwitchViewProps, SwitchV
                 </Flex>
               </WingBlank>
             </Card>
-            <Card title={`禁用无法切换，disabled={true}`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+            <Card title={`列表中展示，不受控组件`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
             </Card>
 
             <List flat={false} extra="test">
-              <List.Item extra={
-                <Switch />
-              }>Git 版本控制的核心概念</List.Item>
+              <List.Item extra={<Switch />}>Git 版本控制的核心概念</List.Item>
+            </List>
+            <List flat={false} extra="test">
+              <List.Item>Git 版本控制的核心概念</List.Item>
             </List>
           </Body>
           <Footer />

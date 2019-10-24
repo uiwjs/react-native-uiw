@@ -91,9 +91,11 @@ const Card = (props: CardProps) => {
       ) : (
         showTitle && <Text style={titleStyle ? [styles.cardTitle, titleStyle] : [styles.cardTitle]}>{title}</Text>
       )}
-      <View style={bodyStyle ? [styles.cardBody, bodyStyle] : [styles.cardBody]}>
-        {children}
-      </View>
+      {children && (
+        <View style={bodyStyle ? [styles.cardBody, bodyStyle] : [styles.cardBody]}>
+          {children}
+        </View>
+      )}
     </View>
   );
 }

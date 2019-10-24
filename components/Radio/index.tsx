@@ -97,7 +97,7 @@ export default class Radio extends Component<RadioProps, RadioState> {
       outputRange: [0, thumbSize!],
       // extrapolate: 'clamp',
     });
-    const backgroundColor = disabled ? '#c3c5c7' : '#4DD964';
+    const backgroundColor = disabled ? '#c3c5c7' : '#008EF0';
     const borderColor = disabled ? '#c3c5c7' : '#bdc1cc';
     return (
       <View style={[styles.defalut, style]} {...otherProps}>

@@ -8,6 +8,7 @@ export interface SwitchProps extends SwitchPropsDefault {
 }
 
 export interface SwitchState {
+  checked: boolean;
   borderValue: Animated.Value;
   translateXValue: Animated.Value;
   bgOpacity: Animated.Value;
@@ -27,17 +28,20 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
   constructor(props: SwitchProps) {
     super(props);
     this.state = {
+      checked: false,
       containerSize: { width: 0, height: 0 },
       borderValue: new Animated.Value(0),
       translateXValue: new Animated.Value(2),
       bgOpacity: new Animated.Value(props.value ? 1 : 0),
-    }
+    };
   }
   componentDidMount() {
     this.animatedStart(!!this.props.checked);
+    this.setState({ checked: !!this.props.checked});
   }
   UNSAFE_componentWillReceiveProps(nextProps: SwitchProps) {
-    if(this.props.checked !== nextProps.checked) {
+    if (this.props.checked !== nextProps.checked) {
+      this.setState({ checked: !!nextProps.checked });
       this.animatedStart(!!nextProps.checked);
     }
   }
@@ -72,9 +76,15 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
       ]).start();
     }
   }
-  onPress = () => this.props.onValueChange!(!this.props.checked);
+  onPress = () => {
+    const checked = !this.state.checked;
+    this.setState({ checked }, () => {
+      this.animatedStart(checked);
+      this.props.onValueChange!(checked);
+    });
+  };
   measureContainer = (event: LayoutChangeEvent) => {
-    const { checked } = this.props;
+    const { checked } = this.state;
     const { translateXValue } = this.state;
     const { height: layoutHeight, width: layoutWidth } = event.nativeEvent.layout;
     const height = layoutHeight - 4;
@@ -112,7 +122,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
         </TouchableOpacity>
         <Animated.View style={[
           styles.position,
-          { backgroundColor: checked ? '#4DD964' : '', borderRadius: 16, opacity: this.state.bgOpacity }
+          { backgroundColor: this.state.checked ? '#4DD964' : '', borderRadius: 16, opacity: this.state.bgOpacity }
         ]} />
         <Animated.View style={[
           styles.grip, thumbStyle, disabled ? styles.shadowDisable : styles.shadow,
