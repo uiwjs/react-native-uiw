@@ -2,8 +2,9 @@ import React from 'react';
 import { TouchableOpacity, Animated, SwitchProps as SwitchPropsDefault, View, ViewStyle, LayoutChangeEvent, StyleSheet } from 'react-native';
 
 export interface SwitchProps extends SwitchPropsDefault {
-  trackStyle?: ViewStyle,
-  thumbStyle?: ViewStyle,
+  trackStyle?: ViewStyle;
+  thumbStyle?: ViewStyle;
+  checked?: boolean;
 }
 
 export interface SwitchState {
@@ -19,7 +20,7 @@ export interface SwitchState {
 export default class Switch extends React.Component<SwitchProps, SwitchState> {
   translateXValue: number = 2;
   static defaultProps: SwitchProps = {
-    value: false,
+    checked: false,
     thumbColor: '#fff',
     onValueChange: () => {},
   }
@@ -33,15 +34,15 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     }
   }
   componentDidMount() {
-    this.animatedStart(!!this.props.value);
+    this.animatedStart(!!this.props.checked);
   }
   UNSAFE_componentWillReceiveProps(nextProps: SwitchProps) {
-    if(this.props.value !== nextProps.value) {
-      this.animatedStart(!!nextProps.value);
+    if(this.props.checked !== nextProps.checked) {
+      this.animatedStart(!!nextProps.checked);
     }
   }
-  animatedStart(value: boolean) {
-    if (value) {
+  animatedStart(checked: boolean) {
+    if (checked) {
       Animated.parallel([
         Animated.sequence([
           Animated.spring(this.state.borderValue,
@@ -71,9 +72,9 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
       ]).start();
     }
   }
-  onPress = () => this.props.onValueChange!(!this.props.value);
+  onPress = () => this.props.onValueChange!(!this.props.checked);
   measureContainer = (event: LayoutChangeEvent) => {
-    const { value } = this.props;
+    const { checked } = this.props;
     const { translateXValue } = this.state;
     const { height: layoutHeight, width: layoutWidth } = event.nativeEvent.layout;
     const height = layoutHeight - 4;
@@ -81,11 +82,11 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     const size = { width, height };
     const state = { containerSize: size };
     this.translateXValue = layoutWidth - 2 - width;
-    translateXValue.setValue(value ? layoutWidth - 2 - width : 2);
+    translateXValue.setValue(checked ? layoutWidth - 2 - width : 2);
     this.setState({ ...state });
   }
   render() {
-    const { style, value, disabled, thumbColor, trackStyle, thumbStyle } = this.props;
+    const { style, checked, disabled, thumbColor, trackStyle, thumbStyle } = this.props;
     const { containerSize } = this.state;
     const bgBorder = this.state.borderValue.interpolate({
       inputRange: [2, 16],
@@ -111,7 +112,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
         </TouchableOpacity>
         <Animated.View style={[
           styles.position,
-          { backgroundColor: value ? '#4DD964' : '', borderRadius: 16, opacity: this.state.bgOpacity }
+          { backgroundColor: checked ? '#4DD964' : '', borderRadius: 16, opacity: this.state.bgOpacity }
         ]} />
         <Animated.View style={[
           styles.grip, thumbStyle, disabled ? styles.shadowDisable : styles.shadow,
