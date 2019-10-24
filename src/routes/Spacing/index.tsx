@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Alert, SafeAreaView } from 'react-native';
 import Layout, { Container } from '../../Layout';
-import { Modal, Button, Loader, List, Icon, Spacing } from '../../../components';
+import { Divider, Button, Loader, List, Icon, Spacing } from '../../../components';
 import { ComProps } from '../../typings';
 const { Header, Body, Card, Footer } = Layout;
 
@@ -42,6 +42,19 @@ export default class SpacingView extends Component<SpacingViewProps> {
                 <Button>间距</Button>
                 <Spacing type="horizontal" size="small" />
                 <Button>间距</Button>
+              </View>
+            </Card>
+            <Card title="间距大小数字设置 size?: number">
+              <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap-reverse' }}>
+                <Button>间距</Button>
+                <Spacing type="horizontal" size={30} />
+                <Button>间距</Button>
+              </View>
+              <Spacing />
+              <View>
+                <Button>按钮上下之间的间距 {`size={30}`} </Button>
+                <Spacing size={30} />
+                <Button type="primary">按钮上下之间的间距</Button>
               </View>
             </Card>
           </Body>

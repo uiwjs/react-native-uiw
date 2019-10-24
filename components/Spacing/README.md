@@ -27,5 +27,4 @@ function Demo() {
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
 | `type` | 水平还是垂直间距类型 | `horizontal`, `vertical` | `vertical` |
-| `size` | 按钮大小 | Enum{`small`, `default`, `large`} | `default` |
-| `gutter` | 间距值 | number | `10` |
+| `size` | 按钮大小，可选值或者数字，默认间距 `10` | Enum{`small`, `default`, `large`}, `Number` | `default` |

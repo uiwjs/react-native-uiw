@@ -71,12 +71,14 @@ export default function Demo() {
 | `flat` | 当值为 `true` 使用 `FlatList` 组件渲染列表，当值为 `false` 时，使用 `View` 渲染界面 | Boolean | `true` |
 | `renderItem` | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
 | `title` | 设置所有 `Item` 左边补白 | Number | `16` |
+| `horizontal` | 设置为 `true` 则变为水平布局模式。(`flat=true` 支持) | Boolean | `false` |
+| `numColumns` | 多列布局只能在非水平模式下使用，即必须是 `horizontal={false}`。此时组件内元素会从左到右从上到下按 `Z` 字形排列，类似启用了 `flexWrap` 的布局。组件内元素必须是等高的——暂时还无法支持瀑布流布局。(`flat=true` 支持) | Number | - |
 | `ListHeaderComponent` | 呈现在列表的顶部。如果设置了 `title` 标题，这个参数将失效  | ReactNode | - |
 | `ListEmptyComponent` | 当列表数据为空的时候显示，条件是`renderItem` 存在 `data` 为 `0` 或者 `空`，或者是 `renderItem` 不存在 `children` 数量为 `0` | ReactNode | - |
-| `refreshing` | 等待刷新之前的新数据时，将其设置为 `true`。 | Boolean | - |
-| `onRefresh` | 下拉刷新，配合 `refreshing` 使用。 | () => void | - |
-| `onEndReached` | 滚动位置位于渲染内容的 `onEndReachedThreshold` 范围内时调用一次。 | (info: {distanceFromEnd: number}) => void | - |
-| `onEndReachedThreshold` | 要触发 `onEndReached` 回调，列表的底边必须与内容的末尾相距多远（以列表的可见长度为单位）。 因此，当内容的结尾在列表的可见长度的一半以内时，值为 `0.5` 将触发 `onEndReached`。 | Number | - |
+| `refreshing` | 等待刷新之前的新数据时，将其设置为 `true`。 (`flat=true` 支持)| Boolean | - |
+| `onRefresh` | 下拉刷新，配合 `refreshing` 使用。 (`flat=true` 支持)| () => void | - |
+| `onEndReached` | 滚动位置位于渲染内容的 `onEndReachedThreshold` 范围内时调用一次。 (`flat=true` 支持)| (info: {distanceFromEnd: number}) => void | - |
+| `onEndReachedThreshold` | 要触发 `onEndReached` 回调，列表的底边必须与内容的末尾相距多远（以列表的可见长度为单位）。 因此，当内容的结尾在列表的可见长度的一半以内时，值为 `0.5` 将触发 `onEndReached`。 (`flat=true` 支持) | Number | - |
 
 ### List.Item
 
