@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, ScrollView, SafeAreaView } from 'react-native';
-import { Button, Spacing, Icon } from '../../../components';
+import { View, Text } from 'react-native';
+import { Button, Spacing, Icon, Flex } from '../../../components';
 import { ComProps } from '../../typings';
 import Layout, { Container } from '../../Layout';
 const { Header, Body, Card, Footer } = Layout;
@@ -18,11 +18,13 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
           <Header title={title} description={description} />
           <Body>
             <Card title="基础实例">
-              <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap-reverse' }}>
+              <Flex>
                 <Button>默认按钮</Button>
+                <Spacing type="horizontal" />
                 <Button>默认按钮</Button>
+                <Spacing type="horizontal" />
                 <Button>按钮</Button>
-              </View>
+              </Flex>
               <Spacing />
               <Button>默认按钮</Button>
               <Spacing />
@@ -90,6 +92,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                   <Icon name="apple" size={17} />
                   <Text> 首页</Text>
                 </Button>
+                <Spacing type="horizontal" />
                 <Button bordered={false} color="#fff">
                   <Icon name="menu-fold" size={17} />
                   <Text> 菜单</Text>

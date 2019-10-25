@@ -19,10 +19,10 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
           <Body>
             <Card title="基础实例">
               <ButtonGroup>
-                <Button type="warning">警告</Button>
-                <Button type="warning">警告</Button>
-                <Button type="warning">主要</Button>
-                <Button type="warning">警告</Button>
+                <Button type="primary">警告</Button>
+                <Button type="primary">警告</Button>
+                <Button type="primary">主要</Button>
+                <Button type="primary">警告</Button>
               </ButtonGroup>
             </Card>
             <Card title="尺寸">
@@ -81,6 +81,22 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
             </Card>
             <Card title="按钮间距 gutter?: number">
               <ButtonGroup gutter={5} type="warning" bordered={false}>
+                <Button>警告</Button>
+                <Button>警告</Button>
+                <Button>警告</Button>
+              </ButtonGroup>
+            </Card>
+            <Card title="换行展示 inline?: boolean">
+              <ButtonGroup gutter={5} inline type="success" bordered={false}>
+                <Button>警告</Button>
+                <Button>警告</Button>
+                <Button>警告</Button>
+                <Button>警告</Button>
+                <Button>警告</Button>
+                <Button>警告</Button>
+                <Button>警告</Button>
+                <Button>警告</Button>
+                <Button>警告</Button>
                 <Button>警告</Button>
                 <Button>警告</Button>
                 <Button>警告</Button>

@@ -76,8 +76,10 @@ export default class ButtonGroup extends Component<ButtonGroupProps> {
               childStyle.borderLeftWidth = StyleSheet.hairlineWidth;
             }
           }
-          if (gutter && idx !== 0) {
-            childStyle.marginLeft = gutter;
+          if (gutter && inline) {
+            childStyle.marginHorizontal = gutter / 2;
+          } else if (gutter && idx !== 0) {
+            childStyle.marginLeft = gutter / 2;
           }
           return React.cloneElement(child, { ...porps, ...child.props, size, rounded, style: [childStyle, child.props.style] });
         })}
