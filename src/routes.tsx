@@ -235,6 +235,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  SegmentedControl: {
+    screen: require('./routes/SegmentedControl').default,
+    path: 'SegmentedControl',
+    params: {
+      title: 'SegmentedControl 分段器',
+      description: '由至少 2 个分段控件组成，用作不同视图的显示。'
+    },
+    navigationOptions: {
+      title: 'SegmentedControl 分段器',
+      ...navOtions,
+    },
+  },
   Spacing: {
     screen: require('./routes/Spacing').default,
     path: 'Spacing',

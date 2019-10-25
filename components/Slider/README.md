@@ -27,6 +27,7 @@ function Demo() {
 ## 不显示滑块
 
 ```jsx
+import { Fragment } from 'react';
 import { Drawer } from '@uiw/react-native';
 
 function Demo() {
@@ -46,6 +47,7 @@ function Demo() {
 ## 设置步长
 
 ```jsx
+import { Fragment } from 'react';
 import { Drawer } from '@uiw/react-native';
 
 function Demo() {
