@@ -3,9 +3,10 @@ import { ViewStyle, TextStyle } from 'react-native';
 import ButtonGroup, { ButtonGroupProps } from '../ButtonGroup';
 import Button from '../Button';
 
-export interface SegmentedControlProps extends ButtonGroupProps {
-  value?: string[];
+export interface SegmentedControlProps<T> extends ButtonGroupProps {
+  value?: string[] | T[];
   selectedIndex?: number;
+  renderItem?: (label: string | T, selectedIndex: number, props: ButtonGroupProps) => JSX.Element;
   onValueChange?: (selectedIndex: number) => void;
 }
 
@@ -13,14 +14,14 @@ export interface SegmentedControlState {
   selectedIndex: number;
 }
 
-export default class SegmentedControl extends Component<SegmentedControlProps, SegmentedControlState> {
-  constructor(props: SegmentedControlProps) {
+export default class SegmentedControl<T> extends Component<SegmentedControlProps<T>, SegmentedControlState> {
+  constructor(props: SegmentedControlProps<T>) {
     super(props);
     this.state = {
       selectedIndex: props.selectedIndex || 0,
     };
   }
-  static defaultProps: SegmentedControlProps = {
+  static defaultProps: SegmentedControlProps<{}> = {
     value: [],
     size: 'small',
     selectedIndex: 0,
@@ -33,23 +34,26 @@ export default class SegmentedControl extends Component<SegmentedControlProps, S
     });
   }
   render() {
-    const { value, selectedIndex, ...otherProps } = this.props;
+    const { value, selectedIndex, renderItem, ...otherProps } = this.props;
     return (
       <ButtonGroup {...otherProps}>
-        {value!.map((label, key) => {
+        {value && (value as (string | T)[]).map((label: string | T, key: number) => {
           const styl: ViewStyle = {};
           const textStyle: TextStyle = {};
           if (this.state.selectedIndex !== key + 1) {
             styl.backgroundColor = '#fff';
             textStyle.color = otherProps.color;
           }
-          return React.cloneElement(<Button />, {
-            key,
+          const props: ButtonGroupProps = {
             type: 'primary',
             style: [styl, otherProps.textStyle],
             textStyle: [textStyle],
             onPress: this.handlePress.bind(this, key + 1),
-          }, label);
+          }
+          if (renderItem) {
+            return renderItem(label, key + 1, props);
+          }
+          return React.cloneElement(<Button key={key} />, { ...props }, label);
         })}
       </ButtonGroup>
     );
