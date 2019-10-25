@@ -48,13 +48,6 @@ class Demo extends Component {
           <Button>主要</Button>
           <Button>警告</Button>
         </ButtonGroup>
-        <Spacing />
-        <ButtonGroup bordered={false} type="warning">
-          <Button>警告</Button>
-          <Button>警告</Button>
-          <Button>主要</Button>
-          <Button>警告</Button>
-        </ButtonGroup>
       </View>
     )
   }
@@ -124,8 +117,9 @@ class Demo extends Component {
 
 ## Props
 
-集成继承 `Button` 组件自定义属性，外层包裹内容样式继承 [`ViewProps`](https://facebook.github.io/react-native/docs/view#props) 。
+集成继承 `Button` 组件自定义属性，外层包裹继承 [`Flex`] 组件。
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `gutter` | 按钮间隔间距 | Number | - |
+| `inline` | 设置 `inline={true}`，子节点 `Button` 属性将被设置为 `direction = 'row';` `wrap = 'wrap';` | Boolean | `false` |
