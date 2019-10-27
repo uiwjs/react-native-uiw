@@ -5,7 +5,7 @@ export interface WingBlankProps extends ViewProps {
   /**
    * 按钮尺寸
    */
-  size?: 'small' | 'default' | 'large';
+  size?: 'small' | 'default' | 'large' | number;
 }
 
 export default class WingBlank extends Component<WingBlankProps> {
@@ -15,7 +15,9 @@ export default class WingBlank extends Component<WingBlankProps> {
   render() {
     const { style, size, ...restProps} = this.props;
     let sizeStyle: WingBlankProps['style'] = {};
-    if (size && styles[size]) {
+    if (typeof size === 'number') {
+      sizeStyle.marginHorizontal = size;
+    } else if (size && styles[size]) {
       sizeStyle = styles[size];
     }
     return (
