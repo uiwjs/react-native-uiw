@@ -7,7 +7,7 @@ export interface SegmentedControlProps<T> extends ButtonGroupProps {
   value?: string[] | T[];
   selectedIndex?: number;
   renderItem?: (label: string | T, selectedIndex: number, props: ButtonGroupProps) => JSX.Element;
-  onValueChange?: (selectedIndex: number) => void;
+  onValueChange?: (label: string | T, selectedIndex: number) => void;
 }
 
 export interface SegmentedControlState {
@@ -27,10 +27,10 @@ export default class SegmentedControl<T> extends Component<SegmentedControlProps
     selectedIndex: 0,
     color: '#108ee9',
   }
-  handlePress = (selectedIndex: number) => {
+  handlePress = (label: string | T, selectedIndex: number) => {
     const { onValueChange } = this.props;
     this.setState({ selectedIndex }, () => {
-      onValueChange && onValueChange(selectedIndex);
+      onValueChange && onValueChange(label, selectedIndex);
     });
   }
   render() {
@@ -48,7 +48,7 @@ export default class SegmentedControl<T> extends Component<SegmentedControlProps
             type: 'primary',
             style: [styl, otherProps.textStyle],
             textStyle: [textStyle],
-            onPress: this.handlePress.bind(this, key + 1),
+            onPress: this.handlePress.bind(this, label, key + 1),
           }
           const child = renderItem ? <View>{renderItem(label, key + 1, props)}</View> : label;
           return React.cloneElement(<Button key={key} />, { ...props }, child);
