@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ViewStyle, TextStyle } from 'react-native';
+import { ViewStyle, TextStyle } from 'react-native';
 import ButtonGroup, { ButtonGroupProps } from '../ButtonGroup';
 import Button from '../Button';
 
@@ -50,8 +50,10 @@ export default class SegmentedControl<T> extends Component<SegmentedControlProps
             textStyle: [textStyle],
             onPress: this.handlePress.bind(this, label, key + 1),
           }
-          const child = renderItem ? <View>{renderItem(label, key + 1, props)}</View> : label;
-          return React.cloneElement(<Button key={key} />, { ...props }, child);
+          if (renderItem) {
+            return renderItem(label, key + 1, props);
+          }
+          return React.cloneElement(<Button key={key} />, { ...props }, label);
         })}
       </ButtonGroup>
     );
