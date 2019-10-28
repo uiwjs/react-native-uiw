@@ -43,12 +43,12 @@ target 'ReactNativeUIW' do
   use_native_modules!
 end
 
-target 'ReactNativeUIW-tvOS' do
-  # Pods for ReactNativeUIW-tvOS
+# target 'ReactNativeUIW-tvOS' do
+#   # Pods for ReactNativeUIW-tvOS
 
-  target 'ReactNativeUIW-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+#   target 'ReactNativeUIW-tvOSTests' do
+#     inherit! :search_paths
+#     # Pods for testing
+#   end
 
-end
+# end
