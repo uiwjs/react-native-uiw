@@ -1,16 +1,29 @@
-import React from 'react';
-import { Text, TextProps, View, ViewProps } from 'react-native';
+import React, { Fragment } from 'react';
+import { Text, TextProps, ViewProps } from 'react-native';
 
 interface DivProps {
   children?: React.ReactNode;
 }
 
-export default function Div({ children, ...otherProps }: DivProps & TextProps & ViewProps): JSX.Element {
-  const someStr = React.Children.toArray(children).every(item => typeof item === 'string');
-  const Child = React.Children.toArray(children).map((item, idx) => {
-    if (!item) return null;
-    if (!React.isValidElement(item)) return <Text key={idx}>{item}</Text>;
-    return <View key={idx}>{item}</View>;
+export default function Div<T>({ children, ...otherProps }: DivProps & TextProps & ViewProps): JSX.Element | null {
+  if (!children) return null;
+  const someStr = React.Children.toArray(children).every(item => {
+    return typeof item === 'string' || (item && (item as any).type && (item as any).type.displayName === 'Text');
   });
-  return someStr ? <Text {...otherProps}>{Child}</Text> : <View {...otherProps}>{Child}</View>;
-}
+  if (someStr) {
+    return <Text {...otherProps} children={children} />;
+  }
+  return (
+    <Fragment>
+      {React.Children.toArray(children).map((child, idx) => {
+        if (typeof child === 'string') {
+          return <Text {...otherProps} children={child} key={idx} />;
+        }
+        if (!React.isValidElement(child)) {
+          return undefined
+        };
+        return React.cloneElement(child, { key: idx, ...otherProps });
+      }).filter(Boolean)}
+    </Fragment>
+  );
+};
