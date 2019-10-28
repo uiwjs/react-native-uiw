@@ -20,6 +20,7 @@ export interface IconsProps extends SvgProps {
 }
 
 export default class Icons extends React.Component<IconsProps> {
+  static displayName = 'uiwm.Icon';
   static defaultProps: IconsProps = {
     size: 26,
   }

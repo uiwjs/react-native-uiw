@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, TextProps, TouchableOpacity, ActivityIndicator, TouchableOpacityProps } from 'react-native';
+import { StyleSheet, TextProps, TouchableOpacity, ActivityIndicator, TouchableOpacityProps } from 'react-native';
 import { color, colors } from '../utils';
+import Div from '../Typography/Div';
 
 export interface ButtonProps extends TouchableOpacityProps {
   color?: string;
@@ -34,7 +35,7 @@ export interface ButtonProps extends TouchableOpacityProps {
   bordered?: boolean;
 }
 
-export default class ButtonView extends React.Component<ButtonProps> {
+export default class ButtonView<T> extends React.Component<ButtonProps> {
   static defaultProps: ButtonProps = {
     activeOpacity: .5,
     rounded: 5,
@@ -87,20 +88,28 @@ export default class ButtonView extends React.Component<ButtonProps> {
     if (size && styles[size]) {
       sizeStyle = styles[size];
     }
+    let boxStyle = {};
+    const stylKey = `${size}Box` as keyof typeof styles;
+    if (size && styles[stylKey]) {
+      boxStyle = styles[stylKey];
+    }
+    if (!children) return null;
     return (
       <TouchableOpacity
-        style={[styles.button, styles.content, buttonStyle, style]}
+        style={[styles.button, styles.content, buttonStyle, boxStyle, style]}
         disabled={disabled}
         {...restProps}
       >
         {loading && (
-          <ActivityIndicator size={16} color={textColor} style={styles.icon} />
+          <ActivityIndicator
+            size={16}
+            color={textColor}
+            style={styles.icon}
+          />
         )}
-        {React.isValidElement(children) && children && children.type && (children.type as any).displayName !== 'Text' ? React.cloneElement(children, {
-          style: [sizeStyle, styles.label, textStyle, childStyle]
-        }) : (
-          <Text style={[sizeStyle, styles.label, textStyle, childStyle]}>{children}</Text>
-        )}
+        {React.Children.toArray(children).map((child: any, idx) => {
+          return <Div key={idx} style={[sizeStyle, styles.label, textStyle, childStyle]}>{child}</Div>;
+        })}
       </TouchableOpacity>
     );
   }
@@ -108,7 +117,6 @@ export default class ButtonView extends React.Component<ButtonProps> {
 
 const styles = StyleSheet.create({
   button: {
-    padding: 3,
     borderStyle: 'solid',
     display: 'flex',
   },
@@ -119,26 +127,30 @@ const styles = StyleSheet.create({
   },
   icon: {
     width: 16,
-    marginLeft: 12,
-    marginRight: -4,
+    marginRight: 4,
   },
   label: {
-    textAlign: 'center',
-    letterSpacing: 1,
+    // textAlign: 'center',
+  },
+  smallBox: {
+    paddingHorizontal: 3,
+  },
+  defaultBox: {
+    paddingHorizontal: 8,
+  },
+  largeBox: {
+    paddingHorizontal: 10,
   },
   small: {
-    marginVertical: 6,
-    marginHorizontal: 12,
+    marginVertical: 4,
     fontSize: 14,
   },
   default: {
     marginVertical: 8,
-    marginHorizontal: 14,
     fontSize: 16,
   },
   large: {
     marginVertical: 10,
-    marginHorizontal: 16,
     fontSize: 18,
   }
 });
