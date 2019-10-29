@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator, ActivityIndicatorProps } from 'react-native';
+import { View, ViewProps, Text, StyleSheet, ActivityIndicator, ActivityIndicatorProps } from 'react-native';
 
 const styles = StyleSheet.create({
   defalut: {
     position: 'absolute',
     height: '100%',
-    zIndex: 99,
     width: '100%',
+    zIndex: 99,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    overflow: 'hidden',
-
   },
   indicator: {
     marginRight: 5,
@@ -21,7 +19,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export interface LoaderProps {
+export interface LoaderProps extends ViewProps {
   /**
    * 图标的大小 (default is `small`)
    */
@@ -57,9 +55,10 @@ export default class Loader extends Component<LoaderProps> {
     maskColor: 'rgba(255, 255, 255, 0.85)',
     loading: true,
     color: 'gray',
+    size: 'small',
   }
   render() {
-    const { children, color: loaderColor, maskColor, rounded, loading, tip, size, vertical } = this.props;
+    const { children, color: loaderColor, maskColor, rounded, loading, tip, size, vertical, ...otherProps } = this.props;
     let styleProps: ActivityIndicatorProps['style'] = {};
     if (maskColor) {
       styleProps.backgroundColor = maskColor;
@@ -70,14 +69,23 @@ export default class Loader extends Component<LoaderProps> {
     if (vertical) {
       styleProps.flexDirection = 'column';
     }
+    if (!children && !tip) {
+      return <ActivityIndicator animating={loading} size={size} color={loaderColor} />;
+    }
+    const tips = (tip || loading) ? (
+      <View style={[styles[loading ? 'defalut' : 'stopActivity'], styleProps]}>
+        <ActivityIndicator animating={loading} size={size} color={loaderColor} />
+        {tip && (
+          typeof tip === 'string' ? <Text style={{ color: loaderColor }}>{tip}</Text> : <View>{tip}</View>
+        )}
+      </View>
+    ) : null;
+    if (!children && tip) {
+      return tips;
+    }
     return (
-      <View>
-        <View style={[styles[loading ? 'defalut' : 'stopActivity'], styleProps]}>
-          <ActivityIndicator animating={loading} size={size} color={loaderColor} />
-          {tip && (
-            typeof tip === 'string' ? <Text style={{ color: loaderColor }}> {tip} </Text> : <View>{tip}</View>
-          )}
-        </View>
+      <View {...otherProps}>
+        {tips}
         {children}
       </View>
     );

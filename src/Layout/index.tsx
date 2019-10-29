@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingTop: 25,
-    paddingBottom: 25,
+    paddingBottom: 8,
     paddingLeft: 16,
     paddingRight: 16,
     shadowColor: '#E6E6E6',
@@ -186,6 +186,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     backgroundColor: '#F7F7F7',
     paddingLeft: 16,
+    marginTop: 16,
     paddingRight: 16,
     paddingTop: 12,
     paddingBottom: 12,
@@ -193,9 +194,9 @@ const styles = StyleSheet.create({
     color: '#9A9A9A'
   },
   cardBody: {
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingBottom: 16,
+    // paddingLeft: 16,
+    // paddingRight: 16,
+    // paddingBottom: 16,
   },
   extra: {
     backgroundColor: '#F7F7F7',

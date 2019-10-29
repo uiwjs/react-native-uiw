@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import Layout, { Container } from '../../Layout';
-import { ButtonGroup, Button, Loader, List, Icon, Spacing } from '../../../components';
+import { ButtonGroup, Button, Loader, Spacing } from '../../../components';
 import { ComProps } from '../../typings';
 const { Header, Body, Card, Footer } = Layout;
 
@@ -17,6 +17,9 @@ export default class LoaderView extends Component<LoaderViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
+            <Card title="基础实例" bodyStyle={{ minHeight: 60 }}>
+              <Loader rounded={5} tip="加载中..." />
+            </Card>
             <Card title="基础实例">
               <Loader rounded={5}>
                 <ButtonGroup>
@@ -55,7 +58,7 @@ export default class LoaderView extends Component<LoaderViewProps> {
             <Card title="设置颜色 loading?: boolean">
               <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap-reverse' }}>
                 <Loader color="red" loading={false}>
-                  <Button>默认按钮</Button>
+                  <Button>默认按钮 loading=false</Button>
                 </Loader>
               </View>
             </Card>

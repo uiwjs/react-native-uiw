@@ -26,13 +26,14 @@ function Demo() {
 
 <!--DemoStart--> 
 ```jsx
+import { View } from 'react-native';
 import { Button，Loader } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <Loader color="red">
-      <Button>默认按钮</Button>
-    </Loader>
+    <View style={{ minHeight: 60 }}>
+      <Loader color="red" />
+    </View>
   );
 }
 ```
