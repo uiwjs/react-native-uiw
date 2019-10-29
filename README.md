@@ -71,6 +71,7 @@ export default class Demo extends React.Component {
 
 - [Button](components/Button/README.md)
 - [ButtonGroup](components/ButtonGroup/README.md)
+- [CheckBox](components/CheckBox/README.md)
 - [Radio](components/Radio/README.md)
 - [SegmentedControl](components/SegmentedControl/README.md)
 - [Slider](components/Slider/README.md)
