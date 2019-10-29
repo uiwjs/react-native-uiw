@@ -50,11 +50,22 @@ export default class SwitchView extends React.Component<SwitchViewProps, SwitchV
             </Card>
             <Card title={`列表中展示，不受控组件`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }} />
             <List flat={false} extra={<Switch style={{ position: 'absolute', right: 0 }} />}>
-              <List.Item extra={<Switch checked style={{ position: 'absolute', right: 0 }} />}>自动设置</List.Item>
-              <List.Item>24小时制</List.Item>
+              <List.Item extra={<Switch color="red" checked style={{ position: 'absolute', right: 0 }} />}>自动设置</List.Item>
+              <List.Item extra={<Switch color="#2EA3F4" checked style={{ position: 'absolute', right: 0 }} />}>24小时制</List.Item>
               <List.Item>12小时制</List.Item>
             </List>
             <Spacing />
+            <Card title={`设置颜色，color|trackStyle|thumbColor`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+              <WingBlank>
+                <Flex direction="row">
+                  <Switch thumbColor="#ffe9a6" />
+                  <Spacing type="horizontal" />
+                  <Switch trackStyle={{ backgroundColor: 'red', borderColor: 'red'}} />
+                  <Spacing type="horizontal" />
+                  <Switch checked={true} color="#393E48" />
+                </Flex>
+              </WingBlank>
+            </Card>
             <Card title={`尺寸大小，size?: 'small' | 'default' | 'large';`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
               <WingBlank>
                 <Flex direction="row">

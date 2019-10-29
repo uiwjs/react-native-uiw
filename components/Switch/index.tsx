@@ -5,6 +5,7 @@ export interface SwitchProps extends SwitchPropsDefault {
   trackStyle?: ViewStyle;
   thumbStyle?: ViewStyle;
   checked?: boolean;
+  color?: string;
   /**
    * 设置大小
    */
@@ -29,6 +30,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     checked: false,
     size: 'default',
     thumbColor: '#fff',
+    color: '#4DD964',
     onValueChange: () => {},
   }
   constructor(props: SwitchProps) {
@@ -103,7 +105,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     });
   }
   render() {
-    const { style, size, checked, disabled, thumbColor, trackStyle, thumbStyle, ...otherProps } = this.props;
+    const { style, size, checked, color, disabled, thumbColor, trackStyle, thumbStyle, ...otherProps } = this.props;
     const { containerSize } = this.state;
     const bgBorder = this.state.borderValue.interpolate({
       inputRange: [2, this.height],
@@ -143,7 +145,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
         />
         <Animated.View style={[
           styles.position,
-          { backgroundColor: this.state.checked ? '#4DD964' : '', borderRadius: 16, opacity: this.state.bgOpacity }
+          { backgroundColor: this.state.checked ? color : '', borderRadius: 16, opacity: this.state.bgOpacity }
         ]} />
         <Animated.View style={[
           styles.grip, thumbStyle, disabled ? styles.shadowDisable : styles.shadow,

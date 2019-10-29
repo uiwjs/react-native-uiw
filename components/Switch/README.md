@@ -58,6 +58,7 @@ function Demo() {
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
 | `checked` | 是否被选中 | Boolean | `false` |
+| `color` | 设置 | Boolean | `false` |
 | `size` | 尺寸大小 | `small`, `default`, `large` | `default` |
 | `disabled` | 如果为`true`，则用户将无法切换开关。 | Boolean | `false` |
 | `trackStyle` | 设置背景样式。 | ViewStyle | - |
