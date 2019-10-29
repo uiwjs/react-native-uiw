@@ -5,7 +5,7 @@ import { color, colors } from '../utils';
 
 const styles = StyleSheet.create({
   base: {
-    paddingHorizontal: 8,
+    paddingHorizontal: 4,
     paddingVertical: 2,
     borderRadius: 12,
   },
@@ -13,12 +13,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     textAlign: 'center',
     fontWeight: '600',
-    fontSize: 14,
+    fontSize: 10,
   },
   dot: {
     height: 6,
     width: 6,
     marginHorizontal: 4,
+    marginVertical: 6,
     borderRadius: 3,
   }
 });

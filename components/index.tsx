@@ -1,7 +1,8 @@
 export { default as Avatar } from './Avatar';
+export { default as Badge } from './Badge';
 export { default as Button } from './Button';
 export { default as ButtonGroup } from './ButtonGroup';
-export { default as Badge } from './Badge';
+export { default as CheckBox } from './CheckBox';
 export { default as Divider } from './Divider';
 export { default as Drawer } from './Drawer';
 export { default as Flex } from './Flex';

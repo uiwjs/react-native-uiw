@@ -103,6 +103,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  CheckBox: {
+    screen: require('./routes/CheckBox').default,
+    path: 'CheckBox',
+    params: {
+      title: 'CheckBox 复选框',
+      description: '一组备选项中进行多选。'
+    },
+    navigationOptions: {
+      title: 'CheckBox 复选框',
+      ...navOtions,
+    },
+  },
   Divider: {
     screen: require('./routes/Divider').default,
     path: 'Divider',

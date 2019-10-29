@@ -17,7 +17,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <List flat={false}>
+            <List size="small" flat={false}>
               <List.Item onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
               <List.Item extra={<Badge text="450k" color="green" />}>
                 <Badge type="dot" text="450k" color="green" />
@@ -33,7 +33,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
                 <Text>一文带你搞懂 API 网关</Text>
               </List.Item>
             </List>
-            <List flat={false} title="设置类型 type?: 'dot' | 'text'">
+            <List size="small" flat={false} title="设置类型 type?: 'dot' | 'text'">
               <List.Item extra={<Badge type="dot" text="450k" color="red" />} onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
               <List.Item extra={<Badge text="450k" color="red" />}>
                 <Badge type="dot" text="450k" color="green" />
