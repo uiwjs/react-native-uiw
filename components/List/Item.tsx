@@ -15,7 +15,7 @@ export interface ListItemProps extends ViewProps, TouchableWithoutFeedbackProps 
 export default class ListItem extends Component<ListItemProps> {
   static defaultProps: ListItemProps = {
     underlayColor: '#DADADA',
-    paddingLeft: 16,
+    // paddingLeft: 16,
   }
   render() {
     const { children, style, onPress, paddingLeft, underlayColor, extra, extraStyle, size, ...otherProps } = this.props;

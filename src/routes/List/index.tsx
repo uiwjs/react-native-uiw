@@ -53,7 +53,10 @@ export default class ListView extends React.Component<ListViewProps> {
               <List.Item
                 size="small"
                 extra={<Fragment><Badge text="450k" color="green" /><Icon name="right" fill="#abb0b5" size={14} /></Fragment>}
-                onPress={() => navigation.goBack()}>Protobuf 生成 Go代码指南</List.Item>
+                onPress={() => navigation.goBack()}>
+                <Icon size={14} name="shopping-cart" fill="#008EF0" style={{ marginRight: 5 }} />
+                <Text>单元格</Text>
+              </List.Item>
               <List.Item
                 onPress={() => navigation.goBack()}
                 extra={<Fragment><Icon name="search" fill="#abb0b5" size={14} /></Fragment>}
@@ -61,6 +64,11 @@ export default class ListView extends React.Component<ListViewProps> {
                 <Icon size={14} name="shopping-cart" fill="#008EF0" style={{ marginRight: 5 }} />
                 <Text>单元格</Text>
               </List.Item>
+            </List>
+            <List flat={false} paddingLeft={100} title="设置左边补白" extra="test">
+              <List.Item extra={<Icon name="right" fill="#abb0b5" size={14} />} onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
+              <List.Item extra={<Icon name="apple" size={14} />}>Protobuf 生成 Go代码指南</List.Item>
+              <List.Item extra="说明">Git 版本控制的核心概念</List.Item>
             </List>
           </Body>
           <Footer />
