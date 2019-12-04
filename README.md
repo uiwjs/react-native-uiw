@@ -109,6 +109,7 @@ Run instructions for Android:
 ```bash
 rm -rf ios/build
 # https://github.com/react-navigation/react-navigation/issues/6071
+cd ios/
 pod install
 # Clear pods.
 pod deintegrate

@@ -74,4 +74,4 @@ function Demo() {
 | `disabled` | 是否启用 | Boolean | `false` |
 | `selectedIndex` | 选中项在数组中的索引 | Number | 0 |
 | `renderItem` | 自定义单元格 | (data, index, rowNum): void | - |
-| `onValueChange` | 回调函数 | (selectedIndex): void | - |
+| `onValueChange` | 回调函数 | (label, selectedIndex): void | - |
