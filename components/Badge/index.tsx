@@ -42,7 +42,7 @@ export default function Badge(props: BadgeProps) {
   const luminosTextColor = colorObj.luminosity() < 0.5 ? '#fff' : '#000';
   if (type === 'dot') {
     return (
-      <View style={[styles.dot, { backgroundColor: $color }]} />
+      <View style={[styles.dot, { backgroundColor: $color }, style]} />
     )
   }
   const content = children || (
