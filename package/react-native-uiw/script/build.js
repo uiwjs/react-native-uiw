@@ -46,6 +46,7 @@ const tsc = {
 };
 
 (async () => {
+  const projectPath = path.join(process.cwd(), '..', '..');
   const root = path.join(process.cwd(), 'src');
   const output = path.join(process.cwd(), 'lib');
   const tscPath = path.join(process.cwd(), 'tsconfig.json');
@@ -78,13 +79,13 @@ const tsc = {
   await fs.remove(path.join(process.cwd(), 'package-lock.json'));
   await fs.remove(path.join(process.cwd(), 'yarn.lock'));
   await fs.remove(path.join(process.cwd(), 'node_modules'));
+  await execute(`cd ${projectPath} && git add .`);
+  await execute(
+    `cd ${projectPath} && git commit -m "released v${pkg.version}"`,
+  );
+  await execute(`cd ${projectPath} && git push`);
   await execute(`git tag -a v${pkg.version} -m "released v${pkg.version}"`);
   await execute('git push --tags');
-  await execute(`cd ${process.cwd()} && git add .`);
-  await execute(
-    `cd ${process.cwd()} && git commit -m "released v${pkg.version}"`,
-  );
-  await execute('git push');
 })();
 
 function execute(command) {
