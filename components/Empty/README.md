@@ -135,4 +135,4 @@ class Demo extends Component {
 | `children` | 不光提示文本，还有更多内容，`label` 将不起作用 | ReactNode | - |
 | `labelStyle` | 设置提示文本样式 | TextProps['style'] | - |
 | `size` | 图标大小 | Number | `64` |
-| `xml` | 传递 SVG xml 字符串，自定义图标 | String | - |
+| `xml` | 传递 SVG xml 字符串，自定义图标，设为 `null` 将不展示图标。 | String | - |

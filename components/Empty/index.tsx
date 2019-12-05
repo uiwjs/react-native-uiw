@@ -48,7 +48,7 @@ export default class Empty extends Component<EmptyProps> {
     const { size, label, xml, labelStyle, children, ...props } = this.props;
     return (
       <Flex direction="column" justify="center" align="center" {...props}>
-        <Icon xml={xml} size={size} />
+        {xml && <Icon xml={xml} size={size} />}
         {!!children ? children : (
           label && typeof label === 'string' && <Text style={StyleSheet.flatten([styles.label, labelStyle])}>{label}</Text>
         )}
