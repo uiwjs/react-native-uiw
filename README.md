@@ -72,7 +72,6 @@ export default class Demo extends React.Component {
 - [Button](components/Button/README.md)
 - [ButtonGroup](components/ButtonGroup/README.md)
 - [CheckBox](components/CheckBox/README.md)
-- [Empty](components/Empty/README.md)
 - [Radio](components/Radio/README.md)
 - [SegmentedControl](components/SegmentedControl/README.md)
 - [Slider](components/Slider/README.md)
@@ -82,6 +81,7 @@ export default class Demo extends React.Component {
 
 - [Avatar](components/Avatar/README.md)
 - [Badge](components/Badge/README.md)
+- [Empty](components/Empty/README.md)
 - [Grid](components/Grid/README.md)
 - [Icon](components/Icon/README.md)
 - [List](components/List/README.md)
