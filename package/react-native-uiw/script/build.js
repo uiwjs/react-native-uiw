@@ -6,7 +6,8 @@ const pkg = require('../package.json');
 
 function transform(filePath) {
   const {code} = babel.transformFileSync(filePath, {
-    presets: ['module:metro-react-native-babel-preset'],
+    presets: [require.resolve('@babel/preset-typescript')],
+    // presets: ['module:metro-react-native-babel-preset'],
   });
   return code;
 }
