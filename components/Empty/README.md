@@ -107,11 +107,32 @@ class Demo extends Component {
 ```
 <!--End-->
 
+### 提示更多内容
+
+<!--DemoStart--> 
+```js
+import { Empty } from '@uiw/react-native';
+
+class Demo extends Component {
+  render() {
+    return (
+      <Empty>
+        <View>
+          <Text style={{ color: 'red' }}>冇得数据咯</Text>
+        </View>
+      </Empty>
+    )
+  }
+}
+```
+<!--End-->
+
 ## Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `label` | 设置提示文本 | String | `暂无数据` |
+| `children` | 不光提示文本，还有更多内容，`label` 将不起作用 | ReactNode | - |
 | `labelStyle` | 设置提示文本样式 | TextProps['style'] | - |
 | `size` | 图标大小 | Number | `64` |
 | `xml` | 传递 SVG xml 字符串，自定义图标 | String | - |

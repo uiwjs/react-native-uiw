@@ -32,6 +32,10 @@ export interface EmptyProps extends FlexProps {
    * 替换默认的图标 这里是 SVG string
    */
   xml?: string;
+  /**
+   * 空提示更多内容
+   */
+  children?: React.ReactNode;
 }
 
 export default class Empty extends Component<EmptyProps> {
@@ -41,11 +45,13 @@ export default class Empty extends Component<EmptyProps> {
     xml: iconStr,
   }
   render() {
-    const { size, label, xml, labelStyle, ...props } = this.props;
+    const { size, label, xml, labelStyle, children, ...props } = this.props;
     return (
       <Flex direction="column" justify="center" align="center" {...props}>
         <Icon xml={xml} size={size} />
-        {label && <Text style={StyleSheet.flatten([styles.label, labelStyle])}>{label}</Text>}
+        {!!children ? children : (
+          label && typeof label === 'string' && <Text style={StyleSheet.flatten([styles.label, labelStyle])}>{label}</Text>
+        )}
       </Flex>
     );
   }
