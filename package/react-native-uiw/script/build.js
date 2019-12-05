@@ -80,8 +80,11 @@ const tsc = {
   await fs.remove(path.join(process.cwd(), 'node_modules'));
   await execute(`git tag -a v${pkg.version} -m "released v${pkg.version}"`);
   await execute('git push --tags');
-  await execute('git add .');
-  await execute(`git commit -m "released v${pkg.version}"`);
+  await execute(`cd ${process.cwd()} && git add .`);
+  await execute(
+    `cd ${process.cwd()} && git commit -m "released v${pkg.version}"`,
+  );
+  await execute('git push');
 })();
 
 function execute(command) {
