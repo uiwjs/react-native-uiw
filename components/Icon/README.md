@@ -76,6 +76,7 @@ class Demo extends Component {
 | `name` | 图标名称 | String | - |
 | `fill` | 填充颜色 | String | `#000000` |
 | `stroke` | 轮廓颜色 | String | - |
+| `xml` | 传递 SVG xml 字符串，自定义图标 | String | - |
 | `size` | 大小 | Number | 26 |
 | `width` | 宽度(默认为`size`的值) | Number | 26 |
 | `height` | 高度(默认为`size`的值) | Number | 26 |

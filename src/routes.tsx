@@ -139,6 +139,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Empty: {
+    screen: require('./routes/Empty').default,
+    path: 'Empty',
+    params: {
+      title: 'Empty 空状态',
+      description: '空状态时的展示占位图。'
+    },
+    navigationOptions: {
+      title: 'Empty 空状态',
+      ...navOtions,
+    },
+  },
   Flex: {
     screen: require('./routes/Flex').default,
     path: 'Flex',
