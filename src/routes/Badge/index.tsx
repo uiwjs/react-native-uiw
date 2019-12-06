@@ -20,7 +20,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
             <List size="small" flat={false}>
               <List.Item onPress={() => navigation.goBack()}>这6种编码方法，你掌握了几个？</List.Item>
               <List.Item extra={<Badge text="450k" color="green" />}>
-                <Badge type="dot" text="450k" color="green" />
+                <Badge type="dot" text={<Text>450k</Text>} color="green" />
                 <Text>Protobuf 生成 Go代码指南</Text>
               </List.Item>
               <List.Item extra={<Badge text="10" color="green" />}>Git 版本控制的核心概念</List.Item>

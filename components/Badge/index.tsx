@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 export interface BadgeProps extends ViewProps {
   children?: React.ReactNode;
   color?: colors.Colors | string;
-  text?: string;
+  text?: string | Element;
   /**
    * 设置圆角，默认 `12`
    */
@@ -72,7 +72,10 @@ Badge.propTypes = {
   ]),
   color: PropTypes.string,
   style: PropTypes.any,
-  text: PropTypes.string,
+  text: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.string,
+  ]),
 };
 Badge.defaultProps = {
   color: 'primary',
