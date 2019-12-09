@@ -81,6 +81,7 @@ export default class Demo extends React.Component {
 
 - [Avatar](components/Avatar/README.md)
 - [Badge](components/Badge/README.md)
+- [Ellipsis](components/Ellipsis/README.md)
 - [Empty](components/Empty/README.md)
 - [Grid](components/Grid/README.md)
 - [Icon](components/Icon/README.md)

@@ -6,6 +6,7 @@ export { default as CheckBox } from './CheckBox';
 export { default as Divider } from './Divider';
 export { default as Drawer } from './Drawer';
 export { default as Empty } from './Empty';
+export { default as Ellipsis } from './Ellipsis';
 export { default as Flex } from './Flex';
 export { default as Grid } from './Grid';
 export { default as Icon } from './Icon';

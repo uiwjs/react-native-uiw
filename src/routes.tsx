@@ -139,6 +139,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Ellipsis: {
+    screen: require('./routes/Ellipsis').default,
+    path: 'Ellipsis',
+    params: {
+      title: 'Ellipsis 超出省略',
+      description: '用于文本过长，超出长度显示 "..."'
+    },
+    navigationOptions: {
+      title: 'Ellipsis 超出省略',
+      ...navOtions,
+    },
+  },
   Empty: {
     screen: require('./routes/Empty').default,
     path: 'Empty',
