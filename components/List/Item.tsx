@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, ViewProps, StyleSheet, TouchableHighlight, TouchableWithoutFeedbackProps, Text, TextProps } from 'react-native';
+import { View, ViewProps, StyleSheet, StyleProp, TextStyle, ViewStyle, TouchableHighlight, TouchableWithoutFeedbackProps, Text, TextProps } from 'react-native';
 
 export interface ListItemProps extends ViewProps, TouchableWithoutFeedbackProps {
   underlayColor?: string;
   paddingLeft?: number;
   extra?: React.ReactNode;
-  extraStyle?: ViewProps['style'] | TextProps['style'];
+  extraStyle?: StyleProp<ViewStyle> | StyleProp<TextStyle>;
+  touchableStyle?: StyleProp<ViewStyle>;
   /**
    * 单元格大小
    */
@@ -18,7 +19,7 @@ export default class ListItem extends Component<ListItemProps> {
     // paddingLeft: 16,
   }
   render() {
-    const { children, style, onPress, paddingLeft, underlayColor, extra, extraStyle, size, ...otherProps } = this.props;
+    const { children, style, onPress, paddingLeft, underlayColor, extra, extraStyle, touchableStyle, size, ...otherProps } = this.props;
     let sizeStyle = {};
     if (size && styles[size]) {
       sizeStyle = styles[size];
@@ -44,7 +45,7 @@ export default class ListItem extends Component<ListItemProps> {
 
     if (onPress) {
       return (
-        <TouchableHighlight underlayColor={underlayColor} style={[styles.warpper, { paddingLeft }]} onPress={onPress} {...otherProps}>
+        <TouchableHighlight underlayColor={underlayColor} style={[styles.warpper, { paddingLeft }, touchableStyle]} onPress={onPress} {...otherProps}>
           {cell}
         </TouchableHighlight>
       )

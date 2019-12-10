@@ -59,6 +59,49 @@ export default function Demo() {
 <!--End-->
 
 
+### 基础示例
+
+<!--DemoStart--> 
+```jsx
+import { View, Text } from 'react-native';
+import { List, Icon } from '@uiw/react-native';
+
+export default function Demo() {
+  return (
+    <List
+      flat={true}
+      data={[
+        { date: '8月12日', title: '这里是标题', des: '这里是详情内容' },
+        { date: '8月10日', title: 'SO18081000004', des: '这里是详情内容' },
+        { date: '8月2日', title: 'SO18080200003', des: '这里是详情内容' },
+        { date: '8月1日', title: 'SO18080100002', des: '这里是详情内容' },
+        { date: '8月1日', title: 'SO18080100001', des: '这里是详情内容' }
+      ]}
+      renderItem={({ item, index }) => {
+        return (
+          <List.Item
+            key={index}
+            extra={<Icon name="right" fill="#abb0b5" size={14} />}
+            size="large"
+            paddingLeft={15}
+            style={{ borderBottomWidth: 0, }}
+            onPress={() => { }}
+          >
+            <View>
+              <Text>{item.title}</Text>
+              <View>
+                <Text>{item.des}</Text>
+              </View>
+            </View>
+          </List.Item>
+        )
+      }}
+    />
+  );
+}
+```
+<!--End-->
+
 ## Props
 
 ### List
@@ -88,6 +131,7 @@ export default function Demo() {
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
 | `onPress` | 释放触摸时调用，但如果取消则不调用（例如通过窃取响应者锁定的滚动）。 | (event: GestureResponderEvent) => void | - |
+| `touchableStyle` | 设置 `onPress` 可以设置样式。 | ViewStyle | - |
 | `underlayColor` | 当 `onPress` 存在设置 `underlayColor` 点击后的激活颜色 | String | `#DADADA` |
 
 ### 共同属性
