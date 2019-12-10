@@ -86,7 +86,7 @@ export default class List extends Component<ListProps, ListState> {
       props.renderItem = this.renderItemChild.bind(this);
     } else if (typeof renderItem === 'function') {
       props.data = data;
-      props.renderItem = (itemProps: ListRenderItemInfoCustom<{}>) => <Item paddingLeft={paddingLeft} size={size} extra={extra}>{renderItem(itemProps)}</Item>;
+      props.renderItem = (itemProps:  ListRenderItemInfoCustom<{}>) => renderItem({ ...itemProps });
     }
     let header = ListHeaderComponent;
     if (title) {
