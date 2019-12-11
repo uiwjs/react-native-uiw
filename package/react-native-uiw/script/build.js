@@ -55,6 +55,7 @@ const tsc = {
   await fs.writeJSON(tscPath, tsc);
   await fs.remove(root);
   await fs.copy(path.join(process.cwd(), '../../components'), root);
+  await fs.copy(path.join(process.cwd(), '../../README.md'), process.cwd());
   const files = await getPath(root);
   files.forEach(itemPath => {
     if (/.(tsx|ts)$/.test(itemPath)) {
