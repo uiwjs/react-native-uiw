@@ -51,43 +51,50 @@ const tsc = {
   const root = path.join(process.cwd(), 'src');
   const output = path.join(process.cwd(), 'lib');
   const tscPath = path.join(process.cwd(), 'tsconfig.json');
-  await fs.remove(output);
-  await fs.writeJSON(tscPath, tsc);
-  await fs.remove(root);
-  await fs.copy(path.join(process.cwd(), '../../components'), root);
-  await fs.copy(path.join(process.cwd(), '../../README.md'), process.cwd());
-  const files = await getPath(root);
-  files.forEach(itemPath => {
-    if (/.(tsx|ts)$/.test(itemPath)) {
-      const code = transform(itemPath);
-      const outputFile = itemPath.replace(root, output);
-      fs.outputFileSync(outputFile.replace(/.(tsx|ts)$/, '.js'), code);
-      // eslint-disable-next-line prettier/prettier
-      console.log(`♻️: ${itemPath.replace(process.cwd(), '').replace(/^\//, '')} -> ${outputFile.replace(process.cwd(), '').replace(/^\//, '').replace(/\.tsx$/, '.js')}`);
-    }
-    if (/.(md|png)$/.test(itemPath)) {
-      const outputMd = itemPath.replace(root, output);
-      fs.ensureFileSync(outputMd);
-      fs.copyFileSync(itemPath, outputMd);
-      // eslint-disable-next-line prettier/prettier
-      console.log(`📋: ${itemPath.replace(process.cwd(), '').replace(/^\//, '')} -> ${outputMd.replace(process.cwd(), '').replace(/^\//, '')}`);
-    }
-  });
-  await execute('npm run type');
-  await execute('npm publish');
-  await fs.remove(root);
-  await fs.remove(output);
-  await fs.remove(tscPath);
-  await fs.remove(path.join(process.cwd(), 'package-lock.json'));
-  await fs.remove(path.join(process.cwd(), 'yarn.lock'));
-  await fs.remove(path.join(process.cwd(), 'node_modules'));
-  await execute(`cd ${projectPath} && git add .`);
-  await execute(
-    `cd ${projectPath} && git commit -m "released v${pkg.version}"`,
-  );
-  await execute(`cd ${projectPath} && git push`);
-  await execute(`git tag -a v${pkg.version} -m "released v${pkg.version}"`);
-  await execute('git push --tags');
+  try {
+    await fs.remove(output);
+    await fs.writeJSON(tscPath, tsc);
+    await fs.remove(root);
+    await fs.copy(path.join(process.cwd(), '../../components'), root);
+    await fs.copyFile(
+      path.join(process.cwd(), '../../README.md'),
+      process.cwd(),
+    );
+    const files = await getPath(root);
+    files.forEach(itemPath => {
+      if (/.(tsx|ts)$/.test(itemPath)) {
+        const code = transform(itemPath);
+        const outputFile = itemPath.replace(root, output);
+        fs.outputFileSync(outputFile.replace(/.(tsx|ts)$/, '.js'), code);
+        // eslint-disable-next-line prettier/prettier
+        console.log(`♻️: ${itemPath.replace(process.cwd(), '').replace(/^\//, '')} -> ${outputFile.replace(process.cwd(), '').replace(/^\//, '').replace(/\.tsx$/, '.js')}`);
+      }
+      if (/.(md|png)$/.test(itemPath)) {
+        const outputMd = itemPath.replace(root, output);
+        fs.ensureFileSync(outputMd);
+        fs.copyFileSync(itemPath, outputMd);
+        // eslint-disable-next-line prettier/prettier
+        console.log(`📋: ${itemPath.replace(process.cwd(), '').replace(/^\//, '')} -> ${outputMd.replace(process.cwd(), '').replace(/^\//, '')}`);
+      }
+    });
+    await execute('npm run type');
+    await execute('npm publish');
+    await fs.remove(root);
+    await fs.remove(output);
+    await fs.remove(tscPath);
+    await fs.remove(path.join(process.cwd(), 'package-lock.json'));
+    await fs.remove(path.join(process.cwd(), 'yarn.lock'));
+    await fs.remove(path.join(process.cwd(), 'node_modules'));
+    await execute(`cd ${projectPath} && git add .`);
+    await execute(
+      `cd ${projectPath} && git commit -m "released v${pkg.version}"`,
+    );
+    await execute(`cd ${projectPath} && git push`);
+    await execute(`git tag -a v${pkg.version} -m "released v${pkg.version}"`);
+    await execute('git push --tags');
+  } catch (err) {
+    console.log(err);
+  }
 })();
 
 function execute(command) {
