@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, FlatListProps, Text, View } from 'react-native';
+import { FlatList, FlatListProps, Text, StyleProp, ViewStyle, View } from 'react-native';
 import Item, { ListItemProps } from './Item';
 
 const noop = () => null;
@@ -34,6 +34,7 @@ export interface ListProps extends Omit<FlatListProps<{}>, 'renderItem'> {
    * 额外内容，展示右侧内容;
    */
   extra?: React.ReactNode;
+  titleStyle?: StyleProp<ViewStyle>;
   paddingLeft?: ListItemProps['paddingLeft'];
   size?: ListItemProps['size'],
 }
@@ -79,7 +80,7 @@ export default class List extends Component<ListProps, ListState> {
     return props.item as React.ReactElement;
   }
   render() {
-    const { renderItem, data, children, paddingLeft, flat, size, extra, ListHeaderComponent, title, ...otherProps} = this.props;
+    const { renderItem, data, children, titleStyle, paddingLeft, flat, size, extra, ListHeaderComponent, title, ...otherProps} = this.props;
     const props = {} as ListProps & FlatListProps<{}>;
     if (!renderItem) {
       props.data = this.state.data;
@@ -91,7 +92,7 @@ export default class List extends Component<ListProps, ListState> {
     let header = ListHeaderComponent;
     if (title) {
       header = (
-        <View style={[{ paddingLeft, paddingVertical: 12 }]}>
+        <View style={[{ paddingLeft, paddingVertical: 12 }, titleStyle]}>
           {typeof title == 'string' ? <Text style={{ color: '#808080' }}>{title}</Text> : <View>{title}</View>}
         </View>
       );
