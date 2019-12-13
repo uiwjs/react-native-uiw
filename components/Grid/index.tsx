@@ -35,6 +35,7 @@ export interface GridProps extends ViewProps {
   columns?: number;
   hasLine?: boolean;
   itemStyle?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle & ViewStyle>;
   iconStyle?: StyleProp<ImageStyle & TextStyle & ViewStyle>;
   renderItem?: (data: ItemData, index: number, row: number) => React.ReactNode;
   onPress?: (data: ItemData, index: number, row: number, event: GestureResponderEvent) => void;
@@ -46,7 +47,7 @@ export default class Grid extends Component<GridProps> {
     hasLine: true,
   }
   render() {
-    const { style, data, iconStyle, itemStyle, renderItem, hasLine, columns = 4, onPress, ...otherProps } = this.props;
+    const { style, data, iconStyle, textStyle, itemStyle, renderItem, hasLine, columns = 4, onPress, ...otherProps } = this.props;
     if (!Array.isArray(data)) return null;
     const childs: React.ReactNode[][] = []
     let childItem: React.ReactNode[] = [];
@@ -72,7 +73,7 @@ export default class Grid extends Component<GridProps> {
         const itemContent = (
           <Fragment>
             {icon && <MaybeTextOrView style={iconStyle}>{icon}</MaybeTextOrView>}
-            <MaybeTextOrView style={{ marginTop: 9, fontSize: 12 }}>{item.text}</MaybeTextOrView>
+            <MaybeTextOrView style={[{ marginTop: 9, fontSize: 12 }, textStyle]}>{item.text}</MaybeTextOrView>
           </Fragment>
         )
         childItem!.push(
