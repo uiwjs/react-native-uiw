@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { View, ViewProps, Text, Image, ImageProps, TextProps, TouchableOpacity, GestureResponderEvent, StyleSheet } from 'react-native';
+import { View, ViewProps, ViewStyle, Text, TextStyle, StyleProp, Image, ImageStyle, TextProps, TouchableOpacity, GestureResponderEvent, StyleSheet } from 'react-native';
 import Flex from '../Flex';
 
 interface MaybeTextOrViewProps {
@@ -31,11 +31,11 @@ interface ItemData {
 }
 
 export interface GridProps extends ViewProps {
-  data?: ItemData[],
+  data?: ItemData[];
   columns?: number;
   hasLine?: boolean;
-  itemStyle?: ViewProps['style']
-  iconStyle?: ImageProps['style']
+  itemStyle?: StyleProp<ViewStyle>;
+  iconStyle?: StyleProp<ImageStyle & TextStyle & ViewStyle>;
   renderItem?: (data: ItemData, index: number, row: number) => React.ReactNode;
   onPress?: (data: ItemData, index: number, row: number, event: GestureResponderEvent) => void;
 }
@@ -71,7 +71,7 @@ export default class Grid extends Component<GridProps> {
       } else {
         const itemContent = (
           <Fragment>
-            {icon && <MaybeTextOrView>{icon}</MaybeTextOrView>}
+            {icon && <MaybeTextOrView style={iconStyle}>{icon}</MaybeTextOrView>}
             <MaybeTextOrView style={{ marginTop: 9, fontSize: 12 }}>{item.text}</MaybeTextOrView>
           </Fragment>
         )
