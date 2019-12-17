@@ -61,6 +61,7 @@ function Demo() {
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `style` | 自定义样式 | Object | - |
+| `textStyle` | 设置文本样式 | TextStyle & ViewStyle | - |
 | `color` | 设置颜色 | String | - |
 | `checked` | 指定当前是否选中 | Boolean | - |
 | `checkedIcon` | 选中图标 | Boolean | - |

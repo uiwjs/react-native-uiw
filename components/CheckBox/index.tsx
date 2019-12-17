@@ -1,10 +1,11 @@
 import React from 'react';
-import { TouchableOpacity, TouchableOpacityProps, StyleSheet, View, ViewProps, StyleProp } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps, StyleSheet, View, ViewProps, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import Icon, { IconsName } from '../Icon';
 import { color } from '../utils';
 import Div from '../Typography/Div';
 
 export interface CheckBoxProps extends TouchableOpacityProps {
+  textStyle: StyleProp<TextStyle & ViewStyle>;
   checked?: boolean;
   disabled?: boolean;
   color?: string;
@@ -36,7 +37,7 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
     });
   }
   render() {
-    const { children, style, checkedIcon, unCheckedIcon, checked, disabled, color: $color, ...otherProps } = this.props;
+    const { children, style, textStyle, checkedIcon, unCheckedIcon, checked, disabled, color: $color, ...otherProps } = this.props;
     const { checked: $checked } = this.state;
     const iconName = (!!$checked ? checkedIcon : unCheckedIcon) as IconsName;
     const styIcon: ViewProps['style'] = {};
@@ -54,7 +55,7 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
         <View style={[styIcon]}>
           <Icon size={16} fill={colorIcon} name={iconName} />
         </View>
-        {children && <Div children={children} style={divStyl} />}
+        {children && <Div children={children} style={[divStyl, textStyle]} />}
       </TouchableOpacity>
     )
   }
