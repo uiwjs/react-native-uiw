@@ -30,6 +30,11 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
     unCheckedIcon: 'circle-check-o',
     color: '#008EF0',
   }
+  UNSAFE_componentWillReceiveProps(nextProps: CheckBoxProps) {
+    if(nextProps.checked !== this.props.checked) {
+      this.setState({ checked: !!nextProps.checked });
+    }
+  }
   onPress = () => {
     const { onChange } = this.props;
     this.setState({ checked: !this.state.checked }, () => {
