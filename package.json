@@ -1,5 +1,5 @@
 {
-  "name": "@uiw/react-native",
+  "name": "react-native-uiw",
   "version": "1.3.3",
   "description": "UIW for React Native",
   "private": true,

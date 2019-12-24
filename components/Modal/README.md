@@ -24,9 +24,6 @@ export default class ButtonGroupView extends Component {
     return (
       <Fragment>
         <Modal
-          animationType="none"
-          transparent={false}
-          // transparent={true}
           visible={this.state.modalVisible}
         >
           <SafeAreaView>

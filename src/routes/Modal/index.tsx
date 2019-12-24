@@ -27,20 +27,28 @@ export default class ModalView extends Component<ModalViewProps> {
           <Body>
             <Card title="基础实例">
               <Modal
-                animationType="slide"
-                transparent={false}
+                // maskClosable={false}
                 visible={this.state.modalVisible}
-                presentationStyle="pageSheet"
+                onClosed={() => this.setState({ modalVisible: false })}
                 onRequestClose={() => {
-                  Alert.alert('Modal has been closed.');
-                }}>
+                  this.setState({ modalVisible: false });
+                  // Alert.alert('Modal has been closed.');
+                }}
+              >
                 <SafeAreaView>
                   <View>
                     <Text>Hello World!</Text>
                     <Button onPress={() => this.setModalVisible(!this.state.modalVisible)}>
                       隐藏模态框
                     </Button>
-                    <Icon name="apple" />
+                    <Text>Hello World!</Text>
+                    <Button onPress={() => this.setModalVisible(!this.state.modalVisible)}>
+                      隐藏模态框
+                    </Button>
+                    <Text>Hello World!</Text>
+                    <Button onPress={() => this.setModalVisible(!this.state.modalVisible)}>
+                      隐藏模态框
+                    </Button>
                   </View>
                 </SafeAreaView>
               </Modal>
