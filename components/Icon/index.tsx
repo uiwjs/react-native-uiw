@@ -25,7 +25,7 @@ export default class Icons extends React.Component<IconsProps> {
     size: 26,
   }
   render() {
-    const { name, size, fill, stroke, xml, paths, ...otherProps } = this.props;
+    const { name, size, fill, stroke, xml, paths, color, ...otherProps } = this.props;
     if (xml) {
       return <SvgXml xml={xml} height={size} width={size} {...otherProps} />;
     }
@@ -38,7 +38,7 @@ export default class Icons extends React.Component<IconsProps> {
     }
     return (
       <Svg
-        fill={fill}
+        fill={fill || color}
         stroke={stroke}
         height={size}
         width={size}
