@@ -59,8 +59,9 @@ function Demo() {
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `isOpen` | 是否可见 | Boollean | `false` |
-| `placement` | 抽屉的方向 | `right`, `left` | `left` |
-| `drawerWidth` | 抽屉宽度 | Number | `300` |
+| `placement` | 抽屉的方向 | `right`, `left` , `top` `bottom`| `left` |
+| `drawerWidth` | 抽屉宽度(`placement`为`right`或`left`生效)  | Number | `300` |
+| `drawerHeight` | 抽屉高度(`placement`为`top`或`bottom`生效) | Number | `500` |
 | `style` | 设置 `Drawer` 样式 | ViewStyle | - |
 | `maskProps` | 遮罩层样式 | ViewStyle | - |
 | `maskClosable` | 点击遮罩层是否允许关闭 | Boollean | `true` |
