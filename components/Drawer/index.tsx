@@ -55,7 +55,6 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
   }
   UNSAFE_componentWillReceiveProps(nextProps: DrawerProps) {
     if (nextProps.isOpen !== this.props.isOpen) {
-      
       this.handleDrawer(!!nextProps.isOpen);
     }
   }
