@@ -14,7 +14,7 @@ export default function DrawerView({ navigation }: DrawerViewProps) {
   const [visible2, setVisible2] = useState(false);
   return (
     <Fragment>
-      <Drawer
+     <Drawer
         isOpen={visible2}
         placement="right"
         onChange={(isOpen) => setVisible2(isOpen)}
