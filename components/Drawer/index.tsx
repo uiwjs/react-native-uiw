@@ -83,11 +83,11 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
       <Fragment>
         <Animated.View
           style={[styles.drawer, dynamicDrawerStyles, style, {
-            width: drawerWidth,
+            width: isOpen ? drawerWidth : 0,
             transform: [
               { translateX: drawerValue.x }, // x轴移动
               { translateY: drawerValue.y }, // y轴移动
-            ]
+            ],
           }]}>
           {this.props.children}
         </Animated.View>
