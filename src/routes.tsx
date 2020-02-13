@@ -223,6 +223,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  MenuDropdown: {
+    screen: require('./routes/MenuDropdown').default,
+    path: 'MenuDropdown',
+    params: {
+      title: 'MenuDropdown 菜单下拉按钮',
+      description: '用于显示菜单'
+    },
+    navigationOptions: {
+      title: 'MenuDropdown 下拉框',
+      ...navOtions,
+    },
+  },
   Modal: {
     screen: require('./routes/Modal').default,
     path: 'Modal',
