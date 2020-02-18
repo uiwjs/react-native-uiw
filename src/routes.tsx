@@ -331,6 +331,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Toast: {
+    screen: require('./routes/Toast').default,
+    path: 'Toast',
+    params: {
+      title: 'Toast 提示',
+      description: '一种轻量级反馈/提示。'
+    },
+    navigationOptions: {
+      title: 'Toast 提示',
+      ...navOtions,
+    },
+  },
   WingBlank: {
     screen: require('./routes/WingBlank').default,
     path: 'WingBlank',
