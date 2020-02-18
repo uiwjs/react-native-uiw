@@ -19,8 +19,17 @@ export default class ToastView extends Component<ToastProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Card title="基础实例" style={styles.card} >
-              <Button onPress={() => { Toast.info('信息') }}>点击显示</Button>
+            <Card title="说明提示" style={styles.card} >
+              <Button onPress={() => { Toast.info('说明提示') }}>点击显示</Button>
+            </Card>
+            <Card title="成功提示" style={styles.card} >
+              <Button onPress={() => { Toast.success('成功提示') }}>点击显示</Button>
+            </Card>
+            <Card title="错误提示" style={styles.card} >
+              <Button onPress={() => { Toast.error('错误提示') }}>点击显示</Button>
+            </Card>
+            <Card title="警告提示" style={styles.card} >
+              <Button onPress={() => { Toast.warning('警告提示') }}>点击显示</Button>
             </Card>
           </Body>
           <Footer />
