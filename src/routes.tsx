@@ -307,6 +307,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  SwipeAction: {
+    screen: require('./routes/SwipeAction').default,
+    path: 'SwipeAction',
+    params: {
+      title: 'SwipeAction 唤出操作',
+      description: '结合手势操作，从屏幕一侧唤出操作。'
+    },
+    navigationOptions: {
+      title: 'SwipeAction 唤出操作',
+      ...navOtions,
+    },
+  },
   Switch: {
     screen: require('./routes/Switch').default,
     path: 'Switch',
