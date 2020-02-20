@@ -199,6 +199,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Input: {
+    screen: require('./routes/Input').default,
+    path: 'Input',
+    params: {
+      title: 'Input 输入文本',
+      description: '用于输入文本。'
+    },
+    navigationOptions: {
+      title: 'Input 输入文本',
+      ...navOtions,
+    },
+  },
   List: {
     screen: require('./routes/List').default,
     path: 'List',
