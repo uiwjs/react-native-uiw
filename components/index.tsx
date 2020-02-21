@@ -24,6 +24,7 @@ export { default as MenuDropdown } from './MenuDropdown';
 export { default as Toast } from './Toast';
 export { default as SwipeAction } from './SwipeAction';
 export { default as Input } from './Input';
+export { default as SelectCascader } from './SelectCascader';
 
 /**
  * Typography

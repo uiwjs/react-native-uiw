@@ -307,6 +307,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  SelectCascader: {
+    screen: require('./routes/SelectCascader').default,
+    path: 'SelectCascader',
+    params: {
+      title: 'SelectCascader 级联选择',
+      description: '可用于类似于省市区选择。'
+    },
+    navigationOptions: {
+      title: 'SelectCascader 级联选择',
+      ...navOtions,
+    },
+  },
   Spacing: {
     screen: require('./routes/Spacing').default,
     path: 'Spacing',
