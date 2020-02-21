@@ -22,7 +22,8 @@
     "react-native-svg": "9.13.3",
     "react-native-swipeout": "^2.3.6",
     "react-navigation": "4.0.10",
-    "react-navigation-stack": "1.9.0"
+    "react-navigation-stack": "1.9.0",
+    "rmc-picker": "^5.0.10"
   },
   "devDependencies": {
     "@babel/core": "7.6.2",

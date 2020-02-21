@@ -199,6 +199,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Input: {
+    screen: require('./routes/Input').default,
+    path: 'Input',
+    params: {
+      title: 'Input 输入文本',
+      description: '用于输入文本。'
+    },
+    navigationOptions: {
+      title: 'Input 输入文本',
+      ...navOtions,
+    },
+  },
   List: {
     screen: require('./routes/List').default,
     path: 'List',
@@ -292,6 +304,18 @@ export const routes: Routes = {
     },
     navigationOptions: {
       title: 'SegmentedControl 分段器',
+      ...navOtions,
+    },
+  },
+  SelectCascader: {
+    screen: require('./routes/SelectCascader').default,
+    path: 'SelectCascader',
+    params: {
+      title: 'SelectCascader 级联选择',
+      description: '可用于类似于省市区选择。'
+    },
+    navigationOptions: {
+      title: 'SelectCascader 级联选择',
       ...navOtions,
     },
   },
