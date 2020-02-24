@@ -23,7 +23,7 @@
     "react-native-swipeout": "^2.3.6",
     "react-navigation": "4.0.10",
     "react-navigation-stack": "1.9.0",
-    "rmc-picker": "^5.0.10"
+    "rmc-cascader": "^5.0.3"
   },
   "devDependencies": {
     "@babel/core": "7.6.2",
