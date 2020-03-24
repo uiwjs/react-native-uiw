@@ -12,9 +12,11 @@ export default function DrawerView({ navigation }: DrawerViewProps) {
   const title = navigation.getParam('title');
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
+  const [visible3, setVisible3] = useState(false);
+  const [visible4, setVisible4] = useState(false);
   return (
     <Fragment>
-      <Drawer
+     <Drawer
         isOpen={visible2}
         placement="right"
         onChange={(isOpen) => setVisible2(isOpen)}
@@ -33,6 +35,28 @@ export default function DrawerView({ navigation }: DrawerViewProps) {
           <Text>左边打开抽屉内容</Text>
         </View>
       </Drawer>
+      <Drawer
+        isOpen={visible3}
+        placement="top"
+        onChange={(isOpen) => {
+          setVisible3(isOpen)
+        }}
+      >
+        <View>
+          <Text>上边打开抽屉内容</Text>
+        </View>
+      </Drawer>
+      <Drawer
+        isOpen={visible4}
+        placement="bottom"
+        onChange={(isOpen) => {
+          setVisible4(isOpen)
+        }}
+      >
+        <View>
+          <Text>下边打开抽屉内容</Text>
+        </View>
+      </Drawer>
       <Container>
         <Layout>
           <Header title={title} description={description} />
@@ -41,6 +65,10 @@ export default function DrawerView({ navigation }: DrawerViewProps) {
               <Button onPress={() => setVisible(!visible)}>左边打开抽屉</Button>
               <Spacing />
               <Button onPress={() => setVisible2(!visible2)}>右边打开抽屉</Button>
+              <Spacing />
+              <Button onPress={() => setVisible3(!visible3)}>上边打开抽屉</Button>
+              <Spacing />
+              <Button onPress={() => setVisible4(!visible4)}>下边打开抽屉</Button>
             </WingBlank>
           </Body>
           <Footer />

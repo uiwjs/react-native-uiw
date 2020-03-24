@@ -199,6 +199,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  Input: {
+    screen: require('./routes/Input').default,
+    path: 'Input',
+    params: {
+      title: 'Input 输入文本',
+      description: '用于输入文本。'
+    },
+    navigationOptions: {
+      title: 'Input 输入文本',
+      ...navOtions,
+    },
+  },
   List: {
     screen: require('./routes/List').default,
     path: 'List',
@@ -220,6 +232,18 @@ export const routes: Routes = {
     },
     navigationOptions: {
       title: 'Loader 按钮',
+      ...navOtions,
+    },
+  },
+  MenuDropdown: {
+    screen: require('./routes/MenuDropdown').default,
+    path: 'MenuDropdown',
+    params: {
+      title: 'MenuDropdown 菜单下拉按钮',
+      description: '用于显示菜单'
+    },
+    navigationOptions: {
+      title: 'MenuDropdown 下拉框',
       ...navOtions,
     },
   },
@@ -283,6 +307,18 @@ export const routes: Routes = {
       ...navOtions,
     },
   },
+  SelectCascader: {
+    screen: require('./routes/SelectCascader').default,
+    path: 'SelectCascader',
+    params: {
+      title: 'SelectCascader 级联选择',
+      description: '可用于类似于省市区选择。'
+    },
+    navigationOptions: {
+      title: 'SelectCascader 级联选择',
+      ...navOtions,
+    },
+  },
   Spacing: {
     screen: require('./routes/Spacing').default,
     path: 'Spacing',
@@ -292,6 +328,18 @@ export const routes: Routes = {
     },
     navigationOptions: {
       title: 'Spacing 间距',
+      ...navOtions,
+    },
+  },
+  SwipeAction: {
+    screen: require('./routes/SwipeAction').default,
+    path: 'SwipeAction',
+    params: {
+      title: 'SwipeAction 唤出操作',
+      description: '结合手势操作，从屏幕一侧唤出操作。'
+    },
+    navigationOptions: {
+      title: 'SwipeAction 唤出操作',
       ...navOtions,
     },
   },
@@ -316,6 +364,18 @@ export const routes: Routes = {
     },
     navigationOptions: {
       title: 'Typography 排版',
+      ...navOtions,
+    },
+  },
+  Toast: {
+    screen: require('./routes/Toast').default,
+    path: 'Toast',
+    params: {
+      title: 'Toast 提示',
+      description: '一种轻量级反馈/提示。'
+    },
+    navigationOptions: {
+      title: 'Toast 提示',
       ...navOtions,
     },
   },

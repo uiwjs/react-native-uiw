@@ -11,12 +11,14 @@ import {
 } from 'react-native';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
+const DEVICE_HEIGHT = Dimensions.get('window').height;
 
 export interface DrawerProps extends ViewProps {
   isOpen?: boolean;
   maskClosable?: boolean;
-  placement?: 'right' | 'left';
+  placement?: 'right' | 'left' | 'top' | 'bottom';
   drawerWidth?: number;
+  drawerHeight?: number;
   maskProps?: ViewStyle;
   drawerBackgroundColor?: string;
   onChange?: (isOpen: boolean) => void;
@@ -34,6 +36,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     placement: 'left',
     drawerBackgroundColor: '#fff',
     drawerWidth: 300,
+    drawerHeight: 500,
     maskClosable: true,
     isOpen: false,
     onChange: () => null,
@@ -65,14 +68,24 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     this.closeDrawer()
   };
   render() {
-    const { isOpen, style, drawerWidth, drawerBackgroundColor, maskProps, placement } = this.props;
+    const { isOpen, style, drawerWidth, drawerBackgroundColor, maskProps, placement, drawerHeight } = this.props;
     const { drawerValue, overlayValue, zIndexValue } = this.state;
-    const dynamicDrawerStyles = {
+    const isTopOrBottom = placement === 'top' || placement === 'bottom'
+    const changeStyle = isTopOrBottom ? 'height' : 'width'
+    const dynamicDrawerStyles:any = {
       backgroundColor: drawerBackgroundColor,
-      width: drawerWidth,
-      left: placement === 'left' ? 0 : null,
-      right: placement === 'right' ? 0 : null,
     };
+
+    if (isTopOrBottom) {
+      dynamicDrawerStyles.top = placement === 'top' ? 0 : null
+      dynamicDrawerStyles.bottom = placement === 'bottom' ? 0 : null
+      dynamicDrawerStyles.height = drawerWidth
+      dynamicDrawerStyles.width = '100%'
+    } else {
+      dynamicDrawerStyles.left = placement === 'left' ? 0 : null
+      dynamicDrawerStyles.right = placement === 'right' ? 0 : null
+      dynamicDrawerStyles.width = drawerWidth
+    }
 
     const overlayOpacity = overlayValue.interpolate({
       inputRange: [0, 1],
@@ -83,11 +96,11 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
       <Fragment>
         <Animated.View
           style={[styles.drawer, dynamicDrawerStyles, style, {
-            width: drawerWidth,
+            [changeStyle]: isOpen ? (isTopOrBottom ? drawerHeight : drawerWidth ) : 0,
             transform: [
               { translateX: drawerValue.x }, // x轴移动
               { translateY: drawerValue.y }, // y轴移动
-            ]
+            ],
           }]}>
           {this.props.children}
         </Animated.View>
@@ -115,13 +128,19 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     isOpen ? this.openDrawer() : this.closeDrawer();
   }
   getInitPosition() {
-    const { drawerWidth, placement } = this.props;
+    const { drawerWidth, placement, drawerHeight } = this.props;
     const xy = { x: 0, y: 0 };
     if (placement === 'left') {
       xy.x = -(drawerWidth || 0);
     }
     if (placement === 'right') {
       xy.x = (DEVICE_WIDTH || 0);
+    }
+    if (placement === 'top') {
+      xy.y = -(drawerHeight || 0);
+    }
+    if (placement === 'bottom') {
+      xy.y = DEVICE_HEIGHT || 0;
     }
     return xy;
   }
