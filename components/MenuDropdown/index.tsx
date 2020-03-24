@@ -1,13 +1,11 @@
 import React, { RefObject } from 'react';
 import { View, StyleSheet, Text, Animated, LayoutChangeEvent } from 'react-native'
 import Item from './item'
-import { ButtonProps } from '../Button'
-import { IconsName, IconsProps } from '../Icon'
-import { Button, Icon } from '..'
+import Button, { ButtonProps } from '../Button';
+import Icon, { IconsName } from '../Icon';
 
 export interface MenuDropdownProps extends ButtonProps {
   title: string,
-
 }
 
 interface IState {

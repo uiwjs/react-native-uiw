@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextInput, TextInputProperties, GestureResponderEvent, KeyboardTypeOptions, View, StyleSheet, Platform, TouchableWithoutFeedback, Text, TouchableOpacity } from 'react-native';
-import { Icon } from '..';
+import Icon from '../Icon';
 import { InputItemPropsType } from './PropsType';
 
 const noop = () => { };

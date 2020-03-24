@@ -5,8 +5,7 @@ import PopupCascader from 'rmc-cascader/lib/Popup'
 import PopupStyles from 'rmc-picker/lib/PopupStyles'
 import { ICascaderProps, CascaderValue } from 'rmc-cascader/lib/CascaderTypes'
 import arrayTreeFilter from 'array-tree-filter';
-
-import { Input, Button } from '..'
+import Button from '../Button';
 
 export interface Istate {
 }

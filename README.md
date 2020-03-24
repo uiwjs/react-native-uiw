@@ -79,7 +79,6 @@ export default class Demo extends React.Component {
 - [SegmentedControl](components/SegmentedControl/README.md)
 - [Slider](components/Slider/README.md)
 - [Switch](components/Switch/README.md)
-- [SelectCascader](components/SelectCascader/README.md)
 
 #### Data Display
 
