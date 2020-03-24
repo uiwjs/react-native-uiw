@@ -66,16 +66,20 @@ export default class Demo extends React.Component {
 #### Navigation
 
 - [Drawer](components/Drawer/README.md)
+- [MenuDropdown](components/MenuDropdown/README.md)
+- [SwipeAction](components/SwipeAction/README.md)
 
 #### Data Entry
 
 - [Button](components/Button/README.md)
 - [ButtonGroup](components/ButtonGroup/README.md)
 - [CheckBox](components/CheckBox/README.md)
+- [Input](components/Input/README.md)
 - [Radio](components/Radio/README.md)
 - [SegmentedControl](components/SegmentedControl/README.md)
 - [Slider](components/Slider/README.md)
 - [Switch](components/Switch/README.md)
+- [SelectCascader](components/SelectCascader/README.md)
 
 #### Data Display
 
@@ -93,6 +97,7 @@ export default class Demo extends React.Component {
 - [Loader](components/Loader/README.md)
 - [Modal](components/Modal/README.md)
 - [Result](components/Result/README.md)
+- [Toast](components/Toast/README.md)
 
 ## Development
 
