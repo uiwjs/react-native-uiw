@@ -64,6 +64,6 @@ function Demo() {
 | `textStyle` | 设置文本样式 | TextStyle & ViewStyle | - |
 | `color` | 设置颜色 | String | - |
 | `checked` | 指定当前是否选中 | Boolean | - |
-| `checkedIcon` | 选中图标 | Boolean | - |
-| `unCheckedIcon` | 未选中图标 | Boolean | - |
+| `checkedIcon` | 选中图标 | Icon['name'] | - |
+| `unCheckedIcon` | 未选中图标 | Icon['name'] | - |
 | `onChange` | 事件触发的回调函数 | (checked):void | `5` |
