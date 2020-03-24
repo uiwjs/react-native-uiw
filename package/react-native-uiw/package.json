@@ -25,7 +25,8 @@
     "@uiw/icons": "2.3.1",
     "color": "3.1.2",
     "prop-types": "15.7.2",
-    "react-native-svg": "9.13.3"
+    "react-native-svg": "9.13.3",
+    "rmc-cascader": "5.0.3"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
