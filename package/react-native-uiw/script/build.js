@@ -39,9 +39,7 @@ const tsc = {
     moduleResolution: 'node',
     strict: true,
     target: 'esnext',
-    typeRoots: [
-      "node_modules/@types/"
-    ],
+    typeRoots: ['node_modules/@types/'],
     baseUrl: '.',
   },
   exclude: ['node_modules'],
