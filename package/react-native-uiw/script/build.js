@@ -29,17 +29,19 @@ function getPath(rootPath, result = []) {
 const tsc = {
   compilerOptions: {
     // allowJs: true,
-    allowSyntheticDefaultImports: true,
     esModuleInterop: true,
     outDir: 'lib',
     // isolatedModules: true,
     declaration: true,
-    jsx: 'react',
+    jsx: 'react-native',
     lib: ['es6'],
     resolveJsonModule: true,
     moduleResolution: 'node',
     strict: true,
     target: 'esnext',
+    typeRoots: [
+      "node_modules/@types/"
+    ],
     baseUrl: '.',
   },
   exclude: ['node_modules'],
