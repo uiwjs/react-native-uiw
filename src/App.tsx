@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { StatusBar, SafeAreaView, View, Text, Platform } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import HomeScreen from './routes/Home';
+// import HomeScreen from './routes/Home';
+import HomeScreen from './routes/SelectCascader';
 import { routes } from './routes';
 
 const AppNavigator = createStackNavigator({

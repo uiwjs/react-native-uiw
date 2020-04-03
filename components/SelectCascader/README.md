@@ -125,11 +125,12 @@ export default class SelectCascaderDemo extends Component {
 | --------- | --------------------- | --------- | ------ |
 | `data`    | 列表数据 | array | -  |
 | `value`   | 选中的值 | array | -  |
+| `cols`   | 列数 | number | 3  |
 | `defaultValue` | 默认选择的值 | array | -  |
-| `onChange` | 选中的值 | Function(value, label) | -  |
+| `onChange` | 选中时执行此回调 | Function(value, label) | -  |
+| `onOk` | 确定选中的值 | Function(value, label) | -  |
 | `onDismiss` | 隐藏 | Function() | -  |
 | `okText` | 确定button文字 | string | 确定  |
 | `dismissText` | 取消button文字 | string | 取消  |
-| `dismissText` | 取消button文字 | string | 取消  |
 | `title` | 弹框标题 | string | 请选择  |
-| `title` | 弹框标题 | string | 请选择  |
+| `pickerItemStyle` | 选择器样式 | object | -  |
