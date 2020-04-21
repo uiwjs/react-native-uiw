@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.6.2",
-    "@types/color": "3.0.0",
+    "@types/color": "3.0.1",
     "@types/react-native": "0.60.31",
     "@uiw/icons": "2.3.1",
     "color": "3.1.2",
@@ -32,10 +32,10 @@
     "metro-react-native-babel-preset": "0.56.3",
     "react": "16.9.0",
     "react-native": "0.61.1",
-    "react-native-gesture-handler": "^1.5.2",
+    "react-native-gesture-handler": "1.5.2",
     "react-native-screens": "1.0.0-alpha.23",
-    "react-navigation": "4.0.10",
-    "react-navigation-stack": "1.9.0",
+    "react-navigation": "4.3.7",
+    "react-navigation-stack": "2.3.11",
     "react-test-renderer": "16.9.0",
     "typescript": "3.7.2"
   },
