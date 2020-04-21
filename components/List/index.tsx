@@ -9,7 +9,7 @@ const noop = () => null;
  */
 export interface ListRenderItemInfoCustom<ItemT> {
   item: ItemT;
-  index?: number;
+  index: number;
   separators?: {
     highlight: () => void;
     unhighlight: () => void;
@@ -105,7 +105,7 @@ export default class List extends Component<ListProps, ListState> {
         <View {...otherProps}>
           {header}
           {(renderItem && (!data || data.length == 0) || (!renderItem && (!children || React.Children.toArray(children).length === 0))) && otherProps.ListEmptyComponent}
-          {(props.data || []).map((item, idx) => React.cloneElement(props.renderItem({ item }) || <View />, {key: idx}))}
+          {(props.data || []).map((item, idx) => React.cloneElement(props.renderItem({ item, index: idx }) || <View />, {key: idx}))}
         </View>
       )
     }
