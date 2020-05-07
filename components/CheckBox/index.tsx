@@ -5,12 +5,12 @@ import { color } from '../utils';
 import Div from '../Typography/Div';
 
 export interface CheckBoxProps extends TouchableOpacityProps {
-  textStyle: StyleProp<TextStyle & ViewStyle>;
+  textStyle?: StyleProp<TextStyle & ViewStyle>;
   checked?: boolean;
   disabled?: boolean;
   color?: string;
-  checkedIcon?: string;
-  unCheckedIcon?: string;
+  checkedIcon?: string | JSX.Element;
+  unCheckedIcon?: string | JSX.Element;
   onChange?: (checked: boolean) => void;
 }
 
@@ -58,7 +58,7 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
     return (
       <TouchableOpacity disabled={disabled} {...otherProps} style={[styles.default, style]} onPress={this.onPress}>
         <View style={[styIcon]}>
-          <Icon size={16} fill={colorIcon} name={iconName} />
+          {typeof iconName === 'string' ? <Icon size={16} fill={colorIcon} name={iconName} /> : iconName}
         </View>
         {children && <Div children={children} style={[divStyl, textStyle]} />}
       </TouchableOpacity>
