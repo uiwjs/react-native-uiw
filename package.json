@@ -14,7 +14,7 @@
     "@babel/runtime": "7.6.2",
     "@types/color": "3.0.1",
     "@types/react-native": "0.60.31",
-    "@uiw/icons": "2.3.1",
+    "@uiw/icons": "2.4.3",
     "color": "3.1.2",
     "prop-types": "15.7.2",
     "react-native-svg": "9.13.3",
