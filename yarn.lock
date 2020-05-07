@@ -1165,10 +1165,10 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@uiw/icons@2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@uiw/icons/-/icons-2.3.1.tgz#ca1986676dee4f6d1fa42338f08b2077efb8d4a9"
-  integrity sha512-iWc1FOv0Y5r9ZZDBRclJnTez+Z8LjGeLKChdXSJL2pSbH8UsdwJ7Fc5MqR9q+BuyYTHW4W6wozmVDRwEZy84hg==
+"@uiw/icons@2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@uiw/icons/-/icons-2.4.3.tgz#cc81a866ec6ac2774584c4e0f4646bf41f6b7941"
+  integrity sha512-tqJVlNh/hAeQ6ShU+OvHIQHaXvuElS/KshSU8t0I+ngUkfCEvZ9Ewwo+eIsv5tiHWphpkAU+akS2am/lNZAnNg==
 
 abab@^2.0.0:
   version "2.0.3"
