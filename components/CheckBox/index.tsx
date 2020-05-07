@@ -27,7 +27,7 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
   }
   static defaultProps = {
     checkedIcon: 'circle-check',
-    unCheckedIcon: 'circle-check-o',
+    unCheckedIcon: 'circle-o',
     color: '#008EF0',
   }
   UNSAFE_componentWillReceiveProps(nextProps: CheckBoxProps) {
