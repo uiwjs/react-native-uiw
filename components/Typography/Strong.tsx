@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, TextProps } from 'react-native';
+import {StyleSheet, Text, TextProps} from 'react-native';
 
 const styles = StyleSheet.create({
   default: {
@@ -8,11 +8,9 @@ const styles = StyleSheet.create({
   },
 });
 
-
 export interface StrongProps extends TextProps {
   children?: React.ReactNode;
 }
-
 
 export default function Strong(props: StrongProps) {
   return (

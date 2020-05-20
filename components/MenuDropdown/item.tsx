@@ -1,16 +1,13 @@
-import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
 
 export interface ItemProps {
   children?: React.ReactNode;
-
 }
 
 export default class Item extends React.Component<ItemProps> {
   render() {
-    return <View style={styles.item}>
-      {this.props.children}
-    </View>
+    return <View style={styles.item}>{this.props.children}</View>;
   }
 }
 
@@ -23,5 +20,5 @@ const styles = StyleSheet.create({
     paddingRight: 5,
     backgroundColor: '#fff',
     zIndex: 1000,
-  }
+  },
 });

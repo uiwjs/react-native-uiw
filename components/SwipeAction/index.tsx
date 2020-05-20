@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleProp, Text, TextStyle, View } from 'react-native';
-import Swipeout, { SwipeoutButtonProperties, SwipeoutProperties } from 'react-native-swipeout';
-
+import {StyleProp, Text, TextStyle, View} from 'react-native';
+import Swipeout, {
+  SwipeoutButtonProperties,
+  SwipeoutProperties,
+} from 'react-native-swipeout';
 
 export interface SwipeoutButtonProps extends SwipeoutButtonProperties {
-  style?: StyleProp<TextStyle> & { backgroundColor: string };
+  style?: StyleProp<TextStyle> & {backgroundColor: string};
 }
 
 export interface SwipeActionProps extends SwipeoutProperties {
@@ -24,17 +26,18 @@ class SwipeAction extends React.Component<SwipeActionProps> {
     const bgColor = buttonStyle ? buttonStyle.backgroundColor : 'transparent';
     const Component = (
       <View
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
           backgroundColor: bgColor,
-        }}
-      >
+        }}>
         {React.isValidElement(button.text) ? (
           button.text
         ) : (
-          <Text style={[buttonStyle, { textAlign: 'center' }]}>
+          // eslint-disable-next-line react-native/no-inline-styles
+          <Text style={[buttonStyle, {textAlign: 'center'}]}>
             {button.text}
           </Text>
         )}
@@ -65,12 +68,12 @@ class SwipeAction extends React.Component<SwipeActionProps> {
 
     const customLeft =
       left &&
-      left.map(btn => {
+      left.map((btn) => {
         return this.renderCustomButton(btn);
       });
     const customRight =
       right &&
-      right.map(btn => {
+      right.map((btn) => {
         return this.renderCustomButton(btn);
       });
 
@@ -83,8 +86,7 @@ class SwipeAction extends React.Component<SwipeActionProps> {
         onOpen={onOpen}
         onClose={onClose}
         disabled={disabled}
-        {...restProps}
-      >
+        {...restProps}>
         {children}
       </Swipeout>
     ) : (

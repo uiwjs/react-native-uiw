@@ -1,5 +1,5 @@
 import React from 'react';
-import { KeyboardTypeOptions } from 'react-native';
+import {KeyboardTypeOptions} from 'react-native';
 export type InputEventHandler = (value?: string) => void;
 
 export interface InputItemPropsType {
@@ -9,7 +9,8 @@ export interface InputItemPropsType {
     | 'phone'
     | 'password'
     | 'number'
-    | 'digit' | KeyboardTypeOptions;
+    | 'digit'
+    | KeyboardTypeOptions;
   editable?: boolean;
   disabled?: boolean;
   name?: string;

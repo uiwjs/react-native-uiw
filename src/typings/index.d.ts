@@ -1,7 +1,9 @@
+import {StackNavigationProp} from '@react-navigation/stack';
+import {Routes} from '../routes';
 
-import { NavigationScreenProp } from 'react-navigation';
+type ModalStackNavigation = StackNavigationProp<{}>;
 
-export interface ComProps<S = {}> {
-  navigation: NavigationScreenProp<S>;
-  screenProps?: any;
+export interface ComProps {
+  navigation: ModalStackNavigation;
+  route: Routes;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Svg, { SvgXml, SvgProps, Path } from 'react-native-svg';
+import Svg, {SvgXml, SvgProps, Path} from 'react-native-svg';
 import svgPaths from '@uiw/icons/fonts/w-icon.json';
 
 export type IconsName = keyof typeof svgPaths;
@@ -23,9 +23,18 @@ export default class Icons extends React.Component<IconsProps> {
   static displayName = 'uiwm.Icon';
   static defaultProps: IconsProps = {
     size: 26,
-  }
+  };
   render() {
-    const { name, size, fill, stroke, xml, paths, color, ...otherProps } = this.props;
+    const {
+      name,
+      size,
+      fill,
+      stroke,
+      xml,
+      paths,
+      color,
+      ...otherProps
+    } = this.props;
     if (xml) {
       return <SvgXml xml={xml} height={size} width={size} {...otherProps} />;
     }
@@ -43,9 +52,10 @@ export default class Icons extends React.Component<IconsProps> {
         height={size}
         width={size}
         viewBox="0 0 20 20"
-        {...otherProps}
-      >
-        {pathData.map((d: string, i: number) => <Path key={i} d={d} fillRule="evenodd" />)}
+        {...otherProps}>
+        {pathData.map((d: string, i: number) => (
+          <Path key={i} d={d} fillRule="evenodd" />
+        ))}
       </Svg>
     );
   }

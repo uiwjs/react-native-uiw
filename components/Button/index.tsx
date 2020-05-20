@@ -1,6 +1,12 @@
 import React from 'react';
-import { StyleSheet, TextProps, TouchableOpacity, ActivityIndicator, TouchableOpacityProps } from 'react-native';
-import { color, colors } from '../utils';
+import {
+  StyleSheet,
+  TextProps,
+  TouchableOpacity,
+  ActivityIndicator,
+  TouchableOpacityProps,
+} from 'react-native';
+import {color, colors} from '../utils';
 import Div from '../Typography/Div';
 
 export interface ButtonProps extends TouchableOpacityProps {
@@ -8,7 +14,7 @@ export interface ButtonProps extends TouchableOpacityProps {
   /**
    * 如果子节点是文本，修改文本样式
    */
-  textStyle?: TextProps['style'],
+  textStyle?: TextProps['style'];
   /**
    * 设置禁用
    */
@@ -37,29 +43,56 @@ export interface ButtonProps extends TouchableOpacityProps {
 
 export default class ButtonView<T> extends React.Component<ButtonProps> {
   static defaultProps: ButtonProps = {
-    activeOpacity: .5,
+    activeOpacity: 0.5,
     rounded: 5,
     bordered: true,
     size: 'default',
   };
   render() {
-    const { children, style, textStyle: childStyle, rounded, bordered, color: buttonColor, type, size, disabled, loading, ...restProps } = this.props;
+    const {
+      children,
+      style,
+      textStyle: childStyle,
+      rounded,
+      bordered,
+      color: buttonColor,
+      type,
+      size,
+      disabled,
+      loading,
+      ...restProps
+    } = this.props;
     let backgroundColor, textColor, borderColor, borderWidth, borderRadius;
 
     switch (type) {
-      case 'warning': backgroundColor = colors.yellow; break;
-      case 'primary': backgroundColor = colors.blue; break;
-      case 'success': backgroundColor = colors.green; break;
-      case 'danger': backgroundColor = colors.red; break;
-      case 'light': backgroundColor = colors.white; break;
-      case 'dark': backgroundColor = colors.black; break;
-      default: break;
+      case 'warning':
+        backgroundColor = colors.yellow;
+        break;
+      case 'primary':
+        backgroundColor = colors.blue;
+        break;
+      case 'success':
+        backgroundColor = colors.green;
+        break;
+      case 'danger':
+        backgroundColor = colors.red;
+        break;
+      case 'light':
+        backgroundColor = colors.white;
+        break;
+      case 'dark':
+        backgroundColor = colors.black;
+        break;
+      default:
+        break;
     }
     if (backgroundColor) {
       backgroundColor = color(backgroundColor).rgb().string();
     }
     if (type) {
-      textColor = color(backgroundColor).isLight() ? color(colors.black).rgb().string() : color(colors.white).rgb().string();
+      textColor = color(backgroundColor).isLight()
+        ? color(colors.black).rgb().string()
+        : color(colors.white).rgb().string();
     }
     if (!type) {
       borderColor = color(colors.black).alpha(0.32).rgb().string();
@@ -70,7 +103,9 @@ export default class ButtonView<T> extends React.Component<ButtonProps> {
     }
     if (buttonColor) {
       backgroundColor = color(buttonColor).rgb().string();
-      textColor = color(buttonColor).isLight() ? color(buttonColor).darken(0.9).string() : color(buttonColor).lighten(0.9).string();
+      textColor = color(buttonColor).isLight()
+        ? color(buttonColor).darken(0.9).string()
+        : color(buttonColor).lighten(0.9).string();
     }
     if (rounded && typeof rounded === 'number') {
       borderRadius = rounded;
@@ -82,8 +117,13 @@ export default class ButtonView<T> extends React.Component<ButtonProps> {
     if (!bordered) {
       borderWidth = 0;
     }
-    const buttonStyle = { backgroundColor, borderColor, borderWidth, borderRadius };
-    const textStyle = { color: textColor };
+    const buttonStyle = {
+      backgroundColor,
+      borderColor,
+      borderWidth,
+      borderRadius,
+    };
+    const textStyle = {color: textColor};
     let sizeStyle = {};
     if (size && styles[size]) {
       sizeStyle = styles[size];
@@ -93,22 +133,25 @@ export default class ButtonView<T> extends React.Component<ButtonProps> {
     if (size && styles[stylKey]) {
       boxStyle = styles[stylKey];
     }
-    if (!children) return null;
+    if (!children) {
+      return null;
+    }
     return (
       <TouchableOpacity
         style={[styles.button, styles.content, buttonStyle, boxStyle, style]}
         disabled={disabled}
-        {...restProps}
-      >
+        {...restProps}>
         {loading && (
-          <ActivityIndicator
-            size={16}
-            color={textColor}
-            style={styles.icon}
-          />
+          <ActivityIndicator size={16} color={textColor} style={styles.icon} />
         )}
         {React.Children.toArray(children).map((child: any, idx) => {
-          return <Div key={idx} style={[sizeStyle, styles.label, textStyle, childStyle]}>{child}</Div>;
+          return (
+            <Div
+              key={idx}
+              style={[sizeStyle, styles.label, textStyle, childStyle]}>
+              {child}
+            </Div>
+          );
         })}
       </TouchableOpacity>
     );
@@ -152,5 +195,5 @@ const styles = StyleSheet.create({
   large: {
     marginVertical: 10,
     fontSize: 18,
-  }
+  },
 });

@@ -6,7 +6,6 @@ export default [
       {
         label: '东城区',
         value: '01-1',
-        
       },
       {
         label: '西城区',

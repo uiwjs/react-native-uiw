@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, TextProps, TextBase } from 'react-native';
+import {Text, TextProps} from 'react-native';
 
 export interface EllipsisProps extends TextProps {
   children?: React.ReactNode;
@@ -8,16 +8,20 @@ export interface EllipsisProps extends TextProps {
   maxLen?: number;
 }
 
-export default function Ellipsis({ maxLen, children, placeholder, ...props}: EllipsisProps) {
+export default function Ellipsis({
+  maxLen,
+  children,
+  placeholder,
+  ...props
+}: EllipsisProps) {
   let content = children;
   if (maxLen && content && typeof content === 'string') {
-    content = content.length > maxLen ? content.substr(0, maxLen) + placeholder : content
+    content =
+      content.length > maxLen
+        ? content.substr(0, maxLen) + placeholder
+        : content;
   }
-  return (
-    <Text {...props}>
-      {content}
-    </Text>
-  );
+  return <Text {...props}>{content}</Text>;
 }
 
 Ellipsis.propTypes = {
@@ -30,5 +34,5 @@ Ellipsis.propTypes = {
   maxLen: PropTypes.number,
 };
 Ellipsis.defaultProps = {
-  placeholder: '...'
+  placeholder: '...',
 };

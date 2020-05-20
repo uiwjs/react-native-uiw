@@ -1,24 +1,25 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { Spacing, WingBlank, Button } from '../../../components';
-import { ComProps } from '../../typings';
-import Layout, { Container } from '../../Layout';
+import {Spacing, WingBlank, Button} from '../../../components';
+import {ComProps} from '../../typings';
+import Layout, {Container} from '../../Layout';
 
-const { Header, Body, Card, Footer } = Layout;
+const {Header, Body, Card, Footer} = Layout;
 
-interface WingBlankViewProps extends ComProps { }
+interface WingBlankViewProps extends ComProps {}
 
 export default class WingBlankView extends React.Component<WingBlankViewProps> {
   render() {
-    const { navigation } = this.props;
-    const description = navigation.getParam('description');
-    const title = navigation.getParam('title');
+    const {route} = this.props;
+    const description = route.params.description;
+    const title = route.params.title;
     return (
       <Container>
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Card title="左右留白: size?: 'small' | 'default' | 'large'" bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+            <Card
+              title="左右留白: size?: 'small' | 'default' | 'large'"
+              bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank size="large">
                 <Button>左右留白 size="large"</Button>
               </WingBlank>

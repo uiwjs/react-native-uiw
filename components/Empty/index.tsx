@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, TextProps } from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, Text, TextProps} from 'react-native';
 import Icon from '../Icon';
-import Flex, { FlexProps } from '../Flex';
+import Flex, {FlexProps} from '../Flex';
 
 const iconStr = `
 <svg width="64" height="41" viewBox="0 0 64 41">
@@ -43,15 +43,20 @@ export default class Empty extends Component<EmptyProps> {
     size: 64,
     label: '暂无数据',
     xml: iconStr,
-  }
+  };
   render() {
-    const { size, label, xml, labelStyle, children, ...props } = this.props;
+    const {size, label, xml, labelStyle, children, ...props} = this.props;
     return (
       <Flex direction="column" justify="center" align="center" {...props}>
         {xml && <Icon xml={xml} size={size} />}
-        {!!children ? children : (
-          label && typeof label === 'string' && <Text style={StyleSheet.flatten([styles.label, labelStyle])}>{label}</Text>
-        )}
+        {!!children
+          ? children
+          : label &&
+            typeof label === 'string' && (
+              <Text style={StyleSheet.flatten([styles.label, labelStyle])}>
+                {label}
+              </Text>
+            )}
       </Flex>
     );
   }

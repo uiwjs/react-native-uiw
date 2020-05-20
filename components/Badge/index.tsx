@@ -1,7 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, ViewProps, StyleProp, TextStyle,ViewStyle } from 'react-native';
-import { color, colors } from '../utils';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ViewProps,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
+import {color, colors} from '../utils';
 
 const styles = StyleSheet.create({
   base: {
@@ -21,7 +29,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
     marginVertical: 6,
     borderRadius: 3,
-  }
+  },
 });
 
 export interface BadgeProps extends ViewProps {
@@ -33,32 +41,35 @@ export interface BadgeProps extends ViewProps {
    */
   rounded?: number;
   type?: 'dot' | 'text';
-  textStyles?: StyleProp<TextStyle>
+  textStyles?: StyleProp<TextStyle>;
 }
 
 export default function Badge(props: BadgeProps) {
-  const { children, rounded, color: $color, style, type, textStyles, ...restProps } = props;
+  const {
+    children,
+    rounded,
+    color: $color,
+    style,
+    type,
+    textStyles,
+    ...restProps
+  } = props;
   const colorObj = color(colors[$color as colors.Colors] || $color);
   const luminosTextColor = colorObj.luminosity() < 0.5 ? '#fff' : '#000';
   if (type === 'dot') {
-    return (
-      <View style={[styles.dot, { backgroundColor: $color }, style]} />
-    )
+    return <View style={[styles.dot, {backgroundColor: $color}, style]} />;
   }
   const content = children || (
-    <Text style={[styles.text, { color: luminosTextColor }, textStyles]}>
+    <Text style={[styles.text, {color: luminosTextColor}, textStyles]}>
       {props.text}
     </Text>
   );
-  const bgStyl: StyleProp<ViewStyle> = { borderRadius: rounded || 12 };
+  const bgStyl: StyleProp<ViewStyle> = {borderRadius: rounded || 12};
   if ($color) {
     bgStyl.backgroundColor = colorObj.rgb().string();
   }
   return (
-    <View
-      style={[styles.base, bgStyl, style]}
-      {...restProps}
-    >
+    <View style={[styles.base, bgStyl, style]} {...restProps}>
       {content}
     </View>
   );
@@ -72,10 +83,7 @@ Badge.propTypes = {
   ]),
   color: PropTypes.string,
   style: PropTypes.any,
-  text: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.string,
-  ]),
+  text: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
 };
 Badge.defaultProps = {
   color: 'primary',
