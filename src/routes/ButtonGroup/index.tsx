@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import Layout, { Container } from '../../Layout';
-import { ButtonGroup, Button, Spacing } from '../../../components';
-import { ComProps } from '../../typings';
-const { Header, Body, Card, Footer } = Layout;
+import React, {Component} from 'react';
+import Layout, {Container} from '../../Layout';
+import {ButtonGroup, Button, Spacing} from '../../../components';
+import {ComProps} from '../../typings';
+const {Header, Body, Card, Footer} = Layout;
 
-export interface ButtonGroupViewProps extends ComProps { }
+export interface ButtonGroupViewProps extends ComProps {}
 
 export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
   render() {
-    const { navigation } = this.props;
-    const description = navigation.getParam('description');
-    const title = navigation.getParam('title');
+    const {route} = this.props;
+    const description = route.params.description;
+    const title = route.params.title;
     return (
       <Container>
         <Layout>
@@ -53,7 +52,10 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
                 <Button>警告</Button>
               </ButtonGroup>
               <Spacing />
-              <ButtonGroup color="#F95C2B" textStyle={{color: '#fff'}} size="small">
+              <ButtonGroup
+                color="#F95C2B"
+                textStyle={{color: '#fff'}}
+                size="small">
                 <Button>警告</Button>
                 <Button>警告</Button>
                 <Button>主要</Button>

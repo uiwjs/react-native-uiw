@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { View, Text, Alert, SafeAreaView } from 'react-native';
-import Layout, { Container } from '../../Layout';
-import { Modal, Button, Loader, List, Icon, Spacing } from '../../../components';
-import { ComProps } from '../../typings';
-const { Header, Body, Card, Footer } = Layout;
+import React, {Component} from 'react';
+import {View, Text, SafeAreaView} from 'react-native';
+import Layout, {Container} from '../../Layout';
+import {Modal, Button} from '../../../components';
+import {ComProps} from '../../typings';
+const {Header, Body, Card, Footer} = Layout;
 
-export interface ModalViewProps extends ComProps { }
+export interface ModalViewProps extends ComProps {}
 
 export default class ModalView extends Component<ModalViewProps> {
   state = {
@@ -13,13 +13,13 @@ export default class ModalView extends Component<ModalViewProps> {
   };
 
   setModalVisible(visible: boolean) {
-    this.setState({ modalVisible: visible });
+    this.setState({modalVisible: visible});
   }
 
   render() {
-    const { navigation } = this.props;
-    const description = navigation.getParam('description');
-    const title = navigation.getParam('title');
+    const {route} = this.props;
+    const description = route.params.description;
+    const title = route.params.title;
     return (
       <Container>
         <Layout>
@@ -29,24 +29,32 @@ export default class ModalView extends Component<ModalViewProps> {
               <Modal
                 // maskClosable={false}
                 visible={this.state.modalVisible}
-                onClosed={() => this.setState({ modalVisible: false })}
+                onClosed={() => this.setState({modalVisible: false})}
                 onRequestClose={() => {
-                  this.setState({ modalVisible: false });
+                  this.setState({modalVisible: false});
                   // Alert.alert('Modal has been closed.');
-                }}
-              >
+                }}>
                 <SafeAreaView>
                   <View>
                     <Text>Hello World!</Text>
-                    <Button onPress={() => this.setModalVisible(!this.state.modalVisible)}>
+                    <Button
+                      onPress={() =>
+                        this.setModalVisible(!this.state.modalVisible)
+                      }>
                       隐藏模态框
                     </Button>
                     <Text>Hello World!</Text>
-                    <Button onPress={() => this.setModalVisible(!this.state.modalVisible)}>
+                    <Button
+                      onPress={() =>
+                        this.setModalVisible(!this.state.modalVisible)
+                      }>
                       隐藏模态框
                     </Button>
                     <Text>Hello World!</Text>
-                    <Button onPress={() => this.setModalVisible(!this.state.modalVisible)}>
+                    <Button
+                      onPress={() =>
+                        this.setModalVisible(!this.state.modalVisible)
+                      }>
                       隐藏模态框
                     </Button>
                   </View>

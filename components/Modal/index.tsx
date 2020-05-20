@@ -1,5 +1,13 @@
 import React from 'react';
-import { Modal, ModalProps as RNModalProps, Animated, UIManager, ViewProps, findNodeHandle, TouchableOpacity, LayoutChangeEvent, StyleSheet } from 'react-native';
+import {
+  Modal,
+  ModalProps as RNModalProps,
+  Animated,
+  ViewProps,
+  TouchableOpacity,
+  LayoutChangeEvent,
+  StyleSheet,
+} from 'react-native';
 
 export interface ModalProps extends RNModalProps {
   placement?: 'top' | 'right' | 'bottom' | 'left';
@@ -10,12 +18,15 @@ export interface ModalProps extends RNModalProps {
 }
 
 export interface ModalState {
-  bgOpacity: Animated.Value,
-  translateValue: Animated.Value,
+  bgOpacity: Animated.Value;
+  translateValue: Animated.Value;
   visible?: boolean;
 }
 
-export default class NativeModal extends React.Component<ModalProps, ModalState> {
+export default class NativeModal extends React.Component<
+  ModalProps,
+  ModalState
+> {
   translateValue?: number;
   timer?: number;
   public content = React.createRef<ViewProps>();
@@ -24,24 +35,24 @@ export default class NativeModal extends React.Component<ModalProps, ModalState>
     placement: 'bottom',
     maskClosable: true,
     bgOpacity: 0.6,
-  }
+  };
   constructor(props: ModalProps) {
     super(props);
     this.state = {
-      bgOpacity: new Animated.Value(props.visible ? (props.bgOpacity || 0.6) : 0),
+      bgOpacity: new Animated.Value(props.visible ? props.bgOpacity || 0.6 : 0),
       translateValue: new Animated.Value(0),
       visible: !!props.visible,
-    }
+    };
   }
   componentDidMount() {
-    if (!!this.props.visible) {
+    if (this.props.visible) {
       // this.open();
     }
   }
   UNSAFE_componentWillReceiveProps(nextProps: ModalProps) {
     if (nextProps.visible !== this.props.visible) {
-      if(nextProps.visible) {
-        this.setState({ visible: nextProps.visible }, () => {
+      if (nextProps.visible) {
+        this.setState({visible: nextProps.visible}, () => {
           this.open();
         });
       } else {
@@ -51,29 +62,44 @@ export default class NativeModal extends React.Component<ModalProps, ModalState>
   }
   open() {
     Animated.parallel([
-      Animated.spring(this.state.bgOpacity, { toValue: this.props.bgOpacity || 0.6, overshootClamping: true } ),
-      Animated.spring(this.state.translateValue, { toValue: 0, overshootClamping: true } ),
+      Animated.spring(this.state.bgOpacity, {
+        toValue: this.props.bgOpacity || 0.6,
+        overshootClamping: true,
+        useNativeDriver: true,
+      }),
+      Animated.spring(this.state.translateValue, {
+        toValue: 0,
+        overshootClamping: true,
+        useNativeDriver: true,
+      }),
     ]).start();
   }
   close() {
-    const { onClosed } = this.props;
-    const { translateValue } = this.state;
+    const {onClosed} = this.props;
+    // const {translateValue} = this.state;
     if (this.translateValue) {
       // translateValue.setValue(this.translateValue);
     }
     Animated.parallel([
-      Animated.spring(this.state.bgOpacity, { toValue: 0, overshootClamping: true } ),
-      Animated.spring(this.state.translateValue, { toValue: this.translateValue!, overshootClamping: true } )
-    ]).start(() =>{
-      this.setState({ visible: false }, () => {
+      Animated.spring(this.state.bgOpacity, {
+        toValue: 0,
+        overshootClamping: true,
+        useNativeDriver: true,
+      }),
+      Animated.spring(this.state.translateValue, {
+        toValue: this.translateValue!,
+        overshootClamping: true,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      this.setState({visible: false}, () => {
         onClosed && onClosed();
       });
     });
   }
   measureContainer = (event: LayoutChangeEvent) => {
-    const { placement, visible } = this.props;
-    const { translateValue } = this.state;
-    const { height: layoutHeight, width: layoutWidth } = event.nativeEvent.layout;
+    const {placement, visible} = this.props;
+    const {height: layoutHeight, width: layoutWidth} = event.nativeEvent.layout;
     this.translateValue = layoutHeight;
     if (placement === 'bottom') {
       this.translateValue = layoutHeight;
@@ -88,21 +114,24 @@ export default class NativeModal extends React.Component<ModalProps, ModalState>
       this.translateValue = layoutWidth;
     }
     if (this.timer) {
-      clearTimeout(this.timer)
+      clearTimeout(this.timer);
     }
     this.timer = setTimeout(() => {
       if (!visible) {
-        this.setState({ translateValue: this.translateValue as unknown as Animated.Value }, () => {
-          this.open();
-        });
+        this.setState(
+          {translateValue: (this.translateValue as unknown) as Animated.Value},
+          () => {
+            this.open();
+          },
+        );
       }
       if (this.timer) {
         clearTimeout(this.timer);
       }
     });
-  }
+  };
   getTransformStyle() {
-    const { placement } = this.props;
+    const {placement} = this.props;
     const style: {
       translateX?: Animated.Value;
       translateY?: Animated.Value;
@@ -114,16 +143,37 @@ export default class NativeModal extends React.Component<ModalProps, ModalState>
     } else {
       return {};
     }
-    return { transform: [ style ] };
+    return {transform: [style]};
   }
   render() {
-    const { visible, transparent, maskClosable, animationType, presentationStyle, placement, children, ...otherProps } = this.props;
+    const {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      visible,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      transparent,
+      maskClosable,
+      animationType,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      presentationStyle,
+      placement,
+      children,
+      ...otherProps
+    } = this.props;
 
     const backdropContent = (
-      <Animated.View style={[styles.position, styles.backdrop, { opacity: this.state.bgOpacity }]} />
+      <Animated.View
+        style={[
+          styles.position,
+          styles.backdrop,
+          {opacity: this.state.bgOpacity},
+        ]}
+      />
     );
     let backdrop = (
-      <TouchableOpacity activeOpacity={1} style={[styles.position]} onPress={() => this.close()}>
+      <TouchableOpacity
+        activeOpacity={1}
+        style={[styles.position]}
+        onPress={() => this.close()}>
         {backdropContent}
       </TouchableOpacity>
     );
@@ -132,16 +182,22 @@ export default class NativeModal extends React.Component<ModalProps, ModalState>
         transparent={true}
         animationType={animationType}
         visible={this.state.visible}
-        {...otherProps}
-      >
+        {...otherProps}>
         {maskClosable ? backdrop : backdropContent}
-        <Animated.View ref={this.content} onLayout={this.measureContainer} style={[styles.content, placement && styles[placement], this.getTransformStyle()]}>
+        <Animated.View
+          ref={this.content as any}
+          onLayout={this.measureContainer}
+          style={[
+            styles.content,
+            placement && styles[placement],
+            this.getTransformStyle(),
+          ]}>
           {children}
         </Animated.View>
       </Modal>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
   position: {
@@ -179,4 +235,4 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
   },
-})
+});

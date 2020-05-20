@@ -1,17 +1,17 @@
 import React from 'react';
-import { Divider, Ellipsis, WingBlank } from '../../../components';
-import { ComProps } from '../../typings';
-import Layout, { Container } from '../../Layout';
+import {Ellipsis, WingBlank} from '../../../components';
+import {ComProps} from '../../typings';
+import Layout, {Container} from '../../Layout';
 
-const { Header, Body, Card, Footer } = Layout;
+const {Header, Body, Card, Footer} = Layout;
 
-export interface DividerViewProps extends ComProps { }
+export interface DividerViewProps extends ComProps {}
 
 export default class DividerView extends React.Component<DividerViewProps> {
   render() {
-    const { navigation } = this.props;
-    const description = navigation.getParam('description');
-    const title = navigation.getParam('title');
+    const {route} = this.props;
+    const description = route.params.description;
+    const title = route.params.title;
     return (
       <Container>
         <Layout>
@@ -29,7 +29,9 @@ export default class DividerView extends React.Component<DividerViewProps> {
             </Card>
             <Card title="设置占位符 placeholder?: string;">
               <WingBlank>
-                <Ellipsis maxLen={10} placeholder="~~~~">用于文本过长，超出长度显示</Ellipsis>
+                <Ellipsis maxLen={10} placeholder="~~~~">
+                  用于文本过长，超出长度显示
+                </Ellipsis>
               </WingBlank>
             </Card>
           </Body>

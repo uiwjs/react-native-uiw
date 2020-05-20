@@ -1,15 +1,21 @@
-import React, { Component } from 'react';
-import { View, ViewProps, Text, TextProps, StyleSheet } from 'react-native';
+import React, {Component} from 'react';
+import {View, ViewProps, Text, TextProps, StyleSheet} from 'react-native';
 
 interface MaybeTextOrViewProps {
   children?: React.ReactNode;
 }
 
-function MaybeTextOrView({ children, ...otherProps }: MaybeTextOrViewProps & TextProps & ViewProps) {
-  if (typeof children === 'string' || (children && (children as any).type.displayName === 'Text')) {
-    return <Text {...otherProps}>{children}</Text>
+function MaybeTextOrView({
+  children,
+  ...otherProps
+}: MaybeTextOrViewProps & TextProps & ViewProps) {
+  if (
+    typeof children === 'string' ||
+    (children && (children as any).type.displayName === 'Text')
+  ) {
+    return <Text {...otherProps}>{children}</Text>;
   }
-  return <View {...otherProps}>{children}</View>
+  return <View {...otherProps}>{children}</View>;
 }
 
 const styles = StyleSheet.create({
@@ -50,10 +56,9 @@ export interface ResultProps extends ViewProps {
 }
 
 export default class Result extends Component<ResultProps> {
-  static defaultProps: ResultProps = {
-  }
+  static defaultProps: ResultProps = {};
   render() {
-    const { style, title, message, img, ...otherProps } = this.props;
+    const {style, title, message, img, ...otherProps} = this.props;
     return (
       <View style={[styles.defalut, style]} {...otherProps}>
         {img}

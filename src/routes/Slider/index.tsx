@@ -1,41 +1,45 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { Spacing, WingBlank, Button, Slider } from '../../../components';
-import { ComProps } from '../../typings';
-import Layout, { Container } from '../../Layout';
+import {WingBlank, Slider} from '../../../components';
+import {ComProps} from '../../typings';
+import Layout, {Container} from '../../Layout';
 
-const { Header, Body, Card, Footer } = Layout;
+const {Header, Body, Card, Footer} = Layout;
 
-interface SliderViewProps extends ComProps { }
+interface SliderViewProps extends ComProps {}
 interface SliderViewState {
   sliderValue: number;
   stepValue: number;
 }
 
-export default class SliderView extends React.Component<SliderViewProps, SliderViewState> {
+export default class SliderView extends React.Component<
+  SliderViewProps,
+  SliderViewState
+> {
   constructor(props: SliderViewProps) {
-    super(props)
+    super(props);
     this.state = {
       sliderValue: 0.3,
       stepValue: 0.6,
-    }
+    };
   }
   handleSliderChange = (sliderValue: number) => {
-    this.setState({ sliderValue });
-  }
+    this.setState({sliderValue});
+  };
   handleStepSliderChange = (stepValue: number) => {
-    this.setState({ stepValue });
-  }
+    this.setState({stepValue});
+  };
   render() {
-    const { navigation } = this.props;
-    const description = navigation.getParam('description');
-    const title = navigation.getParam('title');
+    const {route} = this.props;
+    const description = route.params.description;
+    const title = route.params.title;
     return (
       <Container>
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Card title={`横竖垂直方向，value=${this.state.sliderValue.toFixed(2)}`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+            <Card
+              title={`横竖垂直方向，value=${this.state.sliderValue.toFixed(2)}`}
+              bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank>
                 <Slider
                   value={this.state.sliderValue as number}
@@ -45,13 +49,17 @@ export default class SliderView extends React.Component<SliderViewProps, SliderV
               <WingBlank>
                 <Slider
                   vertical={true}
-                  style={{ height: 200 }}
+                  style={{height: 200}}
                   value={this.state.sliderValue as number}
                   onChange={this.handleSliderChange}
                 />
               </WingBlank>
             </Card>
-            <Card title={`设置步长 step={0.2}，value=${this.state.stepValue.toFixed(1)}`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+            <Card
+              title={`设置步长 step={0.2}，value=${this.state.stepValue.toFixed(
+                1,
+              )}`}
+              bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank>
                 <Slider
                   step={0.2}
@@ -60,7 +68,11 @@ export default class SliderView extends React.Component<SliderViewProps, SliderV
                 />
               </WingBlank>
             </Card>
-            <Card title={`不显示滑块 shownThumb={false}，value=${this.state.sliderValue.toFixed(2)}`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+            <Card
+              title={`不显示滑块 shownThumb={false}，value=${this.state.sliderValue.toFixed(
+                2,
+              )}`}
+              bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank>
                 <Slider
                   shownThumb={false}
@@ -69,7 +81,9 @@ export default class SliderView extends React.Component<SliderViewProps, SliderV
                 />
               </WingBlank>
             </Card>
-            <Card title={`禁用 disabled={true}`} bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}>
+            <Card
+              title={'禁用 disabled={true}'}
+              bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank>
                 <Slider
                   disabled={true}

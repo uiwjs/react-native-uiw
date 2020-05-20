@@ -1,16 +1,35 @@
-import React, { Component, Fragment } from 'react';
-import { View, ViewProps, ViewStyle, Text, TextStyle, StyleProp, Image, ImageStyle, TextProps, TouchableOpacity, GestureResponderEvent, StyleSheet } from 'react-native';
+import React, {Component, Fragment} from 'react';
+import {
+  View,
+  ViewProps,
+  ViewStyle,
+  Text,
+  TextStyle,
+  StyleProp,
+  Image,
+  ImageStyle,
+  TextProps,
+  TouchableOpacity,
+  GestureResponderEvent,
+  StyleSheet,
+} from 'react-native';
 import Flex from '../Flex';
 
 interface MaybeTextOrViewProps {
   children?: React.ReactNode;
 }
 
-function MaybeTextOrView({ children, ...otherProps }: MaybeTextOrViewProps & TextProps & ViewProps) {
-  if (typeof children === 'string' || (children && (children as any).type.displayName === 'Text')) {
-    return <Text {...otherProps}>{children}</Text>
+function MaybeTextOrView({
+  children,
+  ...otherProps
+}: MaybeTextOrViewProps & TextProps & ViewProps) {
+  if (
+    typeof children === 'string' ||
+    (children && (children as any).type.displayName === 'Text')
+  ) {
+    return <Text {...otherProps}>{children}</Text>;
   }
-  return <View {...otherProps}>{children}</View>
+  return <View {...otherProps}>{children}</View>;
 }
 
 const styles = StyleSheet.create({
@@ -38,21 +57,39 @@ export interface GridProps extends ViewProps {
   textStyle?: StyleProp<TextStyle & ViewStyle>;
   iconStyle?: StyleProp<ImageStyle & TextStyle & ViewStyle>;
   renderItem?: (data: ItemData, index: number, row: number) => React.ReactNode;
-  onPress?: (data: ItemData, index: number, row: number, event: GestureResponderEvent) => void;
+  onPress?: (
+    data: ItemData,
+    index: number,
+    row: number,
+    event: GestureResponderEvent,
+  ) => void;
 }
 
 export default class Grid extends Component<GridProps> {
   static defaultProps: GridProps = {
     data: [],
     hasLine: true,
-  }
+  };
   render() {
-    const { style, data, iconStyle, textStyle, itemStyle, renderItem, hasLine, columns = 4, onPress, ...otherProps } = this.props;
-    if (!Array.isArray(data)) return null;
-    const childs: React.ReactNode[][] = []
+    const {
+      style,
+      data,
+      iconStyle,
+      textStyle,
+      itemStyle,
+      renderItem,
+      hasLine,
+      columns = 4,
+      onPress,
+      ...otherProps
+    } = this.props;
+    if (!Array.isArray(data)) {
+      return null;
+    }
+    const childs: React.ReactNode[][] = [];
     let childItem: React.ReactNode[] = [];
     data.forEach((item, idx) => {
-      if (idx !== 0 && (idx % (columns)) === 0) {
+      if (idx !== 0 && idx % columns === 0) {
         childs.push(childItem);
         childItem = [];
       }
@@ -62,33 +99,55 @@ export default class Grid extends Component<GridProps> {
       } else if (item.icon) {
         icon = (
           <Image
-            style={[{ width: 36, height: 36 }, StyleSheet.flatten(iconStyle)]}
-            source={typeof item.icon === 'number' ? item.icon :{ uri: item.icon as string }}
+            style={[{width: 36, height: 36}, StyleSheet.flatten(iconStyle)]}
+            source={
+              typeof item.icon === 'number'
+                ? item.icon
+                : {uri: item.icon as string}
+            }
           />
         );
       }
       if (renderItem && typeof renderItem === 'function') {
-        childItem!.push(renderItem(item, idx, parseInt((idx / columns).toString(), 10) + 1));
+        childItem!.push(
+          renderItem(item, idx, parseInt((idx / columns).toString(), 10) + 1),
+        );
       } else {
         const itemContent = (
           <Fragment>
-            {icon && <MaybeTextOrView style={iconStyle}>{icon}</MaybeTextOrView>}
-            <MaybeTextOrView style={[{ marginTop: 9, fontSize: 12 }, textStyle]}>{item.text}</MaybeTextOrView>
+            {icon && (
+              <MaybeTextOrView style={iconStyle}>{icon}</MaybeTextOrView>
+            )}
+            <MaybeTextOrView style={[{marginTop: 9, fontSize: 12}, textStyle]}>
+              {item.text}
+            </MaybeTextOrView>
           </Fragment>
-        )
+        );
         childItem!.push(
           <Flex
             direction="column"
             align="center"
             justify="center"
-            style={[{ height: 120 }, StyleSheet.flatten(itemStyle), { width: `${100 / columns}%` }]}
-          >
+            style={[
+              {height: 120},
+              StyleSheet.flatten(itemStyle),
+              {width: `${100 / columns}%`},
+            ]}>
             {onPress ? (
-              <TouchableOpacity style={styles.touchWarpper} onPress={onPress.bind(this, item, idx, parseInt((idx / columns).toString(), 10) + 1)}>
+              <TouchableOpacity
+                style={styles.touchWarpper}
+                onPress={onPress.bind(
+                  this,
+                  item,
+                  idx,
+                  parseInt((idx / columns).toString(), 10) + 1,
+                )}>
                 {itemContent}
               </TouchableOpacity>
-            ) : itemContent}
-          </Flex>
+            ) : (
+              itemContent
+            )}
+          </Flex>,
         );
       }
       if (idx === data.length - 1) {
@@ -100,12 +159,18 @@ export default class Grid extends Component<GridProps> {
         {childs.map((rowitem, rowidx) => (
           <Flex justify="start" key={rowidx}>
             {rowitem.map((item, idx) => {
-              if (!React.isValidElement(item)) return null;
+              if (!React.isValidElement(item)) {
+                return null;
+              }
               const itemBorderStyle: ViewProps['style'] = {};
               if (hasLine) {
                 const hairLineWidth = StyleSheet.hairlineWidth;
-                itemBorderStyle.borderBottomWidth = childs.length - 1 === rowidx ? 0 : hairLineWidth;
-                itemBorderStyle.borderRightWidth = rowitem.length - 1 === idx && rowitem.length === columns ? 0 : hairLineWidth;
+                itemBorderStyle.borderBottomWidth =
+                  childs.length - 1 === rowidx ? 0 : hairLineWidth;
+                itemBorderStyle.borderRightWidth =
+                  rowitem.length - 1 === idx && rowitem.length === columns
+                    ? 0
+                    : hairLineWidth;
                 itemBorderStyle.borderBottomColor = '#ddd';
                 itemBorderStyle.borderRightColor = '#ddd';
               }

@@ -1,9 +1,19 @@
 import React from 'react';
-import { TextInput, TextInputProperties, GestureResponderEvent, KeyboardTypeOptions, View, StyleSheet, Platform, TouchableWithoutFeedback, Text, TouchableOpacity } from 'react-native';
+import {
+  TextInput,
+  TextInputProperties,
+  GestureResponderEvent,
+  View,
+  StyleSheet,
+  Platform,
+  TouchableWithoutFeedback,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from '../Icon';
-import { InputItemPropsType } from './PropsType';
+import {InputItemPropsType} from './PropsType';
 
-const noop = () => { };
+const noop = () => {};
 
 function normalizeValue(value?: string) {
   if (typeof value === 'undefined' || value === null) {
@@ -12,8 +22,9 @@ function normalizeValue(value?: string) {
   return value;
 }
 
-
-export interface InputProps extends Omit<TextInputProperties, 'onChange' | 'onFocus' | 'onBlur'>, InputItemPropsType {
+export interface InputProps
+  extends Omit<TextInputProperties, 'onChange' | 'onFocus' | 'onBlur'>,
+    InputItemPropsType {
   last?: boolean;
   onExtraClick?: (event: GestureResponderEvent) => void;
   onErrorClick?: (event: GestureResponderEvent) => void;
@@ -39,7 +50,7 @@ export default class Input extends React.Component<InputProps, any> {
   inputRef: TextInput | null | undefined;
 
   onChange = (text: string) => {
-    const { onChange, type } = this.props;
+    const {onChange, type} = this.props;
     const maxLength = this.props.maxLength as number;
     switch (type) {
       case 'bankCard':
@@ -72,23 +83,25 @@ export default class Input extends React.Component<InputProps, any> {
       this.inputRef.clear();
     }
     this.onChange('');
-  }
+  };
   render() {
     const android = Platform.OS === 'android';
     const {
       type,
       editable,
       clear,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       children,
       error,
       extra,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       last,
       onExtraClick,
       onErrorClick,
       disabled,
       ...restProps
     } = this.props;
-    const { value, defaultValue, style } = restProps;
+    const {value, defaultValue, style} = restProps;
     let valueProps: any;
     if ('value' in this.props) {
       valueProps = {
@@ -132,59 +145,56 @@ export default class Input extends React.Component<InputProps, any> {
           ? (extra as string).length * 17
           : 0,
     };
-    return <View style={inputStyles.container}>
-      <TextInput
-        editable={!disabled && editable}
-        clearButtonMode={clear ? 'while-editing' : 'never'}
-        underlineColorAndroid="transparent"
-        ref={el => (this.inputRef = el)}
-        {...restProps}
-        {...valueProps}
-        style={[
-          inputStyles.input,
-          error ? inputStyles.inputErrorColor : null,
-          disabledStyle,
-          // 支持自定义样式
-          style,
-        ]}
-        keyboardType={keyboardType}
-        onChange={event => this.onChange(event.nativeEvent.text)}
-        secureTextEntry={type === 'password'}
-      />
-       {editable && clear && value && android ? (
-                <TouchableOpacity
-                  style={[inputStyles.clear]}
-                  onPress={this.onInputClear}
-                  hitSlop={{ top: 5, left: 5, bottom: 5, right: 5 }}
-                >
-                  <Icon name="circle-close" color="#fff" />
-                </TouchableOpacity>
-              ) : null}
-      {extra ? (
-        <TouchableWithoutFeedback onPress={onExtraClick}>
-          <View>
-            {typeof extra === 'string' ? (
-              <Text style={[inputStyles.extra, extraStyle]}>{extra}</Text>
-            ) : (
+    return (
+      <View style={inputStyles.container}>
+        <TextInput
+          editable={!disabled && editable}
+          clearButtonMode={clear ? 'while-editing' : 'never'}
+          underlineColorAndroid="transparent"
+          ref={(el) => (this.inputRef = el)}
+          {...restProps}
+          {...valueProps}
+          style={[
+            inputStyles.input,
+            error ? inputStyles.inputErrorColor : null,
+            disabledStyle,
+            // 支持自定义样式
+            style,
+          ]}
+          keyboardType={keyboardType}
+          onChange={(event) => this.onChange(event.nativeEvent.text)}
+          secureTextEntry={type === 'password'}
+        />
+        {editable && clear && value && android ? (
+          <TouchableOpacity
+            style={[inputStyles.clear]}
+            onPress={this.onInputClear}
+            hitSlop={{top: 5, left: 5, bottom: 5, right: 5}}>
+            <Icon name="circle-close" color="#fff" />
+          </TouchableOpacity>
+        ) : null}
+        {extra ? (
+          <TouchableWithoutFeedback onPress={onExtraClick}>
+            <View>
+              {typeof extra === 'string' ? (
+                <Text style={[inputStyles.extra, extraStyle]}>{extra}</Text>
+              ) : (
                 extra
               )}
-          </View>
-        </TouchableWithoutFeedback>
-      ) : null}
-      {error && (
-        <TouchableWithoutFeedback onPress={onErrorClick}>
-          <View style={[inputStyles.errorIcon]}>
-            <Icon
-              name="circle-close"
-              color="#dc3545"
-            />
-          </View>
-        </TouchableWithoutFeedback>
-      )}
-    </View>
+            </View>
+          </TouchableWithoutFeedback>
+        ) : null}
+        {error && (
+          <TouchableWithoutFeedback onPress={onErrorClick}>
+            <View style={[inputStyles.errorIcon]}>
+              <Icon name="circle-close" color="#dc3545" />
+            </View>
+          </TouchableWithoutFeedback>
+        )}
+      </View>
+    );
   }
 }
-
 
 const inputStyles = StyleSheet.create({
   container: {
@@ -206,12 +216,12 @@ const inputStyles = StyleSheet.create({
     color: '#f50',
   },
   disabledStyle: {
-    color: '#ccc'
+    color: '#ccc',
   },
   errorIcon: {
     marginLeft: 5,
     width: 20,
-    height: 20
+    height: 20,
   },
   extra: {
     color: '#888888',
@@ -222,6 +232,5 @@ const inputStyles = StyleSheet.create({
     backgroundColor: '#ccc',
     borderRadius: 15,
     padding: 2,
-  }
-
-})
+  },
+});

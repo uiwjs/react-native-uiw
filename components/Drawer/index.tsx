@@ -1,5 +1,4 @@
-
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import {
   Animated,
   StyleSheet,
@@ -42,13 +41,13 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     onChange: () => null,
     openDrawer: () => null,
     closeDrawer: () => null,
-  }
+  };
   constructor(props: DrawerProps) {
     super(props);
     this.state = {
       zIndexValue: 0,
       overlayValue: new Animated.Value(0),
-      drawerValue: new Animated.ValueXY({ ...(this.getInitPosition()) }),
+      drawerValue: new Animated.ValueXY({...this.getInitPosition()}),
     };
   }
   componentDidMount() {
@@ -62,29 +61,39 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     }
   }
   onOverlayClick = (e: GestureResponderEvent) => {
-    const { maskClosable } = this.props;
-    if (!maskClosable) return false;
+    const {maskClosable} = this.props;
+    if (!maskClosable) {
+      return false;
+    }
     e.stopPropagation();
-    this.closeDrawer()
+    this.closeDrawer();
   };
   render() {
-    const { isOpen, style, drawerWidth, drawerBackgroundColor, maskProps, placement, drawerHeight } = this.props;
-    const { drawerValue, overlayValue, zIndexValue } = this.state;
-    const isTopOrBottom = placement === 'top' || placement === 'bottom'
-    const changeStyle = isTopOrBottom ? 'height' : 'width'
-    const dynamicDrawerStyles:any = {
+    const {
+      isOpen,
+      style,
+      drawerWidth,
+      drawerBackgroundColor,
+      maskProps,
+      placement,
+      drawerHeight,
+    } = this.props;
+    const {drawerValue, overlayValue, zIndexValue} = this.state;
+    const isTopOrBottom = placement === 'top' || placement === 'bottom';
+    const changeStyle = isTopOrBottom ? 'height' : 'width';
+    const dynamicDrawerStyles: any = {
       backgroundColor: drawerBackgroundColor,
     };
 
     if (isTopOrBottom) {
-      dynamicDrawerStyles.top = placement === 'top' ? 0 : null
-      dynamicDrawerStyles.bottom = placement === 'bottom' ? 0 : null
-      dynamicDrawerStyles.height = drawerWidth
-      dynamicDrawerStyles.width = '100%'
+      dynamicDrawerStyles.top = placement === 'top' ? 0 : null;
+      dynamicDrawerStyles.bottom = placement === 'bottom' ? 0 : null;
+      dynamicDrawerStyles.height = drawerWidth;
+      dynamicDrawerStyles.width = '100%';
     } else {
-      dynamicDrawerStyles.left = placement === 'left' ? 0 : null
-      dynamicDrawerStyles.right = placement === 'right' ? 0 : null
-      dynamicDrawerStyles.width = drawerWidth
+      dynamicDrawerStyles.left = placement === 'left' ? 0 : null;
+      dynamicDrawerStyles.right = placement === 'right' ? 0 : null;
+      dynamicDrawerStyles.width = drawerWidth;
     }
 
     const overlayOpacity = overlayValue.interpolate({
@@ -95,31 +104,48 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     return (
       <Fragment>
         <Animated.View
-          style={[styles.drawer, dynamicDrawerStyles, style, {
-            [changeStyle]: isOpen ? (isTopOrBottom ? drawerHeight : drawerWidth ) : 0,
-            transform: [
-              { translateX: drawerValue.x }, // x轴移动
-              { translateY: drawerValue.y }, // y轴移动
-            ],
-          }]}>
+          style={[
+            styles.drawer,
+            dynamicDrawerStyles,
+            style,
+            // eslint-disable-next-line react-native/no-inline-styles
+            {
+              [changeStyle]: isOpen
+                ? isTopOrBottom
+                  ? drawerHeight
+                  : drawerWidth
+                : 0,
+              transform: [
+                {translateX: drawerValue.x}, // x轴移动
+                {translateY: drawerValue.y}, // y轴移动
+              ],
+            },
+          ]}>
           {this.props.children}
         </Animated.View>
         <Animated.View
           pointerEvents={isOpen ? 'auto' : 'none'}
-          style={[styles.overlay, styles.positionFull, maskProps, {
-            // opacity: overlayValue,
-            opacity: overlayOpacity,
-            zIndex: zIndexValue,
-          }]}
-        >
+          style={[
+            styles.overlay,
+            styles.positionFull,
+            maskProps,
+            {
+              // opacity: overlayValue,
+              opacity: overlayOpacity,
+              zIndex: zIndexValue,
+            },
+          ]}>
           <TouchableOpacity
-            style={[styles.positionFull, {
-              zIndex: 3003,
-              position: 'absolute',
-            }]}
+            style={[
+              styles.positionFull,
+              // eslint-disable-next-line react-native/no-inline-styles
+              {
+                zIndex: 3003,
+                position: 'absolute',
+              },
+            ]}
             onPress={this.onOverlayClick.bind(this)}
-          >
-          </TouchableOpacity>
+          />
         </Animated.View>
       </Fragment>
     );
@@ -128,13 +154,13 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     isOpen ? this.openDrawer() : this.closeDrawer();
   }
   getInitPosition() {
-    const { drawerWidth, placement, drawerHeight } = this.props;
-    const xy = { x: 0, y: 0 };
+    const {drawerWidth, placement, drawerHeight} = this.props;
+    const xy = {x: 0, y: 0};
     if (placement === 'left') {
       xy.x = -(drawerWidth || 0);
     }
     if (placement === 'right') {
-      xy.x = (DEVICE_WIDTH || 0);
+      xy.x = DEVICE_WIDTH || 0;
     }
     if (placement === 'top') {
       xy.y = -(drawerHeight || 0);
@@ -145,41 +171,40 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     return xy;
   }
   openDrawer() {
-    this.setState({ zIndexValue: 3002 });
+    this.setState({zIndexValue: 3002});
     Animated.parallel([
-      Animated.spring(this.state.drawerValue,
-        {
-          toValue: { x: 0, y: 0 },
-          overshootClamping: true,
-        }
-      ),
-      Animated.spring(this.state.overlayValue,
-        { toValue: .7, overshootClamping: true }
-      ),
+      Animated.spring(this.state.drawerValue, {
+        toValue: {x: 0, y: 0},
+        overshootClamping: true,
+        useNativeDriver: true,
+      }),
+      Animated.spring(this.state.overlayValue, {
+        toValue: 0.7,
+        overshootClamping: true,
+        useNativeDriver: true,
+      }),
     ]).start(() => {
       this.props.openDrawer!(true);
       this.props.onChange!(true);
     });
   }
   closeDrawer() {
-    const { drawerValue, overlayValue } = this.state;
+    const {drawerValue, overlayValue} = this.state;
     Animated.parallel([
-      Animated.spring(drawerValue,
-        {
-          toValue: { ...(this.getInitPosition()) },
-          overshootClamping: true,
-        }
-      ),
-      Animated.spring(overlayValue,
-        {
-          toValue: 0,
-          overshootClamping: true,
-        }
-      ),
+      Animated.spring(drawerValue, {
+        toValue: {...this.getInitPosition()},
+        overshootClamping: true,
+        useNativeDriver: true,
+      }),
+      Animated.spring(overlayValue, {
+        toValue: 0,
+        overshootClamping: true,
+        useNativeDriver: true,
+      }),
     ]).start(() => {
       this.props.closeDrawer!(false);
       this.props.onChange!(false);
-      this.setState({ zIndexValue: 0 });
+      this.setState({zIndexValue: 0});
     });
   }
 }

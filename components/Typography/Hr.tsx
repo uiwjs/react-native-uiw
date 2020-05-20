@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ViewProps } from 'react-native';
+import {StyleSheet, View, ViewProps} from 'react-native';
 
 const styles = StyleSheet.create({
   default: {
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#CDCDCD',
     marginVertical: 10,
-  }
+  },
 });
 
 export interface HrProps extends ViewProps {}

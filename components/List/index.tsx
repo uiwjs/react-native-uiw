@@ -1,6 +1,13 @@
-import React, { Component } from 'react';
-import { FlatList, FlatListProps, Text, StyleProp, ViewStyle, View } from 'react-native';
-import Item, { ListItemProps } from './Item';
+import React, {Component} from 'react';
+import {
+  FlatList,
+  FlatListProps,
+  Text,
+  StyleProp,
+  ViewStyle,
+  View,
+} from 'react-native';
+import Item, {ListItemProps} from './Item';
 
 const noop = () => null;
 
@@ -19,7 +26,9 @@ export interface ListRenderItemInfoCustom<ItemT> {
 
 export interface ListProps extends Omit<FlatListProps<{}>, 'renderItem'> {
   children?: React.ReactNode;
-  renderItem?: (info: ListRenderItemInfoCustom<{}>) => React.ReactElement | null;
+  renderItem?: (
+    info: ListRenderItemInfoCustom<{}>,
+  ) => React.ReactElement | null;
   /**
    * flat default: `true`
    * - flat = `true` => `FlatList`
@@ -36,7 +45,7 @@ export interface ListProps extends Omit<FlatListProps<{}>, 'renderItem'> {
   extra?: React.ReactNode;
   titleStyle?: StyleProp<ViewStyle>;
   paddingLeft?: ListItemProps['paddingLeft'];
-  size?: ListItemProps['size'],
+  size?: ListItemProps['size'];
 }
 
 export interface ListState {
@@ -50,21 +59,27 @@ export default class List extends Component<ListProps, ListState> {
     paddingLeft: 16,
     flat: true,
     size: 'default',
-  }
+  };
   constructor(props: ListProps) {
     super(props);
     this.state = {
       data: [],
-    }
+    };
   }
   getData(nextProps?: ListProps) {
-    const { size, extra, paddingLeft, children } = nextProps || this.props;
-    const dataSource = React.Children.toArray(children).map((child: React.ReactNode, index: number) => {
-      if (!React.isValidElement(child)) return null;
-      const props = { size, ...child.props }
-      return React.cloneElement(<Item paddingLeft={paddingLeft} extra={extra} {...props} />);
-    }).filter(Boolean);
-    this.setState({ data: dataSource as ListProps['data'] });
+    const {size, extra, paddingLeft, children} = nextProps || this.props;
+    const dataSource = React.Children.toArray(children)
+      .map((child: React.ReactNode) => {
+        if (!React.isValidElement(child)) {
+          return null;
+        }
+        const props = {size, ...child.props};
+        return React.cloneElement(
+          <Item paddingLeft={paddingLeft} extra={extra} {...props} />,
+        );
+      })
+      .filter(Boolean);
+    this.setState({data: dataSource as ListProps['data']});
   }
   componentDidMount() {
     if (!this.props.renderItem) {
@@ -80,20 +95,41 @@ export default class List extends Component<ListProps, ListState> {
     return props.item as React.ReactElement;
   }
   render() {
-    const { renderItem, data, children, titleStyle, paddingLeft, flat, size, extra, ListHeaderComponent, title, ...otherProps} = this.props;
+    const {
+      renderItem,
+      data,
+      children,
+      titleStyle,
+      paddingLeft,
+      flat,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      size,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      extra,
+      ListHeaderComponent,
+      title,
+      ...otherProps
+    } = this.props;
     const props = {} as ListProps & FlatListProps<{}>;
     if (!renderItem) {
       props.data = this.state.data;
       props.renderItem = this.renderItemChild.bind(this);
     } else if (typeof renderItem === 'function') {
       props.data = data;
-      props.renderItem = (itemProps:  ListRenderItemInfoCustom<{}>) => renderItem({ ...itemProps });
+      props.renderItem = (itemProps: ListRenderItemInfoCustom<{}>) =>
+        renderItem({...itemProps});
     }
     let header = ListHeaderComponent;
     if (title) {
       header = (
-        <View style={[{ paddingLeft, paddingVertical: 12 }, titleStyle]}>
-          {typeof title == 'string' ? <Text style={{ color: '#808080' }}>{title}</Text> : <View>{title}</View>}
+        // eslint-disable-next-line react-native/no-inline-styles
+        <View style={[{paddingLeft, paddingVertical: 12}, titleStyle]}>
+          {typeof title === 'string' ? (
+            // eslint-disable-next-line react-native/no-inline-styles
+            <Text style={{color: '#808080'}}>{title}</Text>
+          ) : (
+            <View>{title}</View>
+          )}
         </View>
       );
     }
@@ -104,10 +140,20 @@ export default class List extends Component<ListProps, ListState> {
       return (
         <View {...otherProps}>
           {header}
-          {(renderItem && (!data || data.length == 0) || (!renderItem && (!children || React.Children.toArray(children).length === 0))) && otherProps.ListEmptyComponent}
-          {(props.data || []).map((item, idx) => React.cloneElement(props.renderItem({ item, index: idx }) || <View />, {key: idx}))}
+          {((renderItem && (!data || data.length === 0)) ||
+            (!renderItem &&
+              (!children || React.Children.toArray(children).length === 0))) &&
+            otherProps.ListEmptyComponent}
+          {(props.data || []).map((item, idx) =>
+            React.cloneElement(
+              (props.renderItem && props.renderItem({item, index: idx})) || (
+                <View />
+              ),
+              {key: idx},
+            ),
+          )}
         </View>
-      )
+      );
     }
     return (
       <FlatList

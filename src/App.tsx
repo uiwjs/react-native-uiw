@@ -1,34 +1,49 @@
-import React, { Component, Fragment } from 'react';
-import { StatusBar, SafeAreaView, View, Text, Platform } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-// import HomeScreen from './routes/Home';
-import HomeScreen from './routes/SelectCascader';
-import { routes } from './routes';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 
-const AppNavigator = createStackNavigator({
-  ...routes,
-  Home: {
-    screen: HomeScreen,
-    navigationOptions: {
-      title: 'UIW Mobile UI',
-    }
-  }
-}, {
-  initialRouteName: 'Home',
-  /*
-    * Use modal on iOS because the card mode comes from the right,
-    * which conflicts with the drawer example gesture
-    */
-  mode: Platform.OS === 'ios' ? 'modal' : 'card',
+import {stackPageData} from './routes';
+
+const Stack = createStackNavigator();
+
+const styles = StyleSheet.create({
+  block: {
+    flex: 1,
+  },
 });
 
-const Navigation = createAppContainer(AppNavigator);
-
-export default () => {
+const App = () => {
   return (
-    <View style={{ flex: 1 }}>
-      <Navigation />
-    </View>
-  )
-}
+    <SafeAreaView style={styles.block}>
+      <StatusBar barStyle="dark-content" />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            name="Home"
+            component={require('./Home').default}
+            options={{
+              headerTitle: 'Home',
+              // header: () => null,
+            }}
+          />
+          {stackPageData.map((props: any, index: number) => {
+            return (
+              <Stack.Screen
+                key={index}
+                {...props}
+                // name="Home"
+                // options={{
+                //   header: () => null
+                // }}
+                // component={Home}
+              />
+            );
+          })}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
+  );
+};
+
+export default App;

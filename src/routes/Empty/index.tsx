@@ -1,11 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { Divider, Empty } from '../../../components';
-import { ComProps } from '../../typings';
-import Layout, { Container } from '../../Layout';
+import {Empty} from '../../../components';
+import {ComProps} from '../../typings';
+import Layout, {Container} from '../../Layout';
 
-const { Header, Body, Card, Footer } = Layout;
-
+const {Header, Body, Card, Footer} = Layout;
 
 const xml = `
 <svg viewBox="0 0 1024 1024" version="1.1" width="200" height="200">
@@ -31,13 +29,13 @@ const xml = `
 </svg>
 `;
 
-export interface DividerViewProps extends ComProps { }
+export interface DividerViewProps extends ComProps {}
 
 export default class DividerView extends React.Component<DividerViewProps> {
   render() {
-    const { navigation } = this.props;
-    const description = navigation.getParam('description');
-    const title = navigation.getParam('title');
+    const {route} = this.props;
+    const description = route.params.description;
+    const title = route.params.title;
     return (
       <Container>
         <Layout>
@@ -47,16 +45,16 @@ export default class DividerView extends React.Component<DividerViewProps> {
               <Empty />
             </Card>
             <Card title="自定义文字 label?: string">
-              <Empty label="冇得数据咯"/>
+              <Empty label="冇得数据咯" />
             </Card>
             <Card title="替换默认图标 xml?: string;">
-              <Empty label="冇得数据咯" xml={xml}/>
+              <Empty label="冇得数据咯" xml={xml} />
             </Card>
             <Card title="自定义图标尺寸 size?: number">
               <Empty label="冇得数据咯" size={120} />
             </Card>
             <Card title="自定义文字样式 labelStyle?: TextProps['style']">
-              <Empty label="冇得数据咯" labelStyle={{ color: 'red' }} />
+              <Empty label="冇得数据咯" labelStyle={{color: 'red'}} />
             </Card>
           </Body>
           <Footer />

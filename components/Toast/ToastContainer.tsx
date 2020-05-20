@@ -1,6 +1,13 @@
-import React, { Component } from 'react'
-import { View, Text, StyleSheet, Animated, StyleProp, ViewStyle } from 'react-native'
-import Icon, { IconsName } from '../Icon'
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Animated,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
+import Icon, {IconsName} from '../Icon';
 
 export interface ToastProps {
   type: 'info' | 'success' | 'warning' | 'error';
@@ -13,12 +20,10 @@ export interface ToastProps {
   style?: StyleProp<ViewStyle>;
 }
 
-
 export default class ToastContainer extends Component<ToastProps, any> {
   static defaultProps = {
     duration: 3,
     type: 'info',
-    
   };
 
   anim: Animated.CompositeAnimation | null | undefined;
@@ -30,7 +35,7 @@ export default class ToastContainer extends Component<ToastProps, any> {
     };
   }
   componentDidMount() {
-    const { onClose, onAnimationEnd, content } = this.props;
+    const {onClose, onAnimationEnd} = this.props;
     const duration = this.props.duration as number;
     const timing = Animated.timing;
     if (this.anim) {
@@ -74,45 +79,55 @@ export default class ToastContainer extends Component<ToastProps, any> {
     }
   }
 
-
   renderIcon = () => {
-    const { type } = this.props;
+    const {type} = this.props;
     let icon = this.props.icon;
     let color = '';
     if (!icon) {
       switch (type) {
-        case 'success': icon = 'circle-check'; color = '#28a745'; break;
-        case 'warning': icon = 'warning'; color = '#ffc107'; break;
-        case 'info': icon = 'information'; color = '#008ef0'; break;
-        case 'error': icon = 'circle-close'; color = '#dc3545'; break;
-        default: break;
+        case 'success':
+          icon = 'circle-check';
+          color = '#28a745';
+          break;
+        case 'warning':
+          icon = 'warning';
+          color = '#ffc107';
+          break;
+        case 'info':
+          icon = 'information';
+          color = '#008ef0';
+          break;
+        case 'error':
+          icon = 'circle-close';
+          color = '#dc3545';
+          break;
+        default:
+          break;
       }
     }
     return {icon, color};
-  }
+  };
 
   render() {
-    const { content, type, style } = this.props;
+    const {content, type, style} = this.props;
 
     return (
-      <View
-        style={[styles.container, style]}
-      >
+      <View style={[styles.container, style]}>
         <View style={[styles.innerContainer]}>
-          <Animated.View style={{ opacity: this.state.fadeAnim }}>
-            <View
-              style={[
-                styles.content,
-                styles[type]
-              ]}
-            >
-              <Icon name={this.renderIcon().icon}  size={16} style={[styles.icon]}  color={this.renderIcon().color}/>
-              <Text >{content}</Text>
+          <Animated.View style={{opacity: this.state.fadeAnim}}>
+            <View style={[styles.content, styles[type]]}>
+              <Icon
+                name={this.renderIcon().icon}
+                size={16}
+                style={[styles.icon]}
+                color={this.renderIcon().color}
+              />
+              <Text>{content}</Text>
             </View>
           </Animated.View>
         </View>
       </View>
-    )
+    );
   }
 }
 
@@ -129,11 +144,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   icon: {
     marginRight: 5,
-   
   },
   content: {
     paddingLeft: 10,
@@ -146,16 +160,16 @@ const styles = StyleSheet.create({
   },
   info: {
     backgroundColor: '#bde4ff',
-    color: '#008ef0'
+    color: '#008ef0',
   },
   success: {
     backgroundColor: '#afecbd',
-    color: '#28a745'
+    color: '#28a745',
   },
   error: {
-    backgroundColor: '#fae3e5'
+    backgroundColor: '#fae3e5',
   },
   warning: {
-    backgroundColor: '#fff4d3'
-  }
-})
+    backgroundColor: '#fff4d3',
+  },
+});

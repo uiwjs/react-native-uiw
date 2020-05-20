@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { ComProps } from '../../typings';
-import Layout, { Container } from '../../Layout';
-import { Flex, Button } from '../../../components';
+import {Text, View} from 'react-native';
+import {ComProps} from '../../typings';
+import Layout, {Container} from '../../Layout';
+import {Flex, Button} from '../../../components';
 
-const { Header, Body, Card, Footer } = Layout;
+const {Header, Body, Card, Footer} = Layout;
 
 const Circle = (props: any) => {
   const size = props.size || 20;
@@ -27,7 +27,7 @@ const Square = (props: any) => {
     margin: 1,
   };
   return <View style={style} />;
-}
+};
 
 const Span = (props: any) => {
   const size = props.size || 14;
@@ -38,20 +38,19 @@ const Span = (props: any) => {
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: '#393E48',
-      }}
-    >
+      }}>
       {props.children}
     </Text>
-  )
-}
+  );
+};
 
-export interface FlexViewProps extends ComProps { }
+export interface FlexViewProps extends ComProps {}
 
 export default class FlexView extends React.Component<FlexViewProps> {
   render() {
-    const { navigation } = this.props;
-    const description = navigation.getParam('description');
-    const title = navigation.getParam('title');
+    const {route} = this.props;
+    const description = route.params.description;
+    const title = route.params.title;
     return (
       <Container>
         <Layout>
@@ -135,22 +134,25 @@ export default class FlexView extends React.Component<FlexViewProps> {
               </Flex>
             </Card>
             <Card title="起点对齐 align='start'">
-              <Flex align="start" >
-                <Square size={30} /> <Square size={26} /> <Square size={22} /> <Square size={18} />
+              <Flex align="start">
+                <Square size={30} /> <Square size={26} /> <Square size={22} />{' '}
+                <Square size={18} />
               </Flex>
             </Card>
             <Card title="中点对齐 align='center'">
-              <Flex align="center" >
-                <Square size={30} /> <Square size={26} /> <Square size={22} /> <Square size={18} />
+              <Flex align="center">
+                <Square size={30} /> <Square size={26} /> <Square size={22} />{' '}
+                <Square size={18} />
               </Flex>
             </Card>
             <Card title="终点对齐 align='end'">
-              <Flex align="end" >
-                <Square size={30} /> <Square size={26} /> <Square size={22} /> <Square size={18} />
+              <Flex align="end">
+                <Square size={30} /> <Square size={26} /> <Square size={22} />{' '}
+                <Square size={18} />
               </Flex>
             </Card>
             <Card title="如果项目未设置高度或设为auto，将占满整个容器的高度 align='stretch'">
-              <Flex align="stretch" style={{ height: 70 }}>
+              <Flex align="stretch" style={{height: 70}}>
                 <Span size={20}> 组件 </Span>
                 <Span size={18}> 组件 </Span>
                 <Span size={16}> 组件 </Span>
@@ -159,20 +161,23 @@ export default class FlexView extends React.Component<FlexViewProps> {
             </Card>
             <Card title="换行，第一行在上方: wrap='wrap'">
               <Flex wrap="wrap">
-                {'ooooooooooooooooooooooooooooo'.split('')
-                  .map((char, i) => <Circle key={`${i}-${char}`} />)}
+                {'ooooooooooooooooooooooooooooo'.split('').map((char, i) => (
+                  <Circle key={`${i}-${char}`} />
+                ))}
               </Flex>
             </Card>
             <Card title="换行: wrap='nowrap'">
               <Flex wrap="nowrap">
-                {'ooooooooooooooooooooooooooooo'.split('')
-                  .map((char, i) => <Circle key={`${i}-${char}`} />)}
+                {'ooooooooooooooooooooooooooooo'.split('').map((char, i) => (
+                  <Circle key={`${i}-${char}`} />
+                ))}
               </Flex>
             </Card>
             <Card title="换行，第一行在下方: wrap='wrap-reverse'">
               <Flex wrap="wrap-reverse">
-                {'ooooooooooooooooooooooooooooo'.split('')
-                  .map((char, i) => <Circle key={`${i}-${char}`} />)}
+                {'ooooooooooooooooooooooooooooo'.split('').map((char, i) => (
+                  <Circle key={`${i}-${char}`} />
+                ))}
               </Flex>
             </Card>
           </Body>

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, Text, ViewProps, TextProps, StyleSheet } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, ViewProps, TextProps, StyleSheet} from 'react-native';
 
 export interface DividerProps extends ViewProps {
   label?: string;
@@ -14,9 +14,18 @@ export default class Divider extends Component<DividerProps> {
   static defaultProps: DividerProps = {
     type: 'horizontal',
     gutter: 8,
-  }
+  };
   render() {
-    let { children, style, gutter, label, lineStyle, labelStyle, type, ...restProps } =  this.props;
+    let {
+      children,
+      style,
+      gutter,
+      label,
+      lineStyle,
+      labelStyle,
+      type,
+      ...restProps
+    } = this.props;
     if (typeof children === 'string') {
       label = children;
       children = null;
@@ -26,12 +35,12 @@ export default class Divider extends Component<DividerProps> {
     if (type === 'horizontal') {
       warpperStyles.unshift(styles.horizontal);
       lineStyleArr.unshift(styles.lineHorizontal);
-      lineStyleArr.unshift({ marginHorizontal: gutter });
+      lineStyleArr.unshift({marginHorizontal: gutter});
     }
     if (type === 'vertical') {
       warpperStyles.unshift(styles.vertical);
       lineStyleArr.unshift(styles.lineVertical);
-      lineStyleArr.unshift({ marginVertical: gutter });
+      lineStyleArr.unshift({marginVertical: gutter});
     }
     if (!children && label) {
       if (labelStyle && typeof labelStyle === 'number') {
@@ -42,7 +51,7 @@ export default class Divider extends Component<DividerProps> {
     if (lineStyle && typeof lineStyle === 'number') {
       lineStyle = StyleSheet.flatten(lineStyle);
     }
-    const line = <View style={[styles.line, ...lineStyleArr, lineStyle]} />
+    const line = <View style={[styles.line, ...lineStyleArr, lineStyle]} />;
     return (
       <View style={[styles.warpper, ...warpperStyles, style]} {...restProps}>
         {line}

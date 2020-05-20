@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, ViewProps, FlexStyle } from 'react-native';
+import React, {Component} from 'react';
+import {View, ViewProps, FlexStyle} from 'react-native';
 import FlexItem from './FlexItem';
 
 export interface FlexProps extends ViewProps {
@@ -16,9 +16,9 @@ export default class Flex extends Component<FlexProps> {
     justify: 'start',
     wrap: 'nowrap',
     align: 'start',
-  }
+  };
   render() {
-    const { direction, justify, align, wrap, children, style } = this.props;
+    const {direction, justify, align, wrap, children, style} = this.props;
     const sty: FlexProps['style'] = {};
     if (direction) {
       sty.flexDirection = direction;
@@ -35,21 +35,25 @@ export default class Flex extends Component<FlexProps> {
         .replace(/^evenly$/g, 'space-evenly') as FlexStyle['justifyContent'];
     }
     if (align) {
-      sty.alignItems = align.replace(/^start$/g, 'flex-start')
+      sty.alignItems = align
+        .replace(/^start$/g, 'flex-start')
         .replace(/^end$/g, 'flex-end') as FlexStyle['alignItems'];
     }
     return (
       <View style={[sty, style]}>
-        {children && React.Children.map(children, (child: React.ReactNode) => {
-          if (!React.isValidElement(child)) return null;
-          if (child.type && (child.type as any).displayName === 'FlexItem') {
-            return React.cloneElement(<FlexItem />, {
-              ...child.props,
-              style: [{ flex: 1 }, child.props.style],
-            });
-          }
-          return child;
-        })}
+        {children &&
+          React.Children.map(children, (child: React.ReactNode) => {
+            if (!React.isValidElement(child)) {
+              return null;
+            }
+            if (child.type && (child.type as any).displayName === 'FlexItem') {
+              return React.cloneElement(<FlexItem />, {
+                ...child.props,
+                style: [{flex: 1}, child.props.style],
+              });
+            }
+            return child;
+          })}
       </View>
     );
   }
