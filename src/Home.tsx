@@ -4,16 +4,25 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {stackPageData, Routes} from './routes';
 import {Button} from '../components';
 
+const styles = StyleSheet.create({
+  block: {
+    flex: 1,
+  },
+});
+
 type ModalStackNavigation = StackNavigationProp<{}>;
 
 const Link = ({
-  children,
   navigation,
   params,
   to,
+  title,
+  description,
 }: {
   to: string;
-  children: JSX.Element;
+  title: string;
+  description: string;
+  children?: JSX.Element;
   params: Routes['params'];
   navigation: ModalStackNavigation;
 }) => {
@@ -29,17 +38,16 @@ const Link = ({
         bordered={false}
         textStyle={styles.block}
         onPress={() => navigation.push(to as never, {...params} as never)}>
-        {children}
+        <View style={styles.block}>
+          <Text>{title || ''}</Text>
+          <View>
+            <Text>{description}</Text>
+          </View>
+        </View>
       </Button>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  block: {
-    flex: 1,
-  },
-});
 
 export default ({navigation}: {navigation: ModalStackNavigation}) => {
   return (
@@ -51,14 +59,10 @@ export default ({navigation}: {navigation: ModalStackNavigation}) => {
               <Link
                 to={props.name as never}
                 navigation={navigation}
-                params={props.params}>
-                <View style={styles.block}>
-                  <Text>{props.params.title || ''}</Text>
-                  <View>
-                    <Text>{props.params.description}</Text>
-                  </View>
-                </View>
-              </Link>
+                params={props.params}
+                title={props.params.title}
+                description={props.params.description}
+              />
             </View>
           );
         })}
