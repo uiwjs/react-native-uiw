@@ -14,7 +14,7 @@ function transform(filePath) {
 
 function getPath(rootPath, result = []) {
   const dirs = fs.readdirSync(rootPath);
-  dirs.forEach(item => {
+  dirs.forEach((item) => {
     const itemPath = path.join(rootPath, item);
     const stat = fs.statSync(itemPath);
     if (stat.isFile()) {
@@ -62,7 +62,7 @@ const tsc = {
       path.join(process.cwd(), 'README.md'),
     );
     const files = await getPath(root);
-    files.forEach(itemPath => {
+    files.forEach((itemPath) => {
       if (/.(tsx|ts)$/.test(itemPath)) {
         const code = transform(itemPath);
         const outputFile = itemPath.replace(root, output);
@@ -85,7 +85,7 @@ const tsc = {
     await fs.remove(tscPath);
     await fs.remove(path.join(process.cwd(), 'package-lock.json'));
     await fs.remove(path.join(process.cwd(), 'yarn.lock'));
-    await fs.remove(path.join(process.cwd(), 'node_modules'));
+    // await fs.remove(path.join(process.cwd(), 'node_modules'));
     await execute(`cd ${projectPath} && git add .`);
     await execute(
       `cd ${projectPath} && git commit -m "released v${pkg.version}"`,
@@ -104,7 +104,7 @@ function execute(command) {
     function onData(data) {
       process.stdout.write(data);
     }
-    subProcess.on('error', error => {
+    subProcess.on('error', (error) => {
       reject(
         new Error(
           `command failed: ${command}; ${error.message ? error.message : ''}`,
@@ -113,7 +113,7 @@ function execute(command) {
     });
     subProcess.stdout.on('data', onData);
     subProcess.stderr.on('data', onData);
-    subProcess.on('close', code => {
+    subProcess.on('close', (code) => {
       resolve(code);
     });
     subProcess.stdin.write(`${command} \n`);
