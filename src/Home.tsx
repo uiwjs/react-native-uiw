@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, ScrollView, Button} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {stackPageData, Routes} from './routes';
+import {Button} from '../components';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -12,20 +13,30 @@ const Link = ({
   to,
 }: {
   to: string;
-  children: string;
+  children: JSX.Element;
   params: Routes['params'];
   navigation: ModalStackNavigation;
 }) => {
   return (
-    <Button
-      title={children}
-      onPress={() => navigation.push(to as never, {...params} as never)}
-    />
+    <View
+      // eslint-disable-next-line react-native/no-inline-styles
+      style={{
+        borderBottomColor: '#CDCDCD',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        flex: 1,
+      }}>
+      <Button
+        bordered={false}
+        textStyle={styles.block}
+        onPress={() => navigation.push(to as never, {...params} as never)}>
+        {children}
+      </Button>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  warpper: {
+  block: {
     flex: 1,
   },
 });
@@ -33,7 +44,7 @@ const styles = StyleSheet.create({
 export default ({navigation}: {navigation: ModalStackNavigation}) => {
   return (
     <ScrollView>
-      <View style={styles.warpper}>
+      <View style={styles.block}>
         {stackPageData.map((props, index) => {
           return (
             <View key={index}>
@@ -41,7 +52,12 @@ export default ({navigation}: {navigation: ModalStackNavigation}) => {
                 to={props.name as never}
                 navigation={navigation}
                 params={props.params}>
-                {props.params.title || ''}
+                <View style={styles.block}>
+                  <Text>{props.params.title || ''}</Text>
+                  <View>
+                    <Text>{props.params.description}</Text>
+                  </View>
+                </View>
               </Link>
             </View>
           );

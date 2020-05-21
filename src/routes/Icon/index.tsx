@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, StyleSheet, Linking, TouchableOpacity} from 'react-native';
+import React, {useMemo} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity, Linking} from 'react-native';
 import {ComProps} from '../../typings';
 import {Icon} from '../../../components';
 import {IconsName} from '../../../components/Icon';
@@ -239,6 +239,34 @@ const iconData: IconsName[] = [
   'zoom-out',
 ];
 
+const LinkButtons = () => {
+  return useMemo(
+    () => (
+      <TouchableOpacity
+        onPress={() => Linking.openURL('https://uiwjs.github.io/icons/')}>
+        <Text
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={{color: '#0366d6'}}>
+          图标 web 预览
+        </Text>
+      </TouchableOpacity>
+    ),
+    [],
+  );
+};
+
+const IconListView = ({keyName}: {keyName: IconsName}) => {
+  return useMemo(
+    () => (
+      <View style={styles.item}>
+        <Icon name={keyName} size={18} style={styles.icon} />
+        <Text>{keyName}</Text>
+      </View>
+    ),
+    [keyName],
+  );
+};
+
 export default class IconPage extends React.Component<IconPageProps> {
   render() {
     const {route} = this.props;
@@ -266,24 +294,10 @@ export default class IconPage extends React.Component<IconPageProps> {
                 style={styles.icon}
               />
             </Card>
-            <Card
-              title="UIW Icon"
-              extra={
-                <TouchableOpacity
-                  onPress={() =>
-                    Linking.openURL('https://uiwjs.github.io/icons/')
-                  }>
-                  <Text style={{color: '#0366d6'}}>图标 web 预览</Text>
-                </TouchableOpacity>
-              }>
+            <Card title="UIW Icon" extra={<LinkButtons />}>
               <View style={styles.list}>
                 {iconData.map((keyName: IconsName, key: number) => {
-                  return (
-                    <View key={key} style={styles.item}>
-                      <Icon name={keyName} size={18} style={styles.icon} />
-                      <Text>{keyName}</Text>
-                    </View>
-                  );
+                  return <IconListView key={key} keyName={keyName} />;
                 })}
               </View>
             </Card>
