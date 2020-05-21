@@ -17,8 +17,8 @@
     "@uiw/icons": "2.4.3",
     "color": "3.1.2",
     "prop-types": "15.7.2",
-    "react-native-svg": "9.13.3",
     "react-native-root-siblings": "4.0.6",
+    "react-native-svg": "9.13.3",
     "react-native-swipeout": "2.3.6"
   },
   "devDependencies": {
@@ -38,9 +38,9 @@
     "prettier": "2.0.5",
     "react": "16.11.0",
     "react-native": "0.62.2",
-    "react-native-screens": "2.7.0",
     "react-native-gesture-handler": "1.6.1",
     "react-native-safe-area-context": "1.0.2",
+    "react-native-screens": "2.7.0",
     "react-test-renderer": "16.11.0",
     "typescript": "3.9.3"
   },
