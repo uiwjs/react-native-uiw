@@ -41,7 +41,7 @@ const Link = ({
         <View style={styles.block}>
           <Text>{title || ''}</Text>
           <View>
-            <Text>{description}</Text>
+            <Text style={{color: '#969696'}}>{description}</Text>
           </View>
         </View>
       </Button>

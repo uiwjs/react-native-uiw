@@ -145,6 +145,14 @@ export const stackPageData: Routes[] = [
     },
   },
   {
+    name: 'MaskLayer',
+    component: require('./routes/MaskLayer').default,
+    params: {
+      title: 'MaskLayer 遮罩层',
+      description: '用于模态对话框，中的遮罩层。',
+    },
+  },
+  {
     name: 'Radio',
     component: require('./routes/Radio').default,
     params: {

@@ -27,11 +27,12 @@ export default class ModalView extends Component<ModalViewProps> {
           <Body>
             <Card title="基础实例">
               <Modal
+                placement="top"
                 // maskClosable={false}
                 visible={this.state.modalVisible}
                 onClosed={() => this.setState({modalVisible: false})}
                 onRequestClose={() => {
-                  this.setState({modalVisible: false});
+                  // this.setState({modalVisible: false});
                   // Alert.alert('Modal has been closed.');
                 }}>
                 <SafeAreaView>
