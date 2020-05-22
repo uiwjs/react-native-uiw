@@ -66,18 +66,18 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
           Animated.spring(this.state.borderValue, {
             toValue: this.height,
             overshootClamping: true,
-            useNativeDriver: true,
+            useNativeDriver: false,
           }),
           Animated.spring(this.state.bgOpacity, {
             toValue: 1,
             overshootClamping: true,
-            useNativeDriver: true,
+            useNativeDriver: false,
           }),
         ]),
         Animated.spring(this.state.translateXValue, {
           toValue: this.translateXValue,
           overshootClamping: true,
-          useNativeDriver: true,
+          useNativeDriver: false,
         }),
       ]).start();
     } else {
@@ -86,18 +86,18 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
           Animated.spring(this.state.bgOpacity, {
             toValue: 0,
             overshootClamping: true,
-            useNativeDriver: true,
+            useNativeDriver: false,
           }),
           Animated.spring(this.state.borderValue, {
             toValue: 2,
             overshootClamping: true,
-            useNativeDriver: true,
+            useNativeDriver: false,
           }),
         ]),
         Animated.spring(this.state.translateXValue, {
           toValue: 2,
           overshootClamping: true,
-          useNativeDriver: true,
+          useNativeDriver: false,
         }),
       ]).start();
     }
