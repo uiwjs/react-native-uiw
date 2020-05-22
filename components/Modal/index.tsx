@@ -1,219 +1,111 @@
-import React from 'react';
-import {
-  Modal,
-  ModalProps as RNModalProps,
-  Animated,
-  ViewProps,
-  TouchableOpacity,
-  LayoutChangeEvent,
-  StyleSheet,
-} from 'react-native';
+import React, {useState, useMemo} from 'react';
+import {Animated, StyleSheet, LayoutChangeEvent} from 'react-native';
+import MaskLayer, {MaskLayerProps} from '../MaskLayer';
 
-export interface ModalProps extends RNModalProps {
+export interface ModalProps extends MaskLayerProps {
   placement?: 'top' | 'right' | 'bottom' | 'left';
-  bgOpacity?: number;
-  visible?: boolean;
-  maskClosable?: boolean;
   onClosed?: () => void;
 }
 
-export interface ModalState {
-  bgOpacity: Animated.Value;
-  translateValue: Animated.Value;
-  visible?: boolean;
-}
-
-export default class NativeModal extends React.Component<
-  ModalProps,
-  ModalState
-> {
-  translateValue?: number;
-  timer?: number;
-  public content = React.createRef<ViewProps>();
-  static defaultProps: ModalProps = {
-    animationType: 'none',
-    placement: 'bottom',
-    maskClosable: true,
-    bgOpacity: 0.6,
-  };
-  constructor(props: ModalProps) {
-    super(props);
-    this.state = {
-      bgOpacity: new Animated.Value(props.visible ? props.bgOpacity || 0.6 : 0),
-      translateValue: new Animated.Value(0),
-      visible: !!props.visible,
-    };
+export default (props: ModalProps = {}) => {
+  const {
+    onClosed,
+    visible,
+    children,
+    placement = 'bottom',
+    ...otherProps
+  } = props;
+  const [display] = useState('none');
+  let [layoutHeight, setLayoutHeight] = useState(0);
+  let [layoutWidth, setLayoutWidth] = useState(0);
+  const [translateValue] = useState(new Animated.Value(0));
+  const isVertical = /^(top|bottom)$/.test(placement);
+  const isHorizontal = /^(left|right)$/.test(placement);
+  function onDismiss() {
+    onClosed && onClosed();
   }
-  componentDidMount() {
-    if (this.props.visible) {
-      // this.open();
+  function measureContainer(event: LayoutChangeEvent) {
+    const {height, width} = event.nativeEvent.layout;
+    if (!layoutHeight && isVertical) {
+      setLayoutHeight(height);
+    }
+    if (!layoutWidth && isHorizontal) {
+      setLayoutWidth(width);
     }
   }
-  UNSAFE_componentWillReceiveProps(nextProps: ModalProps) {
-    if (nextProps.visible !== this.props.visible) {
-      if (nextProps.visible) {
-        this.setState({visible: nextProps.visible}, () => {
-          this.open();
-        });
-      } else {
-        this.close();
-      }
-    }
-  }
-  open() {
-    Animated.parallel([
-      Animated.spring(this.state.bgOpacity, {
-        toValue: this.props.bgOpacity || 0.6,
-        overshootClamping: true,
-        useNativeDriver: true,
-      }),
-      Animated.spring(this.state.translateValue, {
-        toValue: 0,
-        overshootClamping: true,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }
-  close() {
-    const {onClosed} = this.props;
-    // const {translateValue} = this.state;
-    if (this.translateValue) {
-      // translateValue.setValue(this.translateValue);
-    }
-    Animated.parallel([
-      Animated.spring(this.state.bgOpacity, {
-        toValue: 0,
-        overshootClamping: true,
-        useNativeDriver: true,
-      }),
-      Animated.spring(this.state.translateValue, {
-        toValue: this.translateValue!,
-        overshootClamping: true,
-        useNativeDriver: true,
-      }),
-    ]).start(() => {
-      this.setState({visible: false}, () => {
-        onClosed && onClosed();
-      });
-    });
-  }
-  measureContainer = (event: LayoutChangeEvent) => {
-    const {placement, visible} = this.props;
-    const {height: layoutHeight, width: layoutWidth} = event.nativeEvent.layout;
-    this.translateValue = layoutHeight;
-    if (placement === 'bottom') {
-      this.translateValue = layoutHeight;
-    }
+  function getTransformSize() {
     if (placement === 'top') {
-      this.translateValue = layoutHeight;
+      return -layoutHeight;
+    }
+    if (placement === 'bottom') {
+      return layoutHeight;
     }
     if (placement === 'left') {
-      this.translateValue = layoutWidth;
+      return -layoutWidth;
     }
     if (placement === 'right') {
-      this.translateValue = layoutWidth;
+      return layoutWidth;
     }
-    if (this.timer) {
-      clearTimeout(this.timer);
+    return 0;
+  }
+  useMemo(() => {
+    if (visible && (layoutHeight !== 0 || layoutWidth !== 0)) {
+      translateValue.setValue(getTransformSize());
+      Animated.parallel([
+        Animated.spring(translateValue, {
+          toValue: 0,
+          overshootClamping: true,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    } else if (layoutHeight !== 0 || layoutWidth !== 0) {
+      Animated.parallel([
+        Animated.spring(translateValue, {
+          toValue: getTransformSize(),
+          overshootClamping: true,
+          useNativeDriver: true,
+        }),
+      ]).start();
     }
-    this.timer = setTimeout(() => {
-      if (!visible) {
-        this.setState(
-          {translateValue: (this.translateValue as unknown) as Animated.Value},
-          () => {
-            this.open();
-          },
-        );
-      }
-      if (this.timer) {
-        clearTimeout(this.timer);
-      }
-    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible, layoutHeight]);
+  const translateStyle = {} as {
+    translateY: Animated.Value;
+    translateX: Animated.Value;
   };
-  getTransformStyle() {
-    const {placement} = this.props;
-    const style: {
-      translateX?: Animated.Value;
-      translateY?: Animated.Value;
-    } = {};
-    if (placement && /^(bottom|top)$/.test(placement)) {
-      style.translateY = this.state.translateValue;
-    } else if (placement && /^(left|right)$/.test(placement)) {
-      style.translateX = this.state.translateValue;
-    } else {
-      return {};
-    }
-    return {transform: [style]};
+  if (isVertical) {
+    translateStyle.translateY = translateValue;
   }
-  render() {
-    const {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      visible,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      transparent,
-      maskClosable,
-      animationType,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      presentationStyle,
-      placement,
-      children,
-      ...otherProps
-    } = this.props;
-
-    const backdropContent = (
-      <Animated.View
-        style={[
-          styles.position,
-          styles.backdrop,
-          {opacity: this.state.bgOpacity},
-        ]}
-      />
-    );
-    let backdrop = (
-      <TouchableOpacity
-        activeOpacity={1}
-        style={[styles.position]}
-        onPress={() => this.close()}>
-        {backdropContent}
-      </TouchableOpacity>
-    );
-    return (
-      <Modal
-        transparent={true}
-        animationType={animationType}
-        visible={this.state.visible}
-        {...otherProps}>
-        {maskClosable ? backdrop : backdropContent}
-        <Animated.View
-          ref={this.content as any}
-          onLayout={this.measureContainer}
-          style={[
-            styles.content,
-            placement && styles[placement],
-            this.getTransformStyle(),
-          ]}>
-          {children}
-        </Animated.View>
-      </Modal>
-    );
+  if (isHorizontal) {
+    console.log('left', placement, getTransformSize());
+    translateStyle.translateX = translateValue;
   }
-}
+  const child = (
+    <Animated.View
+      onLayout={measureContainer}
+      style={[
+        styles.content,
+        placement && styles[placement],
+        !layoutHeight && isVertical ? {display: display} : {},
+        !layoutWidth && isHorizontal ? {display: display} : {},
+        // // getTransformStyle(),
+        {transform: [translateStyle]},
+      ]}>
+      {children}
+    </Animated.View>
+  );
+  return (
+    <MaskLayer {...otherProps} visible={visible} onDismiss={onDismiss}>
+      {child}
+    </MaskLayer>
+  );
+};
 
 const styles = StyleSheet.create({
-  position: {
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  backdrop: {
-    backgroundColor: '#000',
-  },
   content: {
     backgroundColor: '#fff',
     position: 'absolute',
+    zIndex: 9999,
   },
   top: {
     top: 0,

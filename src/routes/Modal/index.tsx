@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 import Layout, {Container} from '../../Layout';
-import {Modal, Button} from '../../../components';
+import {Modal, Button, Radio} from '../../../components';
 import {ComProps} from '../../typings';
 const {Header, Body, Card, Footer} = Layout;
 
@@ -9,7 +9,7 @@ export interface ModalViewProps extends ComProps {}
 
 export default class ModalView extends Component<ModalViewProps> {
   state = {
-    modalVisible: false,
+    modalVisible: true,
   };
 
   setModalVisible(visible: boolean) {
@@ -27,7 +27,7 @@ export default class ModalView extends Component<ModalViewProps> {
           <Body>
             <Card title="基础实例">
               <Modal
-                placement="top"
+                placement="right"
                 // maskClosable={false}
                 visible={this.state.modalVisible}
                 onClosed={() => this.setState({modalVisible: false})}
@@ -64,6 +64,8 @@ export default class ModalView extends Component<ModalViewProps> {
               <Button onPress={() => this.setModalVisible(true)}>
                 显示模态框
               </Button>
+              <Radio>所有人可见</Radio>
+              <Radio>超级管理员</Radio>
             </Card>
           </Body>
           <Footer />
