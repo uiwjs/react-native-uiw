@@ -95,6 +95,7 @@ export default class Demo extends React.Component {
 
 - [Loader](components/Loader/README.md)
 - [Modal](components/Modal/README.md)
+- [MaskLayer](components/MaskLayer/README.md)
 - [Result](components/Result/README.md)
 - [Toast](components/Toast/README.md)
 
