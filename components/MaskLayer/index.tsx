@@ -107,8 +107,7 @@ export default (props: MaskLayerProps = {}) => {
       {backdropContent}
     </TouchableOpacity>
   );
-  let isTrue = true;
-
+  let isTrue = visible || false;
   if (!visible && visibleModal) {
     isTrue = false;
   }
