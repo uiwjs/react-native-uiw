@@ -53,6 +53,7 @@ export interface RadioProps extends ViewProps {
   checked?: boolean;
   disabled?: boolean;
   circleSize?: number;
+  color?: string;
   thumbSize?: number;
   onPress?: (event: GestureResponderEvent) => void;
 }
@@ -66,6 +67,7 @@ export default class Radio extends Component<RadioProps, RadioState> {
   static defaultProps: RadioProps = {
     checked: false,
     circleSize: 20,
+    color: '#c3c5c7',
     thumbSize: 12,
   };
   constructor(props: RadioProps) {
@@ -93,13 +95,13 @@ export default class Radio extends Component<RadioProps, RadioState> {
       Animated.spring(this.state.sizeValue, {
         toValue: this.props.thumbSize!,
         overshootClamping: true,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }).start();
     } else {
       Animated.spring(this.state.sizeValue, {
         toValue: 0,
         overshootClamping: true,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }).start();
     }
   }
@@ -111,14 +113,21 @@ export default class Radio extends Component<RadioProps, RadioState> {
     });
   };
   render() {
-    const {style, circleSize, thumbSize, disabled, ...otherProps} = this.props;
+    const {
+      style,
+      color,
+      circleSize,
+      thumbSize,
+      disabled,
+      ...otherProps
+    } = this.props;
     const sizeValue = this.state.sizeValue.interpolate({
       inputRange: [0, thumbSize!],
       outputRange: [0, thumbSize!],
       // extrapolate: 'clamp',
     });
-    const backgroundColor = disabled ? '#c3c5c7' : '#008EF0';
-    const borderColor = disabled ? '#c3c5c7' : '#bdc1cc';
+    const backgroundColor = disabled ? color : '#008EF0';
+    const borderColor = disabled ? color : '#bdc1cc';
     return (
       <View style={[styles.defalut, style]} {...otherProps}>
         <TouchableOpacity
