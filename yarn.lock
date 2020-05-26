@@ -5280,10 +5280,10 @@ react-native-root-siblings@4.0.6:
   dependencies:
     static-container "^1.5.1"
 
-react-native-safe-area-context@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-2.0.1.tgz#c358d8eb6a320b218705b3e77985c3df7b26f04c"
-  integrity sha512-PjYGbaQVWWYk3fGVgcoZ7RkYNM6K9R2WNoZRSb+ckMZWIan30yENvpKq5HSf9LBkm7AZ046/ehawRTLKiytHCw==
+react-native-safe-area-context@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-2.0.3.tgz#d89b60336ea2a1e9e2ff64fcac7b226aea0af370"
+  integrity sha512-KMYfJNLyPEFnYbpZiViqa9wHqVXZdZTebhs4tGER8YPvLRc4Qp7mUSfhDVnlNG/xG1denO1ehTAZQZ1fogxJeg==
 
 react-native-screens@2.7.0:
   version "2.7.0"
