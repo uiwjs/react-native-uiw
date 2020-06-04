@@ -42,7 +42,7 @@
     "react-native-safe-area-context": "2.0.1",
     "react-native-screens": "2.7.0",
     "react-test-renderer": "16.11.0",
-    "typescript": "3.9.3"
+    "typescript": "3.9.5"
   },
   "jest": {
     "preset": "react-native",
