@@ -43,7 +43,7 @@
     "metro-react-native-babel-preset": "0.58.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
-    "tsbb": "1.7.4",
+    "tsbb": "1.7.6",
     "typescript": "3.9.3"
   }
 }
