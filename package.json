@@ -11,7 +11,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@babel/runtime": "7.6.2",
+    "@babel/runtime": "^7.10.5",
     "@types/color": "3.0.1",
     "@types/react-native": "0.62.11",
     "@uiw/icons": "2.4.3",
@@ -22,8 +22,8 @@
     "react-native-swipeout": "2.3.6"
   },
   "devDependencies": {
-    "@babel/core": "7.9.6",
-    "@react-native-community/eslint-config": "1.0.0",
+    "@babel/core": "^7.10.5",
+    "@react-native-community/eslint-config": "^2.0.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "5.5.1",
     "@react-navigation/stack": "5.4.2",
@@ -31,17 +31,17 @@
     "@types/react-test-renderer": "16.9.2",
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "@typescript-eslint/parser": "2.34.0",
-    "babel-jest": "24.9.0",
-    "eslint": "6.8.0",
-    "jest": "24.9.0",
-    "metro-react-native-babel-preset": "0.58.0",
+    "babel-jest": "^26.1.0",
+    "eslint": "^7.5.0",
+    "jest": "^26.1.0",
+    "metro-react-native-babel-preset": "^0.61.0",
     "prettier": "2.0.5",
-    "react": "16.11.0",
-    "react-native": "0.62.2",
+    "react": "16.13.1",
+    "react-native": "0.63.2",
     "react-native-gesture-handler": "1.6.1",
     "react-native-safe-area-context": "3.0.2",
     "react-native-screens": "2.7.0",
-    "react-test-renderer": "16.11.0",
+    "react-test-renderer": "16.13.1",
     "typescript": "3.9.3"
   },
   "jest": {
