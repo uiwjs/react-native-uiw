@@ -27,7 +27,7 @@
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "5.5.1",
     "@react-navigation/stack": "5.4.2",
-    "@types/jest": "24.9.1",
+    "@types/jest": "26.0.8",
     "@types/react-test-renderer": "16.9.2",
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "@typescript-eslint/parser": "2.34.0",
