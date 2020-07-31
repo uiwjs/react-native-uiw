@@ -79,6 +79,7 @@ export default class Demo extends React.Component {
 - [SegmentedControl](components/SegmentedControl/README.md)
 - [Slider](components/Slider/README.md)
 - [Switch](components/Switch/README.md)
+- [SelectCascader](components/SelectCascader/README.md)
 
 #### Data Display
 
@@ -98,6 +99,11 @@ export default class Demo extends React.Component {
 - [MaskLayer](components/MaskLayer/README.md)
 - [Result](components/Result/README.md)
 - [Toast](components/Toast/README.md)
+
+## Other
+
+- [@uiw/react-native-alipay](https://github.com/uiwjs/react-native-alipay)
+- [@uiw/react-native-amap-geolocation](https://github.com/uiwjs/react-native-amap-geolocation)
 
 ## Development
 
