@@ -5,10 +5,11 @@ import {
   Text,
   Animated,
   LayoutChangeEvent,
+  Easing,
 } from 'react-native';
 import Item from './item';
-import Button, {ButtonProps} from '../Button';
-import Icon, {IconsName} from '../Icon';
+import Button, { ButtonProps } from '../Button';
+import Icon, { IconsName } from '../Icon';
 
 export interface MenuDropdownProps extends ButtonProps {
   title: string;
@@ -36,7 +37,7 @@ export default class MenuDropdown extends React.Component<MenuDropdownProps> {
   };
 
   handleonPress = () => {
-    const {visibleMenu} = this.state;
+    const { visibleMenu } = this.state;
     this.setState({
       visibleMenu: !visibleMenu,
       btnIcon: visibleMenu ? 'down' : 'up',
@@ -51,8 +52,8 @@ export default class MenuDropdown extends React.Component<MenuDropdownProps> {
   animateStart = () => {
     Animated.timing(this.state.listHeightValue, {
       toValue: 1,
-      duration: 150,
-      useNativeDriver: true,
+      duration: 500,
+      useNativeDriver: false,// 动画值在不同的驱动方式之间是不能兼容的。因此如果你在某个动画中启用了原生驱动，那么所有和此动画依赖相同动画值的其他动画也必须启用原生驱动。
     }).start();
   };
 
@@ -63,16 +64,16 @@ export default class MenuDropdown extends React.Component<MenuDropdownProps> {
   };
 
   menuContainer = (event: LayoutChangeEvent) => {
-    const {height} = event.nativeEvent.layout;
+    const { height } = event.nativeEvent.layout;
     this.setState({
       listHeight: height,
     });
   };
 
   render() {
-    const {title, children, size, ...btnProps} = this.props;
+    const { title, children, size, ...btnProps } = this.props;
 
-    const {btnIcon, listHeightValue, listHeight} = this.state;
+    const { btnIcon, listHeightValue, listHeight } = this.state;
     return (
       <View style={styles.menuBox}>
         <Button {...btnProps} onPress={this.handleonPress} size={size}>
@@ -86,7 +87,7 @@ export default class MenuDropdown extends React.Component<MenuDropdownProps> {
             styles.list,
             // eslint-disable-next-line react-native/no-inline-styles
             {
-              // opacity: listHeightValue,
+              opacity: listHeightValue,
               height: listHeightValue.interpolate({
                 inputRange: [0, 1],
                 outputRange: [0, listHeight || 5],
