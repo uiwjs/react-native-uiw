@@ -5,7 +5,7 @@ MenuDropdown
 
 ### 基础示例
 
-<!--DemoStart--> 
+<!--DemoStart-->
 ```jsx
 import React, { Component } from 'react';
 import { Text  } from 'react-native';
