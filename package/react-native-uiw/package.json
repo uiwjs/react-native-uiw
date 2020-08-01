@@ -44,6 +44,6 @@
     "react": "16.11.0",
     "react-native": "0.62.2",
     "tsbb": "1.7.6",
-    "typescript": "3.9.3"
+    "typescript": "3.9.7"
   }
 }
