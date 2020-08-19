@@ -2,12 +2,13 @@ import {
   View,
   Text,
   StyleSheet,
-  Picker,
   TouchableHighlight,
   StyleProp,
   TextStyle,
+  ViewStyle
 } from 'react-native';
 import React, {Component} from 'react';
+import {Picker} from '@react-native-community/picker';
 import arrayTreeFilter from '../utils/arrayTreeFilter';
 import Modal from '../Modal';
 import {colors} from '../utils';
@@ -36,6 +37,7 @@ export interface ISelectCascaderProps {
   disabled?: boolean;
   cols?: number;
   pickerItemStyle?: StyleProp<TextStyle>;
+  headerStyle?: StyleProp<ViewStyle>;
 }
 
 export interface Istate {
@@ -179,7 +181,7 @@ export default class SelectCascader extends Component<
   };
 
   render() {
-    const {title, dismissText, okText, onDismiss} = this.props;
+    const {title, dismissText, okText, onDismiss, headerStyle} = this.props;
     const cols = this.getCols();
     return (
       <Modal
@@ -187,24 +189,20 @@ export default class SelectCascader extends Component<
         onClosed={() => {
           this.setState({modalVisible: false});
         }}>
-        <View style={[styles.header]}>
-          <TouchableHighlight
-            onPress={onDismiss}
-            style={[styles.headerItem]}
-            underlayColor={colors.blue}>
+        <>
+        <View style={[styles.header, headerStyle]}>
+          <TouchableHighlight onPress={onDismiss} style={[styles.headerItem]}>
             <Text>{dismissText}</Text>
           </TouchableHighlight>
           <View style={[styles.headerItem]}>
             <Text>{title}</Text>
           </View>
-          <TouchableHighlight
-            onPress={this.onOk}
-            style={[styles.headerItem]}
-            underlayColor={colors.blue}>
+          <TouchableHighlight onPress={this.onOk} style={[styles.headerItem]}>
             <Text>{okText}</Text>
           </TouchableHighlight>
         </View>
         <View style={styles.list}>{cols}</View>
+        </>
       </Modal>
     );
   }
