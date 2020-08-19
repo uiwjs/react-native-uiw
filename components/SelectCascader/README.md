@@ -134,3 +134,4 @@ export default class SelectCascaderDemo extends Component {
 | `dismissText` | 取消button文字 | string | 取消  |
 | `title` | 弹框标题 | string | 请选择  |
 | `pickerItemStyle` | 选择器样式 | object | -  |
+| `headerStyle` | 选择器头部样式 | object | -  |
