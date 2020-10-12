@@ -58,47 +58,47 @@ export default class Demo extends React.Component {
 
 #### Layout
 
-- [Divider](components/Divider/README.md)
-- [Flex](components/Flex/README.md)
-- [Spacing](components/Spacing/README.md)
-- [WingBlank](components/WingBlank/README.md)
+- [Divider](https://github.com/uiwjs/react-native-uiw/tree/master/components/Divider/README.md)
+- [Flex](https://github.com/uiwjs/react-native-uiw/tree/master/components/Flex/README.md)
+- [Spacing](https://github.com/uiwjs/react-native-uiw/tree/master/components/Spacing/README.md)
+- [WingBlank](https://github.com/uiwjs/react-native-uiw/tree/master/components/WingBlank/README.md)
 
 #### Navigation
 
-- [Drawer](components/Drawer/README.md)
-- [MenuDropdown](components/MenuDropdown/README.md)
-- [SwipeAction](components/SwipeAction/README.md)
+- [Drawer](https://github.com/uiwjs/react-native-uiw/tree/master/components/Drawer/README.md)
+- [MenuDropdown](https://github.com/uiwjs/react-native-uiw/tree/master/components/MenuDropdown/README.md)
+- [SwipeAction](https://github.com/uiwjs/react-native-uiw/tree/master/components/SwipeAction/README.md)
 
 #### Data Entry
 
-- [Button](components/Button/README.md)
-- [ButtonGroup](components/ButtonGroup/README.md)
-- [CheckBox](components/CheckBox/README.md)
-- [Input](components/Input/README.md)
-- [Radio](components/Radio/README.md)
-- [SegmentedControl](components/SegmentedControl/README.md)
-- [Slider](components/Slider/README.md)
-- [Switch](components/Switch/README.md)
-- [SelectCascader](components/SelectCascader/README.md)
+- [Button](https://github.com/uiwjs/react-native-uiw/tree/master/components/Button/README.md)
+- [ButtonGroup](https://github.com/uiwjs/react-native-uiw/tree/master/components/ButtonGroup/README.md)
+- [CheckBox](https://github.com/uiwjs/react-native-uiw/tree/master/components/CheckBox/README.md)
+- [Input](https://github.com/uiwjs/react-native-uiw/tree/master/components/Input/README.md)
+- [Radio](https://github.com/uiwjs/react-native-uiw/tree/master/components/Radio/README.md)
+- [SegmentedControl](https://github.com/uiwjs/react-native-uiw/tree/master/components/SegmentedControl/README.md)
+- [Slider](https://github.com/uiwjs/react-native-uiw/tree/master/components/Slider/README.md)
+- [Switch](https://github.com/uiwjs/react-native-uiw/tree/master/components/Switch/README.md)
+- [SelectCascader](https://github.com/uiwjs/react-native-uiw/tree/master/components/SelectCascader/README.md)
 
 #### Data Display
 
-- [Avatar](components/Avatar/README.md)
-- [Badge](components/Badge/README.md)
-- [Ellipsis](components/Ellipsis/README.md)
-- [Empty](components/Empty/README.md)
-- [Grid](components/Grid/README.md)
-- [Icon](components/Icon/README.md)
-- [List](components/List/README.md)
-- [Typography](components/Typography/README.md) [`H1~H6`](components/Typography/README.md#标题) · [`<Del>`](components/Typography/README.md#删除线) · [`<S>`](components/Typography/README.md#删除线) · [`<U>`](components/Typography/README.md#下划线) · [`<Strong>`](components/Typography/README.md#加粗) · [`<Br />`](components/Typography/README.md#换行) · [`<P />`](components/Typography/README.md#段落) · [`<Hr />`](components/Typography/README.md#水平线) · [`<Div />`](components/Typography/README.md#div)
+- [Avatar](https://github.com/uiwjs/react-native-uiw/tree/master/components/Avatar/README.md)
+- [Badge](https://github.com/uiwjs/react-native-uiw/tree/master/components/Badge/README.md)
+- [Ellipsis](https://github.com/uiwjs/react-native-uiw/tree/master/components/Ellipsis/README.md)
+- [Empty](https://github.com/uiwjs/react-native-uiw/tree/master/components/Empty/README.md)
+- [Grid](https://github.com/uiwjs/react-native-uiw/tree/master/components/Grid/README.md)
+- [Icon](https://github.com/uiwjs/react-native-uiw/tree/master/components/Icon/README.md)
+- [List](https://github.com/uiwjs/react-native-uiw/tree/master/components/List/README.md)
+- [Typography](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md) [`H1~H6`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#标题) · [`<Del>`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#删除线) · [`<S>`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#删除线) · [`<U>`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#下划线) · [`<Strong>`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#加粗) · [`<Br />`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#换行) · [`<P />`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#段落) · [`<Hr />`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#水平线) · [`<Div />`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#div)
 
 #### Feedback
 
-- [Loader](components/Loader/README.md)
-- [Modal](components/Modal/README.md)
-- [MaskLayer](components/MaskLayer/README.md)
-- [Result](components/Result/README.md)
-- [Toast](components/Toast/README.md)
+- [Loader](https://github.com/uiwjs/react-native-uiw/tree/master/components/Loader/README.md)
+- [Modal](https://github.com/uiwjs/react-native-uiw/tree/master/components/Modal/README.md)
+- [MaskLayer](https://github.com/uiwjs/react-native-uiw/tree/master/components/MaskLayer/README.md)
+- [Result](https://github.com/uiwjs/react-native-uiw/tree/master/components/Result/README.md)
+- [Toast](https://github.com/uiwjs/react-native-uiw/tree/master/components/Toast/README.md)
 
 ## Other
 
