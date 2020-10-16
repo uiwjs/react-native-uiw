@@ -33,7 +33,7 @@ UIW Design for React Native
 ## Install
 
 ```bash
-npm i @uiw/react-native
+yarn add @uiw/react-native react-native-svg
 ```
 
 ## Basic Usage
