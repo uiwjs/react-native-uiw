@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.11.2",
-    "@react-native-community/picker": "1.6.6",
+    "@react-native-community/picker": "1.8.0",
     "@types/color": "3.0.1",
     "@types/react-native": "0.63.8",
     "@uiw/icons": "2.4.3",
