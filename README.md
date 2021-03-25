@@ -118,12 +118,21 @@ Run instructions for Android:
   • cd react-native-uiw && react-native run-android
 ```
 
+⚠️ MacBook Pro with a M1
+
+```bash
+# Install ffi
+sudo arch -x86_64 gem install ffi
+# Re-install dependency
+arch -x86_64 pod install
+```
 
 ```bash
 rm -rf ios/build
 # https://github.com/react-navigation/react-navigation/issues/6071
 cd ios/
 pod install
+
 # Clear pods.
 pod deintegrate
 # pod rm Podfile.lock
