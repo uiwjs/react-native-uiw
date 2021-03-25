@@ -1,5 +1,6 @@
 {
   "name": "uiw",
+  "version": "1.8.0",
   "description": "UIW for React Native",
   "private": true,
   "scripts": {
