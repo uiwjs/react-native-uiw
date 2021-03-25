@@ -8,7 +8,7 @@ import {
   ViewStyle
 } from 'react-native';
 import React, {Component} from 'react';
-import {Picker} from '@react-native-community/picker';
+import {Picker} from '@react-native-picker/picker';
 import arrayTreeFilter from '../utils/arrayTreeFilter';
 import Modal from '../Modal';
 import {colors} from '../utils';
