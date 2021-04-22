@@ -241,4 +241,12 @@ export const stackPageData: Routes[] = [
       description: '布局控件。',
     },
   },
+  {
+    name: 'SearchBar',
+    component: require('./routes/SearchBar').default,
+    params: {
+      title: 'SearchBar 模糊搜索select',
+      description: '模糊搜索select。',
+    },
+  },
 ];
