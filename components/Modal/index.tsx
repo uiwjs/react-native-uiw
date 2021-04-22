@@ -15,7 +15,7 @@ export default (props: ModalProps = {}) => {
     placement = 'bottom',
     ...otherProps
   } = props;
-  const [display] = useState('none');
+  const [display] = useState<'none' | 'flex'>('none');
   let [layoutHeight, setLayoutHeight] = useState(0);
   let [layoutWidth, setLayoutWidth] = useState(0);
   const [translateValue] = useState(new Animated.Value(0));
@@ -77,7 +77,6 @@ export default (props: ModalProps = {}) => {
     translateStyle.translateY = translateValue;
   }
   if (isHorizontal) {
-    console.log('left', placement, getTransformSize());
     translateStyle.translateX = translateValue;
   }
   const child = (

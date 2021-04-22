@@ -28,7 +28,7 @@ export default class Icons extends React.Component<IconsProps> {
     const {
       name,
       size,
-      fill,
+      fill = '#000000',
       stroke,
       xml,
       paths,
@@ -47,7 +47,7 @@ export default class Icons extends React.Component<IconsProps> {
     }
     return (
       <Svg
-        fill={fill || color}
+        fill={color || fill}
         stroke={stroke}
         height={size}
         width={size}
