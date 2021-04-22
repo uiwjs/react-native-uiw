@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-native",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "UIW for React Native",
   "main": "lib/index.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "Result",
     "SegmentedControl",
     "SelectCascader",
+    "SearchBar",
     "Slider",
     "Spacing",
     "SwipeAction",
