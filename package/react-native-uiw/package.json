@@ -1,13 +1,46 @@
 {
   "name": "@uiw/react-native",
-  "version": "1.7.4",
+  "version": "1.9.0",
   "description": "UIW for React Native",
   "main": "lib/index.js",
   "scripts": {
     "start": "node script/build.js",
     "type": "tsbb types"
   },
-  "keywords": [],
+  "keywords": [
+    "uiw",
+    "react-native",
+    "Avatar",
+    "Badge",
+    "Button",
+    "ButtonGroup",
+    "CheckBox",
+    "Divider",
+    "Drawer",
+    "Ellipsis",
+    "Empty",
+    "Flex",
+    "Grid",
+    "Icon",
+    "Input",
+    "List",
+    "Loader",
+    "MaskLayer",
+    "MenuDropdown",
+    "Modal",
+    "Radio",
+    "Result",
+    "SegmentedControl",
+    "SelectCascader",
+    "SearchBar",
+    "Slider",
+    "Spacing",
+    "SwipeAction",
+    "Switch",
+    "Toast",
+    "Typography",
+    "WingBlank"
+  ],
   "author": "",
   "license": "ISC",
   "repository": {
@@ -20,14 +53,15 @@
     "README.md"
   ],
   "dependencies": {
-    "@babel/runtime": "7.6.2",
+    "@babel/runtime": "7.13.10",
+    "@react-native-picker/picker": "1.12.0",
     "@types/color": "3.0.1",
-    "@types/react-native": "0.62.11",
+    "@types/react-native": "0.64.0",
     "@uiw/icons": "2.4.3",
-    "color": "3.1.2",
+    "color": "3.1.3",
     "prop-types": "15.7.2",
-    "react-native-root-siblings": "4.0.6",
-    "react-native-svg": "9.13.3",
+    "react-native-root-siblings": "4.1.0",
+    "react-native-svg": "12.1.0",
     "react-native-swipeout": "2.3.6"
   },
   "peerDependencies": {
@@ -36,14 +70,14 @@
     "react-native-svg": ">=9.9.3"
   },
   "devDependencies": {
-    "@babel/core": "7.9.0",
-    "@babel/preset-typescript": "7.9.0",
+    "@babel/core": "7.13.10",
+    "@babel/preset-typescript": "7.13.0",
     "babel-preset-react-native": "4.0.1",
-    "fs-extra": "8.1.0",
-    "metro-react-native-babel-preset": "0.58.0",
-    "react": "16.11.0",
-    "react-native": "0.62.2",
-    "tsbb": "1.7.6",
-    "typescript": "3.9.3"
+    "fs-extra": "9.1.0",
+    "metro-react-native-babel-preset": "0.64.0",
+    "react": "17.0.1",
+    "react-native": "0.64.0",
+    "tsbb": "2.1.2",
+    "typescript": "4.2.3"
   }
 }
