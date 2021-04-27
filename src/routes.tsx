@@ -249,4 +249,12 @@ export const stackPageData: Routes[] = [
       description: '模糊搜索select。',
     },
   },
+  {
+    name: 'Table',
+    component: require('./routes/Table').default,
+    params: {
+      title: 'Table 表格',
+      description: '表格Table',
+    },
+  },
 ];
