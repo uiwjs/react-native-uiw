@@ -79,6 +79,7 @@ export default class Demo extends React.Component {
 - [SegmentedControl](https://github.com/uiwjs/react-native-uiw/tree/master/components/SegmentedControl/README.md)
 - [Slider](https://github.com/uiwjs/react-native-uiw/tree/master/components/Slider/README.md)
 - [Switch](https://github.com/uiwjs/react-native-uiw/tree/master/components/Switch/README.md)
+- [SearchBar](https://github.com/uiwjs/react-native-uiw/tree/master/components/SearchBar/README.md)
 - [SelectCascader](https://github.com/uiwjs/react-native-uiw/tree/master/components/SelectCascader/README.md)
 
 #### Data Display
@@ -90,6 +91,7 @@ export default class Demo extends React.Component {
 - [Grid](https://github.com/uiwjs/react-native-uiw/tree/master/components/Grid/README.md)
 - [Icon](https://github.com/uiwjs/react-native-uiw/tree/master/components/Icon/README.md)
 - [List](https://github.com/uiwjs/react-native-uiw/tree/master/components/List/README.md)
+- [Table](https://github.com/uiwjs/react-native-uiw/tree/master/components/Table/README.md)
 - [Typography](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md) [`H1~H6`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#标题) · [`<Del>`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#删除线) · [`<S>`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#删除线) · [`<U>`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#下划线) · [`<Strong>`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#加粗) · [`<Br />`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#换行) · [`<P />`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#段落) · [`<Hr />`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#水平线) · [`<Div />`](https://github.com/uiwjs/react-native-uiw/tree/master/components/Typography/README.md#div)
 
 #### Feedback
