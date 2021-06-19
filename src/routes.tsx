@@ -257,4 +257,12 @@ export const stackPageData: Routes[] = [
       description: '表格Table',
     },
   },
+  {
+    name: 'ExpandableSection',
+    component: require('./routes/ExpandableSection').default,
+    params: {
+      title: 'ExpandableSection 折叠展开',
+      description: '折叠展开ExpandableSection',
+    },
+  },
 ];
