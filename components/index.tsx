@@ -27,6 +27,7 @@ export {default as Toast} from './Toast';
 export {default as SwipeAction} from './SwipeAction';
 export {default as Input} from './Input';
 export {default as SelectCascader} from './SelectCascader';
+export {default as ExpandableSection} from './ExpandableSection';
 
 /**
  * Typography
