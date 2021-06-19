@@ -79,20 +79,22 @@ const tsc = {
       }
     });
     await execute('npm run type');
-    await execute('npm publish');
-    await fs.remove(root);
-    await fs.remove(output);
-    await fs.remove(tscPath);
-    await fs.remove(path.join(process.cwd(), 'package-lock.json'));
-    await fs.remove(path.join(process.cwd(), 'yarn.lock'));
-    // await fs.remove(path.join(process.cwd(), 'node_modules'));
-    await execute(`cd ${projectPath} && git add .`);
-    await execute(
-      `cd ${projectPath} && git commit -m "released v${pkg.version}"`,
-    );
-    await execute(`cd ${projectPath} && git push`);
-    await execute(`git tag -a v${pkg.version} -m "released v${pkg.version}"`);
-    await execute('git push --tags');
+    // use workflows
+    // -------------
+    // await execute('npm publish');
+    // await fs.remove(root);
+    // await fs.remove(output);
+    // await fs.remove(tscPath);
+    // await fs.remove(path.join(process.cwd(), 'package-lock.json'));
+    // await fs.remove(path.join(process.cwd(), 'yarn.lock'));
+    // // await fs.remove(path.join(process.cwd(), 'node_modules'));
+    // await execute(`cd ${projectPath} && git add .`);
+    // await execute(
+    //   `cd ${projectPath} && git commit -m "released v${pkg.version}"`,
+    // );
+    // await execute(`cd ${projectPath} && git push`);
+    // await execute(`git tag -a v${pkg.version} -m "released v${pkg.version}"`);
+    // await execute('git push --tags');
   } catch (err) {
     console.log(err);
   }
