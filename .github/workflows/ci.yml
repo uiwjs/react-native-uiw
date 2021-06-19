@@ -58,3 +58,7 @@ jobs:
 
             ${{ steps.changelog.outputs.compareurl }}
             ${{ steps.changelog.outputs.changelog }}
+
+      - run: git status
+      - run: npm install @jsdevtools/npm-publish -g
+      - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package/react-native-uiw/package.json
