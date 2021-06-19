@@ -23,7 +23,7 @@ jobs:
 
       - name: package/react-native-uiw
         working-directory: package/react-native-uiw
-        run: yarn install && yarn run start
+        run: npm install && npm run start
 
       - name: Is a tag created auto?
         id: create_tag
