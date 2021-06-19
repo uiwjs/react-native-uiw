@@ -1480,10 +1480,10 @@
     "@typescript-eslint/types" "4.19.0"
     eslint-visitor-keys "^2.0.0"
 
-"@uiw/icons@2.4.3":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@uiw/icons/-/icons-2.4.3.tgz#cc81a866ec6ac2774584c4e0f4646bf41f6b7941"
-  integrity sha512-tqJVlNh/hAeQ6ShU+OvHIQHaXvuElS/KshSU8t0I+ngUkfCEvZ9Ewwo+eIsv5tiHWphpkAU+akS2am/lNZAnNg==
+"@uiw/icons@2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@uiw/icons/-/icons-2.5.1.tgz#a2faa548db5a9b0d1a530c8498b339ee8dad9347"
+  integrity sha512-Fxh0hH/HyPuF4A7FsrW19tbmajvf9Aho8N7hGwZP+7Dz6JfteemIUykYPHycHp5Ah6+EvAeewGb1Fx18xdmDpA==
 
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.5"
