@@ -1,16 +1,26 @@
-### 模糊搜素组件
+SearchBar 模糊搜素组件
+---
 
+## 基础示例
+
+```jsx
+import { Result, Icon } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <SearchBar 
+      labelInValue 
+      options={[
+        {label:'上海',value:1},
+        {label:'南京',value:2}
+      ]} 
+      onFocu={()=>{}}  
+      onChange={val=>console.log('val',val)} 
+    />
+  );
+}
 ```
-        <SearchBar 
-          labelInValue 
-          options={[
-            {label:'上海',value:1},
-            {label:'南京',value:2}
-          ]} 
-          onFocu={()=>{}}  
-          onChange={val=>console.log('val',val)} 
-        />
-```
+
 ### props
 
 | 参数                 | 说明         | 类型    | 默认值  |
