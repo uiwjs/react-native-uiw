@@ -7,11 +7,15 @@ const data = [
     childrens: [
       {
         href : 'https://github.com/uiwjs/react-native-uiw',
-        title: 'React Native UIW on GitHub'
+        title: 'React Native UIW'
       },
       {
         href : 'https://github.com/uiwjs/react-native-template',
         title: 'React Native Template'
+      },
+      {
+        href : 'https://github.com/uiwjs/react-native-alipay',
+        title: 'React Native Alipay'
       },
       {
         href : 'https://github.com/uiwjs/uiw',
@@ -67,6 +71,27 @@ const data = [
       {
         href : 'https://github.com/jaywcjlove/mocker-api',
         title: 'Mocker API'
+      },
+    ]
+  },
+  {
+    title: '学习资料',
+    childrens: [
+      {
+        href : 'https://www.reactnative.express/',
+        title: 'React Native Express'
+      },
+      {
+        href : 'https://www.react.express/',
+        title: 'React Express'
+      },
+      {
+        href : 'https://jskatas.org/',
+        title: 'JavaScript Katas'
+      },
+      {
+        href : 'https://es6.ruanyifeng.com/',
+        title: 'ES6 入门教程'
       },
     ]
   }
@@ -137,7 +162,7 @@ export default function Footer(props: FooterProps) {
               <img src="https://img.shields.io/npm/v/@uiw/react-native.svg" alt="npm" />
             </a>
           </div>
-          <p>Copyright © 2021 uiwjs. All rights reserved.</p>
+          <p>Copyright © 2021 <a href="https://github.com/uiwjs" target="__blank">uiwjs</a>. All rights reserved.</p>
         </section>
       </div>
     </footer>
