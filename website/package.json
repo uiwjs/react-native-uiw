@@ -3,7 +3,6 @@
   "version": "2.0.0",
   "description": "Documentation site for React Native UIW.",
   "homepage": "https://uiwjs.github.io/react-native-uiw",
-  "type": "module",
   "private": true,
   "scripts": {
     "start": "kkt start",
