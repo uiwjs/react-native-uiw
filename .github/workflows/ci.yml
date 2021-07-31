@@ -20,10 +20,11 @@ jobs:
           filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
       - run: yarn install
+      - run: npm run build
 
-      - name: packages/core
-        # working-directory: packages/react-native-uiw
-        run: npm run build
+      # - name: packages/core
+      #   # working-directory: packages/react-native-uiw
+      #   run: npm run build
 
       - name: Is a tag created auto?
         id: create_tag

@@ -9,6 +9,7 @@
     "lib:build": "lerna exec --scope @uiw/react-native -- tsbb build",
     "build": "npm run lib:build && npm run lib:build:type",
     "start": "lerna exec --scope website -- npm run start",
+    "doc": "lerna exec --scope website -- npm run build",
     "=---===>": "<====",
     "pretty-quick": "pretty-quick",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
