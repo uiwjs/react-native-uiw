@@ -1,2 +1,0 @@
-(this.webpackJsonpwebsite=this.webpackJsonpwebsite||[]).push([[6],{182:function(e,n,t){},641:function(e,n,t){"use strict";t.r(n),t.d(n,"default",(function(){return r}));t(0);var s=t(182),i=t.n(s),c=t(2);function r(e){return Object(c.jsx)("div",{className:i.a.warpper,children:"\u6587\u6863"})}}}]);
-//# sourceMappingURL=6.860b7070.chunk.js.map
