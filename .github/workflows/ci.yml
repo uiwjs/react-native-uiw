@@ -23,10 +23,6 @@ jobs:
       - run: npm run build
       - run: npm run doc
 
-      # - name: packages/core
-      #   # working-directory: packages/react-native-uiw
-      #   run: npm run build
-
       - name: Is a tag created auto?
         id: create_tag
         uses: jaywcjlove/create-tag-action@v1.2.0
