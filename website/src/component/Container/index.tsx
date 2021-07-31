@@ -4,14 +4,16 @@ import SubMenus, { MenuData } from '../SubMenus';
 import styles from './index.module.less';
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-  data?: MenuData[]
+  data?: MenuData[];
+  path?: string;
 }
 
 export default function Container(props: ContainerProps) {
-  const { data, children } = props;
+  const { data, children, path } = props;
+  console.log(props, path, path === '/home')
   return (
     <Fragment>
-      <Header />
+      <Header showBorder={path !== '/home'}/>
       <div className={styles.warpper}>
         {data && data.length > 0 && (
           <SubMenus data={data} />

@@ -4,12 +4,17 @@ import pkg from '@uiw/react-native/package.json';
 import styles from './index.module.less';
 import logo from '../../assets/logo-dark.svg';
 
-export default function Header() {
+type HeaderProps = {
+  showBorder?: boolean;
+}
+
+export default function Header(props: HeaderProps) {
+  const { showBorder = true  } = props;
   // @ts-ignore
   // eslint-disable-next-line
   const version = pkg.version || '2.0.0';
   return (
-    <header className={styles.warpper}>
+    <header className={styles.warpper} style={{ ...(showBorder ? {} : { borderBottom: 0, boxShadow: 'initial' })}}>
       <div className={styles.inner}>
         <Link to="/" className={styles.logo}>
           <img src={logo} alt="uiw logo" />
