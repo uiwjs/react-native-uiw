@@ -1,0 +1,72 @@
+{
+  "name": "@uiw/react-native",
+  "version": "2.0.0",
+  "description": "UIW for React Native",
+  "main": "lib/index.js",
+  "scripts": {},
+  "keywords": [
+    "uiw",
+    "react-native",
+    "Avatar",
+    "Badge",
+    "Button",
+    "ButtonGroup",
+    "CheckBox",
+    "Divider",
+    "Drawer",
+    "Ellipsis",
+    "Empty",
+    "Flex",
+    "Grid",
+    "Icon",
+    "Input",
+    "List",
+    "Loader",
+    "MaskLayer",
+    "MenuDropdown",
+    "Modal",
+    "Radio",
+    "Result",
+    "SegmentedControl",
+    "SelectCascader",
+    "SearchBar",
+    "Slider",
+    "Spacing",
+    "SwipeAction",
+    "Switch",
+    "Toast",
+    "Typography",
+    "WingBlank"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uiwjs/react-native-uiw"
+  },
+  "files": [
+    "lib",
+    "src",
+    "README.md"
+  ],
+  "dependencies": {
+    "@babel/runtime": "7.13.10",
+    "@react-native-picker/picker": "1.16.1",
+    "@types/color": "3.0.1",
+    "@types/react-native": "0.64.0",
+    "@uiw/icons": "2.5.1",
+    "color": "4.0.0",
+    "prop-types": "15.7.2",
+    "react-native-root-siblings": "4.1.1",
+    "react-native-svg": "12.1.1",
+    "react-native-swipeout": "2.3.6"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-native": ">=0.60.0",
+    "react-native-svg": ">=9.9.3"
+  },
+  "devDependencies": {
+    "@babel/core": "7.14.8",
+    "@babel/preset-typescript": "7.14.5"
+  }
+}

@@ -13,7 +13,7 @@ jobs:
           node-version: 14
 
       - name: Look Changelog
-        uses: jaywcjlove/changelog-generator@v1.4.2
+        uses: jaywcjlove/changelog-generator@v1.4.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           filter-author: (jaywcjlove|小弟调调™|dependabot\[bot\]|Renovate Bot)
@@ -21,16 +21,16 @@ jobs:
 
       - run: yarn install
 
-      - name: package/react-native-uiw
-        working-directory: package/react-native-uiw
-        run: npm install && npm run start
+      - name: packages/core
+        # working-directory: packages/react-native-uiw
+        run: npm run build
 
       - name: Is a tag created auto?
         id: create_tag
         uses: jaywcjlove/create-tag-action@v1.2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          package-path: ./package/react-native-uiw/package.json
+          package-path: ./packages/core/package.json
 
       - name: Generate Changelog
         id: changelog

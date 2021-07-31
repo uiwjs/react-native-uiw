@@ -1,63 +1,59 @@
 {
-  "name": "uiw",
-  "version": "1.12.0",
-  "description": "UIW for React Native",
+  "license": "MIT",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
-  },
-  "dependencies": {
-    "@babel/runtime": "7.13.10",
-    "@react-native-picker/picker": "1.16.1",
-    "@types/color": "3.0.1",
-    "@types/react-native": "0.64.0",
-    "@uiw/icons": "2.5.1",
-    "color": "3.1.3",
-    "prop-types": "15.7.2",
-    "react-native-root-siblings": "4.1.1",
-    "react-native-svg": "12.1.1",
-    "react-native-swipeout": "2.3.6"
+    "type:watch": "lerna exec --parallel --scope @etn/* --scope etn --scope create-etn -- tsbb types --watch",
+    "watch": "lerna exec --parallel --scope @etn/* --scope etn --scope create-etn -- tsbb watch",
+    "====>": "<====",
+    "lib:build:type": "lerna exec --scope @uiw/react-native -- tsbb types",
+    "lib:build": "lerna exec --scope @uiw/react-native -- tsbb build",
+    "build": "npm run lib:build && npm run lib:build:type",
+    "start": "lerna exec --scope website -- npm run start",
+    "=---===>": "<====",
+    "pretty-quick": "pretty-quick",
+    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },
   "devDependencies": {
-    "@babel/core": "7.13.10",
-    "@react-native-community/eslint-config": "2.0.0",
-    "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/native": "5.9.4",
-    "@react-navigation/stack": "5.14.5",
-    "@types/jest": "26.0.21",
-    "@types/react-native": "0.64.0",
-    "@types/react-test-renderer": "^16.9.2",
-    "@typescript-eslint/eslint-plugin": "4.19.0",
-    "@typescript-eslint/parser": "4.19.0",
-    "babel-jest": "26.6.3",
-    "eslint": "7.7.0",
-    "jest": "26.6.3",
+    "@babel/core": "7.14.8",
+    "@babel/preset-env": "7.14.8",
+    "@babel/preset-typescript": "7.14.5",
+    "@babel/plugin-proposal-decorators": "7.14.5",
+    "@babel/plugin-proposal-class-properties": "7.14.5",
+    "babel-preset-react-native": "4.0.1",
+    "fs-extra": "10.0.0",
     "metro-react-native-babel-preset": "0.64.0",
-    "prettier": "2.3.1",
     "react": "17.0.1",
-    "react-native": "0.64.0",
-    "react-native-gesture-handler": "1.10.3",
-    "react-native-safe-area-context": "3.2.0",
-    "react-native-screens": "2.18.1",
-    "react-test-renderer": "17.0.1",
-    "typescript": "4.3.4"
+    "react-native": "0.64.2"
   },
-  "resolutions": {
-    "@types/react": "^17"
+  "dependencies": {
+    "tsbb": "2.2.1",
+    "husky": "7.0.1",
+    "lerna": "4.0.0",
+    "prettier": "2.3.2",
+    "pretty-quick": "3.1.1",
+    "typescript": "4.3.5"
   },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
+  "workspaces": {
+    "packages": [
+      "example/*",
+      "packages/*",
+      "website"
+    ],
+    "nohoist": [
+      "**/kkt",
+      "**/kkt/**",
+      "**/@kkt",
+      "**/@kkt/**",
+      "**/@rematch",
+      "**/@rematch/**",
+      "**/react",
+      "**/react*",
+      "**/react/**",
+      "**/react*/**",
+      "**/@babel",
+      "**/@babel/**",
+      "**/webpack",
+      "**/webpack/**"
     ]
   }
 }

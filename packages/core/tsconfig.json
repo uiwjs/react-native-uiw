@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "outDir": "lib",
+    "declaration": true,
+    "jsx": "react-native",
+    "lib": ["es6"],
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "types": ["node"],
+    "baseUrl": "."
+  },
+  "exclude": ["node_modules"],
+  "include": ["src"]
+}

@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "packages": ["example/*", "packages/*", "website"],
+  "npmClient": "yarn",
+  "npmClientArgs": ["--production", "--no-optional"],
+  "useWorkspaces": true
+}
