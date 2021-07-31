@@ -17,6 +17,7 @@ export default function Header() {
           <NavLink to="/home">首页</NavLink>
           <NavLink to="/docs">文档</NavLink>
           <NavLink to="/components/">RN组件</NavLink>
+          <a target="__blank" href="https://github.com/uiwjs/react-native-uiw/issues">问题反馈</a>
           <a target="__blank" href="https://uiwjs.github.io">Web 组件</a>
           <a target="__blank" href="https://github.com/uiwjs/react-native-uiw">GitHub</a>
         </div>

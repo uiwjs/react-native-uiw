@@ -1,13 +1,12 @@
 .warpper {
-  border-right: 1px solid #eaeaea;
-  margin-right: 26px;
   padding-right: 16px;
-  min-width: 230px;
+  position: relative;
   a {
     color: #5a5a5a;
     padding: 10px 0;
     display: block;
     transition: all .3s;
+    margin-left: 10px;
     &:hover {
       color: #1890ff;
     }
@@ -15,13 +14,31 @@
       color: #1890ff;
       background-color: #f5f8fa;
       padding-left: 10px;
+      margin-right: 1px;
     }
   }
 }
 
 .divider {
   padding: 5px 0;
+  margin-left: 10px;
   margin-bottom: 10px;
   color: #bdbdbd;
   border-bottom: 1px solid #eaeaea;
+}
+
+.warpper, .inner {
+  border-right: 1px solid #eaeaea;
+  min-width: 260px;
+}
+
+.inner {
+  overflow: auto;
+  padding-left: 23px;
+  padding-bottom: 30px;
+  padding-top: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  position: fixed;
+  top: 60px;
 }

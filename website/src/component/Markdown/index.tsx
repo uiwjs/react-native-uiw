@@ -4,13 +4,13 @@ import MarkdownPreview from '@uiw/react-markdown-preview';
 import rehypeAttr from 'rehype-attr';
 import { useEffect } from 'react';
 
-export interface MarkdownProps {
+export interface MarkdownProps extends React.HTMLAttributes<HTMLDivElement> {
   path?: string;
   renderPage?: () => Promise<string>;
 }
 
 export default function Markdown(props: MarkdownProps) {
-  const { renderPage } = props;
+  const { renderPage, style } = props;
   const [mdStr, setMdStr] = useState('');
   useEffect(() => {
     if (renderPage) {
@@ -23,7 +23,7 @@ export default function Markdown(props: MarkdownProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <div>
+    <div style={style}>
       <MarkdownPreview
         source={mdStr}
         // className={styles.markdown}

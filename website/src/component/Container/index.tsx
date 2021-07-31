@@ -16,7 +16,7 @@ export default function Container(props: ContainerProps) {
         {data && data.length > 0 && (
           <SubMenus data={data} />
         )}
-        <div style={{ flex: 1, overflow: 'hidden' }}>
+        <div className={styles.content} style={{ flex: 1, overflow: 'hidden' }}>
           {children}
         </div>
       </div>

@@ -2,7 +2,7 @@ import { MenuData } from '../component/SubMenus';
 
 export const componentMenus: MenuData[] = [
   { path: '/components/about', name: '关于 UIW' },
-  { href: 'https://github.com/uiwjs/react-native-uiw/releases', name: '更新日志' },
+  { href: 'https://github.com/uiwjs/react-native-uiw/releases', target: '_blank', name: '更新日志' },
   { divider: true, name: "通用" },
   { path: "/components/button", name: "Button 按钮" },
   { path: "/components/icon", name: "Icon 图标" },

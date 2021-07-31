@@ -15,7 +15,7 @@ export default function Submenu(props: SubmenuProps) {
   const { data = [] } = props;
   return (
     <div className={styles.warpper}>
-      <div style={{ overflow: 'auto', height: '100%' }}>
+      <div className={styles.inner} style={{  }}>
         {data.map((data, key) => {
           if (data.divider) {
             return <div key={key} className={styles.divider}>{data.name}</div>
