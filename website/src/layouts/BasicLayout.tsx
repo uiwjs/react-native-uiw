@@ -2,7 +2,7 @@ import { Switch, Route, Redirect, RouteComponentProps } from 'react-router-dom';
 import { DefaultProps } from '../';
 import { RouterData } from '../routes/router';
 import Container from '../component/Container';
-import { componentMenus } from '../routes/menus';
+import { componentMenus, docsMenus } from '../routes/menus';
 
 function BasicLayout(props: DefaultProps) {
   const { routerData, location } = props || {};
@@ -11,6 +11,9 @@ function BasicLayout(props: DefaultProps) {
 
   if (/^(\/components)/.test(location.pathname)) {
     data = componentMenus;
+  }
+  if (/^(\/docs)/.test(location.pathname)) {
+    data = docsMenus;
   }
   Object.keys(routerData).forEach((path, idx) => {
     if (path === '/') {

@@ -3,6 +3,7 @@ import MarkdownPreview from '@uiw/react-markdown-preview';
 // @ts-ignore
 import rehypeAttr from 'rehype-attr';
 import { useEffect } from 'react';
+import styles from './index.module.less';
 
 export interface MarkdownProps extends React.HTMLAttributes<HTMLDivElement> {
   path?: string;
@@ -10,7 +11,7 @@ export interface MarkdownProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export default function Markdown(props: MarkdownProps) {
-  const { renderPage, style } = props;
+  const { renderPage, path, style } = props;
   const [mdStr, setMdStr] = useState('');
   useEffect(() => {
     if (renderPage) {
@@ -50,7 +51,12 @@ export default function Markdown(props: MarkdownProps) {
             return <code {...props} />;
           },
         }}
-      />  
+      />
+      {path && (
+        <div className={styles.edit}>
+          <a href={path}>Edit this page</a>
+        </div>
+      )}
     </div>
   )
 }

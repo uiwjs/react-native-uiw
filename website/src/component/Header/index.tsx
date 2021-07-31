@@ -9,13 +9,16 @@ export default function Header() {
       <div className={styles.inner}>
         <Link to="/" className={styles.logo}>
           <img src={logo} alt="uiw logo" />
-          <span>
-            React Native UIW
+          <span className={styles.title} style={{ display: 'flex' }}>
+            <span>
+              React Native UIW
+            </span>
+            <span>v5.1.1</span>
           </span>
         </Link>
         <div className={styles.menus}>
           <NavLink to="/home">首页</NavLink>
-          <NavLink to="/docs">文档</NavLink>
+          <NavLink to="/docs/getting-started">文档</NavLink>
           <NavLink to="/components/">RN组件</NavLink>
           <a target="__blank" href="https://github.com/uiwjs/react-native-uiw/issues">问题反馈</a>
           <a target="__blank" href="https://uiwjs.github.io">Web 组件</a>
