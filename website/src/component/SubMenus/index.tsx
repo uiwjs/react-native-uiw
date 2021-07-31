@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './index.module.less';
 
-export type MenuData = {
+export interface MenuData extends React.RefAttributes<HTMLAnchorElement>, React.AnchorHTMLAttributes<HTMLAnchorElement> {
   name: string;
   path?: string;
   divider?: boolean;
@@ -20,8 +20,11 @@ export default function Submenu(props: SubmenuProps) {
           if (data.divider) {
             return <div key={key} className={styles.divider}>{data.name}</div>
           }
+          if (data.href) {
+            return <a href={data.href} key={key} {...data}>{data.name}</a>
+          }
           if (data.path) {
-            return <NavLink to={data.path} key={key}>{data.name}</NavLink>
+            return <NavLink to={data.path} key={key} {...data}>{data.name}</NavLink>
           }
           return (
             <div key={key}>data</div>
