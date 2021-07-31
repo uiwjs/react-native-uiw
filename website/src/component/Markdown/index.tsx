@@ -3,6 +3,7 @@ import MarkdownPreview from '@uiw/react-markdown-preview';
 // @ts-ignore
 import rehypeAttr from 'rehype-attr';
 import { useEffect } from 'react';
+import Contributors from '../Contributors';
 import styles from './index.module.less';
 
 export interface MarkdownProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -13,18 +14,30 @@ export interface MarkdownProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function Markdown(props: MarkdownProps) {
   const { renderPage, path, style } = props;
   const [mdStr, setMdStr] = useState('');
+  const [message, setMessage] = useState('');
   useEffect(() => {
     if (renderPage) {
+      setMessage('')
       renderPage()
         .then((str) => {
           setMdStr(str);
         })
-        .catch(() => {});
+        .catch(() => {
+          setMessage('页面加载失败！请刷新页面')
+        });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
+  if (message) {
+    return (
+      <div className={styles.warpper} style={style}>
+        {message}
+        <Contributors path={path}/>
+      </div>
+    );
+  }
   return (
-    <div style={style}>
+    <div className={styles.warpper} style={style}>
       <MarkdownPreview
         source={mdStr}
         // className={styles.markdown}
@@ -52,11 +65,7 @@ export default function Markdown(props: MarkdownProps) {
           },
         }}
       />
-      {path && (
-        <div className={styles.edit}>
-          <a href={path}>Edit this page</a>
-        </div>
-      )}
+      <Contributors path={path}/>
     </div>
   )
 }

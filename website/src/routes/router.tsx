@@ -1,9 +1,10 @@
-import React from 'react';
+import { Loader } from 'uiw';
 import dynamic from 'react-dynamic-loadable';
 import { store } from '../models';
 
+
 function Loading() {
-  return <span>loading....</span>
+  return <Loader color="#333" tip="页面加载中..." />
 }
 
 // wrapper of dynamic
@@ -28,6 +29,9 @@ export const getRouterData = {
   },
   '/home': {
     component: dynamicWrapper([], () => import('../pages/home')),
+  },
+  '/team': {
+    component: dynamicWrapper([], () => import('../pages/team')),
   },
   '/docs': {
     component: dynamicWrapper([], () => import('../pages/docs')),
