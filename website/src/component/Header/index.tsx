@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import pkg from '@uiw/react-native/package.json';
 import styles from './index.module.less';
 import logo from '../../assets/logo-dark.svg';
 
 export default function Header() {
+  // @ts-ignore
+  // eslint-disable-next-line
+  const version = pkg.version || '2.0.0';
   return (
     <header className={styles.warpper}>
       <div className={styles.inner}>
@@ -13,7 +17,7 @@ export default function Header() {
             <span>
               React Native UIW
             </span>
-            <span>v5.1.1</span>
+            <span>v{version}</span>
           </span>
         </Link>
         <div className={styles.menus}>
