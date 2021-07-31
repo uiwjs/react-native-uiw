@@ -2,8 +2,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "type:watch": "lerna exec --parallel --scope @etn/* --scope etn --scope create-etn -- tsbb types --watch",
-    "watch": "lerna exec --parallel --scope @etn/* --scope etn --scope create-etn -- tsbb watch",
     "====>": "<====",
     "lib:build:type": "lerna exec --scope @uiw/react-native -- tsbb types",
     "lib:build": "lerna exec --scope @uiw/react-native -- tsbb build",
@@ -11,6 +9,7 @@
     "start": "lerna exec --scope website -- npm run start",
     "doc": "lerna exec --scope website -- npm run build",
     "=---===>": "<====",
+    "version": "lerna version --no-changelog --no-push --no-git-tag-version",
     "pretty-quick": "pretty-quick",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },
