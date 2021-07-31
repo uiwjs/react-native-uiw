@@ -1,15 +1,18 @@
-import React from 'react';
 import { Switch, Route, Redirect, RouteComponentProps } from 'react-router-dom';
 import { DefaultProps } from '../';
 import { RouterData } from '../routes/router';
-import Header from '../component/Header';
-import styles from './BasicLayout.module.less';
+import Container from '../component/Container';
+import { componentMenus } from '../routes/menus';
 
 function BasicLayout(props: DefaultProps) {
-  const { routerData } = props || {};
+  const { routerData, location } = props || {};
   const RouteComponents: JSX.Element[] = [];
+  let data = undefined;
+
+  if (/^(\/components)/.test(location.pathname)) {
+    data = componentMenus;
+  }
   Object.keys(routerData).forEach((path, idx) => {
-    console.log(path)
     if (path === '/') {
       RouteComponents.push(<Route exact key={idx + 1} path="/" render={() => <Redirect to="/home" />} />);
     } else {
@@ -28,10 +31,9 @@ function BasicLayout(props: DefaultProps) {
     }
   });
   return (
-    <div className={styles.container}>
-      <Header />
+    <Container data={data}>
       <Switch>{RouteComponents}</Switch>
-    </div>
+    </Container>
   );
 }
 

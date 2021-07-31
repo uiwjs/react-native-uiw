@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styles from './index.module.less';
 import logo from '../../assets/logo-dark.svg';
 
@@ -14,9 +14,11 @@ export default function Header() {
           </span>
         </Link>
         <div className={styles.menus}>
-          <Link to="/">首页</Link>
-          <Link to="/docs">文档</Link>
-          <Link to="/components/about">组件</Link>
+          <NavLink to="/home">首页</NavLink>
+          <NavLink to="/docs">文档</NavLink>
+          <NavLink to="/components/">RN组件</NavLink>
+          <a target="__blank" href="https://uiwjs.github.io">Web 组件</a>
+          <a target="__blank" href="https://github.com/uiwjs/react-native-uiw">GitHub</a>
         </div>
       </div>
     </header>

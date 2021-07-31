@@ -4,7 +4,7 @@ import SubMenus, { MenuData } from '../SubMenus';
 import styles from './index.module.less';
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: MenuData[]
+  data?: MenuData[]
 }
 
 export default function Container(props: ContainerProps) {
@@ -13,7 +13,9 @@ export default function Container(props: ContainerProps) {
     <Fragment>
       <Header />
       <div className={styles.warpper}>
-        <SubMenus data={data} />
+        {data && data.length > 0 && (
+          <SubMenus data={data} />
+        )}
         <div style={{ flex: 1, overflow: 'hidden' }}>
           {children}
         </div>

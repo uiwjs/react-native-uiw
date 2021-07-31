@@ -32,9 +32,9 @@ export const getRouterData = {
   '/docs': {
     component: dynamicWrapper([], () => import('../pages/docs')),
   },
-  '/components': {
-    component: dynamicWrapper([], () => import('../layouts/ComponentsLayout')),
-  },
+  // '/components': {
+  //   component: dynamicWrapper([], () => import('../layouts/ComponentsLayout')),
+  // },
   '/components/about': {
     component: dynamicWrapper([], () => import('../pages/components/about')),
   },

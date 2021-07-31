@@ -14,8 +14,16 @@
 }
 
 .menus {
+  a {
+    border-bottom: #fff solid 2px;
+    transition: all .3s;
+  }
   a + a {
     margin-left: 16px;
+  }
+  :global(.active) {
+    color: #1890ff;
+    border-bottom: #1890ff solid 2px;
   }
 }
 
