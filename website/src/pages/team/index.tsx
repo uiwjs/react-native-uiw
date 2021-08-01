@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { DefaultProps } from '../../';
 import styles from './index.module.less';
 
-export default function Home(props: DefaultProps) {
+export default function Team(props: DefaultProps) {
   return (
     <div className={styles.warpper}>
       团队

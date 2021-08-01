@@ -5,6 +5,8 @@
     "====>": "<====",
     "lib:build:type": "lerna exec --scope @uiw/react-native -- tsbb types",
     "lib:build": "lerna exec --scope @uiw/react-native -- tsbb build",
+    "lib:watch": "lerna exec --scope @uiw/react-native -- tsbb watch",
+    "lib:watch:type": "lerna exec --scope @uiw/react-native -- tsbb types --watch",
     "build": "npm run lib:build && npm run lib:build:type",
     "start": "lerna exec --scope website -- npm run start",
     "doc": "lerna exec --scope website -- npm run build",

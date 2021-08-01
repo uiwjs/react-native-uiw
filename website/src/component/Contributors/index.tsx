@@ -36,7 +36,7 @@ function AvatarList(props: { path: string}) {
   const fetchurl = `https://proapi.azurewebsites.net/doc/getAvatarList?filename=${path.replace(/^\//, '')}&owner=uiwjs&repo=react-native-uiw`;
   const res = useFetch<Response>(fetchurl);
   if (!res.response) {
-    return <span className={styles.avatar}>Loading...</span>;
+    return <span className={styles.avatar} />;
   }
   return (
     <span className={styles.avatar}>

@@ -1,8 +1,7 @@
-import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import pkg from '@uiw/react-native/package.json';
 import styles from './index.module.less';
-import logo from '../../assets/logo-dark.svg';
+import { ReactComponent } from '../../assets/logo-dark.svg';
 
 type HeaderProps = {
   showBorder?: boolean;
@@ -17,7 +16,7 @@ export default function Header(props: HeaderProps) {
     <header className={styles.warpper} style={{ ...(showBorder ? {} : { borderBottom: 0, boxShadow: 'initial' })}}>
       <div className={styles.inner}>
         <Link to="/" className={styles.logo}>
-          <img src={logo} alt="uiw logo" />
+          <ReactComponent height="38" width="38" />
           <span className={styles.title} style={{ display: 'flex' }}>
             <span>
               React Native UIW
