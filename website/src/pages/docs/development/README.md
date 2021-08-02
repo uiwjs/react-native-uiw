@@ -103,7 +103,7 @@ website
  │       └── router.tsx # 配置菜单对应的页面
 ```
 
-#### `1. 菜单配置`
+#### `第 1 步：菜单配置`
 
 在 [`website/src/routes/menus.ts`](https://github.com/uiwjs/react-native-uiw/blob/4e4f55681a71b4813a5f5fe26f4b1a859bc85a7f/website/src/routes/menus.ts#L44) 中配置菜单
 
@@ -125,7 +125,7 @@ export const docsMenus: MenuData[] = [
 export const componentMenus: MenuData[] = [ .... ]
 ```
 
-#### `2. 新增路由`
+#### `第 2 步：新增路由`
 
 在 [`website/src/routes/router.tsx`](https://github.com/uiwjs/react-native-uiw/blob/4e4f55681a71b4813a5f5fe26f4b1a859bc85a7f/website/src/routes/router.tsx#L39-L41) 中加载 Markdown 以及相关文件
 
@@ -141,7 +141,7 @@ export const getRouterData = {
 }
 ```
 
-#### `3. 新增 Markdown 文件`
+#### `第 3 步：新增 Markdown 文件`
 
 添加 `website/src/pages/docs/getting-started/README.md` 和 `website/src/pages/docs/getting-started/index.tsx`
 
