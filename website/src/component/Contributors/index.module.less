@@ -14,10 +14,15 @@
 
 .avatar {
   padding-left: 12px;
+  display: inline-flex;
   a {
     display: flex;
+    & + a {
+      margin-left: 5px;
+    }
   }
   img {
     width: 21px;
+    border-radius: 3px;
   }
 }

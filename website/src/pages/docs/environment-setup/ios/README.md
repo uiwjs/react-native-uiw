@@ -83,11 +83,17 @@ npx react-native init AwesomeProject --version X.XX.X
 npx react-native init AwesomeTSProject --template react-native-template-typescript
 ```
 
+您还可以使用我们制定的模版([`@uiw/react-native-template`](https://github.com/uiwjs/react-native-template))创建一个新项目：
+
+<!--rehype:style=background-color: rgb(118 247 149);-->
+```shell
+npx react-native init AwesomeProject --template @uiw/react-native-template
+```
+
 > ⚠️ 注意：如果上述命令失败，您可能在您的 PC 上全局安装了旧版本的 react-native 或 react-native-cli。 尝试卸载 `cli` 并使用 `npx` 运行 cli。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ## 运行你的 React Native 应用程序
-
 
 ### `第 1 步：启动 Metro`
 
