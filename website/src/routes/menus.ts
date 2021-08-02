@@ -15,6 +15,7 @@ export const componentMenus: MenuData[] = [
   { path: "/components/drawer", name: "Drawer 抽屉" },
   { path: "/components/menudropdown", name: "MenuDropdown 菜单下拉按钮" },
   { path: "/components/swipeaction", name: "SwipeAction 滑动操作组件" },
+  { path: "/components/expandablesection", name: "ExpandableSection 展开缩放组件" },
   { divider: true, name: "Data Entry" },
   { path: "/components/buttongroup", name: "ButtonGroup 按钮组" },
   { path: "/components/checkbox", name: "CheckBox 复选框" },
