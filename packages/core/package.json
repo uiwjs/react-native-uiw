@@ -52,7 +52,7 @@
     "@babel/runtime": "7.14.8",
     "@react-native-picker/picker": "1.16.1",
     "@types/color": "3.0.2",
-    "@types/react-native": "0.64.0",
+    "@types/react-native": "0.64.12",
     "@uiw/icons": "2.5.1",
     "color": "4.0.0",
     "prop-types": "15.7.2",
