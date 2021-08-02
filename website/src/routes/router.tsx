@@ -36,6 +36,9 @@ export const getRouterData = {
   '/docs': {
     component: dynamicWrapper([], () => import('../pages/docs')),
   },
+  '/docs/getting-started': {
+    component: dynamicWrapper([], () => import('../pages/docs/getting-started')),
+  },
   '/docs/environment-setup': {
     component: dynamicWrapper([], () => import('../pages/docs/environment-setup')),
   },
@@ -48,8 +51,14 @@ export const getRouterData = {
   '/docs/environment-setup/android-windows': {
     component: dynamicWrapper([], () => import('../pages/docs/environment-setup/android-windows')),
   },
-  '/docs/getting-started': {
-    component: dynamicWrapper([], () => import('../pages/docs/getting-started')),
+  '/docs/app-store/ios': {
+    component: dynamicWrapper([], () => import('../pages/docs/app-store/ios')),
+  },
+  '/docs/app-store/android': {
+    component: dynamicWrapper([], () => import('../pages/docs/app-store/android')),
+  },
+  '/docs/development': {
+    component: dynamicWrapper([], () => import('../pages/docs/development')),
   },
   // '/components': {
   //   component: dynamicWrapper([], () => import('../layouts/ComponentsLayout')),

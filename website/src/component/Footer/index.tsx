@@ -74,6 +74,10 @@ const data = [
         href : 'https://github.com/jaywcjlove/mocker-api',
         title: 'Mocker API'
       },
+      {
+        href : 'https://www.pgyer.com/',
+        title: 'App 应用内测分发托管'
+      },
     ]
   },
   {
@@ -90,6 +94,10 @@ const data = [
       {
         href : 'https://jskatas.org/',
         title: 'JavaScript Katas'
+      },
+      {
+        href : 'https://www.typescriptlang.org/',
+        title: 'TypeScript'
       },
       {
         href : 'https://es6.ruanyifeng.com/',
