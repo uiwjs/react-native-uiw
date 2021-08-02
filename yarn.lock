@@ -17825,10 +17825,10 @@ ts-pnp@1.2.0, ts-pnp@^1.1.6:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
-tsbb@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/tsbb/-/tsbb-2.2.1.tgz#19a7721d7b7b7077e0c9b3b5c73965cce7df8139"
-  integrity sha512-QNEipUm2clZ5loe7rkaS/h/JsilR5yN4jdluYIGisL63gOualr1lMAUaRDcUH1QmWZyznEMg8x8LqPzn4z7nIA==
+tsbb@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/tsbb/-/tsbb-2.3.1.tgz#293b325c1dd99a823bcbe4cba4d33436c3af276c"
+  integrity sha512-836UJmJm6S+8JAx4W82H8n70tzyb90LkZ2w67m7O62522bNRNmdO+in/HfvemQmfufmS+y1/8Fni6zLdpXxQJA==
   dependencies:
     "@babel/core" "7.14.6"
     "@jest/types" "27.0.2"
@@ -17846,7 +17846,7 @@ tsbb@2.2.1:
     jest "27.0.4"
     ora "5.4.1"
     semver "7.3.5"
-    typescript "4.3.4"
+    typescript "4.3.5"
     yargs "17.0.1"
 
 tsconfig-paths@^3.9.0:
@@ -17990,11 +17990,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typescript@4.3.4:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.4.tgz#3f85b986945bcf31071decdd96cf8bfa65f9dcbc"
-  integrity sha512-uauPG7XZn9F/mo+7MrsRjyvbxFpzemRjKEZXS4AK83oP2KKOJPvb+9cO/gmnv8arWZvhnjVOXz7B49m1l0e9Ew==
 
 typescript@4.3.5:
   version "4.3.5"
