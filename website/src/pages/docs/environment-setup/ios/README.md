@@ -54,10 +54,12 @@ sudo gem install cocoapods
 React Native 有一个内置的命令行界面。 我们建议您在运行时使用 Node.js 附带的 `npx` 访问当前版本，而不是全局安装和管理特定版本的 CLI。 使用 `npx react-native <command>`，当前稳定版本的 CLI 将在命令运行时下载并执行。
 
 > 使用 npx（推荐），自 react-native@0.60 起可用。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ## 创建一个新的应用程序
 
 > ⚠️ 如果您之前安装了全局 `react-native-cli` 包，请将其删除，因为它可能会导致意外问题。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 您可以使用 React Native 的内置命令行界面来生成一个新项目。 让我们创建一个名为 `AwesomeProject` 的新 React Native 项目：
 
@@ -82,6 +84,7 @@ npx react-native init AwesomeTSProject --template react-native-template-typescri
 ```
 
 > ⚠️ 注意：如果上述命令失败，您可能在您的 PC 上全局安装了旧版本的 react-native 或 react-native-cli。 尝试卸载 `cli` 并使用 `npx` 运行 cli。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ## 运行你的 React Native 应用程序
 
@@ -99,8 +102,10 @@ npx react-native start
 `react-native start` 启动 Metro Bundler。
 
 > 如果您使用 `Yarn` 包管理器，则在现有项目中运行 React Native 命令时，您可以使用 `yarn` 而不是 `npx`。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 > 如果您熟悉 `Web` 开发，`Metro` 很像 `webpack` —— 用于 React Native 应用程序。 与 `Kotlin` 或 `Java` 不同，`JavaScript` 不会被编译，React Native 也不会。 Bundling 与编译不同，但它可以帮助提高启动性能并将一些特定于平台的 `JavaScript` 转换为更广泛支持的 `JavaScript`。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ### `第 2 步：启动您的应用程序`
 
@@ -128,7 +133,7 @@ npx react-native run-ios 是运行应用程序的一种方式。 您也可以直
 
 在您选择的文本编辑器中打开 `App.js` 并编辑一些行。
 
-在您的 `iOS` 模拟器中点击 `⌘R` 以重新加载应用程序并查看您的更改！
+在您的 `iOS` 模拟器中点击 `⌘R`<!--rehype:style=color: red;background: #ffd2d2;--> 以重新加载应用程序并查看您的更改！
 
 ## 恭喜！
 
