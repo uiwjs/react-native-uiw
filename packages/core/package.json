@@ -49,7 +49,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@babel/runtime": "7.13.10",
+    "@babel/runtime": "7.14.8",
     "@react-native-picker/picker": "1.16.1",
     "@types/color": "3.0.1",
     "@types/react-native": "0.64.0",
