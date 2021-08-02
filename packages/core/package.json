@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-native",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "UIW for React Native",
   "main": "lib/index.js",
   "scripts": {},
@@ -49,9 +49,9 @@
     "README.md"
   ],
   "dependencies": {
-    "@babel/runtime": "7.13.10",
+    "@babel/runtime": "7.14.8",
     "@react-native-picker/picker": "1.16.1",
-    "@types/color": "3.0.1",
+    "@types/color": "3.0.2",
     "@types/react-native": "0.64.0",
     "@uiw/icons": "2.5.1",
     "color": "4.0.0",

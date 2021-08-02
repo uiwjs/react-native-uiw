@@ -34,7 +34,7 @@ function BasicLayout(props: DefaultProps) {
     }
   });
   return (
-    <Container data={data}>
+    <Container data={data} path={location.pathname}>
       <Switch>{RouteComponents}</Switch>
     </Container>
   );

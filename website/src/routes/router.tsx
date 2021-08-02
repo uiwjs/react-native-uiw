@@ -1,9 +1,10 @@
-import React from 'react';
+import { Loader } from 'uiw';
 import dynamic from 'react-dynamic-loadable';
 import { store } from '../models';
 
+
 function Loading() {
-  return <span>loading....</span>
+  return <Loader color="#333" tip="页面加载中..." />
 }
 
 // wrapper of dynamic
@@ -29,11 +30,35 @@ export const getRouterData = {
   '/home': {
     component: dynamicWrapper([], () => import('../pages/home')),
   },
+  '/team': {
+    component: dynamicWrapper([], () => import('../pages/team')),
+  },
   '/docs': {
     component: dynamicWrapper([], () => import('../pages/docs')),
   },
   '/docs/getting-started': {
     component: dynamicWrapper([], () => import('../pages/docs/getting-started')),
+  },
+  '/docs/environment-setup': {
+    component: dynamicWrapper([], () => import('../pages/docs/environment-setup')),
+  },
+  '/docs/environment-setup/ios': {
+    component: dynamicWrapper([], () => import('../pages/docs/environment-setup/ios')),
+  },
+  '/docs/environment-setup/android': {
+    component: dynamicWrapper([], () => import('../pages/docs/environment-setup/android')),
+  },
+  '/docs/environment-setup/android-windows': {
+    component: dynamicWrapper([], () => import('../pages/docs/environment-setup/android-windows')),
+  },
+  '/docs/app-store/ios': {
+    component: dynamicWrapper([], () => import('../pages/docs/app-store/ios')),
+  },
+  '/docs/app-store/android': {
+    component: dynamicWrapper([], () => import('../pages/docs/app-store/android')),
+  },
+  '/docs/development': {
+    component: dynamicWrapper([], () => import('../pages/docs/development')),
   },
   // '/components': {
   //   component: dynamicWrapper([], () => import('../layouts/ComponentsLayout')),
@@ -61,6 +86,9 @@ export const getRouterData = {
   },
   '/components/swipeaction': {
     component: dynamicWrapper([], () => import('../pages/components/swipeaction')),
+  },
+  '/components/expandablesection': {
+    component: dynamicWrapper([], () => import('../pages/components/expandablesection')),
   },
   '/components/button': {
     component: dynamicWrapper([], () => import('../pages/components/button')),
