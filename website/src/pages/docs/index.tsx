@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { DefaultProps } from '../../';
 import styles from './index.module.less';

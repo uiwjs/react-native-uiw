@@ -4,6 +4,33 @@
 项目基于 node，请确保已具备较新的 node 环境（>=12.0.0），推荐使用 node 版本管理工具 [nvm](https://github.com/creationix/nvm) 或者 [`n`](https://github.com/tj/n) 来管理 node，这样不仅可以很方便地切换 node 版本，而且全局安装时候也不用加 sudo 了。
 
 > ⚠️ [react-native](https://github.com/facebook/react-native) v60+
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+
+### `使用特定版本或模板`
+
+如果你想用特定的 React Native 版本开始一个新项目，你可以使用 `--version` 参数：
+
+```bash
+npx react-native init AwesomeProject --version X.XX.X
+```
+
+您还可以使用自定义 React Native 模板（如 TypeScript）使用 `--template` 参数启动项目：
+
+```bash
+npx react-native init AwesomeTSProject --template react-native-template-typescript
+```
+
+您还可以使用我们制定的模版([`@uiw/react-native-template`](https://github.com/uiwjs/react-native-template))创建一个新项目：
+
+<!--rehype:style=background-color: rgb(118 247 149);-->
+```shell
+npx react-native init AwesomeProject --template @uiw/react-native-template
+```
+
+> ⚠️ 注意：如果上述命令失败，您可能在您的 PC 上全局安装了旧版本的 react-native 或 react-native-cli。 尝试卸载 `cli` 并使用 `npx` 运行 cli。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
 
 ## Install
 

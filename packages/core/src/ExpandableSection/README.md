@@ -1,15 +1,16 @@
 ExpandableSection 展开缩放
 ---
 
-展开缩放
+ExpandableSection 组件以在 sectionHeader标题 下方或上方呈现展开的内容部分
 
 ### 基础示例
 
 <!--DemoStart--> 
 ```js
+import React from 'react';
 import { ExpandableSection,H5 } from '@uiw/react-native';
 
-class Demo extends Component {
+export default class ExpandableSectionDemo extends Component {
   state={
     expanded:false,
     top:false
@@ -38,7 +39,6 @@ class Demo extends Component {
 |------|------|-----|------|
 | `sectionHeader` | 设置标题 | JSX.Element | - |
 | `children` | 展开内容| ReactNode | - |
-| `labelStyle` | 设置提示文本样式 | TextProps['style'] | - |
 | `expanded` | 是否展开 | boolean | - |
 | `top` | 展开后显示位置 标题上或标题下 | boolean | - |
-| `top` | 点击事件 | void | - |
+| `onPress` | 点击事件 | void | - |

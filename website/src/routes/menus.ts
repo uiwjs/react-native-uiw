@@ -15,6 +15,7 @@ export const componentMenus: MenuData[] = [
   { path: "/components/drawer", name: "Drawer 抽屉" },
   { path: "/components/menudropdown", name: "MenuDropdown 菜单下拉按钮" },
   { path: "/components/swipeaction", name: "SwipeAction 滑动操作组件" },
+  { path: "/components/expandablesection", name: "ExpandableSection 展开缩放组件" },
   { divider: true, name: "Data Entry" },
   { path: "/components/buttongroup", name: "ButtonGroup 按钮组" },
   { path: "/components/checkbox", name: "CheckBox 复选框" },
@@ -42,5 +43,14 @@ export const componentMenus: MenuData[] = [
 
 export const docsMenus: MenuData[] = [
   { path: '/docs/getting-started', name: '快速上手' },
+  { divider: true, name: "环境安装" },
+  { path: '/docs/environment-setup/ios', name: 'iOS 环境安装' },
+  { path: '/docs/environment-setup/android', name: 'Android(Mac) 环境安装' },
+  { path: '/docs/environment-setup/android-windows', name: 'Android(Windows) 环境安装' },
+  { divider: true, name: "发布应用商店" },
+  { path: '/docs/app-store/ios', name: '发布 iOS 应用商店' },
+  { path: '/docs/app-store/android', name: '发布 Android 应用商店' },
+  { divider: true, name: "其它" },
+  { path: '/docs/development', name: '参与组件/文档开发' },
   { href: 'https://github.com/uiwjs/react-native-uiw/releases', target: '_blank', name: '更新日志' },
 ]

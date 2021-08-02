@@ -10,7 +10,6 @@
 }
 
 .inner {
-  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -19,14 +18,17 @@
 }
 
 .menus {
+  display: flex;
   a {
-    border-bottom: #fff solid 2px;
+    border-bottom: transparent solid 2px;
     transition: all .3s;
+    margin-top: 5px;
+    color: #333;
   }
   a + a {
     margin-left: 16px;
   }
-  :global(.active) {
+  :global(.active), a:hover {
     color: #1890ff;
     border-bottom: #1890ff solid 2px;
   }
@@ -35,6 +37,7 @@
 .logo {
   display: flex;
   align-items: center;
+  color: #333;
   img {
     margin-right: 8px;
     height: 38px;
