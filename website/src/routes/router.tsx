@@ -45,6 +45,9 @@ export const getRouterData = {
   '/docs/environment-setup/android': {
     component: dynamicWrapper([], () => import('../pages/docs/environment-setup/android')),
   },
+  '/docs/environment-setup/android-windows': {
+    component: dynamicWrapper([], () => import('../pages/docs/environment-setup/android-windows')),
+  },
   '/docs/getting-started': {
     component: dynamicWrapper([], () => import('../pages/docs/getting-started')),
   },

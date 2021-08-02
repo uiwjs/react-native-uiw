@@ -12,7 +12,7 @@ export default function Container(props: ContainerProps) {
   const { data, children, path } = props;
   return (
     <Fragment>
-      <Header showBorder={path !== '/home'}/>
+      <Header showBorder={path !== '/home'} path={path} />
       <div className={styles.warpper}>
         {data && data.length > 0 && (
           <SubMenus data={data} />

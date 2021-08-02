@@ -44,6 +44,7 @@ export const docsMenus: MenuData[] = [
   { path: '/docs/getting-started', name: '快速上手' },
   { divider: true, name: "环境安装" },
   { path: '/docs/environment-setup/ios', name: 'iOS 环境安装' },
-  { path: '/docs/environment-setup/android', name: 'Android 环境安装(Mac)' },
+  { path: '/docs/environment-setup/android', name: 'Android(Mac) 环境安装' },
+  { path: '/docs/environment-setup/android-windows', name: 'Android(Windows) 环境安装' },
   { href: 'https://github.com/uiwjs/react-native-uiw/releases', target: '_blank', name: '更新日志' },
 ]

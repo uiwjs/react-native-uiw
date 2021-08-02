@@ -14,6 +14,7 @@ export default function Controller(props: Props) {
   return (
     <Switch>
       <Route exact path="/components" render={() => <Redirect to="/components/about" />} />
+      <Route exact path="/docs" render={() => <Redirect to="/docs/getting-started" />} />
       <Route path="/" render={(props) => <BasicLayout {...props} routerData={routerData} />} />
     </Switch>
   );
