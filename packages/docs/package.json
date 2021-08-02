@@ -1,5 +1,7 @@
 {
   "name": "@uiw/react-native-doc",
-  "version": "2.0.2",
-  "files": ["doc"]
+  "version": "2.0.3",
+  "files": [
+    "doc"
+  ]
 }
