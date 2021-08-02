@@ -8232,9 +8232,9 @@ errorhandler@^1.5.0:
     escape-html "~1.0.3"
 
 es-abstract@^1.17.2, es-abstract@^1.18.0-next.1, es-abstract@^1.18.0-next.2, es-abstract@^1.18.2:
-  version "1.18.4"
-  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.18.4.tgz#c6b7a1acd6bb1c8b5afeb54a53c46ad02fab346d"
-  integrity sha512-xjDAPJRxKc1uoTkdW8MEk7Fq/2bzz3YoCADYniDV7+KITCUdu9c90fj1aKI7nEZFZxRrHlDo3wtma/C6QkhlXQ==
+  version "1.18.5"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.18.5.tgz#9b10de7d4c206a3581fd5b2124233e04db49ae19"
+  integrity sha512-DDggyJLoS91CkJjgauM5c0yZMjiD1uK3KcaCeAmffGwZ+ODWzOkPN4QwRbsK5DOFf06fywmyLci3ZD8jLGhVYA==
   dependencies:
     call-bind "^1.0.2"
     es-to-primitive "^1.2.1"
@@ -11684,9 +11684,9 @@ jetifier@^1.6.2:
   integrity sha512-3Zi16h6L5tXDRQJTb221cnRoVG9/9OvreLdLU2/ZjRv/GILL+2Cemt0IKvkowwkDpvouAU1DQPOJ7qaiHeIdrw==
 
 joi@^17.2.1:
-  version "17.4.1"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-17.4.1.tgz#15d2f23c8cbe4d1baded2dd190c58f8dbe11cca0"
-  integrity sha512-gDPOwQ5sr+BUxXuPDGrC1pSNcVR/yGGcTI0aCnjYxZEa3za60K/iCQ+OFIkEHWZGVCUcUlXlFKvMmrlmxrG6UQ==
+  version "17.4.2"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-17.4.2.tgz#02f4eb5cf88e515e614830239379dcbbe28ce7f7"
+  integrity sha512-Lm56PP+n0+Z2A2rfRvsfWVDXGEWjXxatPopkQ8qQ5mxCEhwHG+Ettgg5o98FFaxilOxozoa14cFhrE/hOzh/Nw==
   dependencies:
     "@hapi/hoek" "^9.0.0"
     "@hapi/topo" "^5.0.0"
@@ -11748,9 +11748,9 @@ jscodeshift@^0.11.0:
     write-file-atomic "^2.3.0"
 
 jsdom@^16.4.0, jsdom@^16.6.0:
-  version "16.6.0"
-  resolved "https://registry.yarnpkg.com/jsdom/-/jsdom-16.6.0.tgz#f79b3786682065492a3da6a60a4695da983805ac"
-  integrity sha512-Ty1vmF4NHJkolaEmdjtxTfSfkdb8Ywarwf63f+F8/mDD1uLSSWDxDuMiZxiPhwunLrn9LOSVItWj4bLYsLN3Dg==
+  version "16.7.0"
+  resolved "https://registry.yarnpkg.com/jsdom/-/jsdom-16.7.0.tgz#918ae71965424b197c819f8183a754e18977b710"
+  integrity sha512-u9Smc2G1USStM+s/x1ru5Sxrl6mPYCbByG1U/hUmqaVsm4tbNyS7CicOSRyuGQYZhTu0h84qkZZQ/I+dzizSVw==
   dependencies:
     abab "^2.0.5"
     acorn "^8.2.4"
@@ -11777,7 +11777,7 @@ jsdom@^16.4.0, jsdom@^16.6.0:
     whatwg-encoding "^1.0.5"
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.5.0"
-    ws "^7.4.5"
+    ws "^7.4.6"
     xml-name-validator "^3.0.0"
 
 jsesc@^2.5.1:
@@ -19062,7 +19062,7 @@ ws@^6.1.4, ws@^6.2.1:
   dependencies:
     async-limiter "~1.0.0"
 
-ws@^7, ws@^7.4.5:
+ws@^7, ws@^7.4.6:
   version "7.5.3"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.3.tgz#160835b63c7d97bfab418fc1b8a9fced2ac01a74"
   integrity sha512-kQ/dHIzuLrS6Je9+uv81ueZomEwH0qVYstcAQ4/Z93K8zeko9gtAbttJWzoC5ukqXY1PpoouV3+VSOqEAFt5wg==
