@@ -90,6 +90,19 @@ yarn run start          # 本地运行预览文档网站
 
 添加一个新的文档，需要新增路由、菜单、添加 `README.md` 文件。
 
+```bash
+website
+ ├── src
+ │   ├── pages # 文档示例编写在这里
+ │   │   ├── components
+ │   │   ├── getting-started
+ │   │   │   ├── README.md   # 添加 README.md 文档
+ │   │   │   └── index.tsx   # 添加加载 README.md JS 文件
+ │   └── routes
+ │       ├── menus.ts   # 配置菜单
+ │       └── router.tsx # 配置菜单对应的页面
+```
+
 #### `1. 菜单配置`
 
 在 [`website/src/routes/menus.ts`](https://github.com/uiwjs/react-native-uiw/blob/4e4f55681a71b4813a5f5fe26f4b1a859bc85a7f/website/src/routes/menus.ts#L44) 中配置菜单
@@ -130,15 +143,6 @@ export const getRouterData = {
 
 #### `3. 新增 Markdown 文件`
 
-```bash
-├── pages
-│   ├── components
-│   ├── docs
-│   │   ├── getting-started
-│   │   │   ├── README.md   # 添加 README.md 文档
-│   │   │   └── index.tsx   # 添加加载 README.md JS 文件
-```
-
 添加 `website/src/pages/docs/getting-started/README.md` 和 `website/src/pages/docs/getting-started/index.tsx`
 
 ```tsx
@@ -158,3 +162,10 @@ export default class Page extends Markdown {
   }
 }
 ```
+
+### `修改一个 Markdown 文件内容`
+
+可直接点击文档网站底部的 `在 GitHub 上编辑此页` 按钮。
+
+⇣⇣⇣⇣⇣⇣看见没有，点击下面按钮⇣⇣⇣⇣⇣⇣
+<!--rehype:style=background-color: #a0ffb3; padding: 12px 16px; display: inline-block;-->
