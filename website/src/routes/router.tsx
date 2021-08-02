@@ -87,6 +87,9 @@ export const getRouterData = {
   '/components/swipeaction': {
     component: dynamicWrapper([], () => import('../pages/components/swipeaction')),
   },
+  '/components/expandablesection': {
+    component: dynamicWrapper([], () => import('../pages/components/expandablesection')),
+  },
   '/components/button': {
     component: dynamicWrapper([], () => import('../pages/components/button')),
   },

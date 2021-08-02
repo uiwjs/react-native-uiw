@@ -25,10 +25,11 @@ export type ExpandableSectionProps = {
 };
 
 function ExpandableSection(props: ExpandableSectionProps) {
-  const { expanded, sectionHeader, children, top } = props;
+  const { expanded = false, sectionHeader, children, top = false } = props;
 
   const onPress = () => {
     props.onPress?.();
+    // 动画效果
     LayoutAnimation.configureNext({ ...LayoutAnimation.Presets.easeInEaseOut, duration: 300 });
   };
 
