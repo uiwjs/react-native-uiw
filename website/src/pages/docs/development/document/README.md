@@ -154,7 +154,7 @@ export default class Page extends Markdown {
 
 ### `修改一个 Markdown 文件内容`
 
-可直接点击文档网站底部的 `在 GitHub 上编辑此页` 按钮。
+可直接点击文档网站底部的 `在 GitHub 上编辑此页`<!--rehype:style=color: #1e1cf0; background: #e3e3ff;--> 按钮。
 
 ⇣⇣⇣⇣⇣⇣看见没有，点击下面按钮⇣⇣⇣⇣⇣⇣
 <!--rehype:style=background-color: #a0ffb3; padding: 12px 16px; display: inline-block;-->
