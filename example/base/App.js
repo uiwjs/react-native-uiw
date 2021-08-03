@@ -2,8 +2,6 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
- * @format
- * @flow strict-local
  */
 
 import React from 'react';
@@ -16,6 +14,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {Button, Icon} from '@uiw/react-native';
 
 import {
   Colors,
@@ -69,6 +68,8 @@ const App = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
+          <Button type="primary">按钮之间的间距</Button>
+          <Icon name='apple' size={46} color='#50CB42' />
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.

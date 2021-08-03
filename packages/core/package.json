@@ -68,5 +68,8 @@
   "devDependencies": {
     "@babel/core": "7.14.8",
     "@babel/preset-typescript": "7.14.5"
+  },
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   }
 }
