@@ -1,11 +1,9 @@
+import { Layout, Row, Col } from 'uiw';
 import { DefaultProps } from '../../';
 import styles from './index.module.less';
 import FooterTitle from '../../component/Footer'
-import { Layout, Row, Col, Loader } from 'uiw';
 import { useFetch } from '../../hook/useFetch'
 const { Footer, Content } = Layout;
-
-
 
 export default function Team(props: DefaultProps) {
 
