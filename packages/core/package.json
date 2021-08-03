@@ -2,6 +2,7 @@
   "name": "@uiw/react-native",
   "version": "2.0.3",
   "description": "UIW for React Native",
+  "homepage": "https://uiwjs.github.io/react-native-uiw/",
   "main": "lib/index.js",
   "scripts": {},
   "keywords": [
