@@ -12,38 +12,27 @@
 
 ```bash
 ├── README.md -> packages/core/README.md
-├── package.json
-├── lerna.json
-├── tsconfig.json
+├── ....
 ├── example   # ----> 示例
 │   └── base  # 基础示例
 ├── packages  # ----> 包
-│   ├── core  # 基础组件
-│   │   ├── README.md
+│   ├── core  # @uiw/react-native 基础组件
 │   │   ├── package.json
-│   │   ├── src
-│   │   │   ├── Avatar # 组件源码以及组件文档
-│   │   │   ├── ....
-│   │   │   └── utils
-│   │   └── tsconfig.json
-│   └── docs  # 可忽略，编译后的组件文档静态文件提交到 npm 提供文档版本预览
-├── website   # ----> 文档网站源码
-│   ├── README.md
-│   ├── package.json
-│   ├── public
-│   ├── src
-│   │   ├── pages # 文档示例编写在这里
-│   │   │   ├── components
-│   │   │   ├── docs
-│   │   │   ├── home
-│   │   │   └── team
-│   │   └── routes
-│   │       ├── Controller.tsx
-│   │       ├── history.ts
-│   │       ├── menus.ts   # 配置菜单
-│   │       └── router.tsx # 配置菜单对应的页面
-│   └── tsconfig.json
-└── yarn.lock
+│   │   └── src
+│   │       ├── Avatar # 组件源码以及组件文档
+│   │       └── ....
+│   └── docs  # @uiw/react-native-doc 可忽略，编译后的组件文档静态文件提交到 npm 提供文档版本预览
+└── website   # ----> 文档网站源码
+    ├── ....
+    └── src
+        ├── pages # 文档示例编写在这里
+        │   ├── components
+        │   └── ....
+        └── routes
+            ├── Controller.tsx
+            ├── history.ts
+            ├── menus.ts   # 配置菜单
+            └── router.tsx # 配置菜单对应的页面
 ```
 
 ## 文档编辑预览
