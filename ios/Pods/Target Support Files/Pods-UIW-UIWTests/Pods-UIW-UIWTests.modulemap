@@ -1,0 +1,6 @@
+module Pods_UIW_UIWTests {
+  umbrella header "Pods-UIW-UIWTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

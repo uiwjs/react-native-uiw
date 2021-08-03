@@ -1,0 +1,6 @@
+module Pods_UIW {
+  umbrella header "Pods-UIW-umbrella.h"
+
+  export *
+  module * { export * }
+}
