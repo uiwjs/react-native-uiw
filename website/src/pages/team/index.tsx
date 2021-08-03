@@ -3,7 +3,7 @@ import { DefaultProps } from '../../';
 import styles from './index.module.less';
 import FooterTitle from '../../component/Footer'
 import { Layout, Row, Col } from 'uiw';
-const { Footer, Content } = Layout;
+const { Footer, Content, Header } = Layout;
 
 export default function Team(props: DefaultProps) {
   const developInfo = [
@@ -25,6 +25,11 @@ export default function Team(props: DefaultProps) {
   ]
   return (
     <Layout>
+      <Header style={{ background: "#fff" }}>
+        <div>
+          <span style={{ color: "#697b8c", fontSize: 16, fontWeight: 500 }}>UIW Mobile RN 一个基于 React Native 的 UI 组件库</span>
+        </div>
+      </Header>
       <Content>
         <Row justify="flex-start">
           <Col className={styles.warpper}>
