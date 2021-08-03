@@ -1,51 +1,54 @@
 
 .warpper {
-  background: #fff;
-  padding:23px;
+  min-height: 380px;
+  min-height: calc(100vh - 80px);
+  text-align: center;
+  background: #f7f7f7;
 }
 .header {
-  padding: 40px;
-  background: url(https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*y_r7RogIG1wAAAAAAAAAAABkARQnAQ);
-  background-size: cover;
+  font-size: 56px;
+  line-height: 65px;
+  padding-top: 130px;
+  color: #1b1c2b;
+  font-family: "MarkPro-ExtraLight";
+  h2 {
+    font-size: 48px;
+    color: #a0a0a0;
+    text-shadow: 0 1px #fff;
+  }
 }
-.avatar {
-  background:blue;
-  margin-left: 24px ;
-  margin-bottom: 24px;
-  a {
-    display: flex;
 
-    &+a {
-      margin-left: 5px;
+.team {
+  max-width: 840px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  margin: 0 auto;
+  li {
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    margin: .5em;
+  }
+  a {
+    img {
+      height: 120px;
+      width: 120px;
+      display: flex;
+      background-color: #cacaca;
+      box-shadow: 0px 0px 0px 5px #e8e8e8;
+      border-radius: 80px;
+      margin: 20px;
+      transition: all .3s;
+    }
+    span {
+      transition: color .3s;
+      color: transparent;
+    }
+    &:hover span {
+      color: #333;
+    }
+    &:hover img {
+      box-shadow: 0px 0px 0px 5px #cccccc;
     }
   }
-  img {
-    margin-right: 12px;
-    width: 31px;
-    border-radius: 50px;
-  }
 }
-
-.font {
-  font-size: 20px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-weight: 500;
-}
-
-// 头像和名字横向布局
-.flex_column  {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-}
-
-// 头像列表纵向布局
-.flex_column_avatar  {
-  display: flex;
-  align-items: flex-start;
-  justify-items: center;
-  flex-direction: column;
-}
-
-
-

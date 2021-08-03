@@ -4,18 +4,27 @@ import styles from './index.module.less';
 import { ReactComponent } from '../../assets/logo-dark.svg';
 import { ReactComponent as Github } from '../../assets/github.svg';
 
-type HeaderProps = {
+interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   showBorder?: boolean;
+  enableStyle?: boolean;
   path?: string;
 }
 
 export default function Header(props: HeaderProps) {
-  const { showBorder = true } = props;
+  const { showBorder = true, enableStyle, style = {} } = props;
   // @ts-ignore
   // eslint-disable-next-line
   const version = pkg.version || '2.0.0';
+
+  if (showBorder || enableStyle) {
+    style.border = 0;
+    style.boxShadow = 'initial';
+  }
+  if (enableStyle) {
+    style.background = '#f7f7f7';
+  }
   return (
-    <header className={styles.warpper} style={{ ...(showBorder ? {} : { borderBottom: 0, boxShadow: 'initial' })}}>
+    <header className={styles.warpper} style={style}>
       <div className={styles.inner}>
         <Link to="/" className={styles.logo}>
           <ReactComponent height="38" width="38" />
