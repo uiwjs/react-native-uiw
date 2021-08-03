@@ -5,20 +5,6 @@
  */
 
 const path = require('path');
-// module.exports = watchHoistedModules(__dirname, {
-//   // ...
-//   transformer: {
-//     getTransformOptions: async () => ({
-//       transform: {
-//         experimentalImportSupport: false,
-//         inlineRequires: true,
-//       },
-//     }), server: { enableVisualizer: true, } 
-//   },
-// });
-
-console.log(path.resolve(`${__dirname}/../../packages/core/`))
-console.log(path.resolve(`${__dirname}/../../`))
 
 module.exports = {
   resolver: {
