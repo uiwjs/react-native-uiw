@@ -51,6 +51,7 @@ export const docsMenus: MenuData[] = [
   { path: '/docs/app-store/ios', name: '发布 iOS 应用商店' },
   { path: '/docs/app-store/android', name: '发布 Android 应用商店' },
   { divider: true, name: "其它" },
-  { path: '/docs/development', name: '参与组件/文档开发' },
+  { path: '/docs/development/document', name: '参与文档/网站编辑开发' },
+  { path: '/docs/development/components', name: '参与组件开发' },
   { href: 'https://github.com/uiwjs/react-native-uiw/releases', target: '_blank', name: '更新日志' },
 ]

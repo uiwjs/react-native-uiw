@@ -1,7 +1,7 @@
-参与组件/文档开发
+参与文档/网站编辑开发
 ---
 
-这里介绍，当前组件库开发和文档编写，方便您快速介入到项目开发中。
+这里介绍，当前组件库开发和文档编写，方便您快速介入到文档/网站编辑开发中。
 
 > ⚠️ 注意：文档网站发布是监听 master 分支的更新`自动`发布到 [`gh-pages`](https://github.com/uiwjs/react-native-uiw/tree/gh-pages) 分支。  
 > 在 package.json 中的版本号请不要随意更改，组件发布是监听 [`package.json 中的版本号`](https://github.com/uiwjs/react-native-uiw/blob/4e4f55681a71b4813a5f5fe26f4b1a859bc85a7f/.github/workflows/ci.yml#L64-L66)变更`自动`发布到 npm 上。  
@@ -66,7 +66,7 @@ https://unpkg.com/@uiw/react-native-doc@<包版本>/web/index.html
 
 组件文档存放在组件 `packages/core`<!--rehype:style=color: #039423; background: #b7fdce;--> 包目录中，其它文档放在文档源码目录 `website/src/pages`<!--rehype:style=color: #039423; background: #b7fdce;--> 中，根据路由地址建立。
 
-> 如果需要将文档网站运行起来，需要先安装依赖和编译包。
+> 如果需要将文档网站运行起来，需要先安装依赖和编译包。使用 [`yarn workspaces`](https://classic.yarnpkg.com/en/docs/workspaces)，组件文档是从 `node_modules` 中加载，需要编译(或监听)输出到 `node_modules` 中。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 <!--rehype:-->
