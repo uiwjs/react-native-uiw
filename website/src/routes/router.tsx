@@ -4,7 +4,9 @@ import { store } from '../models';
 
 
 function Loading() {
-  return <Loader color="#333" tip="页面加载中..." />
+  return <div style={{ textAlign: 'center', padding: '50px 0 50px 0'}}>
+    <Loader color="#333" tip="页面加载中..." />
+  </div>
 }
 
 // wrapper of dynamic
