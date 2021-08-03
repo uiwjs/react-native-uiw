@@ -1,56 +1,64 @@
-import React from 'react';
 import { DefaultProps } from '../../';
 import styles from './index.module.less';
 import FooterTitle from '../../component/Footer'
-import { Layout, Row, Col } from 'uiw';
-const { Footer, Content, Header } = Layout;
+import { Layout, Row, Col, Loader } from 'uiw';
+import { useFetch } from '../../hook/useFetch'
+const { Footer, Content } = Layout;
+
+
 
 export default function Team(props: DefaultProps) {
+
   const developInfo = [
-    { userName: "jaywcjlove", name: "小弟调调™", id: 1 },
-    { userName: "xingyuefeng", name: "xyf", id: 2 },
-    { userName: "ChenlingasMx", name: "Chenling", id: 3 },
-    { userName: "matuancc", name: "cc", id: 4 },
-    { userName: "yaochuxia", name: "yaochuxia", id: 5 },
-    { userName: "wj0990", name: "wangjie", id: 6 },
+    { userName: "jaywcjlove", id: 1 },
+    { userName: "xingyuefeng", id: 2 },
+    { userName: "ChenlingasMx", id: 3 },
+    { userName: "matuancc", id: 4 },
+    { userName: "yaochuxia", id: 5 },
+    { userName: "wj0990", id: 6 },
   ]
   const designInfo = [
-    { userName: "jaywcjlove", name: "小弟调调™", id: 1 },
-    { userName: "matuancc", name: "cc", id: 4 },
-    { userName: "yaochuxia", name: "yaochuxia", id: 5 },
+    { userName: "jaywcjlove", id: 1 },
+    { userName: "matuancc", id: 2 },
+    { userName: "yaochuxia", id: 3 },
   ]
   const documentInfo = [
-    { userName: "jaywcjlove", name: "小弟调调™", id: 1 },
-    { userName: "ChenlingasMx", name: "Chenling", id: 3 },
+    { userName: "jaywcjlove", id: 1 },
+    { userName: "ChenlingasMx", id: 2 },
   ]
   return (
     <Layout>
-      <Header style={{ background: "#fff" }}>
-        <div>
-          <span style={{ color: "#697b8c", fontSize: 16, fontWeight: 500 }}>UIW Mobile RN 一个基于 React Native 的 UI 组件库</span>
-        </div>
-      </Header>
+      <header className={styles.header}>
+        <div style={{ fontSize: 36, fontWeight: 500 }}>UIW Mobile</div>
+        <div style={{ color: "#697b8c", fontSize: 18, fontWeight: 500 }}>RN 一个基于 React Native 的 UI 组件库</div>
+      </header>
       <Content>
-        <Row justify="flex-start">
-          <Col className={styles.warpper}>
-            <div style={{ display: "flex", justifyItems: 'center', alignItems: "flex-start", flexDirection: 'column' }}>
-              <h4 style={{ fontSize: 20, fontFamily: "fantasy", fontWeight: 500 }}>开发</h4>
-              <AvatarList avatarInfo={developInfo} />
-            </div>
-          </Col>
-          <Col className={styles.warpper}>
-            <div style={{ display: "flex", justifyItems: 'center', alignItems: "flex-start", flexDirection: 'column' }}>
-              <h4 style={{ fontSize: 20, fontFamily: "fantasy", fontWeight: 500 }}>设计</h4>
-              <AvatarList avatarInfo={designInfo} />
-            </div>
-          </Col>
-          <Col className={styles.warpper}>
-            <div style={{ display: "flex", justifyItems: 'center', alignItems: "flex-start", flexDirection: 'column' }}>
-              <h4 style={{ fontSize: 20, fontFamily: "fantasy", fontWeight: 500 }}>文档</h4>
-              <AvatarList avatarInfo={documentInfo} />
-            </div>
-          </Col>
-        </Row>
+          <Row justify="flex-start">
+            <Col className={styles.warpper}>
+              <div className={styles.flex_column_avatar}>
+                <h4 className={styles.font}>开发</h4>
+                {
+                  developInfo.map(itm => <div key={itm.id}><AvatarList userName={itm.userName} /></div>)
+                }
+              </div>
+            </Col>
+            <Col className={styles.warpper}>
+              <div className={styles.flex_column_avatar}>
+                <h4 className={styles.font}>设计</h4>
+                {
+                  designInfo.map(itm => <div key={itm.id}><AvatarList userName={itm.userName} /></div>)
+                }
+              </div>
+            </Col>
+            <Col className={styles.warpper}>
+              <div className={styles.flex_column_avatar}>
+                <h4 className={styles.font}>文档</h4>
+                {
+                  documentInfo.map(itm => <div key={itm.id}><AvatarList userName={itm.userName} /></div>)
+                }
+              </div>
+            </Col>
+          </Row>
       </Content>
       <Footer>
         < FooterTitle />
@@ -59,30 +67,28 @@ export default function Team(props: DefaultProps) {
   );
 }
 
+
+
 type PropsDeafult = {
-  avatarInfo: Array<{
-    userName: string;
-    name: string;
-    id: number
-  }>
+  userName: string
 }
 
 function AvatarList(props: PropsDeafult) {
-  const { avatarInfo = [] } = props
+  const { userName } = props
+  const res: any = useFetch(`https://api.github.com/users/${userName}`)
+  if (!res) {
+    return <span />
+  }
   return (
-    <div className={styles.flex_item}>
-      {
-        avatarInfo.map(item =>
-          <span className={styles.avatar} key={item.id}>
-            <div className={styles.center}>
-              <a href={`https://github.com/${item.userName}`} target="__blank">
-                <img src={`https://avatars.githubusercontent.com/${item.userName}`} alt={item.name} />
-              </a>
-              <span style={{ fontSize: 18 }}>{item.name}</span>
-            </div>
-          </span>
-        )
-      }
+    <div>
+      <span className={styles.avatar}>
+        <div className={styles.flex_column}>
+          <a href={`https://github.com/${userName}`} target="__blank">
+            <img src={`https://avatars.githubusercontent.com/${userName}`} alt={res?.response?.name} />
+          </a>
+          <a  href={`https://github.com/${userName}`} style={{ fontSize: 18, color: "#697b8c" }}>{res?.response?.name}</a>
+        </div>
+      </span>
     </div>
   )
 }

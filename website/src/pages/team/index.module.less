@@ -3,8 +3,13 @@
   background: #fff;
   padding:23px;
 }
-
+.header {
+  padding: 40px;
+  background: url(https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*y_r7RogIG1wAAAAAAAAAAABkARQnAQ);
+  background-size: cover;
+}
 .avatar {
+  background:blue;
   margin-left: 24px ;
   margin-bottom: 24px;
   a {
@@ -14,19 +19,32 @@
       margin-left: 5px;
     }
   }
-
   img {
     margin-right: 12px;
-    width: 51px;
+    width: 31px;
     border-radius: 50px;
   }
 }
 
-.center {
+.font {
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 500;
+}
+
+// 头像和名字横向布局
+.flex_column  {
   display: flex;
   align-items: center;
   justify-items: center;
-  // flex-direction: column;
+}
+
+// 头像列表纵向布局
+.flex_column_avatar  {
+  display: flex;
+  align-items: flex-start;
+  justify-items: center;
+  flex-direction: column;
 }
 
 
