@@ -55,7 +55,7 @@
     "@types/color": "3.0.2",
     "@types/react-native": "0.64.12",
     "@uiw/icons": "2.5.1",
-    "color": "4.0.0",
+    "color": "4.0.1",
     "prop-types": "15.7.2",
     "react-native-root-siblings": "4.1.1",
     "react-native-svg": "12.1.1",
