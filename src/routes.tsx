@@ -265,4 +265,12 @@ export const stackPageData: Routes[] = [
       description: '折叠展开ExpandableSection',
     },
   },
+  {
+    name: 'Rating',
+    component: require('./routes/Rating').default,
+    params: {
+      title: 'Rating 评分',
+      description: 'Rating 评分',
+    },
+  },
 ];
