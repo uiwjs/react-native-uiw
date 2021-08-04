@@ -36,6 +36,8 @@ brew install watchman
 
 要安装模拟器，请打开 `Xcode` > `Preferences...` 并选择 `Components` 选项卡。 选择您要使用的 iOS 相应版本的模拟器。
 
+![Xcode Preferences Components](./002.png)
+
 ### CocoaPods
 
 [CocoaPods](https://cocoapods.org/) 是用 Ruby 构建的，并且可以使用 macOS 上可用的默认 Ruby 进行安装。 您可以使用 Ruby 版本管理器，但我们建议您使用 macOS 上可用的标准 Ruby，除非您知道自己在做什么。
