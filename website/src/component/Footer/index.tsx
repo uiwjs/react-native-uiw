@@ -37,7 +37,7 @@ const data = [
         title: 'Preview Icons'
       },
       {
-        href : 'https://github.com/uiwjs/react-native-uiw',
+        href : 'https://github.com/react-native-community/upgrade-helper',
         title: 'React Native Upgrade Helper'
       },
       {
