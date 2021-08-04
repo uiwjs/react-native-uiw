@@ -11,13 +11,13 @@ import {
 } from 'react-native';
 import MaskLayer from '../MaskLayer';
 import List from '../List'
-import { down } from './svg';
+import { close } from './svg';
 import Icon from '../Icon';
 
 interface SearchBarProps {
-  onChangeText?: (value: string) => void;
+  onChangeText?: (value: string | null) => void;
   options?: Array<OptionsState>;
-  onChange?: (value: string) => void;
+  onChange?: (value: string | null) => void;
   onFocus?: (e: any | string) => void;
   labelInValue?: Boolean;
   disabled?: Boolean;
@@ -25,6 +25,7 @@ interface SearchBarProps {
   loading?: Boolean;
   placeholder?: String;
   extra?: JSX.Element;
+  showClear?: Boolean;
 }
 
 interface OptionsState {
@@ -44,8 +45,9 @@ export default function SearchBar({
   loading,
   placeholder,
   extra,
+  showClear = false
 }: SearchBarProps) {
-  const onHandleChangeText = (val: string) => {
+  const onHandleChangeText = (val: string | null) => {
     onChangeText && onChangeText(val);
   }
   const [curValue, setCurValue] = useState<any>(value);
@@ -71,7 +73,17 @@ export default function SearchBar({
         <Text style={styles.contentTitle}>
           {textValue ? textValue : placeholder}
         </Text>
-        {React.isValidElement(extra) ? extra : <Icon xml={down} size={18} />}
+        {React.isValidElement(extra) ? (
+          extra
+        ) :
+          textValue && showClear ?
+            <Pressable onPress={() => {
+              onChange && onChange(null)
+              setCurValue(null)
+            }} style={{ paddingRight: 3 }}>
+              <Icon xml={close} size={18} />
+            </Pressable> : <Icon name="right" size={20} color="#A19EA0" />
+        }
       </View>
     </Pressable>
   ) : (
@@ -192,8 +204,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingRight: 5,
-    backgroundColor:"#fff",
-    paddingHorizontal:16
+    backgroundColor: "#fff",
+    paddingHorizontal: 16
   },
   disabled: {
     backgroundColor: '#f5f5f5',

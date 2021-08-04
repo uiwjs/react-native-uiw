@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import SearchBar from '../../../components/SearchBar'
 import Layout from '../../Layout';
-const SearchBarDemo = (props:any) => {
+const SearchBarDemo = (props: any) => {
 
   const { Header } = Layout;
-  const {route} = props;
+  const { route } = props;
   const description = route.params.description;
   const title = route.params.title;
 
@@ -15,8 +15,9 @@ const SearchBarDemo = (props:any) => {
   ])
   return (
     <SafeAreaView style={{ flex: 1 }}>
-       <Header title={title} description={description} />
+      <Header title={title} description={description} />
       <SearchBar
+        showClear={true}
         labelInValue
         options={data}
         onChange={val => console.log('val', val)}

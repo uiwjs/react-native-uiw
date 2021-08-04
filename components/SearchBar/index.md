@@ -23,4 +23,5 @@
 | `disabled` | 是否禁用   | boolean    | false       |
 | `placeholder` | 	搜索框默认文本   | string    | `输入搜索...`       |
 | `loading` | 加载中状态   | boolean    | false      |
-| `extra` | 图标   | dom    | extra : <Icon xml={down} size={18} /> |
+| `showClear` | 是否展示删除按钮   | boolean    | false      |
+| `extra` | 图标   | dom    | extra : <Icon name="right" size={20} color="#A19EA0" /> |
