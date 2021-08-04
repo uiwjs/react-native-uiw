@@ -1,0 +1,19 @@
+name: Pull Request Build
+on:
+  pull_request:
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - run: yarn install
+      - run: npm run build
+      - run: npm run doc
+      - run: rm -rf packages/docs/doc
+      - run: mkdir -p packages/docs/doc
+      - run: cp -r website/build/ packages/docs/doc
