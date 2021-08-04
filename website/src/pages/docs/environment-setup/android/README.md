@@ -46,7 +46,7 @@ brew install --cask adoptopenjdk/openjdk/adoptopenjdk8
 
 设置完成并显示欢迎屏幕后，继续下一步。
 
-#### 2.安装安卓SDK
+#### 2.安装Android SDK
 Android Studio 默认安装最新的 Android SDK。但是，使用本机代码构建 React Native 应用程序Android 10 (Q)特别需要SDK。可以通过 Android Studio 中的 SDK Manager 安装其他 Android SDK。
 
 为此，请打开 Android Studio，单击“Configure”按钮并选择“SDK Manager”。
@@ -74,7 +74,8 @@ Android Studio 默认安装最新的 Android SDK。但是，使用本机代码�
 React Native 工具需要设置一些环境变量才能使用本机代码构建应用程序。
 
 将以下行添加到您的```$HOME/.bash_profile```或```$HOME/.bashrc```（如果您使用```zsh```之后```~/.zprofile```或```~/.zshrc```）配置文件：
-#####我用的是zsh，一般是本地隐藏文件（请自行检查，系统默认应该是.bashrc）
+
+##### 我用的是zsh，一般是本地隐藏文件（请自行检查，系统默认应该是.bashrc）
 ![Android Studio](./007.png)
 
 ##### 如果你不是通过Android Studio安装的sdk，则其路径可能不同，请自行确定清楚。
