@@ -54,14 +54,14 @@ Android Studio 默认安装最新的 Android SDK。但是，使用本机代码�
 > SDK 管理器也可以在 Android Studio 的“首选项”对话框中找到，在Appearance & Behavior → System Settings → Android SDK 下。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-#####从 SDK 管理器中选择“SDK 平台”选项卡，然后选中右下角“Show Package Details”旁边的框。查找并展开Android 10 (Q)条目，然后确保选中以下项目：
+##### 从 SDK 管理器中选择“SDK 平台”选项卡，然后选中右下角“Show Package Details”旁边的框。查找并展开Android 10 (Q)条目，然后确保选中以下项目：
 
 - Android SDK Platform 29
 - Intel x86 Atom_64 System Image 要么 Google APIs Intel x86 Atom System Image
 
 ![Android Studio](./001.png)
 
-##### 接下来，选择“SDK Tools”选项卡并在此处选中“Show Package Details”旁边的框。查找并展开“Android SDK Build-Tools”条目，然后确保29.0.2选中并选中“Android SDK Command-line Tools (latest)”。
+##### 接下来，选择```“SDK Tools”```选项卡并在此处选中```“Show Package Details”```。查找并展开```“Android SDK Build-Tools”```条目，然后确保```29.0.2```选中并选中```“Android SDK Command-line Tools (latest)”```。
 
 ![Android Studio](./002.png)
 ![Android Studio](./003.png)
@@ -73,8 +73,7 @@ Android Studio 默认安装最新的 Android SDK。但是，使用本机代码�
 
 React Native 工具需要设置一些环境变量才能使用本机代码构建应用程序。
 
-将以下行添加到您的```$HOME/.bash_profile```或```$HOME/.bashrc```（如果您使用```zsh```之后```~/.zprofile```或```~/.zshrc```）配置文件：
-#####我用的是zsh，一般是本地隐藏文件（请自行检查，系统默认应该是.bashrc）
+将以下行添加到您的```$HOME/.bash_profile```或```$HOME/.bashrc```（如果您使用```zsh```之后```~/.zprofile``` 或```~/.zshrc```）配置文件, 我用的是zsh，一般是本地隐藏文件（请自行检查，系统默认应该是.bashrc）
 ![Android Studio](./007.png)
 
 ##### 如果你不是通过Android Studio安装的sdk，则其路径可能不同，请自行确定清楚。
@@ -156,7 +155,8 @@ npx react-native init AwesomeProject --template @uiw/react-native-template
 
 ## 运行你的 React Native 应用程序
 ### 第 1 步：启动 Metro
-首先，您需要启动 Metro，这是 React Native 附带的 JavaScript 打包器。Metro“接受一个入口文件和各种选项，并返回一个包含所有代码及其依赖项的单个 JavaScript 文件。”— [Metro Docs](https://facebook.github.io/metro/docs/concepts/)
+首先，您需要启动 [Metro](https://facebook.github.io/metro/docs/concepts) ，这是 React Native 附带的 JavaScript 打包器。Metro“接受一个入口文件和各种选项，并返回一个包含所有代码及其依赖项的单个 JavaScript 文件。
+
 
 要启动 Metro，请在 React Native 项目文件夹中运行 ```npx react-native start``` ：
 
@@ -188,7 +188,7 @@ npx react-native start
 
 如果一切设置正确，您应该很快就会看到您的新应用程序在您的 Android 模拟器中运行。
 
-[]![Android Studio](./006.png)
+![Android Studio](./006.png)
 
 ```npx react-native run-android ``` 是运行您的应用程序的一种方式 - 您也可以直接从 Android Studio 中运行它。
 
