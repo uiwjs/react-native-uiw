@@ -125,7 +125,7 @@ npx react-native run-ios
 
 ![Getting Started iOS Success](./GettingStartediOSSuccess.png)
 
-npx react-native run-ios 是运行应用程序的一种方式。 您也可以直接从 Xcode 中运行它。
+`npx react-native run-ios` 是运行应用程序的一种方式。 您也可以直接从 Xcode 中运行它。
 
 如果您无法使其正常工作，请参阅[故障排除页面](https://reactnative.dev/docs/troubleshooting#content)。
 
