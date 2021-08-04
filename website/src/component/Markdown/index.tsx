@@ -49,7 +49,7 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
     }
   }
   importAll() {
-    importAll((require as any).context('../..', true, /\.(png|gif|jpg)$/), this.imageFiles);
+    importAll((require as any).context('../..', true, /\.(png|gif|jpg|svg)$/), this.imageFiles);
   }
   transformImageUri(uri: string) {
     if (this.imageFiles[uri]) {
