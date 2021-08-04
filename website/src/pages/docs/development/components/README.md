@@ -182,3 +182,6 @@ module.exports = {
   // ....
 };
 ```
+
+> 注意：虽然配置模块依赖映射，可以隐射到具体的模块/包目录中，但是还是会报错，因为模块中的依赖路径导致错误。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
