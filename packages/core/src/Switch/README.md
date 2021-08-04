@@ -4,6 +4,7 @@ Switch 开关
 表示两种相互对立的状态间的切换，多用于触发「开/关」，这是 `React Naitve` 自带的组件重新封装，目的是为了保持 iOS/Android 一致的效果。
 
 > 自带组件 Switch 已过时，将很快删除。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ## 基础示例
 

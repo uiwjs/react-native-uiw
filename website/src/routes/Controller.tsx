@@ -1,4 +1,3 @@
-import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { getRouterData } from '../routes/router';
 import { DefaultProps } from '../';

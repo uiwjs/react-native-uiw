@@ -59,8 +59,11 @@ export const getRouterData = {
   '/docs/app-store/android': {
     component: dynamicWrapper([], () => import('../pages/docs/app-store/android')),
   },
-  '/docs/development': {
-    component: dynamicWrapper([], () => import('../pages/docs/development')),
+  '/docs/development/document': {
+    component: dynamicWrapper([], () => import('../pages/docs/development/document')),
+  },
+  '/docs/development/components': {
+    component: dynamicWrapper([], () => import('../pages/docs/development/components')),
   },
   // '/components': {
   //   component: dynamicWrapper([], () => import('../layouts/ComponentsLayout')),

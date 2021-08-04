@@ -137,14 +137,37 @@ function Demo() {
 
 组件继承 [`TouchableOpacity`](https://facebook.github.io/react-native/docs/touchableopacity#docsNav)
 
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|-----|------|
-| `color` | 设置按钮颜色 | String | - |
-| `textStyle` | 如果按钮内是文本，此样式可以设置文本样式 | `TextProps.Style` | - |
-| `disabled` | 设置禁用 | Boolean | - |
-| `loading` | 加载状态 | Boolean | - |
-| `rounded` | 设置圆角 | Boolean/Number | `5` |
-| `bordered` | 是否有边框 | Boolean | `true` |
-| `size` | 按钮尺寸 | `small`, `default`, `large` | `default` |
-| `type` | 按钮类型，可选值为 | `primary`, `success`, `warning`, `danger`, `light`, `dark` | - |
-
+```ts
+import { TextProps, TouchableOpacityProps } from 'react-native';
+export interface ButtonProps extends TouchableOpacityProps {
+  color?: string;
+  /**
+   * 如果子节点是文本，修改文本样式
+   */
+  textStyle?: TextProps['style'];
+  /**
+   * 设置禁用
+   */
+  disabled?: boolean;
+  /**
+   * 加载状态
+   */
+  loading?: boolean;
+  /**
+   * 按钮类型，可选值为
+   */
+  type?: 'primary' | 'success' | 'warning' | 'danger' | 'light' | 'dark';
+  /**
+   * 按钮尺寸
+   */
+  size?: 'small' | 'default' | 'large';
+  /**
+   * 设置按钮圆角
+   */
+  rounded?: boolean | number;
+  /**
+   * 设置是否显示边框
+   */
+  bordered?: boolean;
+}
+```

@@ -1,7 +1,10 @@
 Base Example
 
 ```bash
-cd ios
+# Root Directory
+npm run build
+
+cd example/base/ios
 
 pod install && cd ..
 
