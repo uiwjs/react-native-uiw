@@ -6,13 +6,13 @@ iOS 环境安装
 
 ## 安装依赖
 
-您将需要 Node、Watchman、React Native 命令行界面、Xcode 和 CocoaPods。
+您将需要 [Node](https://nodejs.org)、[Watchman](https://facebook.github.io/watchman)、[React Native](https://github.com/react-native-community/cli) 命令行界面、[Xcode](https://itunes.apple.com/cn/app/xcode/id497799835?mt=12) 和 [CocoaPods](https://cocoapods.org/)。
 
 虽然您可以使用您选择的任何编辑器来开发您的应用程序，但您需要安装 Xcode 以设置必要的工具来构建适用于 iOS 的 React Native 应用程序。
 
-### Node & Watchman
+### `Node & Watchman`
 
-我们建议使用 [Homebrew](http://brew.sh/) 安装 Node 和 Watchman。 安装 [Homebrew](http://brew.sh/) 后，在终端中运行以下命令：
+我们建议使用 [Homebrew](http://brew.sh/) 安装 [Node](https://nodejs.org) 和 [Watchman](https://facebook.github.io/watchman)。 安装 [Homebrew](http://brew.sh/) 后，在终端中运行以下命令：
 
 ```shell
 brew install node
@@ -23,7 +23,7 @@ brew install watchman
 
 [Watchman](https://facebook.github.io/watchman) 是 Facebook 的一个工具，用于观察文件系统中的变化。 强烈建议您安装它以获得更好的性能。
 
-### Xcode
+### `Xcode`
 
 安装 Xcode 的最简单方法是通过 [Mac App Store](https://itunes.apple.com/cn/app/xcode/id497799835?mt=12)。 安装 Xcode 也将安装 iOS 模拟器和所有必要的工具来构建你的 iOS 应用程序。
 
@@ -32,13 +32,13 @@ brew install watchman
 ![Xcode](./001.png)
 
 
-### 在 Xcode 中安装 iOS 模拟器
+### `在 Xcode 中安装 iOS 模拟器`
 
 要安装模拟器，请打开 `Xcode` > `Preferences...` 并选择 `Components` 选项卡。 选择您要使用的 iOS 相应版本的模拟器。
 
 ![Xcode Preferences Components](./002.png)
 
-### CocoaPods
+### `CocoaPods`
 
 [CocoaPods](https://cocoapods.org/) 是用 Ruby 构建的，并且可以使用 macOS 上可用的默认 Ruby 进行安装。 您可以使用 Ruby 版本管理器，但我们建议您使用 macOS 上可用的标准 Ruby，除非您知道自己在做什么。
 
@@ -49,7 +49,10 @@ brew install watchman
 
 ```shell
 sudo gem install cocoapods
-# 更新 cocoapods 到最新版本
+# 要更新 CocoaPods，您只需再次安装 gem
+sudo gem install cocoapods
+# 更新 CocoaPods 到最新版本
+sudo gem install cocoapods --pre
 sudo gem install -n /usr/local/bin cocoapods --pre
 # 安装指定 cocoapods 版本
 sudo gem install cocoapods -v 1.4.0

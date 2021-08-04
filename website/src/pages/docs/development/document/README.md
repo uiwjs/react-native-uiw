@@ -67,12 +67,12 @@ yarn run build   # 编译包
 实时监听包和文档网站本地预览
 
 ```bash
-# Step 1
-yarn run lib:watch      # 编译输出 JS 文件
-# Step 2
-yarn run lib:watch:type # 输出类型文件 d.ts
-# Step 3
-yarn run start          # 本地运行预览文档网站
+# Step 1️⃣  编译输出 JS 文件
+yarn run lib:watch
+# Step 2️⃣  输出类型文件 d.ts
+yarn run lib:watch:type
+# Step 3️⃣  本地运行预览文档网站
+yarn run start
 ```
 
 ### `添加一个文档页面`
@@ -85,11 +85,11 @@ website
  │   ├── pages # 文档示例编写在这里
  │   │   ├── components
  │   │   ├── getting-started
- │   │   │   ├── README.md   # 添加 README.md 文档
- │   │   │   └── index.tsx   # 添加加载 README.md JS 文件
+ │   │   │   ├── README.md   # ✅ 添加 README.md 文档
+ │   │   │   └── index.tsx   # ✅ 添加加载 README.md JS 文件
  │   └── routes
- │       ├── menus.ts   # 配置菜单
- │       └── router.tsx # 配置菜单对应的页面
+ │       ├── menus.ts   # ✅ 配置菜单
+ │       └── router.tsx # ✅ 配置菜单对应的页面
 ```
 
 #### `第 1 步：菜单配置`
