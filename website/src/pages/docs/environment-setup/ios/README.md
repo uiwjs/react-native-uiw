@@ -40,10 +40,17 @@ brew install watchman
 
 [CocoaPods](https://cocoapods.org/) 是用 Ruby 构建的，并且可以使用 macOS 上可用的默认 Ruby 进行安装。 您可以使用 Ruby 版本管理器，但我们建议您使用 macOS 上可用的标准 Ruby，除非您知道自己在做什么。
 
+> 目前 react-native@0.64 需要 `pod v1.10.0+`<!--rehype:style=color: #0ab100;--> 以上的版本，可以在 `ios/Podfile`<!--rehype:style=color: #e00000;--> 中确定使用那个版本的 `pod`。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
 使用默认的 Ruby 安装将要求您在安装 gems 时使用 `sudo`。（不过，这只是 gem 安装期间的问题。）
 
 ```shell
 sudo gem install cocoapods
+# 更新 cocoapods 到最新版本
+sudo gem install -n /usr/local/bin cocoapods --pre
+# 安装指定 cocoapods 版本
+sudo gem install cocoapods -v 1.4.0
 ```
 
 有关更多信息，请访问 [CocoaPods 入门指南](https://guides.cocoapods.org/using/getting-started.html)。
