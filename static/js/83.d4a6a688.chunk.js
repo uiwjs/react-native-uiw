@@ -1,2 +1,0 @@
-(this.webpackJsonpwebsite=this.webpackJsonpwebsite||[]).push([[83],{788:function(e,n,s){"use strict";s.r(n),n.default="\u53c2\u4e0e\u7ec4\u4ef6\u5f00\u53d1\n---\n\n\u5f53\u524d\u9879\u76ee\u5de5\u7a0b\uff0c\u4f7f\u7528 Yarn & lerna  \u6784\u5efa Monorepo\uff0c\u91cc\u9762\u5305\u542b `example`\u3001packages\u3001website\u3002\n\n\u6b63\u5728\u7f16\u8f91\u4e2d...."}}]);
-//# sourceMappingURL=83.d4a6a688.chunk.js.map
