@@ -265,4 +265,12 @@ export const stackPageData: Routes[] = [
       description: '折叠展开ExpandableSection',
     },
   },
+  {
+    name: 'Steps',
+    component: require('./routes/Steps').default,
+    params: {
+      title: 'Steps 步骤条',
+      description: '步骤条',
+    },
+  },
 ];
