@@ -153,6 +153,10 @@ npx react-native run-ios
 
 在您的 `iOS` 模拟器中点击 `⌘R`<!--rehype:style=color: red;background: #ffd2d2;--> 以重新加载应用程序并查看您的更改！
 
+<img src="./003.png" alt="⌘D" width="220" />
+
+您还可以在 `iOS` 模拟器中使用 `⌘D`<!--rehype:style=color: red;background: #ffd2d2;--> 或者 `DD`<!--rehype:style=color: red;background: #ffd2d2;--> 调出 `Debug` 菜单。如果在真机调试请 `摇一摇`<!--rehype:style=color: red;background: #ffd2d2;--> 手机调出菜单。
+
 ## 恭喜！
 
 恭喜！ 您已经成功运行并修改了您的第一个 React Native 应用程序。
