@@ -1,1 +1,0 @@
-{"version":3,"sources":["pages/docs/development/components/README.md"],"names":[],"mappings":"qGAAA,OAAe","file":"static/js/83.137f6dbb.chunk.js","sourcesContent":["export default \"参与组件开发\\n---\\n\\n当前项目工程，使用 Yarn & lerna  构建 Monorepo，里面包含 `example`、packages、website。\\n\\n正在编辑中....\";"],"sourceRoot":""}
