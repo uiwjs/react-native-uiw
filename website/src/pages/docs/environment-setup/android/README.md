@@ -174,7 +174,7 @@ npx react-native start
 ##### 如果使用 ```@uiw/react-native-template``` 模版，只需<!--rehype:style=color: #0ab100;--> 
 <!--rehype:style=background-color: rgb(118 247 149);-->
  ```shell
- yarn run android
+ yarn start
  ```
 
 >如果您使用 Yarn 包管理器，则可以在现有项目中运行 React Native 命令时使用yarn代替npx。
