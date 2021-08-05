@@ -3,17 +3,11 @@ import dynamic from 'react-dynamic-loadable';
 import { store } from '../models';
 
 function Loading() {
-<<<<<<< HEAD
-  return <div style={{ textAlign: 'center', padding: '50px 0 50px 0'}}>
-    <Loader color="#333" tip="页面加载中..." />
-  </div>
-=======
   return (
     <div style={{ textAlign: 'center', padding: '50px 0 50px 0'}}>
       <Loader color="#333" tip="页面加载中..." />
     </div>
   )
->>>>>>> aac92eb4cada7f62453b71a152ab37e4dd812a19
 }
 
 // wrapper of dynamic
