@@ -46,7 +46,7 @@ brew install --cask adoptopenjdk/openjdk/adoptopenjdk8
 
 设置完成并显示欢迎屏幕后，继续下一步。
 
-#### 2.安装安卓SDK
+#### 2.安装Android SDK
 Android Studio 默认安装最新的 Android SDK。但是，使用本机代码构建 React Native 应用程序Android 10 (Q)特别需要SDK。可以通过 Android Studio 中的 SDK Manager 安装其他 Android SDK。
 
 为此，请打开 Android Studio，单击“Configure”按钮并选择“SDK Manager”。
@@ -59,12 +59,12 @@ Android Studio 默认安装最新的 Android SDK。但是，使用本机代码�
 - Android SDK Platform 29
 - Intel x86 Atom_64 System Image 要么 Google APIs Intel x86 Atom System Image
 
-![Android Studio](./001.png)
+![Android Studio](./001.jpg)
 
 ##### 接下来，选择```“SDK Tools”```选项卡并在此处选中```“Show Package Details”```。查找并展开```“Android SDK Build-Tools”```条目，然后确保```29.0.2```选中并选中```“Android SDK Command-line Tools (latest)”```。
 
-![Android Studio](./002.png)
-![Android Studio](./003.png)
+![Android Studio](./002.jpg)
+![Android Studio](./003.jpg)
 
 最后，点击“Apply”下载并安装Android SDK和相关的构建工具。
 
@@ -73,8 +73,10 @@ Android Studio 默认安装最新的 Android SDK。但是，使用本机代码�
 
 React Native 工具需要设置一些环境变量才能使用本机代码构建应用程序。
 
-将以下行添加到您的```$HOME/.bash_profile```或```$HOME/.bashrc```（如果您使用```zsh```之后```~/.zprofile``` 或```~/.zshrc```）配置文件, 我用的是zsh，一般是本地隐藏文件（请自行检查，系统默认应该是.bashrc）
-![Android Studio](./007.png)
+将以下行添加到您的```$HOME/.bash_profile```或```$HOME/.bashrc```（如果您使用```zsh```之后```~/.zprofile```或```~/.zshrc```）配置文件：
+
+##### 我用的是zsh，一般是本地隐藏文件（请自行检查，系统默认应该是.bashrc）
+![Android Studio](./007.jpg)
 
 ##### 如果你不是通过Android Studio安装的sdk，则其路径可能不同，请自行确定清楚。
 ```shell
@@ -95,7 +97,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ##### 这是你Android SDK安装的位置
-![Android Studio](./004.png)
+![Android Studio](./004.jpg)
 
 ### React Native命令行界面
 React Native 有一个内置的命令行界面。我们建议您在运行时使用```npx```Node.js 附带的访问当前版本，而不是全局安装和管理特定版本的 CLI 。使用```npx react-native <command>```，将在运行命令时下载并执行当前稳定版本的 CLI。
@@ -128,6 +130,7 @@ npx react-native init AwesomeTSProject --template react-native-template-typescri
 
 您还可以使用我们制定的模版([@uiw/react-native-template](https://github.com/uiwjs/react-native-template))创建一个新项目：
 
+<!--rehype:style=background-color: rgb(118 247 149);-->
 ```shell
 npx react-native init AwesomeProject --template @uiw/react-native-template
 ```
@@ -144,10 +147,10 @@ npx react-native init AwesomeProject --template @uiw/react-native-template
 如果您有一个物理 Android 设备，您可以使用它来代替 AVD 进行开发，方法是使用 USB 电缆将其插入您的计算机并按照此处的说明进行操作。
 
 ### 使用虚拟设备
-如果您使用 Android Studio 打开./AwesomeProject/android，则可以通过从 Android Studio 中打开“AVD 管理器”来查看可用的 Android 虚拟设备 (AVD) 列表。寻找如下所示的图标：
+如果您使用 Android Studio 打开`./AwesomeProject/android`，则可以通过从 Android Studio 中打开“AVD 管理器”来查看可用的 Android 虚拟设备 (AVD) 列表。寻找如下所示的图标：
 
 
-![Android Studio](./005.png)
+![Android Studio](./005.jpg)
 
 如果您最近安装了 Android Studio，您可能需要[创建一个新的 AVD](https://developer.android.com/studio/run/managing-avds.html)。选择“创建虚拟设备...”，然后从列表中选择任何电话并单击“下一步”，然后选择Q API 级别 29 图像。
 
@@ -168,8 +171,11 @@ npx react-native start
 
 ```react-native start``` 启动 Metro Bundler。
 
-##### 如果使用 ``` @uiw/react-native-template ``` 模版
-只需 ```yarn start``` 就可以启动
+##### 如果使用 ```@uiw/react-native-template``` 模版，只需<!--rehype:style=color: #0ab100;--> 
+<!--rehype:style=background-color: rgb(118 247 149);-->
+ ```shell
+ yarn run android
+ ```
 
 >如果您使用 Yarn 包管理器，则可以在现有项目中运行 React Native 命令时使用yarn代替npx。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
@@ -183,9 +189,11 @@ npx react-native start
 
 ``` npx react-native run-android```
 
-##### 如果使用 ``` @uiw/react-native-template ``` 模版
-只需 ```yarn run android``` 就可以启动
-
+##### 如果使用 ``` @uiw/react-native-template ``` 模版，只需<!--rehype:style=color: #0ab100;--> 
+<!--rehype:style=background-color: rgb(118 247 149);-->
+```shell
+yarn run android
+```
 如果一切设置正确，您应该很快就会看到您的新应用程序在您的 Android 模拟器中运行。
 
 ![Android Studio](./006.png)
@@ -195,10 +203,6 @@ npx react-native start
 
 
 如果您无法使其正常工作，请参阅[故障排除页面](https://reactnative.dev/docs/troubleshooting#content)。
-
-## 在设备上运行
-
-默认情况下，上述命令将自动在 `iOS` 模拟器上运行您的应用程序。 如果您想在实际的物理 `iOS` 设备上运行该应用程序，请按照此处的说明进行操作。
 
 ## 修改你的应用
 
