@@ -5,27 +5,27 @@ import arrayTreeFilter from '../utils/arrayTreeFilter';
 import Modal from '../Modal';
 import { colors } from '../utils';
 
-export declare type CascaderOneValue = string | number | undefined;
-export declare type CascaderValue = CascaderOneValue[];
+export type SelectCascaderOneValue = string | number | undefined;
+export type SelectCascaderValue = SelectCascaderOneValue[];
 
 export interface ICascaderDataItem {
   label: React.ReactNode;
-  value: CascaderOneValue;
+  value: SelectCascaderOneValue;
   children?: ICascaderDataItem[];
 }
 
-export interface ISelectCascaderProps {
+export interface SelectCascaderProps {
   onDismiss?: () => void;
   title?: string;
   dismissText?: string;
   okText?: string;
-  value?: CascaderValue;
-  onChange?: (value: CascaderValue, label: string) => void;
+  value?: SelectCascaderValue;
+  onChange?: (value: SelectCascaderValue, label: string) => void;
   visible: boolean;
   onVisibleChange?: () => {};
   data: ICascaderDataItem[];
-  defaultValue?: CascaderValue | undefined;
-  onOk?: (value: CascaderValue, label: string) => void;
+  defaultValue?: SelectCascaderValue | undefined;
+  onOk?: (value: SelectCascaderValue, label: string) => void;
   disabled?: boolean;
   cols?: number;
   pickerItemStyle?: StyleProp<TextStyle>;
@@ -34,10 +34,10 @@ export interface ISelectCascaderProps {
 
 export interface Istate {
   modalVisible: boolean;
-  value: CascaderValue;
+  value: SelectCascaderValue;
 }
 
-export default class SelectCascader extends Component<ISelectCascaderProps, Istate> {
+export default class SelectCascader extends Component<SelectCascaderProps, Istate> {
   static defaultProps = {
     dismissText: '取消',
     okText: '确定',
@@ -56,7 +56,7 @@ export default class SelectCascader extends Component<ISelectCascaderProps, Ista
     });
   };
 
-  componentWillReceiveProps(nextProps: ISelectCascaderProps) {
+  componentWillReceiveProps(nextProps: SelectCascaderProps) {
     if ('value' in nextProps) {
       this.setState({
         value: this.getValue(nextProps.data, nextProps.value),
@@ -69,7 +69,7 @@ export default class SelectCascader extends Component<ISelectCascaderProps, Ista
     }
   }
 
-  getSel(value: CascaderValue) {
+  getSel(value: SelectCascaderValue) {
     if (!value) {
       return '';
     }
@@ -83,7 +83,7 @@ export default class SelectCascader extends Component<ISelectCascaderProps, Ista
       .join(',');
   }
 
-  onValueChange = (itemValue: CascaderOneValue, index: number) => {
+  onValueChange = (itemValue: SelectCascaderOneValue, index: number) => {
     const value = this.state.value.concat();
     value[index] = itemValue;
     const children = arrayTreeFilter(this.props.data, (c, level) => {
@@ -104,7 +104,7 @@ export default class SelectCascader extends Component<ISelectCascaderProps, Ista
     }
   };
 
-  getValue(d: ICascaderDataItem[], val: CascaderValue | undefined) {
+  getValue(d: ICascaderDataItem[], val: SelectCascaderValue | undefined) {
     let data = d || this.props.data;
     let value = val || this.props.value || this.props.defaultValue;
     if (!value || !value.length || value.indexOf(undefined) > -1) {

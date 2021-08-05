@@ -60,7 +60,6 @@ sudo gem install cocoapods -v 1.4.0
 
 有关更多信息，请访问 [CocoaPods 入门指南](https://guides.cocoapods.org/using/getting-started.html)。
 
-
 ### React Native 命令行界面
 
 React Native 有一个内置的命令行界面。 我们建议您在运行时使用 Node.js 附带的 `npx` 访问当前版本，而不是全局安装和管理特定版本的 CLI。 使用 `npx react-native <command>`，当前稳定版本的 CLI 将在命令运行时下载并执行。
@@ -152,6 +151,10 @@ npx react-native run-ios
 在您选择的文本编辑器中打开 `App.js` 并编辑一些行。
 
 在您的 `iOS` 模拟器中点击 `⌘R`<!--rehype:style=color: red;background: #ffd2d2;--> 以重新加载应用程序并查看您的更改！
+
+<img src="./003.png" alt="⌘D" width="220" />
+
+您还可以在 `iOS` 模拟器中使用 `⌘D`<!--rehype:style=color: red;background: #ffd2d2;--> 或者 `DD`<!--rehype:style=color: red;background: #ffd2d2;--> 调出 `Debug` 菜单。如果在真机调试请 `摇一摇`<!--rehype:style=color: red;background: #ffd2d2;--> 手机调出菜单。
 
 ## 恭喜！
 
