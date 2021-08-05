@@ -9,10 +9,11 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export default function Container(props: ContainerProps) {
-  const { data, children, path } = props;
+  const { data, children, path = '' } = props;
+  console.log(path)
   return (
     <Fragment>
-      <Header showBorder={path !== '/home'} path={path} />
+      <Header enableStyle={/\/(team)/.test(path)} showBorder={/\/(home)/.test(path)} path={path} />
       <div className={styles.warpper}>
         {data && data.length > 0 && (
           <SubMenus data={data} />

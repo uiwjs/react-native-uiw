@@ -3,7 +3,8 @@ SegmentedControl 分段器
 
 由至少 2 个分段控件组成，用作不同视图的显示；是 iOS 的推荐组件。
 
-> 即将启用，交于社区维护 [@react-native-community/react-native-segmented-control](https://github.com/react-native-community/react-native-segmented-control)。
+> 即将启用，交于社区维护 [@react-native-community/react-native-segmented-control](https://github.com/react-native-segmented-control/segmented-control)。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ## 基础示例
 

@@ -109,46 +109,23 @@ export default class Demo extends React.Component {
 
 ## Development
 
-```
+```bash
+# Install current dependencies, and dependencies in sub-packages
 yarn install
+yarn run build # Compile package
 ```
+
+Real-time monitoring of package and document website local preview
 
 ```bash
-Run instructions for iOS:
-  • cd react-native-uiw && react-native run-ios
-  - or -
-  • Open ReactNativeUIW/ios/ReactNativeUIW.xcworkspace in Xcode or run "xed -b ios"
-  • Hit the Run button
-Run instructions for Android:
-  • Have an Android emulator running (quickest way to get started), or a device connected.
-  • cd react-native-uiw && react-native run-android
+# Step 1
+yarn run lib:watch      # Compile and output JS file
+# Step 2
+yarn run lib:watch:type # Output type file d.ts
+# Step 3
+yarn run start          # Run the preview document website locally
 ```
 
-⚠️ MacBook Pro with a M1
+### License
 
-```bash
-# Install ffi
-sudo arch -x86_64 gem install ffi
-# Re-install dependency
-arch -x86_64 pod install
-```
-
-```bash
-rm -rf ios/build
-# https://github.com/react-navigation/react-navigation/issues/6071
-cd ios/
-pod install
-
-# Clear pods.
-pod deintegrate
-# pod rm Podfile.lock
-pod install
-# Reinstall pods
-pod install --repo-update --verbose
-
-# Run Project
-yarn run ios
-```
-
-- [React Native upgrade helper](https://react-native-community.github.io/upgrade-helper/)
-
+Licensed under the MIT License.

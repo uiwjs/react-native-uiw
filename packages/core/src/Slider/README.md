@@ -1,7 +1,10 @@
 Slider 滑块输入条
 ---
 
-允许用户在一个区间中选择特定值。自带 Slider 已经过时，交于社区维护 [`react-native-slider`](https://github.com/react-native-community/react-native-slider)，当前组件是重新封装保持 iOS/android 效果一致。
+允许用户在一个区间中选择特定值。
+
+> 自带 Slider 已经过时，交于社区维护 [`react-native-slider`](https://github.com/react-native-community/react-native-slider)，当前组件是重新封装保持 iOS/android 效果一致。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ## 基础示例
 
