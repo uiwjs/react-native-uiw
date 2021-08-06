@@ -38,7 +38,7 @@ function Demo() {
 }
 ```
 
-### props
+### Props
 
 ```ts
 export interface TimelineItemsProps {
