@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {Icon} from '@uiw/react-native';
+import Icon from '../Icon';
 
 type statusType = 'success' | 'error' | string;
 

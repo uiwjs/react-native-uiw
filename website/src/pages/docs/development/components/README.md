@@ -3,6 +3,14 @@
 
 当前 [`react-native-uiw`](https://github.com/uiwjs/react-native-uiw) 项目工程，使用 [Yarn](https://classic.yarnpkg.com/lang/en/) & [lerna](https://github.com/lerna/lerna)  构建 `monorepo`，整个里面包含 `example` 示例、`packages` 组件包、`website` 文档网站。
 
+> `⚠️注意事项:示例依赖不可随意更新`<!--rehype:style=background: #da0000; color: #fff;-->
+> 1. 🪲 添加新依赖包，需要配置 [nohoist](https://github.com/uiwjs/react-native-uiw/blob/46f73cf7ca5404184df7fa996a33f821d45cf0e7/package.json#L62-L80)，以解决子包依赖不存在的问题。
+> 2. 📦 如果依赖本地包，React Native 示例需要更改 [metro](https://github.com/facebook/metro) 配置 [metro.config.js](https://github.com/uiwjs/react-native-uiw/blob/9a300184608c71615167c517433bb9aed606f0ec/example/examples/metro.config.js#L12)
+> 3. 🐛Pod 版本请根据项目安装，可以在 `ios/Podfile`<!--rehype:style=color: #e00000;--> 中确定使用那个版本的 `pod`
+> 4. ✅ 组件仅支持 `react-native@0.60+`<!--rehype:style=color: #e00000;--> 以上的版本。
+> 5. ⛳️ [React Navigation 6](https://github.com/react-navigation/react-navigation) 至少需要 [react-native@0.63.0](https://github.com/facebook/react-native)。 如果您使用的是 Expo，则您的 SDK 版本需要至少为 41。 
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
 ## 目录结构
 
 ```bash
@@ -75,14 +83,14 @@ npm run watch
 
 ```bash
 ├── example
-│   ├── base ⚛️
-│   │   └── lib  #  ◀┈┈┤  🔄  生成组件源码
-│   └── examples #     ┆
-│       └── lib  #  ◀┈┈┤  🔄  生成组件源码
-└── packages     #     ┆
-    └── core     #     ┆  📦  
-        ├── lib  #  ◀┈┈┤  🔄  剔除 TS 类型的源码输出目录 
-        └── src  #┈┈┈┈┈╯  ✅  组件源码
+│   ├── base
+│   │   └── lib  #   ◀┈┈┤  🔄  生成组件源码
+│   └── examples #      ┆
+│       └── lib  #   ◀┈┈┤  🔄  生成组件源码
+└── packages     #      ┆
+    └── core     #      ┆  📦  
+        ├── lib  #   ◀┈┈┤  🔄  剔除 TS 类型的源码输出目录 
+        └── src  #→▶┈▶▷┈╯  ✅  组件源码
 ```
 
 ### `第 3 步：启动 APP 应用`
@@ -132,7 +140,7 @@ yarn run ios
 
 我们有很多方法修正这种问题，例如多个根目录，自定义模块映射方案等等。
 
-通过配置 `nohoist` 使 `workspaces` 能够使用与其提升方案不兼容的第 3 方库。 这个想法是禁用选定的模块被提升到项目根目录。 它们被放置在实际的（子）项目中，就像在一个独立的、非工作区的项目中一样。
+通过配置 [`nohoist`](https://github.com/uiwjs/react-native-uiw/blob/46f73cf7ca5404184df7fa996a33f821d45cf0e7/package.json#L62-L80) 使 `workspaces` 能够使用与其提升方案不兼容的第 3 方库。 这个想法是禁用选定的模块被提升到项目根目录。 它们被放置在实际的（子）项目中，就像在一个独立的、非工作区的项目中一样。
 
 在私有项目根目录下，使用 nohoist：
 
@@ -164,7 +172,7 @@ yarn run ios
 
 #### `自定义模块映射方案`
 
-[`react-native-uiw`](https://github.com/uiwjs/react-native-uiw) 提供了一种通过 [`metro.config.js`](https://facebook.github.io/metro) 配置多根的方法。 通过 `metro.config.js` 中配置 [`extraNodeModules`](https://facebook.github.io/metro/docs/configuration#extranodemodules) 需要映射的模块
+[`react-native-uiw`](https://github.com/uiwjs/react-native-uiw) 提供了一种通过 [metro.config.js](https://github.com/uiwjs/react-native-uiw/blob/9a300184608c71615167c517433bb9aed606f0ec/example/examples/metro.config.js#L12) 配置多根的方法。 通过 `metro.config.js` 中配置 [`extraNodeModules`](https://facebook.github.io/metro/docs/configuration#extranodemodules) 需要映射的模块
 
 ```js
 const path = require('path');

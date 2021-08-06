@@ -1,0 +1,36 @@
+.btn {
+  line-height: 1;
+  height: 40px;
+  border-radius: 4px;
+  border: 0;
+  outline: none;
+  padding: 0 16px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: #1b1f23;
+  color: #fff;
+  cursor: pointer;
+  transition: 150ms;
+  transform: translate3d(0, 0, 0);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 32px;
+  height: 52px;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(#464d55, #25292e);
+  border-radius: 8px;
+  margin-top: 20px;
+  & + a {
+    margin-left: 20px;
+  }
+  &:hover {
+    box-shadow: 0 2px 8px rgb(0 1 0 / 20%);
+    opacity: 0.85;
+  }
+}
