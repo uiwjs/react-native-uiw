@@ -1,4 +1,4 @@
-import {StackNavigationProp} from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -281,6 +281,14 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'Steps 步骤条',
       description: '步骤条',
+    }
+  },
+  {
+    name: 'Rating',
+    component: require('./routes/Rating').default,
+    params: {
+      title: 'Rating 评分',
+      description: '评分 Rating',
     },
   },
   {
