@@ -21,6 +21,7 @@ export const componentMenus: MenuData[] = [
   { path: "/components/checkbox", name: "CheckBox 复选框" },
   { path: "/components/input", name: "Input 文本输入" },
   { path: "/components/radio", name: "Radio 单选框" },
+  { path: "/components/rating", name: "Rating 评分" },
   { path: "/components/segmentedcontrol", name: "SegmentedControl 分段器" },
   { path: "/components/slider", name: "Slider 滑块输入条" },
   { path: "/components/switch", name: "Switch 开关" },

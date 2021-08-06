@@ -111,6 +111,9 @@ export const getRouterData = {
   '/components/radio': {
     component: dynamicWrapper([], () => import('../pages/components/radio')),
   },
+  '/components/rating': {
+    component: dynamicWrapper([], () => import('../pages/components/rating')),
+  },
   '/components/segmentedcontrol': {
     component: dynamicWrapper([], () => import('../pages/components/segmentedcontrol')),
   },
