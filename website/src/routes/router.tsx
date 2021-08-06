@@ -66,9 +66,6 @@ export const getRouterData = {
   '/docs/development/components': {
     component: dynamicWrapper([], () => import('../pages/docs/development/components')),
   },
-  // '/components': {
-  //   component: dynamicWrapper([], () => import('../layouts/ComponentsLayout')),
-  // },
   '/components/about': {
     component: dynamicWrapper([], () => import('../pages/components/about')),
   },
