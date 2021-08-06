@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { DefaultProps } from '../../';
+import ButtonStyle from '../../component/ButtonStyle';
 import styles from './index.module.less';
 import FooterTitle from '../../component/Footer';
 
@@ -34,6 +36,17 @@ export default function Team(props: DefaultProps) {
           ))}
         </ul>
       </section>
+      <article className={styles.article}>
+        <h3>欢迎参与文档编辑 & 组件开发</h3>
+        <div>
+          <ButtonStyle>
+            <Link to="/docs/development/components">参与组件开发</Link>
+          </ButtonStyle>
+          <ButtonStyle>
+            <Link to="/docs/development/document">参与文档编辑</Link>
+          </ButtonStyle>
+        </div>
+      </article>
       < FooterTitle />
     </Fragment>
   );
