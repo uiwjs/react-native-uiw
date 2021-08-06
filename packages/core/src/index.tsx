@@ -65,6 +65,13 @@ export * from './Steps';
 export { default as Timeline } from './Timeline';
 export * from './Timeline';
 
+export { default as Rating } from './Rating'
+export * from './Rating'
+
+export { default as Timeline } from './Timeline';
+export * from './Timeline';
+
+
 /**
  * Typography
  */
