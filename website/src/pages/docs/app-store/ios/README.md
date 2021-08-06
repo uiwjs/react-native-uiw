@@ -107,9 +107,27 @@ APP上架前需注册开发者账号，创建 `证书请求文件（CSR文件）
 
 <img src="./img/21.png" width="65%" height="65%" />
 
-### `App 审核信息`<!--rehype:style=color: white; background: #1c7bd0;-->
+### `App 审核登录信息`<!--rehype:style=color: white; background: #1c7bd0;-->
 
 <img src="./img/22.png" width="65%" height="65%" />
 
 > ⚠️ 注意：如APP需要登录，必须填写测试账号，否则审核无法通过，
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+### `App 可本地化的信息`<!--rehype:style=color: white; background: #1c7bd0;-->
+
+找到 `App信息` 根据提示填写APP名称及设置年龄分级等。 
+
+<img src="./img/23.png" width="65%" height="65%" />
+
+### `价格与销售范围`<!--rehype:style=color: white; background: #1c7bd0;-->
+
+找到 `价格与销售范围` 根据提示填写 `价格` 、 `销售范围`等信息。 
+
+<img src="./img/24.png" width="65%" height="65%" />
+
+### `隐私政策`<!--rehype:style=color: white; background: #1c7bd0;-->
+
+找到 `App 隐私` 填写 `隐私政策网址 (URL)`。 
+
+<img src="./img/25.png" width="65%" height="65%" />
