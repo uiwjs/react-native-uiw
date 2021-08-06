@@ -265,4 +265,12 @@ export const stackPageData: Routes[] = [
       description: '折叠展开ExpandableSection',
     },
   },
+  {
+    name: 'QuickList',
+    component: require('./routes/QuickList').default,
+    params: {
+      title: 'QuickList 快速列表',
+      description: '自动化请求列表',
+    },
+  },
 ];
