@@ -299,12 +299,4 @@ export const stackPageData: Routes[] = [
       description: '时间轴',
     },
   },
-  {
-    name: 'Timeline',
-    component: require('./routes/Timeline').default,
-    params: {
-      title: 'Timeline 时间轴',
-      description: '时间轴',
-    },
-  },
 ];
