@@ -56,6 +56,7 @@ export const docsMenus: MenuData[] = [
   { path: '/docs/app-store/ios', name: '发布 iOS 应用商店' },
   { path: '/docs/app-store/android', name: '发布 Android 应用商店' },
   { divider: true, name: "其它" },
+  { path: '/docs/awesome-react-native', name: 'Awesome React Native' },
   { href: 'https://github.com/uiwjs/react-native-uiw/releases', target: '_blank', name: '更新日志' },
   { href: 'https://github.com/facebook/react', target: '_blank', name: 'React 官方文档' },
   { href: 'https://github.com/facebook/react-native', target: '_blank', name: 'React Native 官方文档' },
