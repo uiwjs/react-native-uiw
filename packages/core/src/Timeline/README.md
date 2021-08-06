@@ -6,7 +6,7 @@ Timeline 时间轴
 ### 基础示例
 
 ```jsx
-import { Steps } from '@uiw/react-native';
+import { Timeline } from '@uiw/react-native';
 
 function Demo() {
   return (

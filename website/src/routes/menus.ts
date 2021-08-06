@@ -34,6 +34,7 @@ export const componentMenus: MenuData[] = [
   { path: "/components/grid", name: "Grid 宫格" },
   { path: "/components/list", name: "List 列表" },
   { path: "/components/steps", name: "Steps 步骤条" },
+  { path: "/components/timeLine", name: "Timeline 时间轴" },
   { divider: true, name: "Feedback" },
   { path: "/components/loader", name: "Loader 加载" },
   { path: "/components/modal", name: "Modal 模态框" },
