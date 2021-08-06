@@ -66,9 +66,6 @@ export const getRouterData = {
   '/docs/development/components': {
     component: dynamicWrapper([], () => import('../pages/docs/development/components')),
   },
-  // '/components': {
-  //   component: dynamicWrapper([], () => import('../layouts/ComponentsLayout')),
-  // },
   '/components/about': {
     component: dynamicWrapper([], () => import('../pages/components/about')),
   },
@@ -110,6 +107,9 @@ export const getRouterData = {
   },
   '/components/radio': {
     component: dynamicWrapper([], () => import('../pages/components/radio')),
+  },
+  '/components/rating': {
+    component: dynamicWrapper([], () => import('../pages/components/rating')),
   },
   '/components/segmentedcontrol': {
     component: dynamicWrapper([], () => import('../pages/components/segmentedcontrol')),
@@ -167,5 +167,8 @@ export const getRouterData = {
   },
   '/components/steps': {
     component: dynamicWrapper([], () => import('../pages/components/steps')),
+  },
+  '/components/timeLine': {
+    component: dynamicWrapper([], () => import('../pages/components/timeLine')),
   },
 };
