@@ -1,5 +1,5 @@
 参与组件开发
----
+===
 
 当前 [`react-native-uiw`](https://github.com/uiwjs/react-native-uiw) 项目工程，使用 [Yarn](https://classic.yarnpkg.com/lang/en/) & [lerna](https://github.com/lerna/lerna)  构建 `monorepo`，整个里面包含 `example` 示例、`packages` 组件包、`website` 文档网站。
 

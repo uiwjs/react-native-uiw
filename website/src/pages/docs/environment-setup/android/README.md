@@ -1,5 +1,5 @@
 Android 环境安装(for Mac)
----
+===
 
 这里介绍，使用 React Native CLI 运行一个 Android 环境下的 app。您将需要 Node、Watchman、React Native 命令行界面、JDK 和 Android Studio。
 
