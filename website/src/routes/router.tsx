@@ -168,4 +168,7 @@ export const getRouterData = {
   '/components/steps': {
     component: dynamicWrapper([], () => import('../pages/components/steps')),
   },
+  '/components/timeLine': {
+    component: dynamicWrapper([], () => import('../pages/components/timeLine')),
+  },
 };

@@ -36,5 +36,5 @@ function Demo() {
 | 参数                 | 说明         | 类型    | 默认值  |
 | -------------------- | ------------ | ------- | ------- |
 | `title`           |步骤标题      | Item[] | - |
-| `desc`            | 步骤说明文字  | Number | 0 |
+| `desc`            | 步骤说明文字  | String | - |
 | `status`           | 步骤的状态，'success' 或 'error' | String  | - |
