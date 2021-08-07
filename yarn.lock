@@ -4728,10 +4728,10 @@
     "@uiw/utils" "^4.9.4"
     react-transition-group "^4.4.2"
 
-"@uiw/reset.css@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@uiw/reset.css/-/reset.css-1.0.4.tgz#96b2b6f3a737ee4ac4a5b2abb09bcd5ec3ff2625"
-  integrity sha512-9U0VFp/XEkMNlgzFY9ioVxDn+wnLYO85gOEQPQNr0u2RQ2yGXAQch2qv7mRifMsLiFzgBIsbe1fi0tFCVumHOQ==
+"@uiw/reset.css@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@uiw/reset.css/-/reset.css-1.0.5.tgz#bba28f4050dbbfaca37000abecd17d7fc1ed8841"
+  integrity sha512-74Y6A1dPGkIUxA8L9poN/dh7V5TWS1SRgXxVkDzUlFIuFVuGksCvR019BzusiVyUBfGgzlVcxR5JES1bDcXwSA==
 
 "@uiw/utils@^4.9.4":
   version "4.9.4"

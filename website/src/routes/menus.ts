@@ -42,6 +42,9 @@ export const componentMenus: MenuData[] = [
   { path: "/components/masklayer", name: "MaskLayer 遮罩层" },
   { path: "/components/result", name: "Result 结果页" },
   { path: "/components/toast", name: "Toast 轻提示" },
+  { divider: true, name: "其它" },
+  { href: "https://github.com/uiwjs/react-native-alipay", name: "Alipay 支付宝", target: '__blank' },
+  { href: "https://github.com/uiwjs/react-native-amap-geolocation", name: "AMapGeolocation 高德地图定位", target: '__blank' },
 ];
 
 export const docsMenus: MenuData[] = [
@@ -56,6 +59,7 @@ export const docsMenus: MenuData[] = [
   { path: '/docs/app-store/ios', name: '发布 iOS 应用商店' },
   { path: '/docs/app-store/android', name: '发布 Android 应用商店' },
   { divider: true, name: "其它" },
+  { path: '/docs/awesome-react-native', name: 'Awesome React Native' },
   { href: 'https://github.com/uiwjs/react-native-uiw/releases', target: '_blank', name: '更新日志' },
   { href: 'https://github.com/facebook/react', target: '_blank', name: 'React 官方文档' },
   { href: 'https://github.com/facebook/react-native', target: '_blank', name: 'React Native 官方文档' },

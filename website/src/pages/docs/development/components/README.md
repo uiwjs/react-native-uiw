@@ -1,5 +1,5 @@
 参与组件开发
----
+===
 
 当前 [`react-native-uiw`](https://github.com/uiwjs/react-native-uiw) 项目工程，使用 [Yarn](https://classic.yarnpkg.com/lang/en/) & [lerna](https://github.com/lerna/lerna)  构建 `monorepo`，整个里面包含 `example` 示例、`packages` 组件包、`website` 文档网站。
 
@@ -41,7 +41,7 @@
 
 我们通过几个步骤，帮助您启动项目中的组件示例 `example/examples`<!--rehype:style=color: #039423; background: #e3efe7;--> APP 应用实例。
 
-### `第 1 步：克隆项目 & 安装依赖`
+### `第 1 步`<!--rehype:style=background: #a5d4ff;--> 克隆项目 & 安装依赖
 
 ```bash
 # 克隆项目
@@ -73,7 +73,7 @@ pod install --repo-update --verbose
 > 目前 [react-native@0.64](https://github.com/facebook/react-native) 需要 `pod v1.10.0+`<!--rehype:style=color: #0ab100;--> 以上的版本，可以在 `ios/Podfile`<!--rehype:style=color: #e00000;--> 中确定使用那个版本的 `pod`。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-### `第 2 步：启动实时编译包`
+### `第 2 步`<!--rehype:style=background: #a5d4ff;--> 启动实时编译包
 
 ```bash
 npm run watch
@@ -93,7 +93,7 @@ npm run watch
         └── src  #→▶┈▶▷┈╯  ✅  组件源码
 ```
 
-### `第 3 步：启动 APP 应用`
+### `第 3 步`<!--rehype:style=background: #a5d4ff;--> 启动 APP 应用
 
 ```bash
 # 进入示例根目录
@@ -193,3 +193,14 @@ module.exports = {
 
 > 注意：虽然配置模块依赖映射，可以隐射到具体的模块/包目录中，但是还是会报错，因为模块中的依赖路径导致错误。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+在 TypeScript 任然会出错，将在 [`example/examples/tsconfig.json`](https://github.com/uiwjs/react-native-uiw/blob/fe25f853fcdbe3590c3ac89924bf71326f11c58c/example/examples/tsconfig.json#L40-L44) 中配置，导入重新映射到相对于 `baseUrl` 的查找位置的一系列目录。
+
+```js
+/* 用于解析非绝对模块名称的基目录。*/
+"baseUrl": "./", 
+/* 将导入重新映射到相对于“baseUrl”的查找位置的一系列条目。 */
+"paths": {
+  "@uiw/react-native": ["node_modules/@uiw/react-native/src/index"]
+},
+```

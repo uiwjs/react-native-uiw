@@ -36,9 +36,6 @@ export const getRouterData = {
   '/team': {
     component: dynamicWrapper([], () => import('../pages/team')),
   },
-  '/docs': {
-    component: dynamicWrapper([], () => import('../pages/docs')),
-  },
   '/docs/getting-started': {
     component: dynamicWrapper([], () => import('../pages/docs/getting-started')),
   },
@@ -65,6 +62,9 @@ export const getRouterData = {
   },
   '/docs/development/components': {
     component: dynamicWrapper([], () => import('../pages/docs/development/components')),
+  },
+  '/docs/awesome-react-native': {
+    component: dynamicWrapper([], () => import('../pages/docs/awesome-react-native')),
   },
   '/components/about': {
     component: dynamicWrapper([], () => import('../pages/components/about')),
