@@ -66,6 +66,9 @@ export const getRouterData = {
   '/docs/awesome-react-native': {
     component: dynamicWrapper([], () => import('../pages/docs/awesome-react-native')),
   },
+  '/docs/react-native-template': {
+    component: dynamicWrapper([], () => import('../pages/docs/react-native-template')),
+  },
   '/components/about': {
     component: dynamicWrapper([], () => import('../pages/components/about')),
   },
