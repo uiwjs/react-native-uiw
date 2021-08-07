@@ -1,0 +1,29 @@
+name: iOS
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - run: yarn install
+      - run: npm run build
+      - run: xcode-select -p
+      - run: pod install
+        working-directory: ios
+        name: Install pod dependencies
+
+      - name: Build iOS (debug)
+        run: "xcodebuild \
+          -workspace ios/HelloReactNative.xcworkspace \
+          -scheme HelloReactNative \
+          clean archive \
+          -sdk iphoneos \
+          -configuration Debug \
+          -UseModernBuildSystem=NO \
+          -archivePath $PWD/HelloReactNative \
+          CODE_SIGNING_ALLOWED=NO"
