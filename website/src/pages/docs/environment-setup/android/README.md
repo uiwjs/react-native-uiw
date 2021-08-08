@@ -79,7 +79,7 @@ Android Studio 默认安装最新的 Android SDK。 但是，使用本机代码�
 
 ![](./2.png)
 
-接下来，选择 `SDK Tools` 选项卡并在此处选中 `Show Package Details` 旁边的框。 查找并展开 `Android SDK Build-Tools` 条目，然后确保选择了 29.0.2。
+接下来，选择 `SDK Tools` 选项卡并在此处选中 `Show Package Details` 旁边的框。 查找并展开 `Android SDK Build-Tools` 条目，然后确保选择了 `29.0.2`。
 
 ![](./3.png)
 
