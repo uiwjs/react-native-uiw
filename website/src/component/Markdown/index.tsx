@@ -5,6 +5,7 @@ import rehypeAttr from 'rehype-attr';
 import Contributors from '../Contributors';
 import Footer from '../Footer';
 import styles from './index.module.less';
+import { SnackPlayer } from './SnackPlayer'
 
 interface MarkdownProps extends React.HTMLAttributes<HTMLDivElement> {
   path?: string;
@@ -15,6 +16,17 @@ interface MarkdownState {
   markdown: string;
   message?: string;
 }
+
+const getCodeStr = (data: any[] = [], code: string = '') => {
+  data.forEach((node) => {
+    if (node.type === 'text') {
+      code += node.value;
+    } else if (node.children && Array.isArray(node.children)) {
+      code += getCodeStr(node.children);
+    }
+  });
+  return code;
+};
 
 // utilitary function to create a dictionary of packaged files 
 // based on the output of require.context()
@@ -76,23 +88,51 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
             transformImageUri={this.transformImageUri.bind(this)}
             components={{
               /**
-               * bgWhite 设置代码预览背景白色，否则为格子背景。
-               * noCode 不显示代码编辑器。
-               * noPreview 不显示代码预览效果。
-               * noScroll 预览区域不显示滚动条。
-               * codePen 显示 Codepen 按钮，要特别注意 包导入的问题，实例中的 import 主要用于 Codepen 使用。
+               * snack, https://snack.expo.dev
                */
               code: ({
+                snack,
                 inline,
-                node,
-                noPreview,
-                noScroll,
-                bgWhite,
-                noCode,
-                codePen,
-                codeSandbox,
+                platform,
+                theme,
+                buttonTitle,
+                name,
+                sdkVersion,
+                preview,
+                description,
+                dependencies,
+                templateId,
+                contentHidden,
+                loading,
+                files,
                 ...props
-              }) => {
+              }: any) => {
+                if (snack && !inline) {
+                  let filesObj = { 'App.js':  { type: 'CODE', contents: getCodeStr(props.node.children) || '' }};
+                  try {
+                    const fObj = JSON.parse(files || '{}');
+                    filesObj = { ...filesObj, ...fObj }
+                  } catch (err) { }
+                  return (
+                    <Fragment>
+                      <SnackPlayer
+                        platform={platform}
+                        theme={theme}
+                        name={name}
+                        files={JSON.stringify(filesObj)}
+                        preview={preview}
+                        loading={loading}
+                        description={description}
+                        sdkVersion={sdkVersion}
+                        dependencies={dependencies}
+                        contentHidden={contentHidden}
+                        templateId={templateId}
+                        buttonTitle={buttonTitle}
+                      />
+                      <code {...props} />
+                    </Fragment>
+                  );
+                }
                 return <code {...props} />;
               },
             }}
