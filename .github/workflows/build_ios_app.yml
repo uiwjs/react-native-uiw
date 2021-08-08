@@ -1,17 +1,10 @@
 name: iOS
 on: [push, pull_request]
 
+# https://github.com/uiwjs/react-native-uiw/issues/156
 jobs:
   build:
-    strategy:
-      matrix:
-        os: [macos-latest]
-        node: [10, 12, 14]
-        arch: [x86]
-        exclude:
-          - { os: macos-latest, arch: x86 }
-    # runs-on: macos-latest
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
