@@ -3,7 +3,15 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macos-latest
+    strategy:
+      matrix:
+        os: [macos-latest]
+        node: [10, 12, 14]
+        arch: [x86]
+        exclude:
+          - { os: macos-latest, arch: x86 }
+    # runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -19,12 +27,14 @@ jobs:
 
       - name: Build iOS (debug)
         working-directory: example/base
-        run: "xcodebuild \
-          -workspace ios/examples.xcworkspace \
-          -scheme examples \
-          clean archive \
-          -sdk iphoneos \
-          -configuration Debug \
-          -UseModernBuildSystem=NO \
-          -archivePath $PWD/examples \
-          CODE_SIGNING_ALLOWED=NO"
+        run: |
+          pwd
+          xcodebuild \
+            -workspace $PWD/ios/examples.xcworkspace \
+            -scheme examples \
+            clean archive \
+            -sdk iphoneos \
+            -configuration Debug \
+            -UseModernBuildSystem=NO \
+            -archivePath $PWD/examples \
+            CODE_SIGNING_ALLOWED=NO
