@@ -3,7 +3,7 @@
 
 当前 [`react-native-uiw`](https://github.com/uiwjs/react-native-uiw) 项目工程，使用 [Yarn](https://classic.yarnpkg.com/lang/en/) & [lerna](https://github.com/lerna/lerna)  构建 `monorepo`，整个里面包含 `example` 示例、`packages` 组件包、`website` 文档网站。
 
-> `⚠️注意事项:示例依赖不可随意更新`<!--rehype:style=background: #da0000; color: #fff;-->
+> 🚧 `注意事项:示例依赖不可随意更新`<!--rehype:style=background: #da0000; color: #fff;-->
 > 1. 🪲 添加新依赖包，需要配置 [nohoist](https://github.com/uiwjs/react-native-uiw/blob/46f73cf7ca5404184df7fa996a33f821d45cf0e7/package.json#L62-L80)，以解决子包依赖不存在的问题。
 > 2. 📦 如果依赖本地包，React Native 示例需要更改 [metro](https://github.com/facebook/metro) 配置 [metro.config.js](https://github.com/uiwjs/react-native-uiw/blob/9a300184608c71615167c517433bb9aed606f0ec/example/examples/metro.config.js#L12)
 > 3. 🐛Pod 版本请根据项目安装，可以在 `ios/Podfile`<!--rehype:style=color: #e00000;--> 中确定使用那个版本的 `pod`
@@ -70,7 +70,7 @@ pod install --repo-update --verbose
 ```
 
 
-> 目前 [react-native@0.64](https://github.com/facebook/react-native) 需要 `pod v1.10.0+`<!--rehype:style=color: #0ab100;--> 以上的版本，可以在 `ios/Podfile`<!--rehype:style=color: #e00000;--> 中确定使用那个版本的 `pod`。
+> 🚧 目前 [react-native@0.64](https://github.com/facebook/react-native) 需要 `pod v1.10.0+`<!--rehype:style=color: #0ab100;--> 以上的版本，可以在 `ios/Podfile`<!--rehype:style=color: #e00000;--> 中确定使用那个版本的 `pod`。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ### `第 2 步`<!--rehype:style=background: #a5d4ff;--> 启动实时编译包
@@ -106,7 +106,7 @@ yarn run ios
 
 我们通过 [`yarn workspaces`](https://classic.yarnpkg.com/en/docs/workspaces) 这个功能可以减轻 `monorepo` 开发人员的痛苦，并在效率（尽可能多地提升）和可用性之间取得平衡。
 
-> 如果需要将文档网站和实例运行起来，需要先安装依赖和编译包。使用 [`yarn workspaces`](https://classic.yarnpkg.com/en/docs/workspaces)，组件文档是从 `node_modules` 中加载，需要编译(或监听)输出到 `node_modules` 中。
+> 🚧 如果需要将文档网站和实例运行起来，需要先安装依赖和编译包。使用 [`yarn workspaces`](https://classic.yarnpkg.com/en/docs/workspaces)，组件文档是从 `node_modules` 中加载，需要编译(或监听)输出到 `node_modules` 中。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ### `问题是什么 ？`
@@ -115,13 +115,13 @@ yarn run ios
 
 为了减少冗余，大多数包管理器采用某种提升方案，来尽可能多地提取和扁平化所有相关模块到一个集中位置。 在一个独立的项目中，依赖树可以像这样减少：
 
-![](./standalone.svg)
+![](./standalone.svg)<!--rehype:style=max-width: 580px;-->
 
 使用 `hoist`，我们能够消除重复的 `A@1.0` 和 `B@1.0`，同时保留版本变化 (`B@2.0`) 并保持相同的根 `package-1/node_modules`。 大多数crawlers/loaders/bundlers 可以通过从项目根目录向下遍历 `node_modules` 树来非常有效地定位模块。
 
 然后是 `monorepo` 项目，它引入了一个新的层次结构，不需要通过 `node_modules` 链接。在这样的项目中，模块可能分散在多个位置：
 
-![](./monorepo-2.svg)
+![](./monorepo-2.svg)<!--rehype:style=max-width: 580px;-->
 
 [`yarn workspaces`](https://classic.yarnpkg.com/en/docs/workspaces) 可以通过将模块提升到其父项目的 `node_modules`: `monorepo/node_modules` 来跨子项目/包共享模块。 当考虑到这些包很可能相互依赖（拥有 monorepo 的主要原因）时，这种优化变得更加突出，即更高程度的冗余。
 
@@ -191,7 +191,7 @@ module.exports = {
 };
 ```
 
-> 注意：虽然配置模块依赖映射，可以隐射到具体的模块/包目录中，但是还是会报错，因为模块中的依赖路径导致错误。
+> 🚧 注意：虽然配置模块依赖映射，可以隐射到具体的模块/包目录中，但是还是会报错，因为模块中的依赖路径导致错误。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 在 TypeScript 任然会出错，将在 [`example/examples/tsconfig.json`](https://github.com/uiwjs/react-native-uiw/blob/fe25f853fcdbe3590c3ac89924bf71326f11c58c/example/examples/tsconfig.json#L40-L44) 中配置，导入重新映射到相对于 `baseUrl` 的查找位置的一系列目录。

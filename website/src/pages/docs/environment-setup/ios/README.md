@@ -29,14 +29,14 @@ brew install watchman
 
 如果您已经在系统上安装了 Xcode，请确保它是 10 版或更新版本。
 
-![Xcode](./001.png)
+![Xcode](./001.png)<!--rehype:style=max-width: 480px;-->
 
 
 ### `在 Xcode 中安装 iOS 模拟器`
 
 要安装模拟器，请打开 `Xcode` > `Preferences...` 并选择 `Components` 选项卡。 选择您要使用的 iOS 相应版本的模拟器。
 
-![Xcode Preferences Components](./002.png)
+![Xcode Preferences Components](./002.png)<!--rehype:style=max-width: 480px;-->
 
 ### `CocoaPods`
 
@@ -153,7 +153,7 @@ npx react-native run-ios
 
 在您的 `iOS` 模拟器中点击 `⌘R`<!--rehype:style=color: red;background: #ffd2d2;--> 以重新加载应用程序并查看您的更改！
 
-<img src="./003.png" alt="⌘D" width="220" />
+![⌘D](./003.png)<!--rehype:style=max-width: 250px;-->
 
 您还可以在 `iOS` 模拟器中使用 `⌘D`<!--rehype:style=color: red;background: #ffd2d2;--> 或者 `DD`<!--rehype:style=color: red;background: #ffd2d2;--> 调出 `Debug` 菜单。如果在真机调试请 `摇一摇`<!--rehype:style=color: red;background: #ffd2d2;--> 手机调出菜单。
 
