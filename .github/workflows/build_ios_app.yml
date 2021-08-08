@@ -14,12 +14,13 @@ jobs:
       - run: yarn install
       - run: npm run build
       - run: xcode-select -p
+
       - run: pod install
-        working-directory: example/base/ios
+        working-directory: example/examples/ios
         name: Install pod dependencies
 
       - name: Build iOS (debug)
-        working-directory: example/base
+        working-directory: example/examples
         run: |
           pwd
           xcodebuild \
