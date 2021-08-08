@@ -41,6 +41,7 @@ yarn add @uiw/react-native react-native-svg
 
 ## Basic Usage
 
+<!--rehype:snack=true-->
 ```jsx
 import React from 'react';
 import { View } from 'react-native';

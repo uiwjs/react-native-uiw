@@ -178,10 +178,10 @@ npx react-native init AwesomeProject --template @uiw/react-native-template
 
 ![](./9.png)
 
-> 🚧 注意：如果您是 `MacBook M1`<!--rehype:style=color: #e00000;-->，你需要下载 `arm64` 镜像。
+> 🚧 注意：如果您是 `MacBook M1`<!--rehype:style=color: #e00000;-->，你需要下载 `arm64` 镜像，以下是最新版本的配置方法。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-![](./8.png)
+![](./11.png)
 
 单击 `Next`，然后单击 `Finish` 以创建您的 AVD。 此时，您应该可以单击 AVD 旁边的绿色三角形按钮来启动它，然后继续下一步。
 
