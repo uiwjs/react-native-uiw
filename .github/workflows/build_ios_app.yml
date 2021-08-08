@@ -18,12 +18,13 @@ jobs:
         name: Install pod dependencies
 
       - name: Build iOS (debug)
+        working-directory: example/base
         run: "xcodebuild \
-          -workspace ios/HelloReactNative.xcworkspace \
-          -scheme HelloReactNative \
+          -workspace ios/examples.xcworkspace \
+          -scheme examples \
           clean archive \
           -sdk iphoneos \
           -configuration Debug \
           -UseModernBuildSystem=NO \
-          -archivePath $PWD/HelloReactNative \
+          -archivePath $PWD/examples \
           CODE_SIGNING_ALLOWED=NO"

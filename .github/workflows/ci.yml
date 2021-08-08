@@ -58,10 +58,6 @@ jobs:
       - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/core/package.json
       - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/docs/package.json
 
-      - name: Base -> Build Android Release
-        working-directory: example/base
-        run: cd android && ./gradlew bundleRelease --no-daemon
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
