@@ -131,3 +131,18 @@ APP上架前需注册开发者账号，创建 `证书请求文件（CSR文件）
 找到 `App 隐私` 填写 `隐私政策网址 (URL)`。 
 
 <img src="./img/25.png" width="65%" height="65%" />
+
+### `版本发布 `<!--rehype:style=color: white; background: #1c7bd0;-->
+
+选择 `自动发布` 审核通过后，此版本将立即自动发布，也可选择 `手动发布`。 
+
+<img src="./img/26.png" width="65%" height="65%" />
+
+### `提交审核`<!--rehype:style=color: white; background: #1c7bd0;-->
+
+相关信息填写完成后，即可提交以供审核。 
+
+<img src="./img/27.png" width="65%" height="65%" />
+
+> 🚧  审核通过后，若版本发布为自动发布，APP将自动发布成功，若审核不通过，可点击审批不通过原因，根据审批要求进行相关整改。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
