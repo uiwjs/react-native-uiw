@@ -299,4 +299,12 @@ export const stackPageData: Routes[] = [
       description: '时间轴',
     },
   },
+  {
+    name: 'Tabs',
+    component: require('./routes/Tabs').default,
+    params: {
+      title: 'Tabs 选项卡',
+      description: 'Tabs 选项卡组件跨不同屏幕、数据集和其他交互的内容。',
+    },
+  },
 ];
