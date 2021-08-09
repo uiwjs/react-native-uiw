@@ -1,5 +1,5 @@
 快速上手
----
+===
 
 项目基于 node，请确保已具备较新的 node 环境（>=12.0.0），推荐使用 node 版本管理工具 [nvm](https://github.com/creationix/nvm) 或者 [`n`](https://github.com/tj/n) 来管理 node，这样不仅可以很方便地切换 node 版本，而且全局安装时候也不用加 sudo 了。
 
@@ -25,6 +25,7 @@ npx react-native init AwesomeTSProject --template react-native-template-typescri
 
 <!--rehype:style=background-color: rgb(118 247 149);-->
 ```shell
+# 此模板默认集成了一些必用的依赖，如路由，组件库等
 npx react-native init AwesomeProject --template @uiw/react-native-template
 ```
 
@@ -40,6 +41,7 @@ yarn add @uiw/react-native react-native-svg
 
 ## Basic Usage
 
+<!--rehype:snack=true-->
 ```jsx
 import React from 'react';
 import { View } from 'react-native';

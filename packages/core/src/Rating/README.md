@@ -44,15 +44,27 @@ function Demo() {
 
 ## Props
 
-### Rating
+```ts
+import Icon, { IconsName } from '@uiw/react-native';
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `defaultRating` | 默认几个 | number | 5 |
-| `count` | 总分 | number |5|
-| `defaultCount` | 默认分数 | number| 1 count/defaultRating |
-| `size` | icon 大小 | number | 24|
-| `color` | icon 颜色 | string | `#ebc445`|
-| `color` | icon 颜色 | string | `#ebc445`|
-| `icon` | 指定显示的图标 | Array<IconsName \| React.ReactElement \| React.ReactNode>: [未选中, 已选中]| [`star-off`,`star-on`]|
-| `onPress` | 点击图标的回调 | (score: number) => void type:@param score type: number 得到几分 | |
+export type icoType = [IconsName, IconsName] | [React.ReactElement, React.ReactElement] | [React.ReactNode, React.ReactNode]
+export interface RatingProps {
+  /**  默认几个 */
+  defaultRating?: number,
+  /** 总分 */
+  count?: number,
+  /** 默认分数 */
+  defaultCount?: number,
+  /** icon 大小 */
+  size?: number,
+  /** icon 颜色 */
+  color?: string,
+  /** [未选中, 已选中] */
+  icon?: icoType,
+  /**
+   * void
+   * @param score type: number 得到几分
+   */
+  onPress?: (score: number) => void
+}
+```

@@ -3,14 +3,20 @@ import React, { useState, useEffect } from 'react';
 import {View, Text, StyleSheet, ViewProps} from 'react-native';
 
 export interface TimelineItemsProps {
+  /** 标题 */
   title: string;
+  /** 子标题 */
   tips?: string;
+  /** 标示颜色 */
   color?: string;
+  /** 子项内容 */
   desc?: string | string[]; 
 }
 
 export interface TimelineProps extends ViewProps {
+  /** 是否倒序 */
   isReverse?: boolean;
+  /** 步骤条数据列表 */
   items: TimelineItemsProps[];
 }
 

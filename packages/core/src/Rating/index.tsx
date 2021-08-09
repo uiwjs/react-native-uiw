@@ -5,10 +5,9 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-// import svgPaths from '@uiw/icons/fonts/w-icon.json';
 
 import Icon, { IconsName } from '../Icon';
-// export type IconsName = keyof typeof svgPaths;
+
 export type icoType = [IconsName, IconsName] | [React.ReactElement, React.ReactElement] | [React.ReactNode, React.ReactNode]
 export interface RatingProps {
   /**  默认几个 */

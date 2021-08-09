@@ -10,7 +10,6 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function Container(props: ContainerProps) {
   const { data, children, path = '' } = props;
-  console.log(path)
   return (
     <Fragment>
       <Header enableStyle={/\/(team)/.test(path)} showBorder={/\/(home)/.test(path)} path={path} />

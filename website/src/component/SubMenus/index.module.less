@@ -3,12 +3,20 @@
   position: relative;
   a {
     color: #5a5a5a;
-    padding: 10px 0;
-    display: block;
     transition: all .3s;
     margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 10px 0;
+    svg {
+      fill: #bbb;
+      transition: fill .3s;
+    }
     &:hover {
       color: #1890ff;
+      svg {
+        fill: #1890ff;
+      }
     }
     &:global(.active) {
       color: #1890ff;
@@ -28,7 +36,7 @@
 
 .warpper, .inner {
   border-right: 1px solid #eaeaea;
-  min-width: 260px;
+  min-width: 270px;
 }
 
 .inner {
