@@ -26,18 +26,19 @@ const QuickListView = (props: ListViewProps) => {
   const [data, setData] = useState<Array<{ name: string, id: number }>>(defaultData)
 
 
-  const fethList = (params:fethProp) => {
-    const { page} = params
+  const fethList = (params: fethProp) => {
+    const { page } = params
     if (page === 1) {
       setData(defaultData)
       setTotal(14)
     }
   }
+  console.log('baseRef', baseRef&&baseRef.current)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Header title={title} description={description} />
       <QuickList
-        // ref={baseRef}
+        ref={baseRef}
         onFetch={fethList}
         data={data}
         total={total}

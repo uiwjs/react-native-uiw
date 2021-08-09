@@ -1,10 +1,10 @@
-import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle,Ref } from 'react';
 import { FlatList, FlatListProps, ListRenderItem } from 'react-native';
 import { emptyDataView, activityIndicatorView, noMoreDataView } from './View'
 
 
 
-interface SankFlatListProps extends FlatListProps<any> {
+interface SankFlatListProps<ItemT> extends FlatListProps<ItemT> {
   onFetch: (params: any) => void // 请求的接口 Promise 类型
   data: Array<any>, // 数据源 Array 类型
   renderItem: ListRenderItem<any>, // 渲染方法 Function 类型
@@ -15,7 +15,12 @@ interface SankFlatListProps extends FlatListProps<any> {
   style?: Object,
 }
 
-const SankFlatList: React.FC<SankFlatListProps> = forwardRef((props, ref:any) => {
+export type SankFlatListComponent<ItemT = any> = (
+  props: SankFlatListProps<ItemT>,
+  ref?:  Ref<FlatList<ItemT>> | any
+) => React.ReactElement
+
+const SankFlatList: SankFlatListComponent = (props, ref) => {
   const {
     onFetch, // 请求的接口 Promise 类型
     data, // 数据源 Array 类型
@@ -47,7 +52,7 @@ const SankFlatList: React.FC<SankFlatListProps> = forwardRef((props, ref:any) =>
   const [paginationStatus, setPaginationStatus] = useState(PaginationStatus.firstLoad);
 
   // 暴露给父组件调用的方法
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(ref, ():any => ({
     executeRefreshAction: async (param = {}) => {
       setPage(1);
       const params = {
@@ -154,12 +159,12 @@ const SankFlatList: React.FC<SankFlatListProps> = forwardRef((props, ref:any) =>
   return (
     <FlatList
       {...others}
-      onEndReachedThreshold={0.1}
       ref={ref}
+      onEndReachedThreshold={0.1}
       data={data}
       renderItem={renderItem}
       refreshing={refreshing}
-      // extraData={data}
+      extraData={data}
       keyExtractor={(item) => item[keyId]}
       initialNumToRender={pageSize}
       onRefresh={onRefresh}
@@ -175,5 +180,5 @@ const SankFlatList: React.FC<SankFlatListProps> = forwardRef((props, ref:any) =>
       style={style}
     />
   )
-});
-export default SankFlatList
+};
+export default  forwardRef(SankFlatList)
