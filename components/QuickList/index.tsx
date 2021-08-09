@@ -10,7 +10,7 @@ interface SankFlatListProps<ItemT> extends FlatListProps<ItemT> {
   renderItem: ListRenderItem<any>, // 渲染方法 Function 类型
   keyId: string | number,// 列表唯一 key
   emptyView?: void | any,
-  pageSize: number, // 每次加载数据条数
+  pageSize?: number, // 每次加载数据条数
   total: number, // 总条数
   style?: Object,
 }

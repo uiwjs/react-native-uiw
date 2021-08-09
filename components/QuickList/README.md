@@ -1,19 +1,17 @@
+QuickList 快速请求列表
+---
+
+快速完成上拉下拉请求列表。
+
+### 基础示例
+
+<!--DemoStart--> 
+```jsx
 import React, { useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native';
-import { QuickList, List } from '../../../components';
-import { ComProps } from '../../typings';
-import Layout from '../../Layout';
-const { Header } = Layout;
+import { QuickList, List } from '@uiw/react-native';
 
-export interface ListViewProps extends ComProps { }
-
-interface fethProp {
-  page: number,
-  pageSize: number
-}
-
-const defaultData: Array<{ name: string, id: number }> = [
-  { name: '最好用的快速List列表', id: 1 },
+const defaultData =[
   { name: '最好用的快速List列表', id: 2 },
   { name: '最好用的快速List列表', id: 3 },
   { name: '最好用的快速List列表', id: 4 },
@@ -25,17 +23,18 @@ const defaultData: Array<{ name: string, id: number }> = [
   { name: '最好用的快速List列表', id: 10 },
 ]
 
-const QuickListView = (props: ListViewProps) => {
+const QuickListDemo = (props) => {
   const baseRef = useRef();
   const { route } = props;
   const description = route.params.description;
   const title = route.params.title;
   const [total, setTotal] = useState(0)
-  const [data, setData] = useState<Array<{ name: string, id: number }>>([])
+  const [data, setData] = useState([])
 
-  const sleep = (time: any) => new Promise((resolve) => setTimeout(() => resolve(''), time))
+  const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(''), time))
+
   // 模拟请求
-  const fethList = async (params: fethProp) => {
+  const fethList = async (params) => {
     const { page, pageSize } = params
     if (page === 1) {
       await sleep(500)
@@ -57,7 +56,6 @@ const QuickListView = (props: ListViewProps) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Header title={title} description={description} />
       <QuickList
         ref={baseRef}
         onFetch={fethList}
@@ -73,5 +71,20 @@ const QuickListView = (props: ListViewProps) => {
     </SafeAreaView>
   );
 }
+export default QuickListDemo
+```
+<!--End-->
 
-export default QuickListView
+## Props
+
+继承原生 FastList 属性 [`FastListProps`](https://reactnative.dev/docs/flatlist)
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `onFetch` | 请求的接口 | Promise | - |
+| `data` | 数据源 | Array | - |
+| `pageSize` | 每次加载数据条数 | number | 10 |
+| `total` | 总条数 | number | - |
+| `renderItem` | 从data列表中获取一个项目并将其渲染到列表中 | ({item})=>void | - |
+| `emptyView` | 当列表为空时呈现 | Boolean | ()=>void |
+| `keyId` | 取唯一键 | string | - |
