@@ -22,7 +22,7 @@ export default function DarkMode() {
         }
         setDark(evn.target.checked);
       }}
-      style={{ marginTop: 5, marginLeft: 10, marginRight: 10 }}
+      style={{ display: 'flex', alignItems: 'center', marginLeft: 10, marginRight: 10 }}
     />
   );
 }
