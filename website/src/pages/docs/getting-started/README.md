@@ -25,6 +25,7 @@ npx react-native init AwesomeTSProject --template react-native-template-typescri
 
 <!--rehype:style=background-color: rgb(118 247 149);-->
 ```shell
+# 此模板默认集成了一些必用的依赖，如路由，组件库等
 npx react-native init AwesomeProject --template @uiw/react-native-template
 ```
 
@@ -40,6 +41,7 @@ yarn add @uiw/react-native react-native-svg
 
 ## Basic Usage
 
+<!--rehype:snack=true-->
 ```jsx
 import React from 'react';
 import { View } from 'react-native';
