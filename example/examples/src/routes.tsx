@@ -306,12 +306,12 @@ export const stackPageData: Routes[] = [
   //     description: 'Tabs 选项卡组件跨不同屏幕、数据集和其他交互的内容。',
   //   },
   // },
-  // {
-  //   name: 'QuickList',
-  //   component: require('./routes/QuickList').default,
-  //   params: {
-  //     title: 'QuickList 快速请求列表',
-  //     description: 'QuickList 快速请求上拉下拉数据列表',
-  //   },
-  // },
+  {
+    name: 'QuickList',
+    component: require('./routes/QuickList').default,
+    params: {
+      title: 'QuickList 快速请求列表',
+      description: 'QuickList 快速请求上拉下拉数据列表',
+    },
+  },
 ];
