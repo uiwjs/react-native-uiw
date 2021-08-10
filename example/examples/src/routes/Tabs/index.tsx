@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import Layout, { Container } from '../../Layout';
 import { Tabs, Icon, IconsName } from '@uiw/react-native';
 import { ComProps } from '../../routes';
+import { Text } from 'react-native-svg';
 
 const { Header, Body, Card, Footer } = Layout;
 

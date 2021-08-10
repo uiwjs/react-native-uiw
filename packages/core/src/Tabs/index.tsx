@@ -23,11 +23,11 @@ function Tabs(props: TabsProps) {
   if (!children) {
     return null;
   }
-  if (Array.isArray(children) && children.find((item) => !item.type.prototype.isclxItem)) {
+  if (Array.isArray(children) && children.find((item) =>  typeof item.type !== 'function' || !item.type.prototype.isclxItem )) {
     console.error('Tags component child element must be TagsItem');
     throw new Error('Child elements of tabs components must be Tabs.Item')
   }
-  if (!Array.isArray(children) && typeof children.type !== 'function') {
+  if ((!Array.isArray(children) && typeof children.type !== 'function') || ('type' in children && !children.type.prototype.isclxItem)) {
     console.error('Tags component child element must be TagsItem');
     throw new Error('Child elements of tabs components must be Tabs.Item')
   }

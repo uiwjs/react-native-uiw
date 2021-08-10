@@ -8,10 +8,10 @@ import {
 
 import Icon, { IconsName } from '../Icon';
 
-export type iconTypes = IconsName | React.ReactElement | React.ReactNode | JSX.Element
+export type TabsItemIconTypes = IconsName | React.ReactElement | React.ReactNode | JSX.Element
 
 /** 样式集合类型 */
-export interface itemStyle {
+export interface TabsItemStyle {
   /** 宽度 */
   width?: number,
   /** 文字颜色 */
@@ -37,7 +37,7 @@ export interface TabsItemProps {
   /** 显示的文字 */
   title: string,
   /** 样式集合 */
-  style?: itemStyle,
+  style?: TabsItemStyle,
   /** 
    * 点击时触发
    * void 
@@ -45,7 +45,7 @@ export interface TabsItemProps {
    */
   onPress?: (title: string) => void,
   /** 图标 */
-  icon?: iconTypes,
+  icon?: TabsItemIconTypes,
   /** 是否显示下边框 */
   border?: boolean
 }
