@@ -1,4 +1,4 @@
-import {StackNavigationProp} from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -273,6 +273,38 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'ExpandableSection 折叠展开',
       description: '折叠展开ExpandableSection',
+    },
+  },
+  {
+    name: 'Steps',
+    component: require('./routes/Steps').default,
+    params: {
+      title: 'Steps 步骤条',
+      description: '步骤条',
+    }
+  },
+  {
+    name: 'Rating',
+    component: require('./routes/Rating').default,
+    params: {
+      title: 'Rating 评分',
+      description: '评分 Rating',
+    },
+  },
+  {
+    name: 'Timeline',
+    component: require('./routes/Timeline').default,
+    params: {
+      title: 'Timeline 时间轴',
+      description: '时间轴',
+    },
+  },
+  {
+    name: 'Tabs',
+    component: require('./routes/Tabs').default,
+    params: {
+      title: 'Tabs 选项卡',
+      description: 'Tabs 选项卡组件跨不同屏幕、数据集和其他交互的内容。',
     },
   },
 ];

@@ -1,0 +1,34 @@
+name: iOS
+on: [push, pull_request]
+
+# https://github.com/uiwjs/react-native-uiw/issues/156
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - run: yarn install
+      - run: npm run build
+      - run: xcode-select -p
+
+      - run: pod install
+        working-directory: example/examples/ios
+        name: Install pod dependencies
+
+      # - name: Build iOS (debug)
+      #   working-directory: example/examples
+      #   run: |
+      #     pwd
+      #     xcodebuild \
+      #       -workspace $PWD/ios/examples.xcworkspace \
+      #       -scheme examples \
+      #       clean archive \
+      #       -sdk iphoneos \
+      #       -configuration Debug \
+      #       -UseModernBuildSystem=NO \
+      #       -archivePath $PWD/examples \
+      #       CODE_SIGNING_ALLOWED=NO

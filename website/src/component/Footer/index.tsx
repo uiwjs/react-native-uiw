@@ -20,8 +20,8 @@ const data = [
         title: 'React Native Alipay'
       },
       {
-        href : 'https://github.com/uiwjs/uiw',
-        title: 'UIW on GitHub'
+        href : 'https://github.com/uiwjs/react-native-amap-geolocation',
+        title: 'React Native AMap Geolocation'
       },
       {
         href : 'https://gitee.com/uiw/react-native-uiw',
@@ -44,6 +44,10 @@ const data = [
         href : 'https://github.com/jondot/awesome-react-native',
         title: 'Awesome React Native'
       },
+      {
+        href : 'https://github.com/uiwjs/uiw',
+        title: 'UIW on GitHub'
+      },
     ]
   },
   {
@@ -56,14 +60,6 @@ const data = [
       {
         href : 'https://github.com/rematch/rematch',
         title: 'Rematch.js'
-      },
-      {
-        href : 'https://github.com/uiwjs/react-native-alipay',
-        title: 'React Native Alipay'
-      },
-      {
-        href : 'https://github.com/uiwjs/react-native-amap-geolocation',
-        title: 'React Native AMap Geolocation'
       },
     ]
   },
