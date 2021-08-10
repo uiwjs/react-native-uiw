@@ -4,22 +4,22 @@ import {
   SafeAreaView,
   StatusBar,
   ScrollView,
-  ViewStyle,
+  ViewProps,
   View,
   Dimensions
 } from 'react-native';
+
 import Item from './TabsItem';
+
 let MainWidth = Dimensions.get('window').width;
 
-export interface TabsProps {
+export interface TabsProps extends ViewProps {
   /** 子元素 */
-  children?: JSX.Element | Array<JSX.Element>,
-  /** 容器样式 */
-  style?: ViewStyle
+  children?: JSX.Element | Array<JSX.Element>
 }
 
 function Tabs(props: TabsProps) {
-  const { children } = props
+  const { style, children, ...other } = props;
   if (!children) {
     return null;
   }
@@ -38,7 +38,7 @@ function Tabs(props: TabsProps) {
         horizontal
         showsHorizontalScrollIndicator={false}
       >
-        <View style={[styles.TabsContainer, { ...props.style, }]}>
+        <View style={[styles.TabsContainer, style]} {...other}>
           {props.children}
         </View>
       </ScrollView>
