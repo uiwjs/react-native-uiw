@@ -174,4 +174,7 @@ export const getRouterData = {
   '/components/timeLine': {
     component: dynamicWrapper([], () => import('../pages/components/timeLine')),
   },
+  '/components/tabs': {
+    component: dynamicWrapper([], () => import('../pages/components/tabs')),
+  },
 };
