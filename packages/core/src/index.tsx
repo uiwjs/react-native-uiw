@@ -68,7 +68,8 @@ export * from './Rating'
 
 export { default as Timeline } from './Timeline';
 export * from './Timeline';
-
+export { default as Tabs } from './Tabs'
+export * from './Tabs'
 
 /**
  * Typography
