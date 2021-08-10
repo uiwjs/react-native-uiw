@@ -1,4 +1,4 @@
-import { StackNavigationProp } from '@react-navigation/stack';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -6,7 +6,6 @@ export interface ComProps {
   navigation: ModalStackNavigation;
   route: Routes;
 }
-
 
 export type Routes = {
   name: string;
@@ -281,7 +280,7 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'Steps 步骤条',
       description: '步骤条',
-    }
+    },
   },
   {
     name: 'Rating',
@@ -299,12 +298,20 @@ export const stackPageData: Routes[] = [
       description: '时间轴',
     },
   },
-  {
-    name: 'Tabs',
-    component: require('./routes/Tabs').default,
-    params: {
-      title: 'Tabs 选项卡',
-      description: 'Tabs 选项卡组件跨不同屏幕、数据集和其他交互的内容。',
-    },
-  },
+  // {
+  //   name: 'Tabs',
+  //   component: require('./routes/Tabs').default,
+  //   params: {
+  //     title: 'Tabs 选项卡',
+  //     description: 'Tabs 选项卡组件跨不同屏幕、数据集和其他交互的内容。',
+  //   },
+  // },
+  // {
+  //   name: 'QuickList',
+  //   component: require('./routes/QuickList').default,
+  //   params: {
+  //     title: 'QuickList 快速请求列表',
+  //     description: 'QuickList 快速请求上拉下拉数据列表',
+  //   },
+  // },
 ];
