@@ -36,9 +36,6 @@ export const getRouterData = {
   '/team': {
     component: dynamicWrapper([], () => import('../pages/team')),
   },
-  '/docs': {
-    component: dynamicWrapper([], () => import('../pages/docs')),
-  },
   '/docs/getting-started': {
     component: dynamicWrapper([], () => import('../pages/docs/getting-started')),
   },
@@ -66,9 +63,12 @@ export const getRouterData = {
   '/docs/development/components': {
     component: dynamicWrapper([], () => import('../pages/docs/development/components')),
   },
-  // '/components': {
-  //   component: dynamicWrapper([], () => import('../layouts/ComponentsLayout')),
-  // },
+  '/docs/awesome-react-native': {
+    component: dynamicWrapper([], () => import('../pages/docs/awesome-react-native')),
+  },
+  '/docs/react-native-template': {
+    component: dynamicWrapper([], () => import('../pages/docs/react-native-template')),
+  },
   '/components/about': {
     component: dynamicWrapper([], () => import('../pages/components/about')),
   },
@@ -110,6 +110,9 @@ export const getRouterData = {
   },
   '/components/radio': {
     component: dynamicWrapper([], () => import('../pages/components/radio')),
+  },
+  '/components/rating': {
+    component: dynamicWrapper([], () => import('../pages/components/rating')),
   },
   '/components/segmentedcontrol': {
     component: dynamicWrapper([], () => import('../pages/components/segmentedcontrol')),
@@ -170,5 +173,8 @@ export const getRouterData = {
   },
   '/components/timeLine': {
     component: dynamicWrapper([], () => import('../pages/components/timeLine')),
+  },
+  '/components/tabs': {
+    component: dynamicWrapper([], () => import('../pages/components/tabs')),
   },
 };

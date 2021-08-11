@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './index.module.less';
+import { ReactComponent as LinkSVG } from './link.svg';
 
 export interface MenuData extends React.RefAttributes<HTMLAnchorElement>, React.AnchorHTMLAttributes<HTMLAnchorElement> {
   name: string;
@@ -21,7 +22,7 @@ export default function Submenu(props: SubmenuProps) {
             return <div key={key} className={styles.divider}>{data.name}</div>
           }
           if (data.href) {
-            return <a href={data.href} key={key} {...data}>{data.name}</a>
+            return <a href={data.href} key={key} {...data}>{data.name} <LinkSVG /></a>
           }
           if (data.path) {
             return <NavLink to={data.path} key={key} {...data}>{data.name}</NavLink>

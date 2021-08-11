@@ -1,5 +1,5 @@
 参与文档/网站编辑开发
----
+===
 
 这里介绍，当前组件库开发和文档编写，方便您快速介入到文档/网站编辑开发中。
 
@@ -38,7 +38,7 @@
 
 ## 文档编辑预览
 
-我们通过 [npm](https://www.npmjs.com/@uiw/react-native-doc) 来管理 UIW React Native 组件文档站点的版本，使用 [unpkg.com](https://unpkg.com/) 提供的静态资源预览和同步 npm 包的特点，，来实现[查看历史版本](https://unpkg.com/browse/@uiw/react-native-doc/)组件文档的一功能。的文档。所以我们在发布 [`@uiw/react-native`](https://www.npmjs.com/package/@uiw/react-native) 包的同时会发布 [`@uiw/react-native-doc`](https://www.npmjs.com/package/@uiw/react-native-doc) 包。
+我们通过 [npm](https://www.npmjs.com/@uiw/react-native-doc) 来管理 UIW React Native 组件文档站点的版本，使用 [unpkg.com](https://unpkg.com/) 提供的静态资源预览和同步 npm 包的特点，来实现[查看历史版本](https://unpkg.com/browse/@uiw/react-native-doc/)组件文档的一功能。的文档。所以我们在发布 [`@uiw/react-native`](https://www.npmjs.com/package/@uiw/react-native) 包的同时会发布 [`@uiw/react-native-doc`](https://www.npmjs.com/package/@uiw/react-native-doc) 包。
 
 通过 unpkg 预览文档网站：https://unpkg.com/@uiw/react-native-doc/doc/index.html
 
@@ -48,7 +48,7 @@
 https://unpkg.com/@uiw/react-native-doc@<包版本>/web/index.html
 ```
 
-> ⚠️ 注意：为了保持包版本同步，我们通过 [`lerna`](http://npmjs.com/lerna) 工具同时更改所有包的版本，确保组件包和文档包的版本是一致的。  
+> ⚠️ 注意：为了保持包版本同步，我们通过 [`lerna`](http://npmjs.com/lerna)<!--rehype:target="__blank"--> 工具同时更改所有包的版本，确保组件包和文档包的版本是一致的。  
 > 在项目根目录运行 `npm run version` 命令，即可更改所有包的版本。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
@@ -108,7 +108,7 @@ packages
 │       └── Button
 ```
 
-#### `第 1 步：菜单配置`
+#### `第 1 步`<!--rehype:style=background: #a5d4ff;-->：菜单配置
 
 在 [`website/src/routes/menus.ts`](https://github.com/uiwjs/react-native-uiw/blob/4e4f55681a71b4813a5f5fe26f4b1a859bc85a7f/website/src/routes/menus.ts#L44) 中配置菜单
 
@@ -130,7 +130,7 @@ export const docsMenus: MenuData[] = [
 export const componentMenus: MenuData[] = [ .... ]
 ```
 
-#### `第 2 步：新增路由`
+#### `第 2 步`<!--rehype:style=background: #a5d4ff;-->：新增路由
 
 在 [`website/src/routes/router.tsx`](https://github.com/uiwjs/react-native-uiw/blob/4e4f55681a71b4813a5f5fe26f4b1a859bc85a7f/website/src/routes/router.tsx#L39-L41) 中加载 Markdown 以及相关文件
 
@@ -146,7 +146,7 @@ export const getRouterData = {
 }
 ```
 
-#### `第 3 步：新增 Markdown 文件`
+#### `第 3 步`<!--rehype:style=background: #a5d4ff;-->：新增 Markdown 文件
 
 添加 `website/src/pages/docs/getting-started/README.md` 和 `website/src/pages/docs/getting-started/index.tsx`
 
@@ -162,7 +162,7 @@ export default class Page extends Markdown {
     // 也可加载组件包中的文档
     const mdCom = await import('@uiw/react-native/lib/Badge/README.md');
     // 支持 markdown 中，相对于当前 index.tsx 相对路径引入图片资源
-    importAll((require as any).context('./', true, /\.(png|gif|jpg)$/), this.imageFiles);
+    importAll((require as any).context('./', true, /\.(png|gif|jpg|svg)$/), this.imageFiles);
     return md.default || md;
   }
 }

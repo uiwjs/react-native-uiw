@@ -20,17 +20,19 @@
 .menus {
   display: flex;
   a {
-    border-bottom: transparent solid 2px;
     transition: all .3s;
-    margin-top: 5px;
     color: #333;
+    border-radius: 3px;
+    padding: 2px 8px 2px 8px;
+    display: flex;
+    align-items: center;
   }
   a + a {
-    margin-left: 16px;
+    margin-left: 6px;
   }
   :global(.active), a:hover {
-    color: #1890ff;
-    border-bottom: #1890ff solid 2px;
+    background: #00000017;
+    color: #0366d6;
   }
 }
 

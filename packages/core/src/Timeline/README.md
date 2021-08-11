@@ -38,19 +38,24 @@ function Demo() {
 }
 ```
 
-### props
+### Props
 
-| 参数                 | 说明         | 类型    | 默认值  |
-| -------------------- | ------------ | ------- | ------- |
-| `items`           |步骤条数据列表      | Item[] | - |
-| `isReverse`        | 是否倒序  | Boolean | false |
+```ts
+export interface TimelineItemsProps {
+  /** 标题 */
+  title: string;
+  /** 子标题 */
+  tips?: string;
+  /** 标示颜色 */
+  color?: string;
+  /** 子项内容 */
+  desc?: string | string[]; 
+}
 
-
-### Item[]
-
-| 参数                 | 说明         | 类型    | 默认值  |
-| -------------------- | ------------ | ------- | ------- |
-| `title`           |标题      | Item[] | - |
-| `tips`           |子标题       | String | - |
-| `desc`            | 子项内容  | String  / string[] | - |
-| `color`           | 标示颜色 | String  | - |
+export interface TimelineProps extends ViewProps {
+  /** 是否倒序 */
+  isReverse?: boolean;
+  /** 步骤条数据列表 */
+  items: TimelineItemsProps[];
+}
+```
