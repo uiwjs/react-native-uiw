@@ -3,7 +3,6 @@ import {StyleSheet, View} from 'react-native';
 import Layout, {Container} from '../../Layout';
 import {Tabs, Icon, IconsName} from '@uiw/react-native';
 import {ComProps} from '../../routes';
-import {Text} from 'react-native-svg';
 
 const {Header, Body, Card, Footer} = Layout;
 
@@ -51,7 +50,7 @@ export default class Index extends Component<IndexProps, IndexState> {
                   iconColor:
                     this.state.flag === '喜欢' ? this.state.color1 : undefined,
                   titleColor:
-                    this.state.flag === '喜欢' ? this.state.color1 : undefined,,
+                    this.state.flag === '喜欢' ? this.state.color1 : undefined,
                 }}
                 border={this.state.flag === '喜欢'}
                 onPress={this.onPress1}
@@ -60,7 +59,7 @@ export default class Index extends Component<IndexProps, IndexState> {
                 title={'关注'}
                 style={{
                   titleColor:
-                    this.state.flag === '关注' ? this.state.color1 : undefined,,
+                    this.state.flag === '关注' ? this.state.color1 : undefined,
                 }}
                 icon={
                   <Icon
@@ -81,7 +80,7 @@ export default class Index extends Component<IndexProps, IndexState> {
                   iconColor:
                     this.state.flag === '信息' ? this.state.color1 : undefined,
                   titleColor:
-                    this.state.flag === '信息' ? this.state.color1 : undefined,,
+                    this.state.flag === '信息' ? this.state.color1 : undefined,
                 }}
                 border={this.state.flag === '信息'}
                 onPress={this.onPress1}
@@ -99,7 +98,7 @@ export default class Index extends Component<IndexProps, IndexState> {
                   titleColor:
                     this.state.flag1 === '喜欢' ? this.state.color1 : undefined,
                   borderColor:
-                    this.state.flag1 === '喜欢' ? this.state.color1 : undefined,,
+                    this.state.flag1 === '喜欢' ? this.state.color1 : undefined,
                 }}
               />
               <Tabs.Item
@@ -110,7 +109,7 @@ export default class Index extends Component<IndexProps, IndexState> {
                   titleColor:
                     this.state.flag1 === '关注' ? this.state.color1 : undefined,
                   borderColor:
-                    this.state.flag1 === '关注' ? this.state.color1 : undefined,,
+                    this.state.flag1 === '关注' ? this.state.color1 : undefined,
                 }}
               />
               <Tabs.Item
@@ -121,7 +120,7 @@ export default class Index extends Component<IndexProps, IndexState> {
                   titleColor:
                     this.state.flag1 === '信息' ? this.state.color1 : undefined,
                   borderColor:
-                    this.state.flag1 === '信息' ? this.state.color1 : undefined,,
+                    this.state.flag1 === '信息' ? this.state.color1 : undefined,
                 }}
               />
               <Tabs.Item
@@ -132,7 +131,7 @@ export default class Index extends Component<IndexProps, IndexState> {
                   titleColor:
                     this.state.flag1 === '我的' ? this.state.color1 : undefined,
                   borderColor:
-                    this.state.flag1 === '我的' ? this.state.color1 : undefined,,
+                    this.state.flag1 === '我的' ? this.state.color1 : undefined,
                 }}
               />
               <Tabs.Item
@@ -143,7 +142,7 @@ export default class Index extends Component<IndexProps, IndexState> {
                   titleColor:
                     this.state.flag1 === '偏好' ? this.state.color1 : undefined,
                   borderColor:
-                    this.state.flag1 === '偏好' ? this.state.color1 : undefined,,
+                    this.state.flag1 === '偏好' ? this.state.color1 : undefined,
                 }}
               />
             </Tabs>
