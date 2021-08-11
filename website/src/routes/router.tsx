@@ -177,4 +177,7 @@ export const getRouterData = {
   '/components/tabs': {
     component: dynamicWrapper([], () => import('../pages/components/tabs')),
   },
+  '/components/quicklist': {
+    component: dynamicWrapper([], () => import('../pages/components/quicklist')),
+  },
 };
