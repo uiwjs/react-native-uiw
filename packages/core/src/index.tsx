@@ -72,6 +72,8 @@ export { default as Tabs } from './Tabs'
 export * from './Tabs'
 export { default as QuickList } from './QuickList'
 export * from './QuickList'
+export { default as Card } from './Card'
+export * from './Card'
 
 /**
  * Typography
