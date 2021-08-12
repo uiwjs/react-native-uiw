@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
-import { SafeAreaView,TouchableHighlight,Text } from 'react-native';
-import { Table } from '@uiw/react-native';
+import React from 'react';
+import {SafeAreaView, TouchableHighlight, Text} from 'react-native';
+import {Table} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout from '../../Layout';
 const SearchBarDemo = (props: ComProps) => {
-
-  const { Header } = Layout;
+  const {Header} = Layout;
   const {route} = props;
   const description = route.params.description;
   const title = route.params.title;
 
-  const [data, setData] = useState([
-    { label: '上海', value: 1 },
-    { label: '南京', value: 2 }
-  ])
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-       <Header title={title} description={description} />
-       <Table
+    <SafeAreaView style={{flex: 1}}>
+      <Header title={title} description={description} />
+      <Table
         columns={[
           {
             title: '类型',
@@ -32,9 +27,9 @@ const SearchBarDemo = (props: ComProps) => {
           {
             title: '操作',
             dataIndex: 'id',
-            render: (record: any) => {
+            render: () => {
               return (
-                <TouchableHighlight onPress={()=>{ }}>
+                <TouchableHighlight onPress={() => {}}>
                   <Text style={{color: '#888'}}>查看</Text>
                 </TouchableHighlight>
               );
