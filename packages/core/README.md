@@ -35,7 +35,7 @@ A UI component library based on React Native (Android & iOS).
 ## Install
 
 ```bash
-yarn add @uiw/react-native react-native-svg
+yarn add @uiw/react-native react-native-svg  react-native-root-siblings
 ```
 
 ## Basic Usage
