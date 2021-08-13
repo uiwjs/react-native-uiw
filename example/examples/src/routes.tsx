@@ -322,4 +322,12 @@ export const stackPageData: Routes[] = [
   //     description: 'QuickList 最基础的卡片容器，可承载文字、列表、图片、段落。',
   //   },
   // },
+  {
+    name: 'NoticeBar',
+    component: require('./routes/NoticeBar').default,
+    params: {
+      title: 'NoticeBar 通告栏',
+      description: '通告栏',
+    },
+  },
 ];
