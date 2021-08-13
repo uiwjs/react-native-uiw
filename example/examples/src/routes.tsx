@@ -298,20 +298,28 @@ export const stackPageData: Routes[] = [
       description: '时间轴',
     },
   },
+  {
+    name: 'Tabs',
+    component: require('./routes/Tabs').default,
+    params: {
+      title: 'Tabs 选项卡',
+      description: 'Tabs 选项卡组件跨不同屏幕、数据集和其他交互的内容。',
+    },
+  },
+  {
+    name: 'QuickList',
+    component: require('./routes/QuickList').default,
+    params: {
+      title: 'QuickList 快速请求列表',
+      description: 'QuickList 快速请求上拉下拉数据列表',
+    },
+  },
   // {
-  //   name: 'Tabs',
-  //   component: require('./routes/Tabs').default,
+  //   name: 'Card',
+  //   component: require('./routes/Card').default,
   //   params: {
-  //     title: 'Tabs 选项卡',
-  //     description: 'Tabs 选项卡组件跨不同屏幕、数据集和其他交互的内容。',
-  //   },
-  // },
-  // {
-  //   name: 'QuickList',
-  //   component: require('./routes/QuickList').default,
-  //   params: {
-  //     title: 'QuickList 快速请求列表',
-  //     description: 'QuickList 快速请求上拉下拉数据列表',
+  //     title: 'Card 卡片',
+  //     description: 'QuickList 最基础的卡片容器，可承载文字、列表、图片、段落。',
   //   },
   // },
 ];

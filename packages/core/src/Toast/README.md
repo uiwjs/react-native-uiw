@@ -3,6 +3,21 @@ Toast 轻提示
 
 一种轻量级反馈/提示，可以用来显示不会打断用户操作的内容，适合用于页面转场、数据交互的等场景中。
 
+组件基于[`react-native-root-siblings`](https://github.com/magicismight/react-native-root-siblings) 插件开发， 当 `react native >= 0.62` 时，需要在程序中插入一个装入容器
+
+
+```jsx
+import { RootSiblingParent } from 'react-native-root-siblings';
+
+export default () => {
+  return (
+    <RootSiblingParent>
+      <App />
+    </RootSiblingParent>
+  )
+}
+```
+
 ## 基础示例
 
 ```jsx
