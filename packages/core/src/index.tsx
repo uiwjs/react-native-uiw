@@ -77,6 +77,9 @@ export * from './Card';
 export { default as NoticeBar } from './NoticeBar';
 export * from './NoticeBar';
 
+export { default as SpeedDial } from './SpeedDial'
+export * from './SpeedDial'
+
 /**
  * Typography
  */
