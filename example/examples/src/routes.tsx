@@ -330,4 +330,12 @@ export const stackPageData: Routes[] = [
       description: '通告栏',
     },
   },
+  {
+    name: 'SpeedDial',
+    component: require('./routes/SpeedDial').default,
+    params: {
+      title: 'SpeedDial 悬浮标记',
+      description: 'SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。',
+    },
+  },
 ];
