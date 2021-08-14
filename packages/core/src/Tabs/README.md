@@ -78,7 +78,7 @@ export interface TabsProps extends ViewProps {
 ## Tabs.Item Props
 
 ```ts
-import  { IconsName } from '../Icon';
+import { IconsName } from '@uiw/react-native';
 
 export type TabsItemIconTypes = IconsName | React.ReactElement | React.ReactNode | JSX.Element
 

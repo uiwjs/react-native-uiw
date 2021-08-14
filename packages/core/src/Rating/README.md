@@ -45,7 +45,7 @@ function Demo() {
 ## Props
 
 ```ts
-import { TabsItemIconTypes } from '../Tabs/TabsItem'
+import { TabsItemIconTypes } from '@uiw/react-native'
 
 export type icoType = [TabsItemIconTypes, TabsItemIconTypes]
 export interface RatingProps {
