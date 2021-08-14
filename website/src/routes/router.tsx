@@ -180,4 +180,7 @@ export const getRouterData = {
   '/components/quicklist': {
     component: dynamicWrapper([], () => import('../pages/components/quicklist')),
   },
+  '/components/card': {
+    component: dynamicWrapper([], () => import('../pages/components/card')),
+  },
 };
