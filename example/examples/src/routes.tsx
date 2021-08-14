@@ -311,7 +311,7 @@ export const stackPageData: Routes[] = [
     component: require('./routes/QuickList').default,
     params: {
       title: 'QuickList 快速请求列表',
-      description: 'QuickList 快速请求上拉下拉数据列表',
+      description: 'QuickList 高效率快速请求上拉下拉数据列表',
     },
   },
   {
