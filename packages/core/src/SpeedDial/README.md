@@ -77,8 +77,7 @@ function Demo() {
 
 ```ts
 import { ViewStyle,ViewProps } from 'react-native';
-import { SpeedDialItemProps } from './SpeedDialItem';
-import { icoType } from '../Rating';
+import { icoType,SpeedDialItemProps } from '@uiw/react-native';
 
 
 export interface SpeedDialProps extends ViewProps {
@@ -111,8 +110,7 @@ export interface SpeedDialProps extends ViewProps {
 ## SpeedDialItem Props
 
 ```ts
-import { IconsName } from '../Icon';
-import { TabsItemIconTypes } from '../Tabs/TabsItem'
+import { TabsItemIconTypes,IconsName } from '@uiw/react-native';
 
 export interface SpeedDialItemProps {
   /** 右边 显示的图标 */

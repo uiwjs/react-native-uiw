@@ -311,17 +311,17 @@ export const stackPageData: Routes[] = [
     component: require('./routes/QuickList').default,
     params: {
       title: 'QuickList 快速请求列表',
-      description: 'QuickList 快速请求上拉下拉数据列表',
+      description: 'QuickList 高效率快速请求上拉下拉数据列表',
     },
   },
-  // {
-  //   name: 'Card',
-  //   component: require('./routes/Card').default,
-  //   params: {
-  //     title: 'Card 卡片',
-  //     description: 'QuickList 最基础的卡片容器，可承载文字、列表、图片、段落。',
-  //   },
-  // },
+  {
+    name: 'Card',
+    component: require('./routes/Card').default,
+    params: {
+      title: 'Card 卡片',
+      description: 'Card 最基础的卡片容器，可承载文字、列表、图片、段落。',
+    },
+  },
   {
     name: 'NoticeBar',
     component: require('./routes/NoticeBar').default,

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import { StyleProp, Text, TouchableWithoutFeedback, View, ViewStyle, StyleSheet } from 'react-native';
 import Icon from '../Icon';
 import Marquee, { MarqueeProps } from './Marquee'
@@ -14,32 +14,24 @@ export type NoticeBarProps = {
   marqueeProps?: MarqueeProps
 };
 
-export default class NoticeBar extends Component<NoticeBarProps>{
-   constructor(props:any) {
-    super(props)
-    this.state = {
-      show: true,
-    }
-  }
+export default (props: NoticeBarProps) => {
+  const [show, setShow] = useState(true);
 
-  onPress = () => {
-    const { mode, onPress } = this.props
+  const onPress = () => {
+    const { mode, onPress } = props
     if (onPress) {
-      onPress()
+      onPress();
     }
     if (mode === 'closable') {
-      this.setState({
-        show: false,
-      })
+      setShow(false)
     }
   }
-  render() {
-    let { children, mode, icon, style, action, marqueeProps } = this.props;
+    let { children, mode, icon, style, action, marqueeProps } = props;
     let operationDom: any = null;
-    icon = typeof icon === 'undefined' ? (<Icon fill="notification" color="#f4333c" />) : (icon);
+    icon = typeof icon === 'undefined' ? (<Icon name="notification" color="#f4333c" size={15} />) : (icon);
     if (mode === 'closable') {
       operationDom = (
-        <TouchableWithoutFeedback onPress={this.onPress}>
+        <TouchableWithoutFeedback onPress={onPress}>
           <View style={styles.actionWrap}>
             {action ? action : <Text style={[styles.close]}>×</Text>}
           </View>
@@ -65,15 +57,14 @@ export default class NoticeBar extends Component<NoticeBarProps>{
           </View>
           {operationDom}
       </View>
-      )
-    return (
-      <View>
-        {mode === 'closable' ? (main) : (
-          <TouchableWithoutFeedback onPress={this.onPress}>{ main}</TouchableWithoutFeedback>
-        )}
-      </View>
     )
-  }
+  return (
+    <View>
+      {show ? (mode === 'closable' ? (main) : (
+        <TouchableWithoutFeedback onPress={onPress}>{ main}</TouchableWithoutFeedback>
+      )) : null}
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -83,6 +74,7 @@ const styles = StyleSheet.create({
       overflow: 'hidden',
       flexDirection: 'row',
       alignItems: 'center',
+      color: '#f4333c',
     },
     container: {
       flex: 1,
@@ -98,7 +90,7 @@ const styles = StyleSheet.create({
       marginLeft: 5,
     },
     left15: {
-      // marginLeft: 15,
+      marginLeft: 15,
     },
     actionWrap: {
       marginRight: 15,

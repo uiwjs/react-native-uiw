@@ -1,20 +1,26 @@
-import React, {Component} from 'react'
-import { Image, Text, View } from 'react-native'
-import { NoticeBar, Spacing } from '@uiw/react-native';
+NoticeBar 通告栏
+---
 
+在导航栏下方，一般用作系统提醒、活动提醒等通知。
 
-export default class NoticeBarExample extends Component{
-  render() {
-     const customIcon = (
-      <Image
-        // tslint:disable-next-line:jsx-no-multiline-js
-        source={{
-          uri: 'https://zos.alipayobjects.com/rmsportal/bRnouywfdRsCcLU.png',
-        }}
-        style={{ width: 12, height: 12 }}
-      />
-    )
-    return (
+### 基础示例
+
+<!--DemoStart--> 
+```jsx
+import React from 'react';
+import {  NoticeBar, Spacing } from '@uiw/react-native';
+
+const NoticeBarExample = () => {
+  const customIcon = (
+    <Image
+      // tslint:disable-next-line:jsx-no-multiline-js
+      source={{
+        uri: 'https://zos.alipayobjects.com/rmsportal/bRnouywfdRsCcLU.png',
+      }}
+      style={{ width: 12, height: 12 }}
+    />
+  )
+  return (
       <View style={{ marginTop: 10 }}>
         <NoticeBar
           onPress={() => console.log('click')}
@@ -52,5 +58,17 @@ export default class NoticeBarExample extends Component{
         </NoticeBar>
       </View>
     )
-  }
 }
+export default NoticeBarExample;
+```
+<!--End-->
+
+## Props
+
+属性 | 说明 | 类型 | 默认值
+----|-----|------|------
+| mode    | 提示类型，可选 `closable`,`link`   | String |  ''  |
+| icon    | 在开始位置设置图标  |  ReactNode | `<Icon type={require('./trips.svg')} size="xxs" />`|
+| onPress | 点击关闭或者操作区域的回调函数        | (): void |   |
+| marqueeProps | marquee 参数 | Object | `{loop: false, leading: 500, trailing: 800, fps: 40, style: {}}`  |
+| action | 用于替换操作 icon 的文案 | ReactElement | |
