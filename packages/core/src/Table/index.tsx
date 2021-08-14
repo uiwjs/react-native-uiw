@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import BodyRow from './BodyRow';
 
 interface TableProps {
   data: Array<Object>;
   columns: Array<columnsState>;
   rowKey: any;
+  horizontal?: boolean;
+  style?: Object;
 }
 
 interface columnsState {
@@ -16,37 +18,39 @@ interface columnsState {
   ellipsis?: boolean;
 }
 // table组件
-const Table = ({ data, columns, rowKey }: TableProps) => {
+const Table = ({ data, columns, rowKey, horizontal = true, style }: TableProps) => {
   const getRowKey: (record: any) => string = (record) => {
     const key = typeof rowKey === 'function' ? rowKey(record) : record && record[rowKey];
     return key;
   };
 
   return (
-    <View style={styles.conW}>
-      <View style={styles.conTitle}>
-        {columns.map((itm, idx) => (
-          <View
-            key={itm.dataIndex + idx}
-            style={[styles.contRight, { borderRightWidth: idx === columns.length - 1 ? 0 : 1 }, itm.style]}
-          >
-            <Text style={styles.content}>{itm.title}</Text>
-          </View>
-        ))}
+    <ScrollView style={[styles.conW, style]} horizontal={horizontal} >
+      <View>
+        <View style={styles.conTitle}>
+          {columns.map((itm, idx) => (
+            <View
+              key={itm.dataIndex + idx}
+              style={[styles.contRight, { borderRightWidth: idx === columns.length - 1 ? 0 : 1 }, itm.style]}
+            >
+              <Text style={styles.content}>{itm.title}</Text>
+            </View>
+          ))}
+        </View>
+        {data.map((item, idx) => {
+          const key = getRowKey(item);
+          return (
+            <BodyRow
+              key={key}
+              columns={columns}
+              record={item}
+              style={{ borderBottomWidth: idx === data.length - 1 ? 0 : 1 }}
+            />
+          );
+        })}
+        {data.length === 0 && <Text style={styles.noDataText}>暂无数据...</Text>}
       </View>
-      {data.map((item, idx) => {
-        const key = getRowKey(item);
-        return (
-          <BodyRow
-            key={key}
-            columns={columns}
-            record={item}
-            style={{ borderBottomWidth: idx === data.length - 1 ? 0 : 1 }}
-          />
-        );
-      })}
-      {data.length === 0 && <Text style={styles.noDataText}>暂无数据...</Text>}
-    </View>
+    </ScrollView>
   );
 };
 

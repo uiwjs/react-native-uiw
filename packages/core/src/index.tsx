@@ -79,6 +79,9 @@ export * from './NoticeBar';
 export { default as Stepper } from './Stepper';
 export * from './Stepper';
 
+export { default as SpeedDial } from './SpeedDial'
+export * from './SpeedDial'
+
 /**
  * Typography
  */

@@ -311,7 +311,7 @@ export const stackPageData: Routes[] = [
     component: require('./routes/QuickList').default,
     params: {
       title: 'QuickList 快速请求列表',
-      description: 'QuickList 快速请求上拉下拉数据列表',
+      description: 'QuickList 高效率快速请求上拉下拉数据列表',
     },
   },
   {
@@ -336,6 +336,14 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'Stepper 步进器',
       description: 'Stepper 步进器 用作增加或者减少当前数值。',
+    },
+  },
+  {
+    name: 'SpeedDial',
+    component: require('./routes/SpeedDial').default,
+    params: {
+      title: 'SpeedDial 悬浮标记',
+      description: 'SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。',
     },
   },
 ];
