@@ -330,4 +330,12 @@ export const stackPageData: Routes[] = [
       description: '通告栏',
     },
   },
+  {
+    name: 'Stepper',
+    component: require('./routes/Stepper').default,
+    params: {
+      title: 'Stepper 步进器',
+      description: 'Stepper 步进器 用作增加或者减少当前数值。',
+    },
+  },
 ];

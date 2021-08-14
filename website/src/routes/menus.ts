@@ -45,6 +45,8 @@ export const componentMenus: MenuData[] = [
   { path: "/components/result", name: "Result 结果页" },
   { path: "/components/toast", name: "Toast 轻提示" },
   { path: "/components/tabs", name: "Tabs 选项卡" },
+  { path: "/components/stepper", name: "Stepper 步进器" },
+
   { divider: true, name: "其它" },
   { href: "https://github.com/uiwjs/react-native-alipay", name: "Alipay 支付宝", target: '__blank' },
   { href: "https://github.com/uiwjs/react-native-amap-geolocation", name: "AMapGeolocation 高德地图定位", target: '__blank' },
