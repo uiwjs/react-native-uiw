@@ -331,6 +331,14 @@ export const stackPageData: Routes[] = [
     },
   },
   {
+    name: 'Stepper',
+    component: require('./routes/Stepper').default,
+    params: {
+      title: 'Stepper 步进器',
+      description: 'Stepper 步进器 用作增加或者减少当前数值。',
+    },
+  },
+  {
     name: 'SpeedDial',
     component: require('./routes/SpeedDial').default,
     params: {
