@@ -38,6 +38,7 @@ export const componentMenus: MenuData[] = [
   { path: "/components/timeLine", name: "Timeline 时间轴" },
   { path: "/components/quicklist", name: "QuicList 快速列表" },
   { path: "/components/card", name: "Card 卡片" },
+  { path: "/components/noticebar", name: "NoticeBar 通告栏" },
   { divider: true, name: "Feedback" },
   { path: "/components/loader", name: "Loader 加载" },
   { path: "/components/modal", name: "Modal 模态框" },
