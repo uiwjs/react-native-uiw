@@ -79,7 +79,8 @@ export * from './NoticeBar';
 
 export { default as SpeedDial } from './SpeedDial'
 export * from './SpeedDial'
-
+export { default as Progress } from './Progress'
+export * from './Progress'
 /**
  * Typography
  */
