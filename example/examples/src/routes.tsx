@@ -1,4 +1,4 @@
-import {StackNavigationProp} from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -336,6 +336,14 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'SpeedDial 悬浮标记',
       description: 'SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。',
+    }
+  },
+  {
+    name: 'Swiper',
+    component: require('./routes/Swiper').default,
+    params: {
+      title: 'Swiper 轮播图',
+      description: '轮播图',
     },
   },
 ];
