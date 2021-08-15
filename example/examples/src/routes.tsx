@@ -298,20 +298,44 @@ export const stackPageData: Routes[] = [
       description: '时间轴',
     },
   },
-  // {
-  //   name: 'Tabs',
-  //   component: require('./routes/Tabs').default,
-  //   params: {
-  //     title: 'Tabs 选项卡',
-  //     description: 'Tabs 选项卡组件跨不同屏幕、数据集和其他交互的内容。',
-  //   },
-  // },
-  // {
-  //   name: 'QuickList',
-  //   component: require('./routes/QuickList').default,
-  //   params: {
-  //     title: 'QuickList 快速请求列表',
-  //     description: 'QuickList 快速请求上拉下拉数据列表',
-  //   },
-  // },
+  {
+    name: 'Tabs',
+    component: require('./routes/Tabs').default,
+    params: {
+      title: 'Tabs 选项卡',
+      description: 'Tabs 选项卡组件跨不同屏幕、数据集和其他交互的内容。',
+    },
+  },
+  {
+    name: 'QuickList',
+    component: require('./routes/QuickList').default,
+    params: {
+      title: 'QuickList 快速请求列表',
+      description: 'QuickList 高效率快速请求上拉下拉数据列表',
+    },
+  },
+  {
+    name: 'Card',
+    component: require('./routes/Card').default,
+    params: {
+      title: 'Card 卡片',
+      description: 'Card 最基础的卡片容器，可承载文字、列表、图片、段落。',
+    },
+  },
+  {
+    name: 'NoticeBar',
+    component: require('./routes/NoticeBar').default,
+    params: {
+      title: 'NoticeBar 通告栏',
+      description: '通告栏',
+    },
+  },
+  {
+    name: 'SpeedDial',
+    component: require('./routes/SpeedDial').default,
+    params: {
+      title: 'SpeedDial 悬浮标记',
+      description: 'SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。',
+    },
+  },
 ];

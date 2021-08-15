@@ -177,4 +177,13 @@ export const getRouterData = {
   '/components/tabs': {
     component: dynamicWrapper([], () => import('../pages/components/tabs')),
   },
+  '/components/quicklist': {
+    component: dynamicWrapper([], () => import('../pages/components/quicklist')),
+  },
+  '/components/speeddial': {
+    component: dynamicWrapper([], () => import('../pages/components/speeddial')),
+  },
+  '/components/card': {
+    component: dynamicWrapper([], () => import('../pages/components/card')),
+  },
 };

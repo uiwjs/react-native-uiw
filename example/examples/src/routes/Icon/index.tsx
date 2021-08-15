@@ -10,13 +10,17 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'center',
   },
   item: {
-    width: '50%',
-    flexDirection: 'row',
+    width: '31%',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginBottom: 5,
+    justifyContent: 'center',
+    margin: 3,
+    paddingTop:10,
+    paddingBottom:10,
+    backgroundColor: '#fff',
+    borderRadius:4
   },
   icon: {
     marginRight: 10,
@@ -258,8 +262,8 @@ const IconListView = ({keyName}: {keyName: IconsName}) => {
   return useMemo(
     () => (
       <View style={styles.item}>
-        <Icon name={keyName} size={18} style={styles.icon} />
-        <Text>{keyName}</Text>
+          <Icon name={keyName} size={18} />
+          <Text>{keyName}</Text>
       </View>
     ),
     [keyName],
@@ -292,6 +296,7 @@ export default class IconPage extends React.Component<IconPageProps> {
                 size={18}
                 style={styles.icon}
               />
+              <Icon name='apple' size={18} color='#50CB42' />
             </Card>
             <Card title="UIW Icon" extra={<LinkButtons />}>
               <View style={styles.list}>
