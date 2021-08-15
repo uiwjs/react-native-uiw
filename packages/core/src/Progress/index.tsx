@@ -1,13 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {
   Animated,
-  Dimensions,
-  LayoutChangeEvent,
-  StyleProp,
   View,
-  ViewStyle,
   StyleSheet,
-  Text,
   ViewProps
 } from 'react-native'
 

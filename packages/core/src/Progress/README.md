@@ -7,17 +7,15 @@ Progress 进度条
 
 <!--DemoStart--> 
 ```jsx
-import {  SafeAreaView, View, Image  } from 'react-native';
+import {  SafeAreaView } from 'react-native';
 import { Progress } from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
-    return (
+function Demo() {
+  return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Progress/>
+      <Progress progress={30} position="fixed"/>
     </SafeAreaView>
-    )
-  }
+  )
 }
 ```
 <!--End-->
