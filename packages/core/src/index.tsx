@@ -63,8 +63,8 @@ export * from './ExpandableSection';
 export { default as Steps } from './Steps';
 export * from './Steps';
 
-export { default as Rating } from './Rating'
-export * from './Rating'
+export { default as Rating } from './Rating';
+export * from './Rating';
 
 export { default as Timeline } from './Timeline';
 export * from './Timeline';
@@ -81,6 +81,8 @@ export { default as SpeedDial } from './SpeedDial'
 export * from './SpeedDial'
 export { default as Progress } from './Progress'
 export * from './Progress'
+export { default as Swiper } from './Swiper';
+export * from './Swiper';
 /**
  * Typography
  */
