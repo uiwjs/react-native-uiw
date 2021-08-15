@@ -9,7 +9,6 @@ import {
   ViewStyle,
   StyleSheet,
 } from 'react-native'
-import theme from './commonStyle/default'
 
 function noop() {}
 
@@ -521,34 +520,34 @@ const styles = StyleSheet.create({
     width:50,
     textAlign: 'center',
     paddingHorizontal: 8,
-    fontSize: theme.input_font_size,
-    color: theme.color_text_base,
+    fontSize: 17,
+    color: '#000000',
   },
   stepWrap: {
     width: 28,
     height: 28,
-    borderWidth: theme.border_width_md,
-    borderColor: theme.border_color_base,
-    borderRadius: theme.radius_md,
-    backgroundColor: theme.fill_base,
+    borderWidth: 1,
+    borderColor:'#dddddd',
+    borderRadius: 5,
+    backgroundColor: '#ffffff',
   },
   stepText: {
     textAlign: 'center',
     fontSize: 20,
-    color: theme.color_text_placeholder,
+    color: '#bbbbbb',
     backgroundColor: 'transparent',
   },
   stepDisabled: {
-    borderColor: theme.color_text_disabled,
-    backgroundColor: theme.fill_disabled,
+    borderColor: '#bbbbbb',
+    backgroundColor: '#dddddd',
   },
   disabledStepTextColor: {
-    color: theme.color_text_disabled,
+    color: '#bbbbbb',
   },
   highlightStepTextColor: {
-    color: theme.brand_primary,
+    color: '#108ee9',
   },
   highlightStepBorderColor: {
-    borderColor: theme.brand_primary,
+    borderColor: '#108ee9',
   },
 });
