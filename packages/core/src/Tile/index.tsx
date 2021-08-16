@@ -113,12 +113,12 @@ const Tile = ({
     </ImageComponent>
 
     <View
-      style={StyleSheet.flatten([
+      style={[StyleSheet.flatten([
         styles.contentContainer,
         contentContainerStyle && contentContainerStyle,
       ]),
-      {...StyleSheet.absoluteFillObject,}
-    }
+      {...StyleSheet.absoluteFillObject}
+      ]}
     >
       <Text
         testID="tileTitle"
