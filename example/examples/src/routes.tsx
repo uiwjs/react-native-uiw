@@ -354,4 +354,28 @@ export const stackPageData: Routes[] = [
       description: '轮播图',
     },
   },
+  {
+    name: 'Tile',
+    component: require('./routes/Tile').default,
+    params: {
+      title: 'Tile',
+      description: 'Tile 卡片',
+    },
+  },
+  {
+    name: 'Image',
+    component: require('./routes/Image').default,
+    params: {
+      title: 'Image',
+      description: 'Image 图片',
+    },
+  },
+  // {
+  //   name: 'Card',
+  //   component: require('./routes/Card').default,
+  //   params: {
+  //     title: 'Card 卡片',
+  //     description: 'QuickList 最基础的卡片容器，可承载文字、列表、图片、段落。',
+  //   },
+  // },
 ];

@@ -49,6 +49,8 @@ export const componentMenus: MenuData[] = [
   { path: "/components/stepper", name: "Stepper 步进器" },
 
   { path: "/components/speeddial", name: "SpeedDial 悬浮标记" },
+  { path: "/components/tile", name: "Tile 卡片" },
+  { path: "/components/image", name: "Image 图片" },
   { divider: true, name: "其它" },
   { href: "https://github.com/uiwjs/react-native-alipay", name: "Alipay 支付宝", target: '__blank' },
   { href: "https://github.com/uiwjs/react-native-amap-geolocation", name: "AMapGeolocation 高德地图定位", target: '__blank' },
