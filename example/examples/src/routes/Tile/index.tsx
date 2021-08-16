@@ -12,9 +12,11 @@ const TileDemo = (props: any) => {
     <SafeAreaView style={{flex: 1}}>
       <Header title={title} description={description} />
         <Tile
-          imageSrc={require('../../image/tileBG.png')}
+          // imageSrc={require('../../image/tileBG.png')}
+          imageSrc={{uri: 'https://img11.51tietu.net/pic/2016-071418/20160714181543xyu10ukncwf221991.jpg'}}
           title="ccccccccc"
           titleStyle={{color: '#fff', fontSize: 24, textAlign:'center'}}
+          icon={{name: 'uiw', size: 26}}
         />
     </SafeAreaView>
   );

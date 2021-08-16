@@ -10,20 +10,20 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
   TouchableNativeFeedbackProps,
-  Image,
   ImageURISource,
   ImageProps,
   ImageSourcePropType
 } from 'react-native';
 
-import Icon, { IconsName } from '../Icon';
+import Icon, { IconsProps } from '../Icon';
+import Image from '../Image';
 
 export type TileProps = TouchableOpacityProps &
   TouchableNativeFeedbackProps&{
     /** Text inside the tile. */
     title?: string;
     /** Icon Component Props. */
-    icon?: IconsName;
+    icon?:  IconsProps;
     /** Width for the tile. */
     width?: number;
     /** Height for the tile. */
@@ -32,6 +32,8 @@ export type TileProps = TouchableOpacityProps &
     titleStyle?: StyleProp<TextStyle>;
     /** Styling for bottom container when not featured tile. */
     contentContainerStyle?: StyleProp<ViewStyle>;
+      /** Styling for the image. */
+      imageContainerStyle?: StyleProp<ViewStyle>;
     /** Number passed to control opacity on press. */
     activeOpacity?: number;
     /** Styling for the outer icon container. */
@@ -61,6 +63,7 @@ const Tile = ({
   titleStyle,
   iconContainerStyle,
   contentContainerStyle,
+  imageContainerStyle,
   titleNumberOfLines,
   imageProps = {},
   width = Dimensions.get('window').width,
@@ -70,6 +73,8 @@ const Tile = ({
 }: TileProps) => {
   console.log('11111',width)
   console.log('22222',height)
+  console.log('33333',icon)
+  console.log('44444',imageSrc)
   return (
     <TouchableOpacity
     {...attributes}
@@ -84,32 +89,36 @@ const Tile = ({
     ])}
   >
     <ImageComponent
-      resizeMode="cover"
-      source={imageSrc as ImageURISource}
-      style={{
-        ...StyleSheet.absoluteFillObject,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width:'100%',
-        height: '100%'
-      }}
-      {...(imageProps as Partial<ImageProps>)}
-    >
-      {/* <View
+        source={imageSrc}
+        containerStyle={StyleSheet.flatten([
+          styles.imageContainer,
+          imageContainerStyle && imageContainerStyle,
+        ])}
+        style={{
+          // ...StyleSheet.absoluteFillObject,
+          alignItems: 'center',
+          justifyContent: 'center',
+          width,
+          height: 200
+        }}
+        {...(imageProps as Partial<ImageProps>)}
+      >
+      <View
         style={StyleSheet.flatten([
-          styles.iconContainer,
           iconContainerStyle && iconContainerStyle,
         ])}
       >
         {icon && <Icon {...icon} />}
-      </View> */}
+      </View>
     </ImageComponent>
 
     <View
       style={StyleSheet.flatten([
         styles.contentContainer,
         contentContainerStyle && contentContainerStyle,
-      ])}
+      ]),
+      {...StyleSheet.absoluteFillObject,}
+    }
     >
       <Text
         testID="tileTitle"
