@@ -37,6 +37,8 @@ export const componentMenus: MenuData[] = [
   { path: "/components/steps", name: "Steps 步骤条" },
   { path: "/components/timeLine", name: "Timeline 时间轴" },
   { path: "/components/quicklist", name: "QuicList 快速列表" },
+  { path: "/components/card", name: "Card 卡片" },
+  { path: "/components/noticebar", name: "NoticeBar 通告栏" },
   { divider: true, name: "Feedback" },
   { path: "/components/loader", name: "Loader 加载" },
   { path: "/components/modal", name: "Modal 模态框" },
@@ -44,6 +46,9 @@ export const componentMenus: MenuData[] = [
   { path: "/components/result", name: "Result 结果页" },
   { path: "/components/toast", name: "Toast 轻提示" },
   { path: "/components/tabs", name: "Tabs 选项卡" },
+  { path: "/components/stepper", name: "Stepper 步进器" },
+
+  { path: "/components/speeddial", name: "SpeedDial 悬浮标记" },
   { divider: true, name: "其它" },
   { href: "https://github.com/uiwjs/react-native-alipay", name: "Alipay 支付宝", target: '__blank' },
   { href: "https://github.com/uiwjs/react-native-amap-geolocation", name: "AMapGeolocation 高德地图定位", target: '__blank' },

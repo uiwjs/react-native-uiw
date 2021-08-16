@@ -7,8 +7,10 @@ import {
 } from 'react-native';
 
 import Icon, { IconsName } from '../Icon';
+import { TabsItemIconTypes } from '../Tabs/TabsItem'
 
-export type icoType = [IconsName, IconsName] | [React.ReactElement, React.ReactElement] | [React.ReactNode, React.ReactNode]
+
+export type icoType = [TabsItemIconTypes, TabsItemIconTypes]
 export interface RatingProps {
   /**  默认几个 */
   defaultRating?: number,

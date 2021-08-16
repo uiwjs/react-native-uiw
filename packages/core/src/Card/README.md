@@ -17,7 +17,7 @@ class Demo extends Component {
       <Card
         title="我是标题"
         showDriver={true}
-        borderRadius={0}
+        // borderRadius={12}
         // onLongPress={() => {}}
       >
         <View>
@@ -42,6 +42,7 @@ class Demo extends Component {
 | `titleStyle` | 标题样式（可选） | object (style) | none |
 | `showDriver` | 是否展示下划线（可选） | Boolean | false |
 | `borderRadius` | 设置卡片圆角度数（可选）  | Number | none |
+| `selected` | 是否选中（可选）  | Boolean | none |
 | `onPress` | 按下卡片时的动作（可选） | TouchableOpacityProps['onPress']| none |
 | `onLongPress` | 长按下卡片时的动作（可选） | TouchableOpacityProps['onLongPress']| none |
 

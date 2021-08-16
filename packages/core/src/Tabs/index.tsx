@@ -6,6 +6,7 @@ import {
   ScrollView,
   ViewProps,
   View,
+  ViewStyle,
   Dimensions
 } from 'react-native';
 
@@ -16,6 +17,8 @@ let MainWidth = Dimensions.get('window').width;
 export interface TabsProps extends ViewProps {
   /** 子元素 */
   children?: JSX.Element | Array<JSX.Element>
+  /** 容器样式 */
+  style?: ViewStyle
 }
 
 function Tabs(props: TabsProps) {
