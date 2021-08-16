@@ -19,6 +19,7 @@ const data: { username: string; nickname?: string; }[] = [
   { username: 'zuojiahui', nickname: '左嘉辉' },
   { username: 'hy916', nickname: 'huyi' },
   { username: 'dibenny', nickname: 'dibenny' },
+  { username: 'hy916', nickname: 'hy916' },
 ];
 
 export default function Team(props: DefaultProps) {

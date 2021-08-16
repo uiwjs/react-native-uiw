@@ -189,4 +189,11 @@ export const getRouterData = {
   '/components/card': {
     component: dynamicWrapper([], () => import('../pages/components/card')),
   },
+  '/components/noticebar': {
+    component: dynamicWrapper([], () => import('../pages/components/noticebar')),
+  },
+
+  '/components/stepper': {
+    component: dynamicWrapper([], () => import('../pages/components/stepper')),
+  },
 };
