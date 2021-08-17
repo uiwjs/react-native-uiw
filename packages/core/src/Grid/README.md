@@ -59,13 +59,32 @@ function Demo() {
 
 ## Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|-----|------|
-| `data` | 传入的菜单数据，`icon` 可以是 `ReactNode` 或者 `uri` | Array<{icon?: React.ReactNode; text?: React.ReactNode;}> | `[]` |
-| `columns` | 列数 | Number | `4` |
-| `hasLine` | 是否有间隔线 | boolean | `true` |
-| `itemStyle` | 单元格样式 | ViewStyle | - |
-| `iconStyle` | 图片样式，可设置图片/图标尺寸 | ImageStyle & TextStyle & ViewStyle | - |
-| `textStyle` | 单元格文本样式 | TextStyle & ViewStyle | - |
-| `renderItem` | 自定义单元格 | (data, index, rowNum): void | - |
-| `onPress` | 点击宫格回调函数 | (data, index, rowNum): void | - |
+```ts
+export interface GridProps extends ViewProps {
+  /**
+   * 传入的菜单数据，`icon` 可以是 `ReactNode` 或者 `uri`
+   * @default []
+   */
+  data?: ItemData[];
+  /**
+   * 列数
+   * @default 4
+   */
+  columns?: number;
+  /**
+   * 是否有间隔线
+   * @default true
+   */
+  hasLine?: boolean;
+  /** 单元格样式 */
+  itemStyle?: StyleProp<ViewStyle>;
+  /** 单元格文本样式 */
+  textStyle?: StyleProp<TextStyle & ViewStyle>;
+  /** 图片样式，可设置图片/图标尺寸 */
+  iconStyle?: StyleProp<ImageStyle & TextStyle & ViewStyle>;
+  /** 自定义单元格 */
+  renderItem?: (data: ItemData, index: number, row: number) => React.ReactNode;
+  /** 点击宫格回调函数 */
+  onPress?: (data: ItemData, index: number, row: number, event: GestureResponderEvent) => void;
+}
+```
