@@ -53,6 +53,8 @@ const SearchBarDemo = (props: ComProps) => {
           { id: '2',  partName: 'Chanel', partBrand: '香奈儿', partModel: 'xl', remark: 'ff爱zz,三生三世用相随' },
           { id: '3',  partName: 'Chanel', partBrand: '香奈儿', partModel: 'xl', remark: 'ff爱zz,三生三世用相随' },
           { id: '4',  partName: 'Chanel', partBrand: '香奈儿', partModel: 'xl', remark: 'ff爱zz,三生三世用相随' },
+          { id: '5',  partName: 'Chanel', partBrand: '香奈儿', partModel: 'xl', remark: 'ff爱zz,三生三世用相随' },
+          { id: '6',  partName: 'Chanel', partBrand: '香奈儿', partModel: 'xl', remark: 'ff爱zz,三生三世用相随' },
         ]}
         rowKey="id"
       />
