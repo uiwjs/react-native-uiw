@@ -17,7 +17,7 @@ const iconStr = `
 
 export interface EmptyProps extends FlexProps {
   /**
-   * 设置提示语
+   * 设置提示文本
    */
   label?: string;
   /**
@@ -29,11 +29,11 @@ export interface EmptyProps extends FlexProps {
    */
   size?: number;
   /**
-   * 替换默认的图标 这里是 SVG string
+   * 传递 SVG xml 字符串，自定义图标，设为 `null` 将不展示图标。
    */
   xml?: string;
   /**
-   * 空提示更多内容
+   * 不光提示文本，还有更多内容，`label` 将不起作用
    */
   children?: React.ReactNode;
 }
