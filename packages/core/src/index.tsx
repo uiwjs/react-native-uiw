@@ -81,6 +81,8 @@ export * from './Stepper';
 
 export { default as SpeedDial } from './SpeedDial'
 export * from './SpeedDial'
+export { default as Progress } from './Progress'
+export * from './Progress'
 export { default as Swiper } from './Swiper';
 export * from './Swiper';
 /**

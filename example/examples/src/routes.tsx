@@ -354,4 +354,12 @@ export const stackPageData: Routes[] = [
       description: '轮播图',
     },
   },
+  {
+    name: 'Progress',
+    component: require('./routes/Progress').default,
+    params: {
+      title: 'Progress 进度条',
+      description: 'Progress 表明某个任务的当前进度',
+    },
+  },
 ];

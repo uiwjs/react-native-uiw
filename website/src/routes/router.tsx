@@ -183,6 +183,9 @@ export const getRouterData = {
   '/components/speeddial': {
     component: dynamicWrapper([], () => import('../pages/components/speeddial')),
   },
+  '/components/progress': {
+    component: dynamicWrapper([], () => import('../pages/components/progress')),
+  },
   '/components/card': {
     component: dynamicWrapper([], () => import('../pages/components/card')),
   },
