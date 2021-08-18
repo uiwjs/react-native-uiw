@@ -196,4 +196,7 @@ export const getRouterData = {
   '/components/stepper': {
     component: dynamicWrapper([], () => import('../pages/components/stepper')),
   },
+  '/components/swiper': {
+    component: dynamicWrapper([], () => import('../pages/components/swiper')),
+  },
 };
