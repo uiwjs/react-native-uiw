@@ -362,4 +362,12 @@ export const stackPageData: Routes[] = [
       description: 'Progress 表明某个任务的当前进度',
     },
   },
+  {
+    name: 'Tooltip',
+    component: require('./routes/Tooltip').default,
+    params: {
+      title: 'Tooltip 工具提示',
+      description: '当用户点击元素时，工具提示将显示信息',
+    },
+  },
 ];

@@ -199,4 +199,7 @@ export const getRouterData = {
   '/components/swiper': {
     component: dynamicWrapper([], () => import('../pages/components/swiper')),
   },
+  '/components/tooltip': {
+    component: dynamicWrapper([], () => import('../pages/components/tooltip')),
+  },
 };
