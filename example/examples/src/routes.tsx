@@ -331,6 +331,14 @@ export const stackPageData: Routes[] = [
     },
   },
   {
+    name: 'Stepper',
+    component: require('./routes/Stepper').default,
+    params: {
+      title: 'Stepper 步进器',
+      description: 'Stepper 步进器 用作增加或者减少当前数值。',
+    },
+  },
+  {
     name: 'SpeedDial',
     component: require('./routes/SpeedDial').default,
     params: {
@@ -344,6 +352,14 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'Swiper 轮播图',
       description: '轮播图',
+    },
+  },
+  {
+    name: 'Progress',
+    component: require('./routes/Progress').default,
+    params: {
+      title: 'Progress 进度条',
+      description: 'Progress 表明某个任务的当前进度',
     },
   },
 ];

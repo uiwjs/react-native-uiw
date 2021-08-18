@@ -92,16 +92,22 @@ export default QuickListDemo
 ```
 <!--End-->
 
-## Props
+### Props
 
-继承原生 FastList 属性 [`FastListProps`](https://reactnative.dev/docs/flatlist)
+```ts
+interface QuickListProps<ItemT> extends FlatListProps<ItemT> {
+  onFetch: (params: any) => void // 请求的接口函数
+  data: Array<any>, // 数据源
+  renderItem: ListRenderItem<any>, // 从data列表中获取一个项目并将其渲染到列表中
+  keyId: string | number,// 唯一健
+  emptyView?: void | any,// 当列表为空时呈现
+  pageSize?: number, // 每次加载数据条数
+  total: number, // 总条数
+  style?: Object,// 样式
+}
 
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|-----|------|
-| `onFetch` | 请求的接口 | Promise | - |
-| `data` | 数据源 | Array | - |
-| `pageSize` | 每次加载数据条数 | number | 10 |
-| `total` | 总条数 | number | - |
-| `renderItem` | 从data列表中获取一个项目并将其渲染到列表中 | ({item})=>void | - |
-| `emptyView` | 当列表为空时呈现 | Boolean | ()=>void |
-| `keyId` | 取唯一键 | string | - |
+export type QuickListComponent<ItemT = any> = (
+  props: QuickListProps<ItemT>,
+  ref?:  Ref<FlatList<ItemT>> | any
+) => React.ReactElement
+```

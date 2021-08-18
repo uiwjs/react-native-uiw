@@ -15,10 +15,24 @@ const styles = StyleSheet.create({
 const defaultImage = require('./assets/user.png');
 
 export interface AvatarProps extends ViewProps {
+  /** React Native `Image` 组件 Props */
   imageProps?: ImageProps;
+  /** 图像源（远程URL或本地文件资源）。 */
   src?: string | number;
+  /**
+   * 尺寸
+   * @default 40
+   */
   size?: number;
+  /**
+   * 设置圆角
+   * @default 3
+   */
   rounded?: number;
+  /**
+   * 指定头像的形状
+   * @default square
+   */
   shape?: 'circle' | 'square';
 }
 
