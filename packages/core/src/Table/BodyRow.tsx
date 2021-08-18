@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
+import { colors } from '../utils'
 interface BodyRowProps {
   columns: Array<columnsState>;
   record: Object | any;
@@ -36,13 +36,13 @@ export default function BodyRow({ columns, record, style }: BodyRowProps) {
         let textEllipsize: textEllipsizeState | any =
           itm.ellipsis && itm.ellipsis
             ? {
-                numberOfLines: 1,
-                ellipsizeMode: 'tail',
-              }
+              numberOfLines: 1,
+              ellipsizeMode: 'tail',
+            }
             : null;
 
         return (
-          <View key={itm.dataIndex} style={[styles.cell, itm.style]}>
+          <View key={itm.dataIndex} style={[idx === 0 && styles.firstLeftCell, styles.cell, itm.style]}>
             {itm.render ? (
               itm.render(record)
             ) : (
@@ -63,17 +63,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
     borderBottomWidth: 1,
-    borderColor: '#E5E5E5',
+    borderColor: colors.colorsPalette.dark70,
   },
   cell: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     borderRightWidth: 1,
-    borderRightColor: '#E5E5E5',
+    borderColor: colors.colorsPalette.dark70,
     paddingTop: 4,
     paddingBottom: 4,
     backgroundColor: '#fff',
+  },
+  firstLeftCell: {
+    borderLeftWidth: 1,
+    borderColor: colors.colorsPalette.dark70,
   },
   content: {
     color: '#888888',

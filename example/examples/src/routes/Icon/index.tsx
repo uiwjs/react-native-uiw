@@ -296,6 +296,7 @@ export default class IconPage extends React.Component<IconPageProps> {
                 size={18}
                 style={styles.icon}
               />
+              <Icon name='apple' size={18} color='#50CB42' />
             </Card>
             <Card title="UIW Icon" extra={<LinkButtons />}>
               <View style={styles.list}>

@@ -1,4 +1,4 @@
-import {StackNavigationProp} from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -311,15 +311,55 @@ export const stackPageData: Routes[] = [
     component: require('./routes/QuickList').default,
     params: {
       title: 'QuickList 快速请求列表',
-      description: 'QuickList 快速请求上拉下拉数据列表',
+      description: 'QuickList 高效率快速请求上拉下拉数据列表',
     },
   },
-  // {
-  //   name: 'Card',
-  //   component: require('./routes/Card').default,
-  //   params: {
-  //     title: 'Card 卡片',
-  //     description: 'QuickList 最基础的卡片容器，可承载文字、列表、图片、段落。',
-  //   },
-  // },
+  {
+    name: 'Card',
+    component: require('./routes/Card').default,
+    params: {
+      title: 'Card 卡片',
+      description: 'Card 最基础的卡片容器，可承载文字、列表、图片、段落。',
+    },
+  },
+  {
+    name: 'NoticeBar',
+    component: require('./routes/NoticeBar').default,
+    params: {
+      title: 'NoticeBar 通告栏',
+      description: '通告栏',
+    },
+  },
+  {
+    name: 'Stepper',
+    component: require('./routes/Stepper').default,
+    params: {
+      title: 'Stepper 步进器',
+      description: 'Stepper 步进器 用作增加或者减少当前数值。',
+    },
+  },
+  {
+    name: 'SpeedDial',
+    component: require('./routes/SpeedDial').default,
+    params: {
+      title: 'SpeedDial 悬浮标记',
+      description: 'SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。',
+    }
+  },
+  {
+    name: 'Swiper',
+    component: require('./routes/Swiper').default,
+    params: {
+      title: 'Swiper 轮播图',
+      description: '轮播图',
+    },
+  },
+  {
+    name: 'Progress',
+    component: require('./routes/Progress').default,
+    params: {
+      title: 'Progress 进度条',
+      description: 'Progress 表明某个任务的当前进度',
+    },
+  },
 ];
