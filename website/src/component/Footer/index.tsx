@@ -24,7 +24,7 @@ const data = [
         title: 'React Native AMap Geolocation'
       },
       {
-        href : 'https://gitee.com/uiw/react-native-uiw',
+        href : 'https://uiw.gitee.io/react-native-uiw/',
         title: '国内镜像站点 🇨🇳'
       },
     ]

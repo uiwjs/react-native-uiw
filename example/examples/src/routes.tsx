@@ -1,4 +1,4 @@
-import {StackNavigationProp} from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -331,11 +331,43 @@ export const stackPageData: Routes[] = [
     },
   },
   {
+    name: 'Stepper',
+    component: require('./routes/Stepper').default,
+    params: {
+      title: 'Stepper 步进器',
+      description: 'Stepper 步进器 用作增加或者减少当前数值。',
+    },
+  },
+  {
     name: 'SpeedDial',
     component: require('./routes/SpeedDial').default,
     params: {
       title: 'SpeedDial 悬浮标记',
       description: 'SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。',
+    }
+  },
+  {
+    name: 'Swiper',
+    component: require('./routes/Swiper').default,
+    params: {
+      title: 'Swiper 轮播图',
+      description: '轮播图',
+    },
+  },
+  {
+    name: 'Progress',
+    component: require('./routes/Progress').default,
+    params: {
+      title: 'Progress 进度条',
+      description: 'Progress 表明某个任务的当前进度',
+    },
+  },
+  {
+    name: 'Tooltip',
+    component: require('./routes/Tooltip').default,
+    params: {
+      title: 'Tooltip 工具提示',
+      description: '当用户点击元素时，工具提示将显示信息',
     },
   },
 ];
