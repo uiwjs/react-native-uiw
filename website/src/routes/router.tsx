@@ -196,4 +196,16 @@ export const getRouterData = {
   '/components/stepper': {
     component: dynamicWrapper([], () => import('../pages/components/stepper')),
   },
+  '/components/swiper': {
+    component: dynamicWrapper([], () => import('../pages/components/swiper')),
+  },
+  '/components/tooltip': {
+    component: dynamicWrapper([], () => import('../pages/components/tooltip')),
+  },
+  '/components/tile': {
+    component: dynamicWrapper([], () => import('../pages/components/tile')),
+  },
+  '/components/transitionImage': {
+    component: dynamicWrapper([], () => import('../pages/components/transitionImage')),
+  },
 };

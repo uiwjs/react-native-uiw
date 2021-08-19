@@ -9,9 +9,8 @@ const SwiperDemo = () => {
     ]
     return (
         <View>
-            <Swiper dataSource={data} height={150} />
+            <Swiper width={200} dataSource={data} height={150} borderRadius={24} />
         </View>
-
     )
 }
 export default SwiperDemo
