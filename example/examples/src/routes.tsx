@@ -363,11 +363,11 @@ export const stackPageData: Routes[] = [
     },
   },
   {
-    name: 'Image',
-    component: require('./routes/Image').default,
+    name: 'TransitionImage',
+    component: require('./routes/TransitionImage').default,
     params: {
-      title: 'Image',
-      description: 'Image 图片',
+      title: 'TransitionImage',
+      description: 'TransitionImage 图片过渡',
     },
   },
   // {

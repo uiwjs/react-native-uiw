@@ -88,8 +88,8 @@ export { default as Swiper } from './Swiper';
 export * from './Swiper';
 export { default as Tile } from './Tile'
 export * from './Tile'
-export { default as Image } from './Image'
-export * from './Image'
+export { default as TransitionImage } from './TransitionImage'
+export * from './TransitionImage'
 export { default as Tooltip } from './Tooltip'
 export * from './Tooltip'
 

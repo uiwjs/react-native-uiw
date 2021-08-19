@@ -14,7 +14,7 @@ import {
   ImageSourcePropType
 } from 'react-native';
 import Icon, { IconsProps } from '../Icon';
-import Image from '../Image';
+import TransitionImage from '../TransitionImage';
 
 export type TileProps = TouchableOpacityProps &
   TouchableNativeFeedbackProps & {
@@ -69,7 +69,7 @@ const Tile = ({
   imageProps = {},
   width = Dimensions.get('window').width,
   height = width * 0.8,
-  ImageComponent = Image,
+  ImageComponent = TransitionImage,
   ...attributes
 }: TileProps) => {
   return (

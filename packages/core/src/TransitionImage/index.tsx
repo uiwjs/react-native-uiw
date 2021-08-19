@@ -28,7 +28,7 @@ type ImageState = {
   placeholderOpacity: Animated.Value;
 };
 
-export default class Image extends React.Component<
+export default class TransitionImage extends React.Component<
   ImageProps & Partial<ImageProps>,
   ImageState
 > {

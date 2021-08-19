@@ -205,7 +205,7 @@ export const getRouterData = {
   '/components/tile': {
     component: dynamicWrapper([], () => import('../pages/components/tile')),
   },
-  '/components/image': {
-    component: dynamicWrapper([], () => import('../pages/components/image')),
+  '/components/transitionImage': {
+    component: dynamicWrapper([], () => import('../pages/components/transitionImage')),
   },
 };
