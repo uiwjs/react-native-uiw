@@ -10,46 +10,46 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
   TouchableNativeFeedbackProps,
-  ImageURISource,
   ImageProps,
   ImageSourcePropType
 } from 'react-native';
-
 import Icon, { IconsProps } from '../Icon';
 import Image from '../Image';
 
 export type TileProps = TouchableOpacityProps &
-  TouchableNativeFeedbackProps&{
-    /** Text inside the tile. */
+  TouchableNativeFeedbackProps & {
+    /** 标题内容（可选）*/
     title?: string;
-    /** Icon Component Props. */
-    icon?:  IconsProps;
-    /** Width for the tile. */
-    width?: number;
-    /** Height for the tile. */
-    height?: number;
-    /** Styling for the title. */
+    /** 标题样式 */
     titleStyle?: StyleProp<TextStyle>;
-    /** Styling for bottom container when not featured tile. */
-    contentContainerStyle?: StyleProp<ViewStyle>;
-      /** Styling for the image. */
-      imageContainerStyle?: StyleProp<ViewStyle>;
-    /** Number passed to control opacity on press. */
-    activeOpacity?: number;
-    /** Styling for the outer icon container. */
+    /** 图标（可选）*/
+    icon?:  IconsProps;
+    /** 图标样式（可选） */
     iconContainerStyle?: StyleProp<ViewStyle>;
-    /** Source for the image. */
+    /** 文本内容（可选） */
+    caption?: React.ReactNode;
+    /** 文本内容样式（可选） */
+    captionStyle?: StyleProp<TextStyle>;
+    /** 底部容器样式（可选） */
+    contentContainerStyle?: StyleProp<ViewStyle>;
+    /** 图片链接（可选） */
     imageSrc?: ImageSourcePropType | string | number;
-    /** Number of lines for Title. */
+    /** 图片容器样式（可选） */
+    imageContainerStyle?: StyleProp<ViewStyle>;
+    /** 文字行数（可选） */
     titleNumberOfLines?: number;
-    /** Styling for the outer tile container. */
+    /** Tile样式（可选） */
     containerStyle?: StyleProp<ViewStyle>;
-    /** Optional properties to pass to the image if provided e.g "resizeMode". */
+    /** Tile宽度（可选） */
+    width?: number;
+    /** Tile高度（可选）*/
+    height?: number;
+    /** Tile透明度（可选）*/
+    activeOpacity?: number;
+    /** 继承image的api */
     imageProps?: Partial<ImageProps>;
     /** Custom ImageComponent for Tile. */
     ImageComponent?: typeof React.Component;
-
-    children?: any
   }
 
 const Tile = ({
@@ -57,8 +57,9 @@ const Tile = ({
   icon,
   title,
   onPress,
-  children,
+  caption,
   activeOpacity,
+  captionStyle,
   containerStyle,
   titleStyle,
   iconContainerStyle,
@@ -71,10 +72,6 @@ const Tile = ({
   ImageComponent = Image,
   ...attributes
 }: TileProps) => {
-  console.log('11111',width)
-  console.log('22222',height)
-  console.log('33333',icon)
-  console.log('44444',imageSrc)
   return (
     <TouchableOpacity
     {...attributes}
@@ -127,16 +124,20 @@ const Tile = ({
       >
         {title}
       </Text>
-      {children}
+      <Text 
+        testID="tileText"
+        style={StyleSheet.flatten([styles.text, captionStyle && captionStyle])}
+        numberOfLines={titleNumberOfLines}
+      >
+        {caption}
+      </Text>
     </View>
   </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  imageContainer: {
-    backgroundColor: 'red'
-  },
+  imageContainer: {},
   text: {
     backgroundColor: 'rgba(0,0,0,0)',
     marginBottom: 5,

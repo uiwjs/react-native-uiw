@@ -202,4 +202,10 @@ export const getRouterData = {
   '/components/tooltip': {
     component: dynamicWrapper([], () => import('../pages/components/tooltip')),
   },
+  '/components/tile': {
+    component: dynamicWrapper([], () => import('../pages/components/tile')),
+  },
+  '/components/image': {
+    component: dynamicWrapper([], () => import('../pages/components/image')),
+  },
 };
