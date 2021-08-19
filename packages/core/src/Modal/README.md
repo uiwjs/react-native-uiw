@@ -49,3 +49,10 @@ export default class ButtonGroupView extends Component {
 ## Props
 
 继承原生 Modal 属性 [`ModalProps`](https://facebook.github.io/react-native/docs/modal.html#props)
+
+```ts
+export interface ModalProps extends MaskLayerProps {
+  placement?: 'top' | 'right' | 'bottom' | 'left';
+  onClosed?: () => void;
+}
+```

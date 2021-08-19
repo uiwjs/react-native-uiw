@@ -129,10 +129,27 @@ class Demo extends Component {
 
 ## Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|-----|------|
-| `label` | 设置提示文本 | String | `暂无数据` |
-| `children` | 不光提示文本，还有更多内容，`label` 将不起作用 | ReactNode | - |
-| `labelStyle` | 设置提示文本样式 | TextProps['style'] | - |
-| `size` | 图标大小 | Number | `64` |
-| `xml` | 传递 SVG xml 字符串，自定义图标，设为 `null` 将不展示图标。 | String | - |
+```ts
+export interface EmptyProps extends FlexProps {
+  /**
+   * 设置提示文本
+   */
+  label?: string;
+  /**
+   * 设置提示音样式
+   */
+  labelStyle?: TextProps['style'];
+  /**
+   * 设置 图标尺寸
+   */
+  size?: number;
+  /**
+   * 传递 SVG xml 字符串，自定义图标，设为 `null` 将不展示图标。
+   */
+  xml?: string;
+  /**
+   * 不光提示文本，还有更多内容，`label` 将不起作用
+   */
+  children?: React.ReactNode;
+}
+```

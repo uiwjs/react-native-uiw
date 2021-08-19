@@ -378,4 +378,20 @@ export const stackPageData: Routes[] = [
   //     description: 'QuickList 最基础的卡片容器，可承载文字、列表、图片、段落。',
   //   },
   // },
+  {
+    name: 'Progress',
+    component: require('./routes/Progress').default,
+    params: {
+      title: 'Progress 进度条',
+      description: 'Progress 表明某个任务的当前进度',
+    },
+  },
+  {
+    name: 'Tooltip',
+    component: require('./routes/Tooltip').default,
+    params: {
+      title: 'Tooltip 工具提示',
+      description: '当用户点击元素时，工具提示将显示信息',
+    },
+  },
 ];

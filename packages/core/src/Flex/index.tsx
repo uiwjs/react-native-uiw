@@ -3,9 +3,26 @@ import { View, ViewProps, FlexStyle } from 'react-native';
 import FlexItem from './FlexItem';
 
 export interface FlexProps extends ViewProps {
+  /**
+   * 项目定位方向
+   * `row`, `column`, `row-reverse`, `column-reverse`
+   * @default row
+   */
   direction?: FlexStyle['flexDirection'];
+  /**
+   * 子元素在主轴上的对齐方式
+   * @default start
+   */
   justify?: 'start' | 'end' | 'center' | 'between' | 'around';
+  /**
+   * 子元素在交叉轴上的对齐方式
+   * @default start
+   */
   align?: 'start' | 'end' | 'center' | 'stretch' | 'baseline';
+  /**
+   * 子元素的换行方式
+   * @default nowrap
+   */
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
 }
 
