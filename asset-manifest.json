@@ -1,16 +1,16 @@
 {
   "files": {
     "static/css/0.75ac16b0.chunk.css": "/static/css/0.75ac16b0.chunk.css",
-    "static/js/0.65b7378f.chunk.js": "/static/js/0.65b7378f.chunk.js",
-    "static/js/0.65b7378f.chunk.js.map": "/static/js/0.65b7378f.chunk.js.map",
+    "static/js/0.8bab7f66.chunk.js": "/static/js/0.8bab7f66.chunk.js",
+    "static/js/0.8bab7f66.chunk.js.map": "/static/js/0.8bab7f66.chunk.js.map",
     "static/css/1.e106536e.chunk.css": "/static/css/1.e106536e.chunk.css",
     "static/js/1.83a8bb40.chunk.js": "/static/js/1.83a8bb40.chunk.js",
     "static/js/1.83a8bb40.chunk.js.map": "/static/js/1.83a8bb40.chunk.js.map",
     "main.css": "/static/css/main.965e1040.chunk.css",
     "main.js": "/static/js/main.e2828abf.chunk.js",
     "main.js.map": "/static/js/main.e2828abf.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.eba8e47d.js",
-    "runtime-main.js.map": "/static/js/runtime-main.eba8e47d.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f0d5cf80.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f0d5cf80.js.map",
     "static/css/4.e389853e.chunk.css": "/static/css/4.e389853e.chunk.css",
     "static/js/4.5b2f55b8.chunk.js": "/static/js/4.5b2f55b8.chunk.js",
     "static/js/4.5b2f55b8.chunk.js.map": "/static/js/4.5b2f55b8.chunk.js.map",
@@ -259,7 +259,7 @@
     "static/css/6.4b419cd6.chunk.css.map": "/static/css/6.4b419cd6.chunk.css.map",
     "static/css/7.c2f8b323.chunk.css.map": "/static/css/7.c2f8b323.chunk.css.map",
     "static/css/main.965e1040.chunk.css.map": "/static/css/main.965e1040.chunk.css.map",
-    "static/js/0.65b7378f.chunk.js.LICENSE.txt": "/static/js/0.65b7378f.chunk.js.LICENSE.txt",
+    "static/js/0.8bab7f66.chunk.js.LICENSE.txt": "/static/js/0.8bab7f66.chunk.js.LICENSE.txt",
     "static/js/4.5b2f55b8.chunk.js.LICENSE.txt": "/static/js/4.5b2f55b8.chunk.js.LICENSE.txt",
     "static/media/001.png": "/static/media/001.1627096e.png",
     "static/media/002.png": "/static/media/002.fd564f68.png",
@@ -336,7 +336,7 @@
     "static/media/waves.svg": "/static/media/waves.0eb73ddb.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.eba8e47d.js",
+    "static/js/runtime-main.f0d5cf80.js",
     "static/css/4.e389853e.chunk.css",
     "static/js/4.5b2f55b8.chunk.js",
     "static/css/main.965e1040.chunk.css",
