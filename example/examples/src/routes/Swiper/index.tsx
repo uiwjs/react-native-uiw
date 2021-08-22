@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Swiper } from '@uiw/react-native';
+
 const SwiperDemo = () => {
     const data = [
         { url: 'https://img2.baidu.com/it/u=1669646624,570058533&fm=26&fmt=auto&gp=0.jpg' },
