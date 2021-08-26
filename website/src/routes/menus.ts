@@ -49,7 +49,6 @@ export const componentMenus: MenuData[] = [
   { path: "/components/tabs", name: "Tabs 选项卡" },
   { path: "/components/speeddial", name: "SpeedDial 悬浮标记" },
   { path: "/components/stepper", name: "Stepper 步进器" },
-  { path: "/components/speeddial", name: "SpeedDial 悬浮标记" },
   { path: "/components/tile", name: "Tile 卡片" },
   { path: "/components/transitionImage", name: "TransitionImage 图片过渡" },
   { path: "/components/progress", name: "Progress 进度条" },
