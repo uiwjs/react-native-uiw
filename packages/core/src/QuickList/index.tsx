@@ -4,7 +4,7 @@ import { emptyDataView, activityIndicatorView, noMoreDataView } from './View'
 
 
 
-interface SankFlatListProps<ItemT> extends FlatListProps<ItemT> {
+interface QuickListProps<ItemT> extends FlatListProps<ItemT> {
   onFetch: (params: any) => void // 请求的接口 Promise 类型
   data: Array<any>, // 数据源 Array 类型
   renderItem: ListRenderItem<any>, // 渲染方法 Function 类型
@@ -15,12 +15,12 @@ interface SankFlatListProps<ItemT> extends FlatListProps<ItemT> {
   style?: Object,
 }
 
-export type SankFlatListComponent<ItemT = any> = (
-  props: SankFlatListProps<ItemT>,
+export type QuickListComponent<ItemT = any> = (
+  props: QuickListProps<ItemT>,
   ref?:  Ref<FlatList<ItemT>> | any
 ) => React.ReactElement
 
-const SankFlatList: SankFlatListComponent = (props, ref) => {
+const QuickList: QuickListComponent = (props, ref) => {
   const {
     onFetch, // 请求的接口 Promise 类型
     data, // 数据源 Array 类型
@@ -181,4 +181,4 @@ const SankFlatList: SankFlatListComponent = (props, ref) => {
     />
   )
 };
-export default  forwardRef(SankFlatList)
+export default  forwardRef(QuickList)

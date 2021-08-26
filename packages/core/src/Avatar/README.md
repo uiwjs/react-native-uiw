@@ -26,10 +26,28 @@ function Demo() {
 
 继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
 
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|-----|------|
-| `src` | 图像源（远程URL或本地文件资源）。 | String/Number | - |
-| `imageProps` | React Native `Image` 组件 Props | ImageProps | - |
-| `size` | 设置圆角 | Number | `40` |
-| `rounded` | 设置圆角 | Number | `3` |
-| `shape` | 指定头像的形状 `square` 正方形或者 `circle` 圆 | `circle`/`square` | `square` |
+```ts
+import { ViewProps } from 'react-native';
+
+export interface AvatarProps extends ViewProps {
+  /** React Native `Image` 组件 Props */
+  imageProps?: ImageProps;
+  /** 图像源（远程URL或本地文件资源）。 */
+  src?: string | number;
+  /**
+   * 尺寸
+   * @default 40
+   */
+  size?: number;
+  /**
+   * 设置圆角
+   * @default 3
+   */
+  rounded?: number;
+  /**
+   * 指定头像的形状
+   * @default square
+   */
+  shape?: 'circle' | 'square';
+}
+```

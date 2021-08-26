@@ -26,13 +26,17 @@ const styles = StyleSheet.create({
 
 export interface BadgeProps extends ViewProps {
   children?: React.ReactNode;
+  /** 标记颜色 */
   color?: colors.Colors | string;
+  /** 文本内容 */
   text?: string | Element;
   /**
    * 设置圆角，默认 `12`
    */
   rounded?: number;
+  /** 设置类型 */
   type?: 'dot' | 'text';
+  /** 文本样式 */
   textStyles?: StyleProp<TextStyle>;
 }
 
