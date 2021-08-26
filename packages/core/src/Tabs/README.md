@@ -64,11 +64,11 @@ function Demo() {
 ## Tabs Props
 
 ```ts
-import { ViewStyle } from 'react-native';
+import { ViewStyle,ViewProps } from 'react-native';
 
-export interface TabsProps {
+export interface TabsProps extends ViewProps {
   /** 子元素 */
-  children?: Tabs.Item | Array<Tabs.Item>,
+  children?: JSX.Element | Array<JSX.Element>
   /** 容器样式 */
   style?: ViewStyle
 }
@@ -78,7 +78,7 @@ export interface TabsProps {
 ## Tabs.Item Props
 
 ```ts
-import Icon, { IconsName } from '../Icon';
+import { IconsName } from '@uiw/react-native';
 
 export type TabsItemIconTypes = IconsName | React.ReactElement | React.ReactNode | JSX.Element
 

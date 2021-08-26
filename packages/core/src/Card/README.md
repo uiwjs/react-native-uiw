@@ -17,7 +17,7 @@ class Demo extends Component {
       <Card
         title="我是标题"
         showDriver={true}
-        borderRadius={0}
+        // borderRadius={12}
         // onLongPress={() => {}}
       >
         <View>
@@ -31,17 +31,30 @@ class Demo extends Component {
 ```
 <!--End-->
 
+### Props
 
-## Props
-
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|-----|------|
-| `containerStyle` | 外容器样式（可选） | object (style) | none |
-| `wrapperStyle` | 内容器样式（可选） | object (style) | none |
-| `title` | 标题（可选） | String | none |
-| `titleStyle` | 标题样式（可选） | object (style) | none |
-| `showDriver` | 是否展示下划线（可选） | Boolean | false |
-| `borderRadius` | 设置卡片圆角度数（可选）  | Number | none |
-| `onPress` | 按下卡片时的动作（可选） | TouchableOpacityProps['onPress']| none |
-| `onLongPress` | 长按下卡片时的动作（可选） | TouchableOpacityProps['onLongPress']| none |
+```ts
+export interface CardProps {
+  /** 外容器样式（可选） */
+  containerStyle?: StyleProp<ViewStyle>;
+  /** 内容器样式（可选） */
+  wrapperStyle?: StyleProp<ViewStyle>;
+  /** 标题（可选） */
+  title?: string
+  /** 标题样式（可选） */
+  titleStyle?: StyleProp<TextStyle>;
+  /** 是否展示下划线（可选） */
+  showDriver?: boolean;
+  /** 设置卡片圆角度数（可选） */
+  borderRadius?: number;
+  /** 是否选中（可选） */
+  selected?: boolean;
+  /** 渲染内容 */
+  children?: React.ReactNode;
+  /** 按下卡片时的动作（可选） */
+  onPress?: TouchableOpacityProps['onPress'];
+  /** 长按下卡片时的动作（可选） */
+  onLongPress?: TouchableOpacityProps['onLongPress'];
+}
+```
 

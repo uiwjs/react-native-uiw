@@ -180,4 +180,32 @@ export const getRouterData = {
   '/components/quicklist': {
     component: dynamicWrapper([], () => import('../pages/components/quicklist')),
   },
+  '/components/speeddial': {
+    component: dynamicWrapper([], () => import('../pages/components/speeddial')),
+  },
+  '/components/progress': {
+    component: dynamicWrapper([], () => import('../pages/components/progress')),
+  },
+  '/components/card': {
+    component: dynamicWrapper([], () => import('../pages/components/card')),
+  },
+  '/components/noticebar': {
+    component: dynamicWrapper([], () => import('../pages/components/noticebar')),
+  },
+
+  '/components/stepper': {
+    component: dynamicWrapper([], () => import('../pages/components/stepper')),
+  },
+  '/components/swiper': {
+    component: dynamicWrapper([], () => import('../pages/components/swiper')),
+  },
+  '/components/tooltip': {
+    component: dynamicWrapper([], () => import('../pages/components/tooltip')),
+  },
+  '/components/tile': {
+    component: dynamicWrapper([], () => import('../pages/components/tile')),
+  },
+  '/components/transitionImage': {
+    component: dynamicWrapper([], () => import('../pages/components/transitionImage')),
+  },
 };

@@ -63,17 +63,36 @@ export * from './ExpandableSection';
 export { default as Steps } from './Steps';
 export * from './Steps';
 
-export { default as Rating } from './Rating'
-export * from './Rating'
+export { default as Rating } from './Rating';
+export * from './Rating';
 
 export { default as Timeline } from './Timeline';
 export * from './Timeline';
-export { default as Tabs } from './Tabs'
+export { default as Tabs } from './Tabs';
 export * from './Tabs'
-export { default as QuickList } from './QuickList'
-export * from './QuickList'
-export { default as Card } from './Card'
-export * from './Card'
+export { default as QuickList } from './QuickList';
+export * from './QuickList';
+export { default as Card } from './Card';
+export * from './Card';
+export { default as NoticeBar } from './NoticeBar';
+export * from './NoticeBar';
+export { default as Stepper } from './Stepper';
+export * from './Stepper';
+
+export { default as SpeedDial } from './SpeedDial'
+export * from './SpeedDial'
+
+export { default as Progress } from './Progress'
+export * from './Progress'
+export { default as Swiper } from './Swiper';
+export * from './Swiper';
+export { default as Tile } from './Tile'
+export * from './Tile'
+export { default as TransitionImage } from './TransitionImage'
+export * from './TransitionImage'
+export { default as Tooltip } from './Tooltip'
+export * from './Tooltip'
+
 
 /**
  * Typography

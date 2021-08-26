@@ -14,6 +14,7 @@ class Demo extends Component {
     return (
       <View>
         <Icon name='apple' size={46} color='#50CB42' />
+        <Icon name='apple' size={46} fill='red' />
       </View>
     )
   }
