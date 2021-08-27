@@ -92,6 +92,8 @@ export { default as TransitionImage } from './TransitionImage'
 export * from './TransitionImage'
 export { default as Tooltip } from './Tooltip'
 export * from './Tooltip'
+export { default as CardCollapse } from './CardCollapse'
+export * from './CardCollapse'
 
 
 /**

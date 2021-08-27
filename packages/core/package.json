@@ -54,12 +54,14 @@
     "@react-native-picker/picker": "1.16.5",
     "@types/color": "3.0.2",
     "@types/react-native": "0.64.12",
+    "@types/lodash": "4.14.172",
     "@uiw/icons": "2.5.1",
     "color": "4.0.1",
     "prop-types": "15.7.2",
     "react-native-root-siblings": "4.1.1",
     "react-native-svg": "12.1.1",
-    "react-native-swipeout": "2.3.6"
+    "react-native-swipeout": "2.3.6",
+    "lodash": "4.17.15"
   },
   "peerDependencies": {
     "react": ">=16.9.0",

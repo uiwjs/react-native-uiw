@@ -394,4 +394,12 @@ export const stackPageData: Routes[] = [
       description: '当用户点击元素时，工具提示将显示信息',
     },
   },
+  {
+    name: 'CardCollapse',
+    component: require('./routes/CardCollapse').default,
+    params: {
+      title: 'CardCollapse 折叠卡片',
+      description: '可折叠Card列表',
+    },
+  },
 ];
