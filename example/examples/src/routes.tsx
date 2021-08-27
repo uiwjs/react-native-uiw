@@ -398,8 +398,8 @@ export const stackPageData: Routes[] = [
     name: 'CardCollapse',
     component: require('./routes/CardCollapse').default,
     params: {
-      title: 'CardCollapse 折叠卡片',
-      description: '可折叠Card列表',
+      title: 'CardCollapse 折叠卡片列表',
+      description: '可折叠卡片列表',
     },
   },
 ];

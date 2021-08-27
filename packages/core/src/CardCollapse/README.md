@@ -82,9 +82,12 @@ type CardCollapseProps = ViewProps & {
    */
   onItemPress?: (index: number) => void;
   /**
-   * 卡片折叠回调
+   * 卡片折叠回调（值是未来折叠状态）
    */
   onCollapseWillChange?: (changed: boolean) => void;
+  /**
+   * 卡片折叠回调（值是目前状态）
+   */
   onCollapseChanged?: (changed: boolean) => void;
   /**
    * 卡片是否可以点击

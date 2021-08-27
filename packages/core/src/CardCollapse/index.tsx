@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 import Icon from '../Icon'
 import { colors } from '../utils'
-import { down, up } from './svg'
+import { down } from './svg'
 
 export type CardCollapseProps = ViewProps & {
   /**
@@ -44,9 +44,12 @@ export type CardCollapseProps = ViewProps & {
    */
   onItemPress?: (index: number) => void;
   /**
-   * 卡片折叠回调
+   * 卡片折叠回调（值是未来折叠状态）
    */
   onCollapseWillChange?: (changed: boolean) => void;
+  /**
+   * 卡片折叠回调（值是目前状态）
+   */
   onCollapseChanged?: (changed: boolean) => void;
   /**
    * 卡片是否可以点击
@@ -147,7 +150,7 @@ export default function CardCollapse(props: CardCollapseProps) {
     }
     return Promise.all(promises);
   }
-
+  // 关闭折叠
   const close = async () => {
     setCollapsed(true)
     invoke(props, 'onCollapseWillChange', true);
@@ -158,6 +161,7 @@ export default function CardCollapse(props: CardCollapseProps) {
       animate();
     }
   };
+  // 打开折叠
   const open = async () => {
     setCollapsed(false)
     invoke(props, 'onCollapseWillChange', false);
@@ -246,13 +250,9 @@ export default function CardCollapse(props: CardCollapseProps) {
           }}
         >
           {
-            collapsed ? (
-              <TouchableOpacity onPress={open}>
-                <Icon xml={up} size={26} />
-              </TouchableOpacity>
-            ) : (
+            collapsed ? null: (
               <TouchableOpacity onPress={close}>
-                <Icon xml={down} size={26} />
+                <Icon xml={down} size={30} />
               </TouchableOpacity>
             )
           }
@@ -262,7 +262,7 @@ export default function CardCollapse(props: CardCollapseProps) {
         })}
         {collapsed &&
           <TouchableOpacity
-            onPress={collapsed ? open : close}
+            onPress={open}
             activeOpacity={1}
             style={[
               styles.touchable,

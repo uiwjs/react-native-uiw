@@ -208,4 +208,7 @@ export const getRouterData = {
   '/components/transitionImage': {
     component: dynamicWrapper([], () => import('../pages/components/transitionImage')),
   },
+  '/components/cardcollapse': {
+    component: dynamicWrapper([], () => import('../pages/components/cardcollapse')),
+  },
 };
