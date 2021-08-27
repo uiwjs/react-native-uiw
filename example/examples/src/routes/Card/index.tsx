@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Image } from 'react-native';
+import { ScrollView, Image } from 'react-native';
 import { Card, Divider, Loader } from '@uiw/react-native';
 import Layout from '../../Layout';
 const CardDemo = (props: any) => {
@@ -19,7 +19,7 @@ const CardDemo = (props: any) => {
           <Image
             onLoad={() => setLoad(false)}
             source={{
-              uri: 'https://image11.m1905.cn/uploadfile/2020/ss/0624/20200624104507290748.jpg',
+              uri: 'https://iknow-pic.cdn.bcebos.com/810a19d8bc3eb135828572d2ab1ea8d3fd1f441d',
             }}
             style={{ height: 200 }}
           />
@@ -51,7 +51,7 @@ const CardDemo = (props: any) => {
         <Loader loading={loading}>
           <Image
             source={{
-              uri: 'https://image11.m1905.cn/uploadfile/2020/ss/0624/20200624104507290748.jpg',
+              uri: 'https://wx1.sinaimg.cn/mw690/4718260ely1gt2cg5r9zij22yo1o0x6p.jpg',
             }}
             style={{ height: 200 }}
           />
