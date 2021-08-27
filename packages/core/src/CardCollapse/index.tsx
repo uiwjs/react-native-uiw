@@ -84,7 +84,7 @@ export default function CardCollapse(props: CardCollapseProps) {
   const animatedScaleArray: Animated.Value[] = getAnimatedScales();
   const itemsCount = React.Children.count(children);
   const easeOut = Easing.bezier(0, 0, 0.58, 1);
-  const Container: any = !disablePresses  ? TouchableOpacity : View;
+  const Container: any = !disablePresses ? TouchableOpacity : View;
   useEffect(() => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
   }, [collapsed])
@@ -100,7 +100,7 @@ export default function CardCollapse(props: CardCollapseProps) {
     }
     return 1;
   }
-
+  // 动画
   const animate = async () => {
     return Promise.all([animateValues(), animateCards()]);
   };
@@ -134,7 +134,6 @@ export default function CardCollapse(props: CardCollapseProps) {
     const promises = [];
     for (let index = 0; index < itemsCount; index++) {
       const newScale = getItemScale(index);
-
       promises.push(
         new Promise(resolve => {
           Animated.timing(animatedScaleArray[index], {
@@ -225,7 +224,7 @@ export default function CardCollapse(props: CardCollapseProps) {
         collapsable={false}
       >
         <Container
-          style={[contentContainerStyle, styles.card,{borderRadius:itemBorderRadius}]}
+          style={[contentContainerStyle, styles.card, { borderRadius: itemBorderRadius }]}
           onPress={() => disablePresses && onItemPress(index)}
         >
           <Animated.View style={index !== 0 ? { opacity: animatedContentOpacity } : undefined} collapsable={false}>
@@ -247,17 +246,23 @@ export default function CardCollapse(props: CardCollapseProps) {
           }}
         >
           {
-            collapsed ? <Icon xml={up} size={24} /> : <TouchableOpacity onPress={close}><Icon xml={down} size={24} /></TouchableOpacity>
+            collapsed ? (
+              <TouchableOpacity onPress={open}>
+                <Icon xml={up} size={26} />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={close}>
+                <Icon xml={down} size={26} />
+              </TouchableOpacity>
+            )
           }
         </Animated.View>
-
         {React.Children.map(children, (item, index) => {
           return renderItem(item, index);
         })}
-
-        {collapsed && (
+        {collapsed &&
           <TouchableOpacity
-            onPress={open}
+            onPress={collapsed ? open : close}
             activeOpacity={1}
             style={[
               styles.touchable,
@@ -267,7 +272,7 @@ export default function CardCollapse(props: CardCollapseProps) {
               }
             ]}
           />
-        )}
+        }
       </View>
     </View>
   )

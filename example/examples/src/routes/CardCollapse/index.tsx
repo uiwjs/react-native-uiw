@@ -29,8 +29,8 @@ const CardCollapseDemo = (props: any) => {
       <Header title={title} description={description} />
       <Header description={'基本使用'} />
       <CardCollapse
-       isCollapsed
-       disablePresses={true}
+       isCollapsed={false}
+       disablePresses={false}
       >
         {map(contents, (item, index) => {
           return renderItem(item, index);
