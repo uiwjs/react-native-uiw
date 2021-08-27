@@ -61,7 +61,7 @@
     "react-native-root-siblings": "4.1.1",
     "react-native-svg": "12.1.1",
     "react-native-swipeout": "2.3.6",
-    "lodash": "4.17.15"
+    "lodash": "4.17.21"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
