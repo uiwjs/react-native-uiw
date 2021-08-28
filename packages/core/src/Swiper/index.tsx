@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, } from 'react'
 import { StyleSheet, View, Image, ScrollView, Dimensions, TouchableOpacity, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
+import { colors } from '../utils';
 export interface dataSourceType {
     url: string
     onClick?: () => void
@@ -73,6 +74,11 @@ const Swiper = (porps: SwiperProps) => {
         let page = offSetX / mentWidth;
         setCurIndex(page)
     }
+    // 点击原点跳转
+    const onClickDot =(index:number)=>{
+        setCurIndex(index)
+        scrollToRef.current.scrollTo({ x: width * index, y: 0, animated: true })
+    }
     return (
         <View style={StyleSheet.flatten([styles.banner, { width, height }])}>
             <ScrollView
@@ -105,7 +111,8 @@ const Swiper = (porps: SwiperProps) => {
             </ScrollView>
             <View style={styles.dotBox}>
                 {dataSource.map((_: dataSourceType, index: number) => {
-                    return <View
+                    return <TouchableOpacity
+                        onPress={onClickDot.bind(this,index)}
                         key={index}
                         style={
                             StyleSheet.flatten([dotStyle === "block" ? styles.block : styles.dot,
@@ -148,10 +155,10 @@ const styles = StyleSheet.create({
         marginRight: 8
     },
     dotColor: {
-        backgroundColor: "lightgray",
+        backgroundColor: colors.white,
     },
     dotSetColor: {
-        backgroundColor: "red",
+        backgroundColor: colors.colorsPalette.grey50,
     }
 });
 export default Swiper
