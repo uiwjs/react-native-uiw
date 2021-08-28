@@ -26,7 +26,7 @@ class Demo extends Component {
 ```
 <!--End-->
 
-### 带标题下划线圆角卡片
+### 带标题圆角卡片
 
 <!--DemoStart--> 
 ```jsx
@@ -100,14 +100,22 @@ export interface CardProps {
   title?: string
   /** 标题样式（可选） */
   titleStyle?: StyleProp<TextStyle>;
-  /** 是否展示下划线（可选） */
-  showDriver?: boolean;
   /** 设置卡片圆角度数（可选） */
   borderRadius?: number;
   /** 是否选中（可选） */
   selected?: boolean;
   /** 渲染内容 */
   children?: React.ReactNode;
+  /** 操作 */
+  actions?: Array<{
+    text?: string;
+    icon?: JSX.Element;
+    onPress?: (e: GestureResponderEvent, index: number) => void;
+  }>;
+  /** 操作容器样式（可选） */
+  actionsContainerStyle?: StyleProp<ViewStyle>;
+  /** 操作文字样式（可选） */
+  actionsTextStyle?: StyleProp<ViewStyle>;
   /** 按下卡片时的动作（可选） */
   onPress?: TouchableOpacityProps['onPress'];
   /** 长按下卡片时的动作（可选） */

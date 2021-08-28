@@ -5,7 +5,7 @@ import { Tooltip, Icon } from '@uiw/react-native';
 import { ComProps } from '../../routes';
 
 
-const { Header, Body, Card, Footer } = Layout;
+const { Header, Body, Footer } = Layout;
 
 export interface IndexProps extends ComProps { }
 export interface IndexState {
@@ -27,46 +27,39 @@ export default class Index extends Component<IndexProps, IndexState> {
     const title = route.params.title;
     return (
       <Container>
-        <Layout>
+        <Layout style={{ backgroundColor:'#fff' }}>
           <Header title={title} description={description} />
-          <Body>
-            <View style={styles.divider} />
-            <View style={{ paddingHorizontal: 20, }}>
+          <Body style={{ backgroundColor:'#fff' }}>
+            <Header description={'基本使用'} />
+            <View style={{ paddingHorizontal:20 }}>
+              <Tooltip title='@uiw/react-native'>
+                <Text numberOfLines={4} style={styles.textStyle}>@uiw/react-native</Text>
+              </Tooltip>
+            </View>
+
+            <Header description={'自定义背景色文本'} />
+            <View style={{ paddingHorizontal: 20 }}>
               <Tooltip
-                backgroundColor="pink"
+               backgroundColor="black"
                 width={30}
                 height={30}
                 title={<View>
-                  <Text>我是一个苹果</Text>
+                  <Text style={{color:'#fff'}}>我是一个苹果</Text>
                   <Icon name='apple' color="#fff" />
                 </View>}
               >
-                <Icon name='apple' color="red" />
-              </Tooltip>
-            </View>
-            <View style={{ left: 200 }}>
-
-              <Tooltip title='我是一个文本'>
-                <Text style={styles.textStyle}>我是一个文本</Text>
+                <Icon name='apple' color="black" />
               </Tooltip>
             </View>
 
-            <View style={{ top: 200, paddingHorizontal: 20, }}>
-
+            <Header description={'自定义文本'} />
+            <View style={{paddingHorizontal: 20 }}>
               <Tooltip
                 width={'auto'}
                 height={'auto'}
                 backgroundColor="#222"
-                title={<Text style={{ fontSize: 16, color: '#eee' }}>猩猩偷猴子的香蕉时被发现了，猴子们在后面穷追不舍。兔子问猩猩：“他们是谁？为什么追你？”猩猩头也没回喊道：“追猩族。”</Text>}>
-                <Text style={styles.textStyle}>法海与白素贞斗法，趁白素贞不备，一口咬住白素贞，却七窍流血而死。白素贞冷冷的说：现在知道什么叫咬蛇自尽了吧。</Text>
-              </Tooltip>
-            </View>
-
-
-            <View style={{ marginTop: 1000 }}>
-
-              <Tooltip title='我是一个文本'>
-                <Text style={styles.textStyle}>我是一个文本</Text>
+                title={<Text style={{ fontSize: 16, color: '#eee' }}>Welcome to @uiw/react-native!</Text>}>
+                <Text style={styles.textStyle}>A UI component library based on React Native (Android and iOS).</Text>
               </Tooltip>
             </View>
 
@@ -79,18 +72,9 @@ export default class Index extends Component<IndexProps, IndexState> {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  divider: {
-    marginVertical: 10
-  },
   textStyle: {
-    color: "#000",
-    fontSize: 16,
+    color: "#20303C",
+    fontSize: 14,
   },
-
 });
 
