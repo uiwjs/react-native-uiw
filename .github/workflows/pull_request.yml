@@ -2,6 +2,9 @@ name: Pull Request Build
 on:
   pull_request:
 
+env:
+  SKIP_PREFLIGHT_CHECK: true
+
 jobs:
   build-deploy:
     runs-on: ubuntu-20.04
