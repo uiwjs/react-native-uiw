@@ -17,27 +17,36 @@ const ProgressDemo = (props: any) => {
     if (count > 100) {
       count = 0;
     }
-    setValue(count)
-  }
+    setValue(count);
+  };
 
   return (
     <Container>
-      <Progress progress={30}/>
+      <Progress progress={30} />
       <Header title={title} description={description} />
       <Body>
-        <Card title="基础实例" style={{margin:10}}>
-          <Progress progressColor="#5847FF" progress={40}/>
+        <Card title="基础实例" style={{margin: 10}}>
+          <Progress progressColor="#5847FF" progress={40} />
           <Spacing />
-          <Button color={"#5847FF"} onPress={onPress}>(+-)10</Button>
+          <Button color={'#5847FF'} onPress={onPress}>
+            (+-)10
+          </Button>
           <Spacing />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-            <Progress progress={val} progressColor='#5847FF'/>
-            <Text style={{fontSize: 12, width: 40, textAlign: 'right'}}>{val}%</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+            <Progress progress={val} progressColor="#5847FF" />
+            <Text style={{fontSize: 12, width: 40, textAlign: 'right'}}>
+              {val}%
+            </Text>
           </View>
           <Spacing />
-          <Progress progressColor="#5847FF" progress={60}/>
+          <Progress progressColor="#5847FF" progress={60} />
           <Spacing />
-          <Progress progressColor="#5847FF" progress={80}/>
+          <Progress progressColor="#5847FF" progress={80} />
         </Card>
       </Body>
     </Container>

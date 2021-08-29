@@ -10,18 +10,18 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
   Animated,
-  GestureResponderEvent
+  GestureResponderEvent,
 } from 'react-native';
-import Divider from '../Divider'
-import Icon from '../Icon'
-import { checked } from './svg'
-import { colors } from '../utils'
-import map from 'lodash/map'
+import Divider from '../Divider';
+import Icon from '../Icon';
+import { checked } from './svg';
+import { colors } from '../utils';
+import map from 'lodash/map';
 
 export type CardProps = {
   containerStyle?: StyleProp<ViewStyle>;
   wrapperStyle?: StyleProp<ViewStyle>;
-  title?: string
+  title?: string;
   titleStyle?: StyleProp<TextStyle>;
   borderRadius?: number;
   selected?: boolean;
@@ -36,7 +36,6 @@ export type CardProps = {
   onPress?: TouchableOpacityProps['onPress'];
   onLongPress?: TouchableOpacityProps['onLongPress'];
 };
-
 
 const Card = ({
   children,
@@ -57,18 +56,16 @@ const Card = ({
   // 获取卡片圆角度数
   const getBorderRadius = () => {
     return !borderRadius ? 0 : borderRadius;
-  }
+  };
   // 卡片标题
   const CardTitle = (
     <Fragment>
-      <Text
-        testID="cardTitle"
-        style={StyleSheet.flatten([styles.title, titleStyle]) as TextStyle}>
+      <Text testID="cardTitle" style={StyleSheet.flatten([styles.title, titleStyle]) as TextStyle}>
         {title}
       </Text>
       <Divider style={StyleSheet.flatten([styles.divider])} />
     </Fragment>
-  )
+  );
 
   const CardActions = (
     <Fragment>
@@ -84,11 +81,11 @@ const Card = ({
               {item.icon && item.icon}
               {item.text && <Text style={[styles.actionsTitle, actionsTextStyle]}>{item.text}</Text>}
             </TouchableOpacity>
-          )
+          );
         })}
       </View>
     </Fragment>
-  )
+  );
   // 卡片选中icon
   const renderSelection = () => {
     if (!selected) {
@@ -100,19 +97,17 @@ const Card = ({
           styles.selectedBorder,
           {
             opacity: 1,
-            borderRadius: getBorderRadius()
-          }
+            borderRadius: getBorderRadius(),
+          },
         ]}
         pointerEvents="none"
       >
-        <View
-          style={styles.selectedIndicator}
-        >
+        <View style={styles.selectedIndicator}>
           <Icon xml={checked} size={30} />
         </View>
       </Animated.View>
     );
-  }
+  };
 
   return (
     <Container
@@ -126,16 +121,11 @@ const Card = ({
         // 圆角
         {
           borderRadius: getBorderRadius(),
-          elevation: 2
-        }
+          elevation: 2,
+        },
       ])}
     >
-      <View
-        style={StyleSheet.flatten([
-          styles.wrapper,
-          wrapperStyle && wrapperStyle,
-        ])}
-      >
+      <View style={StyleSheet.flatten([styles.wrapper, wrapperStyle && wrapperStyle])}>
         {title && CardTitle}
         {children}
       </View>
@@ -187,7 +177,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: colors.colorsPalette.violet30
+    borderColor: colors.colorsPalette.violet30,
   },
   selectedIndicator: {
     borderRadius: 999,
@@ -204,9 +194,9 @@ const styles = StyleSheet.create({
   },
   actionsContainer: {
     display: 'flex',
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    paddingTop: 15
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingTop: 15,
   },
   actionsTitleContainer: {
     display: 'flex',
@@ -224,8 +214,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
       },
     }),
-    textAlign: 'center'
+    textAlign: 'center',
   },
 });
 
-export default Card
+export default Card;

@@ -11,7 +11,7 @@ import {
   TouchableOpacityProps,
   TouchableNativeFeedbackProps,
   ImageProps,
-  ImageSourcePropType
+  ImageSourcePropType,
 } from 'react-native';
 import Icon, { IconsProps } from '../Icon';
 import TransitionImage from '../TransitionImage';
@@ -23,7 +23,7 @@ export type TileProps = TouchableOpacityProps &
     /** 标题样式 */
     titleStyle?: StyleProp<TextStyle>;
     /** 图标（可选）*/
-    icon?:  IconsProps;
+    icon?: IconsProps;
     /** 图标样式（可选） */
     iconContainerStyle?: StyleProp<ViewStyle>;
     /** 文本内容（可选） */
@@ -50,7 +50,7 @@ export type TileProps = TouchableOpacityProps &
     imageProps?: Partial<ImageProps>;
     /** Custom ImageComponent for Tile. */
     ImageComponent?: typeof React.Component;
-  }
+  };
 
 const Tile = ({
   imageSrc,
@@ -74,65 +74,54 @@ const Tile = ({
 }: TileProps) => {
   return (
     <TouchableOpacity
-    {...attributes}
-    onPress={onPress}
-    activeOpacity={activeOpacity}
-    style={StyleSheet.flatten([
-      {
-        width: width,
-        height: height,
-      },
-      containerStyle && containerStyle,
-    ])}
-  >
-    <ImageComponent
+      {...attributes}
+      onPress={onPress}
+      activeOpacity={activeOpacity}
+      style={StyleSheet.flatten([
+        {
+          width: width,
+          height: height,
+        },
+        containerStyle && containerStyle,
+      ])}
+    >
+      <ImageComponent
         source={imageSrc}
-        containerStyle={StyleSheet.flatten([
-          styles.imageContainer,
-          imageContainerStyle && imageContainerStyle,
-        ])}
+        containerStyle={StyleSheet.flatten([styles.imageContainer, imageContainerStyle && imageContainerStyle])}
         style={{
           // ...StyleSheet.absoluteFillObject,
           alignItems: 'center',
           justifyContent: 'center',
           width,
-          height: 200
+          height: 200,
         }}
         {...(imageProps as Partial<ImageProps>)}
       >
-      <View
-        style={StyleSheet.flatten([
-          iconContainerStyle && iconContainerStyle,
-        ])}
-      >
-        {icon && <Icon {...icon} />}
-      </View>
-    </ImageComponent>
+        <View style={StyleSheet.flatten([iconContainerStyle && iconContainerStyle])}>{icon && <Icon {...icon} />}</View>
+      </ImageComponent>
 
-    <View
-      style={[StyleSheet.flatten([
-        styles.contentContainer,
-        contentContainerStyle && contentContainerStyle,
-      ]),
-      {...StyleSheet.absoluteFillObject}
-      ]}
-    >
-      <Text
-        testID="tileTitle"
-        style={StyleSheet.flatten([styles.text, titleStyle && titleStyle])}
-        numberOfLines={titleNumberOfLines}
+      <View
+        style={[
+          StyleSheet.flatten([styles.contentContainer, contentContainerStyle && contentContainerStyle]),
+          { ...StyleSheet.absoluteFillObject },
+        ]}
       >
-        {title}
-      </Text>
-      <Text 
-        testID="tileText"
-        style={StyleSheet.flatten([styles.text, captionStyle && captionStyle])}
-        numberOfLines={titleNumberOfLines}
-      >
-        {caption}
-      </Text>
-    </View>
-  </TouchableOpacity>
+        <Text
+          testID="tileTitle"
+          style={StyleSheet.flatten([styles.text, titleStyle && titleStyle])}
+          numberOfLines={titleNumberOfLines}
+        >
+          {title}
+        </Text>
+        <Text
+          testID="tileText"
+          style={StyleSheet.flatten([styles.text, captionStyle && captionStyle])}
+          numberOfLines={titleNumberOfLines}
+        >
+          {caption}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -155,4 +144,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Tile
+export default Tile;

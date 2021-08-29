@@ -3,7 +3,7 @@
   border-bottom: 1px solid #d2d2d2;
   padding: 0 26px 0 22px;
   backdrop-filter: saturate(180%) blur(0.4rem);
-  background-color: hsla(0, 0%, 100%, .75);
+  background-color: hsla(0, 0%, 100%, 0.75);
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -20,7 +20,7 @@
 .menus {
   display: flex;
   a {
-    transition: all .3s;
+    transition: all 0.3s;
     color: #333;
     border-radius: 3px;
     padding: 2px 8px 2px 8px;
@@ -30,7 +30,8 @@
   a + a {
     margin-left: 6px;
   }
-  :global(.active), a:hover {
+  :global(.active),
+  a:hover {
     background: #00000017;
     color: #0366d6;
   }

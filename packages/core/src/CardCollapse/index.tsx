@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import invoke from 'lodash/invoke'
+import React, { useState, useEffect } from 'react';
+import invoke from 'lodash/invoke';
 import {
   StyleSheet,
   Animated,
@@ -12,21 +12,21 @@ import {
   ViewProps,
   TouchableOpacity,
   Platform,
-  Dimensions
+  Dimensions,
 } from 'react-native';
-import Icon from '../Icon'
-import { colors } from '../utils'
-import { down } from './svg'
+import Icon from '../Icon';
+import { colors } from '../utils';
+import { down } from './svg';
 
 export type CardCollapseProps = ViewProps & {
   /**
-    * 是否折叠
-    */
+   * 是否折叠
+   */
   isCollapsed: boolean;
   /**
    * 渲染的内容
    */
-  children: JSX.Element | JSX.Element[]
+  children: JSX.Element | JSX.Element[];
   /**
    * 外层样式
    */
@@ -71,16 +71,16 @@ export default function CardCollapse(props: CardCollapseProps) {
     disablePresses,
     containerStyle,
     onCollapseChanged,
-  } = props
+  } = props;
 
   const getAnimatedScales = (): Animated.Value[] => {
     return React.Children.map(children, (_item, index) => {
       return new Animated.Value(getItemScale(index));
     });
-  }
+  };
 
-  const [collapsed, setCollapsed] = useState(isCollapsed)
-  const [firstItemHeight, setFirstItemHeight]: any = useState(undefined)
+  const [collapsed, setCollapsed] = useState(isCollapsed);
+  const [firstItemHeight, setFirstItemHeight]: any = useState(undefined);
   const animatedScale: Animated.Value = new Animated.Value(collapsed ? buttonStartValue : 1);
   const animatedOpacity: any = new Animated.Value(collapsed ? buttonStartValue : 1);
   const animatedContentOpacity: any = new Animated.Value(collapsed ? 0 : 1);
@@ -90,7 +90,7 @@ export default function CardCollapse(props: CardCollapseProps) {
   const Container: any = !disablePresses ? TouchableOpacity : View;
   useEffect(() => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-  }, [collapsed])
+  }, [collapsed]);
 
   function getItemScale(index: number) {
     if (collapsed) {
@@ -110,49 +110,49 @@ export default function CardCollapse(props: CardCollapseProps) {
 
   const animateValues = () => {
     const newValue = collapsed ? buttonStartValue : 1;
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       Animated.parallel([
         Animated.timing(animatedOpacity, {
           duration: DURATION,
           toValue: Number(newValue),
-          useNativeDriver: true
+          useNativeDriver: true,
         }),
         Animated.timing(animatedScale, {
           toValue: Number(newValue),
           easing: easeOut,
           duration: DURATION,
-          useNativeDriver: true
+          useNativeDriver: true,
         }),
         Animated.timing(animatedContentOpacity, {
           toValue: Number(collapsed ? 0 : 1),
           easing: easeOut,
           duration: DURATION,
-          useNativeDriver: true
-        })
+          useNativeDriver: true,
+        }),
       ]).start(resolve);
     });
-  }
+  };
 
   const animateCards = () => {
     const promises = [];
     for (let index = 0; index < itemsCount; index++) {
       const newScale = getItemScale(index);
       promises.push(
-        new Promise(resolve => {
+        new Promise((resolve) => {
           Animated.timing(animatedScaleArray[index], {
             toValue: Number(newScale),
             easing: easeOut,
             duration: DURATION,
-            useNativeDriver: true
+            useNativeDriver: true,
           }).start(resolve);
-        })
+        }),
       );
     }
     return Promise.all(promises);
-  }
+  };
   // 关闭折叠
   const close = async () => {
-    setCollapsed(true)
+    setCollapsed(true);
     invoke(props, 'onCollapseWillChange', true);
     if (onCollapseChanged) {
       await animate();
@@ -163,7 +163,7 @@ export default function CardCollapse(props: CardCollapseProps) {
   };
   // 打开折叠
   const open = async () => {
-    setCollapsed(false)
+    setCollapsed(false);
     invoke(props, 'onCollapseWillChange', false);
     if (onCollapseChanged) {
       await animate();
@@ -181,26 +181,26 @@ export default function CardCollapse(props: CardCollapseProps) {
       start += PEEP * 2;
     }
     return start;
-  }
+  };
 
   const getStyle = (index: number): StyleProp<ViewStyle> => {
     const top = getTop(index);
     if (collapsed) {
       return {
         position: index !== 0 ? 'absolute' : undefined,
-        top
+        top,
       };
     }
     return {
       marginBottom: MARGIN_BOTTOM,
-      marginTop: index === 0 ? 40 : undefined
+      marginTop: index === 0 ? 40 : undefined,
     };
-  }
+  };
 
   const onLayout = (event: LayoutChangeEvent) => {
     const height: number = event.nativeEvent.layout.height;
     if (height) {
-      setFirstItemHeight(height)
+      setFirstItemHeight(height);
     }
   };
 
@@ -222,8 +222,8 @@ export default function CardCollapse(props: CardCollapseProps) {
             zIndex: itemsCount - index,
             transform: [{ scaleX: animatedScaleArray[index] }],
             width: Dimensions.get('screen').width - 40,
-            height: collapsed ? firstItemHeight : undefined
-          }
+            height: collapsed ? firstItemHeight : undefined,
+          },
         ]}
         collapsable={false}
       >
@@ -246,21 +246,19 @@ export default function CardCollapse(props: CardCollapseProps) {
             position: 'absolute',
             right: 0,
             opacity: animatedOpacity,
-            transform: [{ scale: animatedScale }]
+            transform: [{ scale: animatedScale }],
           }}
         >
-          {
-            collapsed ? null: (
-              <TouchableOpacity onPress={close}>
-                <Icon xml={down} size={30} />
-              </TouchableOpacity>
-            )
-          }
+          {collapsed ? null : (
+            <TouchableOpacity onPress={close}>
+              <Icon xml={down} size={30} />
+            </TouchableOpacity>
+          )}
         </Animated.View>
         {React.Children.map(children, (item, index) => {
           return renderItem(item, index);
         })}
-        {collapsed &&
+        {collapsed && (
           <TouchableOpacity
             onPress={open}
             activeOpacity={1}
@@ -268,14 +266,14 @@ export default function CardCollapse(props: CardCollapseProps) {
               styles.touchable,
               {
                 height: firstItemHeight ? firstItemHeight + PEEP * 2 : undefined,
-                zIndex: itemsCount
-              }
+                zIndex: itemsCount,
+              },
             ]}
           />
-        }
+        )}
       </View>
     </View>
-  )
+  );
 }
 const styles = StyleSheet.create({
   touchable: {
@@ -291,7 +289,6 @@ const styles = StyleSheet.create({
   },
   card: {
     overflow: 'hidden',
-    flexShrink: 1
-  }
+    flexShrink: 1,
+  },
 });
-

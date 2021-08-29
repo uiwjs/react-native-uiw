@@ -1,24 +1,22 @@
-import React, { useState, useEffect, forwardRef, useImperativeHandle,Ref } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle, Ref } from 'react';
 import { FlatList, FlatListProps, ListRenderItem } from 'react-native';
-import { emptyDataView, activityIndicatorView, noMoreDataView } from './View'
-
-
+import { emptyDataView, activityIndicatorView, noMoreDataView } from './View';
 
 interface QuickListProps<ItemT> extends FlatListProps<ItemT> {
-  onFetch: (params: any) => void // 请求的接口 Promise 类型
-  data: Array<any>, // 数据源 Array 类型
-  renderItem: ListRenderItem<any>, // 渲染方法 Function 类型
-  keyId: string | number,// 列表唯一 key
-  emptyView?: void | any,
-  pageSize?: number, // 每次加载数据条数
-  total: number, // 总条数
-  style?: Object,
+  onFetch: (params: any) => void; // 请求的接口 Promise 类型
+  data: Array<any>; // 数据源 Array 类型
+  renderItem: ListRenderItem<any>; // 渲染方法 Function 类型
+  keyId: string | number; // 列表唯一 key
+  emptyView?: void | any;
+  pageSize?: number; // 每次加载数据条数
+  total: number; // 总条数
+  style?: Object;
 }
 
 export type QuickListComponent<ItemT = any> = (
   props: QuickListProps<ItemT>,
-  ref?:  Ref<FlatList<ItemT>> | any
-) => React.ReactElement
+  ref?: Ref<FlatList<ItemT>> | any,
+) => React.ReactElement;
 
 const QuickList: QuickListComponent = (props, ref) => {
   const {
@@ -52,7 +50,7 @@ const QuickList: QuickListComponent = (props, ref) => {
   const [paginationStatus, setPaginationStatus] = useState(PaginationStatus.firstLoad);
 
   // 暴露给父组件调用的方法
-  useImperativeHandle(ref, ():any => ({
+  useImperativeHandle(ref, (): any => ({
     executeRefreshAction: async (param = {}) => {
       setPage(1);
       const params = {
@@ -60,26 +58,29 @@ const QuickList: QuickListComponent = (props, ref) => {
         pageSize,
         ...param,
       };
-      onFetch && await onFetch(params);
+      onFetch && (await onFetch(params));
     },
   }));
 
   useEffect(() => {
     // 挂载列表
-    mounted = true
+    mounted = true;
     // 挂载完成首次执行加载
-    firstLoader && firstLoad().catch(error => {
-      console.error(error)
-    });
+    firstLoader &&
+      firstLoad().catch((error) => {
+        console.error(error);
+      });
     return () => {
       // 卸载列表
       mounted = false;
-    }
-  }, [firstLoader])
+    };
+  }, [firstLoader]);
 
   useEffect(() => {
     // 首次加载和总量为0时候直接返回
-    if (firstLoader || total === 0) { return; }
+    if (firstLoader || total === 0) {
+      return;
+    }
     let maxPage = Math.ceil(total / pageSize);
     if (maxPage === page) {
       setPaginationStatus(PaginationStatus.allLoaded);
@@ -179,6 +180,6 @@ const QuickList: QuickListComponent = (props, ref) => {
       ListEmptyComponent={renderEmptyView()}
       style={style}
     />
-  )
+  );
 };
-export default  forwardRef(QuickList)
+export default forwardRef(QuickList);

@@ -11,7 +11,7 @@ export default class AvatarView extends React.Component<AvatarViewProps> {
     const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
-    const src = "./1.jpeg"
+    const src = './1.jpeg';
     return (
       <Container>
         <Layout>
@@ -33,28 +33,24 @@ export default class AvatarView extends React.Component<AvatarViewProps> {
             </Card>
             <Card title={'设置头像尺寸 size?: number'}>
               <Flex>
-                <Avatar
-                  size={40}
-                  shape="circle"
-                  src={require(src)}
-                />
+                <Avatar size={40} shape="circle" src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={30} shape="circle" src={require(src)}  />
+                <Avatar size={30} shape="circle" src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={24} shape="circle" src={require(src)}  />
+                <Avatar size={24} shape="circle" src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={18} shape="circle" src={require(src)}  />
+                <Avatar size={18} shape="circle" src={require(src)} />
               </Flex>
             </Card>
             <Card title={'设置头像圆角 rounded?: number'}>
               <Flex>
-                <Avatar size={40} rounded={10} src={require(src)}  />
+                <Avatar size={40} rounded={10} src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={30} rounded={10} src={require(src)}  />
+                <Avatar size={30} rounded={10} src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={24} rounded={10} src={require(src)}  />
+                <Avatar size={24} rounded={10} src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={18} rounded={10} src={require(src)}  />
+                <Avatar size={18} rounded={10} src={require(src)} />
               </Flex>
             </Card>
           </Body>

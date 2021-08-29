@@ -16,9 +16,9 @@ export default function DarkMode() {
       data-unchecked="🌛"
       onChange={(evn) => {
         if (evn.target.checked) {
-          localStorage.setItem('theme', '1')
+          localStorage.setItem('theme', '1');
         } else {
-          localStorage.removeItem('theme')
+          localStorage.removeItem('theme');
         }
         setDark(evn.target.checked);
       }}

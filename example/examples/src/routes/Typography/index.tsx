@@ -23,9 +23,7 @@ const {Header, Body, Card, Footer} = Layout;
 
 export interface TypographyViewProps extends ComProps {}
 
-export default class TypographyView extends React.Component<
-  TypographyViewProps
-> {
+export default class TypographyView extends React.Component<TypographyViewProps> {
   render() {
     const {route} = this.props;
     const description = route.params.description;

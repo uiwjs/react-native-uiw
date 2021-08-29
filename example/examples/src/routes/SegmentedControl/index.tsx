@@ -6,9 +6,7 @@ const {Header, Body, Card, Footer} = Layout;
 
 export interface SegmentedControlViewProps extends ComProps {}
 
-export default class SegmentedControlView extends React.Component<
-  SegmentedControlViewProps
-> {
+export default class SegmentedControlView extends React.Component<SegmentedControlViewProps> {
   render() {
     const {route} = this.props;
     const description = route.params.description;

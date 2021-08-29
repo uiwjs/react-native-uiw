@@ -1,9 +1,9 @@
 import styles from './index.module.less';
-import { useFetch } from '../../hook/useFetch'
+import { useFetch } from '../../hook/useFetch';
 
 type ContributorsProps = {
-  path?: string
-}
+  path?: string;
+};
 
 export default function Contributors(props: ContributorsProps) {
   const { path } = props;
@@ -25,19 +25,22 @@ export default function Contributors(props: ContributorsProps) {
         </svg>
         在 GitHub 上编辑此页
       </a>
-      <AvatarList path={path}/>
+      <AvatarList path={path} />
     </div>
-  )
+  );
 }
 
 type Response = Array<{
   username: string;
   url: string;
-}>
+}>;
 
-function AvatarList(props: { path: string}) {
+function AvatarList(props: { path: string }) {
   const { path } = props;
-  const fetchurl = `https://proapi.azurewebsites.net/doc/getAvatarList?filename=${path.replace(/^\//, '')}&owner=uiwjs&repo=react-native-uiw`;
+  const fetchurl = `https://proapi.azurewebsites.net/doc/getAvatarList?filename=${path.replace(
+    /^\//,
+    '',
+  )}&owner=uiwjs&repo=react-native-uiw`;
   const res = useFetch<Response>(fetchurl);
   if (!res.response) {
     return <span className={styles.avatar} />;

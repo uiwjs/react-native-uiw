@@ -28,10 +28,7 @@ type ImageState = {
   placeholderOpacity: Animated.Value;
 };
 
-export default class TransitionImage extends React.Component<
-  ImageProps & Partial<ImageProps>,
-  ImageState
-> {
+export default class TransitionImage extends React.Component<ImageProps & Partial<ImageProps>, ImageState> {
   static displayName = 'Image';
   static getSize = ImageNative.getSize;
   static getSizeWithHeaders = ImageNative.getSizeWithHeaders;
@@ -113,20 +110,13 @@ export default class TransitionImage extends React.Component<
         >
           <View
             testID="RNE__Image__placeholder"
-            style={StyleSheet.flatten([
-              style,
-              styles.placeholder,
-              placeholderStyle,
-            ])}
+            style={StyleSheet.flatten([style, styles.placeholder, placeholderStyle])}
           >
             {PlaceholderContent}
           </View>
         </Animated.View>
 
-        <View
-          testID="RNE__Image__children__container"
-          style={childrenContainerStyle ?? style}
-        >
+        <View testID="RNE__Image__children__container" style={childrenContainerStyle ?? style}>
           {children}
         </View>
       </Component>
