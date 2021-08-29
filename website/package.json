@@ -13,10 +13,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@rematch/core": "2.0.1",
-    "@rematch/loading": "2.0.1",
-    "@uiw/react-code-preview": "1.11.13",
-    "@uiw/react-markdown-preview": "3.2.0",
+    "@rematch/core": "2.1.0",
+    "@rematch/loading": "2.1.0",
+    "@uiw/react-code-preview": "1.12.1",
+    "@uiw/react-markdown-preview": "3.3.0",
     "@uiw/react-native": "^2.6.0",
     "@uiw/react-native-template": "2.0.1",
     "@uiw/reset.css": "1.0.5",
@@ -26,7 +26,7 @@
     "react-native": "0.64.2",
     "react-native-web": "0.17.1",
     "react-redux": "7.2.4",
-    "react-router-dom": "5.2.0",
+    "react-router-dom": "5.2.1",
     "rehype-attr": "1.4.2",
     "uiw": "4.7.16"
   },
@@ -34,10 +34,10 @@
     "@kkt/less-modules": "6.11.0",
     "@kkt/raw-modules": "6.11.0",
     "@kkt/scope-plugin-options": "6.11.0",
-    "@types/react": "17.0.14",
+    "@types/react": "17.0.19",
     "@types/react-dom": "17.0.9",
-    "@types/react-redux": "7.1.16",
-    "@types/react-router-dom": "5.1.7",
+    "@types/react-redux": "7.1.18",
+    "@types/react-router-dom": "5.1.8",
     "kkt": "6.11.0"
   },
   "eslintConfig": {

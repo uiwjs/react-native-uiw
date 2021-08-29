@@ -16,12 +16,12 @@
     "react-native-svg": "12.1.1"
   },
   "devDependencies": {
-    "@babel/core": "7.14.8",
-    "@babel/runtime": "7.14.8",
+    "@babel/core": "7.15.0",
+    "@babel/runtime": "7.15.3",
     "@react-native-community/eslint-config": "2.0.0",
-    "babel-jest": "26.6.3",
-    "eslint": "7.14.0",
-    "jest": "26.6.3",
+    "babel-jest": "27.1.0",
+    "eslint": "7.32.0",
+    "jest": "27.1.0",
     "metro-react-native-babel-preset": "0.64.0",
     "react-test-renderer": "17.0.1"
   },
