@@ -1,7 +1,14 @@
 {
-  "version": "2.6.0",
-  "packages": ["example/*", "packages/*", "website"],
+  "version": "2.6.1",
+  "packages": [
+    "example/*",
+    "packages/*",
+    "website"
+  ],
   "npmClient": "yarn",
-  "npmClientArgs": ["--production", "--no-optional"],
+  "npmClientArgs": [
+    "--production",
+    "--no-optional"
+  ],
   "useWorkspaces": true
 }

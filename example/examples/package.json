@@ -1,6 +1,6 @@
 {
   "name": "examples",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -11,16 +11,16 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.11",
+    "@react-native-picker/picker": "1.16.7",
     "@react-navigation/native": "6.0.2",
     "@react-navigation/stack": "6.0.7",
-    "@uiw/react-native": "^2.6.0",
+    "@uiw/react-native": "^2.6.1",
     "react": "17.0.1",
     "react-native": "0.64.2",
     "react-native-gesture-handler": "1.10.3",
     "react-native-safe-area-context": "3.3.0",
     "react-native-screens": "3.6.0",
-    "react-native-svg": "12.1.0",
-    "@react-native-picker/picker": "1.16.7"
+    "react-native-svg": "12.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.15.0",
