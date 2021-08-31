@@ -17,7 +17,7 @@ import Icon from '../Icon';
 interface SearchBarProps {
   onChangeText?: (value: string) => void;
   options?: Array<OptionsState>;
-  onChange?: (value: string) => void;
+  onChange?: (value: string | null) => void;
   onFocus?: (e: any | string) => void;
   labelInValue?: Boolean;
   disabled?: Boolean;
@@ -25,6 +25,7 @@ interface SearchBarProps {
   loading?: Boolean;
   placeholder?: String;
   extra?: JSX.Element;
+  showClear?: boolean;
 }
 
 interface OptionsState {
@@ -44,6 +45,7 @@ export default function SearchBar({
   loading,
   placeholder,
   extra,
+  showClear = true
 }: SearchBarProps) {
   const onHandleChangeText = (val: string) => {
     onChangeText && onChangeText(val);
@@ -69,7 +71,18 @@ export default function SearchBar({
     <Pressable onPress={showSearchBar}>
       <View style={[styles.content]}>
         <Text style={styles.contentTitle}>{textValue ? textValue : placeholder}</Text>
-        {React.isValidElement(extra) ? extra : <Icon xml={down} size={18} />}
+        {React.isValidElement(extra) ? (
+          extra
+        ) :
+          curValue && showClear ?
+            <Pressable onPress={() => {
+              onChange && onChange(null)
+              setCurValue(null)
+            }} style={{ paddingRight: 3 }}>
+              <Icon name="circle-close-o" size={18} color="#ccc" />
+            </Pressable> :
+            <Icon xml={down} size={18} color="#A19EA0" />
+        }
       </View>
     </Pressable>
   ) : (
@@ -110,9 +123,9 @@ export default function SearchBar({
                   const selectValue:
                     | any
                     | {
-                        key: string;
-                        label: string;
-                      } = labelInValue ? { key: itm.value, label: itm.label } : itm.value;
+                      key: string;
+                      label: string;
+                    } = labelInValue ? { key: itm.value, label: itm.label } : itm.value;
                   onChange && onChange(selectValue);
                   setCurValue(selectValue);
                   setVisivble(false);
