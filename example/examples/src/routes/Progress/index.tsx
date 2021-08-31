@@ -22,16 +22,11 @@ const ProgressDemo = (props: any) => {
 
   return (
     <Container>
-      <Progress progress={30} />
       <Header title={title} description={description} />
       <Body>
-        <Card title="基础实例" style={{margin: 10}}>
+        <Header description={'基本使用'} />
           <Progress progressColor="#5847FF" progress={40} />
-          <Spacing />
-          <Button color={'#5847FF'} onPress={onPress}>
-            (+-)10
-          </Button>
-          <Spacing />
+        <Header description={'点击变化'} />
           <View
             style={{
               flexDirection: 'row',
@@ -43,11 +38,9 @@ const ProgressDemo = (props: any) => {
               {val}%
             </Text>
           </View>
-          <Spacing />
-          <Progress progressColor="#5847FF" progress={60} />
-          <Spacing />
-          <Progress progressColor="#5847FF" progress={80} />
-        </Card>
+          <Button color={'#5847FF'} onPress={onPress}>
+            (+-)10
+          </Button>
       </Body>
     </Container>
   );

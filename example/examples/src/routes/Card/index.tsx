@@ -55,28 +55,31 @@ const CardDemo = (props: any) => {
     <ScrollView style={{flex: 1}}>
       <Header title={title} description={description} />
       <Header description={'基本使用'} />
-      <Card
-        actions={[
-          {
-            text: '点赞',
-            icon: <Icon name="like-o" size={16} color="#5847FF" />,
-            onPress: (e: any, index: number) => {
-              console.log('e', e, 'index', index);
-            },
-          },
-          {
-            text: '分享',
-            icon: <Icon name="share" size={16} color="#5847FF" />,
-            onPress: (e: any, index: number) => {
-              console.log('e', e, 'index', index);
-            },
-          },
-        ]}>
+      <Card>
         {basicRender}
+        <Card.Actions
+           actions={[
+            {
+              text: '点赞',
+              icon: <Icon name="like-o" size={16} color="#5847FF" />,
+              onPress: (e: any, index: number) => {
+                console.log('e', e, 'index', index);
+              },
+            },
+            {
+              text: '分享',
+              icon: <Icon name="share" size={16} color="#5847FF" />,
+              onPress: (e: any, index: number) => {
+                console.log('e', e, 'index', index);
+              },
+            },
+          ]}
+        />
       </Card>
       <Divider />
       <Header description={'带标题下划线圆角卡片'} />
-      <Card title={TITLE} borderRadius={12}>
+      <Card borderRadius={12}>
+        <Card.Title title="@uiw/react-native" />
         {basicRender}
       </Card>
       <Divider />

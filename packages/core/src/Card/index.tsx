@@ -1,38 +1,26 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   View,
-  Text,
   Platform,
   StyleSheet,
   StyleProp,
   ViewStyle,
-  TextStyle,
   TouchableOpacity,
   TouchableOpacityProps,
   Animated,
-  GestureResponderEvent,
 } from 'react-native';
-import Divider from '../Divider';
 import Icon from '../Icon';
 import { checked } from './svg';
 import { colors } from '../utils';
-import map from 'lodash/map';
+import CardTitle from './Card.Title';
+import CardActions from './Card.Actions';
 
 export type CardProps = {
   containerStyle?: StyleProp<ViewStyle>;
   wrapperStyle?: StyleProp<ViewStyle>;
-  title?: string;
-  titleStyle?: StyleProp<TextStyle>;
   borderRadius?: number;
   selected?: boolean;
   children?: React.ReactNode;
-  actions?: Array<{
-    text?: string;
-    icon?: JSX.Element;
-    onPress?: (e: GestureResponderEvent, index: number) => void;
-  }>;
-  actionsContainerStyle?: StyleProp<ViewStyle>;
-  actionsTextStyle?: StyleProp<ViewStyle>;
   onPress?: TouchableOpacityProps['onPress'];
   onLongPress?: TouchableOpacityProps['onLongPress'];
 };
@@ -41,13 +29,8 @@ const Card = ({
   children,
   containerStyle,
   wrapperStyle,
-  title,
-  titleStyle,
   borderRadius,
   selected,
-  actions,
-  actionsContainerStyle,
-  actionsTextStyle,
   onPress,
   onLongPress,
   ...attributes
@@ -57,35 +40,7 @@ const Card = ({
   const getBorderRadius = () => {
     return !borderRadius ? 0 : borderRadius;
   };
-  // 卡片标题
-  const CardTitle = (
-    <Fragment>
-      <Text testID="cardTitle" style={StyleSheet.flatten([styles.title, titleStyle]) as TextStyle}>
-        {title}
-      </Text>
-      <Divider style={StyleSheet.flatten([styles.divider])} />
-    </Fragment>
-  );
 
-  const CardActions = (
-    <Fragment>
-      <Divider style={StyleSheet.flatten({ marginTop: 15 })} />
-      <View style={[styles.actionsContainer, actionsContainerStyle]}>
-        {map(actions, (item, index) => {
-          return (
-            <TouchableOpacity
-              style={[styles.actionsTitleContainer, { marginLeft: index === 0 ? 0 : 10 }]}
-              key={index}
-              onPress={(event) => item.onPress && item.onPress(event, index)}
-            >
-              {item.icon && item.icon}
-              {item.text && <Text style={[styles.actionsTitle, actionsTextStyle]}>{item.text}</Text>}
-            </TouchableOpacity>
-          );
-        })}
-      </View>
-    </Fragment>
-  );
   // 卡片选中icon
   const renderSelection = () => {
     if (!selected) {
@@ -126,11 +81,9 @@ const Card = ({
       ])}
     >
       <View style={StyleSheet.flatten([styles.wrapper, wrapperStyle && wrapperStyle])}>
-        {title && CardTitle}
         {children}
       </View>
       {renderSelection()}
-      {actions && actions.length > 0 && CardActions}
     </Container>
   );
 };
@@ -155,24 +108,6 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  title: {
-    fontSize: 14,
-    color: colors.colorsPalette.grey10,
-    ...Platform.select({
-      android: {
-        fontFamily: 'sans-serif',
-        fontWeight: 'bold',
-      },
-      default: {
-        fontWeight: 'bold',
-      },
-    }),
-    textAlign: 'center',
-    marginBottom: 15,
-  },
-  divider: {
-    marginBottom: 15,
-  },
   selectedBorder: {
     ...StyleSheet.absoluteFillObject,
     borderRadius: 12,
@@ -191,31 +126,10 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     backgroundColor: 'transparent',
-  },
-  actionsContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    paddingTop: 15,
-  },
-  actionsTitleContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    fontSize: 16,
-  },
-  actionsTitle: {
-    color: colors.colorsPalette.violet30,
-    ...Platform.select({
-      android: {
-        fontFamily: 'sans-serif',
-        fontWeight: 'bold',
-      },
-      default: {
-        fontWeight: 'bold',
-      },
-    }),
-    textAlign: 'center',
-  },
+  }
 });
+
+Card.Title = CardTitle
+Card.Actions = CardActions
 
 export default Card;
