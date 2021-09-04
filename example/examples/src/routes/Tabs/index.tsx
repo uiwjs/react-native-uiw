@@ -36,7 +36,7 @@ export default class Index extends Component<IndexProps, IndexState> {
     const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
-    const {Item} = Tabs;;
+    const {Item} = Tabs;
     return (
       <Container>
         <Layout>

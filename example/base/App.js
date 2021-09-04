@@ -69,7 +69,7 @@ const App = () => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Button type="primary">按钮之间的间距</Button>
-          <Icon name='apple' size={46} color='#50CB42' />
+          <Icon name="apple" size={46} color="#50CB42" />
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.

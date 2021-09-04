@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { HashRouter as Router, withRouter, RouteComponentProps } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import '@uiw/reset.css';
-import './index.css'
+import './index.css';
 import { store } from './models';
 import Controller from './routes/Controller';
 import { getRouterData } from './routes/router';

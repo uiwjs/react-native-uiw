@@ -1,27 +1,23 @@
 import React from 'react';
 import {
   View,
-  Text,
   Platform,
   StyleSheet,
   StyleProp,
   ViewStyle,
-  TextStyle,
   TouchableOpacity,
   TouchableOpacityProps,
-  Animated
+  Animated,
 } from 'react-native';
-import Divider from '../Divider'
-import Icon from '../Icon'
-import { checked } from './svg'
-import { colors } from '../utils'
+import Icon from '../Icon';
+import { checked } from './svg';
+import { colors } from '../utils';
+import CardTitle from './Card.Title';
+import CardActions from './Card.Actions';
 
 export type CardProps = {
   containerStyle?: StyleProp<ViewStyle>;
   wrapperStyle?: StyleProp<ViewStyle>;
-  title?: string
-  titleStyle?: StyleProp<TextStyle>;
-  showDriver?: boolean;
   borderRadius?: number;
   selected?: boolean;
   children?: React.ReactNode;
@@ -29,14 +25,10 @@ export type CardProps = {
   onLongPress?: TouchableOpacityProps['onLongPress'];
 };
 
-
 const Card = ({
   children,
   containerStyle,
   wrapperStyle,
-  title,
-  titleStyle,
-  showDriver = false,
   borderRadius,
   selected,
   onPress,
@@ -47,15 +39,7 @@ const Card = ({
   // 获取卡片圆角度数
   const getBorderRadius = () => {
     return !borderRadius ? 0 : borderRadius;
-  }
-  // 卡片标题
-  const CardTitle = (
-    <Text
-      testID="cardTitle"
-      style={StyleSheet.flatten([styles.title, titleStyle]) as TextStyle}>
-      {title}
-    </Text>
-  )
+  };
 
   // 卡片选中icon
   const renderSelection = () => {
@@ -68,19 +52,17 @@ const Card = ({
           styles.selectedBorder,
           {
             opacity: 1,
-            borderRadius: getBorderRadius()
-          }
+            borderRadius: getBorderRadius(),
+          },
         ]}
         pointerEvents="none"
       >
-        <View
-          style={styles.selectedIndicator}
-        >
-          <Icon xml={checked}  size={30} />
+        <View style={styles.selectedIndicator}>
+          <Icon xml={checked} size={30} />
         </View>
       </Animated.View>
     );
-  }
+  };
 
   return (
     <Container
@@ -94,20 +76,11 @@ const Card = ({
         // 圆角
         {
           borderRadius: getBorderRadius(),
-          elevation: 2
-        }
+          elevation: 2,
+        },
       ])}
     >
-      <View
-        style={StyleSheet.flatten([
-          styles.wrapper,
-          wrapperStyle && wrapperStyle,
-        ])}
-      >
-        {title && CardTitle}
-        {
-          title && showDriver && <Divider style={StyleSheet.flatten([styles.divider])} />
-        }
+      <View style={StyleSheet.flatten([styles.wrapper, wrapperStyle && wrapperStyle])}>
         {children}
       </View>
       {renderSelection()}
@@ -135,29 +108,11 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  title: {
-    fontSize: 14,
-    color: colors.colorsPalette.grey30,
-    ...Platform.select({
-      android: {
-        fontFamily: 'sans-serif',
-        fontWeight: 'bold',
-      },
-      default: {
-        fontWeight: 'bold',
-      },
-    }),
-    textAlign: 'center',
-    marginBottom: 15,
-  },
-  divider: {
-    marginBottom: 15,
-  },
   selectedBorder: {
     ...StyleSheet.absoluteFillObject,
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: colors.colorsPalette.violet30
+    borderColor: colors.colorsPalette.violet30,
   },
   selectedIndicator: {
     borderRadius: 999,
@@ -171,7 +126,10 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     backgroundColor: 'transparent',
-  },
+  }
 });
 
-export default Card
+Card.Title = CardTitle
+Card.Actions = CardActions
+
+export default Card;

@@ -14,7 +14,7 @@ module.exports = {
       // 'react-native-svg': path.resolve(
       //   `${__dirname}/../../node_modules/react-native-svg/`,
       // ),
-    }
+    },
   },
   transformer: {
     getTransformOptions: async () => ({

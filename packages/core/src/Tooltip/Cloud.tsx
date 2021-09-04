@@ -1,60 +1,56 @@
 import React from 'react';
-import {
-  View,
-  ViewProps,
-  ViewStyle,
-  StyleSheet,
-  Text,
-} from 'react-native';
-import { xLocation } from './utils'
+import { View, ViewProps, ViewStyle, StyleSheet, Text } from 'react-native';
+import { xLocation } from './utils';
 
 interface CloudProps extends ViewProps {
   /** 显示的文本主体 */
-  title: React.ReactNode,
+  title: React.ReactNode;
   /** 三角是否在下面 */
-  isDown: boolean,
+  isDown: boolean;
   /** 三角形位置 */
-  triangle: number,
+  triangle: number;
   /** 排列方式 */
-  isStart: xLocation,
+  isStart: xLocation;
   /** 颜色 */
-  backgroundColor?: string,
+  backgroundColor?: string;
   /** 圆角大小 */
-  borderRadius?: number,
+  borderRadius?: number;
 }
-
 
 export default class Cloud extends React.Component<CloudProps> {
   constructor(props: CloudProps) {
-    super(props)
+    super(props);
   }
 
   render() {
-    const { title, isDown, isStart, triangle, backgroundColor, borderRadius } = this.props
+    const { title, isDown, isStart, triangle, backgroundColor, borderRadius } = this.props;
     const style: ViewStyle = {
       flexDirection: isDown ? 'column-reverse' : 'column',
       alignItems: isStart,
-    }
+    };
     const TextContainerStyle: ViewStyle = {
       position: triangle ? 'absolute' : 'relative',
       marginVertical: triangle ? 10 : 0,
-      backgroundColor, borderRadius,
+      backgroundColor,
+      borderRadius,
       paddingHorizontal: 10,
-      paddingVertical:10
-    }
+      paddingVertical: 10,
+    };
     return (
       <View style={[style]}>
         <View
-          style={[styles.cloudFoot, {
-            transform: [{ rotateX: isDown ? '180deg' : '0' }],
-            position: triangle ? 'absolute' : 'relative',
-            left: triangle,
-            zIndex: 9999,
-            borderBottomColor: backgroundColor
-          }]}
+          style={[
+            styles.cloudFoot,
+            {
+              transform: [{ rotateX: isDown ? '180deg' : '0' }],
+              position: triangle ? 'absolute' : 'relative',
+              left: triangle,
+              zIndex: 9999,
+              borderBottomColor: backgroundColor,
+            },
+          ]}
         />
-        <View style={[ { ...TextContainerStyle, } ]}
-        >
+        <View style={[{ ...TextContainerStyle }]}>
           <Text style={[styles.cloudText]}>{title}</Text>
         </View>
       </View>
@@ -63,7 +59,6 @@ export default class Cloud extends React.Component<CloudProps> {
 }
 
 const styles = StyleSheet.create({
-
   cloudFoot: {
     width: 0,
     height: 0,
@@ -79,6 +74,6 @@ const styles = StyleSheet.create({
     borderBottomColor: '#000',
   },
   cloudText: {
-    color: '#fff'
+    color: '#fff',
   },
 });

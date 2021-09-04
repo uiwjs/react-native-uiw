@@ -30,9 +30,7 @@ export default function Header(props: HeaderProps) {
         <Link to="/" className={styles.logo}>
           <ReactComponent height="38" width="38" />
           <span className={styles.title} style={{ display: 'flex' }}>
-            <span>
-              React Native UIW
-            </span>
+            <span>React Native UIW</span>
             <span>v{version}</span>
           </span>
         </Link>
@@ -40,8 +38,12 @@ export default function Header(props: HeaderProps) {
           <NavLink to="/home">首页</NavLink>
           <NavLink to="/docs/">文档</NavLink>
           <NavLink to="/components/">RN组件</NavLink>
-          <a target="__blank" href="https://github.com/uiwjs/react-native-uiw/issues">问题反馈</a>
-          <a target="__blank" href="https://uiwjs.github.io/#/components">Web 组件</a>
+          <a target="__blank" href="https://github.com/uiwjs/react-native-uiw/issues">
+            问题反馈
+          </a>
+          <a target="__blank" href="https://uiwjs.github.io/#/components">
+            Web 组件
+          </a>
           <NavLink to="/team">团队</NavLink>
           <DarkMode />
           <a target="__blank" href="https://github.com/uiwjs/react-native-uiw">
@@ -50,5 +52,5 @@ export default function Header(props: HeaderProps) {
         </div>
       </div>
     </header>
-  )
+  );
 }

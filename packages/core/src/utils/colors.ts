@@ -102,5 +102,5 @@ export const colorsPalette = {
   violet60: '#D1CCFF',
   violet70: '#E3E0FF',
   violet80: '#F0EEFF',
-  transparent: 'transparent'
+  transparent: 'transparent',
 };
