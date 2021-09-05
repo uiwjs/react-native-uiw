@@ -403,4 +403,12 @@ export const stackPageData: Routes[] = [
       description: '可折叠卡片列表',
     },
   },
+  {
+    name: 'ActionSheet',
+    component: require('./routes/ActionSheet').default,
+    params: {
+      title: 'ActionSheet 动作面板',
+      description: '该组件提供了一种动作面板, 底部缓缓出现',
+    },
+  },
 ];
