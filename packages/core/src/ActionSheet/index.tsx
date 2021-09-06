@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Dimensions, StyleSheet, Text, TouchableOpacity, Modal, ModalProps, Animated } from 'react-native';
-import Item from './item'
 export { default as ActionSheetItem } from './item';
 
 let MainWidth = Dimensions.get('window').width;
@@ -56,16 +55,13 @@ export default class ActionSheet extends React.Component<ActionSheetProps, Actio
             })
           })
       });
-    }else {
+    } else {
       this.onClose()
     }
   }
   render() {
     const { children, visible, cancelText = '取消', onCancel, ...other } = this.props
     const { stateVisible } = this.state
-    if(!stateVisible) {
-      return null
-    }
     return (
       <Modal
         animationType="fade" // slide  none  fade
@@ -75,7 +71,7 @@ export default class ActionSheet extends React.Component<ActionSheetProps, Actio
         {...other}
       >
 
-        <TouchableOpacity activeOpacity={1} style={[styles.position, styles.spread]} onPress={()=>onCancel&&this.onClose()}>
+        <TouchableOpacity activeOpacity={1} style={[styles.position, styles.spread]} onPress={() => onCancel && this.onClose()}>
           <Animated.View style={[styles.spread, styles.backdrop]}>
           </Animated.View>
         </TouchableOpacity>

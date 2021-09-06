@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, } from 'react-native';
 import Layout, { Container } from '../../Layout';
-import { ActionSheet, Button, ActionSheetItem, Toast, S } from '@uiw/react-native';
+import { ActionSheet, Button, ActionSheetItem, Toast } from '@uiw/react-native';
 import { ComProps } from '../../routes';
 
 const { Header, Body, Card, Footer } = Layout;
@@ -38,11 +38,11 @@ export default class Index extends Component<IndexProps, IndexState> {
             <Button onPress={this.onOpen}>打开 ActionSheet</Button>
             <ActionSheet
               visible={this.state.visible}
-              // onCancel={true}
+              onCancel={true}
             >
               <ActionSheetItem onPress={() => Toast.info('你点击了按钮一', 2, 'info')}>按钮一</ActionSheetItem>
               <ActionSheetItem onPress={() => Toast.info('你点击了按钮二', 2, 'info')}>按钮二</ActionSheetItem>
-              <ActionSheetItem onPress={this.onCancel}>按钮三</ActionSheetItem>
+              <ActionSheetItem onPress={this.onCancel}>关闭</ActionSheetItem>
             </ActionSheet>
           </Body>
           <Footer />
