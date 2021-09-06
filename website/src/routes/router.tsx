@@ -211,4 +211,7 @@ export const getRouterData = {
   '/components/cardcollapse': {
     component: dynamicWrapper([], () => import('../pages/components/cardcollapse')),
   },
+  '/components/actionSheet': {
+    component: dynamicWrapper([], () => import('../pages/components/actionSheet')),
+  },
 };

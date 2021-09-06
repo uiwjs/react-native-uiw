@@ -95,6 +95,8 @@ export * from './Tooltip';
 export { default as CardCollapse } from './CardCollapse';
 export * from './CardCollapse';
 
+export { default as ActionSheet } from './ActionSheet';
+export * from './ActionSheet';
 /**
  * Typography
  */
