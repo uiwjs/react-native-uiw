@@ -97,6 +97,10 @@ export * from './CardCollapse';
 
 export { default as ActionSheet } from './ActionSheet';
 export * from './ActionSheet';
+export { default as SearchInputBar } from './SearchInputBar';
+export * from './SearchInputBar';
+
+
 /**
  * Typography
  */

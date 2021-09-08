@@ -55,6 +55,7 @@ export const componentMenus: MenuData[] = [
   { path: '/components/progress', name: 'Progress 进度条' },
   { path: '/components/tooltip', name: 'Tooltip 工具提示' },
   { path: '/components/actionSheet', name: 'ActionSheet 动作面板' },
+  { path: '/components/search-input-bar', name: 'SearchInputBar 搜索栏' },
   { divider: true, name: '其它' },
   { href: 'https://github.com/uiwjs/react-native-alipay', name: 'Alipay 支付宝', target: '__blank' },
   {

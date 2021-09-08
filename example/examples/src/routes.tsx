@@ -411,4 +411,12 @@ export const stackPageData: Routes[] = [
       description: '该组件提供了一种动作面板, 底部缓缓出现',
     },
   },
+  {
+    name: 'SearchInputBar',
+    component: require('./routes/SearchInputBar').default,
+    params: {
+      title: 'SearchInputBar 搜索栏',
+      description: '可用于用户输入搜索信息',
+    },
+  },
 ];
