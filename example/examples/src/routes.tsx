@@ -419,4 +419,12 @@ export const stackPageData: Routes[] = [
       description: '可用于用户输入搜索信息',
     },
   },
+  {
+    name: 'Pagination',
+    component: require('./routes/Pagination').default,
+    params: {
+      title: 'Pagination 分页器',
+      description: '用于展示页码、请求数据等。',
+    },
+  },
 ];

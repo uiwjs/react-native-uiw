@@ -99,7 +99,8 @@ export { default as ActionSheet } from './ActionSheet';
 export * from './ActionSheet';
 export { default as SearchInputBar } from './SearchInputBar';
 export * from './SearchInputBar';
-
+export { default as Pagination } from './Pagination';
+export * from './Pagination';
 
 /**
  * Typography
