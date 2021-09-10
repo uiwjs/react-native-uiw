@@ -44,7 +44,7 @@ export function getLocation(
   // 得到 三角 x 位置
   if (pageOffsetX === (MainWidth - width) / 2) {
     isStart = xLocation.center;
-    style.left = pageOffsetX - 16;
+    style.left = (MainWidth - _W) / 2 ;
   }
   if (MainWidth - width - pageOffsetX > pageOffsetX) {
     isStart = xLocation.start;
@@ -55,7 +55,7 @@ export function getLocation(
     style.left = pageOffsetX - halfWidth + 16;
   }
   // cloud 宽度超出屏幕
-  if (_W >= MainWidth - 40) {
+  if (_W+ pageOffsetX >= MainWidth - 40) {
     style.width = MainWidth - 40;
     triangle = pageOffsetX + halfWidth - 20 - 10 - 6;
     style.left = 20;
