@@ -112,7 +112,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                 字号调整{'textStyle = {{fontSize:20}}'}
               </Button>
               <Spacing />
-              <Button textStyle={{ color: "blue" }}>
+              <Button textStyle={{ color: 'blue' }}>
                 文本颜色{'textStyle={{color:"blue"}}'}
               </Button>
               <Spacing />

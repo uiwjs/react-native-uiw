@@ -21,7 +21,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
                 <CheckBox
                   checked={true}
                   style={{paddingVertical: 10}}
-                  onChange={(checked) => {
+                  onChange={checked => {
                     console.log(checked);
                   }}>
                   默认点击选中
@@ -30,7 +30,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
               <List.Item style={{paddingVertical: 0}}>
                 <CheckBox
                   style={{paddingVertical: 10}}
-                  onChange={(checked) => {
+                  onChange={checked => {
                     console.log(checked);
                   }}>
                   默认未选中
@@ -40,7 +40,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
                 <CheckBox
                   disabled
                   style={{paddingVertical: 10}}
-                  onChange={(checked) => {
+                  onChange={checked => {
                     console.log(checked);
                   }}>
                   默认禁用未选中
@@ -51,7 +51,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
                   checked={true}
                   disabled
                   style={{paddingVertical: 10}}
-                  onChange={(checked) => {
+                  onChange={checked => {
                     console.log(checked);
                   }}>
                   默认禁用选中
@@ -60,7 +60,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
               <List.Item style={{paddingVertical: 0}}>
                 <CheckBox
                   style={{paddingVertical: 10}}
-                  onChange={(checked) => {
+                  onChange={checked => {
                     console.log(checked);
                   }}>
                   默认未选中
@@ -69,7 +69,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
               <List.Item style={{paddingVertical: 0}}>
                 <CheckBox
                   style={{paddingVertical: 10}}
-                  onChange={(checked) => {
+                  onChange={checked => {
                     console.log(checked);
                   }}>
                   默认未选中

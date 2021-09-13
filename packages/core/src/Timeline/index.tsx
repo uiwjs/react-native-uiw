@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import {View, Text, StyleSheet, ViewProps} from 'react-native';
+import { View, Text, StyleSheet, ViewProps } from 'react-native';
 
 export interface TimelineItemsProps {
   /** 标题 */
@@ -10,7 +9,7 @@ export interface TimelineItemsProps {
   /** 标示颜色 */
   color?: string;
   /** 子项内容 */
-  desc?: string | string[]; 
+  desc?: string | string[];
 }
 
 export interface TimelineProps extends ViewProps {
@@ -24,24 +23,22 @@ const Desc = (desc?: string | string[]) => {
   let isArray = Array.isArray(desc);
   if (isArray) {
     const descs: string[] = desc as string[];
-     return (
-       <View>
-         {descs.map((item, index) => (
-           <Text style={styles.desc} key={index}>{item}</Text>
-         ))}
-       </View>
-     )
+    return (
+      <View>
+        {descs.map((item, index) => (
+          <Text style={styles.desc} key={index}>
+            {item}
+          </Text>
+        ))}
+      </View>
+    );
   } else {
-    return <Text style={styles.desc}>{desc}</Text>
+    return <Text style={styles.desc}>{desc}</Text>;
   }
-}
+};
 
 export default (props: TimelineProps) => {
-  const {
-    items = [],
-    isReverse,
-    style
-  } = props;
+  const { items = [], isReverse, style } = props;
 
   const [lineItem, setLineItem] = useState<TimelineItemsProps[]>([]);
 
@@ -52,7 +49,7 @@ export default (props: TimelineProps) => {
     } else {
       setLineItem(items);
     }
-  }, [isReverse, items])
+  }, [isReverse, items]);
 
   return (
     <View style={[styles.timeline, style]}>
@@ -60,9 +57,14 @@ export default (props: TimelineProps) => {
         return (
           <View style={[styles.item]} key={index}>
             {index < items.length - 1 && <View style={styles.line}></View>}
-            <View style={[styles.circular, {
-              backgroundColor: item.color || '#e4e7ed'
-            }]}></View>
+            <View
+              style={[
+                styles.circular,
+                {
+                  backgroundColor: item.color || '#e4e7ed',
+                },
+              ]}
+            ></View>
             <View style={styles.wrapper}>
               <View style={styles.top}>
                 <Text style={styles.title}>{item.title}</Text>
@@ -71,11 +73,11 @@ export default (props: TimelineProps) => {
               {item.desc && Desc(item.desc)}
             </View>
           </View>
-        )
+        );
       })}
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   timeline: {
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
   item: {
     position: 'relative',
     paddingBottom: 20,
-    top: 0
+    top: 0,
   },
   circular: {
     position: 'absolute',
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
     top: 3,
     width: 14,
     height: 14,
-    borderRadius: 16
+    borderRadius: 16,
   },
   line: {
     position: 'absolute',
@@ -102,26 +104,24 @@ const styles = StyleSheet.create({
     top: 17,
     bottom: -3,
     width: 1,
-    backgroundColor: '#e4e7ed'
+    backgroundColor: '#e4e7ed',
   },
   wrapper: {
-    paddingLeft: 30
+    paddingLeft: 30,
   },
-  top: {
-    
-  },
+  top: {},
   tips: {
     color: '#666',
-    marginTop: 8
+    marginTop: 8,
   },
   title: {
     fontSize: 15,
-    lineHeight: 20
+    lineHeight: 20,
   },
   desc: {
     color: '#5e6d82',
     fontSize: 14,
     marginTop: 10,
-    lineHeight: 20
-  }
-})
+    lineHeight: 20,
+  },
+});

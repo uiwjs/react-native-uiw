@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { colors } from '../utils'
+import { colors } from '../utils';
 interface BodyRowProps {
   columns: Array<columnsState>;
   record: Object | any;
@@ -36,9 +36,9 @@ export default function BodyRow({ columns, record, style }: BodyRowProps) {
         let textEllipsize: textEllipsizeState | any =
           itm.ellipsis && itm.ellipsis
             ? {
-              numberOfLines: 1,
-              ellipsizeMode: 'tail',
-            }
+                numberOfLines: 1,
+                ellipsizeMode: 'tail',
+              }
             : null;
 
         return (

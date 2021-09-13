@@ -1,16 +1,15 @@
 /* tslint:disable:no-console */
-import React from 'react'
-import { View } from 'react-native'
+import React from 'react';
+import {View} from 'react-native';
 import {List, Stepper} from '@uiw/react-native';
 import Layout from '../../Layout';
 const {Header} = Layout;
 
 function onChange(value: any) {
-  console.log('changed', value)
+  console.log('changed', value);
 }
 
 export default class StepperExample extends React.Component<any, any> {
-  
   render() {
     const {route} = this.props;
     const description = route.params.description;
@@ -25,10 +24,10 @@ export default class StepperExample extends React.Component<any, any> {
         defaultValue={888}
         onChange={onChange}
       />
-    )
+    );
     return (
-      <View style={{ flex:1 }}>
-      <Header title={title} description={description} />
+      <View style={{flex: 1}}>
+        <Header title={title} description={description} />
         <List>
           <List.Item
             extra={
@@ -58,6 +57,6 @@ export default class StepperExample extends React.Component<any, any> {
           </List.Item>
         </List>
       </View>
-    )
+    );
   }
 }

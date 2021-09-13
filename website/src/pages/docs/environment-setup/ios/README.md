@@ -40,7 +40,13 @@ brew install watchman
 
 ### `CocoaPods`
 
-[CocoaPods](https://cocoapods.org/) 是用 Ruby 构建的，并且可以使用 macOS 上可用的默认 Ruby 进行安装。 您可以使用 Ruby 版本管理器，但我们建议您使用 macOS 上可用的标准 Ruby，除非您知道自己在做什么。
+[CocoaPods](https://cocoapods.org/) 是一款适用于 iOS 和 macOS 开发的包管理工具。我们使用它在本地将实际的 React Native 框架代码添加到您当前的项目中。它是用 Ruby 构建的，并且可以使用 macOS 上可用的默认 Ruby 进行安装。您可以使用 Ruby 版本管理器，但我们建议您使用 macOS 上可用的标准 Ruby，除非您知道自己在做什么。
+
+我们建议使用 [Homebrew](http://brew.sh/) 安装 [CocoaPods](https://cocoapods.org/)。
+
+```bash
+$ brew install cocoapods
+```
 
 > 🚧 目前 react-native@0.64 需要 `pod v1.10.0+`<!--rehype:style=color: #0ab100;--> 以上的版本，可以在 `ios/Podfile`<!--rehype:style=color: #e00000;--> 中确定使用那个版本的 `pod`。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->

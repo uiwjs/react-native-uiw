@@ -14,9 +14,7 @@ export default function Home(props: DefaultProps) {
           <header className={styles.headerContent}>
             <div>
               <h2>UIW Mobile RN</h2>
-              <p>
-                一个基于 React Native 的 UI 组件库
-              </p>
+              <p>一个基于 React Native 的 UI 组件库</p>
             </div>
             <ButtonStyle>
               <Link to="/docs/getting-started">开始使用</Link>

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,7 @@ import {
   Text,
   TextStyle,
   Image,
-  StyleProp
+  StyleProp,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -17,23 +17,42 @@ export interface HeaderProps {
   title?: string;
   description?: string;
   style?: StyleProp<ViewStyle>;
-  titleStyle?: StyleProp<TextStyle>
-  descriptionStyle?: StyleProp<TextStyle>
+  titleStyle?: StyleProp<TextStyle>;
+  descriptionStyle?: StyleProp<TextStyle>;
   hasLogo?: boolean;
   children?: React.ReactNode;
 }
 
 const Header = (props: HeaderProps) => {
-  const { children, title, description, style, hasLogo, titleStyle, descriptionStyle } = props;
+  const {
+    children,
+    title,
+    description,
+    style,
+    hasLogo,
+    titleStyle,
+    descriptionStyle,
+  } = props;
   return (
     <View style={[styles.header, style]}>
       {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
-      {hasLogo && <View style={styles.logo}><Image source={require('../image/logo.png')} style={{ width: 103, height: 18 }} /></View>}
-      {description && <Text style={[styles.description, descriptionStyle]}>{description}</Text>}
+      {hasLogo && (
+        <View style={styles.logo}>
+          <Image
+            source={require('../image/logo.png')}
+            style={{width: 103, height: 18}}
+          />
+        </View>
+      )}
+      {description && (
+        <Text style={[styles.description, descriptionStyle]}>
+          {description}
+        </Text>
+      )}
       {children}
     </View>
   );
-}
+};
 
 export interface BodyProps {
   style?: StyleProp<ViewStyle>;
@@ -42,30 +61,33 @@ export interface BodyProps {
 }
 
 const Body = (props: BodyProps) => {
-  const { children, style, isScroll, ...other } = props;
+  const {children, style, isScroll, ...other} = props;
   return (
-    <ScrollView style={[styles.body, style]} automaticallyAdjustContentInsets={false} {...other}>
+    <ScrollView
+      style={[styles.body, style]}
+      automaticallyAdjustContentInsets={false}
+      {...other}>
       {children}
     </ScrollView>
   );
-}
+};
 
 export interface FooterProps {
-  copyright?: string,
-  style?: StyleProp<ViewStyle>,
+  copyright?: string;
+  style?: StyleProp<ViewStyle>;
   isShowCopyRight?: boolean;
   children?: React.ReactNode;
 }
 
 const Footer = (props: FooterProps) => {
-  const { children, copyright, style, isShowCopyRight, ...other} = props;
+  const {children, copyright, style, isShowCopyRight, ...other} = props;
   return (
     <View style={[styles.footer, style]} {...other}>
       {isShowCopyRight && <Text style={styles.copyright}>{copyright}</Text>}
       {children}
     </View>
   );
-}
+};
 
 export interface CardProps extends ViewProps {
   showTitle?: boolean;
@@ -78,27 +100,46 @@ export interface CardProps extends ViewProps {
 }
 
 const Card = (props: CardProps) => {
-  const { title, titleStyle, bodyStyle, children, style, showTitle, extra, ...other } = props;
+  const {
+    title,
+    titleStyle,
+    bodyStyle,
+    children,
+    style,
+    showTitle,
+    extra,
+    ...other
+  } = props;
   return (
     <View style={style} {...other}>
       {extra ? (
         <View style={[styles.extra, styles.cardTitle]}>
           {showTitle && (
-            <View style={{ flex: 2 }}><Text style={[titleStyle]}>{title}</Text></View>
+            <View style={{flex: 2}}>
+              <Text style={[titleStyle]}>{title}</Text>
+            </View>
           )}
           <View>{extra}</View>
         </View>
       ) : (
-        showTitle && <Text style={titleStyle ? [styles.cardTitle, titleStyle] : [styles.cardTitle]}>{title}</Text>
+        showTitle && (
+          <Text
+            style={
+              titleStyle ? [styles.cardTitle, titleStyle] : [styles.cardTitle]
+            }>
+            {title}
+          </Text>
+        )
       )}
       {children && (
-        <View style={bodyStyle ? [styles.cardBody, bodyStyle] : [styles.cardBody]}>
+        <View
+          style={bodyStyle ? [styles.cardBody, bodyStyle] : [styles.cardBody]}>
           {children}
         </View>
       )}
     </View>
   );
-}
+};
 
 export interface ContainerProps {
   children?: React.ReactNode;
@@ -107,11 +148,11 @@ export interface ContainerProps {
 
 export const Container = (props: ContainerProps) => {
   return (
-    <SafeAreaView style={{ backgroundColor: '#ededed' }}>
-      <ScrollView style={{ height: '100%' }}>{props.children}</ScrollView>
+    <SafeAreaView style={{backgroundColor: '#ededed'}}>
+      <ScrollView style={{height: '100%'}}>{props.children}</ScrollView>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 export interface LayoutProps extends ViewProps {}
 
@@ -121,12 +162,8 @@ export default class Layout extends PureComponent<LayoutProps> {
   static Footer = Footer;
   static Card = Card;
   render() {
-    const { children, style } = this.props;
-    return (
-      <View style={[styles.container, style]}>
-        {children}
-      </View >
-    );
+    const {children, style} = this.props;
+    return <View style={[styles.container, style]}>{children}</View>;
   }
 }
 
@@ -143,11 +180,11 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     shadowColor: '#E6E6E6',
     backgroundColor: 'transparent',
-    shadowOffset: { width: 0, height: 3 },
+    shadowOffset: {width: 0, height: 3},
     shadowRadius: 3,
     // shadowOpacity: 0.8,
     shadowOpacity: 0,
-    zIndex: 999
+    zIndex: 999,
   },
   footer: {
     height: 60,
@@ -158,7 +195,7 @@ const styles = StyleSheet.create({
     // shadowOffset: { width: 0, height: -3 },
     // shadowRadius: 3,
     // shadowOpacity: 0.8,
-    zIndex: 999
+    zIndex: 999,
   },
   body: {
     backgroundColor: '#ededed',
@@ -167,7 +204,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 20
+    marginBottom: 20,
   },
   title: {
     fontSize: 20,
@@ -180,7 +217,7 @@ const styles = StyleSheet.create({
   },
   copyright: {
     fontSize: 14,
-    color: '#686868'
+    color: '#686868',
   },
   cardTitle: {
     fontSize: 14,
@@ -191,7 +228,7 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 12,
     marginBottom: 16,
-    color: '#9A9A9A'
+    color: '#9A9A9A',
   },
   cardBody: {
     // paddingLeft: 16,
@@ -202,8 +239,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F7F7F7',
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap' 
-  }
+    flexWrap: 'wrap',
+  },
 });
 
 Layout.Header = Header;
@@ -215,7 +252,7 @@ Header.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   style: PropTypes.object,
-  hasLogo: PropTypes.bool
+  hasLogo: PropTypes.bool,
 };
 
 Body.propTypes = {
@@ -226,12 +263,12 @@ Body.propTypes = {
 Footer.propTypes = {
   copyright: PropTypes.string,
   style: PropTypes.object,
-  isShowCopyRight: PropTypes.bool
+  isShowCopyRight: PropTypes.bool,
 };
 
 Footer.defaultProps = {
   copyright: 'uiw © 2017 React Native UIW',
-  isShowCopyRight: true
+  isShowCopyRight: true,
 };
 
 Card.propTypes = {
@@ -241,10 +278,10 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  showTitle: true
+  showTitle: true,
 };
 
-Container.propTypes = { };
+Container.propTypes = {};
 
 Container.defaultProps = {
   children: null,

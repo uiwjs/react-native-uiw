@@ -4,10 +4,10 @@ import { store } from '../models';
 
 function Loading() {
   return (
-    <div style={{ textAlign: 'center', padding: '50px 0 50px 0'}}>
+    <div style={{ textAlign: 'center', padding: '50px 0 50px 0' }}>
       <Loader color="#333" tip="页面加载中..." />
     </div>
-  )
+  );
 }
 
 // wrapper of dynamic
@@ -207,5 +207,17 @@ export const getRouterData = {
   },
   '/components/transitionImage': {
     component: dynamicWrapper([], () => import('../pages/components/transitionImage')),
+  },
+  '/components/cardcollapse': {
+    component: dynamicWrapper([], () => import('../pages/components/cardcollapse')),
+  },
+  '/components/actionSheet': {
+    component: dynamicWrapper([], () => import('../pages/components/actionSheet')),
+  },
+  '/components/search-input-bar': {
+    component: dynamicWrapper([], () => import('../pages/components/search-input-bar')),
+  },
+  '/components/pagination': {
+    component: dynamicWrapper([], () => import('../pages/components/pagination')),
   },
 };
