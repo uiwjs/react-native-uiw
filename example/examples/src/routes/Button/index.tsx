@@ -1,15 +1,15 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Button, Spacing, Icon, Flex} from '@uiw/react-native';
-import {ComProps} from '../../routes';
-import Layout, {Container} from '../../Layout';
-const {Header, Body, Card, Footer} = Layout;
+import { View, Text } from 'react-native';
+import { Button, Spacing, Icon, Flex } from '@uiw/react-native';
+import { ComProps } from '../../routes';
+import Layout, { Container } from '../../Layout';
+const { Header, Body, Card, Footer } = Layout;
 
-export interface ButtonViewProps extends ComProps {}
+export interface ButtonViewProps extends ComProps { }
 
 export default class ButtonView extends React.Component<ButtonViewProps> {
   render() {
-    const {route} = this.props;
+    const { route } = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
@@ -108,20 +108,20 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Button color="#f6f8fa">自定义颜色{'color="#f6f8fa"'}</Button>
             </Card>
             <Card title="文本样式">
-              <Button textStyle={{fontSize: 20}} color="yellow">
+              <Button textStyle={{ fontSize: 20 }} color="yellow">
                 字号调整{'textStyle = {{fontSize:20}}'}
               </Button>
               <Spacing />
-              <Button textStyle={{color: 'blue'}}>
+              <Button textStyle={{ color: 'blue' }}>
                 文本颜色{'textStyle={{color:"blue"}}'}
               </Button>
               <Spacing />
-              <Button color="#f6f8fa" textStyle={{letterSpacing: 2}}>
+              <Button color="#f6f8fa" textStyle={{ letterSpacing: 2 }}>
                 文本间距{'textStyle={{letterSpacing:3}}'}
               </Button>
             </Card>
             <Card title="设置边框">
-              <Button bordered={false} color="#f6f8fa">
+              <Button bordered={false} color="#f6f8fa" >
                 不显示边框{'bordered={false}'}
               </Button>
               <Spacing />
