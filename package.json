@@ -2,6 +2,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "⬇️⬇️⬇️⬇️⬇️ example::examples ⬇️⬇️⬇️⬇️⬇️": "▼▼▼▼▼ example::examples ▼▼▼▼▼",
     "lib:build:examples": "lerna exec --scope @uiw/react-native -- tsbb build --babel-option=none --output ../../example/examples/lib",
     "lib:build:type:examples": "lerna exec --scope @uiw/react-native -- tsbb types --outDir ../../example/examples/lib",
