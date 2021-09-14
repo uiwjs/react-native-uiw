@@ -18,6 +18,7 @@ export interface CheckBoxProps extends TouchableOpacityProps {
   checked?: boolean;
   disabled?: boolean;
   color?: string;
+  size?: number;
   checkedIcon?: string | JSX.Element;
   unCheckedIcon?: string | JSX.Element;
   onChange?: (checked: boolean) => void;
@@ -38,6 +39,7 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
     checkedIcon: 'circle-check',
     unCheckedIcon: 'circle-o',
     color: '#008EF0',
+    size: 16,
   };
   UNSAFE_componentWillReceiveProps(nextProps: CheckBoxProps) {
     if (nextProps.checked !== this.props.checked) {
@@ -61,6 +63,7 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
       checked,
       disabled,
       color: $color,
+      size,
       ...otherProps
     } = this.props;
     const { checked: $checked } = this.state;
@@ -78,7 +81,7 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
     return (
       <TouchableOpacity disabled={disabled} {...otherProps} style={[styles.default, style]} onPress={this.onPress}>
         <View style={[styIcon]}>
-          {typeof iconName === 'string' ? <Icon size={16} fill={colorIcon} name={iconName} /> : iconName}
+          {typeof iconName === 'string' ? <Icon size={size} fill={colorIcon} name={iconName} /> : iconName}
         </View>
         {children && <Div children={children} style={[divStyl, textStyle]} />}
       </TouchableOpacity>
