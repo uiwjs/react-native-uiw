@@ -1493,13 +1493,6 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.14.8":
-  version "7.14.8"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.8.tgz#7119a56f421018852694290b9f9148097391b446"
-  integrity sha512-twj3L8Og5SaCRCErB4x4ajbvBIVV77CGeFglHpeg5WC5FF8TZzBWXtTJ4MqaD9QszLYTtr+IsaAL2rEUevb+eg==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/runtime@7.15.3", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.14.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.15.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.3.tgz#2e1c2880ca118e5b2f9988322bd8a7656a32502b"
@@ -4130,7 +4123,12 @@
     "@typescript-eslint/types" "4.29.3"
     eslint-visitor-keys "^2.0.0"
 
-"@uiw/copy-to-clipboard@1.0.11", "@uiw/copy-to-clipboard@^1.0.11":
+"@uiw/copy-to-clipboard@1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@uiw/copy-to-clipboard/-/copy-to-clipboard-1.0.12.tgz#46f563bd6f3007895f95855e5b4bb692c7251933"
+  integrity sha512-3tt7FVSbjtBCNBhffy7k26rpnEmk8GQj9QkTGZBIfpHU7mG3Buryt69u6xooYM7/gmv7GIqD4QxxIauIp2HHKg==
+
+"@uiw/copy-to-clipboard@^1.0.11":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@uiw/copy-to-clipboard/-/copy-to-clipboard-1.0.11.tgz#60b6b63480af902c21cce827b70a6893f404ea51"
   integrity sha512-VCcvOkDW8LgDUPRnYNwuLJWBlpVmmYiqEhHl6XpMvqrKEkTGCP+Jgx6Yx1q0MEey0aEdIiHIT1kUTHWyqz9rbA==
@@ -4235,28 +4233,28 @@
     "@uiw/react-radio" "^4.9.4"
     "@uiw/utils" "^4.9.4"
 
-"@uiw/react-code-preview@1.12.1":
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/@uiw/react-code-preview/-/react-code-preview-1.12.1.tgz#9ec412675ffebc97344b6d355ed011dbbeaf256b"
-  integrity sha512-mFmiVlmkXU+WT/cm4g9DoMqmEPJrAP/jeN7/gY7OGw0ZWMpz2j1zLTNP+hfy3e9uSig+GuopGsx5dx7rcffmUw==
+"@uiw/react-code-preview@1.12.4":
+  version "1.12.4"
+  resolved "https://registry.yarnpkg.com/@uiw/react-code-preview/-/react-code-preview-1.12.4.tgz#a9cc5f89ff4247ccbcb99f37bcc87c82562695c6"
+  integrity sha512-HDOMVRGEXyT7pK7yistA3/FXWJBk0fpel5wRhF1zN/KpEmq7+pex0HYEInmX9ko86vTVY3dButW0ArIZW0OnVA==
   dependencies:
     "@babel/plugin-transform-classes" "7.14.9"
     "@babel/runtime" "7.15.3"
     "@babel/standalone" "7.12.18"
-    "@uiw/copy-to-clipboard" "1.0.11"
-    "@uiw/react-codemirror" "3.1.0"
+    "@uiw/copy-to-clipboard" "1.0.12"
+    "@uiw/react-codemirror" "3.2.1"
     "@uiw/react-codepen" "1.0.1"
     "@uiw/react-codesandbox" "1.1.0"
-    "@uiw/react-split" "5.7.4"
+    "@uiw/react-split" "5.8.1"
     babel-plugin-transform-remove-imports "1.5.5"
 
-"@uiw/react-codemirror@3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.1.0.tgz#ea359fed22d17f444c7627c0da5a7e4b5dca8a21"
-  integrity sha512-y4fhf2cSybphYA/nr6zN5kQKTpfN25Ox/ELlvaYZEVviG1K3oD0niTTyoEZlBx0pulQjdESBhPoLH0AZ8WWsHg==
+"@uiw/react-codemirror@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.2.1.tgz#355fda3a23143a9dcac23309397db95c90126630"
+  integrity sha512-taciFidmB/V8ve5SElMnMsRNwTVWCwTK16dsP9RIfPbbourVnmt9Tb+FIoeA6Jdlej4M9nr4X9IXtaw/GmqDPg==
   dependencies:
-    "@babel/runtime" "7.14.8"
-    codemirror "5.62.2"
+    "@babel/runtime" "7.15.3"
+    codemirror "5.62.3"
 
 "@uiw/react-codepen@1.0.1":
   version "1.0.1"
@@ -4563,10 +4561,10 @@
   dependencies:
     "@uiw/utils" "^4.9.4"
 
-"@uiw/react-split@5.7.4":
-  version "5.7.4"
-  resolved "https://registry.yarnpkg.com/@uiw/react-split/-/react-split-5.7.4.tgz#d3c02afde3de0416e566ade753c2097d41f48976"
-  integrity sha512-9/7OLMPXahUSAnd6eo4nUp0FiN0/GGxC4SIoPPiV1E4jovw10/X1fVXg8ga8K/NT/vmPrO4L/S5EU4yVMndNwA==
+"@uiw/react-split@5.8.1":
+  version "5.8.1"
+  resolved "https://registry.yarnpkg.com/@uiw/react-split/-/react-split-5.8.1.tgz#d0c2c47286606231495eb09bce175c2bb1455ea3"
+  integrity sha512-T5BStuSYbasC5JBIy/j+ggUOBbVEJWKL+6QcvCvR90C4y20hBbPARrDQwDCsRQ/QpzfcanupiICKCYhN6aCKOQ==
 
 "@uiw/react-split@^5.7.1":
   version "5.8.0"
@@ -6916,10 +6914,10 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codemirror@5.62.2:
-  version "5.62.2"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.62.2.tgz#bce6d19c9829e6e788f83886d48ecf5c1e106e65"
-  integrity sha512-tVFMUa4J3Q8JUd1KL9yQzQB0/BJt7ZYZujZmTPgo/54Lpuq3ez4C8x/ATUY/wv7b7X3AUq8o3Xd+2C5ZrCGWHw==
+codemirror@5.62.3:
+  version "5.62.3"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.62.3.tgz#5cfdee6931c8b2d1b39ae773aaaaec2cc6b5558e"
+  integrity sha512-zZAyOfN8TU67ngqrxhOgtkSAGV9jSpN1snbl8elPtnh9Z5A11daR405+dhLzLnuXrwX0WCShWlybxPN3QC/9Pg==
 
 codesandbox-import-util-types@^2.2.1:
   version "2.2.3"
