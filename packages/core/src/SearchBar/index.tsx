@@ -45,7 +45,7 @@ export default function SearchBar({
   loading,
   placeholder,
   extra,
-  showClear = true
+  showClear = true,
 }: SearchBarProps) {
   const onHandleChangeText = (val: string) => {
     onChangeText && onChangeText(val);
@@ -73,16 +73,19 @@ export default function SearchBar({
         <Text style={styles.contentTitle}>{textValue ? textValue : placeholder}</Text>
         {React.isValidElement(extra) ? (
           extra
-        ) :
-          curValue && showClear ?
-            <Pressable onPress={() => {
-              onChange && onChange(null)
-              setCurValue(null)
-            }} style={{ paddingRight: 3 }}>
-              <Icon name="circle-close-o" size={18} color="#ccc" />
-            </Pressable> :
-            <Icon xml={down} size={18} color="#A19EA0" />
-        }
+        ) : curValue && showClear ? (
+          <Pressable
+            onPress={() => {
+              onChange && onChange(null);
+              setCurValue(null);
+            }}
+            style={{ paddingRight: 3 }}
+          >
+            <Icon name="circle-close-o" size={18} color="#ccc" />
+          </Pressable>
+        ) : (
+          <Icon xml={down} size={18} color="#A19EA0" />
+        )}
       </View>
     </Pressable>
   ) : (
@@ -123,9 +126,9 @@ export default function SearchBar({
                   const selectValue:
                     | any
                     | {
-                      key: string;
-                      label: string;
-                    } = labelInValue ? { key: itm.value, label: itm.label } : itm.value;
+                        key: string;
+                        label: string;
+                      } = labelInValue ? { key: itm.value, label: itm.label } : itm.value;
                   onChange && onChange(selectValue);
                   setCurValue(selectValue);
                   setVisivble(false);

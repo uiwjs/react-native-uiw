@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, } from 'react-native';
-import Layout, { Container } from '../../Layout';
-import { SearchInputBar, Toast } from '@uiw/react-native';
-import { ComProps } from '../../routes';
+import React, {Component} from 'react';
+import {StyleSheet, View} from 'react-native';
+import Layout, {Container} from '../../Layout';
+import {SearchInputBar, Toast} from '@uiw/react-native';
+import {ComProps} from '../../routes';
 
-const { Header, Body, Card, Footer } = Layout;
+const {Header, Body, Card, Footer} = Layout;
 
-export interface IndexProps extends ComProps { }
+export interface IndexProps extends ComProps {}
 export interface IndexState {
   value?: string;
   value2?: string;
 }
-
 
 export default class Index extends Component<IndexProps, IndexState> {
   static state: IndexState;
@@ -19,17 +18,17 @@ export default class Index extends Component<IndexProps, IndexState> {
     super(props);
     this.state = {
       value: '',
-      value2: ''
+      value2: '',
     };
   }
   onChangeText = (val: string, key: 'value' | 'value2') => {
-    this.setState({ [key]: val })
-  }
+    this.setState({[key]: val});
+  };
   onClear = (key: 'value' | 'value2') => {
-    this.setState({ [key]: '' })
-  }
+    this.setState({[key]: ''});
+  };
   render() {
-    const { route } = this.props;
+    const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
@@ -39,19 +38,19 @@ export default class Index extends Component<IndexProps, IndexState> {
           <Body>
             <View style={styles.divider} />
             <SearchInputBar
-              onChangeText={(val) => this.onChangeText(val, 'value')}
-              onClear={()=>this.onClear('value')}
+              onChangeText={val => this.onChangeText(val, 'value')}
+              onClear={() => this.onClear('value')}
               value={this.state.value}
               button={{
                 onPress() {
-                  Toast.info('你点击了搜索', 2, 'info')
-                }
+                  Toast.info('你点击了搜索', 2, 'info');
+                },
               }}
             />
-            <View style={{ height: 100 }} />
+            <View style={{height: 100}} />
             <SearchInputBar
-              onChangeText={(val)=>this.onChangeText(val,'value2')}
-              onClear={()=>this.onClear('value2')}
+              onChangeText={val => this.onChangeText(val, 'value2')}
+              onClear={() => this.onClear('value2')}
               value={this.state.value2}
               placeholder="请输入搜索关键字"
               actionName=" 搜一下"
@@ -59,8 +58,8 @@ export default class Index extends Component<IndexProps, IndexState> {
               buttonWidth={120}
               button={{
                 onPress() {
-                  Toast.info('你点击了搜一下', 2, 'info')
-                }
+                  Toast.info('你点击了搜一下', 2, 'info');
+                },
               }}
             />
           </Body>

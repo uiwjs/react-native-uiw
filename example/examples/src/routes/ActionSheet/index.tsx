@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, } from 'react-native';
-import Layout, { Container } from '../../Layout';
-import { ActionSheet, Button, ActionSheetItem, Toast } from '@uiw/react-native';
-import { ComProps } from '../../routes';
+import React, {Component} from 'react';
+import {StyleSheet, View} from 'react-native';
+import Layout, {Container} from '../../Layout';
+import {ActionSheet, Button, ActionSheetItem, Toast} from '@uiw/react-native';
+import {ComProps} from '../../routes';
 
-const { Header, Body, Card, Footer } = Layout;
+const {Header, Body, Card, Footer} = Layout;
 
-export interface IndexProps extends ComProps { }
+export interface IndexProps extends ComProps {}
 export interface IndexState {
   visible: boolean;
 }
@@ -20,13 +20,13 @@ export default class Index extends Component<IndexProps, IndexState> {
     };
   }
   onOpen = () => {
-    this.setState({ visible: true });
-  }
+    this.setState({visible: true});
+  };
   onCancel = () => {
-    this.setState({ visible: false });
+    this.setState({visible: false});
   };
   render() {
-    const { route } = this.props;
+    const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
@@ -36,12 +36,15 @@ export default class Index extends Component<IndexProps, IndexState> {
           <Body>
             <View style={styles.divider} />
             <Button onPress={this.onOpen}>打开 ActionSheet</Button>
-            <ActionSheet
-              visible={this.state.visible}
-              onCancel={true}
-            >
-              <ActionSheetItem onPress={() => Toast.info('你点击了按钮一', 2, 'info')}>按钮一</ActionSheetItem>
-              <ActionSheetItem onPress={() => Toast.info('你点击了按钮二', 2, 'info')}>按钮二</ActionSheetItem>
+            <ActionSheet visible={this.state.visible} onCancel={true}>
+              <ActionSheetItem
+                onPress={() => Toast.info('你点击了按钮一', 2, 'info')}>
+                按钮一
+              </ActionSheetItem>
+              <ActionSheetItem
+                onPress={() => Toast.info('你点击了按钮二', 2, 'info')}>
+                按钮二
+              </ActionSheetItem>
               <ActionSheetItem onPress={this.onCancel}>关闭</ActionSheetItem>
             </ActionSheet>
           </Body>

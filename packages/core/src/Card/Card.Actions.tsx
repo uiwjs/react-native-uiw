@@ -8,7 +8,7 @@ import {
   TextStyle,
   Platform,
   TouchableOpacity,
-  GestureResponderEvent
+  GestureResponderEvent,
 } from 'react-native';
 import Divider from '../Divider';
 import map from 'lodash/map';
@@ -19,17 +19,13 @@ export type CardActionsProps = {
     text?: string;
     icon?: JSX.Element;
     onPress?: (e: GestureResponderEvent, index: number) => void;
-    actionsTextStyle?: StyleProp<TextStyle>
+    actionsTextStyle?: StyleProp<TextStyle>;
   }>;
-  actionsContainerStyle?: StyleProp<ViewStyle>
+  actionsContainerStyle?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
 };
 
-const CardActions = ({
-  actions = [],
-  actionsContainerStyle,
-  children
-}: CardActionsProps) => {
+const CardActions = ({ actions = [], actionsContainerStyle, children }: CardActionsProps) => {
   return (
     <Fragment>
       <Divider style={StyleSheet.flatten({ marginTop: 15 })} />
@@ -49,8 +45,8 @@ const CardActions = ({
         })}
       </View>
     </Fragment>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   actionsContainer: {
@@ -79,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardActions
+export default CardActions;
