@@ -1,5 +1,5 @@
 {
-  "version": "2.7.2",
+  "version": "2.7.3",
   "packages": ["example/*", "packages/*", "website"],
   "npmClient": "yarn",
   "npmClientArgs": ["--production", "--no-optional"],
