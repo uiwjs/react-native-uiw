@@ -32,7 +32,7 @@ jobs:
 
       - name: Generate Changelog
         id: changelog
-        uses: jaywcjlove/changelog-generator@v1.4.5
+        uses: jaywcjlove/changelog-generator@v1.4.6
         if: steps.create_tag.outputs.successful
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
