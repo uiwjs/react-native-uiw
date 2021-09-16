@@ -36,7 +36,7 @@ npx react-native init AwesomeProject --template @uiw/react-native-template
 ## Install
 
 ```bash
-yarn add @uiw/react-native react-native-svg
+yarn add @uiw/react-native react-native-svg react-native-root-siblings
 ```
 
 ## Basic Usage
