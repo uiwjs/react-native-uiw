@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, } from 'react-native';
-import Layout, { Container } from '../../Layout';
-import { Pagination } from '@uiw/react-native';
-import { ComProps } from '../../routes';
+import React, {Component} from 'react';
+import {StyleSheet, View} from 'react-native';
+import Layout, {Container} from '../../Layout';
+import {Pagination} from '@uiw/react-native';
+import {ComProps} from '../../routes';
 
-const { Header, Body, Card, Footer } = Layout;
+const {Header, Body, Card, Footer} = Layout;
 
-export interface IndexProps extends ComProps { }
+export interface IndexProps extends ComProps {}
 export interface IndexState {
-  current: number,
-  current1: number
+  current: number;
+  current1: number;
 }
 
 export default class Index extends Component<IndexProps, IndexState> {
@@ -23,35 +23,35 @@ export default class Index extends Component<IndexProps, IndexState> {
   }
 
   render() {
-    const { route } = this.props;
+    const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body style={{ backgroundColor: '#fff' }}>
+          <Body style={{backgroundColor: '#fff'}}>
             <Card title="使用文字">
-              <View style={{ paddingHorizontal: 20 }}>
+              <View style={{paddingHorizontal: 20}}>
                 <Pagination
                   current={this.state.current}
                   total={60}
                   pageSize={8}
                   onPageChange={(type, current) => {
-                    this.setState({ current })
+                    this.setState({current});
                   }}
                 />
               </View>
             </Card>
             <Card title="使用icon">
-              <View style={{ paddingHorizontal: 20 }}>
+              <View style={{paddingHorizontal: 20}}>
                 <Pagination
                   icon
                   current={this.state.current1}
                   total={50}
                   pageSize={20}
                   onPageChange={(type, current1) => {
-                    this.setState({ current1 })
+                    this.setState({current1});
                   }}
                 />
               </View>
