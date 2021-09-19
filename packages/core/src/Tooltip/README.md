@@ -6,17 +6,14 @@ Tooltip 工具提示
 ## 基础示例
 
 ```jsx
-import { Fragment } from 'react';
 import { Tooltip } from '@uiw/react-native';
 
 
 function Demo() {
   return (
-    <Fragment>
-      <Tooltip title='我是一个文本'>
-        <Text style={styles.textStyle}>我是一个文本</Text>
-      </Tooltip>
-    </Fragment>
+    <Tooltip title='我是一个文本'>
+      <Text>我是一个文本</Text>
+    </Tooltip>
   );
 }
 ```
@@ -24,24 +21,21 @@ function Demo() {
 ## 使用 自定义提示内容
 
 ```jsx
-import { Fragment } from 'react';
 import { Tooltip, Icon } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <Fragment>
-      <Tooltip
-        backgroundColor="pink"
-        width={30}
-        height={30}
-        title={(<View>
-          <Text>我是一个苹果</Text>
-          <Icon name='apple' color="#fff" />
-      </View>)}
-      >
-        <Icon name='apple' color="red" />
-      </Tooltip>
-    </Fragment>
+    <Tooltip
+      backgroundColor="pink"
+      width={30}
+      height={30}
+      title={(<View>
+        <Text>我是一个苹果</Text>
+        <Icon name='apple' color="#fff" />
+    </View>)}
+    >
+      <Icon name='apple' color="red" />
+    </Tooltip>
   );
 }
 ```

@@ -13,10 +13,10 @@ import { View, Input } from '@uiw/react-native';
 export default class BasicInputExample extends React.Component {
   render() {
     return <View>
-      <Input style={styles.input} onChange={(value) => {this.setState({value})}} value={this.state.value} />
-       <Input style={styles.input} extra="小数" />
-        <Input style={styles.input} error />
-         <Input style={styles.input} type="phone" />
+      <Input onChange={(value) => {this.setState({value})}} value={this.state.value} />
+      <Input extra="小数" />
+      <Input error />
+      <Input type="phone" />
     </View>
   }
 }

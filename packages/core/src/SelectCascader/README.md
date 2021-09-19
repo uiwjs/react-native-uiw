@@ -6,8 +6,7 @@ SelectCascader 级联选择
 ## 基础示例
 
 ```jsx
-import { Text } from 'react-native';
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { SelectCascader } from '@uiw/react-native';
 
 

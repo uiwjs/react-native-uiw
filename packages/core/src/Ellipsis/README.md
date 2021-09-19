@@ -7,7 +7,6 @@ Ellipsis 超出省略
 
 ```jsx
 import { Fragment } from 'react';
-import { View, Text } from 'react-native';
 import { Ellipsis } from '@uiw/react-native';
 
 function Demo() {

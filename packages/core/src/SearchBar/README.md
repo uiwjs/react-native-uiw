@@ -4,7 +4,7 @@ SearchBar 模糊搜素组件
 ## 基础示例
 
 ```jsx
-import { Result, Icon } from '@uiw/react-native';
+import { SearchBar } from '@uiw/react-native';
 
 function Demo() {
   return (

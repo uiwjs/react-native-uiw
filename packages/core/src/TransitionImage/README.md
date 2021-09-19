@@ -6,8 +6,9 @@ TransitionImage 图像
 ## 基础示例
 
 ```jsx
-import { Fragment, ActivityIndicator } from 'react';
+import { Fragment } from 'react';
 import { TransitionImage } from '@uiw/react-native';
+import {ActivityIndicator} from 'react-native';
 
 
 function Demo() {
@@ -34,7 +35,6 @@ function Demo() {
 
 ```ts
 import { ImageProps } from 'react-native';
-import { TransitionImage } from '@uiw/react-native';
 
 export interface TransitionImage extends ImageProps{
   /* 按下组件时的回调函数 */

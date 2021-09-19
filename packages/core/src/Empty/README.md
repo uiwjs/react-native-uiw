@@ -112,6 +112,7 @@ class Demo extends Component {
 <!--DemoStart--> 
 ```js
 import { Empty } from '@uiw/react-native';
+import {View, Text } from 'react-native';
 
 class Demo extends Component {
   render() {

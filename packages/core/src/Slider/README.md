@@ -9,9 +9,9 @@ Slider 滑块输入条
 ## 基础示例
 
 ```jsx
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Text } from 'react-native';
-import { Drawer } from '@uiw/react-native';
+import { Slider } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState(0.3);
@@ -30,8 +30,8 @@ function Demo() {
 ## 不显示滑块
 
 ```jsx
-import { Fragment } from 'react';
-import { Drawer } from '@uiw/react-native';
+import { Fragment,useState } from 'react';
+import { Slider } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState(0.3);
@@ -50,8 +50,8 @@ function Demo() {
 ## 设置步长
 
 ```jsx
-import { Fragment } from 'react';
-import { Drawer } from '@uiw/react-native';
+import { Fragment, useState } from 'react';
+import { Slider } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState(0.3);
