@@ -67,18 +67,6 @@ function Demo() {
 }
 ```
 
-## 段落
-
-```jsx
-import { P } from '@uiw/react-native';
-
-function Demo() {
-  return (
-    <P>这段文字加粗</P>
-  );
-}
-```
-
 ## 换行
 
 ```jsx

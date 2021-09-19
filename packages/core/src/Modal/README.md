@@ -7,8 +7,8 @@ Modal 模态框
 
 <!--DemoStart--> 
 ```jsx
-import React, { Component, Fragment } from 'react';
-import { View, Text, Alert, SafeAreaView } from 'react-native';
+import { Component, Fragment } from 'react';
+import { View, Text, SafeAreaView } from 'react-native';
 import { Modal, Button } from '@uiw/react-native';
 
 export default class ButtonGroupView extends Component {

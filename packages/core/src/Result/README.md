@@ -7,7 +7,7 @@ Result 结果页
 
 ```jsx
 import { Text } from 'react-native';
-import { Result, Icon } from '@uiw/react-native';
+import { Result, Icon, Del } from '@uiw/react-native';
 
 function Demo() {
   return (

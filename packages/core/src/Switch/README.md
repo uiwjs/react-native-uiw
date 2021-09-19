@@ -9,7 +9,7 @@ Switch 开关
 ## 基础示例
 
 ```jsx
-import { Spacing,Flex, Switch } from '@uiw/react-native';
+import { Switch } from '@uiw/react-native';
 
 function Demo() {
   return (
@@ -44,7 +44,7 @@ function Demo() {
 
 ```jsx
 import { useState } from 'react';
-import { Spacing,Flex, Switch } from '@uiw/react-native';
+import { Switch } from '@uiw/react-native';
 
 function Demo() {
   const [checked, setChecked] = useState(false);

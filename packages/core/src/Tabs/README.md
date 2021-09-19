@@ -38,7 +38,7 @@ function Demo() {
 
 ```jsx
 import { Fragment } from 'react';
-import { Rating, Icon } from '@uiw/react-native';
+import { Tabs, Icon } from '@uiw/react-native';
 function Demo() {
   return (
     <Fragment>

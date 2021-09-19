@@ -45,7 +45,7 @@ export default class BasicSwipeActionExample extends React.Component {
           onOpen={() => console.log('open')}
           onClose={() => console.log('close')}
         >
-          <View style={styles.view}>
+          <View>
             <Text>滑动</Text>
           </View>
       </SwipeAction>
