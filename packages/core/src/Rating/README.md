@@ -49,22 +49,20 @@ import { TabsItemIconTypes } from '@uiw/react-native'
 
 export type icoType = [TabsItemIconTypes, TabsItemIconTypes]
 export interface RatingProps {
-  /**  默认几个 */
-  defaultRating?: number,
-  /** 总分 */
-  count?: number,
-  /** 默认分数 */
-  defaultCount?: number,
+  /**  默认选中几个 */
+  defaultRating?: number;
+  /** 总数*/
+  resultRating?: number;
   /** icon 大小 */
-  size?: number,
+  size?: number;
   /** icon 颜色 */
-  color?: string,
+  color?: string;
   /** [未选中, 已选中] */
-  icon?: icoType,
+  icon?: icoType;
   /**
    * void
-   * @param score type: number 得到几分
+   * @param score type: number 选中几个
    */
-  onPress?: (score: number) => void
+  onPress?: (score: number) => void;
 }
 ```
