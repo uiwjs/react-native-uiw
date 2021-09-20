@@ -55,6 +55,7 @@ function Demo() {
 ```
 
 ## 注意事项 - 抽屉高度是页面有效高度
+
 ```jsx
 import { Fragment } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
@@ -77,7 +78,9 @@ function Demo() {
   );
 }
 ```   
+
 ## 抽屉覆盖全屏
+
 - 可查看 [react-native-root-siblings](https://www.npmjs.com/package/react-native-root-siblings) 文档
 ```jsx
 // 在 App.js 文件中 
@@ -123,6 +126,7 @@ function Demo() {
   );
 }
 ``` 
+
 ## props
 
 | 参数 | 说明 | 类型 | 默认值 |
