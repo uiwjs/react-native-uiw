@@ -44,6 +44,7 @@ export default class SliderView extends React.Component<
                 <Slider
                   value={this.state.sliderValue as number}
                   onChange={this.handleSliderChange}
+                  thumbSize={{width: 60, height: 30}}
                 />
               </WingBlank>
               <WingBlank>
