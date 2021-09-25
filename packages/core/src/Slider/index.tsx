@@ -338,8 +338,8 @@ export default class Slider extends Component<SliderProps, SliderState> {
                 ...valueVisibleStyle,
               },
               {
-                width: thumbSize.width,
-                height: thumbSize.height,
+                width: vertical ? thumbSize.height : thumbSize.width,
+                height: vertical ? thumbSize.width : thumbSize.height,
                 borderRadius: thumbSize.width / 2,
               },
             ])}
