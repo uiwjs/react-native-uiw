@@ -40,7 +40,6 @@ const getBoundedValue = ({ value, maxValue, minValue }: BoundedValue) =>
 export interface RectProps {
   width: number;
   height: number;
-  // diameter
 }
 
 export interface SliderProps extends ViewProps {
