@@ -16726,10 +16726,10 @@ regjsparser@^0.7.0:
   dependencies:
     jsesc "~0.5.0"
 
-rehype-attr@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/rehype-attr/-/rehype-attr-2.0.2.tgz#a4dc6b22be450d2801ecbd800cf61bc67048926c"
-  integrity sha512-tnsZn8NX4oiY4ggtKnzgwyfeG/U0/Jx5GC0cp2ni72w7NaRwL79mDUOYZ3asXuHpcJaoU7aUu0BYgeiip3qPHQ==
+rehype-attr@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/rehype-attr/-/rehype-attr-2.0.3.tgz#a67f72d32435c286a50aec8626203107cd77fd1f"
+  integrity sha512-TZpYmlw0xek1SG1VuNRSZx39RnK9MGinJJ9bAc/zxSJZQ1XA3BC+MC81q3+zoxfedt0RM7L1JOmebiMCanj/WA==
   dependencies:
     unified "10.1.0"
 
