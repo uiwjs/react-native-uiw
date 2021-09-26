@@ -68,11 +68,9 @@ yarn run build   # 编译包
 实时监听包和文档网站本地预览
 
 ```bash
-# Step 1️⃣  编译输出 JS 文件
+# Step 1️⃣  编译输出 JS/d.ts 文件
 yarn run lib:watch
-# Step 2️⃣  输出类型文件 d.ts
-yarn run lib:watch:type
-# Step 3️⃣  本地运行预览文档网站
+# Step 2️⃣  本地运行预览文档网站
 yarn run start
 ```
 
