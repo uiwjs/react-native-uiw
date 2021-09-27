@@ -15,10 +15,10 @@
   "dependencies": {
     "@rematch/core": "2.1.0",
     "@rematch/loading": "2.1.0",
-    "@uiw/react-code-preview": "1.12.4",
-    "@uiw/react-markdown-preview": "3.3.2",
+    "@uiw/react-code-preview": "2.1.1",
+    "@uiw/react-markdown-preview": "3.3.3",
     "@uiw/react-native": "^2.7.3",
-    "@uiw/react-native-template": "2.0.1",
+    "@uiw/react-native-template": "2.1.4",
     "@uiw/reset.css": "1.0.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -27,7 +27,7 @@
     "react-native-web": "0.17.1",
     "react-redux": "7.2.5",
     "react-router-dom": "5.3.0",
-    "rehype-attr": "2.0.2",
+    "rehype-attr": "2.0.3",
     "uiw": "4.7.16"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "@types/react": "17.0.19",
     "@types/react-dom": "17.0.9",
     "@types/react-redux": "7.1.18",
-    "@types/react-router-dom": "5.1.8",
+    "@types/react-router-dom": "5.3.0",
     "kkt": "6.11.0"
   },
   "eslintConfig": {
