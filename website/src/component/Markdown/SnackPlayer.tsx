@@ -37,7 +37,7 @@ export function SnackPlayer(props: SnackPlayerProps) {
   } = props;
 
   return (
-    <form action="https://snack.expo.dev" method="POST" target="_blank">
+    <form action="https://snack.expo.dev" method="POST" target="_blank" className={styles.form}>
       <input type="hidden" name="platform" value={platform} />
       <input type="hidden" name="name" value={name} />
       {dependencies && <input type="hidden" name="dependencies" value={dependencies} />}
