@@ -1755,7 +1755,7 @@
     "@codemirror/state" "^0.19.0"
     "@codemirror/view" "^0.19.0"
 
-"@codemirror/highlight@^0.19.0":
+"@codemirror/highlight@^0.19.0", "@codemirror/highlight@^0.19.6":
   version "0.19.6"
   resolved "https://registry.yarnpkg.com/@codemirror/highlight/-/highlight-0.19.6.tgz#7f2e066f83f5649e8e0748a3abe0aaeaf64b8ac2"
   integrity sha512-+eibu6on9quY8uN3xJ/n3rH+YIDLlpX7YulVmFvqAIz/ukRQ5tWaBmB7fMixHmnmRIRBRZgB8rNtonuMwZSAHQ==
@@ -1775,13 +1775,13 @@
     "@codemirror/state" "^0.19.0"
     "@codemirror/view" "^0.19.0"
 
-"@codemirror/lang-javascript@0.19.1":
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/@codemirror/lang-javascript/-/lang-javascript-0.19.1.tgz#157a145a3413c9774573956555c111e353640113"
-  integrity sha512-fFAP4nkfU36c14K8f6ytVYYeuX/2E7dJ+bD7UCZPWavXYjwdHAgDCJGH84MjhBSh0lMc908We80vyYg1j3MnRQ==
+"@codemirror/lang-javascript@0.19.2":
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/@codemirror/lang-javascript/-/lang-javascript-0.19.2.tgz#afefd3154979b825605bed894850a4cea957a4e0"
+  integrity sha512-qNFjCSTWOTZ/KusoVx3CxjmNS37DrhVoVO9E1IkrIMVC3tkk8Hs2eA6HNMxT4VGp5O+0yBmf1DE2o5QQSMs0jg==
   dependencies:
     "@codemirror/autocomplete" "^0.19.0"
-    "@codemirror/highlight" "^0.19.0"
+    "@codemirror/highlight" "^0.19.6"
     "@codemirror/language" "^0.19.0"
     "@codemirror/lint" "^0.19.0"
     "@codemirror/state" "^0.19.0"
@@ -1885,18 +1885,7 @@
     "@codemirror/state" "^0.19.0"
     "@codemirror/view" "^0.19.0"
 
-"@codemirror/view@0.19.7":
-  version "0.19.7"
-  resolved "https://registry.yarnpkg.com/@codemirror/view/-/view-0.19.7.tgz#af2c5d9246bb44cac24dcd1a60e7b45dfe06f209"
-  integrity sha512-m9AKO8gec/QnyxR1uq182It0WwauTIaHkdjqtdlKx1IRgknH44SKIJIxwxZt4Y6VDhhivcEbugjoadNy0zR3wQ==
-  dependencies:
-    "@codemirror/rangeset" "^0.19.0"
-    "@codemirror/state" "^0.19.2"
-    "@codemirror/text" "^0.19.0"
-    style-mod "^4.0.0"
-    w3c-keyname "^2.2.4"
-
-"@codemirror/view@^0.19.0":
+"@codemirror/view@0.19.8", "@codemirror/view@^0.19.0":
   version "0.19.8"
   resolved "https://registry.yarnpkg.com/@codemirror/view/-/view-0.19.8.tgz#2de5965419582712ca1f268cd549148a29e32fb0"
   integrity sha512-bhjLn1fYYpd49sLDuZ+oqFBQQh04eyskHUZQJL/7ZBl+RZ5L973yX/cybZfRG/O38NQASTv2Uug5xlPjcFUJWQ==
@@ -4634,33 +4623,33 @@
     "@uiw/react-radio" "^4.9.7"
     "@uiw/utils" "^4.9.7"
 
-"@uiw/react-code-preview@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@uiw/react-code-preview/-/react-code-preview-2.1.1.tgz#fb73b3e4156689695ba17a7cd46d77abf59f675f"
-  integrity sha512-lHBZqYo8qXnGNmq/vyWxu0/qJ8A9x50yVuBRa3DeBg8BSlysYuXrIKGvqYmHB/MJcUSdqbsj7oDa/O5xBbSfHw==
+"@uiw/react-code-preview@2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@uiw/react-code-preview/-/react-code-preview-2.1.2.tgz#eab2f964979a8cd86c9096c0426c5e94619eec84"
+  integrity sha512-4d63kQ8U6TLNuWRnhN6rQ8JqWlZyQoM6m/kspDEy99zWyzUPVHJ6I6c9Sa5981mDYBSgmto5KxqrtfAGQwFgKw==
   dependencies:
     "@babel/core" "7.15.5"
     "@babel/plugin-transform-classes" "7.14.9"
     "@babel/runtime" "7.15.3"
     "@babel/standalone" "7.12.18"
-    "@codemirror/lang-javascript" "0.19.1"
+    "@codemirror/lang-javascript" "0.19.2"
     "@uiw/copy-to-clipboard" "1.0.12"
-    "@uiw/react-codemirror" "4.0.1"
+    "@uiw/react-codemirror" "4.0.2"
     "@uiw/react-codepen" "1.0.2"
     "@uiw/react-codesandbox" "1.1.0"
     "@uiw/react-split" "5.8.4"
     babel-plugin-transform-remove-imports "1.7.0"
 
-"@uiw/react-codemirror@4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-4.0.1.tgz#afa9fd15e264b9084db6964c51eb7f8483445080"
-  integrity sha512-bC4+gHF4Sn1LIQl7GWQ2WMKwNSC2P3jGkNb8ICCAbfWSzC3UeyIy3dZLLGiJxO/n8l9Hswsa6yQHLkUV70VzeA==
+"@uiw/react-codemirror@4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-4.0.2.tgz#60c017fefb04e494746adb831a542b77cd527b3e"
+  integrity sha512-x6J/neW1uLTIzyOAYzS+Z3RjtAjtpcvsxXIwi+GhdDU3bIbtqrrbQt5AYvPR+UYkW0mREnqAN6vjLmJWKmP6PA==
   dependencies:
     "@babel/runtime" "7.15.4"
     "@codemirror/basic-setup" "0.19.0"
     "@codemirror/state" "0.19.2"
     "@codemirror/theme-one-dark" "0.19.0"
-    "@codemirror/view" "0.19.7"
+    "@codemirror/view" "0.19.8"
 
 "@uiw/react-codepen@1.0.2":
   version "1.0.2"
