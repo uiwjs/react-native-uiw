@@ -76,7 +76,9 @@ pod install --repo-update --verbose
 ### `第 2 步`<!--rehype:style=background: #a5d4ff;--> 启动实时编译包
 
 ```bash
-npm run watch
+npm run lib:watch  # 编译组件
+npm run lib:watch:base # 将组建编译到 base 示例中
+npm run lib:watch:examples # 将组建编译到 examples 示例中
 ```
 
 将组件源码编译到 `packages/core/lib`<!--rehype:style=color: #039423; background: #e3efe7;-->、`example/base/lib`<!--rehype:style=color: #039423; background: #e3efe7;-->、`example/examples/lib`<!--rehype:style=color: #039423; background: #e3efe7;--> 目录中。
