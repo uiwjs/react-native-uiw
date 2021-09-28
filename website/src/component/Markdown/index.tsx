@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import MarkdownPreview from '@uiw/react-markdown-preview';
-// @ts-ignore
+import CodePreview from '@uiw/react-code-preview';
+import rehypeRewrite from 'rehype-rewrite';
 import rehypeAttr from 'rehype-attr';
 import Contributors from '../Contributors';
 import Footer from '../Footer';
@@ -17,7 +18,7 @@ interface MarkdownState {
   message?: string;
 }
 
-const getCodeStr = (data: any[] = [], code: string = '') => {
+function getCodeStr(data: any[] = [], code: string = '') {
   data.forEach((node) => {
     if (node.type === 'text') {
       code += node.value;
@@ -26,7 +27,7 @@ const getCodeStr = (data: any[] = [], code: string = '') => {
     }
   });
   return code;
-};
+}
 
 // utilitary function to create a dictionary of packaged files
 // based on the output of require.context()
@@ -38,6 +39,7 @@ export const importAll = (r: any, cache: { [key: string]: string }) =>
 
 export default class Markdown extends Component<MarkdownProps, MarkdownState> {
   path?: string;
+  dependencies?: Record<string, any>;
   imageFiles: { [key: string]: string } = {};
   getMarkdown?: () => Promise<string>;
   constructor(props: MarkdownProps) {
@@ -85,13 +87,24 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
         <div className={styles.warpper} style={style}>
           <MarkdownPreview
             source={this.state.markdown}
-            rehypePlugins={[[rehypeAttr as any, { properties: 'attr' }]]}
+            rehypePlugins={[
+              [rehypeAttr, { properties: 'attr' }],
+              [
+                rehypeRewrite,
+                (node: any) => {
+                  if (node.type === 'element' && node.tagName === 'pre' && node.properties['data-type'] === 'rehyp') {
+                    node.properties['className'].push(styles.rehyp);
+                  }
+                },
+              ],
+            ]}
             transformImageUri={this.transformImageUri.bind(this)}
             components={{
               /**
                * snack, https://snack.expo.dev
                */
               code: ({
+                node,
                 snack,
                 inline,
                 platform,
@@ -109,7 +122,8 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
                 ...props
               }: any) => {
                 if (snack && !inline) {
-                  let filesObj = { 'App.js': { type: 'CODE', contents: getCodeStr(props.node.children) || '' } };
+                  const content = node && node.children ? getCodeStr(node.children) : '';
+                  let filesObj = { 'App.js': { type: 'CODE', contents: content } };
                   try {
                     const fObj = JSON.parse(files || '{}');
                     filesObj = { ...filesObj, ...fObj };
@@ -134,7 +148,33 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
                     </Fragment>
                   );
                 }
-                return <code {...props} />;
+                const { noPreview, noScroll, bgWhite, noCode, codePen, codeSandbox } = props;
+                const config: any = {
+                  noPreview,
+                  noScroll,
+                  bgWhite,
+                  noCode,
+                  codePen,
+                  codeSandbox,
+                };
+                if (Object.keys(config).filter((name) => config[name] !== undefined).length === 0) {
+                  return <code {...props} />;
+                }
+
+                return (
+                  <CodePreview
+                    code={getCodeStr(node.children)}
+                    dependencies={{ ...this.dependencies, React, ...React }}
+                    {...{
+                      noPreview,
+                      noScroll,
+                      bgWhite,
+                      noCode,
+                      codePenOption: codePen,
+                      codeSandboxOption: codeSandbox,
+                    }}
+                  />
+                );
               },
             }}
           />

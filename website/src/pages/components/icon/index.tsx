@@ -1,6 +1,8 @@
+import svgPaths from '@uiw/icons/fonts/w-icon.json';
 import Markdown, { importAll } from '../../../component/Markdown';
 
 export default class Page extends Markdown {
+  dependencies = { svgPaths };
   path = '/packages/core/src/Icon/README.md';
   getMarkdown = async () => {
     const md = await import('@uiw/react-native/lib/Icon/README.md');

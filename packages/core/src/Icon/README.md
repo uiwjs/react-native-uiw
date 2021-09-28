@@ -5,7 +5,6 @@ Icon 图标
 
 ### 基础示例
 
-<!--DemoStart--> 
 ```js
 import { Icon } from '@uiw/react-native';
 
@@ -20,11 +19,9 @@ class Demo extends Component {
   }
 }
 ```
-<!--End-->
 
 ### 自定义按钮
 
-<!--DemoStart--> 
 ```js
 import { Icon } from '@uiw/react-native';
 
@@ -43,11 +40,9 @@ class Demo extends Component {
   }
 }
 ```
-<!--End-->
 
 ### SVG 图标支持
 
-<!--DemoStart--> 
 ```js
 import { Icon } from '@uiw/react-native';
 
@@ -62,13 +57,41 @@ const xml = `
 
 class Demo extends Component {
   render() {
-    return (
-      <Icon xml={xml} />
-    )
+    return <Icon xml={xml} />;
   }
 }
 ```
-<!--End-->
+
+### 包中集成的所有图标
+
+⚠️ 此示例，只是在文档中预览 Icon 图标，并展示图标名称，也可以通过图标 web 官网，网站预览[所有的图标](https://uiwjs.github.io/icons)。
+
+<!--rehype:bgWhite=true&codeSandbox=true&codePen=true&noCode=true-->
+```jsx
+import ReactDOM from 'react-dom';
+import svgPaths from '@uiw/icons/fonts/w-icon.json';
+
+function Demo() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+      {Object.keys(svgPaths).map((keyname, idx) => {
+        return (
+          <div key={idx} style={{ display: 'flex', flexDirection: 'column', width: 180, paddingBottom: 14 }}>
+            <svg viewBox="0 0 24 24" width="21">
+              {svgPaths[keyname].map((path, pathIdx) => (
+                <path d={path} key={pathIdx} fillRule="evenodd"/>
+              ))}
+            </svg>
+            <span style={{ color: '#757575' }}>{keyname}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+ReactDOM.render(<Demo />, _mount_);
+```
 
 ## Props
 
