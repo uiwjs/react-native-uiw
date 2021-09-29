@@ -71,6 +71,7 @@ function Demo() {
 | `style` | 自定义样式 | Object | {} |
 | `value` | 初始值 | String[] | [] |
 | `color` | 组件主色调 | String | `#108ee9` |
+| `textColor` | 文本颜色 | [选中颜色: string, 未选中颜色: string] | `[#fff, color]` |
 | `size` | 按钮尺寸 | `small`, `default`, `large` | `default` |
 | `disabled` | 是否启用 | Boolean | `false` |
 | `selectedIndex` | 选中项在数组中的索引 | Number | 0 |

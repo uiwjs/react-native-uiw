@@ -37,6 +37,17 @@ export default class SegmentedControlView extends React.Component<SegmentedContr
                 value={['申请', '审批', '提交']}
               />
             </Card>
+            <Card
+              title={
+                '设置自定义文本颜色 textColor?: [选中: string, 未选中: string]'
+              }>
+              <SegmentedControl
+                textColor={['#333', '#ccc']}
+                color="#999"
+                selectedIndex={2}
+                value={['申请', '审批', '提交']}
+              />
+            </Card>
             <Card title={'设置间距 gutter?: number'}>
               <SegmentedControl
                 gutter={10}

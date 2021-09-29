@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ViewStyle, TextStyle } from 'react-native';
+import { ViewStyle, TextStyle, Text } from 'react-native';
 import ButtonGroup, { ButtonGroupProps } from '../ButtonGroup';
 import Button from '../Button';
 
@@ -8,6 +8,7 @@ export interface SegmentedControlProps<T> extends ButtonGroupProps {
   selectedIndex?: number;
   renderItem?: (label: string | T, selectedIndex: number, props: ButtonGroupProps) => JSX.Element;
   onValueChange?: (label: string | T, selectedIndex: number) => void;
+  textColor?: [string, string];
 }
 
 export interface SegmentedControlState {
@@ -35,16 +36,24 @@ export default class SegmentedControl<T> extends Component<SegmentedControlProps
   };
   render() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { value, selectedIndex, renderItem, ...otherProps } = this.props;
+    const {
+      value,
+      selectedIndex,
+      renderItem,
+      textColor = ['#fff', this.props.color ?? '#108ee9'],
+      ...otherProps
+    } = this.props;
     return (
       <ButtonGroup {...otherProps}>
         {value &&
           (value as (string | T)[]).map((label: string | T, key: number) => {
             const styl: ViewStyle = {};
             const textStyle: TextStyle = {};
+            let textStyleColor: string = textColor[0];
             if (this.state.selectedIndex !== key + 1) {
               styl.backgroundColor = '#fff';
               textStyle.color = otherProps.color;
+              textStyleColor = textColor[1];
             }
             const props: ButtonGroupProps = {
               type: 'primary',
@@ -55,7 +64,11 @@ export default class SegmentedControl<T> extends Component<SegmentedControlProps
             if (renderItem) {
               return renderItem(label, key + 1, props);
             }
-            return React.cloneElement(<Button key={key} />, { ...props }, label);
+            return React.cloneElement(
+              <Button key={key} />,
+              { ...props },
+              <Text style={{ color: textStyleColor }}>{label}</Text>,
+            );
           })}
       </ButtonGroup>
     );
