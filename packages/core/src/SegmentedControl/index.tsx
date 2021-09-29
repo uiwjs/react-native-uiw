@@ -3,12 +3,16 @@ import { ViewStyle, TextStyle, Text } from 'react-native';
 import ButtonGroup, { ButtonGroupProps } from '../ButtonGroup';
 import Button from '../Button';
 
+interface textColorType {
+  actived?: string;
+  unactived?: string;
+}
 export interface SegmentedControlProps<T> extends ButtonGroupProps {
   value?: string[] | T[];
   selectedIndex?: number;
   renderItem?: (label: string | T, selectedIndex: number, props: ButtonGroupProps) => JSX.Element;
   onValueChange?: (label: string | T, selectedIndex: number) => void;
-  textColor?: [string, string];
+  textColor?: textColorType;
 }
 
 export interface SegmentedControlState {
@@ -40,7 +44,10 @@ export default class SegmentedControl<T> extends Component<SegmentedControlProps
       value,
       selectedIndex,
       renderItem,
-      textColor = ['#fff', this.props.color ?? '#108ee9'],
+      textColor = {
+        actived: '#fff',
+        unactived: this.props.color ?? '#108ee9',
+      },
       ...otherProps
     } = this.props;
     return (
@@ -49,11 +56,11 @@ export default class SegmentedControl<T> extends Component<SegmentedControlProps
           (value as (string | T)[]).map((label: string | T, key: number) => {
             const styl: ViewStyle = {};
             const textStyle: TextStyle = {};
-            let textStyleColor: string = textColor[0];
+            let textStyleColor: string = textColor.actived!;
             if (this.state.selectedIndex !== key + 1) {
               styl.backgroundColor = '#fff';
               textStyle.color = otherProps.color;
-              textStyleColor = textColor[1];
+              textStyleColor = textColor.unactived!;
             }
             const props: ButtonGroupProps = {
               type: 'primary',

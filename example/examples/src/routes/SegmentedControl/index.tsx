@@ -39,7 +39,7 @@ export default class SegmentedControlView extends React.Component<SegmentedContr
             </Card>
             <Card
               title={
-                '设置自定义文本颜色 textColor?: [选中: string, 未选中: string]'
+                '设置自定义文本颜色 textColor?: {actived?: string, unactived?: string}'
               }>
               <SegmentedControl
                 textColor={['#333', '#ccc']}

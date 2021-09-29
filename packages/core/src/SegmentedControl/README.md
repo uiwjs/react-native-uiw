@@ -71,9 +71,18 @@ function Demo() {
 | `style` | 自定义样式 | Object | {} |
 | `value` | 初始值 | String[] | [] |
 | `color` | 组件主色调 | String | `#108ee9` |
-| `textColor` | 文本颜色 | [选中颜色: string, 未选中颜色: string] | `[#fff, color]` |
+| `textColor` | 文本颜色 | Object: textColorType | - |
 | `size` | 按钮尺寸 | `small`, `default`, `large` | `default` |
 | `disabled` | 是否启用 | Boolean | `false` |
 | `selectedIndex` | 选中项在数组中的索引 | Number | 0 |
 | `renderItem` | 自定义单元格 | (data, index, rowNum): void | - |
 | `onValueChange` | 回调函数 | (label, selectedIndex): void | - |
+
+
+## textColorType
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `actived` | 激活 | String | `#fff` |
+| `unactived` | 未激活 | String | `color` |
+```ts
