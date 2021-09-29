@@ -17,9 +17,8 @@ jobs:
       - run: yarn install
       - run: npm run build
       - run: xcode-select -p
-      - run: pod update --verbose --no-repo-update
 
-      - run: pod install
+      - run: pod update --verbose --no-repo-update && pod install
         working-directory: example/examples/ios
         name: Install pod dependencies
 
