@@ -47,7 +47,7 @@ const DirText = (props: DirTextProps) => {
         {icon ? (
           <Icon name={direction} size={contentSize[size]} color={disabledStyle} />
         ) : (
-          <Text style={{ fontSize: contentSize[size], color: disabledStyle }}>{dirText}</Text>
+          <Text style={{ color: disabledStyle }}>{dirText}</Text>
         )}
       </Button>
     </View>
