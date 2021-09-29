@@ -31,15 +31,11 @@ const DirText = (props: DirTextProps) => {
   }, [disabled]);
 
   return (
-    <View
-      style={[
-        styles.containerStyle,
-        { minWidth: containerSize[size], height: containerSize[size], paddingHorizontal: icon ? 0 : 5 },
-      ]}
-    >
+    <View style={[styles.containerStyle, { minWidth: containerSize[size], paddingHorizontal: icon ? 0 : 5 }]}>
       <Button
         bordered={false}
         disabled={disabled}
+        size={props.size}
         onPress={() => {
           onPageChange(direction === 'left' ? 'prev' : 'next');
         }}
