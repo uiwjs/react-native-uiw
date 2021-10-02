@@ -71,7 +71,7 @@ function Demo() {
 | `style` | 自定义样式 | Object | {} |
 | `value` | 初始值 | String[] | [] |
 | `color` | 组件主色调 | String | `#108ee9` |
-| `textColor` | 文本颜色 | Object: textColorType | - |
+| `textColor` | 文本颜色 | Object: TextColorType | - |
 | `size` | 按钮尺寸 | `small`, `default`, `large` | `default` |
 | `disabled` | 是否启用 | Boolean | `false` |
 | `selectedIndex` | 选中项在数组中的索引 | Number | 0 |
@@ -79,7 +79,7 @@ function Demo() {
 | `onValueChange` | 回调函数 | (label, selectedIndex): void | - |
 
 
-## textColorType
+## TextColorType
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|

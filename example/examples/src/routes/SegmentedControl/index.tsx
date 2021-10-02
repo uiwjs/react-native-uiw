@@ -42,7 +42,7 @@ export default class SegmentedControlView extends React.Component<SegmentedContr
                 '设置自定义文本颜色 textColor?: {actived?: string, unactived?: string}'
               }>
               <SegmentedControl
-                textColor={['#333', '#ccc']}
+                textColor={{actived: '#333', unactived: '#ccc'}}
                 color="#999"
                 selectedIndex={2}
                 value={['申请', '审批', '提交']}

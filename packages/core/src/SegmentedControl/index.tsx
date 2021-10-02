@@ -3,7 +3,7 @@ import { ViewStyle, TextStyle, Text } from 'react-native';
 import ButtonGroup, { ButtonGroupProps } from '../ButtonGroup';
 import Button from '../Button';
 
-interface textColorType {
+export interface TextColorType {
   actived?: string;
   unactived?: string;
 }
@@ -12,7 +12,7 @@ export interface SegmentedControlProps<T> extends ButtonGroupProps {
   selectedIndex?: number;
   renderItem?: (label: string | T, selectedIndex: number, props: ButtonGroupProps) => JSX.Element;
   onValueChange?: (label: string | T, selectedIndex: number) => void;
-  textColor?: textColorType;
+  textColor?: TextColorType;
 }
 
 export interface SegmentedControlState {
