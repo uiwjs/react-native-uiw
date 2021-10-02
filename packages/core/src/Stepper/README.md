@@ -110,7 +110,7 @@ export interface Color {
   borderColor?: string,
   /** 组件按钮 + - 颜色 #108ee9 */
   controlColor?: string,
-  /** 组件 value 值颜色 + - 颜色 #108ee9 */
+  /** 组件 value 值颜色 #108ee9 */
   valueColor?: string
 }
 
