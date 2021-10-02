@@ -3,6 +3,7 @@ import MarkdownPreview from '@uiw/react-markdown-preview';
 import CodePreview from '@uiw/react-code-preview';
 import rehypeRewrite from 'rehype-rewrite';
 import rehypeAttr from 'rehype-attr';
+import { Element } from 'hast';
 import Contributors from '../Contributors';
 import Footer from '../Footer';
 import styles from './index.module.less';
@@ -91,10 +92,18 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
               [rehypeAttr, { properties: 'attr' }],
               [
                 rehypeRewrite,
-                (node: any) => {
-                  if (node.type === 'element' && node.tagName === 'pre' && node.properties['data-type'] === 'rehyp') {
-                    node.properties['className'].push(styles.rehyp);
-                  }
+                {
+                  rewrite: (node: Element) => {
+                    if (
+                      node.type === 'element' &&
+                      node.tagName === 'pre' &&
+                      node.properties &&
+                      node.properties['data-type'] === 'rehyp' &&
+                      Array.isArray(node.properties.className)
+                    ) {
+                      node.properties['className'].push(styles.rehyp);
+                    }
+                  },
                 },
               ],
             ]}
