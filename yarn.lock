@@ -1864,7 +1864,18 @@
     "@codemirror/state" "^0.19.0"
     "@codemirror/view" "^0.19.0"
 
-"@codemirror/view@0.19.8", "@codemirror/view@^0.19.0":
+"@codemirror/view@0.19.9":
+  version "0.19.9"
+  resolved "https://registry.yarnpkg.com/@codemirror/view/-/view-0.19.9.tgz#cbdcbc398818e7c9603c81e4b2a2868ec0a1f954"
+  integrity sha512-d2Z2rFl53yTwvhsRYtS97xT7ce1f/Q/NNE2uDg/Be1MVjP2v1OlwUTyTosBmxiCt4oUvMklfa+EdPGOATVJhtg==
+  dependencies:
+    "@codemirror/rangeset" "^0.19.0"
+    "@codemirror/state" "^0.19.2"
+    "@codemirror/text" "^0.19.0"
+    style-mod "^4.0.0"
+    w3c-keyname "^2.2.4"
+
+"@codemirror/view@^0.19.0":
   version "0.19.8"
   resolved "https://registry.yarnpkg.com/@codemirror/view/-/view-0.19.8.tgz#2de5965419582712ca1f268cd549148a29e32fb0"
   integrity sha512-bhjLn1fYYpd49sLDuZ+oqFBQQh04eyskHUZQJL/7ZBl+RZ5L973yX/cybZfRG/O38NQASTv2Uug5xlPjcFUJWQ==
@@ -4719,10 +4730,10 @@
     "@uiw/react-radio" "^4.9.7"
     "@uiw/utils" "^4.9.7"
 
-"@uiw/react-code-preview@2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@uiw/react-code-preview/-/react-code-preview-2.1.2.tgz#eab2f964979a8cd86c9096c0426c5e94619eec84"
-  integrity sha512-4d63kQ8U6TLNuWRnhN6rQ8JqWlZyQoM6m/kspDEy99zWyzUPVHJ6I6c9Sa5981mDYBSgmto5KxqrtfAGQwFgKw==
+"@uiw/react-code-preview@2.1.4":
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@uiw/react-code-preview/-/react-code-preview-2.1.4.tgz#fdc852db18d7db6e1b3283e0729cb748b5ba864d"
+  integrity sha512-Z1h4VNbFh9w/WmNam1XaBR7OwpKP57j2OKJlixsc55RG9YzsbJps7VpHeB4W4qWkbHbnGoHFroaOEECF3uGXug==
   dependencies:
     "@babel/core" "7.15.5"
     "@babel/plugin-transform-classes" "7.14.9"
@@ -4730,22 +4741,22 @@
     "@babel/standalone" "7.12.18"
     "@codemirror/lang-javascript" "0.19.2"
     "@uiw/copy-to-clipboard" "1.0.12"
-    "@uiw/react-codemirror" "4.0.2"
+    "@uiw/react-codemirror" "4.0.6"
     "@uiw/react-codepen" "1.0.2"
     "@uiw/react-codesandbox" "1.1.0"
     "@uiw/react-split" "5.8.4"
     babel-plugin-transform-remove-imports "1.7.0"
 
-"@uiw/react-codemirror@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-4.0.2.tgz#60c017fefb04e494746adb831a542b77cd527b3e"
-  integrity sha512-x6J/neW1uLTIzyOAYzS+Z3RjtAjtpcvsxXIwi+GhdDU3bIbtqrrbQt5AYvPR+UYkW0mREnqAN6vjLmJWKmP6PA==
+"@uiw/react-codemirror@4.0.6":
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-4.0.6.tgz#0b941fa73757e4e28e535b0098c1b02d4b28cde4"
+  integrity sha512-MuJ0aOB3gfYaXtXEqlUPpWPKdVFKhIF3RPe44O5ugu+1fkHm2tkyBezSxr9WDH+g+ftCwQ4kMgRJKwY4douePw==
   dependencies:
     "@babel/runtime" "7.15.4"
     "@codemirror/basic-setup" "0.19.0"
     "@codemirror/state" "0.19.2"
     "@codemirror/theme-one-dark" "0.19.0"
-    "@codemirror/view" "0.19.8"
+    "@codemirror/view" "0.19.9"
 
 "@uiw/react-codepen@1.0.2":
   version "1.0.2"
