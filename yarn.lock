@@ -17645,10 +17645,10 @@ regjsparser@^0.7.0:
   dependencies:
     jsesc "~0.5.0"
 
-rehype-attr@2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/rehype-attr/-/rehype-attr-2.0.4.tgz#b7aa1f17d6a2415be5b5af8c0d468fd1baa72e7a"
-  integrity sha512-byAcOQaQKiVua5lkMuuzFNhH9gpqStoO8JXpGy6LtVjtTZikXiSxXN7XhW+G+TNoWZbFKen6sbFADn9iYI6z4Q==
+rehype-attr@2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/rehype-attr/-/rehype-attr-2.0.6.tgz#337f24b0709c89dfc85b1ad6222d7fb9be4cda7b"
+  integrity sha512-r14HBDU+iRZX4tolFiEA6WQcat2IP63yDwHu0Cu3D5yBTeMjP286NZrWEYea5/xZ9NiBKrJ0hDI8s0PZqNg7rg==
   dependencies:
     unified "10.1.0"
     unist-util-visit "4.1.0"
