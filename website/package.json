@@ -16,7 +16,7 @@
     "@rematch/core": "2.1.0",
     "@rematch/loading": "2.1.0",
     "@uiw/react-code-preview": "2.1.4",
-    "@uiw/react-markdown-preview": "3.3.4",
+    "@uiw/react-markdown-preview": "3.3.5",
     "@uiw/react-native": "^2.7.4",
     "@uiw/react-native-template": "2.1.4",
     "@uiw/reset.css": "1.0.5",
