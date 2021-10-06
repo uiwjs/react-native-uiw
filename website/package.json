@@ -28,7 +28,7 @@
     "react-redux": "7.2.5",
     "react-router-dom": "5.3.0",
     "rehype-attr": "2.0.6",
-    "rehype-rewrite": "3.0.3",
+    "rehype-rewrite": "3.0.4",
     "uiw": "4.7.16"
   },
   "devDependencies": {
