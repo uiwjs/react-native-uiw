@@ -17719,10 +17719,10 @@ rehype-rewrite@3.0.0:
     unified "10.1.0"
     unist-util-visit "4.1.0"
 
-rehype-rewrite@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/rehype-rewrite/-/rehype-rewrite-3.0.3.tgz#dcb02d3d0134a01d7d5bbf25d7991bbe55f1ae8f"
-  integrity sha512-WUoEzCxkVxqsek/ndRkxIgrK5r3ZYDUC3plXO08Qjf389Kem9Q6Do8n7B0LhK/p2OQOfMexYeN8g6QtuPTfrrg==
+rehype-rewrite@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/rehype-rewrite/-/rehype-rewrite-3.0.4.tgz#ffe3498697cb2fe1fbae843dac81ad2ed3880556"
+  integrity sha512-ZpIEwSinmzI0S2QbuWH5yXodG6hgxm2FzwxGViKOIjCJHgDh+LgUgcsjGPftabeCCuzRefsIdGVPivaDddRNYg==
   dependencies:
     hast-util-select "5.0.1"
     unified "10.1.0"
