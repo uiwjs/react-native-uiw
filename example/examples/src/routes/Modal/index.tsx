@@ -10,13 +10,19 @@ export interface ModalViewProps extends ComProps {}
 
 export default class ModalView extends Component<ModalViewProps> {
   state = {
-    modalVisible: true,
+    modalVisible: false,
+    direction: 'top',
   };
 
   setModalVisible(visible: boolean) {
     this.setState({modalVisible: visible});
   }
-
+  radioData = [
+    {label: 'right', value: 'right'},
+    {label: 'left', value: 'left'},
+    {label: 'top', value: 'top'},
+    {label: 'bottom', value: 'bottom'},
+  ];
   render() {
     const {route} = this.props;
     const description = route.params.description;
@@ -28,7 +34,9 @@ export default class ModalView extends Component<ModalViewProps> {
           <Body>
             <Card title="基础实例">
               <Modal
-                placement="right"
+                placement={
+                  this.state.direction as 'left' | 'right' | 'top' | 'bottom'
+                }
                 // maskClosable={false}
                 visible={this.state.modalVisible}
                 onClosed={() => this.setState({modalVisible: false})}
@@ -65,6 +73,21 @@ export default class ModalView extends Component<ModalViewProps> {
               <Button onPress={() => this.setModalVisible(true)}>
                 显示模态框
               </Button>
+              <View style={{flexDirection: 'row'}}>
+                {this.radioData.map(item => {
+                  return (
+                    <Radio
+                      style={{marginRight: 20}}
+                      key={item.value}
+                      checked={this.state.direction === item.value}
+                      onPress={() => {
+                        this.setState({direction: item.value});
+                      }}>
+                      {item.label}
+                    </Radio>
+                  );
+                })}
+              </View>
               <Radio>所有人可见</Radio>
               <Radio>超级管理员</Radio>
             </Card>
