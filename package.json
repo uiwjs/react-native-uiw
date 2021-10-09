@@ -19,7 +19,7 @@
     "start": "lerna exec --scope website -- npm run start",
     "doc": "lerna exec --scope website -- npm run build",
     "<<<<<<<": "<<<<<<<",
-    "version": "lerna version --no-changelog --no-push --no-git-tag-version",
+    "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
     "pretty-quick": "pretty-quick --staged",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },
