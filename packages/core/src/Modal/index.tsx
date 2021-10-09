@@ -28,22 +28,23 @@ export default (props: ModalProps = {}) => {
       setLayoutWidth(width);
     }
   }
-  function getTransformSize() {
-    if (placement === 'top') {
-      return -layoutHeight;
-    }
-    if (placement === 'bottom') {
-      return layoutHeight;
-    }
-    if (placement === 'left') {
-      return -layoutWidth;
-    }
-    if (placement === 'right') {
-      return layoutWidth;
-    }
-    return 0;
-  }
+
   useMemo(() => {
+    function getTransformSize() {
+      if (placement === 'top') {
+        return -layoutHeight;
+      }
+      if (placement === 'bottom') {
+        return layoutHeight;
+      }
+      if (placement === 'left') {
+        return -layoutWidth;
+      }
+      if (placement === 'right') {
+        return layoutWidth;
+      }
+      return 0;
+    }
     const result = getTransformSize();
     if (!result) return;
     if (visible) {
@@ -73,7 +74,7 @@ export default (props: ModalProps = {}) => {
       ]).start();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible, getTransformSize]);
+  }, [visible, layoutHeight, layoutWidth]);
   const translateStyle = {} as {
     translateY: Animated.Value;
     translateX: Animated.Value;
