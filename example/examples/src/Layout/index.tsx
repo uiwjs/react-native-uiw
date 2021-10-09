@@ -6,6 +6,7 @@ import {
   ViewStyle,
   SafeAreaView,
   ScrollView,
+  ScrollViewProps,
   Text,
   TextStyle,
   Image,
@@ -54,7 +55,7 @@ const Header = (props: HeaderProps) => {
   );
 };
 
-export interface BodyProps {
+export interface BodyProps extends ScrollViewProps {
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
   isScroll?: boolean;
@@ -141,15 +142,18 @@ const Card = (props: CardProps) => {
   );
 };
 
-export interface ContainerProps {
+export interface ContainerProps extends ScrollViewProps {
   children?: React.ReactNode;
   isScroll?: boolean;
 }
 
 export const Container = (props: ContainerProps) => {
+  const {children, ...others} = props;
   return (
-    <SafeAreaView style={{backgroundColor: '#ededed'}}>
-      <ScrollView style={{height: '100%'}}>{props.children}</ScrollView>
+    <SafeAreaView style={{backgroundColor: '#ededed'}} {...others}>
+      <ScrollView style={{height: '100%'}} {...others}>
+        {children}
+      </ScrollView>
     </SafeAreaView>
   );
 };

@@ -27,12 +27,11 @@ export default class Index extends Component<IndexProps, IndexState> {
     const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
-
     return (
-      <Container>
+      <Container scrollEnabled={false}>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body scrollEnabled={false}>
             <SpeedDial
               icon={['star-on', 'star-off']}
               isDrag={true}
