@@ -36,8 +36,11 @@ npx react-native init AwesomeProject --template @uiw/react-native-template
 ## Install
 
 ```bash
-yarn add @uiw/react-native react-native-svg react-native-root-siblings
+yarn add @uiw/react-native react-native-svg react-native-root-siblings @react-native-picker/picker
 ```
+
+> ⚠️ 注意：安装 @react-native-picker/picker，可能需要重新 pod install
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ## Basic Usage
 

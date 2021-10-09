@@ -14,6 +14,7 @@ export default class SelectCascaderDemo extends Component {
   constructor(props: SelectCascaderProps) {
     super(props);
     this.state = {
+      visible: false
     };
   }
 
@@ -22,9 +23,6 @@ export default class SelectCascaderDemo extends Component {
     console.log("label-------->", label);
   }
 
-  onDismiss(e: any) {
-
-  }
   render() {
     const data = [
       {
@@ -109,10 +107,22 @@ export default class SelectCascaderDemo extends Component {
       },
     ]
     return (
-      <SelectCascader
-        data={data}
-        onChange={this.onChange}
-      />
+      <React.Fragment>
+         <Button
+          onPress={() => {
+            this.setState({visible: true});
+          }}>
+          显示选择器
+        </Button>
+        <SelectCascader
+          data={data}
+          onChange={this.onChange}
+          visible={this.state.visible}
+          onDismiss={() => {
+            this.setState({visible: false});
+          }}
+        />
+      <React.Fragment>
     );
   }
 }
