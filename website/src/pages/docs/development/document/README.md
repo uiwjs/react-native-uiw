@@ -42,11 +42,13 @@
 
 通过 unpkg 预览文档网站：https://unpkg.com/@uiw/react-native-doc/doc/index.html
 
-这是 v2.0.0+ 版本预览方法
+这是 v3.0.0+ 版本预览方法
 
 ```shell
 https://unpkg.com/@uiw/react-native-doc@<包版本>/web/index.html
 ```
+
+[`v2.0.0+ 文档网站`](https://unpkg.com/@uiw/react-native-doc@2.1.0/doc/build/index.html)
 
 > ⚠️ 注意：为了保持包版本同步，我们通过 [`lerna`](http://npmjs.com/lerna)<!--rehype:target="__blank"--> 工具同时更改所有包的版本，确保组件包和文档包的版本是一致的。  
 > 在项目根目录运行 `npm run version` 命令，即可更改所有包的版本。
