@@ -4730,17 +4730,18 @@
   dependencies:
     "@uiw/utils" "^4.9.7"
 
-"@uiw/react-markdown-preview@3.3.5":
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/@uiw/react-markdown-preview/-/react-markdown-preview-3.3.5.tgz#318d11d247a7735cc9f073fa15de9b118f501130"
-  integrity sha512-bcPfnnKdoCfEi1vQ8KLukgn9p/zHryZHiO3gTUDE3G/adtUbSmvo3kIeWvP32cGbHdl6LMN3h3m7HfFPQ8mqLQ==
+"@uiw/react-markdown-preview@3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@uiw/react-markdown-preview/-/react-markdown-preview-3.4.0.tgz#abc25b43354d539c5e7bac0ad1a4f610143911a5"
+  integrity sha512-s3Fo6qI0LfX9PozyCiKVsv8/bq3uJgYfBknTUB7GKqXXqZGAdvLaYGxxT1oBmqaOEyj2sBS6Yflp1qeJh65dRQ==
   dependencies:
     "@babel/runtime" "7.15.4"
     "@mapbox/rehype-prism" "0.8.0"
     react-markdown "7.0.1"
+    rehype-attr "2.0.6"
     rehype-autolink-headings "6.1.0"
     rehype-raw "6.1.0"
-    rehype-rewrite "3.0.0"
+    rehype-rewrite "3.0.4"
     rehype-slug "5.0.0"
     remark-gfm "3.0.0"
 
@@ -17716,15 +17717,6 @@ rehype-raw@6.1.0:
     "@types/hast" "^2.0.0"
     hast-util-raw "^7.2.0"
     unified "^10.0.0"
-
-rehype-rewrite@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/rehype-rewrite/-/rehype-rewrite-3.0.0.tgz#ce08dc4031f59bdad60fbe07e20d927fe5477031"
-  integrity sha512-JAuCiYaBtcQ3ZGQa6fh1MeDCMXx2HbYqmQ2gTdjo4zNPjEdigo8cbk+AxFMo36OfEUluBQozvNzMWcvfeIVAQg==
-  dependencies:
-    hast-util-select "5.0.1"
-    unified "10.1.0"
-    unist-util-visit "4.1.0"
 
 rehype-rewrite@3.0.4:
   version "3.0.4"
