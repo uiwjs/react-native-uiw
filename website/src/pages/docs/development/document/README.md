@@ -3,7 +3,7 @@
 
 这里介绍，当前组件库开发和文档编写，方便您快速介入到文档/网站编辑开发中。
 
-> ⚠️ 注意：文档网站发布是监听 master 分支的更新`自动`发布到 [`gh-pages`](https://github.com/uiwjs/react-native-uiw/tree/gh-pages) 分支。  
+> 🚧  注意：文档网站发布是监听 master 分支的更新`自动`发布到 [`gh-pages`](https://github.com/uiwjs/react-native-uiw/tree/gh-pages) 分支。  
 > 在 `package.json` 中的版本号请不要随意更改，组件发布是监听 [`package.json 中的版本号`](https://github.com/uiwjs/react-native-uiw/blob/4e4f55681a71b4813a5f5fe26f4b1a859bc85a7f/.github/workflows/ci.yml#L64-L66)变更`自动`发布到 npm 上。  
 > 这些自动化得益于 [Github Actions](https://github.com/actions) 的强力驱动。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
@@ -50,7 +50,7 @@ https://unpkg.com/@uiw/react-native-doc@<包版本>/web/index.html
 
 [`v2.0.0+ 文档网站`](https://unpkg.com/@uiw/react-native-doc@2.1.0/doc/build/index.html)
 
-> ⚠️ 注意：为了保持包版本同步，我们通过 [`lerna`](http://npmjs.com/lerna)<!--rehype:target="__blank"--> 工具同时更改所有包的版本，确保组件包和文档包的版本是一致的。  
+> 🚧  注意：为了保持包版本同步，我们通过 [`lerna`](http://npmjs.com/lerna)<!--rehype:target="__blank"--> 工具同时更改所有包的版本，确保组件包和文档包的版本是一致的。  
 > 在项目根目录运行 `npm run version` 命令，即可更改所有包的版本。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
