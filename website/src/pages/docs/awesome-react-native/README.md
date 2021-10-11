@@ -25,3 +25,5 @@ React Native 不仅适用于 Android 和 iOS - 还有社区支持的项目将其
 - [react-native-webrtc](https://github.com/react-native-webrtc/react-native-webrtc) - <img align="bottom" height="13" src="https://img.shields.io/github/stars/react-native-webrtc/react-native-webrtc.svg?label=" /> React Native 的 WebRTC 模块。
 - [react-native-async-storage](https://github.com/react-native-async-storage/async-storage) - <img align="bottom" height="13" src="https://img.shields.io/github/stars/react-native-async-storage/async-storage.svg?label=" /> React Native 的异步、未加密、持久、键值存储系统。
 - [react-native-device-info](https://github.com/react-native-device-info/react-native-device-info) - <img align="bottom" height="13" src="https://img.shields.io/github/stars/react-native-device-info/react-native-device-info.svg?label=" /> React Native 用于获取当前设备信息。
+- [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) - <img align="bottom" height="13" src="https://img.shields.io/github/stars/software-mansion/react-native-gesture-handler.svg?label=" /> React Native 原生触摸和手势系统的声明式 API。
+
