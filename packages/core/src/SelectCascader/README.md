@@ -139,6 +139,7 @@ export default class SelectCascaderDemo extends Component {
 | `onChange` | 选中时执行此回调 | Function(value, label) | -  |
 | `onOk` | 确定选中的值 | Function(value, label) | -  |
 | `onDismiss` | 隐藏 | Function() | -  |
+| `maskClosable` | 点击蒙层是否关闭 | boolean | `true` |
 | `okText` | 确定button文字 | string | 确定  |
 | `dismissText` | 取消button文字 | string | 取消  |
 | `title` | 弹框标题 | string | 请选择  |

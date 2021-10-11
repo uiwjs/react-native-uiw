@@ -30,10 +30,10 @@ export interface SelectCascaderProps {
   cols?: number;
   pickerItemStyle?: StyleProp<TextStyle>;
   headerStyle?: StyleProp<ViewStyle>;
+  maskClosable?: boolean;
 }
 
 export interface Istate {
-  modalVisible: boolean;
   value: SelectCascaderValue;
 }
 
@@ -44,29 +44,35 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
     title: '请选择',
     disabled: false,
     cols: 3,
+    maskClosable: true,
   };
   state = {
     value: this.getValue(this.props.data, this.props.defaultValue || this.props.value),
-    modalVisible: this.props.visible,
   };
 
-  outerCtrl = () => {
-    this.setState({
-      modalVisible: !this.state.modalVisible,
-    });
-  };
-
-  componentWillReceiveProps(nextProps: SelectCascaderProps) {
-    if ('value' in nextProps) {
-      this.setState({
-        value: this.getValue(nextProps.data, nextProps.value),
-      });
+  static getDerivedStateFromProps(props: SelectCascaderProps, state: Istate) {
+    if (JSON.stringify(props.value) === JSON.stringify(state.value)) {
+      return null;
     }
-    if ('visible' in nextProps) {
-      this.setState({
-        modalVisible: nextProps.visible,
-      });
-    }
+    const getValue = (d: ICascaderDataItem[], val: SelectCascaderValue | undefined) => {
+      let data = d || props.data;
+      let value = val || props.value || props.defaultValue;
+      if (!value || !value.length || value.indexOf(undefined) > -1) {
+        value = [];
+        for (let i = 0; i < props.cols!; i++) {
+          if (data && data.length) {
+            value[i] = data[0].value;
+            if (data[0].children) {
+              data = data[0].children;
+            }
+          }
+        }
+      }
+      return value;
+    };
+    return {
+      value: getValue(props.data, props.value),
+    };
   }
 
   getSel(value: SelectCascaderValue) {
@@ -164,13 +170,13 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
   };
 
   render() {
-    const { title, dismissText, okText, onDismiss, headerStyle } = this.props;
+    const { title, dismissText, okText, onDismiss, headerStyle, visible, maskClosable } = this.props;
     const cols = this.getCols();
     return (
       <Modal
-        visible={this.state.modalVisible}
+        visible={visible}
         onClosed={() => {
-          this.setState({ modalVisible: false });
+          maskClosable && this.props.onDismiss?.();
         }}
       >
         <>
