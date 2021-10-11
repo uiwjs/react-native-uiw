@@ -47,7 +47,7 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
     maskClosable: true,
   };
   state = {
-    value: this.getValue(this.props.data, this.props.defaultValue || this.props.value),
+    value: new Array<SelectCascaderOneValue>(),
   };
 
   static getDerivedStateFromProps(props: SelectCascaderProps, state: Istate) {
@@ -109,23 +109,6 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
       this.props.onChange(value, this.getSel(value));
     }
   };
-
-  getValue(d: ICascaderDataItem[], val: SelectCascaderValue | undefined) {
-    let data = d || this.props.data;
-    let value = val || this.props.value || this.props.defaultValue;
-    if (!value || !value.length || value.indexOf(undefined) > -1) {
-      value = [];
-      for (let i = 0; i < this.props.cols!; i++) {
-        if (data && data.length) {
-          value[i] = data[0].value;
-          if (data[0].children) {
-            data = data[0].children;
-          }
-        }
-      }
-    }
-    return value;
-  }
 
   getCols = () => {
     const { data, cols, pickerItemStyle } = this.props;
