@@ -15,22 +15,38 @@ export interface ICascaderDataItem {
 }
 
 export interface SelectCascaderProps {
+  /** 隐藏 */
   onDismiss?: () => void;
+  /** 弹框标题 */
   title?: string;
+  /** 取消button文字 */
   dismissText?: string;
+  /** 确定button文字 */
   okText?: string;
+  /** 选中的值 */
   value?: SelectCascaderValue;
+  /** 选中时执行此回调 */
   onChange?: (value: SelectCascaderValue, label: string) => void;
+  /** 显示隐藏控制值 */
   visible: boolean;
-  onVisibleChange?: () => {};
+  /** 列表数据 */
   data: ICascaderDataItem[];
+  /** 默认选择的值 */
   defaultValue?: SelectCascaderValue | undefined;
+  /** 确定选中的值 */
   onOk?: (value: SelectCascaderValue, label: string) => void;
-  disabled?: boolean;
+  /** 列数 默认 3 */
   cols?: number;
+  /** 选择器样式 */
   pickerItemStyle?: StyleProp<TextStyle>;
+  /** 选择器头部样式 */
   headerStyle?: StyleProp<ViewStyle>;
+  /** 点击蒙层是否关闭 */
   maskClosable?: boolean;
+  /** 动作在被触摸操作激活时以多少不透明度显示 默认 1 */
+  activeOpacity?: number;
+  /** 动作有触摸操作时显示出来的底层的颜色 */
+  underlayColor?: string;
 }
 
 export interface Istate {
@@ -44,7 +60,6 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
     dismissText: '取消',
     okText: '确定',
     title: '请选择',
-    disabled: false,
     cols: 3,
     maskClosable: true,
   };
@@ -178,7 +193,16 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
   };
 
   render() {
-    const { title, dismissText, okText, onDismiss, headerStyle, visible, maskClosable } = this.props;
+    const {
+      title,
+      dismissText,
+      okText,
+      activeOpacity = 1,
+      underlayColor = '#f1f1f1',
+      onDismiss,
+      headerStyle,
+      maskClosable,
+    } = this.props;
     const cols = this.getCols();
     return (
       <Modal
@@ -189,13 +213,23 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
       >
         <>
           <View style={[styles.header, headerStyle]}>
-            <TouchableHighlight onPress={onDismiss} style={[styles.headerItem]}>
+            <TouchableHighlight
+              activeOpacity={activeOpacity}
+              underlayColor={underlayColor}
+              onPress={onDismiss}
+              style={[styles.headerItem]}
+            >
               <Text>{dismissText}</Text>
             </TouchableHighlight>
             <View style={[styles.headerItem]}>
               <Text>{title}</Text>
             </View>
-            <TouchableHighlight onPress={this.onOk} style={[styles.headerItem]}>
+            <TouchableHighlight
+              activeOpacity={activeOpacity}
+              underlayColor={underlayColor}
+              onPress={this.onOk}
+              style={[styles.headerItem]}
+            >
               <Text>{okText}</Text>
             </TouchableHighlight>
           </View>
