@@ -15,6 +15,7 @@ export interface SwipeActionProps {
     color: string;
     onPress?: () => void;
   }>;
+  swipeWidth?: string | number;
   enableTrackpadTwoFingerGesture?: boolean;
   friction?: number;
   leftThreshold?: number;
@@ -46,7 +47,7 @@ export interface SwipeActionProps {
 }
 
 const SwipeAction = (props: SwipeActionProps, ref: any) => {
-  const { children, right = [], left = [], ...others } = props;
+  const { children, right = [], left = [], swipeWidth = '20%', ...others } = props;
   const swipeableRef: React.MutableRefObject<null> = useRef(null);
 
   // 右侧滑出
@@ -62,7 +63,7 @@ const SwipeAction = (props: SwipeActionProps, ref: any) => {
         return (
           <View
             style={{
-              width: '20%',
+              width: swipeWidth,
               flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
             }}
           >
@@ -95,7 +96,7 @@ const SwipeAction = (props: SwipeActionProps, ref: any) => {
         return (
           <View
             style={{
-              width: '20%',
+              width: swipeWidth,
               flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
             }}
           >

@@ -104,12 +104,19 @@ const styles = StyleSheet.create({
 组件继承react-native-gesture-handler[`Swipeable`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/components/swipeable)
 ```tsx
 export interface SwipeActionProps {
-  right: Array<{
+  right?: Array<{
     text: string;
     color: string;
     x?: number;
-    onPress?: () => void
+    onPress?: () => void;
   }>;
+  left?: Array<{
+    text: string;
+    color: string;
+    onPress?: () => void;
+  }>;
+  // 滑动条宽度 20%
+  swipeWidth?:string | number
   enableTrackpadTwoFingerGesture?: boolean;
   friction?: number;
   leftThreshold?: number;
