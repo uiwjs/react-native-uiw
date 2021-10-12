@@ -16,25 +16,15 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
     const right = [
       {
         text: 'More',
-        onPress: () => console.log('more'),
-        style: {backgroundColor: 'orange', color: 'white'},
+        color: 'orange',
+        x: 250,
+        onPress: () => {},
       },
       {
         text: 'Delete',
-        onPress: () => console.log('delete'),
-        style: {backgroundColor: 'red', color: 'white'},
-      },
-    ];
-    const left = [
-      {
-        text: 'Read',
-        onPress: () => console.log('read'),
-        style: {backgroundColor: 'blue', color: 'white'},
-      },
-      {
-        text: 'Reply',
-        onPress: () => console.log('reply'),
-        style: {backgroundColor: 'green', color: 'white'},
+        color: 'red',
+        x: 400,
+        onPress: () => {},
       },
     ];
     return (
@@ -44,12 +34,10 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
           <Body>
             <Card title="左右滑动，显示按钮" style={styles.card}>
               <SwipeAction
-                autoClose
-                style={{backgroundColor: 'transparent'}}
                 right={right}
-                left={left}
-                onOpen={() => console.log('open')}
-                onClose={() => console.log('close')}>
+                onSwipeableRightOpen={() => {
+                  console.log('right');
+                }}>
                 <View style={styles.view}>
                   <Text>滑动</Text>
                 </View>

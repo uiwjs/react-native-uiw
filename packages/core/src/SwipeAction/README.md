@@ -7,62 +7,103 @@ SwipeAction 滑动操作组件。
 ## 基础示例
 
 ```jsx
-import React from 'react';
-import { View, SwipeAction } from '@uiw/react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { SwipeAction } from '@uiw/react-native';
+import Layout, { Container } from '../../Layout';
+import { ComProps } from '../../routes';
 
-export default class BasicSwipeActionExample extends React.Component {
+const { Header, Body, Card, Footer } = Layout;
+
+export interface SwipeActionProps extends ComProps { }
+
+export default class SwipeActionView extends Component<SwipeActionProps> {
   render() {
+    const { route } = this.props;
+    const description = route.params.description;
+    const title = route.params.title;
     const right = [
       {
         text: 'More',
-        onPress: () => console.log('more'),
-        style: { backgroundColor: 'orange', color: 'white' },
+        color: "orange",
+        x: 250,
+        onPress: () => { },
       },
       {
         text: 'Delete',
-        onPress: () => console.log('delete'),
-        style: { backgroundColor: 'red', color: 'white' },
-      },
-    ];
-    const left = [
-      {
-        text: 'Read',
-        onPress: () => console.log('read'),
-        style: { backgroundColor: 'blue', color: 'white' },
-      },
-      {
-        text: 'Reply',
-        onPress: () => console.log('reply'),
-        style: { backgroundColor: 'green', color: 'white' },
-      },
+        color: "red",
+        x: 400,
+        onPress: () => { },
+      }
     ];
     return (
-       <SwipeAction
-          autoClose
-          style={{ backgroundColor: 'transparent' }}
-          right={right}
-          left={left}
-          onOpen={() => console.log('open')}
-          onClose={() => console.log('close')}
-        >
-          <View>
-            <Text>滑动</Text>
-          </View>
-      </SwipeAction>
+      <Container>
+        <Layout>
+          <Header title={title} description={description} />
+          <Body>
+            <Card title="左右滑动，显示按钮" style={styles.card}>
+              <SwipeAction
+                right={right}
+              >
+                <View style={styles.view}>
+                  <Text>滑动</Text>
+                </View>
+              </SwipeAction>
+            </Card>
+          </Body>
+          <Footer />
+        </Layout>
+      </Container>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#fff',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 30,
+  },
+  view: {
+    height: 30,
+  },
+});
+
 ```
 
 
 ## Props
-
-属性 | 说明 | 类型 | 默认值
-----|-----|------|------
-| style           | `swipeout` 样式      | Object |             |
-| left       | 左侧按钮组      | Array | `null` |
-| right       | 右侧按钮组      | Array | `null` |
-| autoClose       | 点击按钮后自动隐藏按钮   | Boolean | `function() {}` |
-| onOpen       |    打开时回调函数   | (): void | `function() {}` |
-| disabled       |   禁用 `swipeout`    | Boolean | `false` |
-| onClose  |  关闭时回调函数    | (): void | `function() {}` |
+组件继承react-native-gesture-handler[`Swipeable`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/components/swipeable)
+```tsx
+export interface SwipeActionProps {
+  right: Array<{
+    text: string;
+    color: string;
+    x?: number;
+    onPress?: () => void
+  }>;
+  enableTrackpadTwoFingerGesture?: boolean;
+  friction?: number;
+  leftThreshold?: number;
+  rightThreshold?: number;
+  overshootLeft?: boolean;
+  overshootRight?: boolean;
+  overshootFriction?: number;
+  onSwipeableLeftOpen?: () => void;
+  onSwipeableRightOpen?: () => void;
+  onSwipeableOpen?: () => void;
+  onSwipeableClose?: () => void;
+  onSwipeableLeftWillOpen?: () => void;
+  onSwipeableRightWillOpen?: () => void;
+  onSwipeableWillOpen?: () => void;
+  onSwipeableWillClose?: () => void;
+  children?: React.ReactNode;
+  renderLeftActions?: (progressAnimatedValue: Animated.AnimatedInterpolation, dragAnimatedValue: Animated.AnimatedInterpolation) => React.ReactNode;
+  renderRightActions?: (progressAnimatedValue: Animated.AnimatedInterpolation, dragAnimatedValue: Animated.AnimatedInterpolation) => React.ReactNode;
+  useNativeAnimations?: boolean;
+  animationOptions?: Record<string, unknown>;
+  containerStyle?: StyleProp<ViewStyle>;
+  childrenContainerStyle?: StyleProp<ViewStyle>;
+}
+```

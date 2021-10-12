@@ -1,87 +1,120 @@
-import React from 'react';
-import { StyleProp, Text, TextStyle, View } from 'react-native';
-import Swipeout, { SwipeoutButtonProperties, SwipeoutProperties } from 'react-native-swipeout';
+import React, { useImperativeHandle, forwardRef, useRef } from 'react';
+import { Animated, StyleSheet, View, Text, I18nManager, StyleProp, ViewStyle } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-export interface SwipeoutButtonProps extends SwipeoutButtonProperties {
-  style?: StyleProp<TextStyle> & { backgroundColor: string };
+export interface SwipeActionProps {
+  right: Array<{
+    text: string;
+    color: string;
+    x?: number;
+    onPress?: () => void;
+  }>;
+  enableTrackpadTwoFingerGesture?: boolean;
+  friction?: number;
+  leftThreshold?: number;
+  rightThreshold?: number;
+  overshootLeft?: boolean;
+  overshootRight?: boolean;
+  overshootFriction?: number;
+  onSwipeableLeftOpen?: () => void;
+  onSwipeableRightOpen?: () => void;
+  onSwipeableOpen?: () => void;
+  onSwipeableClose?: () => void;
+  onSwipeableLeftWillOpen?: () => void;
+  onSwipeableRightWillOpen?: () => void;
+  onSwipeableWillOpen?: () => void;
+  onSwipeableWillClose?: () => void;
+  children?: React.ReactNode;
+  renderLeftActions?: (
+    progressAnimatedValue: Animated.AnimatedInterpolation,
+    dragAnimatedValue: Animated.AnimatedInterpolation,
+  ) => React.ReactNode;
+  renderRightActions?: (
+    progressAnimatedValue: Animated.AnimatedInterpolation,
+    dragAnimatedValue: Animated.AnimatedInterpolation,
+  ) => React.ReactNode;
+  useNativeAnimations?: boolean;
+  animationOptions?: Record<string, unknown>;
+  containerStyle?: StyleProp<ViewStyle>;
+  childrenContainerStyle?: StyleProp<ViewStyle>;
 }
 
-export interface SwipeActionProps extends SwipeoutProperties {
-  left?: SwipeoutButtonProps[];
-  right?: SwipeoutButtonProps[];
-}
+const SwipeAction = (props: SwipeActionProps, ref: any) => {
+  const { children, right = [], ...others } = props;
+  const swipeableRef: any = useRef(null);
 
-class SwipeAction extends React.Component<SwipeActionProps> {
-  static defaultProps: SwipeActionProps = {
-    autoClose: false,
-    disabled: false,
-    onOpen() {},
-    onClose() {},
-  };
-  renderCustomButton(button: SwipeoutButtonProps) {
-    const buttonStyle = button.style;
-    const bgColor = buttonStyle ? buttonStyle.backgroundColor : 'transparent';
-    const Component = (
-      <View
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: bgColor,
-        }}
-      >
-        {React.isValidElement(button.text) ? (
-          button.text
-        ) : (
-          // eslint-disable-next-line react-native/no-inline-styles
-          <Text style={[buttonStyle, { textAlign: 'center' }]}>{button.text}</Text>
-        )}
-      </View>
-    );
-    return {
-      text: button.text || 'Click',
-      onPress: button.onPress,
-      type: 'default',
-      component: Component,
-      backgroundColor: 'transparent',
-      color: '#999',
-      disabled: false,
-    };
-  }
-  render() {
-    const { disabled, autoClose, style, left, right, onOpen, onClose, children, ...restProps } = this.props;
+  const close = () => swipeableRef?.current?.close();
 
-    const customLeft =
-      left &&
-      left.map((btn) => {
-        return this.renderCustomButton(btn);
-      });
-    const customRight =
+  const renderRightAction = (progress: Animated.AnimatedInterpolation) => {
+    return (
       right &&
-      right.map((btn) => {
-        return this.renderCustomButton(btn);
-      });
-
-    return customLeft || customRight ? (
-      <Swipeout
-        autoClose={autoClose}
-        left={customLeft as SwipeoutButtonProps[]}
-        right={customRight as SwipeoutButtonProps[]}
-        style={style}
-        onOpen={onOpen}
-        onClose={onClose}
-        disabled={disabled}
-        {...restProps}
-      >
-        {children}
-      </Swipeout>
-    ) : (
-      <View style={style} {...restProps}>
-        {children}
-      </View>
+      right.length > 0 &&
+      right.map(({ x = 1, text, color, onPress }, idx) => {
+        const trans = progress.interpolate({
+          inputRange: [0, 1],
+          outputRange: [x, 0],
+        });
+        return (
+          <View
+            style={{
+              width: 60,
+              flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
+            }}
+          >
+            <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }} key={idx}>
+              <RectButton
+                style={[styles.rightAction, { backgroundColor: color }]}
+                onPress={() => {
+                  onPress && onPress();
+                  close();
+                }}
+              >
+                <Text style={styles.actionText}>{text}</Text>
+              </RectButton>
+            </Animated.View>
+          </View>
+        );
+      })
     );
-  }
-}
+  };
 
-export default SwipeAction;
+  // 暴露给父组件调用的方法
+  useImperativeHandle(ref, (): any => ({
+    close: close,
+  }));
+
+  return (
+    <Swipeable
+      ref={swipeableRef}
+      friction={2}
+      enableTrackpadTwoFingerGesture
+      rightThreshold={50}
+      overshootRight={false}
+      renderRightActions={renderRightAction}
+      {...others}
+    >
+      {children && children}
+    </Swipeable>
+  );
+};
+
+const styles = StyleSheet.create({
+  leftAction: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  },
+  actionText: {
+    color: 'white',
+    backgroundColor: 'transparent',
+    textAlign: 'center',
+  },
+  rightAction: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
+
+export default forwardRef(SwipeAction);

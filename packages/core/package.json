@@ -61,7 +61,7 @@
     "prop-types": "15.7.2",
     "react-native-root-siblings": "4.1.1",
     "react-native-svg": "12.1.1",
-    "react-native-swipeout": "2.3.6"
+    "react-native-gesture-handler":"1.10.3"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
