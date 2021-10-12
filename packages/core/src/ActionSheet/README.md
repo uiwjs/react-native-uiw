@@ -50,23 +50,42 @@ function Demo() {
 ## Props
 
 ```ts
-import { ModalProps } from 'react-native';
+import { ModalProps, StyleProp, ViewStyle } from 'react-native';
+
+export interface DividerStyle {
+  itemDivider?: StyleProp<ViewStyle>,
+  actionDivider?: StyleProp<ViewStyle>,
+}
 
 export interface ActionSheetProps extends ModalProps {
   /** 点击蒙层是否关闭 */
-  onCancel?: Boolean,
-  /** 是否展示元素 */
-  visible: Boolean,
+  onCancel?: Boolean;
+  /** 分割线样式 */
+  dividerStyle?: DividerStyle;
+  /** 取消的容器样式 */
+  containerStyle?: StyleProp<ViewStyle>;
+  /** 动作在被触摸操作激活时以多少不透明度显示 默认 1 */
+  activeOpacity?: number;
+  /** 动作有触摸操作时显示出来的底层的颜色 默认 #f1f1f1 */
+  underlayColor?: string;
+  /** 取消的文本样式 */
+  textStyle?: StyleProp<TextStyle>;
   /** 取消的文本 */
-  cancelText?: React.ReactNode
+  cancelText?: React.ReactNode;
 }
 ```
 
 ## ActionSheetItem Props
 
 ```ts
-export interface ActionSheetProps extends ModalProps {
-  /** 点击 Item 触发的事件 */
+import { TextStyle, StyleProp, ViewStyle } from 'react-native';
+
+export interface ActionSheetItemProps {
+  /** 容器样式 */
+  containerStyle?: StyleProp<ViewStyle>;
+  /** 文本样式 */
+  textStyle?: StyleProp<TextStyle>;
+  /** 点击 ActionSheetItem 触发的事件 */
   onPress?: ((event: GestureResponderEvent) => void),
 }
 ```

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import Layout, {Container} from '../../Layout';
 import {ActionSheet, Button, ActionSheetItem, Toast} from '@uiw/react-native';
 import {ComProps} from '../../routes';
@@ -36,7 +36,12 @@ export default class Index extends Component<IndexProps, IndexState> {
           <Body>
             <View style={styles.divider} />
             <Button onPress={this.onOpen}>打开 ActionSheet</Button>
-            <ActionSheet visible={this.state.visible} onCancel={true}>
+            <ActionSheet
+              visible={this.state.visible}
+              onCancel={true}
+              dividerStyle={{
+                itemDivider: {height: 2},
+              }}>
               <ActionSheetItem
                 onPress={() => Toast.info('你点击了按钮一', 2, 'info')}>
                 按钮一
