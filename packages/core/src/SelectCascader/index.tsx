@@ -212,12 +212,7 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
       renderTitleNode,
       renderOkNode,
     } = this.props;
-    //   /** 自定义取消元素 */
-    // renderDismissNode: React.ReactNode;
-    // /** 自定义标题元素 */
-    // renderTitleNode: React.ReactNode;
-    // /** 自定义确定元素 */
-    // renderOkNode: React.ReactNode;
+
     const cols = this.getCols();
     return (
       <Modal
