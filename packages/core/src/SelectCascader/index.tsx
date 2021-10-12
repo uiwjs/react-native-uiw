@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableHighlight, StyleProp, TextStyle, ViewStyle } from 'react-native';
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import { Picker } from '@react-native-picker/picker';
 import arrayTreeFilter from '../utils/arrayTreeFilter';
 import Modal from '../Modal';
@@ -23,6 +23,12 @@ export interface SelectCascaderProps {
   dismissText?: string;
   /** 确定button文字 */
   okText?: string;
+  /** 自定义取消元素 */
+  renderDismissNode: React.ReactNode;
+  /** 自定义标题元素 */
+  renderTitleNode: React.ReactNode;
+  /** 自定义确定元素 */
+  renderOkNode: React.ReactNode;
   /** 选中的值 */
   value?: SelectCascaderValue;
   /** 选中时执行此回调 */
@@ -202,7 +208,16 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
       onDismiss,
       headerStyle,
       maskClosable,
+      renderDismissNode,
+      renderTitleNode,
+      renderOkNode,
     } = this.props;
+    //   /** 自定义取消元素 */
+    // renderDismissNode: React.ReactNode;
+    // /** 自定义标题元素 */
+    // renderTitleNode: React.ReactNode;
+    // /** 自定义确定元素 */
+    // renderOkNode: React.ReactNode;
     const cols = this.getCols();
     return (
       <Modal
@@ -219,18 +234,16 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
               onPress={onDismiss}
               style={[styles.headerItem]}
             >
-              <Text>{dismissText}</Text>
+              {renderDismissNode ?? <Text>{dismissText}</Text>}
             </TouchableHighlight>
-            <View style={[styles.headerItem]}>
-              <Text>{title}</Text>
-            </View>
+            <View style={[styles.headerItem]}>{renderTitleNode ?? <Text>{title}</Text>}</View>
             <TouchableHighlight
               activeOpacity={activeOpacity}
               underlayColor={underlayColor}
               onPress={this.onOk}
               style={[styles.headerItem]}
             >
-              <Text>{okText}</Text>
+              {renderOkNode ?? <Text>{okText}</Text>}
             </TouchableHighlight>
           </View>
           <View style={styles.list}>{cols}</View>

@@ -145,6 +145,12 @@ export interface SelectCascaderProps {
   dismissText?: string;
   /** 确定button文字 */
   okText?: string;
+  /** 自定义取消元素 */
+  renderDismissNode: React.ReactNode;
+  /** 自定义标题元素 */
+  renderTitleNode: React.ReactNode;
+  /** 自定义确定元素 */
+  renderOkNode: React.ReactNode;
   /** 选中的值 */
   value?: SelectCascaderValue;
   /** 选中时执行此回调 */
