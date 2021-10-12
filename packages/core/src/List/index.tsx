@@ -77,6 +77,7 @@ export default class List extends React.PureComponent<ListProps, ListState> {
         data: result,
       };
     }
+    return null;
   }
   renderItemChild(props: ListRenderItemInfoCustom<{}>): React.ReactElement {
     return props.item as React.ReactElement;
