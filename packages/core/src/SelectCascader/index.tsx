@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableHighlight, StyleProp, TextStyle, ViewStyle } from 'react-native';
-import React, { Component, ReactNode } from 'react';
+import React, { Component } from 'react';
 import { Picker } from '@react-native-picker/picker';
 import arrayTreeFilter from '../utils/arrayTreeFilter';
 import Modal from '../Modal';
