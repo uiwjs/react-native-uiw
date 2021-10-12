@@ -26,6 +26,7 @@ export interface CheckBoxProps extends TouchableOpacityProps {
 
 export interface CheckBoxState {
   checked: boolean;
+  controlChecked: 'props' | 'state';
 }
 
 export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxState> {
@@ -33,6 +34,7 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
     super(props);
     this.state = {
       checked: !!props.checked,
+      controlChecked: 'props',
     };
   }
   static defaultProps = {
@@ -41,14 +43,23 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
     color: '#008EF0',
     size: 16,
   };
-  UNSAFE_componentWillReceiveProps(nextProps: CheckBoxProps) {
-    if (nextProps.checked !== this.props.checked) {
-      this.setState({ checked: !!nextProps.checked });
+  static getDerivedStateFromProps(props: CheckBoxProps, state: CheckBoxState) {
+    if (props.checked === state.checked && state.controlChecked === 'props') {
+      return null;
     }
+    if (state.controlChecked === 'props') {
+      return {
+        checked: props.checked,
+      };
+    }
+    return {
+      controlChecked: 'props',
+    };
   }
+
   onPress = () => {
     const { onChange } = this.props;
-    this.setState({ checked: !this.state.checked }, () => {
+    this.setState({ checked: !this.state.checked, controlChecked: 'state' }, () => {
       onChange && onChange(this.state.checked);
     });
   };
