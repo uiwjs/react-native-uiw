@@ -35,6 +35,8 @@ export interface SelectCascaderProps {
 
 export interface Istate {
   value: SelectCascaderValue;
+  modalVisible: boolean;
+  controlVisible: 'state' | 'props';
 }
 
 export default class SelectCascader extends Component<SelectCascaderProps, Istate> {
@@ -46,13 +48,25 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
     cols: 3,
     maskClosable: true,
   };
-  state = {
-    value: this.getValue(this.props.data, this.props.defaultValue || this.props.value),
+  state: Istate = {
+    value: new Array<SelectCascaderOneValue>(),
+    modalVisible: this.props.visible,
+    controlVisible: 'props',
   };
 
   static getDerivedStateFromProps(props: SelectCascaderProps, state: Istate) {
-    if (JSON.stringify(props.value) === JSON.stringify(state.value)) {
+    if (
+      JSON.stringify(props.value) === JSON.stringify(state.value) &&
+      state.controlVisible === 'props' &&
+      state.modalVisible === props.visible
+    ) {
       return null;
+    }
+    if (JSON.stringify(props.value) === JSON.stringify(state.value)) {
+      return {
+        modalVisible: state.controlVisible === 'props' ? props.visible : state.modalVisible,
+        controlVisible: 'props',
+      };
     }
     const getValue = (d: ICascaderDataItem[], val: SelectCascaderValue | undefined) => {
       let data = d || props.data;
@@ -70,8 +84,19 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
       }
       return value;
     };
+    if (
+      JSON.stringify(props.value) !== JSON.stringify(state.value) &&
+      state.controlVisible === 'props' &&
+      state.modalVisible === props.visible
+    ) {
+      return {
+        value: getValue(props.data, props.value),
+      };
+    }
     return {
       value: getValue(props.data, props.value),
+      modalVisible: state.controlVisible === 'props' ? props.visible : state.modalVisible,
+      controlVisible: 'props',
     };
   }
 
@@ -109,23 +134,6 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
       this.props.onChange(value, this.getSel(value));
     }
   };
-
-  getValue(d: ICascaderDataItem[], val: SelectCascaderValue | undefined) {
-    let data = d || this.props.data;
-    let value = val || this.props.value || this.props.defaultValue;
-    if (!value || !value.length || value.indexOf(undefined) > -1) {
-      value = [];
-      for (let i = 0; i < this.props.cols!; i++) {
-        if (data && data.length) {
-          value[i] = data[0].value;
-          if (data[0].children) {
-            data = data[0].children;
-          }
-        }
-      }
-    }
-    return value;
-  }
 
   getCols = () => {
     const { data, cols, pickerItemStyle } = this.props;
@@ -174,9 +182,9 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
     const cols = this.getCols();
     return (
       <Modal
-        visible={visible}
+        visible={this.state.modalVisible}
         onClosed={() => {
-          maskClosable && this.props.onDismiss?.();
+          maskClosable && this.setState({ modalVisible: false, controlVisible: 'state' });
         }}
       >
         <>
