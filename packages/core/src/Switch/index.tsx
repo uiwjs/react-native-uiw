@@ -29,6 +29,8 @@ export interface SwitchState {
     width: number;
     height: number;
   };
+  control: 'props' | 'state';
+  animatedStart: (checked: boolean) => void;
 }
 
 export default class Switch extends React.Component<SwitchProps, SwitchState> {
@@ -41,70 +43,69 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     color: '#4DD964',
     onValueChange: () => {},
   };
+  private animatedStart: (checked: boolean) => void;
   constructor(props: SwitchProps) {
     super(props);
+    this.animatedStart = (checked: boolean) => {
+      const obj = {
+        height: this.height,
+        number: 1,
+        translateXValue: this.translateXValue,
+      };
+      if (!checked) {
+        obj.height = 2;
+        obj.number = 0;
+        obj.translateXValue = 2;
+      }
+      Animated.parallel([
+        Animated.sequence([
+          Animated.spring(this.state.borderValue, {
+            toValue: obj.height,
+            overshootClamping: true,
+            useNativeDriver: false,
+          }),
+          Animated.spring(this.state.bgOpacity, {
+            toValue: obj.number,
+            overshootClamping: true,
+            useNativeDriver: false,
+          }),
+        ]),
+        Animated.spring(this.state.translateXValue, {
+          toValue: obj.translateXValue,
+          overshootClamping: true,
+          useNativeDriver: false,
+        }),
+      ]).start();
+    };
     this.state = {
       checked: !!this.props.checked,
       containerSize: { width: 0, height: 0 },
       borderValue: new Animated.Value(0),
       translateXValue: new Animated.Value(2),
       bgOpacity: new Animated.Value(props.value ? 1 : 0),
+      control: 'state',
+      animatedStart: this.animatedStart,
     };
     this.animatedStart(!!this.props.checked);
   }
-  UNSAFE_componentWillReceiveProps(nextProps: SwitchProps) {
-    if (this.props.checked !== nextProps.checked) {
-      this.setState({ checked: !!nextProps.checked }, () => {
-        this.animatedStart(!!nextProps.checked);
-      });
+  static getDerivedStateFromProps(props: SwitchProps, state: SwitchState) {
+    if (state.control === 'state') {
+      return {
+        control: 'props',
+      };
     }
-  }
-  animatedStart(checked: boolean) {
-    if (checked) {
-      Animated.parallel([
-        Animated.sequence([
-          Animated.spring(this.state.borderValue, {
-            toValue: this.height,
-            overshootClamping: true,
-            useNativeDriver: false,
-          }),
-          Animated.spring(this.state.bgOpacity, {
-            toValue: 1,
-            overshootClamping: true,
-            useNativeDriver: false,
-          }),
-        ]),
-        Animated.spring(this.state.translateXValue, {
-          toValue: this.translateXValue,
-          overshootClamping: true,
-          useNativeDriver: false,
-        }),
-      ]).start();
-    } else {
-      Animated.parallel([
-        Animated.sequence([
-          Animated.spring(this.state.bgOpacity, {
-            toValue: 0,
-            overshootClamping: true,
-            useNativeDriver: false,
-          }),
-          Animated.spring(this.state.borderValue, {
-            toValue: 2,
-            overshootClamping: true,
-            useNativeDriver: false,
-          }),
-        ]),
-        Animated.spring(this.state.translateXValue, {
-          toValue: 2,
-          overshootClamping: true,
-          useNativeDriver: false,
-        }),
-      ]).start();
+    if (props.checked !== state.checked) {
+      state.animatedStart(!!props.checked);
+      return {
+        checked: !!props.checked,
+        control: 'props',
+      };
     }
+    return null;
   }
   onPress = () => {
     const checked = !this.state.checked;
-    this.setState({ checked }, () => {
+    this.setState({ checked, control: 'state' }, () => {
       this.animatedStart(checked);
       this.props.onValueChange!(checked);
     });
@@ -120,7 +121,7 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     const state = { containerSize: size };
     this.translateXValue = layoutWidth - 2 - width;
     translateXValue.setValue(checked ? layoutWidth - 2 - width : 2);
-    this.setState({ ...state }, () => {
+    this.setState({ ...state, control: 'state' }, () => {
       this.animatedStart(!!this.props.checked);
     });
   };
