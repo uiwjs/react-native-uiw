@@ -21,7 +21,6 @@ export default class Cloud extends React.Component<CloudProps> {
   constructor(props: CloudProps) {
     super(props);
   }
-
   render() {
     const { title, isDown, isStart, triangle, backgroundColor, borderRadius } = this.props;
     const style: ViewStyle = {
@@ -42,7 +41,7 @@ export default class Cloud extends React.Component<CloudProps> {
           style={[
             styles.cloudFoot,
             {
-              transform: [{ rotateX: isDown ? '180deg' : '0' }],
+              transform: [{ rotateX: isDown ? '180deg' : '0deg' }],
               position: triangle ? 'absolute' : 'relative',
               left: triangle,
               zIndex: 9999,

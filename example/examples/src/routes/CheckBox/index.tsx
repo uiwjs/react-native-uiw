@@ -59,39 +59,39 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
               </List.Item>
               <List.Item style={{ paddingVertical: 0 }}>
                 <CheckBox
-                  style={{ paddingVertical: 10 }}
+                  style={{paddingVertical: 10}}
                   color={'red'}
                   onChange={checked => {
                     console.log(checked);
                   }}>
-                  改变选择框颜色  {'color={}'}
+                  改变选择框颜色 {'color={}'}
                 </CheckBox>
               </List.Item>
               <List.Item style={{ paddingVertical: 0 }}>
                 <CheckBox
                   checked={true}
-                  style={{ paddingVertical: 10 }}
+                  style={{paddingVertical: 10}}
                   color={'red'}
                   onChange={checked => {
                     console.log(checked);
                   }}>
-                  改变选择框颜色  {'color={}'}
+                  改变选择框颜色 {'color={}'}
                 </CheckBox>
               </List.Item>
-              <List.Item style={{ paddingVertical: 0 }}>
+              <List.Item style={{paddingVertical: 0}}>
                 <CheckBox
-                  style={{ paddingVertical: 10 }}
+                  style={{paddingVertical: 10}}
                   color={'red'}
-                  textStyle={{ fontSize: 18, color: 'red' }}
+                  textStyle={{fontSize: 18, color: 'red'}}
                   onChange={checked => {
                     console.log(checked);
                   }}>
                   改变文字颜色和大小
                 </CheckBox>
               </List.Item>
-              <List.Item style={{ paddingVertical: 0 }}>
+              <List.Item style={{paddingVertical: 0}}>
                 <CheckBox
-                  style={{ paddingVertical: 10 }}
+                  style={{paddingVertical: 10}}
                   size={20}
                   onChange={checked => {
                     console.log(checked);

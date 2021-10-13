@@ -15,26 +15,50 @@ export interface ICascaderDataItem {
 }
 
 export interface SelectCascaderProps {
+  /** 隐藏 */
   onDismiss?: () => void;
+  /** 弹框标题 */
   title?: string;
+  /** 取消button文字 */
   dismissText?: string;
+  /** 确定button文字 */
   okText?: string;
+  /** 自定义取消元素 */
+  renderDismissNode: React.ReactNode;
+  /** 自定义标题元素 */
+  renderTitleNode: React.ReactNode;
+  /** 自定义确定元素 */
+  renderOkNode: React.ReactNode;
+  /** 选中的值 */
   value?: SelectCascaderValue;
+  /** 选中时执行此回调 */
   onChange?: (value: SelectCascaderValue, label: string) => void;
+  /** 显示隐藏控制值 */
   visible: boolean;
-  onVisibleChange?: () => {};
+  /** 列表数据 */
   data: ICascaderDataItem[];
+  /** 默认选择的值 */
   defaultValue?: SelectCascaderValue | undefined;
+  /** 确定选中的值 */
   onOk?: (value: SelectCascaderValue, label: string) => void;
-  disabled?: boolean;
+  /** 列数 默认 3 */
   cols?: number;
+  /** 选择器样式 */
   pickerItemStyle?: StyleProp<TextStyle>;
+  /** 选择器头部样式 */
   headerStyle?: StyleProp<ViewStyle>;
+  /** 点击蒙层是否关闭 */
+  maskClosable?: boolean;
+  /** 动作在被触摸操作激活时以多少不透明度显示 默认 1 */
+  activeOpacity?: number;
+  /** 动作有触摸操作时显示出来的底层的颜色 */
+  underlayColor?: string;
 }
 
 export interface Istate {
-  modalVisible: boolean;
   value: SelectCascaderValue;
+  modalVisible: boolean;
+  controlVisible: 'state' | 'props';
 }
 
 export default class SelectCascader extends Component<SelectCascaderProps, Istate> {
@@ -42,31 +66,59 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
     dismissText: '取消',
     okText: '确定',
     title: '请选择',
-    disabled: false,
     cols: 3,
+    maskClosable: true,
   };
-  state = {
-    value: this.getValue(this.props.data, this.props.defaultValue || this.props.value),
+  state: Istate = {
+    value: new Array<SelectCascaderOneValue>(),
     modalVisible: this.props.visible,
+    controlVisible: 'props',
   };
 
-  outerCtrl = () => {
-    this.setState({
-      modalVisible: !this.state.modalVisible,
-    });
-  };
-
-  componentWillReceiveProps(nextProps: SelectCascaderProps) {
-    if ('value' in nextProps) {
-      this.setState({
-        value: this.getValue(nextProps.data, nextProps.value),
-      });
+  static getDerivedStateFromProps(props: SelectCascaderProps, state: Istate) {
+    if (
+      JSON.stringify(props.value) === JSON.stringify(state.value) &&
+      state.controlVisible === 'props' &&
+      state.modalVisible === props.visible
+    ) {
+      return null;
     }
-    if ('visible' in nextProps) {
-      this.setState({
-        modalVisible: nextProps.visible,
-      });
+    if (JSON.stringify(props.value) === JSON.stringify(state.value)) {
+      return {
+        modalVisible: state.controlVisible === 'props' ? props.visible : state.modalVisible,
+        controlVisible: 'props',
+      };
     }
+    const getValue = (d: ICascaderDataItem[], val: SelectCascaderValue | undefined) => {
+      let data = d || props.data;
+      let value = val || props.value || props.defaultValue;
+      if (!value || !value.length || value.indexOf(undefined) > -1) {
+        value = [];
+        for (let i = 0; i < props.cols!; i++) {
+          if (data && data.length) {
+            value[i] = data[0].value;
+            if (data[0].children) {
+              data = data[0].children;
+            }
+          }
+        }
+      }
+      return value;
+    };
+    if (
+      JSON.stringify(props.value) !== JSON.stringify(state.value) &&
+      state.controlVisible === 'props' &&
+      state.modalVisible === props.visible
+    ) {
+      return {
+        value: getValue(props.data, props.value),
+      };
+    }
+    return {
+      value: getValue(props.data, props.value),
+      modalVisible: state.controlVisible === 'props' ? props.visible : state.modalVisible,
+      controlVisible: 'props',
+    };
   }
 
   getSel(value: SelectCascaderValue) {
@@ -103,23 +155,6 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
       this.props.onChange(value, this.getSel(value));
     }
   };
-
-  getValue(d: ICascaderDataItem[], val: SelectCascaderValue | undefined) {
-    let data = d || this.props.data;
-    let value = val || this.props.value || this.props.defaultValue;
-    if (!value || !value.length || value.indexOf(undefined) > -1) {
-      value = [];
-      for (let i = 0; i < this.props.cols!; i++) {
-        if (data && data.length) {
-          value[i] = data[0].value;
-          if (data[0].children) {
-            data = data[0].children;
-          }
-        }
-      }
-    }
-    return value;
-  }
 
   getCols = () => {
     const { data, cols, pickerItemStyle } = this.props;
@@ -164,25 +199,46 @@ export default class SelectCascader extends Component<SelectCascaderProps, Istat
   };
 
   render() {
-    const { title, dismissText, okText, onDismiss, headerStyle } = this.props;
+    const {
+      title,
+      dismissText,
+      okText,
+      activeOpacity = 1,
+      underlayColor = '#f1f1f1',
+      onDismiss,
+      headerStyle,
+      maskClosable,
+      renderDismissNode,
+      renderTitleNode,
+      renderOkNode,
+    } = this.props;
+
     const cols = this.getCols();
     return (
       <Modal
         visible={this.state.modalVisible}
         onClosed={() => {
-          this.setState({ modalVisible: false });
+          maskClosable && this.setState({ modalVisible: false, controlVisible: 'state' });
         }}
       >
         <>
           <View style={[styles.header, headerStyle]}>
-            <TouchableHighlight onPress={onDismiss} style={[styles.headerItem]}>
-              <Text>{dismissText}</Text>
+            <TouchableHighlight
+              activeOpacity={activeOpacity}
+              underlayColor={underlayColor}
+              onPress={onDismiss}
+              style={[styles.headerItem]}
+            >
+              {renderDismissNode ?? <Text>{dismissText}</Text>}
             </TouchableHighlight>
-            <View style={[styles.headerItem]}>
-              <Text>{title}</Text>
-            </View>
-            <TouchableHighlight onPress={this.onOk} style={[styles.headerItem]}>
-              <Text>{okText}</Text>
+            <View style={[styles.headerItem]}>{renderTitleNode ?? <Text>{title}</Text>}</View>
+            <TouchableHighlight
+              activeOpacity={activeOpacity}
+              underlayColor={underlayColor}
+              onPress={this.onOk}
+              style={[styles.headerItem]}
+            >
+              {renderOkNode ?? <Text>{okText}</Text>}
             </TouchableHighlight>
           </View>
           <View style={styles.list}>{cols}</View>

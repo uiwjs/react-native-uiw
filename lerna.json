@@ -1,14 +1,7 @@
 {
-  "version": "2.7.1",
-  "packages": [
-    "example/*",
-    "packages/*",
-    "website"
-  ],
+  "version": "2.8.1",
+  "packages": ["example/*", "packages/*", "website"],
   "npmClient": "yarn",
-  "npmClientArgs": [
-    "--production",
-    "--no-optional"
-  ],
+  "npmClientArgs": ["--production", "--no-optional"],
   "useWorkspaces": true
 }

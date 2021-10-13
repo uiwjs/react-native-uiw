@@ -58,7 +58,7 @@ const CardDemo = (props: any) => {
       <Card>
         {basicRender}
         <Card.Actions
-           actions={[
+          actions={[
             {
               text: '点赞',
               icon: <Icon name="like-o" size={16} color="#5847FF" />,

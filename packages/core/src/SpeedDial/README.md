@@ -7,7 +7,8 @@ SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示�
 
 ```jsx
 import { Fragment } from 'react';
-import { SpeedDial } from '@uiw/react-native';
+import { SpeedDial, Icon } from '@uiw/react-native';
+import { Text } from '@uiw/react-native';
 
 function Demo() {
   return (
@@ -42,7 +43,7 @@ function Demo() {
 
 ```jsx
 import { Fragment } from 'react';
-import { Rating, Icon } from '@uiw/react-native';
+import { SpeedDial, Icon } from '@uiw/react-native';
 function Demo() {
   return (
     <Fragment>

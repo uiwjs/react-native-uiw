@@ -149,7 +149,10 @@ export default class Slider extends Component<SliderProps, SliderState> {
   }
   getThumbLeft(value: number) {
     const ratio = (value - this.props.minValue!) / (this.props.maxValue! - this.props.minValue!);
-    return ratio * (this.state.containerSize.width - this.state.thumbSize.width);
+    if (this.props.shownThumb) {
+      return ratio * (this.state.containerSize.width - this.state.thumbSize.width);
+    }
+    return ratio * this.state.containerSize.width;
   }
   getCurrentValue = () => (this.state.value as any).__getValue();
   handlePanResponderGrant = () => {
@@ -174,8 +177,11 @@ export default class Slider extends Component<SliderProps, SliderState> {
     this.props.onChange!(this.getCurrentValue());
   };
   getValue(gestureState: PanResponderGestureState) {
-    const { vertical, minValue, maxValue } = this.props;
-    const length = this.state.containerSize.width - this.state.thumbSize.width;
+    const { vertical, minValue, maxValue, shownThumb } = this.props;
+    let length = this.state.containerSize.width - this.state.thumbSize.width;
+    if (!shownThumb) {
+      length = this.state.containerSize.width;
+    }
     const thumbLeft = this._previousLeft + (vertical ? gestureState.dy : gestureState.dx);
     const ratio = thumbLeft / length;
     if (this.props.step) {
@@ -216,10 +222,12 @@ export default class Slider extends Component<SliderProps, SliderState> {
     } = { position: 'absolute' };
 
     if (this.props.vertical) {
-      minimumTrackStyle.height = Animated.add(thumbStart, thumbSize.height / 2);
+      minimumTrackStyle.height = Animated.add(thumbStart, 0);
+      // minimumTrackStyle.height = Animated.add(thumbStart, thumbSize.height / 2);
       minimumTrackStyle.marginLeft = -trackSize.width;
     } else {
-      minimumTrackStyle.width = Animated.add(thumbStart, thumbSize.width / 2);
+      minimumTrackStyle.width = Animated.add(thumbStart, 0);
+      // minimumTrackStyle.width = Animated.add(thumbStart, thumbSize.width / 2);
       minimumTrackStyle.marginTop = -trackSize.height;
     }
     return minimumTrackStyle;
@@ -271,9 +279,13 @@ export default class Slider extends Component<SliderProps, SliderState> {
     } = this.props;
     const { value, thumbSize, containerSize } = this.state;
     const touchOverflowStyle = {} as ViewStyle;
+    let outputRange = containerSize.width;
+    if (shownThumb) {
+      outputRange = containerSize.width - thumbSize.width;
+    }
     const thumbStart = value.interpolate({
       inputRange: [minValue!, maxValue!],
-      outputRange: [0, containerSize.width - thumbSize.width],
+      outputRange: [0, outputRange],
       // extrapolate: 'clamp',
     });
     const minimumTrackStyle = {
@@ -324,6 +336,11 @@ export default class Slider extends Component<SliderProps, SliderState> {
               {
                 transform: [...this.getThumbPositionStyles(thumbStart), ...thumbStyleTransform],
                 ...valueVisibleStyle,
+              },
+              {
+                width: vertical ? thumbSize.height : thumbSize.width,
+                height: vertical ? thumbSize.width : thumbSize.height,
+                borderRadius: thumbSize.width / 2,
               },
             ])}
           />

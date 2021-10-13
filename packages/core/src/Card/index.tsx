@@ -80,9 +80,7 @@ const Card = ({
         },
       ])}
     >
-      <View style={StyleSheet.flatten([styles.wrapper, wrapperStyle && wrapperStyle])}>
-        {children}
-      </View>
+      <View style={StyleSheet.flatten([styles.wrapper, wrapperStyle && wrapperStyle])}>{children}</View>
       {renderSelection()}
     </Container>
   );
@@ -126,10 +124,10 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     backgroundColor: 'transparent',
-  }
+  },
 });
 
-Card.Title = CardTitle
-Card.Actions = CardActions
+Card.Title = CardTitle;
+Card.Actions = CardActions;
 
 export default Card;

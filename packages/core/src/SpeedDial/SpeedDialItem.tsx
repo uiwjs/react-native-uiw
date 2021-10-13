@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ViewStyle, GestureResponderHandlers } from 'react-native';
 import Icon, { IconsName } from '../Icon';
 import { TabsItemIconTypes } from '../Tabs/TabsItem';
 
@@ -16,6 +16,7 @@ export interface SpeedDialItemProps {
    * 点击右边时触发
    */
   onPress?: Function;
+  move?: GestureResponderHandlers;
 }
 
 function SpeedDialItem(props: SpeedDialItemProps) {
@@ -38,9 +39,8 @@ function SpeedDialItem(props: SpeedDialItemProps) {
   }, [icon]);
 
   return (
-    <View style={styles.speedDialItemContainer}>
+    <View style={styles.speedDialItemContainer} {...props.move}>
       <View style={[styles.speedDialItemTitle, { ...titleStyle }]}>{ChildTitle}</View>
-
       <TouchableOpacity
         onPress={() => {
           onPress && onPress();

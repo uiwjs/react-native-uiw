@@ -7,9 +7,9 @@ MaskLayer 遮罩层
 
 <!--DemoStart--> 
 ```jsx
-import React, { Component, Fragment } from 'react';
-import { View, Text, Alert, SafeAreaView } from 'react-native';
-import { Modal, Button, MaskLayer } from '@uiw/react-native';
+import { Fragment } from 'react';
+import { Text,  SafeAreaView } from 'react-native';
+import { Button, MaskLayer } from '@uiw/react-native';
 
 export default () => {
   const [visible, setVisible] = useState(true);
@@ -20,7 +20,9 @@ export default () => {
         onDismiss={() => {
           setVisible(false);
         }}>
+        <SafeAreaView>
           <Text style={{color: '#fff'}}>展示内容</Text>
+        </SafeAreaView>
       </MaskLayer>
       <Button
         onPress={() => {

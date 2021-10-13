@@ -16,7 +16,6 @@ function Demo() {
     <View style={{ flexDirection: 'row' }}>
       <Avatar src="https://xx.images.com/xxx/icon.png" />
       <Avatar src={uri} />
-      <Avatar src={require('./1.png')} />
     </View>
   );
 }

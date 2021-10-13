@@ -137,14 +137,8 @@ function SpeedDial(props: SpeedDialProps) {
   return (
     <View>
       <Animated.View
-        style={
-          isDrag
-            ? {
-                transform: [{ translateX: pan.x }, { translateY: pan.y }],
-              }
-            : {}
-        }
-        {...panResponder.panHandlers}
+        style={{ transform: [{ translateX: pan.x }, { translateY: pan.y }] }}
+        // {...panResponder.panHandlers}
       >
         <View style={[styles.viewPosition, { bottom: bottom - MainHeight, right: right }]}>
           {success &&
@@ -159,15 +153,16 @@ function SpeedDial(props: SpeedDialProps) {
                 ]}
                 key={i}
               >
-                <Item {...item} />
+                <Item {...item} move={panResponder.panHandlers} />
               </Animated.View>
             ))}
-
-          <TouchableOpacity activeOpacity={1} onPress={onOpenHome}>
-            <View style={[styles.homeContainer, { ...style }]} {...other}>
-              {iconName === 'plus' ? PlusDom : CloseDom}
-            </View>
-          </TouchableOpacity>
+          <View {...panResponder.panHandlers}>
+            <TouchableOpacity activeOpacity={1} onPress={onOpenHome}>
+              <View style={[styles.homeContainer, { ...style }]} {...other}>
+                {iconName === 'plus' ? PlusDom : CloseDom}
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </Animated.View>
     </View>

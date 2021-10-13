@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import Layout, {Container} from '../../Layout';
 import {SelectCascader, SelectCascaderValue, Button} from '@uiw/react-native';
 import {ComProps} from '../../routes';
@@ -9,8 +9,13 @@ const {Header, Body, Card, Footer} = Layout;
 
 export interface SelectCascaderProps extends ComProps {}
 
+interface Value {
+  key: SelectCascaderValue;
+  city: string;
+}
 export interface IState {
   visible: boolean;
+  value: Value;
 }
 
 export default class SelectCascaderView extends Component<
@@ -21,18 +26,22 @@ export default class SelectCascaderView extends Component<
     super(props);
     this.state = {
       visible: false,
+      value: {
+        key: ['02', '02-2', '02-2-2'],
+        city: '啥也没',
+      },
     };
   }
 
-  onChange(val: SelectCascaderValue, label: string) {
-    console.log('val-------->', val);
-    console.log('label-------->', label);
-  }
+  onChange = (val: SelectCascaderValue, label: string) => {
+    console.log('label--------> change', label);
+    this.setState({value: {key: val, city: label}});
+  };
 
   onOk = (val: SelectCascaderValue, label: string) => {
     this.setState({visible: false});
-    console.log('val-------->', val);
-    console.log('label-------->', label);
+    console.log('label--------> ok', label);
+    this.setState({value: {key: val, city: label}});
   };
 
   render() {
@@ -46,6 +55,7 @@ export default class SelectCascaderView extends Component<
           <Header title={title} description={description} />
           <Body>
             <Card title="说明提示" style={styles.card}>
+              <Text>{this.state.value.city}</Text>
               <Button
                 onPress={() => {
                   this.setState({visible: true});
@@ -54,7 +64,7 @@ export default class SelectCascaderView extends Component<
               </Button>
               <SelectCascader
                 data={data}
-                value={['02', '02-2', '02-2-2']}
+                value={this.state.value.key}
                 onOk={this.onOk}
                 onDismiss={() => {
                   this.setState({visible: false});
