@@ -3,18 +3,26 @@ import { Animated, StyleSheet, View, Text, I18nManager, StyleProp, ViewStyle, Di
 import { RectButton } from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
+export interface Column {
+  /** 显示文字 */
+  text: string;
+  /** 背景色 */
+  color: string;
+  /** 滑动距离多少出现 */
+  x?: number;
+  /** 点击元素触发 */
+  onPress?: () => void;
+  /** 宽度 */
+  width?: number | string;
+  /** 自定义元素 */
+  render?: (text: string, record: Column, index: number) => React.ReactNode;
+}
+
 export interface SwipeActionProps {
-  right?: Array<{
-    text: string;
-    color: string;
-    x?: number;
-    onPress?: () => void;
-  }>;
-  left?: Array<{
-    text: string;
-    color: string;
-    onPress?: () => void;
-  }>;
+  /** 右边滑动出来的元素 */
+  right?: Array<Column>;
+  /** 左边滑动出来的元素 */
+  left?: Array<Column>;
   swipeWidth?: string | number;
   enableTrackpadTwoFingerGesture?: boolean;
   friction?: number;
@@ -55,26 +63,27 @@ const SwipeAction = (props: SwipeActionProps, ref: any) => {
     return (
       right &&
       right.length > 0 &&
-      right.map(({ x = 1, text, color, onPress }, idx) => {
+      right.map(({ x = 1, text, color, onPress, width = '20%', render }, idx) => {
         const trans = progress.interpolate({
           inputRange: [0, 1],
           outputRange: [x, 0],
         });
         return (
           <View
+            key={idx}
             style={{
-              width: swipeWidth,
+              width: width,
               flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
             }}
           >
-            <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }} key={idx}>
+            <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
               <RectButton
                 style={[styles.rightAction, { backgroundColor: color }]}
                 onPress={() => {
                   onPress && onPress();
                 }}
               >
-                <Text style={styles.actionText}>{text}</Text>
+                {render ? render(text, right[idx], idx) : <Text style={styles.actionText}>{text}</Text>}
               </RectButton>
             </Animated.View>
           </View>
@@ -87,7 +96,7 @@ const SwipeAction = (props: SwipeActionProps, ref: any) => {
     return (
       left &&
       left.length > 0 &&
-      left.map(({ text, color, onPress }, idx) => {
+      left.map(({ text, color, onPress, width, render }, idx) => {
         const trans = dragX.interpolate({
           inputRange: [0, 50, 100, 101],
           outputRange: [-20, 0, 0, 1],
@@ -99,15 +108,16 @@ const SwipeAction = (props: SwipeActionProps, ref: any) => {
               width: swipeWidth,
               flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
             }}
+            key={idx}
           >
-            <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }} key={idx}>
+            <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
               <RectButton
                 style={[styles.rightAction, { backgroundColor: color }]}
                 onPress={() => {
                   onPress && onPress();
                 }}
               >
-                <Text style={styles.actionText}>{text}</Text>
+                {render ? render(text, left[idx], idx) : <Text style={styles.actionText}>{text}</Text>}
               </RectButton>
             </Animated.View>
           </View>
