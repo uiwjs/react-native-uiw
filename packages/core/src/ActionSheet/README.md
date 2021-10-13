@@ -50,7 +50,8 @@ function Demo() {
 ## Props
 
 ```ts
-import { ModalProps, StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, ViewStyle } from 'react-native';
+import { ModalProps } from '@uiw/react-native';
 
 export interface DividerStyle {
   itemDivider?: StyleProp<ViewStyle>,
