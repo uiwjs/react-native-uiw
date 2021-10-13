@@ -23,7 +23,7 @@ export default class RightButton extends React.PureComponent<RightButtonProps, R
     const { isShow = false, actionName = '搜索', width, ...other } = this.props;
     return (
       <View style={[styles.rightStyle, { width: width - 10, opacity: Number(isShow) }]}>
-        <Button type="primary" {...other} style={{ flex: 1, paddingHorizontal: 10 }}>
+        <Button type="primary" {...other} style={[{ flex: 1, paddingHorizontal: 10 }, other.textStyle]}>
           {actionName}
         </Button>
       </View>
