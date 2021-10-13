@@ -28,6 +28,9 @@ export interface DrawerState {
   drawerValue: Animated.ValueXY;
   overlayValue: Animated.Value;
   zIndexValue: number;
+  handleDrawer: (isOpen: boolean) => void;
+  control: 'props' | 'state';
+  isOpen: boolean;
 }
 
 export default class Drawer extends Component<DrawerProps, DrawerState> {
@@ -42,24 +45,42 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     openDrawer: () => null,
     closeDrawer: () => null,
   };
+  private handleDrawer: (isOpen: boolean) => void;
   constructor(props: DrawerProps) {
     super(props);
+    this.handleDrawer = (isOpen: boolean) => {
+      isOpen ? this.openDrawer() : this.closeDrawer();
+    };
     this.state = {
       zIndexValue: 0,
       overlayValue: new Animated.Value(0),
       drawerValue: new Animated.ValueXY({ ...this.getInitPosition() }),
+      handleDrawer: this.handleDrawer,
+      control: 'state',
+      isOpen: !!props.isOpen,
     };
+  }
+  static getDerivedStateFromProps(props: DrawerProps, state: DrawerState) {
+    if (state.control === 'state') {
+      return {
+        control: 'props',
+      };
+    }
+    if (props.isOpen !== state.isOpen) {
+      state.handleDrawer(!!props.isOpen);
+      return {
+        isOpen: props.isOpen,
+        control: 'props',
+      };
+    }
+    return null;
   }
   componentDidMount() {
     if (this.props.isOpen) {
       this.openDrawer();
     }
   }
-  UNSAFE_componentWillReceiveProps(nextProps: DrawerProps) {
-    if (nextProps.isOpen !== this.props.isOpen) {
-      this.handleDrawer(!!nextProps.isOpen);
-    }
-  }
+
   onOverlayClick = (e: GestureResponderEvent) => {
     const { maskClosable } = this.props;
     if (!maskClosable) {
@@ -140,9 +161,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
       </Fragment>
     );
   }
-  handleDrawer(isOpen: boolean) {
-    isOpen ? this.openDrawer() : this.closeDrawer();
-  }
+
   getInitPosition() {
     const { drawerWidth, placement, drawerHeight } = this.props;
     const xy = { x: 0, y: 0 };
@@ -161,7 +180,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     return xy;
   }
   openDrawer() {
-    this.setState({ zIndexValue: 3002 });
+    this.setState({ zIndexValue: 3002, control: 'state' });
     Animated.parallel([
       Animated.spring(this.state.drawerValue, {
         toValue: { x: 0, y: 0 },
@@ -194,7 +213,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     ]).start(() => {
       this.props.closeDrawer!(false);
       this.props.onChange!(false);
-      this.setState({ zIndexValue: 0 });
+      this.setState({ zIndexValue: 0, control: 'state' });
     });
   }
 }
