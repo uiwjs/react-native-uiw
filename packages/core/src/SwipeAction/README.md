@@ -112,8 +112,6 @@ export interface Column {
   x?: number;
   /** 点击元素触发 */
   onPress?: () => void;
-  /** 宽度 */
-  width?: number|string,
   /** 自定义元素 */
   render?:(text:string,record: Column,index: number)=>React.ReactNode
 }
@@ -123,8 +121,9 @@ export interface SwipeActionProps {
   right?: Array<Column>;
   /** 左边滑动出来的元素 */
   left?: Array<Column>;
-  // 滑动条宽度 20%
+  /** 滑动条宽度 默认20% */
   swipeWidth?:string | number
+  /** 其余api参考文档 react-native-gesture-handler/Swipeable */
   enableTrackpadTwoFingerGesture?: boolean;
   friction?: number;
   leftThreshold?: number;

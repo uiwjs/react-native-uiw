@@ -38,12 +38,14 @@ export default class Index extends Component<IndexProps, IndexState> {
             <Button onPress={this.onOpen}>打开 ActionSheet</Button>
             <ActionSheet
               visible={this.state.visible}
-              onCancel={true}
+              maskClosable={true}
               dividerStyle={{
                 itemDivider: {height: 2},
               }}>
               <ActionSheetItem
-                onPress={() => Toast.info('你点击了按钮一', 2, 'info')}>
+                onPress={() => {
+                  Toast.info('你点击了按钮一', 2, 'info');
+                }}>
                 按钮一
               </ActionSheetItem>
               <ActionSheetItem

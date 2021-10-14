@@ -1,16 +1,6 @@
 import React from 'react';
-import {
-  View,
-  Dimensions,
-  StyleSheet,
-  TextStyle,
-  StyleProp,
-  ViewStyle,
-  TouchableOpacity,
-  Modal,
-  ModalProps,
-  Animated,
-} from 'react-native';
+import { View, Dimensions, StyleSheet, TextStyle, StyleProp, ViewStyle } from 'react-native';
+import Modal, { ModalProps } from '../Modal';
 export { default as ActionSheetItem } from './item';
 import ActionSheetItem from './item';
 
@@ -40,55 +30,42 @@ export interface ActionSheetProps extends ModalProps {
 }
 
 interface ActionSheetState {
-  animatedHeight: number;
   stateVisible: boolean;
+  control: 'props' | 'state';
 }
 
 export default class ActionSheet extends React.Component<ActionSheetProps, ActionSheetState> {
-  private fadeAnim: Animated.Value = new Animated.Value(0);
-  private animatedRef: React.RefObject<View> = React.createRef();
   constructor(props: ActionSheetProps) {
     super(props);
     this.state = {
-      animatedHeight: 0,
       stateVisible: !!props.visible,
+      control: 'props',
     };
   }
-
-  onClose = () => {
-    Animated.timing(this.fadeAnim, {
-      toValue: 0,
-      duration: 150,
-      useNativeDriver: true,
-    }).start(({ finished }) => {
-      this.setState({ stateVisible: false });
-    });
-  };
-  UNSAFE_componentWillReceiveProps(nextProps: ActionSheetProps) {
-    if (nextProps.visible) {
-      this.setState({ stateVisible: true });
-      Animated.timing(this.fadeAnim, {
-        toValue: 0,
-        duration: 0,
-        useNativeDriver: true,
-      }).start(({ finished }) => {
-        this.animatedRef.current &&
-          this.animatedRef.current.measure(
-            (_frameOffsetX, _frameOffsetY, _width, _height, pageOffsetX, pageOffsetY) => {
-              this.setState({ animatedHeight: _height }, () => {
-                Animated.timing(this.fadeAnim, {
-                  toValue: -_height,
-                  duration: 150,
-                  useNativeDriver: true,
-                }).start();
-              });
-            },
-          );
-      });
-    } else {
-      this.onClose();
+  static getDerivedStateFromProps(props: ActionSheetProps, state: ActionSheetState) {
+    if (props.visible === state.stateVisible && state.control === 'state') {
+      return {
+        control: 'props',
+        stateVisible: props.visible,
+      };
     }
+    if (props.visible !== state.stateVisible) {
+      if (state.control === 'state') {
+        return {
+          control: 'props',
+        };
+      }
+      return {
+        control: 'props',
+        stateVisible: props.visible,
+      };
+    }
+    return null;
   }
+  onClose = () => {
+    this.setState({ stateVisible: false, control: 'state' });
+  };
+
   render() {
     const {
       children,
@@ -105,26 +82,14 @@ export default class ActionSheet extends React.Component<ActionSheetProps, Actio
     const { stateVisible } = this.state;
     return (
       <Modal
+        placement="bottom"
         animationType="fade" // slide  none  fade
         transparent={true}
-        visible={stateVisible}
-        onRequestClose={this.onClose}
         {...other}
+        visible={stateVisible}
+        onClosed={this.onClose}
       >
-        <TouchableOpacity
-          activeOpacity={1}
-          style={[styles.position, styles.spread]}
-          onPress={() => onCancel && this.onClose()}
-        >
-          <Animated.View style={[styles.spread, styles.backdrop]}></Animated.View>
-        </TouchableOpacity>
-        <Animated.View
-          style={[
-            styles.actionSheet,
-            { bottom: -this.state.animatedHeight, transform: [{ translateY: this.fadeAnim }] },
-          ]}
-          ref={this.animatedRef}
-        >
+        <>
           {React.Children.toArray(children).map((item, index) => (
             <View key={index}>
               {index !== 0 && <View style={StyleSheet.flatten([styles.itemDivider, dividerStyle?.itemDivider])} />}
@@ -143,38 +108,13 @@ export default class ActionSheet extends React.Component<ActionSheetProps, Actio
             containerStyle={containerStyle}
             textStyle={textStyle}
           />
-        </Animated.View>
+        </>
       </Modal>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  position: {
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    zIndex: 9998,
-  },
-  backdrop: {
-    backgroundColor: '#000',
-    opacity: 0.2,
-  },
-  spread: {
-    width: MainWidth,
-    height: MainHeight,
-  },
-  actionSheet: {
-    width: MainWidth,
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    backgroundColor: '#fff',
-    zIndex: 9999,
-  },
   actionDivider: {
     backgroundColor: 'rgba(197,217,232,.3)',
     width: MainWidth,

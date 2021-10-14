@@ -54,6 +54,38 @@ function Demo() {
 }
 ```
 
+## 获取输入框 Ref
+
+```jsx
+import { Fragment, useRef } from 'react';
+import { SearchInputBar } from '@uiw/react-native';
+function Demo() {
+  const inputRef = useRef()
+  return (
+    <Fragment>
+      <SearchInputBar
+        ref={inputRef}
+        onChangeText={setValue}
+        onClear={()=>setValue('')}
+        value={value}
+        placeholder="请输入搜索关键字"
+        actionName="搜一下"
+        showActionButton
+        button={{
+          onPress() {
+            // 点击搜索按钮触法
+          }
+        }}
+      />
+      <Button
+        onPress={()=>{
+          console.log(inputRef.current.inputRef)
+        }}
+      >获取 输入框 Ref</Button>
+    </Fragment>
+  );
+}
+```
 
 ## Props
 

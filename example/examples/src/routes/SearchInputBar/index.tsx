@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, TextInput} from 'react-native';
 import Layout, {Container} from '../../Layout';
 import {SearchInputBar, Toast} from '@uiw/react-native';
 import {ComProps} from '../../routes';
@@ -14,6 +14,7 @@ export interface IndexState {
 
 export default class Index extends Component<IndexProps, IndexState> {
   static state: IndexState;
+  ref = React.createRef<SearchInputBar>();
   constructor(props: IndexProps) {
     super(props);
     this.state = {
@@ -38,11 +39,13 @@ export default class Index extends Component<IndexProps, IndexState> {
           <Body>
             <View style={styles.divider} />
             <SearchInputBar
+              ref={this.ref}
               onChangeText={val => this.onChangeText(val, 'value')}
               onClear={() => this.onClear('value')}
               value={this.state.value}
               button={{
-                onPress() {
+                onPress: () => {
+                  console.log('object', this.ref);
                   Toast.info('你点击了搜索', 2, 'info');
                 },
               }}
