@@ -33,10 +33,10 @@ export default class Index extends Component<IndexProps, IndexState> {
     const description = route.params.description;
     const title = route.params.title;
     return (
-      <Container>
+      <Container keyboardShouldPersistTaps="always">
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body keyboardShouldPersistTaps="always">
             <View style={styles.divider} />
             <SearchInputBar
               ref={this.ref}

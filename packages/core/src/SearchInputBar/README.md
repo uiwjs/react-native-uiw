@@ -54,6 +54,33 @@ function Demo() {
 }
 ```
 
+## 键盘不收起来
+
+**注意: 每层```ScrollView```都要写```keyboardShouldPersistTaps="always"```**
+
+```jsx
+import { Fragment, useState } from 'react';
+import { SearchInputBar } from '@uiw/react-native';
+function Demo() {
+  const [value, setValue] = useState('')
+  return (
+    <ScrollView keyboardShouldPersistTaps="always" >
+      <SearchInputBar
+        onChangeText={setValue}
+        onClear={()=>setValue('')}
+        value={value}
+        showActionButton
+        button={{
+          onPress() {
+            // 点击搜索按钮触法
+          }
+        }}
+      />
+    </ScrollView>
+  );
+}
+```
+
 ## 获取输入框 Ref
 
 ```jsx
@@ -90,19 +117,25 @@ function Demo() {
 ## Props
 
 ```ts
-import { TextInputProps } from 'react-native';
-import { ButtonProps } from '@uiw/react-native'
+import { TextInputProps,StyleProp,ViewStyle } from 'react-native';
+import { ButtonProps,IconsProps } from '@uiw/react-native'
 
 export interface SearchInputBarProps extends TextInputProps {
-  /** 点击清除按钮时触发事件 */
-  onClear?: Function,
+  /** 容器样式 */
+  containerStyle?: StyleProp<ViewStyle>;
   /** 右侧按钮 */
-  button?: ButtonProps
+  button?: ButtonProps;
   /** 右侧按钮文案 */
-  actionName?: string,
-  /** 右侧按钮宽度默认70 */
-  buttonWidth?: number,
-  /** 是否一直显示右侧按钮 */
-  showActionButton?: boolean
+  actionName?: string;
+  /** 是否一直显示右侧按钮 null = 永不显示 */
+  showActionButton?: boolean | null;
+  /** 搜索图标 */
+  searchIcon?: IconsProps;
+  /** 点击搜索图标时触发事件 */
+  onSearch?: Function;
+  /** 清除图标 */
+  closeIcon?: IconsProps;
+  /** 点击清除图标时触发事件 */
+  onClear?: Function;
 }
 ```

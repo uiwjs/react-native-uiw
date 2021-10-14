@@ -4,9 +4,7 @@ import {
   StyleSheet,
   StyleProp,
   ViewStyle,
-  Text,
   TouchableOpacity,
-  Animated,
   NativeSyntheticEvent,
   TextInput,
   TextInputFocusEventData,
@@ -14,7 +12,6 @@ import {
 } from 'react-native';
 import Icon, { IconsProps } from '../Icon';
 import Button, { ButtonProps } from '../Button';
-import RightButton from './RightButton';
 
 export interface SearchInputBarProps extends TextInputProps {
   /** 容器样式 */
@@ -38,8 +35,6 @@ export interface SearchInputBarProps extends TextInputProps {
 interface SearchInputBarState {
   // isShow close icon
   showIcon: boolean;
-  // close style
-  showIconLeft: number;
 }
 
 export default class SearchInputBar extends React.Component<SearchInputBarProps, SearchInputBarState> {
@@ -48,20 +43,19 @@ export default class SearchInputBar extends React.Component<SearchInputBarProps,
     super(props);
     this.state = {
       showIcon: false,
-      showIconLeft: 0,
     };
   }
 
   needFocus = (type: 'search' | 'close' | 'actived') => {
     if (type === 'close') {
       this.props.onClear?.();
-    } else if (type === 'search') {
+    } else if (type === 'search' && this.props.value) {
       this.props.onSearch?.();
+      return;
     }
     if (type === 'actived') {
       this.setState({ showIcon: true });
     }
-    console.log('object', type);
     this.inputRef.current && this.inputRef.current.focus();
   };
   render() {
@@ -80,11 +74,9 @@ export default class SearchInputBar extends React.Component<SearchInputBarProps,
     return (
       <View style={[styles.centerFlex]}>
         <View style={StyleSheet.flatten([styles.searchContainer, styles.centerFlex, containerStyle])}>
-          <View>
-            <TouchableOpacity style={{}} onPress={() => this.needFocus('search')}>
-              <Icon name="search" size={18} color="#999" height={'100%'} {...searchIcon} />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={{}} onPress={() => this.needFocus('search')}>
+            <Icon name="search" size={18} color="#999" height={'100%'} {...searchIcon} />
+          </TouchableOpacity>
           <TextInput
             {...other}
             value={value}
@@ -98,7 +90,9 @@ export default class SearchInputBar extends React.Component<SearchInputBarProps,
               other?.onFocus?.(e);
             }}
             onBlur={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-              this.setState({ showIcon: false });
+              if (showActionButton !== null && !value) {
+                this.setState({ showIcon: false });
+              }
               other?.onBlur?.(e);
             }}
           />
@@ -134,7 +128,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   textInput: {
-    height: 40,
+    height: '100%',
     flex: 1,
     fontSize: 18,
     paddingHorizontal: 8,
