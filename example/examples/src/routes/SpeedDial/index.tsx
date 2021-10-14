@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, Dimensions} from 'react-native';
 import Layout, {Container} from '../../Layout';
 import {SpeedDial, Icon, IconsName} from '@uiw/react-native';
 import {ComProps} from '../../routes';
+
+let MainHeight = Dimensions.get('window').height;
 
 const {Header, Body, Card, Footer} = Layout;
 
@@ -32,29 +34,32 @@ export default class Index extends Component<IndexProps, IndexState> {
         <Layout>
           <Header title={title} description={description} />
           <Body scrollEnabled={false}>
-            <SpeedDial
-              icon={['star-on', 'star-off']}
-              isDrag={true}
-              children={[
-                {
-                  icon: <Icon name="plus" color="#fff" size={18} />,
-                  title: <Text>'Add'</Text>,
-                  onPress: () => console.log('Add'),
-                },
-                {
-                  icon: <Icon name="star-on" color="#fff" size={18} />,
-                  title: 'Star',
-                },
-                {
-                  icon: <Icon name="mail" color="#fff" size={18} />,
-                  title: 'Mail-asdlfslasdkfsdklajfsadf',
-                },
-                {
-                  icon: <Icon name="share" color="#fff" size={18} />,
-                  title: 'Share',
-                },
-              ]}
-            />
+            <View style={{height: MainHeight}}>
+              <SpeedDial
+                bottom={MainHeight / 2 + 100}
+                icon={['star-on', 'star-off']}
+                isDrag={true}
+                children={[
+                  {
+                    icon: <Icon name="plus" color="#fff" size={18} />,
+                    title: <Text>'Add'</Text>,
+                    onPress: () => console.log('Add'),
+                  },
+                  {
+                    icon: <Icon name="star-on" color="#fff" size={18} />,
+                    title: 'Star',
+                  },
+                  {
+                    icon: <Icon name="mail" color="#fff" size={18} />,
+                    title: 'Mail-asdlfslasdkfsdklajfsadf',
+                  },
+                  {
+                    icon: <Icon name="share" color="#fff" size={18} />,
+                    title: 'Share',
+                  },
+                ]}
+              />
+            </View>
           </Body>
           <Footer />
         </Layout>

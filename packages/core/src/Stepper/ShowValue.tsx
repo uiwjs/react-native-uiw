@@ -49,6 +49,7 @@ function ShowValue(props: ShowValueProps) {
         ControlStyle[size],
         styles.border,
         {
+          paddingVertical: 0,
           fontSize: ControlStyle[`${size}Text`].fontSize - 8,
           textAlign: 'center',
           borderColor: color.borderColor || color.color,
