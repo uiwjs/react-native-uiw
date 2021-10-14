@@ -42,8 +42,10 @@ export default class Index extends Component<IndexProps, IndexState> {
               ref={this.ref}
               onChangeText={val => this.onChangeText(val, 'value')}
               onClear={() => this.onClear('value')}
+              placeholder="请输入搜索关键字"
               value={this.state.value}
               button={{
+                type: 'success',
                 onPress: () => {
                   console.log('object', this.ref);
                   Toast.info('你点击了搜索', 2, 'info');

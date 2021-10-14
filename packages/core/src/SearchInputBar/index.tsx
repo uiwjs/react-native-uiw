@@ -2,6 +2,8 @@ import React from 'react';
 import {
   View,
   StyleSheet,
+  StyleProp,
+  ViewStyle,
   Text,
   TouchableOpacity,
   Animated,
@@ -10,21 +12,27 @@ import {
   TextInputFocusEventData,
   TextInputProps,
 } from 'react-native';
-import Icon from '../Icon';
-import { ButtonProps } from '../Button';
+import Icon, { IconsProps } from '../Icon';
+import Button, { ButtonProps } from '../Button';
 import RightButton from './RightButton';
 
 export interface SearchInputBarProps extends TextInputProps {
-  /** 点击清除按钮时触发事件 */
-  onClear?: Function;
+  /** 容器样式 */
+  containerStyle?: StyleProp<ViewStyle>;
   /** 右侧按钮 */
   button?: ButtonProps;
   /** 右侧按钮文案 */
   actionName?: string;
-  /** 右侧按钮宽度默认70 */
-  buttonWidth?: number;
-  /** 是否一直显示右侧按钮 */
-  showActionButton?: boolean;
+  /** 是否一直显示右侧按钮 null = 永不显示 */
+  showActionButton?: boolean | null;
+  /** 搜索图标 */
+  searchIcon?: IconsProps;
+  /** 点击搜索图标时触发事件 */
+  onSearch?: Function;
+  /** 清除图标 */
+  closeIcon?: IconsProps;
+  /** 点击清除图标时触发事件 */
+  onClear?: Function;
 }
 
 interface SearchInputBarState {
@@ -35,12 +43,7 @@ interface SearchInputBarState {
 }
 
 export default class SearchInputBar extends React.Component<SearchInputBarProps, SearchInputBarState> {
-  private inputRef = React.createRef<TextInput>();
-  private moveLeft: Animated.Value = new Animated.Value(0);
-  private placeholderIcon = React.createRef<View>();
-  private placeholderAnimated: Animated.Value = new Animated.Value(1);
-  private buttonAnimated: Animated.Value = new Animated.Value(this.props.buttonWidth ?? 70);
-  private buttonAnimatedWidth: Animated.Value = new Animated.Value(0);
+  public inputRef = React.createRef<TextInput>();
   constructor(props: SearchInputBarProps) {
     super(props);
     this.state = {
@@ -49,149 +52,66 @@ export default class SearchInputBar extends React.Component<SearchInputBarProps,
     };
   }
 
-  changeIconBoxStyle = (flag: boolean) => {
-    if ('_value' in this.buttonAnimatedWidth) {
-      const _value = (this.buttonAnimatedWidth as any)._value;
-      if (_value && !flag) {
-        return;
-      }
+  needFocus = (type: 'search' | 'close' | 'actived') => {
+    if (type === 'close') {
+      this.props.onClear?.();
+    } else if (type === 'search') {
+      this.props.onSearch?.();
     }
-    const { buttonWidth = 70, showActionButton } = this.props;
-    Animated.timing(this.placeholderAnimated, {
-      toValue: flag ? 1 : 0,
-      duration: 50,
-      useNativeDriver: true,
-    }).start();
-
-    Animated.timing(this.buttonAnimated, {
-      toValue: flag ? buttonWidth : 0,
-      duration: 150,
-      useNativeDriver: true,
-    }).start(() => {});
-    this.buttonAnimatedWidth.setValue(flag ? 0 : buttonWidth);
-
-    this.placeholderIcon.current &&
-      this.placeholderIcon.current.measure(
-        (_frameOffsetX, _frameOffsetY, _width, _height, pageOffsetX, pageOffsetY) => {
-          const num = showActionButton ? 0 : buttonWidth;
-          Animated.timing(this.moveLeft, {
-            toValue: flag ? 0 : -pageOffsetX + 20 + num / 2 + 10,
-            duration: 300,
-            useNativeDriver: true,
-          }).start(({ finished }) => {
-            flag || (this.inputRef.current && this.inputRef.current.focus());
-          });
-        },
-      );
-  };
-  onChangeText = (value: string) => {
-    const { onChangeText = Function } = this.props;
-    onChangeText(value);
-    if (!value && this.state.showIcon) {
-      this.setState({ showIcon: false });
-      return;
+    if (type === 'actived') {
+      this.setState({ showIcon: true });
     }
-    if (value && !this.state.showIcon) {
-      this.inputRef.current &&
-        this.inputRef.current.measure((_frameOffsetX, _frameOffsetY, _width) => {
-          this.setState({ showIconLeft: _width - 40, showIcon: true });
-        });
-    }
-  };
-  componentDidMount() {
-    const { value, buttonWidth = 70, showActionButton } = this.props;
-    if (value) {
-      Animated.timing(this.placeholderAnimated, {
-        toValue: 1,
-        duration: 100,
-        useNativeDriver: true,
-      }).start(() => {
-        this.changeIconBoxStyle(false);
-        this.inputRef.current &&
-          this.inputRef.current.measure((_frameOffsetX, _frameOffsetY, _width) => {
-            let num = showActionButton ? 0 : buttonWidth;
-            this.setState({ showIconLeft: _width - 40 - num!, showIcon: true });
-          });
-      });
-    }
-  }
-
-  onClose = () => {
-    const { onClear } = this.props;
-    onClear?.();
-    this.setState({ showIcon: false });
+    console.log('object', type);
     this.inputRef.current && this.inputRef.current.focus();
   };
   render() {
-    const { showIcon, showIconLeft } = this.state;
     const {
       value,
-      onBlur,
-      placeholder = '请输入',
-      buttonWidth = 70,
-      showActionButton = false,
+      onChangeText,
+      showActionButton,
+      actionName = '搜索',
       button,
-      actionName,
+      style,
+      containerStyle,
+      searchIcon,
+      closeIcon,
       ...other
     } = this.props;
     return (
-      <View style={styles.searchContainer}>
-        <View style={[styles.centerBox, { justifyContent: 'space-between', overflow: 'hidden' }]}>
+      <View style={[styles.centerFlex]}>
+        <View style={StyleSheet.flatten([styles.searchContainer, styles.centerFlex, containerStyle])}>
+          <View>
+            <TouchableOpacity style={{}} onPress={() => this.needFocus('search')}>
+              <Icon name="search" size={18} color="#999" height={'100%'} {...searchIcon} />
+            </TouchableOpacity>
+          </View>
           <TextInput
             {...other}
-            ref={this.inputRef}
-            style={[styles.searchInput, { flex: 1 }]}
-            onChangeText={this.onChangeText}
             value={value}
-            onBlur={(event: NativeSyntheticEvent<TextInputFocusEventData>) => {
-              if (!value) {
-                this.changeIconBoxStyle(true);
+            onChangeText={onChangeText}
+            ref={this.inputRef}
+            style={[styles.textInput, style]}
+            onFocus={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+              if (showActionButton !== null) {
+                this.setState({ showIcon: true });
               }
-              onBlur?.(event);
+              other?.onFocus?.(e);
+            }}
+            onBlur={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+              this.setState({ showIcon: false });
+              other?.onBlur?.(e);
             }}
           />
-          <Animated.View style={showActionButton ? {} : { transform: [{ translateX: this.buttonAnimated }] }}>
-            <Animated.View style={showActionButton ? {} : { width: this.buttonAnimatedWidth }}>
-              <RightButton width={buttonWidth} isShow actionName={actionName} {...button} />
-            </Animated.View>
-          </Animated.View>
+          {Boolean(value) && (
+            <TouchableOpacity style={{}} onPress={() => this.needFocus('close')}>
+              <Icon name="close" size={18} color="#999" height={'100%'} {...closeIcon} />
+            </TouchableOpacity>
+          )}
         </View>
-
-        <View style={[styles.iconBox, { justifyContent: 'space-between', overflow: 'hidden' }]}>
-          <TouchableOpacity
-            activeOpacity={1}
-            style={[styles.centerBox, { flex: 1 }]}
-            onPress={() => {
-              this.changeIconBoxStyle(false);
-            }}
-          >
-            <Animated.View style={[{ transform: [{ translateX: this.moveLeft }] }]}>
-              <View style={[styles.centerBox]} ref={this.placeholderIcon}>
-                <Icon name="search" size={18} color="#999" />
-              </View>
-            </Animated.View>
-            <Animated.View style={[{ transform: [{ translateX: this.moveLeft }] }]}>
-              <Animated.View style={[styles.centerBox, { opacity: this.placeholderAnimated }]}>
-                <Text style={styles.placeholderStyle}>{placeholder}</Text>
-              </Animated.View>
-            </Animated.View>
-          </TouchableOpacity>
-
-          <Animated.View style={showActionButton ? {} : { transform: [{ translateX: this.buttonAnimated }] }}>
-            <Animated.View style={showActionButton ? {} : { width: this.buttonAnimatedWidth }}>
-              <RightButton width={buttonWidth} isShow actionName={actionName} {...button} />
-            </Animated.View>
-          </Animated.View>
-        </View>
-
-        {showIcon && (
-          <TouchableOpacity
-            activeOpacity={1}
-            style={[styles.closeStyle, styles.centerBox, { left: showIconLeft }]}
-            onPress={this.onClose}
-          >
-            <Icon name="close" size={18} color="#999" />
-          </TouchableOpacity>
+        {(showActionButton || this.state.showIcon) && (
+          <Button type="primary" {...button}>
+            {actionName}
+          </Button>
         )}
       </View>
     );
@@ -199,48 +119,24 @@ export default class SearchInputBar extends React.Component<SearchInputBarProps,
 }
 
 const styles = StyleSheet.create({
+  centerFlex: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
   searchContainer: {
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    height: 40,
-    overflow: 'hidden',
-  },
-  iconBox: {
-    height: 40,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
-    position: 'relative',
-    top: -40,
-    zIndex: 1,
-  },
-  centerBox: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  placeholderStyle: {
-    paddingLeft: 10,
-    fontSize: 18,
-    color: '#999',
-  },
-  searchInput: {
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 20,
-    backgroundColor: '#f7f7f7',
-    fontSize: 18,
-    paddingHorizontal: 40,
+    flex: 1,
+    paddingHorizontal: 10,
+    marginRight: 10,
   },
-  closeStyle: {
-    position: 'relative',
+  textInput: {
     height: 40,
-    width: 40,
-    top: -80,
-    zIndex: 2,
+    flex: 1,
+    fontSize: 18,
+    paddingHorizontal: 8,
   },
 });
