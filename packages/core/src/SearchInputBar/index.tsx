@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   textInput: {
+    paddingVertical: 0,
     height: '100%',
     flex: 1,
     fontSize: 18,
