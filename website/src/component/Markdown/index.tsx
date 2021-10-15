@@ -87,6 +87,7 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
         <div className={styles.warpper} style={style}>
           <MarkdownPreview
             source={this.state.markdown}
+            className={styles.markdown}
             rehypePlugins={[
               [
                 rehypeRewrite,
