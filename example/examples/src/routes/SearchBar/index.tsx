@@ -3,6 +3,11 @@ import {SafeAreaView} from 'react-native';
 import {SearchBar} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout from '../../Layout';
+interface Columns {
+  label: string;
+  value: number | string;
+}
+
 const datas = [
   {label: '上海', value: 1},
   {label: '南京', value: 2},
@@ -10,13 +15,14 @@ const datas = [
   {label: '杭州', value: 4},
   {label: '北京', value: 5},
 ];
+
 const SearchBarDemo = (props: ComProps) => {
   const {Header} = Layout;
   const {route} = props;
   const description = route.params.description;
   const title = route.params.title;
 
-  const [data, setData] = useState(datas);
+  const [data, setData] = useState<Columns[]>([]);
   return (
     <SafeAreaView style={{flex: 1}}>
       <Header title={title} description={description} />
