@@ -6,7 +6,7 @@ Drawer 抽屉
 ## 基础示例
 
 ```jsx
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { View, Text } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
 
@@ -31,7 +31,7 @@ function Demo() {
 ## 右边展示
 
 ```jsx
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { View, Text } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
 
