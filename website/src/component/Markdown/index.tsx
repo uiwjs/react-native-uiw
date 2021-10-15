@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import MarkdownPreview from '@uiw/react-markdown-preview';
 import CodePreview from '@uiw/react-code-preview';
 import rehypeRewrite from 'rehype-rewrite';
-import rehypeAttr from 'rehype-attr';
 import { Element } from 'hast';
 import Contributors from '../Contributors';
 import Footer from '../Footer';
@@ -88,8 +87,8 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
         <div className={styles.warpper} style={style}>
           <MarkdownPreview
             source={this.state.markdown}
+            className={styles.markdown}
             rehypePlugins={[
-              [rehypeAttr, { properties: 'attr' }],
               [
                 rehypeRewrite,
                 {

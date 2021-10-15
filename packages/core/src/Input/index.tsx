@@ -150,6 +150,7 @@ export default class Input extends React.Component<InputProps, any> {
           {...restProps}
           {...valueProps}
           style={[
+            { paddingVertical: 0 },
             inputStyles.input,
             error ? inputStyles.inputErrorColor : null,
             disabledStyle,

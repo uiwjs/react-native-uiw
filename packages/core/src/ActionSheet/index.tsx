@@ -5,7 +5,6 @@ export { default as ActionSheetItem } from './item';
 import ActionSheetItem from './item';
 
 let MainWidth = Dimensions.get('window').width;
-let MainHeight = Dimensions.get('window').height;
 
 export interface DividerStyle {
   itemDivider?: StyleProp<ViewStyle>;

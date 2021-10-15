@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-native",
-  "version": "2.8.1",
+  "version": "2.9.0",
   "description": "UIW for React Native",
   "homepage": "https://uiwjs.github.io/react-native-uiw/",
   "main": "lib/index.js",
@@ -59,9 +59,9 @@
     "color": "4.0.1",
     "lodash": "4.17.21",
     "prop-types": "15.7.2",
+    "react-native-gesture-handler": "1.10.3",
     "react-native-root-siblings": "4.1.1",
-    "react-native-svg": "12.1.1",
-    "react-native-gesture-handler":"1.10.3"
+    "react-native-svg": "12.1.1"
   },
   "peerDependencies": {
     "react": ">=16.9.0",

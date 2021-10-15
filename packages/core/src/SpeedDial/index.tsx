@@ -19,7 +19,6 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-let MainWidth = Dimensions.get('window').width;
 let MainHeight = Dimensions.get('window').height;
 
 export interface PanXY extends Animated.Value {

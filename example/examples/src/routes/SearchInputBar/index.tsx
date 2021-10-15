@@ -33,17 +33,19 @@ export default class Index extends Component<IndexProps, IndexState> {
     const description = route.params.description;
     const title = route.params.title;
     return (
-      <Container>
+      <Container keyboardShouldPersistTaps="always">
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body keyboardShouldPersistTaps="always">
             <View style={styles.divider} />
             <SearchInputBar
               ref={this.ref}
               onChangeText={val => this.onChangeText(val, 'value')}
               onClear={() => this.onClear('value')}
+              placeholder="请输入搜索关键字"
               value={this.state.value}
               button={{
+                type: 'success',
                 onPress: () => {
                   console.log('object', this.ref);
                   Toast.info('你点击了搜索', 2, 'info');
