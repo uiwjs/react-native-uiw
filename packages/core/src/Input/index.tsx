@@ -114,7 +114,7 @@ export default class Input extends React.Component<InputProps, InputState> {
       renderClear,
       extraStart,
       extraEnd,
-      style,
+      style = [],
       containerStyle,
       border = 'bottom',
       borderColor = '#ccc',
@@ -139,7 +139,11 @@ export default class Input extends React.Component<InputProps, InputState> {
         ]}
       >
         <View style={[inputStyles.container, { flex: 1, borderColor: borderColor }, border ? inputStyles[border] : {}]}>
-          {typeof extraEnd === 'string' ? <Text style={{ color: '#888888', fontSize }}>{extraStart}</Text> : extraStart}
+          {typeof extraStart === 'string' ? (
+            <Text style={{ color: '#888888', fontSize }}>{extraStart}</Text>
+          ) : (
+            extraStart
+          )}
           <TextInput
             {...others}
             ref={inputRef}
