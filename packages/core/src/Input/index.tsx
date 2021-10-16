@@ -53,7 +53,6 @@ interface InputState {
   control: 'props' | 'state';
 }
 export default class Input extends React.Component<InputProps, InputState> {
-  ref = React.createRef<TextInput>();
   state: InputState = {
     value: this.props.value,
     control: 'state',

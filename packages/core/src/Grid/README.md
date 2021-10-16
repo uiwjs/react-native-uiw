@@ -3,7 +3,7 @@ Grid 宫格
 
 在水平和垂直方向，将布局切分成若干等大的区块，也可以使用 `List` 组件支持列显示的特性，展示宫格，同时支持下来刷新等特性。
 
-## 基础示例
+### 基础示例
 
 引入本地图标 `require('./1.png')`。
 
@@ -25,7 +25,7 @@ function Demo() {
 }
 ```
 
-## 自定义单元格
+### 自定义单元格
 
 引入本地图标 `require('./1.png')`
 
@@ -57,7 +57,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 ```ts
 export interface GridProps extends ViewProps {

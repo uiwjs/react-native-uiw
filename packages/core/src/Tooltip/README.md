@@ -3,7 +3,7 @@ Tooltip 工具提示
 
 当用户点击元素时，工具提示将显示信息。
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Tooltip } from '@uiw/react-native';
@@ -18,7 +18,7 @@ function Demo() {
 }
 ```
 
-## 使用 自定义提示内容
+### 使用 自定义提示内容
 
 ```jsx
 import { Tooltip, Icon } from '@uiw/react-native';
@@ -40,7 +40,7 @@ function Demo() {
 }
 ```
 
-## Tooltip Props
+### Tooltip Props
 
 ```ts
 import { ModalProps } from 'react-native';

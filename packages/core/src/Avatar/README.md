@@ -3,7 +3,8 @@ Avatar 头像
 
 用来代表用户或事物，支持图片展示，当前是基于 React Native 组件 Image 封装，你也可以使用更快的图片展示插件 [react-native-fast-image](https://github.com/DylanVann/react-native-fast-image)。
 
-## 基础示例
+
+### 基础示例
 
 ```jsx
 import { View } from 'react-native';
@@ -21,7 +22,7 @@ function Demo() {
 }
 ```
 
-## props
+### props
 
 继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
 

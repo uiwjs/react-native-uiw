@@ -3,7 +3,7 @@ Pagination 分页器
 
 用于展示页码、请求数据等。
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment, useState } from 'react';
@@ -26,7 +26,7 @@ function Demo() {
 }
 ```
 
-## 使用icon && 修改大小
+### 使用icon && 修改大小
 
 ```jsx
 import { Fragment, useState } from 'react';
@@ -51,7 +51,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 ```ts
 export interface PaginationProps {

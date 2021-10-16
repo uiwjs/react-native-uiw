@@ -1,7 +1,7 @@
 Badge 标记
 ---
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { View, Text } from 'react-native';
@@ -17,7 +17,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
 

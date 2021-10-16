@@ -4,7 +4,7 @@ Flex Flex布局
 
 Flex 是 React Native CSS flex 布局的一个封装。
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment } from 'react';
@@ -29,7 +29,7 @@ function Demo() {
 }
 ```
 
-## 对齐方式
+### 对齐方式
 
 ```jsx
 import { Fragment } from 'react';
@@ -64,7 +64,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 ### Flex
 

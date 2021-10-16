@@ -3,7 +3,7 @@ Tile 工具提示
 
 像卡片这样的磁贴是显示关于单个主题的相关内容的便捷方式
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment } from 'react';
@@ -35,7 +35,7 @@ function Demo() {
 ```
 
 
-## TileProps
+### TileProps
 
 ```ts
 import { TileProps } from 'react-native';

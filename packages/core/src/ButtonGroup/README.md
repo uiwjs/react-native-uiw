@@ -115,7 +115,7 @@ class Demo extends Component {
 <!--End-->
 
 
-## Props
+### Props
 
 集成继承 `Button` 组件自定义属性，外层包裹继承 [`Flex`] 组件。
 

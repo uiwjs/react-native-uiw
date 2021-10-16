@@ -100,7 +100,7 @@ class Demo extends Component {
 <!--End-->
 
 
-## 显示边框
+### 显示边框
 
 ```jsx
 import { Button } from '@uiw/react-native';
@@ -112,7 +112,7 @@ function Demo() {
 }
 ```
 
-## 自定义圆角
+### 自定义圆角
 
 ```jsx
 import { Fragment } from 'react';
@@ -133,7 +133,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 组件继承 [`TouchableOpacity`](https://facebook.github.io/react-native/docs/touchableopacity#docsNav)
 

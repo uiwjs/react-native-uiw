@@ -3,7 +3,7 @@ ActionSheet 动作面板
 
 该组件提供了一种动作面板, 底部缓缓出现
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment, useState } from 'react';
@@ -24,7 +24,7 @@ function Demo() {
 }
 ```
 
-## 弹层关闭 && 自定义取消文本
+### 弹层关闭 && 自定义取消文本
 
 ```jsx
 import { Fragment, useState } from 'react';
@@ -47,7 +47,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 ```ts
 import { StyleProp, ViewStyle } from 'react-native';
@@ -76,7 +76,7 @@ export interface ActionSheetProps extends ModalProps {
 }
 ```
 
-## ActionSheetItem Props
+### ActionSheetItem Props
 
 ```ts
 import { TextStyle, StyleProp, ViewStyle } from 'react-native';

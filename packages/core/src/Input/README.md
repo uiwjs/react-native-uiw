@@ -24,7 +24,7 @@ export default class BasicInputExample extends React.Component {
 ```
 
 
-## Props
+### Props
 
 ```tsx
 import { StyleProp,TextStyle,TextInputProps, NativeSyntheticEvent, TextInputFocusEventData, TextInputChangeEventData, KeyboardTypeOptions,ViewStyle } from 'react-native'

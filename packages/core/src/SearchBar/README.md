@@ -1,7 +1,7 @@
 SearchBar 模糊搜素组件
 ---
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { SearchBar } from '@uiw/react-native';

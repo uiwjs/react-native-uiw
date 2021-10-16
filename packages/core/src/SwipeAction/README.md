@@ -4,7 +4,7 @@ SwipeAction 滑动操作组件。
 结合手势操作，从屏幕一侧唤出操作。
 
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import React, { Component } from 'react';
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
 ```
 
 
-## Props
+### Props
 组件继承react-native-gesture-handler[`Swipeable`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/components/swipeable)
 ```tsx
 export interface Column {

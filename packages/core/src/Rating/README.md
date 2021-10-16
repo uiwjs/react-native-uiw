@@ -3,7 +3,7 @@ Rating 评分
 
 在你想用任意需要评分的的地方使用。
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment } from 'react';
@@ -17,7 +17,7 @@ function Demo() {
 }
 ```
 
-## 指定 Icon
+### 指定 Icon
 
 ```jsx
 import { Fragment } from 'react';
@@ -42,7 +42,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 ```ts
 import { TabsItemIconTypes } from '@uiw/react-native'

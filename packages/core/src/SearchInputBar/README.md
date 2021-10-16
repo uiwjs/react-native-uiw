@@ -3,7 +3,7 @@ SearchInputBar 动作面板
 
 可用于用户输入搜索信息
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment, useState } from 'react';
@@ -27,7 +27,7 @@ function Demo() {
 }
 ```
 
-## 一直显示右侧按钮 && 自定义placeholder && 自定右侧搜索内容
+### 一直显示右侧按钮 && 自定义placeholder && 自定右侧搜索内容
 
 ```jsx
 import { Fragment, useState } from 'react';
@@ -55,7 +55,7 @@ function Demo() {
 }
 ```
 
-## 键盘不收起来
+### 键盘不收起来
 
 **注意: 每层```ScrollView```都要写```keyboardShouldPersistTaps="always"```**
 
@@ -82,7 +82,7 @@ function Demo() {
 }
 ```
 
-## 获取输入框 Ref
+### 获取输入框 Ref
 
 ```jsx
 import { Fragment, useRef } from 'react';
@@ -115,7 +115,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 **注意: 组件继承了```TextInput```属性**
 ```ts
 import { TextInputProps,StyleProp,ViewStyle } from 'react-native';

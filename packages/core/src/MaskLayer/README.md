@@ -36,7 +36,7 @@ export default () => {
 ```
 <!--End-->
 
-## Props
+### Props
 
 继承原生 Modal 属性 [`ModalProps`](https://facebook.github.io/react-native/docs/modal.html#props)
 

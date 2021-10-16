@@ -13,12 +13,12 @@ const TransitionImageDemo = (props: any) => {
       <Header title={title} description={description} />
       <TransitionImage
         source={{
-          uri: 'https://img11.51tietu.net/pic/2016-071418/20160714181543xyu10ukncwf221991.jpg',
+          uri: 'https://iknow-pic.cdn.bcebos.com/810a19d8bc3eb135828572d2ab1ea8d3fd1f441d',
         }}
         style={{width: 200, height: 200}}
         PlaceholderContent={<ActivityIndicator />}
-        placeholderStyle={{backgroundColor: 'red'}}
-        containerStyle={{backgroundColor: '#eee'}}
+        // placeholderStyle={{backgroundColor: 'red'}}
+        // containerStyle={{backgroundColor: '#eee'}}
         transition={true}
         transitionDuration={1000}
         onPress={() => console.log('点击图片回调事件')}
