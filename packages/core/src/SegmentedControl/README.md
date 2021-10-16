@@ -85,4 +85,3 @@ function Demo() {
 |------|------|-----|------|
 | `actived` | 激活 | String | `#fff` |
 | `unactived` | 未激活 | String | `color` |
-```ts

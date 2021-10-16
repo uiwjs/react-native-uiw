@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 
 import Icon, { IconsName } from '../Icon';
 import { TabsItemIconTypes } from '../Tabs/TabsItem';
@@ -14,8 +14,11 @@ export interface RatingProps {
   size?: number;
   /** icon 颜色 */
   color?: string;
-  /** [未选中, 已选中] */
-  icon?: icoType;
+  /** actived 激活 unactived 未激活 */
+  icon?: {
+    actived?: TabsItemIconTypes;
+    unactived?: TabsItemIconTypes;
+  };
   /**
    * void
    * @param score type: number 得到几分
@@ -35,8 +38,8 @@ export interface RatingState {
 export default class Rating extends React.Component<RatingProps, RatingState> {
   constructor(props: RatingProps) {
     super(props);
-    let start = (props.icon && props.icon[0]) || 'star-off';
-    let end = (props.icon && props.icon[1]) || 'star-on';
+    let start = (props.icon && props.icon.unactived) || 'star-off';
+    let end = (props.icon && props.icon.actived) || 'star-on';
     this.state = {
       defaultRating: props.defaultRating || 0,
       resultRating: props.resultRating || 5,
