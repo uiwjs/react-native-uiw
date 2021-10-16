@@ -38,7 +38,9 @@ export default class Index extends Component<IndexProps, IndexState> {
       <Container keyboardShouldPersistTaps="always">
         <Layout>
           <Header title={title} description={description} />
-          <Body keyboardShouldPersistTaps="always">
+          <Body
+            keyboardShouldPersistTaps="always"
+            style={{paddingHorizontal: 10}}>
             <View style={styles.divider} />
             <SearchInputBar
               ref={this.ref}
@@ -76,9 +78,6 @@ export default class Index extends Component<IndexProps, IndexState> {
                   Toast.info('你点击了搜一下', 2, 'info');
                 },
               }}
-              containerStyle={{
-                marginHorizontal: 10,
-              }}
             />
           </Body>
           <Footer />
@@ -100,6 +99,6 @@ const styles = StyleSheet.create({
   search: {
     justifyContent: 'center',
     borderWidth: 0,
-    paddingRight: 10,
+    paddingLeft: 10,
   },
 });
