@@ -57,7 +57,7 @@ function Demo() {
 ## 注意事项 - 抽屉高度是页面有效高度
 
 ```jsx
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
 
@@ -101,7 +101,7 @@ export default () => {
 
 
 // 在使用组件页面
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
 import {RootSiblingPortal} from 'react-native-root-siblings';

@@ -57,8 +57,11 @@ export interface RatingProps {
   size?: number;
   /** icon 颜色 */
   color?: string;
-  /** [未选中, 已选中] */
-  icon?: icoType;
+  /** actived 激活 unactived 未激活 */
+  icon?: {
+    actived?: TabsItemIconTypes,
+    unactived?: TabsItemIconTypes
+  };
   /**
    * void
    * @param score type: number 选中几个

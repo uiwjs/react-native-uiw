@@ -35,8 +35,10 @@ export default class Index extends Component<IndexProps, IndexState> {
             <Rating
               defaultRating={2}
               resultRating={10}
-              icon={[<Icon name="star-off" />, <Icon name="star-on" />]}
-              // icon={["star-off", "star-on"]}
+              icon={{
+                unactived: <Icon name="star-off" />,
+                actived: <Icon name="star-on" />,
+              }}
               onPress={console.log}
             />
             <View style={styles.divider} />
