@@ -78,6 +78,9 @@ export const getRouterData = {
   '/components/flex': {
     component: dynamicWrapper([], () => import('../pages/components/flex')),
   },
+  '/components/table': {
+    component: dynamicWrapper([], () => import('../pages/components/table')),
+  },
   '/components/spacing': {
     component: dynamicWrapper([], () => import('../pages/components/spacing')),
   },

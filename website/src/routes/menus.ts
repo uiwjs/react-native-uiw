@@ -9,6 +9,7 @@ export const componentMenus: MenuData[] = [
   { divider: true, name: 'Layout' },
   { path: '/components/divider', name: 'Divider 分割线' },
   { path: '/components/flex', name: 'Flex 布局' },
+  { path: '/components/table', name: 'Table 表格' },
   { path: '/components/spacing', name: 'Spacing 间距' },
   { path: '/components/winblank', name: 'WingBlank 两翼留白' },
   { divider: true, name: 'Navigation' },
