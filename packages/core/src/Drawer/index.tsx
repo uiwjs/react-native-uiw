@@ -28,8 +28,6 @@ export interface DrawerState {
   drawerValue: Animated.ValueXY;
   overlayValue: Animated.Value;
   zIndexValue: number;
-  handleDrawer: (isOpen: boolean) => void;
-  control: 'props' | 'state';
   isOpen: boolean;
 }
 
@@ -45,35 +43,26 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     openDrawer: () => null,
     closeDrawer: () => null,
   };
-  private handleDrawer: (isOpen: boolean) => void;
   constructor(props: DrawerProps) {
     super(props);
-    this.handleDrawer = (isOpen: boolean) => {
-      isOpen ? this.openDrawer() : this.closeDrawer();
-    };
+
     this.state = {
       zIndexValue: 0,
       overlayValue: new Animated.Value(0),
       drawerValue: new Animated.ValueXY({ ...this.getInitPosition() }),
-      handleDrawer: this.handleDrawer,
-      control: 'state',
       isOpen: !!props.isOpen,
     };
   }
-  static getDerivedStateFromProps(props: DrawerProps, state: DrawerState) {
-    if (state.control === 'state') {
-      return {
-        control: 'props',
-      };
+  handleDrawer = (isOpen: boolean) => {
+    isOpen ? this.openDrawer() : this.closeDrawer();
+  };
+  componentDidUpdate(prevProps: DrawerProps, prevState: DrawerState) {
+    if (prevState.isOpen !== this.state.isOpen) {
+      this.handleDrawer(this.state.isOpen);
     }
-    if (props.isOpen !== state.isOpen) {
-      state.handleDrawer(!!props.isOpen);
-      return {
-        isOpen: props.isOpen,
-        control: 'props',
-      };
+    if (prevProps.isOpen !== this.props.isOpen) {
+      this.handleDrawer(!!this.props.isOpen);
     }
-    return null;
   }
   componentDidMount() {
     if (this.props.isOpen) {
@@ -90,8 +79,8 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     this.closeDrawer();
   };
   render() {
-    const { isOpen, style, drawerWidth, drawerBackgroundColor, maskProps, placement, drawerHeight } = this.props;
-    const { drawerValue, overlayValue, zIndexValue } = this.state;
+    const { style, drawerWidth, drawerBackgroundColor, maskProps, placement, drawerHeight } = this.props;
+    const { isOpen, drawerValue, overlayValue, zIndexValue } = this.state;
     const isTopOrBottom = placement === 'top' || placement === 'bottom';
     const changeStyle = isTopOrBottom ? 'height' : 'width';
     const dynamicDrawerStyles: any = {
@@ -180,7 +169,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     return xy;
   }
   openDrawer() {
-    this.setState({ zIndexValue: 3002, control: 'state' });
+    this.setState({ zIndexValue: 3002, isOpen: true });
     Animated.parallel([
       Animated.spring(this.state.drawerValue, {
         toValue: { x: 0, y: 0 },
@@ -213,7 +202,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     ]).start(() => {
       this.props.closeDrawer!(false);
       this.props.onChange!(false);
-      this.setState({ zIndexValue: 0, control: 'state' });
+      this.setState({ zIndexValue: 0, isOpen: false });
     });
   }
 }

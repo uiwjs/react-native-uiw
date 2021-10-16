@@ -1,5 +1,5 @@
 import React, {useState, Fragment} from 'react';
-import {View, Text, Bott} from 'react-native';
+import {View, Text} from 'react-native';
 import {Button, Drawer, Spacing, WingBlank} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
