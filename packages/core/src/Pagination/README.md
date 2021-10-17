@@ -56,18 +56,26 @@ function Demo() {
 ```ts
 export interface PaginationProps {
   /** 尺寸 */
-  size?: 'small' | 'default' | 'large';
+  size?: size;
   /** 当前页	 */
-  current?: number,
+  current?: number;
   /** 当前页的颜色 */
-  currentColor?: string
-  /** 数据总量	 */
-  total: number,
+  currentColor?: string;
+  /** 自定义当前页与总页数元素 */
+  renderPages?: (current: number,totalPage: number)=>React.ReactNode;
+  /** 点击当前页触发 */
+  onCurrent?: (current: number,totalPage?: number)=>unknown;
+  /** 数据总量 */
+  total: number;
   /** 每页数据量	 */
-  pageSize?: number,
+  pageSize?: number;
   /** 是否以 icon 形式展示按钮 */
-  icon?: boolean,
+  icon?: boolean;
   /** 点击页码按钮时触发 */
-  onPageChange?: (type: 'prev' | 'next', current: number) => void,
+  onPageChange?: (type: 'prev' | 'next', current: number) => void;
+  /** 边框颜色 */
+  borderColor?: string
+  /** 按钮中的颜色 */
+  color?: string
 }
 ```
