@@ -1,6 +1,8 @@
 Badge 标记
 ---
 
+<image src='https://user-images.githubusercontent.com/57083007/137631808-f3899eb4-69c1-4dd5-a686-0f8bb38fe4b6.png' alt='Badge' style='zoom:33%;' />
+
 ### 基础示例
 
 ```jsx

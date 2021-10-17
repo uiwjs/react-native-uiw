@@ -3,6 +3,8 @@ Card 卡片
 
 最基础的卡片容器，可承载文字、列表、图片、段落。
 
+<image src='https://user-images.githubusercontent.com/57083007/137632175-fc80bff2-7224-4843-97ec-9f8d9cbc6746.png' alt='Card' style='zoom:33%;' />
+
 ### 基础示例
 
 <!--DemoStart--> 
