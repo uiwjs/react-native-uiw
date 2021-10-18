@@ -3,6 +3,8 @@ Icon 图标
 
 图标组件通过 [`react-native-svg`](https://github.com/react-native-community/react-native-svg) 支持 svg 图标，基于这一特性封装图标组件库，它不是基于字体文件封装的组件，相比字体图标组件易于扩展体积较小。预览[所有的图标](https://uiwjs.github.io/icons)。
 
+<image src='https://user-images.githubusercontent.com/66067296/137710056-d7fe4b94-7b98-4e18-a235-5a4e70beaa05.png' alt='Icon' style='zoom:33%;' />
+
 ### 基础示例
 
 ```js
