@@ -1,6 +1,8 @@
 Drawer 抽屉
 ---
 
+<image src='https://user-images.githubusercontent.com/66067296/137705595-a9eb337a-90f7-42bd-a662-579063731db3.gif' alt='Drawer' style='zoom:33%;' />
+
 用于在屏幕边缘显示应用导航等内容的面板。
 
 ### 基础示例
