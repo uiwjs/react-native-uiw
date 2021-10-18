@@ -6,24 +6,17 @@ SwipeAction 滑动操作组件。
 
 ### 基础示例
 
-```jsx
+```tsx
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { SwipeAction } from '@uiw/react-native';
-import Layout, { Container } from '../../Layout';
-import { ComProps } from '../../routes';
 
-const { Header, Body, Card, Footer } = Layout;
-
-export interface SwipeActionProps extends ComProps {
+export interface SwipeActionProps {
 }
 
 export default class SwipeActionView extends Component<SwipeActionProps> {
   newRef: any;
   render() {
-    const { route } = this.props;
-    const description = route.params.description;
-    const title = route.params.title;
     const right = [
       {
         text: '查看备注',
@@ -50,37 +43,18 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
         },
       },
     ];
-    const left = [
-      {
-        text: '左侧查看',
-        color: 'pink',
-        onPress: () => {
-          this.newRef?.swipeable?.close()
-        },
-      },
-    ];
     return (
-      <Container>
-        <Layout>
-          <Header title={title} description={description} />
-          <Body>
-            <Card title="左右滑动，显示按钮" style={styles.card}>
-              <SwipeAction
-                ref={ref => this.newRef = ref}
-                right={right}
-                left={left}
-                onSwipeableRightOpen={() => console.log('right')}
-                onSwipeableLeftOpen={() => () => console.log('left')}
-              >
-                <View style={[styles.view]}>
-                  <Text>滑动</Text>
-                </View>
-              </SwipeAction>
-            </Card>
-          </Body>
-          <Footer />
-        </Layout>
-      </Container>
+          <SwipeAction
+            buttonWidth={60}
+            ref={ref => this.newRef = ref}
+            right={right}
+            onSwipeableRightOpen={() => console.log('right')}
+            onSwipeableLeftOpen={() => () => console.log('left')}
+          >
+            <View style={[styles.view]}>
+              <Text>滑动</Text>
+            </View>
+          </SwipeAction>
     );
   }
 }
@@ -108,12 +82,12 @@ export interface Column {
   text: string;
   /** 背景色 */
   color: string;
-  /** 滑动距离多少出现 */
-  x?: number;
   /** 点击元素触发 */
   onPress?: () => void;
+  /** 是否禁用 */ 
+  disabled?: boolean;
   /** 自定义元素 */
-  render?:(text:string,record: Column,index: number)=>React.ReactNode
+  render?: (text: string, record: Column, index: number) => React.ReactNode;
 }
 
 export interface SwipeActionProps {
@@ -121,8 +95,8 @@ export interface SwipeActionProps {
   right?: Array<Column>;
   /** 左边滑动出来的元素 */
   left?: Array<Column>;
-  /** 滑动条宽度 默认20% */
-  swipeWidth?:string | number
+  /** 按钮宽度 默认60 */
+  buttonWidth?:string | number
   /** 其余api参考文档 react-native-gesture-handler/Swipeable */
   enableTrackpadTwoFingerGesture?: boolean;
   friction?: number;

@@ -18,7 +18,6 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
       {
         text: '查看备注',
         color: 'orange',
-        x: 250,
         onPress: () => {
           this.newRef?.swipeable?.close();
         },
@@ -26,7 +25,6 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
       {
         text: '删除',
         color: 'red',
-        x: 400,
         onPress: () => {
           this.newRef?.swipeable?.close();
         },
@@ -34,16 +32,6 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
       {
         text: '不显示',
         color: 'green',
-        x: 400,
-        onPress: () => {
-          this.newRef?.swipeable?.close();
-        },
-      },
-    ];
-    const left = [
-      {
-        text: '左侧查看',
-        color: 'pink',
         onPress: () => {
           this.newRef?.swipeable?.close();
         },
@@ -56,9 +44,9 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
           <Body>
             <Card title="左右滑动，显示按钮" style={styles.card}>
               <SwipeAction
+                buttonWidth={80}
                 ref={ref => (this.newRef = ref)}
                 right={right}
-                left={left}
                 onSwipeableRightOpen={() => console.log('right')}
                 onSwipeableLeftOpen={() => () => console.log('left')}>
                 <View style={[styles.view]}>
