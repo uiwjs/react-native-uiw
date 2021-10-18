@@ -3,7 +3,7 @@ TransitionImage 图像
 
 直接替换标准 React Native Image 组件，该组件显示带有占位符和平滑图像加载转换的图像
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment } from 'react';
@@ -31,7 +31,7 @@ function Demo() {
 ```
 
 
-## TransitionImage Props
+### TransitionImage Props
 
 ```ts
 import { ImageProps } from 'react-native';

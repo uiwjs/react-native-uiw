@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import Layout, {Container} from '../../Layout';
 import {Pagination} from '@uiw/react-native';
 import {ComProps} from '../../routes';
@@ -47,6 +47,8 @@ export default class Index extends Component<IndexProps, IndexState> {
               <View style={{paddingHorizontal: 20}}>
                 <Pagination
                   icon
+                  borderColor="red"
+                  color="red"
                   current={this.state.current1}
                   total={50}
                   pageSize={20}

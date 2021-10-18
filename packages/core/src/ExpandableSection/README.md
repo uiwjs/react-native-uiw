@@ -33,7 +33,7 @@ export default class ExpandableSectionDemo extends Component {
 ```
 <!--End-->
 
-## Props
+### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|

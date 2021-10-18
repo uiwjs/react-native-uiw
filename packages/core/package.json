@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-native",
-  "version": "2.9.0",
+  "version": "2.10.3",
   "description": "UIW for React Native",
   "homepage": "https://uiwjs.github.io/react-native-uiw/",
   "main": "lib/index.js",

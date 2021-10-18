@@ -3799,15 +3799,15 @@
     color "^3.1.3"
     warn-once "^0.1.0"
 
-"@rematch/core@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@rematch/core/-/core-2.1.1.tgz#448362d694988682419c3f8f4246b712804ce13f"
-  integrity sha512-bybueWnn3r5vPFuyrx3GsVDGki5ql6x+15WI4FQLPCvRF3bbTN93X9GSz3tfNL39NcHoljVkL4t3oYDbpel23A==
+"@rematch/core@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@rematch/core/-/core-2.1.0.tgz#e067ed78a6895d17e3cc2e15aa0db5148c9c6279"
+  integrity sha512-izr4LlXsHp1gfK8v05FNvqSthX64cCj59/x3tu+3qNXSuSM7d1/YXAlUtBJIoX9RApr+d1mqA7CCAteUjZrdLg==
 
-"@rematch/loading@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@rematch/loading/-/loading-2.1.1.tgz#51854003167929a8020bc15a0b6cebdb1e569875"
-  integrity sha512-kBKKRW+x9NTa2C6dw5Q+HVpbB62J3EeBmV4mmqDPOX53YV2pKXeQZOKvc9Iz54txPYac4uhZrxnRzM0Voz7aaQ==
+"@rematch/loading@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@rematch/loading/-/loading-2.1.0.tgz#516ec49b178479a374d263d481be8669f1e64356"
+  integrity sha512-4sLWHiuTW50zjdbhUVHb9HB9Ors6+ktM9tANBOinYu4c43TSArZLkaC7lb8fZYLb6eCsHHAtrrWYsz8lBJ6UOw==
 
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"

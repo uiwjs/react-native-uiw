@@ -3,7 +3,7 @@ CheckBox 复选框
 
 一组备选项中进行多选。
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { CheckBox } from '@uiw/react-native';
@@ -23,7 +23,7 @@ function Demo() {
 ```
 
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Badge, List, CheckBox } from '@uiw/react-native';
@@ -54,7 +54,7 @@ function Demo() {
 }
 ```
 
-## props
+### props
 
 继承 [TouchableOpacityProps](https://facebook.github.io/react-native/docs/touchableopacity#props) 组件。
 

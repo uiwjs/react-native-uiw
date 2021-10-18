@@ -3,7 +3,7 @@ Radio 单选框
 
 单选框，在一组备选项中进行单选。
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Radio } from '@uiw/react-native';
@@ -15,7 +15,7 @@ function Demo() {
 }
 ```
 
-## 受控组件
+### 受控组件
 
 ```jsx
 import { useState } from 'react';
@@ -36,7 +36,7 @@ function Demo() {
 }
 ```
 
-## 单选
+### 单选
 
 ```jsx
 import { useState } from 'react';
@@ -73,7 +73,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|

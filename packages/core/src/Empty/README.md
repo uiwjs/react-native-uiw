@@ -128,7 +128,7 @@ class Demo extends Component {
 ```
 <!--End-->
 
-## Props
+### Props
 
 ```ts
 export interface EmptyProps extends FlexProps {

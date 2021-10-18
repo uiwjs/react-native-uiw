@@ -3,7 +3,7 @@ SelectCascader 级联选择
 
 可用于类似于省市区选择
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Component } from 'react';
@@ -128,7 +128,7 @@ export default class SelectCascaderDemo extends Component {
 }
 ```
 
-## Props
+### Props
 
 ```ts
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';

@@ -12,7 +12,11 @@ export interface PaginationProps {
   current?: number;
   /** 当前页的颜色 */
   currentColor?: string;
-  /** 数据总量	 */
+  /** 自定义当前页与总页数元素 */
+  renderPages?: (current: number, totalPage: number) => React.ReactNode;
+  /** 点击当前页触发 */
+  onCurrent?: (current: number, totalPage?: number) => unknown;
+  /** 数据总量 */
   total: number;
   /** 每页数据量	 */
   pageSize?: number;
@@ -20,10 +24,24 @@ export interface PaginationProps {
   icon?: boolean;
   /** 点击页码按钮时触发 */
   onPageChange?: (type: 'prev' | 'next', current: number) => void;
+  /** 边框颜色 */
+  borderColor?: string;
+  /** 按钮中的颜色 */
+  color?: string;
 }
 
 const Pagination = (props: PaginationProps) => {
-  const { size = 'default', icon = false, currentColor, total, pageSize = 10 } = props;
+  const {
+    size = 'default',
+    icon = false,
+    currentColor,
+    total,
+    pageSize = 10,
+    borderColor,
+    color,
+    renderPages,
+    onCurrent,
+  } = props;
   const [current, setCurrent] = useState<number>(1);
   useEffect(() => {
     setCurrent(props.current || 1);
@@ -46,14 +64,31 @@ const Pagination = (props: PaginationProps) => {
 
   return (
     <View style={styles.pagination}>
-      <DirText size={size} direction="left" disabled={current === 1} icon={icon} onPageChange={onPageChange} />
-      <Page size={size} current={current} totalPage={Math.ceil(total / pageSize)} currentColor={currentColor} />
+      <DirText
+        size={size}
+        direction="left"
+        disabled={current === 1}
+        icon={icon}
+        onPageChange={onPageChange}
+        borderColor={borderColor}
+        color={color}
+      />
+      <Page
+        renderPages={renderPages}
+        onCurrent={onCurrent}
+        size={size}
+        current={current}
+        totalPage={Math.ceil(total / pageSize)}
+        currentColor={currentColor}
+      />
       <DirText
         onPageChange={onPageChange}
         size={size}
         direction="right"
         disabled={current === Math.ceil(total / pageSize)}
         icon={icon}
+        borderColor={borderColor}
+        color={color}
       />
     </View>
   );

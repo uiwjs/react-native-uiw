@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {SafeAreaView, Image, View, Text} from 'react-native';
-import {QuickList, List} from '@uiw/react-native';
+import {QuickList, List, SwipeAction} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout from '../../Layout';
 const {Header} = Layout;
@@ -62,26 +62,36 @@ const QuickListView = (props: ListViewProps) => {
 
   const ListItem = (item: any) => {
     return (
-      <List flat={false}>
-        <View
-          style={{
-            padding: 10,
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'row',
-          }}>
-          <Image
-            source={{
-              uri: item.img,
-            }}
-            style={{height: 70, width: 70, borderRadius: 50}}
-          />
-          <View style={{marginLeft: 10}}>
-            <Text style={{marginBottom: 5, fontSize: 18}}>react-native</Text>
-            <Text style={{color: '#808080'}}>{item.name}</Text>
+      <SwipeAction
+        right={[
+          {
+            text: '删除',
+            color: 'red',
+            x: 250,
+            onPress: () => {},
+          },
+        ]}>
+        <List flat={false}>
+          <View
+            style={{
+              padding: 10,
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'row',
+            }}>
+            <Image
+              source={{
+                uri: item.img,
+              }}
+              style={{height: 70, width: 70, borderRadius: 50}}
+            />
+            <View style={{marginLeft: 10}}>
+              <Text style={{marginBottom: 5, fontSize: 18}}>react-native</Text>
+              <Text style={{color: '#808080'}}>{item.name}</Text>
+            </View>
           </View>
-        </View>
-      </List>
+        </List>
+      </SwipeAction>
     );
   };
 

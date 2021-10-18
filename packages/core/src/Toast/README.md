@@ -18,7 +18,7 @@ export default () => {
 }
 ```
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { View } from 'react-native';
@@ -37,7 +37,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|

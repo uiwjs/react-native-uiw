@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
 import { containerStyle, containerSize, contentSize } from './DirText';
 import { size } from './index';
 import Button from '../Button';
@@ -9,12 +9,20 @@ export interface PageProps {
   current: number;
   currentColor?: string;
   totalPage: number;
+  renderPages?: (current: number, totalPage: number) => React.ReactNode;
+  onCurrent?: (current: number, totalPage?: number) => unknown;
 }
 
 const Page = (props: PageProps) => {
-  const { size, currentColor, current, totalPage } = props;
+  const { size, currentColor, current, totalPage, renderPages, onCurrent } = props;
   const textSize = size === 'small' ? 1 : 2;
-
+  if (renderPages) {
+    return (
+      <TouchableHighlight activeOpacity={1} underlayColor="#f1f1f1" onPress={() => onCurrent?.(current)}>
+        {renderPages(current, totalPage)}
+      </TouchableHighlight>
+    );
+  }
   return (
     <View
       style={[

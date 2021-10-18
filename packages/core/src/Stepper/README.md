@@ -2,7 +2,7 @@ Stepper 步进器
 ---
 用作增加或者减少当前数值。
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import {List, Stepper} from '@uiw/react-native';
@@ -100,7 +100,7 @@ function Demo() {
 }
 ```
 
-## Stepper Props
+### Stepper Props
 
 ```ts
 export interface Color {

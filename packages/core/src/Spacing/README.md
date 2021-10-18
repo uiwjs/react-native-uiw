@@ -1,7 +1,7 @@
 Spacing 间距
 ---
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment } from 'react';
@@ -20,7 +20,7 @@ function Demo() {
 }
 ```
 
-## props
+### props
 
 继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
 

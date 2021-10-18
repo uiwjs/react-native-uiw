@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import Layout, {Container} from '../../Layout';
 import {SearchInputBar, Toast} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 
-const {Header, Body, Card, Footer} = Layout;
+const {Header, Body, Footer} = Layout;
 
 export interface IndexProps extends ComProps {}
 export interface IndexState {
   value?: string;
   value2?: string;
+  loading?: boolean;
 }
 
 export default class Index extends Component<IndexProps, IndexState> {
@@ -20,6 +21,7 @@ export default class Index extends Component<IndexProps, IndexState> {
     this.state = {
       value: '',
       value2: '',
+      loading: false,
     };
   }
   onChangeText = (val: string, key: 'value' | 'value2') => {
@@ -36,21 +38,28 @@ export default class Index extends Component<IndexProps, IndexState> {
       <Container keyboardShouldPersistTaps="always">
         <Layout>
           <Header title={title} description={description} />
-          <Body keyboardShouldPersistTaps="always">
+          <Body
+            keyboardShouldPersistTaps="always"
+            style={{paddingHorizontal: 10}}>
             <View style={styles.divider} />
             <SearchInputBar
               ref={this.ref}
               onChangeText={val => this.onChangeText(val, 'value')}
               onClear={() => this.onClear('value')}
-              placeholder="请输入搜索关键字"
+              placeholder="请输入搜索关键字..."
+              actionName="搜一下"
               value={this.state.value}
-              button={{
-                type: 'success',
+              touchProps={{
                 onPress: () => {
                   console.log('object', this.ref);
-                  Toast.info('你点击了搜索', 2, 'info');
+                  this.setState({loading: true}, () => {
+                    setTimeout(() => {
+                      this.setState({loading: false});
+                    }, 3000);
+                  });
                 },
               }}
+              loading={this.state.loading}
             />
             <View style={{height: 100}} />
             <SearchInputBar
@@ -58,10 +67,13 @@ export default class Index extends Component<IndexProps, IndexState> {
               onClear={() => this.onClear('value2')}
               value={this.state.value2}
               placeholder="请输入搜索关键字"
-              actionName=" 搜一下"
+              searchRender={
+                <View style={styles.search}>
+                  <Text>搜索</Text>
+                </View>
+              }
               showActionButton
-              buttonWidth={120}
-              button={{
+              touchProps={{
                 onPress() {
                   Toast.info('你点击了搜一下', 2, 'info');
                 },
@@ -83,5 +95,10 @@ const styles = StyleSheet.create({
   },
   divider: {
     marginVertical: 10,
+  },
+  search: {
+    justifyContent: 'center',
+    borderWidth: 0,
+    paddingLeft: 10,
   },
 });

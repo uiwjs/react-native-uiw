@@ -1,7 +1,7 @@
 Table 表格
 ---
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Table } from '@uiw/react-native';

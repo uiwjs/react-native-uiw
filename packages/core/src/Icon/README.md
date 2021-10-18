@@ -93,7 +93,7 @@ function Demo() {
 ReactDOM.render(<Demo />, _mount_);
 ```
 
-## Props
+### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
