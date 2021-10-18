@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, forwardRef, useRef, useCallback } from 'react';
+import React, { useImperativeHandle, forwardRef, useRef } from 'react';
 import { Animated, StyleSheet, View, Text, I18nManager, StyleProp, ViewStyle } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
@@ -8,10 +8,10 @@ export interface Column {
   text: string;
   /** 背景色 */
   color: string;
-  /** 滑动距离多少出现 */
-  x?: number;
   /** 点击元素触发 */
   onPress?: () => void;
+  /** 是否禁用 */
+  disabled?: boolean;
   /** 自定义元素 */
   render?: (text: string, record: Column, index: number) => React.ReactNode;
 }
@@ -21,7 +21,8 @@ export interface SwipeActionProps {
   right?: Array<Column>;
   /** 左边滑动出来的元素 */
   left?: Array<Column>;
-  swipeWidth?: string | number;
+  /** 按钮宽度 默认60 */
+  buttonWidth?: number;
   enableTrackpadTwoFingerGesture?: boolean;
   friction?: number;
   leftThreshold?: number;
@@ -53,68 +54,49 @@ export interface SwipeActionProps {
 }
 
 const SwipeAction = (props: SwipeActionProps, ref: any) => {
-  const { children, right = [], left = [], swipeWidth = '20%', ...others } = props;
+  const { children, right = [], left = [], buttonWidth = 60, ...others } = props;
   const swipeableRef: React.MutableRefObject<null> = useRef(null);
 
-  const renderRight = useCallback(() => {
-    return renderRightAction;
-  }, [right, swipeWidth]);
-
-  const renderLeft = useCallback(() => {
-    return renderLeftAction;
-  }, [left, swipeWidth]);
-
-  // 右侧滑出
-  const renderRightAction = (progress: Animated.AnimatedInterpolation) => {
+  // 滑出
+  const renderRightAction = (progress: Animated.AnimatedInterpolation, dragX: any, isLeft = true) => {
+    const buttons = isLeft ? left : right;
+    if (!buttons) {
+      return null;
+    }
+    const length = buttons.length;
+    const width = buttonWidth * length;
     return (
-      right &&
-      right.map(({ x = 1, text, color, onPress, render }, idx) => {
-        const trans = progress.interpolate({
-          inputRange: [0, 1],
-          outputRange: [x, 0],
-        });
-        return (
-          <View key={idx} style={[styles.viewActions, { width: swipeWidth }]}>
-            <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
-              <RectButton
-                style={[styles.rightAction, { backgroundColor: color }]}
-                onPress={() => {
-                  onPress && onPress();
-                }}
-              >
-                {render ? render(text, right[idx], idx) : <Text style={styles.actionText}>{text}</Text>}
-              </RectButton>
-            </Animated.View>
-          </View>
-        );
-      })
-    );
-  };
-  // 左侧滑出
-  const renderLeftAction = (progress: Animated.AnimatedInterpolation, dragX: any) => {
-    return (
-      left &&
-      left.map(({ text, color, onPress, render }, idx) => {
-        const trans = dragX.interpolate({
-          inputRange: [0, 50, 100, 101],
-          outputRange: [-20, 0, 0, 1],
-          extrapolate: 'clamp',
-        });
-        return (
-          <View style={[styles.viewActions, { width: swipeWidth }]} key={idx}>
-            <Animated.View style={[{ flex: 1, transform: [{ translateX: trans }] }]}>
-              <RectButton
-                style={[styles.rightAction, { backgroundColor: color }]}
-                onPress={() => {
-                  onPress && onPress();
-                }}
-              >
-                {render ? render(text, left[idx], idx) : <Text style={styles.actionText}>{text}</Text>}
-              </RectButton>
-            </Animated.View>
-          </View>
-        );
-      })
+      <View style={[styles.viewActions, { width: width }]}>
+        {buttons &&
+          buttons.map(({ text, color, onPress, disabled, render }, idx) => {
+            const x = isLeft ? -idx * buttonWidth : (length - idx) * buttonWidth;
+            const trans = progress.interpolate({
+              inputRange: [0, 1],
+              outputRange: [x, 0],
+              extrapolate: 'clamp',
+            });
+            return (
+              <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
+                <RectButton
+                  style={[styles.rightAction, { backgroundColor: color }]}
+                  onPress={() => {
+                    if (disabled && disabled) {
+                      return;
+                    } else {
+                      onPress && onPress();
+                    }
+                  }}
+                >
+                  {React.isValidElement(render) ? (
+                    render(text, right[idx], idx)
+                  ) : (
+                    <Text style={[styles.actionText]}>{text}</Text>
+                  )}
+                </RectButton>
+              </Animated.View>
+            );
+          })}
+      </View>
     );
   };
 
@@ -128,11 +110,10 @@ const SwipeAction = (props: SwipeActionProps, ref: any) => {
       ref={swipeableRef}
       friction={2}
       enableTrackpadTwoFingerGesture
-      rightThreshold={50}
-      leftThreshold={50}
-      overshootRight={false}
-      renderRightActions={renderRight()}
-      renderLeftActions={renderLeft()}
+      leftThreshold={30}
+      rightThreshold={40}
+      renderRightActions={(progress, dragX) => renderRightAction(progress, dragX, false)}
+      renderLeftActions={(progress, dragX) => renderRightAction(progress, dragX, true)}
       {...others}
     >
       {children && children}
@@ -141,13 +122,9 @@ const SwipeAction = (props: SwipeActionProps, ref: any) => {
 };
 
 const styles = StyleSheet.create({
-  leftAction: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
-  },
   actionText: {
     color: 'white',
+    fontSize: 16,
     backgroundColor: 'transparent',
     textAlign: 'center',
   },
