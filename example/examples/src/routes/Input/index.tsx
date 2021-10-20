@@ -26,7 +26,8 @@ export default class InputView extends Component<InputProps> {
               <Input
                 style={styles.input}
                 placeholder="请输入"
-                disabled={true}
+                clear
+                // disabled={true}
                 onChangeText={(value: string) => {
                   this.setState({value});
                 }}

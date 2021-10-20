@@ -28,6 +28,7 @@ export const componentMenus: MenuData[] = [
   { path: '/components/slider', name: 'Slider 滑块输入条' },
   { path: '/components/switch', name: 'Switch 开关' },
   { path: '/components/searchbar', name: 'SearchBar 模糊搜素组件' },
+  { path: '/components/picker', name: 'Picker 选择器' },
   { path: '/components/selectcascader', name: 'SelectCascader 级联选择' },
   { divider: true, name: 'Data Display' },
   { path: '/components/avatar', name: 'Avatar 头像' },

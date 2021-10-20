@@ -427,4 +427,12 @@ export const stackPageData: Routes[] = [
       description: '用于展示页码、请求数据等。',
     },
   },
+  {
+    name: 'Picker',
+    component: require('./routes/Picker').default,
+    params: {
+      title: 'Picker 选择器',
+      description: 'Picker 解决 ios 与 android 和用户交互方式不同问题',
+    },
+  },
 ];
