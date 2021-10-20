@@ -12,6 +12,7 @@ import {
   Animated,
   NativeSyntheticEvent,
   NativeScrollEvent,
+  Platform,
 } from 'react-native';
 
 export interface PickerDate {
@@ -143,7 +144,8 @@ const Picker = (props: PickerProps) => {
         onTouchEnd={setScrollY}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: Y } } }], {
           listener: (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-            if (onPressORonScroll.current === 'onPress' || !isTouchEnd.current) {
+            const flag = Platform.OS === 'android' ? false : !isTouchEnd.current;
+            if (onPressORonScroll.current === 'onPress' || flag) {
               return false;
             }
             isScroll.current = false;
