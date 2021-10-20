@@ -94,7 +94,11 @@ const Picker = (props: PickerProps) => {
   }, [containerStyle, textStyle]);
   const location = (scrollY: number, index: number) => {
     scrollView.current?.scrollTo({ x: 0, y: scrollY - (style.containerHeight as number), animated: true });
+    saveY.current = scrollY - (style.containerHeight as number);
     currentY.current = index;
+    if (Platform.OS === 'android') {
+      setCurrent(index);
+    }
   };
   const scrollYEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     if (onPressORonScroll.current === 'onScroll') {
@@ -117,6 +121,7 @@ const Picker = (props: PickerProps) => {
     }
     if (saveY.current <= ItemHeights[0] / 1.1) {
       scrollView.current?.scrollTo({ x: 0, y: 0, animated: true });
+      saveY.current = 0;
       setCurrent(0);
       return false;
     }
@@ -126,6 +131,7 @@ const Picker = (props: PickerProps) => {
     const itemIndex = decimal >= 9 ? integer + 1 : integer;
     scrollView.current?.scrollTo({ x: 0, y: ItemHeights[itemIndex] - ItemHeights[0], animated: true });
     setCurrent(itemIndex);
+    saveY.current = ItemHeights[itemIndex] - ItemHeights[0];
     isScroll.current = false;
     isTouchEnd.current = false;
   };
@@ -146,6 +152,9 @@ const Picker = (props: PickerProps) => {
           listener: (event: NativeSyntheticEvent<NativeScrollEvent>) => {
             const flag = Platform.OS === 'android' ? false : !isTouchEnd.current;
             if (onPressORonScroll.current === 'onPress' || flag) {
+              return false;
+            }
+            if (saveY.current === event.nativeEvent.contentOffset.y) {
               return false;
             }
             isScroll.current = false;
