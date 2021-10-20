@@ -101,6 +101,8 @@ export { default as SearchInputBar } from './SearchInputBar';
 export * from './SearchInputBar';
 export { default as Pagination } from './Pagination';
 export * from './Pagination';
+export { default as Picker } from './Picker';
+export * from './Picker';
 
 /**
  * Typography

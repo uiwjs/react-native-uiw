@@ -129,6 +129,9 @@ export const getRouterData = {
   '/components/searchbar': {
     component: dynamicWrapper([], () => import('../pages/components/searchbar')),
   },
+  '/components/picker': {
+    component: dynamicWrapper([], () => import('../pages/components/picker')),
+  },
   '/components/selectcascader': {
     component: dynamicWrapper([], () => import('../pages/components/selectcascader')),
   },
