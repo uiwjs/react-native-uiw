@@ -136,32 +136,31 @@ function SpeedDial(props: SpeedDialProps) {
   return (
     <View>
       <Animated.View
-        style={{ transform: [{ translateX: pan.x }, { translateY: pan.y }] }}
+        style={[styles.viewPosition, { transform: [{ translateX: pan.x }, { translateY: pan.y }] }]}
         // {...panResponder.panHandlers}
       >
-        <View style={[styles.viewPosition, { bottom: bottom - MainHeight, right: right }]}>
-          {success &&
-            children.map((item, i) => (
-              <Animated.View
-                style={[
-                  styles.fadingContainer,
-                  {
-                    // Bind opacity to animated value
-                    opacity: fadeAnim[i],
-                  },
-                ]}
-                key={i}
-              >
-                <Item {...item} move={panResponder.panHandlers} />
-              </Animated.View>
-            ))}
-          <View {...panResponder.panHandlers}>
-            <TouchableOpacity activeOpacity={1} onPress={onOpenHome}>
-              <View style={[styles.homeContainer, { ...style }]} {...other}>
-                {iconName === 'plus' ? PlusDom : CloseDom}
-              </View>
-            </TouchableOpacity>
-          </View>
+        {success &&
+          children.map((item, i) => (
+            <Animated.View
+              style={[
+                styles.fadingContainer,
+                {
+                  // Bind opacity to animated value
+                  opacity: fadeAnim[i],
+                },
+              ]}
+              key={i}
+            >
+              <Item {...item} move={panResponder.panHandlers} />
+            </Animated.View>
+          ))}
+
+        <View {...panResponder.panHandlers} style={{ alignItems: 'flex-end' }}>
+          <TouchableOpacity activeOpacity={1} onPress={onOpenHome}>
+            <View style={[styles.homeContainer, { ...style }]} {...other}>
+              {iconName === 'plus' ? PlusDom : CloseDom}
+            </View>
+          </TouchableOpacity>
         </View>
       </Animated.View>
     </View>
@@ -175,10 +174,8 @@ const styles = StyleSheet.create({
   },
   viewPosition: {
     position: 'absolute',
-    // bottom: 350 - MainHeight,
-    // right: 40,
-    zIndex: 9999,
-    alignItems: 'flex-end',
+    bottom: 350 - MainHeight,
+    right: 40,
   },
 
   homeContainer: {
