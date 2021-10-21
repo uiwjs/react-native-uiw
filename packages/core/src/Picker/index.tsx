@@ -73,7 +73,8 @@ const Picker = (props: PickerProps) => {
   }, [current]);
   useEffect(() => {
     if (value !== current) {
-      const leng = value > date.length - 1 ? date.length - 1 : value;
+      let leng = value > date.length - 1 ? date.length - 1 : value;
+      leng = leng < 0 ? 0 : leng;
       location((style.containerHeight as number) * (leng + 1), leng);
       setCurrent(leng);
     }
