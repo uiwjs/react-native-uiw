@@ -95,7 +95,7 @@ export default (props: ModalProps = {}) => {
           // !layoutHeight && isVertical ? { display: display } : {},
           // !layoutWidth && isHorizontal ? { display: display } : {},
           // // getTransformStyle(),
-          { transform: [translateStyle] },
+          { transform: [translateStyle], position: 'relative', zIndex: 10000 },
         ]}
       >
         {children}
