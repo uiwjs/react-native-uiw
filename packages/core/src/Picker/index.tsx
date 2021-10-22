@@ -6,13 +6,13 @@ import {
   TextStyle,
   ViewStyle,
   LayoutChangeEvent,
-  TouchableOpacity,
   Text,
   ScrollView,
   Animated,
   NativeSyntheticEvent,
   NativeScrollEvent,
   Platform,
+  Pressable,
 } from 'react-native';
 
 export interface PickerDate {
@@ -58,18 +58,17 @@ const Picker = (props: PickerProps) => {
     value = 0,
     onChange,
   } = props;
+  const Y = useRef(new Animated.Value(0)).current;
   const scrollView = useRef<ScrollView>();
   const ItemHeights = useRef<Array<number>>([]).current;
-  const onPressORonScroll = useRef<'onPress' | 'onScroll'>('onScroll');
-  const timer = useRef<NodeJS.Timeout>();
   const saveY = useRef<number>(0);
-  const Y = useRef(new Animated.Value(0)).current;
+  const timer = useRef<NodeJS.Timeout>();
+  const onPressORonScroll = useRef<'onPress' | 'onScroll'>('onScroll');
   const currentY = useRef<number>(0);
-  const isTouchEnd = useRef<boolean>(false);
-  const isScroll = useRef<boolean>(false);
   const [current, setCurrent] = useState(0);
   useEffect(() => {
     onChange?.(current);
+    onPressORonScroll.current = 'onScroll';
   }, [current]);
   useEffect(() => {
     if (value !== current) {
@@ -93,93 +92,77 @@ const Picker = (props: PickerProps) => {
       containerHeight,
     };
   }, [containerStyle, textStyle]);
+  const getItemHeight = (event: LayoutChangeEvent) => {
+    const { height } = event.nativeEvent.layout;
+    const round = Math.round(height);
+    ItemHeights?.push(round * ItemHeights.length + round);
+  };
+
   const location = (scrollY: number, index: number) => {
-    scrollView.current?.scrollTo({ x: 0, y: scrollY - (style.containerHeight as number), animated: true });
     saveY.current = scrollY - (style.containerHeight as number);
     currentY.current = index;
-    if (Platform.OS === 'android') {
-      setCurrent(index);
-    }
+    let an = Platform.OS === 'android' && { duration: 0 };
+    let os = Platform.OS === 'ios' && { animated: false };
+    scrollView.current?.scrollTo({ x: 0, y: scrollY - (style.containerHeight as number), ...an, ...os });
+    setCurrent(index);
   };
-  const scrollYEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    if (onPressORonScroll.current === 'onScroll') {
-      return;
-    }
-    const scrollY = event.nativeEvent.contentOffset.y;
-    const currentHeight = ItemHeights[currentY.current] - ItemHeights[0];
-    if (scrollY - 2 <= currentHeight && scrollY + 2 >= currentHeight) {
-      setCurrent(currentY.current);
-    }
-    onPressORonScroll.current = 'onScroll';
-  };
-  const setScrollY = () => {
-    if (onPressORonScroll.current === 'onPress') {
-      return false;
-    }
-    isTouchEnd.current = true;
-    if (!isTouchEnd.current || !isScroll.current) {
-      return false;
-    }
-    if (saveY.current <= ItemHeights[0] / 1.1) {
+  const setScrollHandle = (val: number) => {
+    const spot = val / ItemHeights[0];
+    if (spot <= 0.6) {
       scrollView.current?.scrollTo({ x: 0, y: 0, animated: true });
-      saveY.current = 0;
       setCurrent(0);
       return false;
     }
-    const spot = saveY.current / ItemHeights[0] + '';
-    const integer = Number(spot.substr(0, spot.indexOf('.')));
-    const decimal = Number(spot[spot.indexOf('.') + 1]);
-    const itemIndex = decimal >= 9 ? integer + 1 : integer;
+    const stringSpot = spot + '';
+    const integer = Math.floor(spot);
+    const decimal = Number(stringSpot[stringSpot.indexOf('.') + 1]);
+    const itemIndex = decimal >= 6 ? integer + 1 : integer;
     scrollView.current?.scrollTo({ x: 0, y: ItemHeights[itemIndex] - ItemHeights[0], animated: true });
-    setCurrent(itemIndex);
     saveY.current = ItemHeights[itemIndex] - ItemHeights[0];
-    isScroll.current = false;
-    isTouchEnd.current = false;
+    setCurrent(itemIndex);
+    clearTimeout(timer.current!);
+    timer.current = undefined;
   };
-  const getItemHeight = (event: LayoutChangeEvent) => {
-    const { height } = event.nativeEvent.layout;
-    ItemHeights?.push(height * ItemHeights.length + height);
+  const listener = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    if (onPressORonScroll.current === 'onPress') return;
+    saveY.current = event.nativeEvent.contentOffset.y;
+    if (timer.current) {
+      clearTimeout(timer.current!);
+      timer.current = undefined;
+    }
+    timer.current = setTimeout(() => {
+      setScrollHandle(saveY.current);
+    }, 160);
+  };
+  const onTouchEnd = () => {
+    if (Platform.OS === 'ios') {
+      if (onPressORonScroll.current === 'onPress') {
+        setCurrent(currentY.current);
+        return;
+      }
+      if (timer.current) return;
+      setScrollHandle(saveY.current);
+    }
   };
   return (
     <View style={{ paddingVertical: 10, height: (style.containerHeight as number) * lines + 10 }}>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{ marginTop: -1 }}
         ref={scrollView as React.LegacyRef<ScrollView>}
-        onMomentumScrollEnd={scrollYEnd}
         scrollEventThrottle={16}
-        onTouchEnd={setScrollY}
+        onTouchEnd={Platform.OS === 'ios' ? onTouchEnd : undefined}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: Y } } }], {
-          listener: (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-            const flag = Platform.OS === 'android' ? false : !isTouchEnd.current;
-            if (onPressORonScroll.current === 'onPress' || flag) {
-              return false;
-            }
-            if (saveY.current === event.nativeEvent.contentOffset.y) {
-              return false;
-            }
-            isScroll.current = false;
-            saveY.current = event.nativeEvent.contentOffset.y;
-            if (timer.current) {
-              clearTimeout(timer.current!);
-              timer.current = undefined;
-            }
-            timer.current = setTimeout(() => {
-              isScroll.current = true;
-              setScrollY();
-              clearTimeout(timer.current!);
-              timer.current = undefined;
-            }, 160);
-          },
+          listener,
           useNativeDriver: false,
         })}
       >
         {date.map((item, index) => (
-          <TouchableOpacity
+          <Pressable
             onLayout={getItemHeight}
             key={index}
-            activeOpacity={1}
+            onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
             onPress={() => {
+              if (timer.current) return;
               onPressORonScroll.current = 'onPress';
               location(ItemHeights![index], index);
             }}
@@ -191,12 +174,14 @@ const Picker = (props: PickerProps) => {
                 <Text style={current === index ? style.textAc : style.textUn}>{item[key]}</Text>
               </View>
             )}
-          </TouchableOpacity>
+          </Pressable>
         ))}
-        {new Array(lines - 1).fill('').map((item, index) => (
-          <View key={index} style={style.containerUn} />
-        ))}
-        {/* style.containerHeight as number * lines + 10 */}
+        {
+          <Pressable
+            style={[style.containerUn, { height: (style.containerHeight as number) * (lines - 1) }]}
+            onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
+          />
+        }
       </ScrollView>
       <View style={[style.containerAc, { top: (-style.containerHeight as number) * lines + 10 }]} />
       <View style={[style.containerAc, { top: (-style.containerHeight as number) * (lines - 1) + 10 }]} />
@@ -209,16 +194,22 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 0,
+    paddingHorizontal: 0,
   },
   border: {
     backgroundColor: '#E6E6E6',
     height: 1,
     position: 'relative',
     zIndex: 999,
+    paddingVertical: 0,
+    paddingHorizontal: 0,
   },
   textStyle: {
     fontSize: 20,
     color: '#000',
+    paddingVertical: 0,
+    paddingHorizontal: 0,
   },
   acTextStyle: {
     color: '#fd8a00',

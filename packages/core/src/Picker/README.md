@@ -3,6 +3,10 @@ Picker 选择器
 
 解决 ios 与 android 和用户交互方式不同问题.
 
+> 避免出现样式错乱问题, 请尽量使用统一数字高度。 
+> 激活状态尽量不要改变高度, 只是修改颜色作为标记。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
 ### 基础示例
  
 ```jsx
