@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import {Picker} from '@uiw/react-native';
+import {Picker, Button} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
 const {Header, Body, Footer} = Layout;
@@ -8,10 +8,17 @@ const {Header, Body, Footer} = Layout;
 export interface BadgeViewProps extends ComProps {}
 
 export default class BadgeView extends React.Component<BadgeViewProps> {
+  state = {
+    value: 1,
+  };
   render() {
     const {route, navigation} = this.props;
     const description = route.params.description;
     const title = route.params.title;
+    const arr = [];
+    for (let i = 0; i < 100; i++) {
+      arr.push({label: i});
+    }
     return (
       <Container scrollEnabled={false}>
         <Layout>
@@ -25,35 +32,24 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
                 marginTop: 20,
               }}>
               <View style={{width: '50%'}}>
-                <Picker
-                  date={[
-                    {label: '1'},
-                    {label: '2'},
-                    {label: '3'},
-                    {label: '4'},
-                    {label: '5'},
-                    {label: '6'},
-                  ]}
-                  value={17}
-                />
+                <Picker date={arr as any} value={17} />
               </View>
               <View style={{width: '50%'}}>
                 <Picker
                   onChange={val => {
                     console.log('val: ', val);
                   }}
-                  date={[
-                    {label: '1'},
-                    {label: '2'},
-                    {label: '3'},
-                    {label: '4'},
-                    {label: '5'},
-                    {label: '6'},
-                  ]}
-                  value={17}
+                  date={arr as any}
+                  value={this.state.value}
                 />
               </View>
             </View>
+            <Button
+              onPress={() => {
+                this.setState({value: this.state.value + 1});
+              }}>
+              控制第二列value
+            </Button>
           </Body>
           <Footer />
         </Layout>
