@@ -92,10 +92,10 @@ const Picker = (props: PickerProps) => {
       containerHeight,
     };
   }, [containerStyle, textStyle]);
-  const getItemHeight = (event: LayoutChangeEvent) => {
+  const getItemHeight = (event: LayoutChangeEvent, index: number) => {
     const { height } = event.nativeEvent.layout;
     const round = Math.round(height);
-    ItemHeights?.push(round * ItemHeights.length + round);
+    ItemHeights[index] = round * ItemHeights.length + round;
   };
 
   const location = (scrollY: number, index: number) => {
@@ -158,7 +158,7 @@ const Picker = (props: PickerProps) => {
       >
         {date.map((item, index) => (
           <Pressable
-            onLayout={getItemHeight}
+            onLayout={(event: LayoutChangeEvent) => getItemHeight(event, index)}
             key={index}
             onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
             onPress={() => {
