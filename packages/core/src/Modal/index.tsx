@@ -95,7 +95,7 @@ export default (props: ModalProps = {}) => {
           // !layoutHeight && isVertical ? { display: display } : {},
           // !layoutWidth && isHorizontal ? { display: display } : {},
           // // getTransformStyle(),
-          { transform: [translateStyle], position: 'relative', zIndex: 10000 },
+          { transform: [translateStyle], backgroundColor: '#fff', position: 'relative', zIndex: 10000 },
         ]}
       >
         {children}
@@ -111,7 +111,6 @@ export default (props: ModalProps = {}) => {
 
 const styles = StyleSheet.create({
   content: {
-    backgroundColor: '#fff',
     position: 'absolute',
     zIndex: 9999,
   },
