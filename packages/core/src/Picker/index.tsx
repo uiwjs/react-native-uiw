@@ -63,6 +63,7 @@ const Picker = (props: PickerProps) => {
   const ItemHeights = useRef<Array<number>>([]).current;
   const saveY = useRef<number>(0);
   const timer = useRef<NodeJS.Timeout>();
+  const onPressTimer = useRef<NodeJS.Timeout>();
   const onPressORonScroll = useRef<'onPress' | 'onScroll'>('onScroll');
   const currentY = useRef<number>(0);
   const [current, setCurrent] = useState(0);
@@ -103,7 +104,6 @@ const Picker = (props: PickerProps) => {
     let an = Platform.OS === 'android' && { duration: 0 };
     let os = Platform.OS === 'ios' && { animated: false };
     scrollView.current?.scrollTo({ x: 0, y: scrollY - (style.containerHeight as number), ...an, ...os });
-    setCurrent(index);
   };
   const setScrollHandle = (val: number) => {
     const spot = val / ItemHeights[0];
@@ -123,7 +123,14 @@ const Picker = (props: PickerProps) => {
     timer.current = undefined;
   };
   const listener = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    if (onPressORonScroll.current === 'onPress') return;
+    if (onPressORonScroll.current === 'onPress') {
+      clearTimeout(onPressTimer.current!);
+      onPressTimer.current = setTimeout(() => {
+        setCurrent(currentY.current);
+        clearTimeout(onPressTimer.current!);
+      }, 16);
+      return;
+    }
     saveY.current = event.nativeEvent.contentOffset.y;
     if (timer.current) {
       clearTimeout(timer.current!);
@@ -162,6 +169,7 @@ const Picker = (props: PickerProps) => {
             onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
             onPress={() => {
               if (timer.current) return;
+              clearTimeout(onPressTimer.current!);
               onPressORonScroll.current = 'onPress';
               location(ItemHeights![index], index);
             }}
