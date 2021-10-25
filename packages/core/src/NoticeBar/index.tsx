@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleProp, Text, TouchableWithoutFeedback, View, ViewStyle, StyleSheet } from 'react-native';
+import { StyleProp, Text, TouchableWithoutFeedback, View, ViewStyle, TextStyle, StyleSheet } from 'react-native';
 import Icon from '../Icon';
 import Marquee, { MarqueeProps } from './Marquee';
 
@@ -9,6 +9,7 @@ export type NoticeBarProps = {
   onPress?: any;
   icon?: any;
   action?: any;
+  textStyle?: StyleProp<TextStyle>;
   style?: StyleProp<ViewStyle>;
   marqueeProps?: MarqueeProps;
 };
@@ -25,7 +26,8 @@ export default (props: NoticeBarProps) => {
       setShow(false);
     }
   };
-  let { children, mode, icon, style, action, marqueeProps } = props;
+  let { children, mode, icon, style, action, marqueeProps, textStyle } = props;
+
   let operationDom: any = null;
   icon = typeof icon === 'undefined' ? <Icon name="notification" color="#f4333c" size={15} /> : icon;
   if (mode === 'closable') {
@@ -41,7 +43,7 @@ export default (props: NoticeBarProps) => {
     <View style={[styles.notice, style]}>
       {icon && <View style={styles.left15}>{icon}</View>}
       <View style={[styles.container, icon ? styles.left6 : styles.left15]}>
-        <Marquee style={styles.content} text={children} {...marqueeProps} />
+        <Marquee style={[styles.content, textStyle]} text={children} {...marqueeProps} />
       </View>
       {operationDom}
     </View>

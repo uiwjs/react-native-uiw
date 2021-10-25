@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Image, Text, View} from 'react-native';
-import {NoticeBar, Spacing} from '@uiw/react-native';
+import {NoticeBar, Spacing, Icon} from '@uiw/react-native';
 
 export default class NoticeBarExample extends Component {
   render() {
@@ -10,9 +10,11 @@ export default class NoticeBarExample extends Component {
         source={{
           uri: 'https://zos.alipayobjects.com/rmsportal/bRnouywfdRsCcLU.png',
         }}
-        style={{width: 12, height: 12}}
+        style={{width: 12, height: 12, tintColor: 'balck'}}
       />
     );
+
+    const newCustomIcon = <Icon name={'star-off'} size={20} stroke={'blue'} />;
     return (
       <View style={{marginTop: 10}}>
         <NoticeBar
@@ -48,6 +50,24 @@ export default class NoticeBarExample extends Component {
         <Spacing />
         <NoticeBar mode="link" action={<Text>去看看</Text>}>
           Link demo for `actionText`.
+        </NoticeBar>
+        <Spacing />
+        <NoticeBar mode="link" textStyle={{color: 'blue'}}>
+          Change `actionText` color
+        </NoticeBar>
+        <Spacing />
+        <NoticeBar
+          mode="link"
+          action={<Text style={{color: 'blue'}}>去看看</Text>}>
+          Change `Prompt` color
+        </NoticeBar>
+        <Spacing />
+        <NoticeBar
+          mode="link"
+          icon={newCustomIcon}
+          textStyle={{color: 'blue', fontSize: 20}}
+          style={{backgroundColor: 'lightblue', height: 50}}>
+          Change demo for `action`.
         </NoticeBar>
       </View>
     );

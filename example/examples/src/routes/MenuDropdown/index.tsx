@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Text, StyleSheet} from 'react-native';
-import {MenuDropdown} from '@uiw/react-native';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {MenuDropdown, Toast} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
 
@@ -28,6 +28,12 @@ export default class MenuDropdownView extends Component<MenuDropdownProps> {
                 </MenuDropdown.Item>
                 <MenuDropdown.Item>
                   <Text>列表</Text>
+                </MenuDropdown.Item>
+                <MenuDropdown.Item>
+                  <TouchableOpacity
+                    onPress={() => Toast.info('你点击了选择一', 2, 'info')}>
+                    <Text>选择一</Text>
+                  </TouchableOpacity>
                 </MenuDropdown.Item>
               </MenuDropdown>
             </Card>
