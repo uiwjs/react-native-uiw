@@ -1,6 +1,9 @@
 import React, { useState, useMemo, useRef } from 'react';
-import { Animated, StyleSheet, LayoutChangeEvent, View } from 'react-native';
+import { Animated, StyleSheet, LayoutChangeEvent, Dimensions } from 'react-native';
 import MaskLayer, { MaskLayerProps } from '../MaskLayer';
+
+let MainWidth = Dimensions.get('window').width;
+let MainHeight = Dimensions.get('window').height;
 
 export interface ModalProps extends MaskLayerProps {
   placement?: 'top' | 'right' | 'bottom' | 'left';
@@ -116,22 +119,26 @@ const styles = StyleSheet.create({
   },
   top: {
     top: 0,
+    width: MainWidth,
     left: 0,
     right: 0,
   },
   bottom: {
     bottom: 0,
     left: 0,
+    width: MainWidth,
     right: 0,
   },
   left: {
     bottom: 0,
     top: 0,
+    height: MainHeight,
     left: 0,
   },
   right: {
     bottom: 0,
     top: 0,
+    height: MainHeight,
     right: 0,
   },
 });
