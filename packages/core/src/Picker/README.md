@@ -17,7 +17,7 @@ function Demo() {
   return (
     <View style={{ flex: 1 }}>
       <Picker 
-        date={[
+        data={[
           {label: '1'},
           {label: '2'},
           {label: '3'},
@@ -40,7 +40,7 @@ function Demo() {
   return (
     <View style={{ flex: 1 }}>
       <Picker 
-        date={[
+        data={[
           {label: '1'},
           {label: '2'},
           {label: '3'},
@@ -61,9 +61,9 @@ function Demo() {
 ```ts
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
-export interface PickerDate {
+export interface PickerData {
   label?: string,
-  render?: (key: string, record: PickerDate, index: number)=>React.ReactNode,
+  render?: (key: string, record: PickerData, index: number)=>React.ReactNode,
   [key: string]: any
 }
 
@@ -73,7 +73,7 @@ export interface PickerProps {
   /** 指定需要显示的 key, 默认使用 data 的 label 属性 */
   key?: string,
   /** 需要渲染的数据 */
-  date?: Array<PickerDate>,
+  data?: Array<PickerData>,
   /** item 容器样式 */
   containerStyle?: {
     /** 激活的容器样式 */
