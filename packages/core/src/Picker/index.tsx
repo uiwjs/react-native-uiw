@@ -63,6 +63,7 @@ const Picker = (props: PickerProps) => {
   const ItemHeights = useRef<Array<number>>([]).current;
   const saveY = useRef<number>(0);
   const timer = useRef<NodeJS.Timeout>();
+  const onPressTimer = useRef<NodeJS.Timeout>();
   const onPressORonScroll = useRef<'onPress' | 'onScroll'>('onScroll');
   const currentY = useRef<number>(0);
   const [current, setCurrent] = useState(0);
@@ -92,19 +93,17 @@ const Picker = (props: PickerProps) => {
       containerHeight,
     };
   }, [containerStyle, textStyle]);
-  const getItemHeight = (event: LayoutChangeEvent, index: number) => {
+  const getItemHeight = (event: LayoutChangeEvent) => {
     const { height } = event.nativeEvent.layout;
     const round = Math.round(height);
-    ItemHeights[index] = round * ItemHeights.length + round;
+    ItemHeights.push(round * ItemHeights.length + round);
   };
-
   const location = (scrollY: number, index: number) => {
     saveY.current = scrollY - (style.containerHeight as number);
     currentY.current = index;
     let an = Platform.OS === 'android' && { duration: 0 };
     let os = Platform.OS === 'ios' && { animated: false };
     scrollView.current?.scrollTo({ x: 0, y: scrollY - (style.containerHeight as number), ...an, ...os });
-    setCurrent(index);
   };
   const setScrollHandle = (val: number) => {
     const spot = val / ItemHeights[0];
@@ -113,7 +112,7 @@ const Picker = (props: PickerProps) => {
       setCurrent(0);
       return false;
     }
-    const stringSpot = spot + '';
+    const stringSpot = spot + '.0';
     const integer = Math.floor(spot);
     const decimal = Number(stringSpot[stringSpot.indexOf('.') + 1]);
     const itemIndex = decimal >= 6 ? integer + 1 : integer;
@@ -124,7 +123,14 @@ const Picker = (props: PickerProps) => {
     timer.current = undefined;
   };
   const listener = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    if (onPressORonScroll.current === 'onPress') return;
+    if (onPressORonScroll.current === 'onPress') {
+      clearTimeout(onPressTimer.current!);
+      onPressTimer.current = setTimeout(() => {
+        setCurrent(currentY.current);
+        clearTimeout(onPressTimer.current!);
+      }, 16);
+      return;
+    }
     saveY.current = event.nativeEvent.contentOffset.y;
     if (timer.current) {
       clearTimeout(timer.current!);
@@ -158,11 +164,12 @@ const Picker = (props: PickerProps) => {
       >
         {date.map((item, index) => (
           <Pressable
-            onLayout={(event: LayoutChangeEvent) => getItemHeight(event, index)}
+            onLayout={getItemHeight}
             key={index}
             onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
             onPress={() => {
               if (timer.current) return;
+              clearTimeout(onPressTimer.current!);
               onPressORonScroll.current = 'onPress';
               location(ItemHeights![index], index);
             }}
