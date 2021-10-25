@@ -15,9 +15,9 @@ import {
   Pressable,
 } from 'react-native';
 
-export interface PickerDate {
+export interface PickerData {
   label?: string;
-  render?: (key: string, record: PickerDate, index: number) => React.ReactNode;
+  render?: (key: string, record: PickerData, index: number) => React.ReactNode;
   [key: string]: any;
 }
 
@@ -27,7 +27,7 @@ export interface PickerProps {
   /** 指定需要显示的 key, 默认使用 data 的 label 属性 */
   key?: string;
   /** 需要渲染的数据 */
-  date?: Array<PickerDate>;
+  data?: Array<PickerData>;
   /** item 容器样式 */
   containerStyle?: {
     /** 激活的容器样式 */
@@ -52,7 +52,7 @@ const Picker = (props: PickerProps) => {
   const {
     lines = 3,
     key = 'label',
-    date = new Array<PickerDate>(),
+    data = new Array<PickerData>(),
     containerStyle = {},
     textStyle = {},
     value = 0,
@@ -70,10 +70,13 @@ const Picker = (props: PickerProps) => {
   useEffect(() => {
     onChange?.(current);
     onPressORonScroll.current = 'onScroll';
+    clearTimeout(timer.current!);
+    timer.current = undefined;
+    clearTimeout(onPressTimer.current!);
   }, [current]);
   useEffect(() => {
     if (value !== current) {
-      let leng = value > date.length - 1 ? date.length - 1 : value;
+      let leng = value > data.length - 1 ? data.length - 1 : value;
       leng = leng < 0 ? 0 : leng;
       location((style.containerHeight as number) * (leng + 1), leng);
       setCurrent(leng);
@@ -162,7 +165,7 @@ const Picker = (props: PickerProps) => {
           useNativeDriver: false,
         })}
       >
-        {date.map((item, index) => (
+        {data.map((item, index) => (
           <Pressable
             onLayout={getItemHeight}
             key={index}
