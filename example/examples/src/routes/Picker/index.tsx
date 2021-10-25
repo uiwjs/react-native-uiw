@@ -32,14 +32,14 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
                 marginTop: 20,
               }}>
               <View style={{width: '50%'}}>
-                <Picker date={arr as any} value={17} />
+                <Picker data={arr as any} value={17} />
               </View>
               <View style={{width: '50%'}}>
                 <Picker
                   onChange={val => {
                     console.log('val: ', val);
                   }}
-                  date={arr as any}
+                  data={arr as any}
                   value={this.state.value}
                 />
               </View>
