@@ -1,5 +1,9 @@
+import { has } from 'lodash';
 import React, { useRef, useState, useEffect } from 'react';
-import { Animated, View, StyleSheet, ViewProps, LayoutChangeEvent } from 'react-native';
+import { Animated, View, StyleSheet, ViewProps, LayoutChangeEvent, Image } from 'react-native';
+import { Flex } from 'src';
+import { run } from './svg';
+import Icon from '../Icon';
 
 type PositionType = 'fixed' | 'relative';
 
@@ -13,11 +17,25 @@ export interface ProgressProps extends ViewProps {
   position?: PositionType;
   /** 动画持续的时间 */
   animation?: { duration?: number } | boolean;
+  /** 图标源 */
+  xml?: string;
+  /** 是否展示图标 */
+  iconShow?: boolean | false;
+  /** 图标尺寸 */
+  size?: number;
 }
 
 export default (props: ProgressProps) => {
-  const { style, progress = 0, progressColor = '#108ee9', position, animation = { duration: 500 } } = props;
-
+  const {
+    iconShow,
+    size = 25,
+    xml = run,
+    style,
+    progress = 0,
+    progressColor = '#108ee9',
+    position,
+    animation = { duration: 500 },
+  } = props;
   const progWidth = useRef<any>(new Animated.Value(0)).current;
   const [wrapWidth, setWrapWidth] = useState<number>(0);
 
@@ -48,6 +66,7 @@ export default (props: ProgressProps) => {
     }
     return widthPercent;
   };
+  console.log('wrapWidth', wrapWidth);
 
   return (
     <View style={[styles.container, style]}>
@@ -69,6 +88,17 @@ export default (props: ProgressProps) => {
           ]}
         ></Animated.View>
       </View>
+      {iconShow && iconShow === true && (
+        <View onLayout={onLayout} style={[styles.preIcon, { height: size }]}>
+          <Animated.View
+            style={{
+              marginLeft: progress === 0 ? -50 : -35,
+              width: progWidth,
+            }}
+          ></Animated.View>
+          <Icon xml={xml} size={size} />
+        </View>
+      )}
     </View>
   );
 };
@@ -86,6 +116,12 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     marginTop: 0,
     overflow: 'hidden',
+  },
+  preIcon: {
+    width: '100%',
+    overflow: 'hidden',
+    flexDirection: 'row',
+    paddingHorizontal: 20,
   },
   preOisn: {
     position: 'absolute',

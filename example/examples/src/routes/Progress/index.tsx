@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import {Progress, Button, Spacing} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
+import {motorcycle} from './svg';
 
 const {Header, Body, Card} = Layout;
 
@@ -26,21 +27,38 @@ const ProgressDemo = (props: any) => {
       <Body>
         <Header description={'基本使用'} />
         <Progress progressColor="#5847FF" progress={40} />
+        <Header description={'展示进度图标'} />
+        <Progress progressColor="#5847FF" iconShow={true} progress={30} />
+        <Header description={'改变进度图标'} />
+        <Progress
+          progressColor="#5847FF"
+          iconShow={true}
+          progress={60}
+          xml={motorcycle}
+        />
         <Header description={'点击变化'} />
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            flexDirection: 'column',
+            marginHorizontal: 15,
           }}>
-          <Progress progress={val} progressColor="#5847FF" />
-          <Text style={{fontSize: 12, width: 40, textAlign: 'right'}}>
-            {val}%
-          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <Progress
+              progress={val}
+              progressColor="#5847FF"
+              iconShow={true}
+              xml={motorcycle}
+            />
+            <Text style={{fontSize: 12, marginHorizontal: 10}}>{val}%</Text>
+          </View>
+          <Button color={'#5847FF'} onPress={onPress}>
+            (+-)10
+          </Button>
         </View>
-        <Button color={'#5847FF'} onPress={onPress}>
-          (+-)10
-        </Button>
       </Body>
     </Container>
   );
