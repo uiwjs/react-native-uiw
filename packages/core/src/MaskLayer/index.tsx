@@ -42,7 +42,7 @@ export interface MaskLayerProps extends RNModalProps {
   onDismiss?: () => void;
   animatedParallelShow?: Animated.CompositeAnimation[];
   animatedParallelHide?: Animated.CompositeAnimation[];
-  children?: JSX.Element;
+  children?: Array<JSX.Element> | JSX.Element;
 }
 
 export default (props: MaskLayerProps = {}) => {

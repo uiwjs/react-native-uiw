@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - master
+
+env:
+  SKIP_PREFLIGHT_CHECK: true
+
 jobs:
   build-deploy:
     runs-on: ubuntu-18.04
@@ -21,19 +25,19 @@ jobs:
 
       - name: Is a tag created auto?
         id: create_tag
-        uses: jaywcjlove/create-tag-action@v1.2.0
+        uses: jaywcjlove/create-tag-action@v1.2.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           package-path: ./packages/core/package.json
 
       - name: Generate Changelog
         id: changelog
-        uses: jaywcjlove/changelog-generator@v1.4.3
+        uses: jaywcjlove/changelog-generator@v1.4.6
         if: steps.create_tag.outputs.successful
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           head-ref: ${{ steps.create_tag.outputs.version }}
-          filter-author: (jaywcjlove|小弟调调™|renovate|renovate-bot|dependabot\[bot\]|Renovate Bot)
+          filter-author: (小弟调调™|renovate|Renovate Bot)
           filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
       - name: Create Release
@@ -45,12 +49,9 @@ jobs:
           tag: ${{ steps.changelog.outputs.tag }}
           body: |
             [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-native@${{steps.changelog.outputs.version}}/file/README.md) [![npm version](https://img.shields.io/npm/v/@uiw/react-native.svg)](https://www.npmjs.com/package/@uiw/react-native) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-native)](https://bundlephobia.com/result?p=@uiw/react-native@${{steps.changelog.outputs.version}})
-            
-            ```bash
-            npm i @uiw/react-native@${{steps.changelog.outputs.version}}
-            ```
 
             ${{ steps.changelog.outputs.compareurl }}
+
             ${{ steps.changelog.outputs.changelog }}
 
       - run: git status

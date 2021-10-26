@@ -68,7 +68,7 @@ export default class MenuDropdown extends React.Component<MenuDropdownProps> {
 
     const { btnIcon, listHeightValue, listHeight } = this.state;
     return (
-      <View style={styles.menuBox}>
+      <View style={[styles.menuBox, { height: this.state.listHeight + 50 }]}>
         <Button {...btnProps} onPress={this.handleonPress} size={size}>
           <Text>{title}</Text>
           <Icon name={btnIcon} size={17} />

@@ -5,7 +5,9 @@ Typography 排版
 
 [`H1~H6`](#标题) · [`<Del>`](#删除线) · [`<S>`](#删除线) · [`<U>`](#下划线) · [`<Strong>`](#加粗) · [`<P />`](#段落) · [`<Br />`](#换行) · [`<Hr />`](#水平线) · [`<Div />`](#div)
 
-## 标题
+### 基础示例
+
+### 标题
 
 ```jsx
 import { Fragment } from 'react';
@@ -25,7 +27,7 @@ function Demo() {
 }
 ```
 
-## 删除线
+### 删除线
 
 `<s>` 标签是 `<strike>` 标签的缩写版本
 
@@ -43,7 +45,7 @@ function Demo() {
 }
 ```
 
-## 下划线
+### 下划线
 
 ```jsx
 import { U } from '@uiw/react-native';
@@ -55,7 +57,7 @@ function Demo() {
 }
 ```
 
-## 加粗
+### 加粗
 
 ```jsx
 import { Strong } from '@uiw/react-native';
@@ -67,19 +69,7 @@ function Demo() {
 }
 ```
 
-## 段落
-
-```jsx
-import { P } from '@uiw/react-native';
-
-function Demo() {
-  return (
-    <P>这段文字加粗</P>
-  );
-}
-```
-
-## 换行
+### 换行
 
 ```jsx
 import { Text } from 'react-native';
@@ -92,7 +82,7 @@ function Demo() {
 }
 ```
 
-## 段落
+### 段落
 
 ```jsx
 import { Br } from '@uiw/react-native';
@@ -104,7 +94,7 @@ function Demo() {
 }
 ```
 
-## Div
+### Div
 
 ```jsx
 import { View, Text } from 'react-native';
@@ -124,7 +114,7 @@ function Demo() {
 }
 ```
 
-## 水平线
+### 水平线
 
 ```jsx
 import { View, Text } from 'react-native';

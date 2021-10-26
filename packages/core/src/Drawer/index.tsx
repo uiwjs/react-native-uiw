@@ -28,6 +28,7 @@ export interface DrawerState {
   drawerValue: Animated.ValueXY;
   overlayValue: Animated.Value;
   zIndexValue: number;
+  isOpen: boolean;
 }
 
 export default class Drawer extends Component<DrawerProps, DrawerState> {
@@ -44,22 +45,31 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
   };
   constructor(props: DrawerProps) {
     super(props);
+
     this.state = {
       zIndexValue: 0,
       overlayValue: new Animated.Value(0),
       drawerValue: new Animated.ValueXY({ ...this.getInitPosition() }),
+      isOpen: !!props.isOpen,
     };
+  }
+  handleDrawer = (isOpen: boolean) => {
+    isOpen ? this.openDrawer() : this.closeDrawer();
+  };
+  componentDidUpdate(prevProps: DrawerProps, prevState: DrawerState) {
+    if (prevState.isOpen !== this.state.isOpen) {
+      this.handleDrawer(this.state.isOpen);
+    }
+    if (prevProps.isOpen !== this.props.isOpen) {
+      this.handleDrawer(!!this.props.isOpen);
+    }
   }
   componentDidMount() {
     if (this.props.isOpen) {
       this.openDrawer();
     }
   }
-  UNSAFE_componentWillReceiveProps(nextProps: DrawerProps) {
-    if (nextProps.isOpen !== this.props.isOpen) {
-      this.handleDrawer(!!nextProps.isOpen);
-    }
-  }
+
   onOverlayClick = (e: GestureResponderEvent) => {
     const { maskClosable } = this.props;
     if (!maskClosable) {
@@ -69,8 +79,8 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     this.closeDrawer();
   };
   render() {
-    const { isOpen, style, drawerWidth, drawerBackgroundColor, maskProps, placement, drawerHeight } = this.props;
-    const { drawerValue, overlayValue, zIndexValue } = this.state;
+    const { style, drawerWidth, drawerBackgroundColor, maskProps, placement, drawerHeight } = this.props;
+    const { isOpen, drawerValue, overlayValue, zIndexValue } = this.state;
     const isTopOrBottom = placement === 'top' || placement === 'bottom';
     const changeStyle = isTopOrBottom ? 'height' : 'width';
     const dynamicDrawerStyles: any = {
@@ -140,9 +150,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
       </Fragment>
     );
   }
-  handleDrawer(isOpen: boolean) {
-    isOpen ? this.openDrawer() : this.closeDrawer();
-  }
+
   getInitPosition() {
     const { drawerWidth, placement, drawerHeight } = this.props;
     const xy = { x: 0, y: 0 };
@@ -161,7 +169,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     return xy;
   }
   openDrawer() {
-    this.setState({ zIndexValue: 3002 });
+    this.setState({ zIndexValue: 3002, isOpen: true });
     Animated.parallel([
       Animated.spring(this.state.drawerValue, {
         toValue: { x: 0, y: 0 },
@@ -194,7 +202,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
     ]).start(() => {
       this.props.closeDrawer!(false);
       this.props.onChange!(false);
-      this.setState({ zIndexValue: 0 });
+      this.setState({ zIndexValue: 0, isOpen: false });
     });
   }
 }

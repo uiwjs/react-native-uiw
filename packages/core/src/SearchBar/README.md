@@ -1,10 +1,10 @@
 SearchBar 模糊搜素组件
 ---
 
-## 基础示例
+### 基础示例
 
 ```jsx
-import { Result, Icon } from '@uiw/react-native';
+import { SearchBar } from '@uiw/react-native';
 
 function Demo() {
   return (
@@ -23,14 +23,34 @@ function Demo() {
 
 ### props
 
-| 参数                 | 说明         | 类型    | 默认值  |
-| -------------------- | ------------ | ------- | ------- |
-| `labelInValue`           |是否把每个选项的 label 包装到 value 中，会把 Select 的 value 类型从 string 变为 { key: string, label: ReactNode } 的格式       | Boolean | `false` |
-| `options`            | 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能  | { label, value }[] | [] |
-| `onChange`           | 时间变化     | void    | -       |
-| `onFocus` | 获得焦点时回调   | void    | () => { }       |
-| `onChangeText` | 搜索框文字变化   | void    | -       |
-| `disabled` | 是否禁用   | boolean    | false       |
-| `placeholder` | 	搜索框默认文本   | string    | `输入搜索...`       |
-| `loading` | 加载中状态   | boolean    | false      |
-| `extra` | 图标   | dom    | extra : <Icon xml={down} size={18} /> |
+```ts
+interface OptionsState {
+  label: string;
+  value: string | number;
+}
+
+interface SearchBarProps {
+  /** 搜索框文字变化 */
+  onChangeText?: (value: string) => void;
+  /** 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能 */
+  options?: Array<OptionsState>;
+  /** 事件变化回调 */
+  onChange?: (value: string | null) => void;
+  /** 获得焦点时回调 */
+  onFocus?: (e: any | string) => void;
+  /** 是否把每个选项的 label 包装到 value 中，会把 Select 的 value 类型从 string 变为 { key: string, label: ReactNode } 的格式   */
+  labelInValue?: Boolean;
+  /** 是否禁用 */
+  disabled?: Boolean;
+  /** 值 */
+  value?: String;
+  /** 加载中状态 */
+  loading?: Boolean;
+  /** 搜索框默认文本 */
+  placeholder?: String;
+  /** 图标 */
+  extra?: JSX.Element;
+  /** 是否展示清楚图标 */
+  showClear?: boolean;
+}
+```

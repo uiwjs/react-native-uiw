@@ -1,71 +1,55 @@
 import React, { useMemo } from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  ViewStyle
-} from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ViewStyle, GestureResponderHandlers } from 'react-native';
 import Icon, { IconsName } from '../Icon';
-import { TabsItemIconTypes } from '../Tabs/TabsItem'
-
-
-
+import { TabsItemIconTypes } from '../Tabs/TabsItem';
 
 export interface SpeedDialItemProps {
   /** 右边 显示的图标 */
-  icon: TabsItemIconTypes,
+  icon: TabsItemIconTypes;
   /** 左边文字 */
-  title: JSX.Element | string | number,
+  title: JSX.Element | string | number;
   /** 左边文字盒子样式 */
-  titleStyle?: ViewStyle,
+  titleStyle?: ViewStyle;
   /** 右边图标盒子样式 */
-  iconStyle?: ViewStyle,
-  /** 
+  iconStyle?: ViewStyle;
+  /**
    * 点击右边时触发
    */
-  onPress?: Function,
+  onPress?: Function;
+  move?: GestureResponderHandlers;
 }
 
-
 function SpeedDialItem(props: SpeedDialItemProps) {
-  const { title, icon, titleStyle, iconStyle, onPress } = props
+  const { title, icon, titleStyle, iconStyle, onPress } = props;
 
   const ChildTitle = useMemo(() => {
     if (typeof title === 'string' || typeof title === 'number') {
-      return <Text>{title}</Text>
-    } else if(title instanceof Object){
-      return <React.Fragment>{title}</React.Fragment>
+      return <Text>{title}</Text>;
+    } else if (title instanceof Object) {
+      return <React.Fragment>{title}</React.Fragment>;
     }
-  }, [title])
+  }, [title]);
 
   const ChildIcon = useMemo(() => {
     if (icon instanceof Object) {
-      return <React.Fragment>{icon}</React.Fragment>
+      return <React.Fragment>{icon}</React.Fragment>;
     } else {
-      return <Icon name={icon as IconsName} color="#fff" size={18} />
+      return <Icon name={icon as IconsName} color="#fff" size={18} />;
     }
-  }, [icon])
+  }, [icon]);
 
   return (
-
-    <View style={styles.speedDialItemContainer}>
-
-      <View
-        style={[styles.speedDialItemTitle, { ...titleStyle }]}
-      >{ChildTitle}</View>
-
+    <View style={styles.speedDialItemContainer} {...props.move}>
+      <View style={[styles.speedDialItemTitle, { ...titleStyle }]}>{ChildTitle}</View>
       <TouchableOpacity
         onPress={() => {
-          onPress && onPress()
+          onPress && onPress();
         }}
       >
-        <View
-          style={[styles.speedDialItemIcon, { ...iconStyle }]}
-        >{ChildIcon}</View>
+        <View style={[styles.speedDialItemIcon, { ...iconStyle }]}>{ChildIcon}</View>
       </TouchableOpacity>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -73,7 +57,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
-    marginRight: 10
+    marginRight: 10,
   },
   speedDialItemTitle: {
     backgroundColor: '#fff',
@@ -81,7 +65,7 @@ const styles = StyleSheet.create({
     height: 30,
     borderRadius: 5,
     justifyContent: 'center',
-    marginRight: 20
+    marginRight: 20,
   },
   speedDialItemIcon: {
     width: 40,
@@ -90,7 +74,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-
-  }
+  },
 });
-export default SpeedDialItem
+export default SpeedDialItem;

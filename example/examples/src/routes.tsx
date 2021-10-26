@@ -1,4 +1,4 @@
-import { StackNavigationProp } from '@react-navigation/stack';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -343,8 +343,9 @@ export const stackPageData: Routes[] = [
     component: require('./routes/SpeedDial').default,
     params: {
       title: 'SpeedDial 悬浮标记',
-      description: 'SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。',
-    }
+      description:
+        'SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。',
+    },
   },
   {
     name: 'Swiper',
@@ -392,6 +393,46 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'Tooltip 工具提示',
       description: '当用户点击元素时，工具提示将显示信息',
+    },
+  },
+  {
+    name: 'CardCollapse',
+    component: require('./routes/CardCollapse').default,
+    params: {
+      title: 'CardCollapse 折叠卡片列表',
+      description: '可折叠卡片列表',
+    },
+  },
+  {
+    name: 'ActionSheet',
+    component: require('./routes/ActionSheet').default,
+    params: {
+      title: 'ActionSheet 动作面板',
+      description: '该组件提供了一种动作面板, 底部缓缓出现',
+    },
+  },
+  {
+    name: 'SearchInputBar',
+    component: require('./routes/SearchInputBar').default,
+    params: {
+      title: 'SearchInputBar 搜索栏',
+      description: '可用于用户输入搜索信息',
+    },
+  },
+  {
+    name: 'Pagination',
+    component: require('./routes/Pagination').default,
+    params: {
+      title: 'Pagination 分页器',
+      description: '用于展示页码、请求数据等。',
+    },
+  },
+  {
+    name: 'Picker',
+    component: require('./routes/Picker').default,
+    params: {
+      title: 'Picker 选择器',
+      description: 'Picker 解决 ios 与 android 和用户交互方式不同问题',
     },
   },
 ];

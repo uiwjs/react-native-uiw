@@ -3,7 +3,7 @@ Tabs 选项卡
 
 选项卡组件跨不同屏幕、数据集和其他交互的内容。
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment } from 'react';
@@ -34,11 +34,11 @@ function Demo() {
 }
 ```
 
-## 使用 Icon
+### 使用 Icon
 
 ```jsx
 import { Fragment } from 'react';
-import { Rating, Icon } from '@uiw/react-native';
+import { Tabs, Icon } from '@uiw/react-native';
 function Demo() {
   return (
     <Fragment>
@@ -61,7 +61,7 @@ function Demo() {
 }
 ```
 
-## Tabs Props
+### Tabs Props
 
 ```ts
 import { ViewStyle,ViewProps } from 'react-native';
@@ -75,7 +75,7 @@ export interface TabsProps extends ViewProps {
 ```
 
 
-## Tabs.Item Props
+### Tabs.Item Props
 
 ```ts
 import { IconsName } from '@uiw/react-native';

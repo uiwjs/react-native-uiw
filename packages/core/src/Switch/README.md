@@ -6,10 +6,10 @@ Switch 开关
 > 自带组件 Switch 已过时，将很快删除。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-## 基础示例
+### 基础示例
 
 ```jsx
-import { Spacing,Flex, Switch } from '@uiw/react-native';
+import { Switch } from '@uiw/react-native';
 
 function Demo() {
   return (
@@ -18,7 +18,7 @@ function Demo() {
 }
 ```
 
-## 尺寸大小
+### 尺寸大小
 
 这是一个受控组件，需要一个 `onValueChange` 回调来更新值属性，以使该组件反映用户操作。
 
@@ -38,13 +38,13 @@ function Demo() {
 }
 ```
 
-## 受控组件
+### 受控组件
 
 这是一个受控组件，需要一个 `onValueChange` 回调来更新值属性，以使该组件反映用户操作。
 
 ```jsx
 import { useState } from 'react';
-import { Spacing,Flex, Switch } from '@uiw/react-native';
+import { Switch } from '@uiw/react-native';
 
 function Demo() {
   const [checked, setChecked] = useState(false);
@@ -54,7 +54,7 @@ function Demo() {
 }
 ```
 
-## props
+### props
 
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|

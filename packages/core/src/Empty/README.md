@@ -3,6 +3,9 @@ Empty 空状态
 
 空状态时的展示占位图。
 
+<image src='https://user-images.githubusercontent.com/66067296/137707848-8603fc59-3904-437d-9908-53cd621a1a0e.png' alt='Empty' style='zoom:33%;' />
+
+
 ### 基础示例
 
 <!--DemoStart--> 
@@ -112,6 +115,7 @@ class Demo extends Component {
 <!--DemoStart--> 
 ```js
 import { Empty } from '@uiw/react-native';
+import {View, Text } from 'react-native';
 
 class Demo extends Component {
   render() {
@@ -127,7 +131,7 @@ class Demo extends Component {
 ```
 <!--End-->
 
-## Props
+### Props
 
 ```ts
 export interface EmptyProps extends FlexProps {

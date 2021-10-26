@@ -6,9 +6,7 @@ const {Header, Body, Card, Footer} = Layout;
 
 export interface SegmentedControlViewProps extends ComProps {}
 
-export default class SegmentedControlView extends React.Component<
-  SegmentedControlViewProps
-> {
+export default class SegmentedControlView extends React.Component<SegmentedControlViewProps> {
   render() {
     const {route} = this.props;
     const description = route.params.description;
@@ -35,6 +33,17 @@ export default class SegmentedControlView extends React.Component<
             <Card title={'设置颜色 color?: string'}>
               <SegmentedControl
                 color="#dc3545"
+                selectedIndex={2}
+                value={['申请', '审批', '提交']}
+              />
+            </Card>
+            <Card
+              title={
+                '设置自定义文本颜色 textColor?: {actived?: string, unactived?: string}'
+              }>
+              <SegmentedControl
+                textColor={{actived: '#333', unactived: '#ccc'}}
+                color="#999"
                 selectedIndex={2}
                 value={['申请', '审批', '提交']}
               />

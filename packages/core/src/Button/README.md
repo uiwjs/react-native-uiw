@@ -3,6 +3,9 @@ Button 按钮
 
 按钮用于开始一个即时操作。
 
+<image src='https://user-images.githubusercontent.com/57083007/137631908-57393986-82b8-4e2e-b753-aa77dac58672.png' alt='Button' style='zoom:33%;' />
+<image src='https://user-images.githubusercontent.com/57083007/137631915-8281cbac-ba0d-4795-8f8b-8274bcecc172.png' alt='Button' style='zoom:33%;' />
+
 ### 基础示例
 
 <!--DemoStart--> 
@@ -100,7 +103,7 @@ class Demo extends Component {
 <!--End-->
 
 
-## 显示边框
+### 显示边框
 
 ```jsx
 import { Button } from '@uiw/react-native';
@@ -112,7 +115,7 @@ function Demo() {
 }
 ```
 
-## 自定义圆角
+### 自定义圆角
 
 ```jsx
 import { Fragment } from 'react';
@@ -133,7 +136,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 组件继承 [`TouchableOpacity`](https://facebook.github.io/react-native/docs/touchableopacity#docsNav)
 

@@ -3,50 +3,44 @@ Tooltip 工具提示
 
 当用户点击元素时，工具提示将显示信息。
 
-## 基础示例
+### 基础示例
 
 ```jsx
-import { Fragment } from 'react';
 import { Tooltip } from '@uiw/react-native';
 
 
 function Demo() {
   return (
-    <Fragment>
-      <Tooltip title='我是一个文本'>
-        <Text style={styles.textStyle}>我是一个文本</Text>
-      </Tooltip>
-    </Fragment>
+    <Tooltip title='我是一个文本'>
+      <Text>我是一个文本</Text>
+    </Tooltip>
   );
 }
 ```
 
-## 使用 自定义提示内容
+### 使用 自定义提示内容
 
 ```jsx
-import { Fragment } from 'react';
 import { Tooltip, Icon } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <Fragment>
-      <Tooltip
-        backgroundColor="pink"
-        width={30}
-        height={30}
-        title={(<View>
-          <Text>我是一个苹果</Text>
-          <Icon name='apple' color="#fff" />
-      </View>)}
-      >
-        <Icon name='apple' color="red" />
-      </Tooltip>
-    </Fragment>
+    <Tooltip
+      backgroundColor="pink"
+      width={30}
+      height={30}
+      title={(<View>
+        <Text>我是一个苹果</Text>
+        <Icon name='apple' color="#fff" />
+    </View>)}
+    >
+      <Icon name='apple' color="red" />
+    </Tooltip>
   );
 }
 ```
 
-## Tooltip Props
+### Tooltip Props
 
 ```ts
 import { ModalProps } from 'react-native';

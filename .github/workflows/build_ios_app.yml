@@ -1,6 +1,9 @@
 name: iOS
 on: [push, pull_request]
 
+env:
+  SKIP_PREFLIGHT_CHECK: true
+
 # https://github.com/uiwjs/react-native-uiw/issues/156
 jobs:
   build:

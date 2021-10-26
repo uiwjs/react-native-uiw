@@ -3,11 +3,11 @@ Result 结果页
 
 在整张页面中组织插画、图标、文字等内容，向用户反馈操作结果。
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Text } from 'react-native';
-import { Result, Icon } from '@uiw/react-native';
+import { Result, Icon, Del } from '@uiw/react-native';
 
 function Demo() {
   return (
@@ -22,7 +22,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|

@@ -56,6 +56,12 @@ const NoticeBarExample = () => {
         <NoticeBar mode="link" action={<Text>去看看</Text>}>
           Link demo for `actionText`.
         </NoticeBar>
+        <Spacing />
+        <NoticeBar
+          textStyle={{color: 'blue', fontSize: 20}}
+          style={{backgroundColor: 'lightblue', height: 50}}>
+          Change demo for `action`.
+        </NoticeBar>
       </View>
     )
 }
@@ -63,7 +69,7 @@ export default NoticeBarExample;
 ```
 <!--End-->
 
-## Props
+### Props
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
@@ -72,3 +78,5 @@ export default NoticeBarExample;
 | onPress | 点击关闭或者操作区域的回调函数        | (): void |   |
 | marqueeProps | marquee 参数 | Object | `{loop: false, leading: 500, trailing: 800, fps: 40, style: {}}`  |
 | action | 用于替换操作 icon 的文案 | ReactElement | |
+| style    | 用于设置通告栏样式  | ViewStyle |  |
+| textStyle    | 用于设置通告栏文字样式  | TextStyle |  |

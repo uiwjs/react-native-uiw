@@ -11,6 +11,7 @@ export default class AvatarView extends React.Component<AvatarViewProps> {
     const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
+    const src = './1.jpeg';
     return (
       <Container>
         <Layout>
@@ -20,42 +21,36 @@ export default class AvatarView extends React.Component<AvatarViewProps> {
               <Flex>
                 <Avatar />
                 <Spacing type="horizontal" />
-                <Avatar src={require('../Grid/1.png')} />
+                <Avatar src={require(src)} />
               </Flex>
             </Card>
             <Card title={"设置圆形头像 shape?: 'circle' | 'square'"}>
               <Flex>
-                <Avatar shape="circle" />
+                <Avatar shape="circle" src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar shape="circle" />
-                <Spacing type="horizontal" />
-                <Avatar shape="circle" src={require('../Grid/1.png')} />
+                <Avatar shape="square" src={require(src)} />
               </Flex>
             </Card>
             <Card title={'设置头像尺寸 size?: number'}>
               <Flex>
-                <Avatar
-                  size={40}
-                  shape="circle"
-                  src="https://xx.images.com/xxx/icon.png"
-                />
+                <Avatar size={40} shape="circle" src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={30} shape="circle" />
+                <Avatar size={30} shape="circle" src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={24} shape="circle" />
+                <Avatar size={24} shape="circle" src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={18} shape="circle" />
+                <Avatar size={18} shape="circle" src={require(src)} />
               </Flex>
             </Card>
             <Card title={'设置头像圆角 rounded?: number'}>
               <Flex>
-                <Avatar size={40} rounded={10} />
+                <Avatar size={40} rounded={10} src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={30} rounded={10} />
+                <Avatar size={30} rounded={10} src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={24} rounded={10} />
+                <Avatar size={24} rounded={10} src={require(src)} />
                 <Spacing type="horizontal" />
-                <Avatar size={18} rounded={10} />
+                <Avatar size={18} rounded={10} src={require(src)} />
               </Flex>
             </Card>
           </Body>

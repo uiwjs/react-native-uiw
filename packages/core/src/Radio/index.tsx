@@ -55,6 +55,7 @@ export interface RadioProps extends ViewProps {
 export interface RadioState {
   sizeValue: Animated.Value;
   checked?: boolean;
+  control: 'state' | 'props';
 }
 
 export default class Radio extends Component<RadioProps, RadioState> {
@@ -69,39 +70,41 @@ export default class Radio extends Component<RadioProps, RadioState> {
     this.state = {
       checked: props.checked,
       sizeValue: new Animated.Value(0),
+      control: 'state',
     };
   }
   componentDidMount() {
-    // this.setState({
-    //   checked: this.props.checked,
-    // });
     this.animatedStart(this.props.checked);
   }
-  UNSAFE_componentWillReceiveProps(nextProps: RadioProps) {
-    if (nextProps.checked !== this.props.checked) {
-      this.setState({ checked: nextProps.checked }, () => {
-        this.animatedStart(nextProps.checked);
-      });
+  static getDerivedStateFromProps(props: RadioProps, state: RadioState) {
+    if (state.control === 'state' && props.checked === state.checked) {
+      return {
+        control: 'props',
+      };
     }
+    if (props.checked !== state.checked) {
+      Animated.spring(state.sizeValue, {
+        toValue: !!props.checked ? props.thumbSize! : 0,
+        overshootClamping: true,
+        useNativeDriver: false,
+      }).start();
+      return {
+        checked: props.checked,
+        control: 'props',
+      };
+    }
+    return null;
   }
   animatedStart(checked?: boolean) {
-    if (checked) {
-      Animated.spring(this.state.sizeValue, {
-        toValue: this.props.thumbSize!,
-        overshootClamping: true,
-        useNativeDriver: false,
-      }).start();
-    } else {
-      Animated.spring(this.state.sizeValue, {
-        toValue: 0,
-        overshootClamping: true,
-        useNativeDriver: false,
-      }).start();
-    }
+    Animated.spring(this.state.sizeValue, {
+      toValue: !!checked ? this.props.thumbSize! : 0,
+      overshootClamping: true,
+      useNativeDriver: false,
+    }).start();
   }
   handlePress = (event: GestureResponderEvent) => {
     const { onPress } = this.props;
-    this.setState({ checked: true }, () => {
+    this.setState({ checked: true, control: 'state' }, () => {
       this.animatedStart(true);
       onPress && onPress(event);
     });

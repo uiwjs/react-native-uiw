@@ -1,187 +1,169 @@
 import React from 'react';
 import {
   TextInput,
-  TextInputProperties,
-  GestureResponderEvent,
+  TextInputProps,
   View,
   StyleSheet,
-  Platform,
-  TouchableWithoutFeedback,
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
   Text,
   TouchableOpacity,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
 } from 'react-native';
 import Icon from '../Icon';
-import { InputItemPropsType } from './PropsType';
 
-const noop = () => {};
-
-function normalizeValue(value?: string) {
-  if (typeof value === 'undefined' || value === null) {
-    return '';
-  }
-  return value;
-}
-
-export interface InputProps extends Omit<TextInputProperties, 'onChange' | 'onFocus' | 'onBlur'>, InputItemPropsType {
-  last?: boolean;
-  onExtraClick?: (event: GestureResponderEvent) => void;
-  onErrorClick?: (event: GestureResponderEvent) => void;
+// StyleProp<ViewStyle>
+export interface InputProps extends TextInputProps {
+  /** 限制输入条件 */
+  rule?: RegExp | ((value: string) => boolean);
+  /** 输入不合法时触发方法 */
+  wrongfulHandle?: Function;
+  /** 如果为 true，文本框是不可编辑的。默认值为 false */
   disabled?: boolean;
-  onChange?: (value: string) => void;
+  /** 如果为 true，每次开始输入的时候都会清除文本框的内容。 */
+  clearText?: boolean;
+  /** 显示错误 */
+  error?: boolean;
+  /** 自定义错误提示 */
+  renderError?: React.ReactNode;
+  /** 边框 */
+  border?: 'bottom' | 'top' | 'left' | 'right' | null | 'always';
+  /** 边框颜色 */
+  borderColor?: string;
+  /** 是否显示清除按钮 */
+  clear?: boolean;
+  /** 清除按钮样式 */
+  clearStyle?: StyleProp<TextStyle>;
+  /** 自定义清除元素 */
+  renderClear?: React.ReactNode;
+  /** 输入框前缀的额外的信息 */
+  extraStart?: string | React.ReactNode;
+  /** 输入框末尾额外的信息 */
+  extraEnd?: string | React.ReactNode;
+  /** 容器样式 */
+  containerStyle?: StyleProp<ViewStyle>;
+  /** 输入框 ref */
+  inputRef?: React.RefObject<TextInput>;
 }
 
-export default class Input extends React.Component<InputProps, any> {
-  static defaultProps = {
-    type: 'text',
-    editable: true,
-    clear: false,
-    onChange: noop,
-    onBlur: noop,
-    onFocus: noop,
-    extra: '',
-    onExtraClick: noop,
-    error: false,
-    onErrorClick: noop,
-    last: false,
+interface InputState {
+  value?: string;
+  control: 'props' | 'state';
+}
+export default class Input extends React.Component<InputProps, InputState> {
+  state: InputState = {
+    value: this.props.value,
+    control: 'state',
   };
-
-  inputRef: TextInput | null | undefined;
-
-  onChange = (text: string) => {
-    const { onChange, type } = this.props;
-    const maxLength = this.props.maxLength as number;
-    switch (type) {
-      case 'bankCard':
-        text = text.replace(/\D/g, '');
-        if (maxLength > 0) {
-          text = text.substring(0, maxLength);
-        }
-        text = text.replace(/\D/g, '').replace(/(....)(?=.)/g, '$1 ');
-        break;
-      case 'phone':
-        text = text.replace(/\D/g, '').substring(0, 11);
-        const valueLen = text.length;
-        if (valueLen > 3 && valueLen < 8) {
-          text = `${text.substr(0, 3)} ${text.substr(3)}`;
-        } else if (valueLen >= 8) {
-          text = `${text.substr(0, 3)} ${text.substr(3, 4)} ${text.substr(7)}`;
-        }
-        break;
-      case 'password':
-        break;
-      default:
-        break;
+  static getDerivedStateFromProps(props: InputProps, state: InputState) {
+    if (state.control === 'state' && props.value === state.value) {
+      return {
+        control: 'props',
+      };
     }
-    if (onChange) {
-      onChange(text);
+    if (props.value !== state.value) {
+      if (state.control === 'state') {
+        return {
+          control: 'props',
+        };
+      }
+      return {
+        value: props.value,
+        control: 'props',
+      };
     }
+    return null;
+  }
+  onChangeText = (value: string) => {
+    let flag = true;
+    if (this.props.rule instanceof RegExp) {
+      flag = this.props.rule.test(value);
+    }
+    if (typeof this.props.rule === 'function') {
+      flag = this.props.rule(value);
+    }
+    if (flag) {
+      this.setState({ value, control: 'state' });
+      this.props.onChangeText?.(value);
+      return false;
+    }
+    this.setState({ value: this.state.value || '', control: 'state' });
+    this.props.onChangeText?.(this.state.value || '');
+    this.props.wrongfulHandle?.();
   };
-  onInputClear = () => {
-    if (this.inputRef) {
-      this.inputRef.clear();
+  onFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    if (this.props.clearText) {
+      this.setState({ value: '', control: 'state' });
+      this.props.onChangeText?.('');
     }
-    this.onChange('');
+    this.props.onFocus?.(e);
   };
   render() {
-    const android = Platform.OS === 'android';
     const {
-      type,
-      editable,
+      wrongfulHandle,
+      rule,
+      value,
+      onChangeText,
+      clearText,
+      disabled = false,
       clear,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      children,
-      error,
-      extra,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      last,
-      onExtraClick,
-      onErrorClick,
-      disabled,
-      ...restProps
+      clearStyle,
+      renderClear,
+      extraStart,
+      extraEnd,
+      style = [],
+      containerStyle,
+      border = 'bottom',
+      borderColor = '#ccc',
+      error = false,
+      renderError,
+      inputRef,
+      ...others
     } = this.props;
-    const { value, defaultValue, style } = restProps;
-    let valueProps: any;
-    if ('value' in this.props) {
-      valueProps = {
-        value: normalizeValue(value),
-      };
-    } else {
-      valueProps = {
-        defaultValue,
-      };
-    }
-    const keyboardTypeArray = [
-      'default',
-      'email-address',
-      'numeric',
-      'phone-pad',
-      'ascii-capable',
-      'numbers-and-punctuation',
-      'url',
-      'number-pad',
-      'name-phone-pad',
-      'decimal-pad',
-      'twitter',
-      'web-search',
-    ];
-
-    let keyboardType: any = 'default';
-
-    if (type === 'number') {
-      keyboardType = 'numeric';
-    } else if (type === 'bankCard') {
-      keyboardType = 'number-pad'; // 不带小数点
-    } else if (type === 'phone') {
-      keyboardType = 'phone-pad';
-    } else if (type && keyboardTypeArray.indexOf(type) > -1) {
-      keyboardType = type;
-    }
-    const disabledStyle = disabled ? inputStyles.disabledStyle : {};
-    const extraStyle = {
-      width: typeof extra === 'string' && (extra as string).length > 0 ? (extra as string).length * 17 : 0,
-    };
+    const fontSize = StyleSheet.flatten(style).fontSize || 14;
+    const minHeight = StyleSheet.flatten(containerStyle)?.height || 30;
     return (
-      <View style={inputStyles.container}>
-        <TextInput
-          editable={!disabled && editable}
-          clearButtonMode={clear ? 'while-editing' : 'never'}
-          underlineColorAndroid="transparent"
-          ref={(el) => (this.inputRef = el)}
-          {...restProps}
-          {...valueProps}
-          style={[
-            inputStyles.input,
-            error ? inputStyles.inputErrorColor : null,
-            disabledStyle,
-            // 支持自定义样式
-            style,
-          ]}
-          keyboardType={keyboardType}
-          onChange={(event) => this.onChange(event.nativeEvent.text)}
-          secureTextEntry={type === 'password'}
-        />
-        {editable && clear && value && android ? (
+      <View
+        style={[
+          {
+            flexDirection: 'row',
+            backgroundColor: '#fff',
+            alignItems: 'center',
+            paddingVertical: 0,
+            height: minHeight,
+          },
+          containerStyle,
+        ]}
+      >
+        <View style={[inputStyles.container, { flex: 1, borderColor: borderColor }, border ? inputStyles[border] : {}]}>
+          {typeof extraStart === 'string' ? (
+            <Text style={{ color: '#888888', fontSize }}>{extraStart}</Text>
+          ) : (
+            extraStart
+          )}
+          <TextInput
+            {...others}
+            ref={inputRef}
+            editable={!disabled}
+            value={this.state.value}
+            onChangeText={this.onChangeText}
+            onFocus={this.onFocus}
+            style={[{ fontSize }, inputStyles.input, style]}
+          />
+          {typeof extraEnd === 'string' ? <Text style={{ color: '#888888', fontSize }}>{extraEnd}</Text> : extraEnd}
+          {error && (renderError || <Icon name="circle-close" color="#dc3545" />)}
+        </View>
+        {clear && (
           <TouchableOpacity
-            style={[inputStyles.clear]}
-            onPress={this.onInputClear}
-            hitSlop={{ top: 5, left: 5, bottom: 5, right: 5 }}
+            onPress={() => {
+              this.setState({ value: '', control: 'state' });
+              this.props.onChangeText?.('');
+            }}
           >
-            <Icon name="circle-close" color="#fff" />
+            {renderClear || <Text style={[{ color: '#888888', fontSize }, clearStyle]}>清除</Text>}
           </TouchableOpacity>
-        ) : null}
-        {extra ? (
-          <TouchableWithoutFeedback onPress={onExtraClick}>
-            <View>
-              {typeof extra === 'string' ? <Text style={[inputStyles.extra, extraStyle]}>{extra}</Text> : extra}
-            </View>
-          </TouchableWithoutFeedback>
-        ) : null}
-        {error && (
-          <TouchableWithoutFeedback onPress={onErrorClick}>
-            <View style={[inputStyles.errorIcon]}>
-              <Icon name="circle-close" color="#dc3545" />
-            </View>
-          </TouchableWithoutFeedback>
         )}
       </View>
     );
@@ -190,39 +172,35 @@ export default class Input extends React.Component<InputProps, any> {
 
 const inputStyles = StyleSheet.create({
   container: {
-    height: 30,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    height: '100%',
     marginTop: 0,
     marginBottom: 0,
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: 'transparent',
   },
   input: {
     flex: 1,
-    backgroundColor: 'transparent',
     color: '#000',
-    fontSize: 17,
+    backgroundColor: 'transparent',
+    paddingVertical: 0,
+  },
+  always: {
+    borderWidth: 1,
+  },
+  bottom: {
+    borderBottomWidth: 1,
+  },
+  top: {
+    borderTopWidth: 1,
+  },
+  left: {
+    borderLeftWidth: 1,
+  },
+  right: {
+    borderRightWidth: 1,
   },
   inputErrorColor: {
     color: '#f50',
-  },
-  disabledStyle: {
-    color: '#ccc',
-  },
-  errorIcon: {
-    marginLeft: 5,
-    width: 20,
-    height: 20,
-  },
-  extra: {
-    color: '#888888',
-    marginLeft: 5,
-    fontSize: 15,
-  },
-  clear: {
-    backgroundColor: '#ccc',
-    borderRadius: 15,
-    padding: 2,
   },
 });

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   View,
   ViewProps,
@@ -23,7 +23,7 @@ export interface ListItemProps extends ViewProps, TouchableWithoutFeedbackProps 
   size?: 'small' | 'default' | 'large';
 }
 
-export default class ListItem extends Component<ListItemProps> {
+export default class ListItem extends React.PureComponent<ListItemProps> {
   static defaultProps: ListItemProps = {
     underlayColor: '#DADADA',
     // paddingLeft: 16,

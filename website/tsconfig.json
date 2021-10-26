@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,15 +14,10 @@
     "declaration": true,
     "baseUrl": "src",
     "jsx": "react-jsx",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "typeRoots": ["node_modules/@types"],
     "noFallthroughCasesInSwitch": true,
     "noEmit": true,
     "isolatedModules": true
   },
-  "include": [
-    "src",
-    ".kktrc.ts"
-  ]
+  "include": ["src", ".kktrc.ts"]
 }

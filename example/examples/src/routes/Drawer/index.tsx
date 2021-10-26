@@ -46,7 +46,7 @@ export default function DrawerView({route}: DrawerViewProps) {
       <Drawer
         isOpen={visible4}
         placement="bottom"
-        onChange={(isOpen) => {
+        onChange={isOpen => {
           setVisible4(isOpen);
         }}>
         <View>

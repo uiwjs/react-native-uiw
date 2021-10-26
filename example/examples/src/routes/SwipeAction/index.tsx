@@ -9,32 +9,32 @@ const {Header, Body, Card, Footer} = Layout;
 export interface SwipeActionProps extends ComProps {}
 
 export default class SwipeActionView extends Component<SwipeActionProps> {
+  newRef: any;
   render() {
     const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
     const right = [
       {
-        text: 'More',
-        onPress: () => console.log('more'),
-        style: {backgroundColor: 'orange', color: 'white'},
+        text: '查看备注',
+        color: 'orange',
+        onPress: () => {
+          this.newRef?.swipeable?.close();
+        },
       },
       {
-        text: 'Delete',
-        onPress: () => console.log('delete'),
-        style: {backgroundColor: 'red', color: 'white'},
-      },
-    ];
-    const left = [
-      {
-        text: 'Read',
-        onPress: () => console.log('read'),
-        style: {backgroundColor: 'blue', color: 'white'},
+        text: '删除',
+        color: 'red',
+        onPress: () => {
+          this.newRef?.swipeable?.close();
+        },
       },
       {
-        text: 'Reply',
-        onPress: () => console.log('reply'),
-        style: {backgroundColor: 'green', color: 'white'},
+        text: '不显示',
+        color: 'green',
+        onPress: () => {
+          this.newRef?.swipeable?.close();
+        },
       },
     ];
     return (
@@ -44,13 +44,12 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
           <Body>
             <Card title="左右滑动，显示按钮" style={styles.card}>
               <SwipeAction
-                autoClose
-                style={{backgroundColor: 'transparent'}}
+                buttonWidth={80}
+                ref={ref => (this.newRef = ref)}
                 right={right}
-                left={left}
-                onOpen={() => console.log('open')}
-                onClose={() => console.log('close')}>
-                <View style={styles.view}>
+                onSwipeableRightOpen={() => console.log('right')}
+                onSwipeableLeftOpen={() => () => console.log('left')}>
+                <View style={[styles.view]}>
                   <Text>滑动</Text>
                 </View>
               </SwipeAction>

@@ -42,6 +42,10 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                 警告禁用按钮 warning
               </Button>
               <Spacing />
+              <Button color="#1EABCD" loading>
+                加载中 loading
+              </Button>
+              <Spacing />
               <Button type="light" loading>
                 亮按钮 light
               </Button>
@@ -102,6 +106,19 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Button color="#dc3545">自定义颜色{'color="#dc3545"'}</Button>
               <Spacing />
               <Button color="#f6f8fa">自定义颜色{'color="#f6f8fa"'}</Button>
+            </Card>
+            <Card title="文本样式">
+              <Button textStyle={{fontSize: 20}} color="yellow">
+                字号调整{'textStyle = {{fontSize:20}}'}
+              </Button>
+              <Spacing />
+              <Button textStyle={{color: 'blue'}}>
+                文本颜色{'textStyle={{color:"blue"}}'}
+              </Button>
+              <Spacing />
+              <Button color="#f6f8fa" textStyle={{letterSpacing: 2}}>
+                文本间距{'textStyle={{letterSpacing:3}}'}
+              </Button>
             </Card>
             <Card title="设置边框">
               <Button bordered={false} color="#f6f8fa">

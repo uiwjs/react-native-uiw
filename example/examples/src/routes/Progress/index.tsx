@@ -17,28 +17,30 @@ const ProgressDemo = (props: any) => {
     if (count > 100) {
       count = 0;
     }
-    setValue(count)
-  }
+    setValue(count);
+  };
 
   return (
     <Container>
-      <Progress progress={30}/>
       <Header title={title} description={description} />
       <Body>
-        <Card title="基础实例" style={{margin:10}}>
-          <Progress progressColor="red" progress={40}/>
-          <Spacing />
-          <Button onPress={onPress}>(+-)10</Button>
-          <Spacing />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-            <Progress progress={val} progressColor='purple'/>
-            <Text style={{fontSize: 12, width: 40, textAlign: 'right'}}>{val}%</Text>
-          </View>
-          <Spacing />
-          <Progress progressColor="orange" progress={60}/>
-          <Spacing />
-          <Progress progressColor="yellow" progress={80}/>
-        </Card>
+        <Header description={'基本使用'} />
+        <Progress progressColor="#5847FF" progress={40} />
+        <Header description={'点击变化'} />
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <Progress progress={val} progressColor="#5847FF" />
+          <Text style={{fontSize: 12, width: 40, textAlign: 'right'}}>
+            {val}%
+          </Text>
+        </View>
+        <Button color={'#5847FF'} onPress={onPress}>
+          (+-)10
+        </Button>
       </Body>
     </Container>
   );

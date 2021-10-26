@@ -26,14 +26,11 @@ function Demo() {
 
 <!--DemoStart--> 
 ```jsx
-import { View } from 'react-native';
 import { Button，Loader } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <View style={{ minHeight: 60 }}>
-      <Loader color="red" />
-    </View>
+    <Loader color="red" />
   );
 }
 ```
@@ -72,7 +69,7 @@ function Demo() {
 <!--End-->
 
 
-## Props
+### Props
 
 继承 `ActivityIndicator` 组件属性 [`ActivityIndicatorProps`](https://facebook.github.io/react-native/docs/activityindicator#props)，比原生组件 `ActivityIndicator` 多出更多丰富功能。
 

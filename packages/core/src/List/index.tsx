@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FlatList, FlatListProps, Text, StyleProp, ViewStyle, View } from 'react-native';
 import Item, { ListItemProps } from './Item';
 
@@ -43,7 +43,7 @@ export interface ListState {
   data: ListProps['data'];
 }
 
-export default class List extends Component<ListProps, ListState> {
+export default class List extends React.PureComponent<ListProps, ListState> {
   static Item = Item;
   static defaultProps: ListProps = {
     data: [],
@@ -57,28 +57,27 @@ export default class List extends Component<ListProps, ListState> {
       data: [],
     };
   }
-  getData(nextProps?: ListProps) {
-    const { size, extra, paddingLeft, children } = nextProps || this.props;
-    const dataSource = React.Children.toArray(children)
-      .map((child: React.ReactNode) => {
-        if (!React.isValidElement(child)) {
-          return null;
-        }
-        const props = { size, ...child.props };
-        return React.cloneElement(<Item paddingLeft={paddingLeft} extra={extra} {...props} />);
-      })
-      .filter(Boolean);
-    this.setState({ data: dataSource as ListProps['data'] });
-  }
-  componentDidMount() {
-    if (!this.props.renderItem) {
-      this.getData();
+  static getDerivedStateFromProps(props: ListProps) {
+    const getData = () => {
+      const { size, extra, paddingLeft, children } = props;
+      const dataSource = React.Children.toArray(children)
+        .map((child: React.ReactNode) => {
+          if (!React.isValidElement(child)) {
+            return null;
+          }
+          const props = { size, ...child.props };
+          return React.cloneElement(<Item paddingLeft={paddingLeft} extra={extra} {...props} />);
+        })
+        .filter(Boolean);
+      return dataSource;
+    };
+    if (!props.renderItem) {
+      const result = getData();
+      return {
+        data: result,
+      };
     }
-  }
-  UNSAFE_componentWillReceiveProps(nextProps: ListProps) {
-    if (nextProps !== this.props) {
-      this.getData(nextProps);
-    }
+    return null;
   }
   renderItemChild(props: ListRenderItemInfoCustom<{}>): React.ReactElement {
     return props.item as React.ReactElement;

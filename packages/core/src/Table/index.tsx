@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import BodyRow from './BodyRow';
-import { colors } from '../utils'
+import { colors } from '../utils';
 
 interface TableProps {
   data: Array<Object>;
@@ -26,7 +26,7 @@ const Table = ({ data, columns, rowKey, horizontal = true, style }: TableProps) 
   };
 
   return (
-    <ScrollView style={[styles.conW, style]} horizontal={horizontal} >
+    <ScrollView style={[styles.conW, style]} horizontal={horizontal}>
       <ScrollView horizontal={!horizontal}>
         <View style={styles.conTitle}>
           {columns.map((itm, idx) => (
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 4,
     paddingBottom: 4,
-  }
+  },
 });
 
 export default Table;

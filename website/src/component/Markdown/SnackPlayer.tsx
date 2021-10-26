@@ -1,9 +1,8 @@
-
 import { ReactComponent as LinkSVG } from '../SubMenus/link.svg';
 import styles from './index.module.less';
 
 export interface SnackPlayerProps {
-  platform?: 'android' | 'web' | 'ios' | 'mydevice'
+  platform?: 'android' | 'web' | 'ios' | 'mydevice';
   theme?: 'light' | 'dark';
   buttonTitle?: string;
   preview?: boolean;
@@ -38,16 +37,14 @@ export function SnackPlayer(props: SnackPlayerProps) {
   } = props;
 
   return (
-    <form action="https://snack.expo.dev" method="POST" target="_blank">
+    <form action="https://snack.expo.dev" method="POST" target="_blank" className={styles.form}>
       <input type="hidden" name="platform" value={platform} />
       <input type="hidden" name="name" value={name} />
       {dependencies && <input type="hidden" name="dependencies" value={dependencies} />}
       <input type="hidden" name="sdkVersion" value={sdkVersion} />
       <input type="hidden" name="files" value={files} />
       <button className={styles.button}>
-        <LinkSVG
-          fill="currentColor"
-        />
+        <LinkSVG fill="currentColor" />
         {buttonTitle}
       </button>
     </form>

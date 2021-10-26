@@ -6,12 +6,12 @@ Slider 滑块输入条
 > 自带 Slider 已经过时，交于社区维护 [`react-native-slider`](https://github.com/react-native-community/react-native-slider)，当前组件是重新封装保持 iOS/android 效果一致。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-## 基础示例
+### 基础示例
 
 ```jsx
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Text } from 'react-native';
-import { Drawer } from '@uiw/react-native';
+import { Slider } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState(0.3);
@@ -27,11 +27,11 @@ function Demo() {
 }
 ```
 
-## 不显示滑块
+### 不显示滑块
 
 ```jsx
-import { Fragment } from 'react';
-import { Drawer } from '@uiw/react-native';
+import { Fragment,useState } from 'react';
+import { Slider } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState(0.3);
@@ -47,11 +47,11 @@ function Demo() {
 }
 ```
 
-## 设置步长
+### 设置步长
 
 ```jsx
-import { Fragment } from 'react';
-import { Drawer } from '@uiw/react-native';
+import { Fragment, useState } from 'react';
+import { Slider } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState(0.3);
@@ -68,7 +68,7 @@ function Demo() {
 }
 ```
 
-## Props
+### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|

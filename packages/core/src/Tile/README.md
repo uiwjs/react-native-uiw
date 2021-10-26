@@ -3,7 +3,7 @@ Tile 工具提示
 
 像卡片这样的磁贴是显示关于单个主题的相关内容的便捷方式
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment } from 'react';
@@ -14,8 +14,7 @@ function Demo() {
   return (
     <Fragment>
        <Tile
-          imageSrc={require('../../image/tileBG.png')}
-          // imageSrc={{uri: 'https://img11.51tietu.net/pic/2016-071418/20160714181543xyu10ukncwf221991.jpg'}}
+          imageSrc={require('xxx.png')}
           imageProps={{resizeMode:'contain'}}
           containerStyle={{marginTop: 10}}
           imageContainerStyle={{backgroundColor:'#ccc'}}
@@ -36,7 +35,7 @@ function Demo() {
 ```
 
 
-## TileProps
+### TileProps
 
 ```ts
 import { TileProps } from 'react-native';

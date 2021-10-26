@@ -18,6 +18,7 @@ export interface CheckBoxProps extends TouchableOpacityProps {
   checked?: boolean;
   disabled?: boolean;
   color?: string;
+  size?: number;
   checkedIcon?: string | JSX.Element;
   unCheckedIcon?: string | JSX.Element;
   onChange?: (checked: boolean) => void;
@@ -25,6 +26,7 @@ export interface CheckBoxProps extends TouchableOpacityProps {
 
 export interface CheckBoxState {
   checked: boolean;
+  controlChecked: 'props' | 'state';
 }
 
 export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxState> {
@@ -32,21 +34,32 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
     super(props);
     this.state = {
       checked: !!props.checked,
+      controlChecked: 'props',
     };
   }
   static defaultProps = {
     checkedIcon: 'circle-check',
     unCheckedIcon: 'circle-o',
     color: '#008EF0',
+    size: 16,
   };
-  UNSAFE_componentWillReceiveProps(nextProps: CheckBoxProps) {
-    if (nextProps.checked !== this.props.checked) {
-      this.setState({ checked: !!nextProps.checked });
+  static getDerivedStateFromProps(props: CheckBoxProps, state: CheckBoxState) {
+    if (props.checked === state.checked && state.controlChecked === 'props') {
+      return null;
     }
+    if (state.controlChecked === 'props') {
+      return {
+        checked: props.checked,
+      };
+    }
+    return {
+      controlChecked: 'props',
+    };
   }
+
   onPress = () => {
     const { onChange } = this.props;
-    this.setState({ checked: !this.state.checked }, () => {
+    this.setState({ checked: !this.state.checked, controlChecked: 'state' }, () => {
       onChange && onChange(this.state.checked);
     });
   };
@@ -61,6 +74,7 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
       checked,
       disabled,
       color: $color,
+      size,
       ...otherProps
     } = this.props;
     const { checked: $checked } = this.state;
@@ -78,7 +92,7 @@ export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxSta
     return (
       <TouchableOpacity disabled={disabled} {...otherProps} style={[styles.default, style]} onPress={this.onPress}>
         <View style={[styIcon]}>
-          {typeof iconName === 'string' ? <Icon size={16} fill={colorIcon} name={iconName} /> : iconName}
+          {typeof iconName === 'string' ? <Icon size={size} fill={colorIcon} name={iconName} /> : iconName}
         </View>
         {children && <Div children={children} style={[divStyl, textStyle]} />}
       </TouchableOpacity>

@@ -3,11 +3,12 @@ TransitionImage 图像
 
 直接替换标准 React Native Image 组件，该组件显示带有占位符和平滑图像加载转换的图像
 
-## 基础示例
+### 基础示例
 
 ```jsx
-import { Fragment, ActivityIndicator } from 'react';
+import { Fragment } from 'react';
 import { TransitionImage } from '@uiw/react-native';
+import {ActivityIndicator} from 'react-native';
 
 
 function Demo() {
@@ -30,11 +31,10 @@ function Demo() {
 ```
 
 
-## TransitionImage Props
+### TransitionImage Props
 
 ```ts
 import { ImageProps } from 'react-native';
-import { TransitionImage } from '@uiw/react-native';
 
 export interface TransitionImage extends ImageProps{
   /* 按下组件时的回调函数 */

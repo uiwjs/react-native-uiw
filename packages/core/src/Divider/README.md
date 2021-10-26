@@ -1,9 +1,11 @@
 Divider 分割线
 ---
 
+<image src='https://user-images.githubusercontent.com/66067296/137705210-c1bd655f-8b0c-4ee1-b376-0bc59c573a61.png' alt='Divider' style='zoom:33%;' />
+
 区隔内容的分割线。
 
-## 基础示例
+### 基础示例
 
 ```jsx
 import { Fragment } from 'react';
@@ -23,7 +25,7 @@ function Demo() {
 }
 ```
 
-## 纵向分割线
+### 纵向分割线
 
 ```jsx
 import { View, Text } from 'react-native';
@@ -38,7 +40,7 @@ function Demo() {
 }
 ```
 
-## props
+### props
 
 继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
 

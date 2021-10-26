@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
-import Layout, { Container } from '../../Layout';
-import { Rating, Icon } from '@uiw/react-native';
-import { ComProps } from '../../routes';
+import React, {Component} from 'react';
+import {StyleSheet, View} from 'react-native';
+import Layout, {Container} from '../../Layout';
+import {Rating, Icon} from '@uiw/react-native';
+import {ComProps} from '../../routes';
 
-const { Header, Body, Card, Footer } = Layout;
+const {Header, Body, Card, Footer} = Layout;
 
-export interface IndexProps extends ComProps { }
+export interface IndexProps extends ComProps {}
 export interface IndexState {
-  visible: boolean
+  visible: boolean;
 }
 
 export default class Index extends Component<IndexProps, IndexState> {
-  static state: IndexState
+  static state: IndexState;
   constructor(props: IndexProps) {
-    super(props)
+    super(props);
     this.state = {
-      visible: false
-    }
+      visible: false,
+    };
   }
   onCancel = () => {
-    this.setState({ visible: false })
-  }
+    this.setState({visible: false});
+  };
   render() {
-    const { route } = this.props;
+    const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
@@ -33,14 +33,16 @@ export default class Index extends Component<IndexProps, IndexState> {
           <Body>
             <View style={styles.divider} />
             <Rating
-              defaultRating={5}
-              // count={10}
-              icon={[<Icon name="star-off" />, <Icon name="star-on" />]}
-              // icon={["star-off", "star-on"]}
+              defaultRating={2}
+              resultRating={10}
+              icon={{
+                unactived: <Icon name="star-off" />,
+                actived: <Icon name="star-on" />,
+              }}
+              onPress={console.log}
             />
             <View style={styles.divider} />
             <Rating />
-
           </Body>
           <Footer />
         </Layout>
@@ -56,6 +58,6 @@ const styles = StyleSheet.create({
     paddingRight: 20,
   },
   divider: {
-    marginVertical: 10
-  }
+    marginVertical: 10,
+  },
 });
