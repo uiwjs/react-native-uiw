@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Text, TextProps } from 'react-native';
+import { View, Text, TextProps, Dimensions, TouchableOpacity } from 'react-native';
+import Icon from '../Icon';
+import { right } from './svg';
+import MaskLayer from '../MaskLayer';
 
+let MainHeight = Dimensions.get('window').height;
 export interface EllipsisProps extends TextProps {
   children?: React.ReactNode;
   placeholder?: string;
@@ -9,11 +13,38 @@ export interface EllipsisProps extends TextProps {
 }
 
 export default function Ellipsis({ maxLen, children, placeholder, ...props }: EllipsisProps) {
+  const [modalVisible, setModalVisible] = useState(false);
+
   let content = children;
+  let content1 = children;
   if (maxLen && content && typeof content === 'string') {
     content = content.length > maxLen ? content.substr(0, maxLen) + placeholder : content;
   }
-  return <Text {...props}>{content}</Text>;
+  return (
+    <>
+      <MaskLayer visible={modalVisible} onDismiss={() => setModalVisible(false)}>
+        <View
+          style={{
+            backgroundColor: '#fff',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: MainHeight * 0.2,
+            height: children.length + 30,
+          }}
+        >
+          <Text style={{ fontSize: 17 }}>{children}</Text>
+        </View>
+      </MaskLayer>
+
+      <TouchableOpacity
+        style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
+        onPress={() => setModalVisible(true)}
+      >
+        <Text {...props}>{content}</Text>
+        <Icon name="right" size={14} />
+      </TouchableOpacity>
+    </>
+  );
 }
 
 Ellipsis.propTypes = {

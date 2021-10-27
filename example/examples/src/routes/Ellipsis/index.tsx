@@ -34,6 +34,14 @@ export default class DividerView extends React.Component<DividerViewProps> {
                 </Ellipsis>
               </WingBlank>
             </Card>
+            <Card title="点击展示文本全部内容">
+              <WingBlank>
+                <Ellipsis maxLen={5} placeholder="。。。。">
+                  用于文本过长，超出长度显示 用于文本过长，超出长度显示
+                  用于文本过长，超出长度显示 用于文本过长，超出长度显示
+                </Ellipsis>
+              </WingBlank>
+            </Card>
           </Body>
           <Footer />
         </Layout>
