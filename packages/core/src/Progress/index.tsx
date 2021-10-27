@@ -1,6 +1,6 @@
 import { has } from 'lodash';
 import React, { useRef, useState, useEffect } from 'react';
-import { Animated, View, StyleSheet, ViewProps, LayoutChangeEvent } from 'react-native';
+import { Animated, View, StyleSheet, ViewProps, LayoutChangeEvent, Text } from 'react-native';
 import { Flex } from 'src';
 import { run } from './svg';
 import Icon from '../Icon';
@@ -20,14 +20,17 @@ export interface ProgressProps extends ViewProps {
   /** 图标源 */
   xml?: string;
   /** 是否展示图标 */
-  iconShow?: boolean | false;
+  iconShow?: boolean;
   /** 图标尺寸 */
   size?: number;
+  /** 是否展示进度提示字 */
+  progressShow?: boolean;
 }
 
 export default (props: ProgressProps) => {
   const {
-    iconShow,
+    iconShow = false,
+    progressShow = true,
     size = 25,
     xml = run,
     style,
@@ -36,6 +39,7 @@ export default (props: ProgressProps) => {
     position,
     animation = { duration: 500 },
   } = props;
+
   const progWidth = useRef<any>(new Animated.Value(0)).current;
   const [wrapWidth, setWrapWidth] = useState<number>(0);
 
@@ -74,14 +78,20 @@ export default (props: ProgressProps) => {
         style={[
           styles.pre,
           position === 'fixed' ? { position: 'absolute', top: 0 } : {},
-          { borderColor: progressColor },
+          { borderColor: progressColor, height: progressShow === true ? 20 : 4 },
         ]}
       >
+        {progressShow && progressShow === true && (
+          <View style={{ position: 'absolute', left: '45%', zIndex: 1000 }}>
+            <Text style={{ fontSize: 12 }}>{progress}%</Text>
+          </View>
+        )}
         <Animated.View
           style={[
             styles.preOisn,
             {
               width: progWidth,
+              height: progressShow === true ? 20 : 4,
               backgroundColor: progressColor,
             },
           ]}
@@ -91,7 +101,7 @@ export default (props: ProgressProps) => {
         <View onLayout={onLayout} style={[styles.preIcon, { height: size }]}>
           <Animated.View
             style={{
-              marginLeft: progress === 0 ? -50 : -35,
+              marginLeft: progress === 0 ? -50 : progress === 100 ? -20 : -35,
               width: progWidth,
             }}
           ></Animated.View>
@@ -109,7 +119,6 @@ const styles = StyleSheet.create({
   },
   pre: {
     borderWidth: 1,
-    height: 4,
     width: '100%',
     borderRadius: 20,
     marginBottom: 0,
@@ -124,7 +133,6 @@ const styles = StyleSheet.create({
   },
   preOisn: {
     position: 'absolute',
-    height: 4,
     left: 0,
     top: 0,
   },

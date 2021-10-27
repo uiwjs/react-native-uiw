@@ -33,3 +33,4 @@ function Demo() {
 | `iconShow` | 是否展示图标 | boolean | false |
 | `xml` | 图标源 | String | 默认图标 |
 | `size` | 图标尺寸 | number| 25 |
+| `progressShow` | 是否展示进度提示字 | boolean| true |
