@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
       },
     }),
     textAlign: 'center',
+    paddingLeft: 3,
   },
 });
 
