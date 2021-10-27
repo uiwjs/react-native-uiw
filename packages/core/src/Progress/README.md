@@ -9,11 +9,13 @@ Progress 进度条
 ```jsx
 import {  SafeAreaView } from 'react-native';
 import { Progress } from '@uiw/react-native';
+import { motorcycle } from './svg';
 
 function Demo() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Progress progress={30} position="fixed"/>
+      <Progress progressColor="#5847FF" iconShow={true} xml={motorcycle} />
     </SafeAreaView>
   )
 }
@@ -28,3 +30,6 @@ function Demo() {
 | `progress` | 进度百分比（可选） | Number | 0 |
 | `progressColor` | 颜色（可选） | String | none |
 | `position` | 位置，fixed 将浮出固定在最顶层（可选） | String | none |
+| `iconShow` | 是否展示图标 | boolean | false |
+| `xml` | 图标源 | String | 默认图标 |
+| `size` | 图标尺寸 | number| 25 |
