@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {Progress, Button, Spacing} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
@@ -12,9 +12,10 @@ const ProgressDemo = (props: any) => {
   const title = route.params.title;
 
   const [val, setValue] = useState<number>(0);
+  const [automaticVal, setAutomaticVal] = useState<number>(0);
 
   const onPress = () => {
-    let count = val + 10;
+    let count = val + 5;
     if (count > 100) {
       count = 0;
     }
@@ -26,13 +27,19 @@ const ProgressDemo = (props: any) => {
       <Header title={title} description={description} />
       <Body>
         <Header description={'基本使用'} />
-        <Progress progressColor="#5847FF" progress={40} />
+        <Progress progressColor="#5847FF" progress={40} progressShow={false} />
         <Header description={'展示进度图标'} />
-        <Progress progressColor="#5847FF" iconShow={true} progress={30} />
+        <Progress
+          progressColor="#5847FF"
+          progressShow={false}
+          iconShow={true}
+          progress={30}
+        />
         <Header description={'改变进度图标'} />
         <Progress
           progressColor="#5847FF"
           iconShow={true}
+          progressShow={false}
           progress={60}
           xml={motorcycle}
         />
@@ -40,21 +47,14 @@ const ProgressDemo = (props: any) => {
         <View
           style={{
             flexDirection: 'column',
-            marginHorizontal: 15,
+            marginBottom: 10,
           }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <Progress
-              progress={val}
-              progressColor="#5847FF"
-              iconShow={true}
-              xml={motorcycle}
-            />
-            <Text style={{fontSize: 12, marginHorizontal: 10}}>{val}%</Text>
-          </View>
+          <Progress
+            progress={val}
+            progressColor="#9185FF"
+            iconShow={true}
+            xml={motorcycle}
+          />
           <Button color={'#5847FF'} onPress={onPress}>
             (+-)10
           </Button>
