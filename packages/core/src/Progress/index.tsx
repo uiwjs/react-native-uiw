@@ -1,6 +1,6 @@
 import { has } from 'lodash';
 import React, { useRef, useState, useEffect } from 'react';
-import { Animated, View, StyleSheet, ViewProps, LayoutChangeEvent, Image } from 'react-native';
+import { Animated, View, StyleSheet, ViewProps, LayoutChangeEvent } from 'react-native';
 import { Flex } from 'src';
 import { run } from './svg';
 import Icon from '../Icon';
@@ -66,7 +66,6 @@ export default (props: ProgressProps) => {
     }
     return widthPercent;
   };
-  console.log('wrapWidth', wrapWidth);
 
   return (
     <View style={[styles.container, style]}>
