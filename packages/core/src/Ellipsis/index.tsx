@@ -14,12 +14,13 @@ export interface EllipsisProps extends TextProps {
 
 export default function Ellipsis({ maxLen, children, placeholder, ...props }: EllipsisProps) {
   const [modalVisible, setModalVisible] = useState(false);
+  // let content1 = Number(children.length);
 
   let content = children;
-  let content1 = children;
   if (maxLen && content && typeof content === 'string') {
     content = content.length > maxLen ? content.substr(0, maxLen) + placeholder : content;
   }
+
   return (
     <>
       <MaskLayer visible={modalVisible} onDismiss={() => setModalVisible(false)}>
@@ -29,7 +30,7 @@ export default function Ellipsis({ maxLen, children, placeholder, ...props }: El
             justifyContent: 'center',
             alignItems: 'center',
             marginTop: MainHeight * 0.2,
-            height: children.length + 30,
+            padding: 20,
           }}
         >
           <Text style={{ fontSize: 17 }}>{children}</Text>
