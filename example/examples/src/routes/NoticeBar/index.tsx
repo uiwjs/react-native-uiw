@@ -10,7 +10,7 @@ export default class NoticeBarExample extends Component {
         source={{
           uri: 'https://zos.alipayobjects.com/rmsportal/bRnouywfdRsCcLU.png',
         }}
-        style={{width: 12, height: 12, tintColor: 'balck'}}
+        style={{width: 12, height: 12, tintColor: '#fff'}}
       />
     );
 
