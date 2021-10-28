@@ -76,7 +76,7 @@ const SwipeAction = (props: SwipeActionProps, ref: any) => {
               extrapolate: 'clamp',
             });
             return (
-              <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
+              <Animated.View key={idx} style={{ flex: 1, transform: [{ translateX: trans }] }}>
                 <RectButton
                   style={[styles.rightAction, { backgroundColor: color }]}
                   onPress={() => {
