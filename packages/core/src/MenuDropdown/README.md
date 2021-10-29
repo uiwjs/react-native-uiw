@@ -3,7 +3,7 @@ MenuDropdown
 
 菜单下拉按钮
 
-<image src='https://user-images.githubusercontent.com/66067296/139398975-4c6e1e06-385d-4729-a467-5799cfa0bb9c.gif' alt='MenuDropdown' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/66067296/139398975-4c6e1e06-385d-4729-a467-5799cfa0bb9c.gif' alt='MenuDropdown' style='zoom:33%;' />
 
 ### 基础示例
 

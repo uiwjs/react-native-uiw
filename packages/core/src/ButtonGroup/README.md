@@ -3,7 +3,7 @@ ButtonGroup 按钮组
 
 用于一组按钮的排版展示。
 
-<image src='https://user-images.githubusercontent.com/57083007/137632086-8441bd1b-e8f9-4c15-828d-ad86310fdb72.png' alt='ButtonGroup' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/57083007/137632086-8441bd1b-e8f9-4c15-828d-ad86310fdb72.png' alt='ButtonGroup' style='zoom:33%;' />
 
 ### 基础示例
 

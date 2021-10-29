@@ -3,7 +3,7 @@ Grid 宫格
 
 在水平和垂直方向，将布局切分成若干等大的区块，也可以使用 `List` 组件支持列显示的特性，展示宫格，同时支持下来刷新等特性。
 
-<image src='https://user-images.githubusercontent.com/66067296/137709398-3d7476dd-009d-4852-abed-69b3726c3a25.png' alt='Grid' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/66067296/137709398-3d7476dd-009d-4852-abed-69b3726c3a25.png' alt='Grid' style='zoom:33%;' />
 
 ### 基础示例
 

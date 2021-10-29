@@ -3,7 +3,7 @@ CardCollapse 可折叠卡片列表
 
 可折叠卡片列表
 
-<image src='https://user-images.githubusercontent.com/66067296/137702190-e48c11e3-77d9-40c3-8d59-09ac6ddc9efb.gif' alt='CardCollapse' style='zoom:100%;' />
+<img src='https://user-images.githubusercontent.com/66067296/137702190-e48c11e3-77d9-40c3-8d59-09ac6ddc9efb.gif' alt='CardCollapse' style='zoom:100%;' />
 
 ### 基础示例
 

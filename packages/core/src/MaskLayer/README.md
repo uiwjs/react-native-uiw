@@ -3,7 +3,7 @@ MaskLayer 遮罩层
 
 用于模态对话框，中的遮罩层。
 
-<image src='https://user-images.githubusercontent.com/66067296/139398306-d038225d-0fee-4009-a4f7-a06c7beabf45.gif' alt='MaskLayer' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/66067296/139398306-d038225d-0fee-4009-a4f7-a06c7beabf45.gif' alt='MaskLayer' style='zoom:33%;' />
 
 ### 基础示例
 

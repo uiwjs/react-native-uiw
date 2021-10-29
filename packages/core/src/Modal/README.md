@@ -3,7 +3,7 @@ Modal 模态框
 
 模态对话框。
 
-<image src='https://user-images.githubusercontent.com/66067296/139399162-48bcc944-ad6d-424c-bca8-2d4e0fc1a764.gif' alt='Modal' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/66067296/139399162-48bcc944-ad6d-424c-bca8-2d4e0fc1a764.gif' alt='Modal' style='zoom:33%;' />
 
 ### 基础示例
 
