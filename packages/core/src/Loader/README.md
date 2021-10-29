@@ -3,6 +3,8 @@ Loader 加载
 
 表明某个任务正在进行中。
 
+<image src='https://user-images.githubusercontent.com/66067296/139398047-e59f2b9d-ced1-46d2-b45c-b9e35d04b825.gif' alt='Loader' style='zoom:33%;' />
+
 ### 基础示例
 
 <!--DemoStart--> 
