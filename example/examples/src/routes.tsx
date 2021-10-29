@@ -435,4 +435,12 @@ export const stackPageData: Routes[] = [
       description: 'Picker 解决 ios 与 android 和用户交互方式不同问题',
     },
   },
+  {
+    name: 'DatePicker',
+    component: require('./routes/DatePicker').default,
+    params: {
+      title: 'DatePicker 日期选择器',
+      description: 'DatePicker 年-月-日-时-分',
+    },
+  },
 ];

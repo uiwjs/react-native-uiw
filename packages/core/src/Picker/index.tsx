@@ -79,14 +79,13 @@ const Picker = (props: PickerProps) => {
       let leng = value > data.length - 1 ? data.length - 1 : value;
       leng = leng < 0 ? 0 : leng;
       location((style.containerHeight as number) * (leng + 1), leng);
-      setCurrent(leng);
     }
   }, [value]);
   const style = useMemo(() => {
     const containerUn = StyleSheet.flatten([styles.container, containerStyle.unactived]);
     const containerAc = StyleSheet.flatten([styles.container, styles.border, containerStyle.actived]);
     const textUn = StyleSheet.flatten([styles.textStyle, textStyle.unactived]);
-    const textAc = StyleSheet.flatten([styles.textStyle, styles.acTextStyle, textStyle.unactived]);
+    const textAc = StyleSheet.flatten([styles.textStyle, styles.acTextStyle, textStyle.unactived, textStyle.actived]);
     const containerHeight = containerUn.height || 50;
     return {
       containerAc,
@@ -154,7 +153,7 @@ const Picker = (props: PickerProps) => {
     }
   };
   return (
-    <View style={{ paddingVertical: 10, height: (style.containerHeight as number) * lines + 10 }}>
+    <View style={{ paddingVertical: 0, height: (style.containerHeight as number) * lines }}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         ref={scrollView as React.LegacyRef<ScrollView>}
@@ -193,8 +192,8 @@ const Picker = (props: PickerProps) => {
           />
         }
       </ScrollView>
-      <View style={[style.containerAc, { top: (-style.containerHeight as number) * lines + 10 }]} />
-      <View style={[style.containerAc, { top: (-style.containerHeight as number) * (lines - 1) + 10 }]} />
+      <View style={[style.containerAc, { top: (-style.containerHeight as number) * lines }]} />
+      <View style={[style.containerAc, { top: (-style.containerHeight as number) * (lines - 1) }]} />
     </View>
   );
 };
@@ -222,7 +221,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
   },
   acTextStyle: {
-    color: '#fd8a00',
+    color: '#1677ff',
   },
 });
 
