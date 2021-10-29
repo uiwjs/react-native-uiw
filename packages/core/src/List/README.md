@@ -3,8 +3,8 @@ List 列表
 
 单个连续模块垂直排列，显示当前的内容、状态和可进行的操作。eg：联系人列表。
 
-<image src='https://user-images.githubusercontent.com/66067296/139397639-1bb004ac-fd66-495e-8991-6b6910f84e60.png' alt='List1' style='zoom:33%;' />
-<image src='https://user-images.githubusercontent.com/66067296/139397695-5de2fb65-4931-454b-baed-9115a80abebc.png' alt='List2' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/66067296/139397639-1bb004ac-fd66-495e-8991-6b6910f84e60.png' alt='List1' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/66067296/139397695-5de2fb65-4931-454b-baed-9115a80abebc.png' alt='List2' style='zoom:33%;' />
 
 ### 基础示例
 

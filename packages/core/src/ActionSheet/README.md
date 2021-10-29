@@ -3,7 +3,7 @@ ActionSheet 动作面板
 
 该组件提供了一种动作面板, 底部缓缓出现
 
-<image src='https://user-images.githubusercontent.com/57083007/137631382-70df5dd3-0200-4ddb-bd11-3578ee99d032.gif' alt='ActionSheet' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/57083007/137631382-70df5dd3-0200-4ddb-bd11-3578ee99d032.gif' alt='ActionSheet' style='zoom:33%;' />
 
 ### 基础示例
 
