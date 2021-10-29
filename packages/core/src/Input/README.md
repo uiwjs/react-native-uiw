@@ -3,6 +3,8 @@ Input 文本输入
 
 单行文本输入
 
+<image src='https://user-images.githubusercontent.com/66067296/139397369-576c0bec-4870-4c02-aa70-11707eb59d26.png' alt='Input' style='zoom:33%;' />
+
 ### 基础示例
 
 ```jsx
