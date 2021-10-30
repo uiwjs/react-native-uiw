@@ -30,6 +30,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
                 flexDirection: 'row',
                 backgroundColor: '#fff',
                 marginTop: 20,
+                paddingVertical: 20,
               }}>
               <View style={{width: '50%'}}>
                 <Picker data={arr as any} value={17} />

@@ -103,6 +103,8 @@ export { default as Pagination } from './Pagination';
 export * from './Pagination';
 export { default as Picker } from './Picker';
 export * from './Picker';
+export { default as DatePicker } from './DatePicker';
+export * from './DatePicker';
 
 /**
  * Typography
