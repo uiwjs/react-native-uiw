@@ -44,6 +44,8 @@ export interface PickerProps {
   };
   /** 选中当前项的下标 */
   value?: number;
+  /** 是否只读 */
+  readonly?: boolean;
   /** value 改变时触发 */
   onChange?: (value: number) => unknown;
 }
@@ -57,6 +59,7 @@ const Picker = (props: PickerProps) => {
     textStyle = {},
     value = 0,
     onChange,
+    readonly = false,
   } = props;
   const Y = useRef(new Animated.Value(0)).current;
   const scrollView = useRef<ScrollView>();
@@ -143,6 +146,7 @@ const Picker = (props: PickerProps) => {
     }, 160);
   };
   const onTouchEnd = () => {
+    if (readonly) return;
     if (Platform.OS === 'ios') {
       if (onPressORonScroll.current === 'onPress') {
         setCurrent(currentY.current);
@@ -163,6 +167,7 @@ const Picker = (props: PickerProps) => {
           listener,
           useNativeDriver: false,
         })}
+        scrollEnabled={!readonly}
       >
         {data.map((item, index) => (
           <Pressable
@@ -170,6 +175,7 @@ const Picker = (props: PickerProps) => {
             key={index}
             onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
             onPress={() => {
+              if (readonly) return;
               if (timer.current) return;
               clearTimeout(onPressTimer.current!);
               onPressORonScroll.current = 'onPress';
