@@ -4674,12 +4674,7 @@
   resolved "https://registry.yarnpkg.com/@uiw/formatter/-/formatter-1.2.4.tgz#cf1fc44b92410ad473f47fa823269a6a1d30a2b4"
   integrity sha512-anRNRNL+8Q/xRBGaVshpXNTq3xTs5yExyPw0/fGAimswUIeH2MXSxDTAMypBw+DaqNh8v554sidZFL/IWrWcTg==
 
-"@uiw/icons@2.5.1":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@uiw/icons/-/icons-2.5.1.tgz#a2faa548db5a9b0d1a530c8498b339ee8dad9347"
-  integrity sha512-Fxh0hH/HyPuF4A7FsrW19tbmajvf9Aho8N7hGwZP+7Dz6JfteemIUykYPHycHp5Ah6+EvAeewGb1Fx18xdmDpA==
-
-"@uiw/icons@^2.5.0":
+"@uiw/icons@2.5.3", "@uiw/icons@^2.5.0":
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/@uiw/icons/-/icons-2.5.3.tgz#3b8a16bbb495d684672a843797abbea9afed8a19"
   integrity sha512-fYtNcW0TAGhZAz4C8T5b4Xxf7y3s6nC7nAW4gtgHd2kw2BlrxqIOIx5FVG0RWfaZP/m582PPE6JS/4OfJ9+5XA==
