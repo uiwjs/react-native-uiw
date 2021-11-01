@@ -28,7 +28,7 @@ export type CardActionsProps = {
 const CardActions = ({ actions = [], actionsContainerStyle, children }: CardActionsProps) => {
   return (
     <Fragment>
-      <Divider style={StyleSheet.flatten({ marginTop: 15 })} />
+      <Divider style={StyleSheet.flatten({ marginTop: 15 })} lineStyle={{ backgroundColor: '#e6e6e6' }} />
       {React.isValidElement(children) ? React.cloneElement(children) : null}
       <View style={[styles.actionsContainer, actionsContainerStyle]}>
         {map(actions, (item, index) => {

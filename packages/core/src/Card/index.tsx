@@ -23,6 +23,10 @@ export type CardProps = {
   children?: React.ReactNode;
   onPress?: TouchableOpacityProps['onPress'];
   onLongPress?: TouchableOpacityProps['onLongPress'];
+  selectedStyle?: {
+    icon?: React.ReactNode;
+    style?: ViewStyle;
+  };
 };
 
 const Card = ({
@@ -33,6 +37,10 @@ const Card = ({
   selected,
   onPress,
   onLongPress,
+  selectedStyle = {
+    icon: <Icon xml={checked} size={30} />,
+    style: {},
+  },
   ...attributes
 }: CardProps) => {
   const Container: any = onPress || onLongPress ? TouchableOpacity : View;
@@ -53,13 +61,12 @@ const Card = ({
           {
             opacity: 1,
             borderRadius: getBorderRadius(),
+            ...selectedStyle?.style,
           },
         ]}
         pointerEvents="none"
       >
-        <View style={styles.selectedIndicator}>
-          <Icon xml={checked} size={30} />
-        </View>
+        <View style={styles.selectedIndicator}>{selectedStyle?.icon}</View>
       </Animated.View>
     );
   };

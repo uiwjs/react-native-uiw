@@ -89,7 +89,15 @@ const CardDemo = (props: any) => {
         borderRadius={12}
         onPress={() => {
           setSelected(!selected);
-        }}>
+        }}
+        // 自定义选中状态
+        // selectedStyle={{
+        //   icon: null,
+        //   style: {
+        //     borderColor: "#fd8a00",
+        //   }
+        // }}
+      >
         {basicRender}
       </Card>
     </ScrollView>

@@ -18,7 +18,7 @@ const CardTitle = ({ title, titleStyle, children }: CardTitleProps) => {
         </Text>
       )}
       {React.isValidElement(children) ? React.cloneElement(children) : null}
-      <Divider style={StyleSheet.flatten([styles.divider])} />
+      <Divider style={StyleSheet.flatten([styles.divider])} lineStyle={{ backgroundColor: '#e6e6e6' }} />
     </View>
   );
 };
