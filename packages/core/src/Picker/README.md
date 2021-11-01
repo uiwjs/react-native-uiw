@@ -92,5 +92,7 @@ export interface PickerProps {
   value?: number,
   /** value 改变时触发 */
   onChange?: (value: number)=>unknown,
+  /** 是否只读 不能点击不能滑动但可以通过value控制 */
+  readonly?: boolean
 }
 ```
