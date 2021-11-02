@@ -28,7 +28,7 @@ function Demo() {
 }
 ```
 
-### 使用icon && 修改大小
+### 使用icon && 修改大小 && 页码跳转
 
 ```jsx
 import { Fragment, useState } from 'react';
@@ -43,6 +43,7 @@ function Demo() {
         current={current}
         total={60}
         pageSize={8}
+        jumpBtn={true}
         onPageChange={(type, current) => {
           setCurrent(current)
           console.log('type, current: ', type, current);
@@ -79,5 +80,7 @@ export interface PaginationProps {
   borderColor?: string
   /** 按钮中的颜色 */
   color?: string
+  /** 页码跳转 */
+  jumpBtn?: boolean;
 }
 ```

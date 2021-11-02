@@ -43,6 +43,20 @@ export default class Index extends Component<IndexProps, IndexState> {
                 />
               </View>
             </Card>
+            <Card title="使用跳转页码">
+              <View style={{paddingHorizontal: 20}}>
+                <Pagination
+                  icon
+                  jumpBtn={true}
+                  current={this.state.current1}
+                  total={50}
+                  pageSize={20}
+                  onPageChange={(type, current1) => {
+                    this.setState({current1});
+                  }}
+                />
+              </View>
+            </Card>
             <Card title="使用icon">
               <View style={{paddingHorizontal: 20}}>
                 <Pagination
