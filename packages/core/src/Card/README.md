@@ -116,6 +116,11 @@ export interface CardProps {
   onPress?: TouchableOpacityProps['onPress'];
   /** 长按下卡片时的动作（可选） */
   onLongPress?: TouchableOpacityProps['onLongPress'];
+  /** 自定义选中样式 */
+  selectedStyle?: {
+    icon?: React.ReactNode;
+    style?: ViewStyle
+  }
 }
 ```
 
