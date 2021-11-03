@@ -3,7 +3,7 @@ Pagination 分页器
 
 用于展示页码、请求数据等。
 
-<img src='https://user-images.githubusercontent.com/66067296/139399708-239e65f9-565e-4be2-9497-c8e5b836cef6.png' alt='Pagination' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/66067296/140001996-ff0fe66c-0482-4576-9f19-11be3a6b7ada.png' alt='Pagination' style='zoom:33%;' />
 
 ### 基础示例
 
@@ -28,7 +28,7 @@ function Demo() {
 }
 ```
 
-### 使用icon && 修改大小 && 页码跳转
+### 使用icon && 修改大小
 
 ```jsx
 import { Fragment, useState } from 'react';
@@ -40,6 +40,30 @@ function Demo() {
       <Pagination
         icon
         size='large'
+        current={current}
+        total={60}
+        pageSize={8}
+        jumpBtn={true}
+        onPageChange={(type, current) => {
+          setCurrent(current)
+          console.log('type, current: ', type, current);
+        }}
+      />
+    </Fragment>
+  );
+}
+```
+
+### 页码跳转
+
+```jsx
+import { Fragment, useState } from 'react';
+import { Pagination } from '@uiw/react-native';
+function Demo() {
+  const [current, setCurrent] = useState(false)
+  return (
+    <Fragment>
+      <Pagination
         current={current}
         total={60}
         pageSize={8}
