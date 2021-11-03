@@ -3,6 +3,8 @@ QuickList 快速请求列表
 
 快速完成上拉下拉请求列表。
 
+<img src='https://user-images.githubusercontent.com/66067296/140003953-6d3c5a99-a656-4bd3-a1e9-3711550cb87d.gif' alt='QuickList' style='zoom:33%;' />
+
 ### 基础示例
 
 <!--DemoStart--> 

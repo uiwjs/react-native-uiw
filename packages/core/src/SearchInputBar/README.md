@@ -3,6 +3,8 @@ SearchInputBar 动作面板
 
 可用于用户输入搜索信息
 
+<img src='https://user-images.githubusercontent.com/66067296/140004397-65ffc69e-a79f-425d-9d75-2928c125e5c8.gif' alt='SearchInputBar' style='zoom:33%;' />
+
 ### 基础示例
 
 ```jsx

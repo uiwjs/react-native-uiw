@@ -3,6 +3,8 @@ Rating 评分
 
 在你想用任意需要评分的的地方使用。
 
+<img src='https://user-images.githubusercontent.com/66067296/140004186-31b369e2-13f1-4dd2-aef5-331aa133b0fe.gif' alt='Rating' style='zoom:33%;' />
+
 ### 基础示例
 
 ```jsx
