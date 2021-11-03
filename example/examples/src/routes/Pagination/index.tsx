@@ -19,6 +19,7 @@ export default class Index extends Component<IndexProps, IndexState> {
     this.state = {
       current: 1,
       current1: 1,
+      current2: 2,
     };
   }
 
@@ -31,18 +32,6 @@ export default class Index extends Component<IndexProps, IndexState> {
         <Layout>
           <Header title={title} description={description} />
           <Body style={{backgroundColor: '#fff'}}>
-            <Card title="使用文字">
-              <View style={{paddingHorizontal: 20}}>
-                <Pagination
-                  current={this.state.current}
-                  total={60}
-                  pageSize={8}
-                  onPageChange={(type, current) => {
-                    this.setState({current});
-                  }}
-                />
-              </View>
-            </Card>
             <Card title="使用跳转页码">
               <View style={{paddingHorizontal: 20}}>
                 <Pagination
@@ -53,6 +42,32 @@ export default class Index extends Component<IndexProps, IndexState> {
                   pageSize={20}
                   onPageChange={(type, current1) => {
                     this.setState({current1});
+                  }}
+                />
+              </View>
+            </Card>
+            <Card title="简单跳转">
+              <View style={{paddingHorizontal: 20}}>
+                <Pagination
+                  simple
+                  icon
+                  current={this.state.current2}
+                  total={100}
+                  pageSize={10}
+                  onPageChange={(type, current2) => {
+                    this.setState({current2});
+                  }}
+                />
+              </View>
+            </Card>
+            <Card title="使用文字">
+              <View style={{paddingHorizontal: 20}}>
+                <Pagination
+                  current={this.state.current}
+                  total={60}
+                  pageSize={8}
+                  onPageChange={(type, current) => {
+                    this.setState({current});
                   }}
                 />
               </View>
