@@ -3,6 +3,8 @@ Radio 单选框
 
 单选框，在一组备选项中进行单选。
 
+<img src='https://user-images.githubusercontent.com/66067296/140004062-402c9ff6-0783-44a8-9745-83f0c62438db.png' alt='Radio' style='zoom:33%;' />
+
 ### 基础示例
 
 ```jsx

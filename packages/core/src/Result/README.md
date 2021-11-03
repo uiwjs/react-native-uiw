@@ -3,6 +3,8 @@ Result 结果页
 
 在整张页面中组织插画、图标、文字等内容，向用户反馈操作结果。
 
+<img src='https://user-images.githubusercontent.com/66067296/140004296-414edcc2-c809-4fcf-a147-5088757ea7b1.png' alt='Result' style='zoom:33%;' />
+
 ### 基础示例
 
 ```jsx

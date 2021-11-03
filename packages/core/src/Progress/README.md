@@ -3,6 +3,8 @@ Progress 进度条
 
 表明某个任务的当前进度。
 
+<img src='https://user-images.githubusercontent.com/66067296/140003519-03faded1-e004-45eb-b9af-442d84d6f258.gif' alt='Progress' style='zoom:33%;' />
+
 ### 基础示例
 
 <!--DemoStart--> 
@@ -15,7 +17,29 @@ function Demo() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Progress progress={30} position="fixed"/>
-      <Progress progressColor="#5847FF" iconShow={true} xml={motorcycle} />
+    </SafeAreaView>
+  )
+}
+```
+
+### 展示进度图标 & 进度提示字
+
+<!--DemoStart--> 
+```jsx
+import {  SafeAreaView } from 'react-native';
+import { Progress } from '@uiw/react-native';
+import { motorcycle } from './svg';
+
+function Demo() {
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+     <Progress
+          progressColor="#5847FF"
+           xml={motorcycle}
+          progressShow={false}
+          iconShow={true}
+          progress={30}
+        />
     </SafeAreaView>
   )
 }
