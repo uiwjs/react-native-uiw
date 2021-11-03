@@ -5003,10 +5003,10 @@
     "@uiw/react-popover" "^4.9.7"
     "@uiw/utils" "^4.9.7"
 
-"@uiw/react-native-template@2.1.4":
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/@uiw/react-native-template/-/react-native-template-2.1.4.tgz#9d99f999bc9e732fe0ec8f5592f585aa8f84cefe"
-  integrity sha512-PI6zdFOv/+qVl4TI0TfVwVmMQudcHxPUfg0NSp6RluaASSXF4Xjmnk6L4Zw/0KYsLkBaILI2jxCL3JFHzZdcaw==
+"@uiw/react-native-template@2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@uiw/react-native-template/-/react-native-template-2.2.2.tgz#34b403f7d1572a11c30e7980792236348e407905"
+  integrity sha512-Bw3uCnxojdbxF/t14befV17JLOuTfnxsjc9PEzOLkCMV39WHJdxzJJmVK3alKzeOnLipRCtUY3v5+om0oNIQbw==
 
 "@uiw/react-notify@^4.7.16":
   version "4.9.7"
