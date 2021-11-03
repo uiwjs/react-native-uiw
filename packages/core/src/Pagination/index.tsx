@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import DirText from './DirText';
+import MoreDir from './MoreDir';
 import Page from './Page';
 
 export type size = 'small' | 'default' | 'large';
@@ -28,12 +29,15 @@ export interface PaginationProps {
   borderColor?: string;
   /** 按钮中的颜色 */
   color?: string;
+  /** 页码跳转 */
+  jumpBtn?: boolean;
 }
 
 const Pagination = (props: PaginationProps) => {
   const {
     size = 'default',
     icon = false,
+    jumpBtn = false,
     currentColor,
     total,
     pageSize = 10,
@@ -81,15 +85,26 @@ const Pagination = (props: PaginationProps) => {
         totalPage={Math.ceil(total / pageSize)}
         currentColor={currentColor}
       />
-      <DirText
-        onPageChange={onPageChange}
-        size={size}
-        direction="right"
-        disabled={current === Math.ceil(total / pageSize)}
-        icon={icon}
-        borderColor={borderColor}
-        color={color}
-      />
+      <View style={{ flexDirection: 'row' }}>
+        <DirText
+          onPageChange={onPageChange}
+          size={size}
+          direction="right"
+          disabled={current === Math.ceil(total / pageSize)}
+          icon={icon}
+          borderColor={borderColor}
+          color={color}
+        />
+        {jumpBtn === true && (
+          <MoreDir
+            setCurrent={setCurrent}
+            size={size}
+            current={Math.ceil(total / pageSize)}
+            borderColor={borderColor}
+            color={color}
+          />
+        )}
+      </View>
     </View>
   );
 };
