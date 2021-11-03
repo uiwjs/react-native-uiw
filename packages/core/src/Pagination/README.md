@@ -3,7 +3,7 @@ Pagination 分页器
 
 用于展示页码、请求数据等。
 
-<img src='https://user-images.githubusercontent.com/66067296/140001996-ff0fe66c-0482-4576-9f19-11be3a6b7ada.png' alt='Pagination' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/66067296/140044665-d27bccd1-24ba-4eaf-949b-89b6dc9f0dad.png' alt='Pagination' style='zoom:33%;' />
 
 ### 基础示例
 
@@ -78,6 +78,30 @@ function Demo() {
 }
 ```
 
+### 简单版本
+
+```jsx
+import { Fragment, useState } from 'react';
+import { Pagination } from '@uiw/react-native';
+function Demo() {
+  const [current, setCurrent] = useState(false)
+  return (
+    <Fragment>
+      <Pagination
+        current={current}
+        total={60}
+        pageSize={8}
+        simple
+        onPageChange={(type, current) => {
+          setCurrent(current)
+          console.log('type, current: ', type, current);
+        }}
+      />
+    </Fragment>
+  );
+}
+```
+
 ### Props
 
 ```ts
@@ -106,5 +130,7 @@ export interface PaginationProps {
   color?: string
   /** 页码跳转 */
   jumpBtn?: boolean;
+    /** 简洁版本 */
+  simple?: boolean;
 }
 ```
