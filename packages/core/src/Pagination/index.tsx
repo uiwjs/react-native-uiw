@@ -31,6 +31,8 @@ export interface PaginationProps {
   color?: string;
   /** 页码跳转 */
   jumpBtn?: boolean;
+  /** 简洁版本 */
+  simple?: boolean;
 }
 
 const Pagination = (props: PaginationProps) => {
@@ -38,6 +40,7 @@ const Pagination = (props: PaginationProps) => {
     size = 'default',
     icon = false,
     jumpBtn = false,
+    simple = false,
     currentColor,
     total,
     pageSize = 10,
@@ -78,6 +81,8 @@ const Pagination = (props: PaginationProps) => {
         color={color}
       />
       <Page
+        simple={simple}
+        setCurrent={setCurrent}
         renderPages={renderPages}
         onCurrent={onCurrent}
         size={size}
