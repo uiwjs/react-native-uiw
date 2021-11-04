@@ -27,6 +27,24 @@ export default class DividerView extends React.Component<DividerViewProps> {
               <Divider label="调整间隔" gutter={30} />
               <Text>分割线</Text>
             </Card>
+
+            <Card title="分割线标题位置">
+              <Text>分割线</Text>
+              <Divider
+                label="left"
+                orientation="left"
+                labelStyle={{fontWeight: 'bold'}}
+              />
+              <Text>分割线</Text>
+              <Divider label="center" labelStyle={{fontWeight: 'bold'}} />
+              <Text>分割线</Text>
+              <Divider
+                label="right"
+                orientation="right"
+                labelStyle={{fontWeight: 'bold'}}
+              />
+            </Card>
+
             <Card title="纵向分割线">
               <View style={{height: 200}}>
                 <Divider type="vertical" label="OR" />
