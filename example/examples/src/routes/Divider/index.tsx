@@ -24,7 +24,7 @@ export default class DividerView extends React.Component<DividerViewProps> {
               <Text>分割线</Text>
               <Divider label="暂无数据" />
               <Text>分割线</Text>
-              <Divider />
+              <Divider label="调整间隔" gutter={30} />
               <Text>分割线</Text>
             </Card>
             <Card title="纵向分割线">
