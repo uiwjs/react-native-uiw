@@ -79,13 +79,11 @@ const styles = StyleSheet.create({
     height: 1,
     minHeight: 1,
     minWidth: 16,
-    marginHorizontal: 8,
   },
   lineVertical: {
     width: 1,
     minHeight: 16,
     minWidth: 1,
-    marginVertical: 8,
   },
   label: {
     color: 'rgba(0, 0, 0, 0.54)',
