@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, StyleProp, TextStyle } from 'react-native';
 
 import Icon, { IconsName } from '../Icon';
 import { TabsItemIconTypes } from '../Tabs/TabsItem';
@@ -24,6 +24,10 @@ export interface RatingProps {
    * @param score type: number 得到几分
    */
   onPress?: (score: number) => void;
+  /** 自定义每项的提示信息 */
+  tooltips?: string[];
+  /** 自定义提示信息样式 */
+  tooltipsStyle?: StyleProp<TextStyle>;
 }
 
 export interface RatingState {
@@ -33,6 +37,8 @@ export interface RatingState {
   color: string;
   defaultRating: number;
   typeIcon: icoType;
+  tooltips?: string[];
+  tooltipsText?: string;
 }
 
 export default class Rating extends React.Component<RatingProps, RatingState> {
@@ -40,6 +46,7 @@ export default class Rating extends React.Component<RatingProps, RatingState> {
     super(props);
     let start = (props.icon && props.icon.unactived) || 'star-off';
     let end = (props.icon && props.icon.actived) || 'star-on';
+
     this.state = {
       defaultRating: props.defaultRating || 0,
       resultRating: props.resultRating || 5,
@@ -47,6 +54,8 @@ export default class Rating extends React.Component<RatingProps, RatingState> {
       size: props.size ?? 24,
       color: props.color || '#ebc445',
       typeIcon: [start, end],
+      tooltips: props.tooltips,
+      tooltipsText: '',
     };
   }
   componentDidMount() {
@@ -62,22 +71,33 @@ export default class Rating extends React.Component<RatingProps, RatingState> {
     if (index === 1 && this.flag) {
       this.setState({ icon: [...new Array(index).fill(end), ...new Array(resultRating - index).fill(start)] });
       onPress?.(1);
+      if (this.state.tooltips) {
+        this.setState({ tooltipsText: this.state.tooltips[index] });
+      }
       this.flag = false;
     } else if (index === 1 && !this.flag) {
       this.setState({ icon: [...new Array(index - 1).fill(end), ...new Array(resultRating - index + 1).fill(start)] });
+      if (this.state.tooltips) {
+        this.setState({ tooltipsText: this.state.tooltips[index - 1] });
+      }
       this.flag = true;
       onPress?.(0);
     } else {
       this.setState({ icon: [...new Array(index).fill(end), ...new Array(resultRating - index).fill(start)] });
+      if (this.state.tooltips) {
+        this.setState({ tooltipsText: this.state.tooltips[index] });
+      }
       this.flag = true;
       onPress?.(index);
     }
   };
   render() {
+    const { icon, size, color, tooltipsText } = this.state;
+    const { tooltipsStyle } = this.props;
     return (
       <View>
         <View style={styles.RatingContainer}>
-          {this.state.icon.map((item, index) => {
+          {icon.map((item, index) => {
             return (
               <TouchableOpacity
                 onPress={() => {
@@ -85,14 +105,11 @@ export default class Rating extends React.Component<RatingProps, RatingState> {
                 }}
                 key={index}
               >
-                {typeof item === 'string' ? (
-                  <Icon name={item as IconsName} color="#ebc445" size={this.state.size} />
-                ) : (
-                  item
-                )}
+                {typeof item === 'string' ? <Icon name={item as IconsName} color={color} size={size} /> : item}
               </TouchableOpacity>
             );
           })}
+          <Text style={[styles.tooltipsText, { fontSize: size - 5, color: color }, tooltipsStyle]}>{tooltipsText}</Text>
         </View>
       </View>
     );
@@ -102,5 +119,9 @@ export default class Rating extends React.Component<RatingProps, RatingState> {
 const styles = StyleSheet.create({
   RatingContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
+  },
+  tooltipsText: {
+    marginHorizontal: 10,
   },
 });

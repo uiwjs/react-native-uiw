@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import Layout, {Container} from '../../Layout';
 import {Rating, Icon} from '@uiw/react-native';
 import {ComProps} from '../../routes';
@@ -10,7 +10,8 @@ export interface IndexProps extends ComProps {}
 export interface IndexState {
   visible: boolean;
 }
-
+const desc = ['', '1星', '2星', '3星', '4星', '5星'];
+const descs = ['terrible', 'bad', 'normal', 'good', 'wonderful', 'perfect'];
 export default class Index extends Component<IndexProps, IndexState> {
   static state: IndexState;
   constructor(props: IndexProps) {
@@ -31,18 +32,41 @@ export default class Index extends Component<IndexProps, IndexState> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <View style={styles.divider} />
-            <Rating
-              defaultRating={2}
-              resultRating={10}
-              icon={{
-                unactived: <Icon name="star-off" />,
-                actived: <Icon name="star-on" />,
-              }}
-              onPress={console.log}
-            />
-            <View style={styles.divider} />
-            <Rating />
+            <Card title="基本使用">
+              <Rating />
+            </Card>
+            <Card title="指定 Icon">
+              <Rating
+                defaultRating={3}
+                icon={{
+                  unactived: <Icon name="smile-o" fill="red" />,
+                  actived: <Icon name="smile" fill="red" />,
+                }}
+                onPress={console.log}
+              />
+            </Card>
+            <Card title="默认选中及总数">
+              <Rating
+                defaultRating={2}
+                resultRating={10}
+                icon={{
+                  unactived: <Icon name="star-off" />,
+                  actived: <Icon name="star-on" />,
+                }}
+                onPress={console.log}
+              />
+            </Card>
+            <Card title="评分组件加上文案展示">
+              <Rating tooltips={desc} defaultRating={1} />
+            </Card>
+            <Card title="评分文案样式修改">
+              <Rating
+                tooltips={descs}
+                defaultRating={3}
+                color="blue"
+                tooltipsStyle={{fontSize: 25, color: 'blue'}}
+              />
+            </Card>
           </Body>
           <Footer />
         </Layout>
@@ -50,14 +74,3 @@ export default class Index extends Component<IndexProps, IndexState> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  divider: {
-    marginVertical: 10,
-  },
-});
