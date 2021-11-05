@@ -28,6 +28,8 @@ export interface RatingProps {
   tooltips?: string[];
   /** 自定义提示信息样式 */
   tooltipsStyle?: StyleProp<TextStyle>;
+  /** 只读模式 */
+  disabled: boolean;
 }
 
 export interface RatingState {
@@ -39,6 +41,7 @@ export interface RatingState {
   typeIcon: icoType;
   tooltips?: string[];
   tooltipsText?: string;
+  disabled: boolean;
 }
 
 export default class Rating extends React.Component<RatingProps, RatingState> {
@@ -56,18 +59,23 @@ export default class Rating extends React.Component<RatingProps, RatingState> {
       typeIcon: [start, end],
       tooltips: props.tooltips,
       tooltipsText: '',
+      disabled: false,
     };
   }
   componentDidMount() {
     const { defaultRating } = this.state;
     this.updateIcon(defaultRating);
   }
+
   flag = true;
   updateIcon = (index: number) => {
     const { resultRating } = this.state;
-    const { onPress } = this.props;
+    const { onPress, disabled } = this.props;
     let start = this.state.typeIcon[0];
     let end = this.state.typeIcon[1];
+    if (disabled) {
+      this.setState({ disabled: disabled });
+    }
     if (index === 1 && this.flag) {
       this.setState({ icon: [...new Array(index).fill(end), ...new Array(resultRating - index).fill(start)] });
       onPress?.(1);
@@ -92,7 +100,7 @@ export default class Rating extends React.Component<RatingProps, RatingState> {
     }
   };
   render() {
-    const { icon, size, color, tooltipsText } = this.state;
+    const { icon, size, color, tooltipsText, disabled } = this.state;
     const { tooltipsStyle } = this.props;
     return (
       <View>
@@ -101,7 +109,9 @@ export default class Rating extends React.Component<RatingProps, RatingState> {
             return (
               <TouchableOpacity
                 onPress={() => {
-                  this.updateIcon(index + 1);
+                  if (disabled === false) {
+                    this.updateIcon(index + 1);
+                  }
                 }}
                 key={index}
               >

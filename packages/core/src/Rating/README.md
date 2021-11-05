@@ -81,6 +81,21 @@ function Demo() {
 }
 ```
 
+### 只读
+
+```jsx
+import { Fragment } from 'react';
+import { Rating, Icon } from '@uiw/react-native';
+function Demo() {
+  const desc = ['0星', '1星', '2星', '3星', '4星', '5星'];
+  return (
+    <Fragment>
+      <Rating defaultRating={3} color="green" disabled />
+    </Fragment>
+  );
+}
+```
+
 ### Props
 
 ```ts
@@ -110,5 +125,7 @@ export interface RatingProps {
   tooltips?: string[];
   /** 自定义提示信息样式 */
   tooltipsStyle?: StyleProp<TextStyle>;
+    /** 只读模式 */
+  disabled: boolean
 }
 ```

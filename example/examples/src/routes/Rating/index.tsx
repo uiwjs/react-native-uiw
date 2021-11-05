@@ -67,6 +67,9 @@ export default class Index extends Component<IndexProps, IndexState> {
                 tooltipsStyle={{fontSize: 25, color: 'blue'}}
               />
             </Card>
+            <Card title="只读">
+              <Rating defaultRating={3} color="green" disabled />
+            </Card>
           </Body>
           <Footer />
         </Layout>
