@@ -3,7 +3,7 @@ Rating 评分
 
 在你想用任意需要评分的的地方使用。
 
-<img src='https://user-images.githubusercontent.com/66067296/140004186-31b369e2-13f1-4dd2-aef5-331aa133b0fe.gif' alt='Rating' style='zoom:33%;' />
+<img src='https://user-images.githubusercontent.com/66067296/140290956-1328745e-63da-4d17-8db9-238c18078272.gif' alt='Rating' style='zoom:33%;' />
 
 ### 基础示例
 
@@ -44,6 +44,58 @@ function Demo() {
 }
 ```
 
+### 默认选中及总数
+
+```jsx
+import { Fragment } from 'react';
+import { Rating, Icon } from '@uiw/react-native';
+function Demo() {
+  return (
+    <Fragment>
+     <Rating
+      defaultRating={3}
+      resultRating={10}
+      icon={{
+      unactived: <Icon name="smile-o" fill="red" />,
+      actived: <Icon name="smile" fill="red" />,
+      }}
+      onPress={console.log}
+      />
+    </Fragment>
+  );
+}
+```
+
+### 评分组件加上文案展示及样式修改
+
+```jsx
+import { Fragment } from 'react';
+import { Rating, Icon } from '@uiw/react-native';
+function Demo() {
+  const desc = ['0星', '1星', '2星', '3星', '4星', '5星'];
+  return (
+    <Fragment>
+      <Rating tooltips={desc}  tooltipsStyle={{ fontSize: 25, color: 'blue' }} />
+    </Fragment>
+  );
+}
+```
+
+### 只读
+
+```jsx
+import { Fragment } from 'react';
+import { Rating, Icon } from '@uiw/react-native';
+function Demo() {
+  const desc = ['0星', '1星', '2星', '3星', '4星', '5星'];
+  return (
+    <Fragment>
+      <Rating defaultRating={3} color="green" disabled />
+    </Fragment>
+  );
+}
+```
+
 ### Props
 
 ```ts
@@ -69,5 +121,11 @@ export interface RatingProps {
    * @param score type: number 选中几个
    */
   onPress?: (score: number) => void;
+    /** 自定义每项的提示信息 */
+  tooltips?: string[];
+  /** 自定义提示信息样式 */
+  tooltipsStyle?: StyleProp<TextStyle>;
+    /** 只读模式 */
+  disabled: boolean
 }
 ```
