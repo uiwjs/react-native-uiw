@@ -10,7 +10,7 @@ export default class Page extends Markdown {
     const index = result.indexOf('### 基础示例');
     const abc =
       result.substr(0, index) +
-      "\n<image src='./index.png' alt='Timeline' style='zoom:33%;' />\n\n" +
+      "\n<image src='./indexGif.gif' alt='Toast' style='zoom:33%;' />\n\n" +
       result.substr(index);
     return abc;
   };
