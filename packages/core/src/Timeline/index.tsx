@@ -17,6 +17,8 @@ export interface TimelineProps extends ViewProps {
   isReverse?: boolean;
   /** 步骤条数据列表 */
   items: TimelineItemsProps[];
+  /** 改变时间轴和内容的相对位置 */
+  mode?: 'left' | 'alternate';
 }
 
 const Desc = (desc?: string | string[]) => {
@@ -38,9 +40,10 @@ const Desc = (desc?: string | string[]) => {
 };
 
 export default (props: TimelineProps) => {
-  const { items = [], isReverse, style } = props;
+  const { items = [], isReverse, style, mode } = props;
 
   const [lineItem, setLineItem] = useState<TimelineItemsProps[]>([]);
+  const [modeType, setModeType] = useState<string>('0%');
 
   useEffect(() => {
     if (isReverse && items.length > 0) {
@@ -49,6 +52,15 @@ export default (props: TimelineProps) => {
     } else {
       setLineItem(items);
     }
+    if (mode) {
+      if (mode === 'left') {
+        setModeType('98%');
+      } else if (mode === 'alternate') {
+        setModeType('45%');
+      } else {
+        setModeType('98%');
+      }
+    }
   }, [isReverse, items]);
 
   return (
@@ -56,21 +68,59 @@ export default (props: TimelineProps) => {
       {lineItem.map((item, index) => {
         return (
           <View style={[styles.item]} key={index}>
-            {index < items.length - 1 && <View style={styles.line}></View>}
-            <View
-              style={[
-                styles.circular,
-                {
-                  backgroundColor: item.color || '#e4e7ed',
-                },
-              ]}
-            ></View>
-            <View style={styles.wrapper}>
-              <View style={styles.top}>
-                <Text style={styles.title}>{item.title}</Text>
+            <View style={{ width: modeType, flexDirection: 'column' }}>
+              {mode && mode === 'alternate' && index % 2 !== 0 && (
+                <View style={{ alignItems: 'flex-end', flexDirection: 'column' }}>
+                  <View style={styles.top}>
+                    <Text style={styles.title}>{item.title}</Text>
+                  </View>
+                  {item.tips && <Text style={styles.tips}>{item.tips}</Text>}
+                  {item.desc && Desc(item.desc)}
+                </View>
+              )}
+              {mode && mode === 'left' && (
+                <View style={{ paddingRight: 10, width: modeType, alignItems: 'flex-end' }}>
+                  <View style={styles.top}>
+                    <Text style={styles.title}>{item.title}</Text>
+                  </View>
+                  {item.tips && <Text style={styles.tips}>{item.tips}</Text>}
+                  {item.desc && Desc(item.desc)}
+                </View>
+              )}
+            </View>
+
+            <View style={{ flexDirection: 'column', backgroundColor: 'green' }}>
+              {index < items.length - 1 && <View style={styles.line}></View>}
+              <View
+                style={[
+                  styles.circular,
+                  {
+                    backgroundColor: item.color || '#e4e7ed',
+                  },
+                ]}
+              />
+            </View>
+
+            {!mode && (
+              <View style={{ paddingLeft: 20, alignItems: 'flex-start', flex: 1 }}>
+                <View style={styles.top}>
+                  <Text style={styles.title}>{item.title}</Text>
+                </View>
+                {item.tips && <Text style={styles.tips}>{item.tips}</Text>}
+                {item.desc && Desc(item.desc)}
               </View>
-              {item.tips && <Text style={styles.tips}>{item.tips}</Text>}
-              {item.desc && Desc(item.desc)}
+            )}
+
+            <View style={{ width: modeType, flexDirection: 'column' }}>
+              {mode && mode === 'alternate' && index % 2 === 0 && (
+                <View style={{ alignItems: 'flex-start' }}>
+                  <View style={styles.top}>
+                    <Text style={styles.title}>{item.title}</Text>
+                  </View>
+                  {item.tips && <Text style={styles.tips}>{item.tips}</Text>}
+                  {item.desc && Desc(item.desc)}
+                </View>
+              )}
             </View>
           </View>
         );
@@ -89,10 +139,12 @@ const styles = StyleSheet.create({
     position: 'relative',
     paddingBottom: 20,
     top: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   circular: {
     position: 'absolute',
-    left: 0,
+    left: -6,
     top: 3,
     width: 14,
     height: 14,
@@ -100,14 +152,14 @@ const styles = StyleSheet.create({
   },
   line: {
     position: 'absolute',
-    left: 6,
+    left: 0,
     top: 17,
     bottom: -3,
     width: 1,
     backgroundColor: '#e4e7ed',
   },
   wrapper: {
-    paddingLeft: 30,
+    paddingLeft: 20,
   },
   top: {},
   tips: {
