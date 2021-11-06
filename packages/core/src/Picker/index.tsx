@@ -156,6 +156,21 @@ const Picker = (props: PickerProps) => {
       setScrollHandle(saveY.current);
     }
   };
+  const getBlankHeight = useMemo(() => {
+    if (lines % 2) {
+      return {
+        top: Math.floor(lines / 2),
+        center: Number((lines / 2).toFixed()),
+        bottom: Math.floor(lines / 2),
+      };
+    }
+    return {
+      top: lines / 2 - 1,
+      center: lines / 2 + 1,
+      bottom: lines / 2,
+    };
+  }, [lines]);
+
   return (
     <View style={{ paddingVertical: 0, height: (style.containerHeight as number) * lines }}>
       <ScrollView
@@ -169,6 +184,12 @@ const Picker = (props: PickerProps) => {
         })}
         scrollEnabled={!readonly}
       >
+        {
+          <Pressable
+            style={[style.containerUn, { height: (style.containerHeight as number) * getBlankHeight.top }]}
+            onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
+          />
+        }
         {data.map((item, index) => (
           <Pressable
             onLayout={getItemHeight}
@@ -193,13 +214,13 @@ const Picker = (props: PickerProps) => {
         ))}
         {
           <Pressable
-            style={[style.containerUn, { height: (style.containerHeight as number) * (lines - 1) }]}
+            style={[style.containerUn, { height: (style.containerHeight as number) * getBlankHeight.bottom }]}
             onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
           />
         }
       </ScrollView>
-      <View style={[style.containerAc, { top: (-style.containerHeight as number) * lines }]} />
-      <View style={[style.containerAc, { top: (-style.containerHeight as number) * (lines - 1) }]} />
+      <View style={[style.containerAc, { top: (-style.containerHeight as number) * getBlankHeight.center }]} />
+      <View style={[style.containerAc, { top: (-style.containerHeight as number) * (getBlankHeight.center - 1) }]} />
     </View>
   );
 };
