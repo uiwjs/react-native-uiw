@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ViewProps } from 'react-native';
+import { TabsItemIconTypes } from '../Tabs/TabsItem';
+import Icon, { IconsProps } from '../Icon';
 
 export interface TimelineItemsProps {
   /** 标题 */
   title: string;
   /** 子标题 */
   tips?: string;
-  /** 标示颜色 */
-  color?: string;
   /** 子项内容 */
   desc?: string | string[];
+  /** 自定义图标 */
+  icon?: IconsProps;
 }
 
 export interface TimelineProps extends ViewProps {
@@ -39,6 +41,20 @@ const Desc = (desc?: string | string[]) => {
   }
 };
 
+const IconCustom = (icon?: IconsProps) => {
+  if (icon) {
+    return (
+      <Icon
+        name={icon?.name ? icon.name : 'circle-o'}
+        size={icon?.size ? icon.size : 15}
+        color={icon?.color ? icon.color : '#e4e7ed'}
+      />
+    );
+  } else {
+    return <Icon name="circle-o" size={15} color="#e4e7ed" />;
+  }
+};
+
 export default (props: TimelineProps) => {
   const { items = [], isReverse, style, mode } = props;
 
@@ -54,11 +70,11 @@ export default (props: TimelineProps) => {
     }
     if (mode) {
       if (mode === 'left') {
-        setModeType('98%');
+        setModeType('90%');
       } else if (mode === 'alternate') {
         setModeType('45%');
       } else {
-        setModeType('98%');
+        setModeType('90%');
       }
     }
   }, [isReverse, items]);
@@ -70,7 +86,7 @@ export default (props: TimelineProps) => {
           <View style={[styles.item]} key={index}>
             <View style={{ width: modeType, flexDirection: 'column' }}>
               {mode && mode === 'alternate' && index % 2 !== 0 && (
-                <View style={{ alignItems: 'flex-end', flexDirection: 'column' }}>
+                <View style={{ alignItems: 'flex-end', flexDirection: 'column', marginRight: 10 }}>
                   <View style={styles.top}>
                     <Text style={styles.title}>{item.title}</Text>
                   </View>
@@ -79,7 +95,7 @@ export default (props: TimelineProps) => {
                 </View>
               )}
               {mode && mode === 'left' && (
-                <View style={{ paddingRight: 10, width: modeType, alignItems: 'flex-end' }}>
+                <View style={{ width: '98%', alignItems: 'flex-end' }}>
                   <View style={styles.top}>
                     <Text style={styles.title}>{item.title}</Text>
                   </View>
@@ -89,27 +105,22 @@ export default (props: TimelineProps) => {
               )}
             </View>
 
-            <View style={{ flexDirection: 'column', backgroundColor: 'green' }}>
+            <View style={{ width: mode && mode === 'left' ? '10%' : 0, flexDirection: 'column', alignItems: 'center' }}>
               {index < items.length - 1 && <View style={styles.line}></View>}
-              <View
-                style={[
-                  styles.circular,
-                  {
-                    backgroundColor: item.color || '#e4e7ed',
-                  },
-                ]}
-              />
+              {IconCustom(item.icon)}
             </View>
 
-            {!mode && (
-              <View style={{ paddingLeft: 20, alignItems: 'flex-start', flex: 1 }}>
-                <View style={styles.top}>
-                  <Text style={styles.title}>{item.title}</Text>
+            <View style={{ width: mode && mode === 'alternate' ? 0 : '90%', flexDirection: 'column' }}>
+              {!mode && (
+                <View style={{ paddingLeft: 10, alignItems: 'flex-start' }}>
+                  <View style={styles.top}>
+                    <Text style={styles.title}>{item.title}</Text>
+                  </View>
+                  {item.tips && <Text style={styles.tips}>{item.tips}</Text>}
+                  {item.desc && Desc(item.desc)}
                 </View>
-                {item.tips && <Text style={styles.tips}>{item.tips}</Text>}
-                {item.desc && Desc(item.desc)}
-              </View>
-            )}
+              )}
+            </View>
 
             <View style={{ width: modeType, flexDirection: 'column' }}>
               {mode && mode === 'alternate' && index % 2 === 0 && (
@@ -142,17 +153,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  circular: {
-    position: 'absolute',
-    left: -6,
-    top: 3,
-    width: 14,
-    height: 14,
-    borderRadius: 16,
-  },
   line: {
     position: 'absolute',
-    left: 0,
     top: 17,
     bottom: -3,
     width: 1,

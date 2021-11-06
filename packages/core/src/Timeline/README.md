@@ -3,43 +3,43 @@ Timeline 时间轴
 
 垂直展示一系列的时间流信息。
 
-### 基础示例
+### 基础示例 & 自定义图标
 
 ```jsx
 import { Timeline } from '@uiw/react-native';
 
 function Demo() {
-   const item1 = [
+ const item = [
     {
-      title: '声明式声明式',
+      title: '声明式声明式声明式声',
       tips: '2021-08-07 12:00:00',
-      desc: 'React 使创建交互式',
+      desc: 'React 使创建交互式 UI 变得轻而易举。为你应用的每一个状态设计简洁的视图，当数据变动时 React 能高效更新并渲染合适的组件。',
+        icon: {
+        color: 'red'
+      },
     },
     {
       title: '组件化',
-      color: 'yellow',
-      tips: '2021-08-08 12:00:00',
-      desc: '构建管理自身状态。',
-    },
-    {
-      title: '随处编写',
-      color: 'red',
-      tips: '2021-08-09 12:00:00',
-      desc: '服务器渲染。',
+      desc: '构建管理自身状态的封装组件，然后对其组合以构成复杂的 UI。',
+      icon: {
+        name: "warning",
+        size: 20,
+        color: 'blue'
+      },
     },
     {
       title: '一次学习，随处编写',
-      color: 'blue',
-      tips: '2021-08-10 12:00:00',
-      desc: '开发新功能。',
+      desc: [
+        '无论你现在使用什么技术栈，在无需重写现有代码的前提下，通过引入 React 来开发新功能。',
+        'React 还可以使用 Node 进行服务器渲染，或使用 React Native 开发原生移动应用。',
+      ],
     },
   ];
   return (
-  <Card title="基础用法">
+     <Card title={`基础用法 & 自定义图标`}>
     <WingBlank>
       <Timeline
        style={{ backgroundColor: '#fff' }}
-       isReverse
        items={item}
        />
     </WingBlank>
@@ -96,10 +96,10 @@ export interface TimelineItemsProps {
   title: string;
   /** 子标题 */
   tips?: string;
-  /** 标示颜色 */
-  color?: string;
   /** 子项内容 */
   desc?: string | string[]; 
+    /** 自定义图标 */
+  icon?: IconsProps;
 }
 
 export interface TimelineProps extends ViewProps {
