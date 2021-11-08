@@ -10,29 +10,29 @@ import { Timeline } from '@uiw/react-native';
 
 function Demo() {
  const item = [
-    {
-      title: '声明式声明式声明式声',
+     {
+      title: '声明式声明式',
       tips: '2021-08-07 12:00:00',
-      desc: 'React 使创建交互式 UI 变得轻而易举。为你应用的每一个状态设计简洁的视图，当数据变动时 React 能高效更新并渲染合适的组件。',
-        icon: {
-        color: 'red'
-      },
+      desc: 'React 使创建交互式',
+      icon: <Icon name="smile" fill="red" size={18} />
     },
     {
       title: '组件化',
-      desc: '构建管理自身状态的封装组件，然后对其组合以构成复杂的 UI。',
-      icon: {
-        name: "warning",
-        size: 20,
-        color: 'blue'
-      },
+      tips: '2021-08-08 12:00:00',
+      desc: '构建管理自身状态。',
+      size: 20,
+      color: 'blue',
+      icon: 'qq'
+    },
+    {
+      title: '随处编写',
+      tips: '2021-08-09 12:00:00',
+      desc: '服务器渲染。',
     },
     {
       title: '一次学习，随处编写',
-      desc: [
-        '无论你现在使用什么技术栈，在无需重写现有代码的前提下，通过引入 React 来开发新功能。',
-        'React 还可以使用 Node 进行服务器渲染，或使用 React Native 开发原生移动应用。',
-      ],
+      tips: '2021-08-10 12:00:00',
+      desc: '开发新功能。',
     },
   ];
   return (
@@ -59,7 +59,7 @@ function Demo() {
       <WingBlank>
         <Timeline
          style={{ backgroundColor: '#fff' }}
-         items={item1}
+         items={item}
          mode="alternate"
          />
       </WingBlank>
@@ -98,8 +98,12 @@ export interface TimelineItemsProps {
   tips?: string;
   /** 子项内容 */
   desc?: string | string[]; 
-    /** 自定义图标 */
-  icon?: IconsProps;
+  /** 自定义图标 */
+  icon?: IconsName | React.ReactElement | React.ReactNode;
+  /** 自定义图标颜色 */
+  color?: string;
+  /** 自定义图标尺寸 */
+  size?: number;
 }
 
 export interface TimelineProps extends ViewProps {

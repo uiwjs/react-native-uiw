@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ViewProps } from 'react-native';
 import { TabsItemIconTypes } from '../Tabs/TabsItem';
-import Icon, { IconsProps } from '../Icon';
+import Icon, { IconsName } from '../Icon';
+import { number } from 'prop-types';
 
 export interface TimelineItemsProps {
   /** 标题 */
@@ -11,7 +12,11 @@ export interface TimelineItemsProps {
   /** 子项内容 */
   desc?: string | string[];
   /** 自定义图标 */
-  icon?: IconsProps;
+  icon?: IconsName | React.ReactElement | React.ReactNode;
+  /** 自定义图标颜色 */
+  color?: string;
+  /** 自定义图标尺寸 */
+  size?: number;
 }
 
 export interface TimelineProps extends ViewProps {
@@ -41,17 +46,19 @@ const Desc = (desc?: string | string[]) => {
   }
 };
 
-const IconCustom = (icon?: IconsProps) => {
+const IconCustom = (icon?: IconsName | React.ReactElement | React.ReactNode, size?: number, color?: string) => {
   if (icon) {
     return (
-      <Icon
-        name={icon?.name ? icon.name : 'circle-o'}
-        size={icon?.size ? icon.size : 15}
-        color={icon?.color ? icon.color : '#e4e7ed'}
-      />
+      <>
+        {typeof icon === 'string' ? (
+          <Icon name={icon as IconsName} size={size ? size : 15} color={color ? color : 'red'} />
+        ) : (
+          icon
+        )}
+      </>
     );
   } else {
-    return <Icon name="circle-o" size={15} color="#e4e7ed" />;
+    return <Icon name="circle-o" size={size ? size : 15} color={color ? color : '#e4e7ed'} />;
   }
 };
 
@@ -76,6 +83,8 @@ export default (props: TimelineProps) => {
       } else {
         setModeType('90%');
       }
+    } else {
+      setModeType('0%');
     }
   }, [isReverse, items]);
 
@@ -107,7 +116,7 @@ export default (props: TimelineProps) => {
 
             <View style={{ width: mode && mode === 'left' ? '10%' : 0, flexDirection: 'column', alignItems: 'center' }}>
               {index < items.length - 1 && <View style={styles.line}></View>}
-              {IconCustom(item.icon)}
+              {IconCustom(item.icon, item.size, item.color)}
             </View>
 
             <View style={{ width: mode && mode === 'alternate' ? 0 : '90%', flexDirection: 'column' }}>
