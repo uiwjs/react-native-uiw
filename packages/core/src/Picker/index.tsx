@@ -197,7 +197,7 @@ const Picker = (props: PickerProps) => {
             onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
             onPress={() => {
               if (readonly) return;
-              if (timer.current) return;
+              // if (timer.current) return;
               clearTimeout(onPressTimer.current!);
               onPressORonScroll.current = 'onPress';
               location(ItemHeights![index], index);
