@@ -34,7 +34,6 @@ export default class Demo extends React.Component<ScreenRootProps> {
 ```
 
 ### Props
-组件继承react-native-gesture-handler[`Swipeable`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/components/swipeable)
 ```tsx
 export interface ScreenRootProps {
   /**
