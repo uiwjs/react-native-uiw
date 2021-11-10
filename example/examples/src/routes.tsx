@@ -443,4 +443,12 @@ export const stackPageData: Routes[] = [
       description: 'DatePicker 年-月-日-时-分',
     },
   },
+  {
+    name: 'ScreenRoot',
+    component: require('./routes/ScreenRoot').default,
+    params: {
+      title: 'ScreenRoot 屏幕头部导航',
+      description: 'ScreenRoot',
+    },
+  },
 ];

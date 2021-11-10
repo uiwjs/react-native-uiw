@@ -106,6 +106,9 @@ export * from './Picker';
 export { default as DatePicker } from './DatePicker';
 export * from './DatePicker';
 
+export { default as ScreenRoot } from './ScreenRoot';
+export * from './ScreenRoot';
+
 /**
  * Typography
  */
