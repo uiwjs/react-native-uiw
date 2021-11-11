@@ -9,11 +9,12 @@ import {
   Platform,
   StatusBar,
   StyleProp,
+  StatusBarProps,
 } from 'react-native';
 import Icon from '../Icon';
 import MaskLayer from '../MaskLayer';
 
-export interface ScreenRootProps {
+export interface ScreenRootProps extends StatusBarProps {
   /**
    * 无需头部导航栏
    */
@@ -49,6 +50,7 @@ export interface ScreenRootProps {
   pageType?: 'screen' | 'modal';
   children?: React.ReactNode;
   barStyle?: 'default' | 'light-content' | 'dark-content';
+  statusBarProps?: StatusBarProps;
 }
 
 const ScreenRoot = (props: ScreenRootProps) => {
@@ -79,6 +81,7 @@ const ScreenRoot = (props: ScreenRootProps) => {
     // 状态栏主题 default light-content dark-content
     barStyle = 'dark-content',
     headerRightStyle = {},
+    statusBarProps = {},
   } = props;
 
   const isScreen = pageType === 'screen';
@@ -144,7 +147,7 @@ const ScreenRoot = (props: ScreenRootProps) => {
 
   return (
     <SafeAreaView style={[isScreen ? {} : { backgroundColor: modalBackgroundColor, ...rootStyle }, { flex: 1 }]}>
-      <StatusBar barStyle={barStyle} backgroundColor="red" translucent={true} animated={true} />
+      <StatusBar barStyle={barStyle} backgroundColor="red" translucent={true} animated={true} {...statusBarProps} />
       {loading && (
         <MaskLayer visible={loading} opacity={0.3}>
           <ActivityIndicator color="#333" size="large" style={{ marginTop: 300 }} />
@@ -197,7 +200,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#333',
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: '600',
   },
   rightContainer: {

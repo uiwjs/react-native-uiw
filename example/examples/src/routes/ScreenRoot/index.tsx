@@ -5,7 +5,7 @@ import {ComProps} from '../../routes';
 
 export interface ScreenRootProps extends ComProps {}
 
-export default class Demo extends React.Component<ScreenRootProps> {
+export default class ScreenRootDemo extends React.Component<ScreenRootProps> {
   render() {
     const HeaderRight = () => (
       <TouchableOpacity onPress={() => {}}>
