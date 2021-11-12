@@ -13,7 +13,6 @@ interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
 
 export default function Header(props: HeaderProps) {
   const { showBorder = true, enableStyle, style = {} } = props;
-  // @ts-ignore
   const version = pkg.version || '2.0.0';
 
   if (showBorder || enableStyle) {
