@@ -1,4 +1,7 @@
-import {StackNavigationProp} from '@react-navigation/stack';
+import {
+  StackNavigationProp,
+  StackNavigationOptions,
+} from '@react-navigation/stack';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -14,6 +17,7 @@ export type Routes = {
     title: string;
     description: string;
   };
+  options?: StackNavigationOptions;
 };
 
 export const stackPageData: Routes[] = [
@@ -449,6 +453,9 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'ScreenRoot 屏幕头部导航',
       description: 'ScreenRoot',
+    },
+    options: {
+      header: () => null,
     },
   },
 ];

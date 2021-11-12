@@ -23,6 +23,7 @@ export default class ScreenRootDemo extends React.Component<ScreenRootProps> {
     return (
       <ScreenRoot
         title="ScreenRoot"
+        screenBackgroundColor="#fff"
         headerRight={HeaderRight()}
         onBack={() => this.props.navigation.goBack()}
       />
