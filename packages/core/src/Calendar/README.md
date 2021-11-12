@@ -3,9 +3,7 @@ Calendar 日历
 
 展示日历
 
-### 基础示例
-
-<img src='https://user-images.githubusercontent.com/66067296/141421928-d46ffd84-2349-49ac-8b6f-4e8455a017eb.gif' alt='Calendar' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/66067296/141421928-d46ffd84-2349-49ac-8b6f-4e8455a017eb.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 

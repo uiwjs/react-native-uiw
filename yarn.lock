@@ -1801,9 +1801,9 @@
     minimist "^1.2.0"
 
 "@codemirror/autocomplete@^0.19.0":
-  version "0.19.5"
-  resolved "https://registry.yarnpkg.com/@codemirror/autocomplete/-/autocomplete-0.19.5.tgz#7304a08d1efd6ac6a6223f3804cb625ff73df2c1"
-  integrity sha512-4ZP9hUaGKw5iSeOMwBv3Qa5fZO8puuna7eDwB8jjRPOtxW4X6e2LY8SmsNSp3ZLXsrhUAOt8urNqv1jBp7SxqA==
+  version "0.19.6"
+  resolved "https://registry.yarnpkg.com/@codemirror/autocomplete/-/autocomplete-0.19.6.tgz#8c2ecd6eace3a1196985dbc68a46bb399f70d9df"
+  integrity sha512-hFYpNWq/DHpZTDn51+40YfNXysfX/iUnUzYuXnDVLOYMyxCAC+0vzA6aMHACFp/R2CEpRFfdAsNrQZpFkWVgSg==
   dependencies:
     "@codemirror/language" "^0.19.0"
     "@codemirror/state" "^0.19.4"
@@ -19719,6 +19719,11 @@ typescript@4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
   integrity sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==
+
+typescript@4.4.4:
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.4.tgz#2cd01a1a1f160704d3101fd5a58ff0f9fcb8030c"
+  integrity sha512-DqGhF5IKoBl8WNf8C1gu8q0xZSInh9j1kJJMqT3a94w1JzVaBU4EXOSMrz9yDqMT0xt3selp83fuFMQ0uzv6qA==
 
 ua-parser-js@^0.7.30:
   version "0.7.31"

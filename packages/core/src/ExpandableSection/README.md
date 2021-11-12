@@ -3,8 +3,7 @@ ExpandableSection 展开缩放
 
 ExpandableSection 组件以在 sectionHeader标题 下方或上方呈现展开的内容部分
 
-<img src='https://user-images.githubusercontent.com/66067296/137708253-1b6c2dfb-9c89-477a-a6ea-0c46120bf86d.gif' alt='ExpandableSection' style='zoom:33%;' />
-
+![](https://user-images.githubusercontent.com/66067296/137708253-1b6c2dfb-9c89-477a-a6ea-0c46120bf86d.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 

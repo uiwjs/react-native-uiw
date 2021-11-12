@@ -3,7 +3,7 @@ Avatar 头像
 
 用来代表用户或事物，支持图片展示，当前是基于 React Native 组件 Image 封装，你也可以使用更快的图片展示插件 [react-native-fast-image](https://github.com/DylanVann/react-native-fast-image)。
 
-<img src='https://user-images.githubusercontent.com/57083007/137631738-4338453c-c552-4caa-9261-8fd84c018942.png' alt='Avatar' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/57083007/137631738-4338453c-c552-4caa-9261-8fd84c018942.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 

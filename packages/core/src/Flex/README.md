@@ -4,10 +4,9 @@ Flex Flex布局
 
 Flex 是 React Native CSS flex 布局的一个封装。
 
-
-<img src='https://user-images.githubusercontent.com/66067296/137708776-ad9d357f-9aad-4131-8bb1-408f4ae90a08.png' alt='Flex' style='zoom:33%;' />
-<img src='https://user-images.githubusercontent.com/66067296/137708793-79f69f8b-1d8d-4278-9aa9-6562ea6f1094.png' alt='Flex1' style='zoom:33%;' />
-<img src='https://user-images.githubusercontent.com/66067296/137708799-435612a4-0139-411e-b7fa-b9f4c63be07f.png' alt='Flex2' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/66067296/137708776-ad9d357f-9aad-4131-8bb1-408f4ae90a08.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+![](https://user-images.githubusercontent.com/66067296/137708793-79f69f8b-1d8d-4278-9aa9-6562ea6f1094.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+![](https://user-images.githubusercontent.com/66067296/137708799-435612a4-0139-411e-b7fa-b9f4c63be07f.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 

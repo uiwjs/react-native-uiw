@@ -1,7 +1,7 @@
 Badge 标记
 ---
 
-<img src='https://user-images.githubusercontent.com/57083007/137631808-f3899eb4-69c1-4dd5-a686-0f8bb38fe4b6.png' alt='Badge' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/57083007/137631808-f3899eb4-69c1-4dd5-a686-0f8bb38fe4b6.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
