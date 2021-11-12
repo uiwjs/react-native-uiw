@@ -6,6 +6,7 @@ on:
 
 env:
   SKIP_PREFLIGHT_CHECK: true
+  NODE_OPTIONS: --max_old_space_size=8192
 
 jobs:
   build-deploy:
@@ -32,12 +33,12 @@ jobs:
 
       - name: Generate Changelog
         id: changelog
-        uses: jaywcjlove/changelog-generator@v1.4.6
+        uses: jaywcjlove/changelog-generator@v1.4.8
         if: steps.create_tag.outputs.successful
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           head-ref: ${{ steps.create_tag.outputs.version }}
-          filter-author: (小弟调调™|renovate|Renovate Bot)
+          filter-author: (renovate-bot|Renovate Bot)
           filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
       - name: Create Release
@@ -55,9 +56,17 @@ jobs:
             ${{ steps.changelog.outputs.changelog }}
 
       - run: git status
-      - run: npm install @jsdevtools/npm-publish -g
-      - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/core/package.json
-      - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/docs/package.json
+      - name: 📦  @uiw/react-native publish to NPM
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./packages/core/package.json
+
+      - name: 📦  @uiw/react-native-doc publish to NPM
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./packages/docs/package.json
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
