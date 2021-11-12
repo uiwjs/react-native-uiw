@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 type UseFetchResult<F> = {
   error?: any;
@@ -6,20 +6,28 @@ type UseFetchResult<F> = {
 };
 
 export function useFetch<T>(url: string, options?: RequestInit): UseFetchResult<T> {
-  const [response, setResponse] = React.useState(null);
-  const [error, setError] = React.useState(null);
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState<unknown>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    let mounted = true;
     const fetchData = async () => {
       try {
         const res = await fetch(url, options);
         const json = await res.json();
-        setResponse(json);
+        if (mounted) {
+          setResponse(json);
+        }
       } catch (error) {
-        setError(error);
+        if (mounted) {
+          setError(error);
+        }
       }
     };
     fetchData();
+    return () => {
+      mounted = false;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

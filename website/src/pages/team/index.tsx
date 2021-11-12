@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { DefaultProps } from '../../';
 import ButtonStyle from '../../component/ButtonStyle';
 import styles from './index.module.less';
 import FooterTitle from '../../component/Footer';
@@ -22,7 +21,7 @@ const data: { username: string; nickname?: string }[] = [
   { username: 'huqiaoli', nickname: 'huqiaoli' },
 ];
 
-export default function Team(props: DefaultProps) {
+export default function Team() {
   return (
     <Fragment>
       <section className={styles.warpper}>

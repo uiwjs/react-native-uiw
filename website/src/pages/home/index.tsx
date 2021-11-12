@@ -2,11 +2,10 @@ import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import ButtonStyle from '../../component/ButtonStyle';
 import Footer from '../../component/Footer';
-import { DefaultProps } from '../../';
-import styles from './index.module.less';
 import { ReactComponent as Waves } from './waves.svg';
+import styles from './index.module.less';
 
-export default function Home(props: DefaultProps) {
+export default function Home() {
   return (
     <Fragment>
       <div className={styles.header}>

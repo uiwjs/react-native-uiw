@@ -1,229 +1,270 @@
-import { Loader } from 'uiw';
-import dynamic from 'react-dynamic-loadable';
-import { store } from '../models';
+import { lazy } from 'react';
 
-function Loading() {
-  return (
-    <div style={{ textAlign: 'center', padding: '50px 0 50px 0' }}>
-      <Loader color="#333" tip="页面加载中..." />
-    </div>
-  );
-}
-
-// wrapper of dynamic
-const dynamicWrapper = (models: string[], component: () => Promise<any>) =>
-  dynamic({
-    models: () =>
-      models.map((m: string) => {
-        return import(`../models/${m}.ts`).then((md) => {
-          const modelData = md.default || md;
-          store.addModel({ name: m, ...modelData });
-        });
-      }),
-    component,
-    LoadingComponent: Loading,
-  });
-
-export type RouterData = typeof getRouterData;
-
-export const getRouterData = {
-  '/': {
-    component: dynamicWrapper([], () => import('../layouts/BasicLayout')),
-  },
-  '/home': {
-    component: dynamicWrapper([], () => import('../pages/home')),
-  },
-  '/team': {
-    component: dynamicWrapper([], () => import('../pages/team')),
-  },
-  '/docs/getting-started': {
-    component: dynamicWrapper([], () => import('../pages/docs/getting-started')),
-  },
-  '/docs/environment-setup': {
-    component: dynamicWrapper([], () => import('../pages/docs/environment-setup')),
-  },
-  '/docs/environment-setup/ios': {
-    component: dynamicWrapper([], () => import('../pages/docs/environment-setup/ios')),
-  },
-  '/docs/environment-setup/android': {
-    component: dynamicWrapper([], () => import('../pages/docs/environment-setup/android')),
-  },
-  '/docs/environment-setup/android-windows': {
-    component: dynamicWrapper([], () => import('../pages/docs/environment-setup/android-windows')),
-  },
-  '/docs/app-store/ios': {
-    component: dynamicWrapper([], () => import('../pages/docs/app-store/ios')),
-  },
-  '/docs/app-store/android': {
-    component: dynamicWrapper([], () => import('../pages/docs/app-store/android')),
-  },
-  '/docs/development/document': {
-    component: dynamicWrapper([], () => import('../pages/docs/development/document')),
-  },
-  '/docs/development/components': {
-    component: dynamicWrapper([], () => import('../pages/docs/development/components')),
-  },
-  '/docs/awesome-react-native': {
-    component: dynamicWrapper([], () => import('../pages/docs/awesome-react-native')),
-  },
-  '/docs/react-native-template': {
-    component: dynamicWrapper([], () => import('../pages/docs/react-native-template')),
-  },
-  '/components/about': {
-    component: dynamicWrapper([], () => import('../pages/components/about')),
-  },
-  '/components/divider': {
-    component: dynamicWrapper([], () => import('../pages/components/divider')),
-  },
-  '/components/flex': {
-    component: dynamicWrapper([], () => import('../pages/components/flex')),
-  },
-  '/components/table': {
-    component: dynamicWrapper([], () => import('../pages/components/table')),
-  },
-  '/components/spacing': {
-    component: dynamicWrapper([], () => import('../pages/components/spacing')),
-  },
-  '/components/winblank': {
-    component: dynamicWrapper([], () => import('../pages/components/winblank')),
-  },
-  '/components/drawer': {
-    component: dynamicWrapper([], () => import('../pages/components/drawer')),
-  },
-  '/components/menudropdown': {
-    component: dynamicWrapper([], () => import('../pages/components/menudropdown')),
-  },
-  '/components/swipeaction': {
-    component: dynamicWrapper([], () => import('../pages/components/swipeaction')),
-  },
-  '/components/expandablesection': {
-    component: dynamicWrapper([], () => import('../pages/components/expandablesection')),
-  },
-  '/components/button': {
-    component: dynamicWrapper([], () => import('../pages/components/button')),
-  },
-  '/components/buttongroup': {
-    component: dynamicWrapper([], () => import('../pages/components/buttongroup')),
-  },
-  '/components/checkbox': {
-    component: dynamicWrapper([], () => import('../pages/components/checkbox')),
-  },
-  '/components/input': {
-    component: dynamicWrapper([], () => import('../pages/components/input')),
-  },
-  '/components/radio': {
-    component: dynamicWrapper([], () => import('../pages/components/radio')),
-  },
-  '/components/rating': {
-    component: dynamicWrapper([], () => import('../pages/components/rating')),
-  },
-  '/components/segmentedcontrol': {
-    component: dynamicWrapper([], () => import('../pages/components/segmentedcontrol')),
-  },
-  '/components/slider': {
-    component: dynamicWrapper([], () => import('../pages/components/slider')),
-  },
-  '/components/switch': {
-    component: dynamicWrapper([], () => import('../pages/components/switch')),
-  },
-  '/components/searchbar': {
-    component: dynamicWrapper([], () => import('../pages/components/searchbar')),
-  },
-  '/components/picker': {
-    component: dynamicWrapper([], () => import('../pages/components/picker')),
-  },
-  '/components/selectcascader': {
-    component: dynamicWrapper([], () => import('../pages/components/selectcascader')),
-  },
-  '/components/avatar': {
-    component: dynamicWrapper([], () => import('../pages/components/avatar')),
-  },
-  '/components/badge': {
-    component: dynamicWrapper([], () => import('../pages/components/badge')),
-  },
-  '/components/ellipsis': {
-    component: dynamicWrapper([], () => import('../pages/components/ellipsis')),
-  },
-  '/components/empty': {
-    component: dynamicWrapper([], () => import('../pages/components/empty')),
-  },
-  '/components/grid': {
-    component: dynamicWrapper([], () => import('../pages/components/grid')),
-  },
-  '/components/icon': {
-    component: dynamicWrapper([], () => import('../pages/components/icon')),
-  },
-  '/components/list': {
-    component: dynamicWrapper([], () => import('../pages/components/list')),
-  },
-  '/components/typography': {
-    component: dynamicWrapper([], () => import('../pages/components/typography')),
-  },
-  '/components/loader': {
-    component: dynamicWrapper([], () => import('../pages/components/loader')),
-  },
-  '/components/modal': {
-    component: dynamicWrapper([], () => import('../pages/components/modal')),
-  },
-  '/components/masklayer': {
-    component: dynamicWrapper([], () => import('../pages/components/masklayer')),
-  },
-  '/components/result': {
-    component: dynamicWrapper([], () => import('../pages/components/result')),
-  },
-  '/components/toast': {
-    component: dynamicWrapper([], () => import('../pages/components/toast')),
-  },
-  '/components/steps': {
-    component: dynamicWrapper([], () => import('../pages/components/steps')),
-  },
-  '/components/timeLine': {
-    component: dynamicWrapper([], () => import('../pages/components/timeLine')),
-  },
-  '/components/tabs': {
-    component: dynamicWrapper([], () => import('../pages/components/tabs')),
-  },
-  '/components/quicklist': {
-    component: dynamicWrapper([], () => import('../pages/components/quicklist')),
-  },
-  '/components/speeddial': {
-    component: dynamicWrapper([], () => import('../pages/components/speeddial')),
-  },
-  '/components/progress': {
-    component: dynamicWrapper([], () => import('../pages/components/progress')),
-  },
-  '/components/card': {
-    component: dynamicWrapper([], () => import('../pages/components/card')),
-  },
-  '/components/noticebar': {
-    component: dynamicWrapper([], () => import('../pages/components/noticebar')),
-  },
-
-  '/components/stepper': {
-    component: dynamicWrapper([], () => import('../pages/components/stepper')),
-  },
-  '/components/swiper': {
-    component: dynamicWrapper([], () => import('../pages/components/swiper')),
-  },
-  '/components/tooltip': {
-    component: dynamicWrapper([], () => import('../pages/components/tooltip')),
-  },
-  '/components/tile': {
-    component: dynamicWrapper([], () => import('../pages/components/tile')),
-  },
-  '/components/transitionImage': {
-    component: dynamicWrapper([], () => import('../pages/components/transitionImage')),
-  },
-  '/components/cardcollapse': {
-    component: dynamicWrapper([], () => import('../pages/components/cardcollapse')),
-  },
-  '/components/actionSheet': {
-    component: dynamicWrapper([], () => import('../pages/components/actionSheet')),
-  },
-  '/components/search-input-bar': {
-    component: dynamicWrapper([], () => import('../pages/components/search-input-bar')),
-  },
-  '/components/pagination': {
-    component: dynamicWrapper([], () => import('../pages/components/pagination')),
-  },
-};
+export const routeData = [
+  {
+    path: '/',
+    component: lazy(() => import('../component/Container')),
+    children: [
+      {
+        path: '/home',
+        component: lazy(() => import('../pages/home')),
+      },
+      {
+        path: '/team',
+        component: lazy(() => import('../pages/team')),
+      },
+      {
+        path: '/docs/getting-started',
+        component: lazy(() => import('../pages/docs/getting-started')),
+      },
+      {
+        path: '/docs/environment-setup',
+        component: lazy(() => import('../pages/docs/environment-setup')),
+      },
+      {
+        path: '/docs/environment-setup/ios',
+        component: lazy(() => import('../pages/docs/environment-setup/ios')),
+      },
+      {
+        path: '/docs/environment-setup/android',
+        component: lazy(() => import('../pages/docs/environment-setup/android')),
+      },
+      {
+        path: '/docs/environment-setup/android-windows',
+        component: lazy(() => import('../pages/docs/environment-setup/android-windows')),
+      },
+      {
+        path: '/docs/app-store/ios',
+        component: lazy(() => import('../pages/docs/app-store/ios')),
+      },
+      {
+        path: '/docs/app-store/android',
+        component: lazy(() => import('../pages/docs/app-store/android')),
+      },
+      {
+        path: '/docs/development/document',
+        component: lazy(() => import('../pages/docs/development/document')),
+      },
+      {
+        path: '/docs/development/components',
+        component: lazy(() => import('../pages/docs/development/components')),
+      },
+      {
+        path: '/docs/awesome-react-native',
+        component: lazy(() => import('../pages/docs/awesome-react-native')),
+      },
+      {
+        path: '/docs/react-native-template',
+        component: lazy(() => import('../pages/docs/react-native-template')),
+      },
+      {
+        path: '/components/about',
+        component: lazy(() => import('../pages/components/about')),
+      },
+      {
+        path: '/components/divider',
+        component: lazy(() => import('../pages/components/divider')),
+      },
+      {
+        path: '/components/flex',
+        component: lazy(() => import('../pages/components/flex')),
+      },
+      {
+        path: '/components/table',
+        component: lazy(() => import('../pages/components/table')),
+      },
+      {
+        path: '/components/spacing',
+        component: lazy(() => import('../pages/components/spacing')),
+      },
+      {
+        path: '/components/winblank',
+        component: lazy(() => import('../pages/components/winblank')),
+      },
+      {
+        path: '/components/drawer',
+        component: lazy(() => import('../pages/components/drawer')),
+      },
+      {
+        path: '/components/menudropdown',
+        component: lazy(() => import('../pages/components/menudropdown')),
+      },
+      {
+        path: '/components/swipeaction',
+        component: lazy(() => import('../pages/components/swipeaction')),
+      },
+      {
+        path: '/components/expandablesection',
+        component: lazy(() => import('../pages/components/expandablesection')),
+      },
+      {
+        path: '/components/button',
+        component: lazy(() => import('../pages/components/button')),
+      },
+      {
+        path: '/components/buttongroup',
+        component: lazy(() => import('../pages/components/buttongroup')),
+      },
+      {
+        path: '/components/checkbox',
+        component: lazy(() => import('../pages/components/checkbox')),
+      },
+      {
+        path: '/components/input',
+        component: lazy(() => import('../pages/components/input')),
+      },
+      {
+        path: '/components/radio',
+        component: lazy(() => import('../pages/components/radio')),
+      },
+      {
+        path: '/components/rating',
+        component: lazy(() => import('../pages/components/rating')),
+      },
+      {
+        path: '/components/segmentedcontrol',
+        component: lazy(() => import('../pages/components/segmentedcontrol')),
+      },
+      {
+        path: '/components/slider',
+        component: lazy(() => import('../pages/components/slider')),
+      },
+      {
+        path: '/components/switch',
+        component: lazy(() => import('../pages/components/switch')),
+      },
+      {
+        path: '/components/searchbar',
+        component: lazy(() => import('../pages/components/searchbar')),
+      },
+      {
+        path: '/components/picker',
+        component: lazy(() => import('../pages/components/picker')),
+      },
+      {
+        path: '/components/selectcascader',
+        component: lazy(() => import('../pages/components/selectcascader')),
+      },
+      {
+        path: '/components/avatar',
+        component: lazy(() => import('../pages/components/avatar')),
+      },
+      {
+        path: '/components/badge',
+        component: lazy(() => import('../pages/components/badge')),
+      },
+      {
+        path: '/components/ellipsis',
+        component: lazy(() => import('../pages/components/ellipsis')),
+      },
+      {
+        path: '/components/empty',
+        component: lazy(() => import('../pages/components/empty')),
+      },
+      {
+        path: '/components/grid',
+        component: lazy(() => import('../pages/components/grid')),
+      },
+      {
+        path: '/components/icon',
+        component: lazy(() => import('../pages/components/icon')),
+      },
+      {
+        path: '/components/list',
+        component: lazy(() => import('../pages/components/list')),
+      },
+      {
+        path: '/components/typography',
+        component: lazy(() => import('../pages/components/typography')),
+      },
+      {
+        path: '/components/loader',
+        component: lazy(() => import('../pages/components/loader')),
+      },
+      {
+        path: '/components/modal',
+        component: lazy(() => import('../pages/components/modal')),
+      },
+      {
+        path: '/components/masklayer',
+        component: lazy(() => import('../pages/components/masklayer')),
+      },
+      {
+        path: '/components/result',
+        component: lazy(() => import('../pages/components/result')),
+      },
+      {
+        path: '/components/toast',
+        component: lazy(() => import('../pages/components/toast')),
+      },
+      {
+        path: '/components/steps',
+        component: lazy(() => import('../pages/components/steps')),
+      },
+      {
+        path: '/components/timeLine',
+        component: lazy(() => import('../pages/components/timeLine')),
+      },
+      {
+        path: '/components/tabs',
+        component: lazy(() => import('../pages/components/tabs')),
+      },
+      {
+        path: '/components/quicklist',
+        component: lazy(() => import('../pages/components/quicklist')),
+      },
+      {
+        path: '/components/speeddial',
+        component: lazy(() => import('../pages/components/speeddial')),
+      },
+      {
+        path: '/components/progress',
+        component: lazy(() => import('../pages/components/progress')),
+      },
+      {
+        path: '/components/card',
+        component: lazy(() => import('../pages/components/card')),
+      },
+      {
+        path: '/components/noticebar',
+        component: lazy(() => import('../pages/components/noticebar')),
+      },
+      {
+        path: '/components/stepper',
+        component: lazy(() => import('../pages/components/stepper')),
+      },
+      {
+        path: '/components/swiper',
+        component: lazy(() => import('../pages/components/swiper')),
+      },
+      {
+        path: '/components/tooltip',
+        component: lazy(() => import('../pages/components/tooltip')),
+      },
+      {
+        path: '/components/tile',
+        component: lazy(() => import('../pages/components/tile')),
+      },
+      {
+        path: '/components/transitionImage',
+        component: lazy(() => import('../pages/components/transitionImage')),
+      },
+      {
+        path: '/components/cardcollapse',
+        component: lazy(() => import('../pages/components/cardcollapse')),
+      },
+      {
+        path: '/components/actionSheet',
+        component: lazy(() => import('../pages/components/actionSheet')),
+      },
+      {
+        path: '/components/search-input-bar',
+        component: lazy(() => import('../pages/components/search-input-bar')),
+      },
+      {
+        path: '/components/pagination',
+        component: lazy(() => import('../pages/components/pagination')),
+      },
+    ],
+  },
+];
