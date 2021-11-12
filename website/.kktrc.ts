@@ -14,6 +14,7 @@ export default (conf: Configuration, env: 'development' | 'production', options:
     allowedFiles: [path.resolve(process.cwd(), 'README.md')],
   });
 
+  conf.module!.exprContextCritical = false;
   // Get the project version.
   conf.plugins!.push(
     new webpack.DefinePlugin({

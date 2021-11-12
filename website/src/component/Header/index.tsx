@@ -14,7 +14,6 @@ interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
 export default function Header(props: HeaderProps) {
   const { showBorder = true, enableStyle, style = {} } = props;
   // @ts-ignore
-  // eslint-disable-next-line
   const version = pkg.version || '2.0.0';
 
   if (showBorder || enableStyle) {
@@ -36,8 +35,8 @@ export default function Header(props: HeaderProps) {
         </Link>
         <div className={styles.menus}>
           <NavLink to="/home">首页</NavLink>
-          <NavLink to="/docs/">文档</NavLink>
-          <NavLink to="/components/">RN组件</NavLink>
+          <NavLink to="/docs">文档</NavLink>
+          <NavLink to="/components">RN组件</NavLink>
           <a target="__blank" href="https://github.com/uiwjs/react-native-uiw/issues">
             问题反馈
           </a>
