@@ -265,6 +265,10 @@ export const routeData = [
         path: '/components/pagination',
         component: lazy(() => import('../pages/components/pagination')),
       },
+      {
+        path: '/components/calendar',
+        component: lazy(() => import('../pages/components/calendar')),
+      },
     ],
   },
 ];

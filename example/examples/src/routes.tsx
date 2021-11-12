@@ -458,4 +458,12 @@ export const stackPageData: Routes[] = [
       header: () => null,
     },
   },
+  {
+    name: 'Calendar',
+    component: require('./routes/Calendar').default,
+    params: {
+      title: 'Calendar 日历',
+      description: '展示日历',
+    },
+  },
 ];

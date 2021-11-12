@@ -21,6 +21,7 @@ export const componentMenus: MenuData[] = [
   { divider: true, name: 'Data Entry' },
   { path: '/components/buttongroup', name: 'ButtonGroup 按钮组' },
   { path: '/components/checkbox', name: 'CheckBox 复选框' },
+  { path: '/components/calendar', name: 'Calendar 日历' },
   { path: '/components/input', name: 'Input 文本输入' },
   { path: '/components/radio', name: 'Radio 单选框' },
   { path: '/components/rating', name: 'Rating 评分' },
