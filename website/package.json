@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@rematch/core": "2.1.1",
-    "@rematch/loading": "2.1.1",
+    "@rematch/loading": "2.1.2",
     "@uiw/react-code-preview": "2.1.4",
     "@uiw/react-markdown-preview": "3.4.1",
     "@uiw/react-native": "2.11.1",

@@ -3681,10 +3681,10 @@
   resolved "https://registry.yarnpkg.com/@rematch/core/-/core-2.1.1.tgz#448362d694988682419c3f8f4246b712804ce13f"
   integrity sha512-bybueWnn3r5vPFuyrx3GsVDGki5ql6x+15WI4FQLPCvRF3bbTN93X9GSz3tfNL39NcHoljVkL4t3oYDbpel23A==
 
-"@rematch/loading@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@rematch/loading/-/loading-2.1.1.tgz#51854003167929a8020bc15a0b6cebdb1e569875"
-  integrity sha512-kBKKRW+x9NTa2C6dw5Q+HVpbB62J3EeBmV4mmqDPOX53YV2pKXeQZOKvc9Iz54txPYac4uhZrxnRzM0Voz7aaQ==
+"@rematch/loading@2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@rematch/loading/-/loading-2.1.2.tgz#1dc680d445cd2d1234489cb69816278d02cf2216"
+  integrity sha512-3fWUvWkIxP+BEi2LCKYKaUkMFCT0MDcN1xQD19tPNufMry7skqybahqm9/ugs9wIji1n3ObF7yHkrb01E+N3Tw==
 
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
