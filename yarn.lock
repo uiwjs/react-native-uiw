@@ -3676,10 +3676,10 @@
     color "^3.1.3"
     warn-once "^0.1.0"
 
-"@rematch/core@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@rematch/core/-/core-2.1.1.tgz#448362d694988682419c3f8f4246b712804ce13f"
-  integrity sha512-bybueWnn3r5vPFuyrx3GsVDGki5ql6x+15WI4FQLPCvRF3bbTN93X9GSz3tfNL39NcHoljVkL4t3oYDbpel23A==
+"@rematch/core@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@rematch/core/-/core-2.2.0.tgz#c4e6cc9d369d341afe2345842f43c255b7a44e90"
+  integrity sha512-Sj3nC/2X+bOBZeOf4jdJ00nhCcx9wLbVK9SOs6eFR4Y1qKXqRY0hGigbQgfTpCdjRFlwTHHfN3m41MlNvMhDgw==
 
 "@rematch/loading@2.1.1":
   version "2.1.1"
