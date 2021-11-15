@@ -3,7 +3,7 @@ Ellipsis 超出省略
 
 用于文本过长，超出长度显示 `...`。
 
-<img src='https://user-images.githubusercontent.com/66067296/137707584-8883d475-52a7-4022-a6dd-ceb91be028e2.png' alt='Ellipsis' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/66067296/137707584-8883d475-52a7-4022-a6dd-ceb91be028e2.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 

@@ -1,7 +1,7 @@
 Divider 分割线
 ---
 
-<img src='https://user-images.githubusercontent.com/66067296/140264880-2e3ad121-d86f-4625-8149-7bf452b348db.png' alt='Divider' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/66067296/140264880-2e3ad121-d86f-4625-8149-7bf452b348db.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 区隔内容的分割线。
 

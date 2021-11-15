@@ -5,7 +5,7 @@ CheckBox 复选框
 
 ### 基础示例
 
-<img src='https://user-images.githubusercontent.com/66067296/137703908-c4370f9c-fce7-423a-abd7-7951d5a48d06.png' alt='CheckBox' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/66067296/137703908-c4370f9c-fce7-423a-abd7-7951d5a48d06.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ```jsx
 import { CheckBox } from '@uiw/react-native';

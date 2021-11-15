@@ -3,8 +3,8 @@ Button 按钮
 
 按钮用于开始一个即时操作。
 
-<img src='https://user-images.githubusercontent.com/57083007/137631908-57393986-82b8-4e2e-b753-aa77dac58672.png' alt='Button' style='zoom:33%;' />
-<img src='https://user-images.githubusercontent.com/57083007/137631915-8281cbac-ba0d-4795-8f8b-8274bcecc172.png' alt='Button' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/57083007/137631908-57393986-82b8-4e2e-b753-aa77dac58672.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+![](https://user-images.githubusercontent.com/57083007/137631915-8281cbac-ba0d-4795-8f8b-8274bcecc172.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
