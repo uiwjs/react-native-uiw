@@ -3,7 +3,7 @@ Calendar 日历
 
 展示日历
 
-![](https://user-images.githubusercontent.com/66067296/141421928-d46ffd84-2349-49ac-8b6f-4e8455a017eb.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+![](https://user-images.githubusercontent.com/66067296/141939109-5fbd8b77-82fa-4eb4-bd6d-6670fd577878.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
@@ -38,7 +38,7 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
 }
 ```
 
-### 自定义日历颜色
+### 自定义日历颜色、农历及假日展示
 
 ```jsx
 import React from 'react';
@@ -61,7 +61,7 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-           <Calendar color="red" />
+             <Calendar color="red" lunarHoliday={true} />
           </Body>
           <Footer />
         </Layout>
@@ -75,4 +75,5 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
-| `color` | 设置日历颜色 | String | "#329BCB" |
+| `color` | 设置日历颜色 | String | `#329BCB` |
+| `lunarHoliday` | 是否显示农历及假日 | Boolean | `false` |

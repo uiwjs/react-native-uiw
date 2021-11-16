@@ -20,7 +20,7 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
           <Body>
             <Calendar />
             <Spacing size={'large'} />
-            <Calendar color="red" />
+            <Calendar color="red" lunarHoliday={true} />
           </Body>
           <Footer />
         </Layout>

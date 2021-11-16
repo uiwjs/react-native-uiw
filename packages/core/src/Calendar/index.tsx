@@ -3,19 +3,21 @@ import { View, Text, ViewProps, TextProps, StyleSheet, TouchableOpacity, Dimensi
 import { color } from 'src/utils';
 import Icon from '../Icon';
 import { getMonths, getWeeksArray, daysArrProps } from './utils';
+import { getLunarCalendar } from './lunarHolidays';
 
 export let MainWidth = Dimensions.get('window').width;
 export let newDates = new Date();
 export let toYear = newDates.getFullYear();
 export let toMonth = newDates.getMonth();
 export let toDays = newDates.getDate();
-
 export interface CalendarProps extends ViewProps {
   // 日历颜色
   color: string;
+  //是否显示农历及假日
+  lunarHoliday: boolean;
 }
 const Calendar = (props: CalendarProps) => {
-  const { color = '#329BCB' } = props;
+  const { color = '#329BCB', lunarHoliday = false } = props;
 
   const [currentYear, setCurrentYear] = useState<number>(toYear);
   const [currentMonth, setCurrentMonth] = useState<number>(toMonth);
@@ -25,7 +27,7 @@ const Calendar = (props: CalendarProps) => {
   const [nextData, setNextData] = useState<number[]>([]);
 
   useEffect(() => {
-    let toMonths = getMonths(currentYear, currentMonth);
+    let toMonths = getMonths(currentYear, currentMonth, currentDays);
     setLastData(toMonths[0]);
     setDayData(toMonths[1]);
     setNextData(toMonths[2]);
@@ -43,10 +45,10 @@ const Calendar = (props: CalendarProps) => {
   };
 
   const renderWeeks = () => {
-    let groupedDays = getWeeksArray(lastData, dayData, nextData);
+    let groupedDays = getWeeksArray(lastData, dayData, nextData, currentYear, currentMonth);
     return groupedDays.map((weekDays, index) => {
       return (
-        <View key={index} style={styles.weekDays}>
+        <View key={index} style={styles.weekDay}>
           {renderDays(weekDays)}
         </View>
       );
@@ -69,6 +71,8 @@ const Calendar = (props: CalendarProps) => {
       } else {
         type = 0;
       }
+      let lineHeight = lunarHoliday === true ? 0 : MainWidth / 7 - 4.5;
+      let paddingTop = lunarHoliday === true ? 4 : 0;
       return (
         <TouchableOpacity
           key={index}
@@ -83,9 +87,31 @@ const Calendar = (props: CalendarProps) => {
           }
           onPress={() => goSelectDay(day)}
         >
-          <Text style={[styles.dayText, { color: type === 1 ? '#B5B5B5' : type === 2 ? '#fff' : '#000' }]}>
+          <Text
+            style={[
+              styles.dayText,
+              {
+                color: type === 1 ? '#B5B5B5' : type === 2 ? '#fff' : '#000',
+                lineHeight: lineHeight,
+                paddingTop: paddingTop,
+              },
+            ]}
+          >
             {day.monthDays}
           </Text>
+          {lunarHoliday === true && (
+            <Text
+              style={[
+                styles.dayText,
+                {
+                  color: type === 1 ? '#B5B5B5' : type === 2 ? '#fff' : '#828282',
+                  fontSize: 13,
+                },
+              ]}
+            >
+              {day.lunarHolidays}
+            </Text>
+          )}
         </TouchableOpacity>
       );
     });
@@ -225,11 +251,10 @@ const styles = StyleSheet.create({
     color: '#616161',
     textAlign: 'center',
   },
-
   calendarDays: {
     marginVertical: 10,
   },
-  weekDays: {
+  weekDay: {
     flexDirection: 'row',
     paddingHorizontal: 2,
   },
@@ -262,7 +287,6 @@ const styles = StyleSheet.create({
   dayText: {
     textAlign: 'center',
     fontSize: 17,
-    lineHeight: MainWidth / 7 - 4.5,
     fontWeight: '500',
   },
 });

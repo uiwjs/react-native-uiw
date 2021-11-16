@@ -1,8 +1,9 @@
 import { Dimensions, Text } from 'react-native';
+import { getLunarCalendar } from './lunarHolidays';
 /**
  * 处理当月、上月、下月数据
  */
-export function getMonths(year: number, month: number) {
+export function getMonths(year: number, month: number, day: number) {
   let threeMonth: Array<number[]> = [];
   let monthDays = getMonthCount(year, month);
   let whereMonday = getWeekday(year, month);
@@ -73,24 +74,28 @@ export interface daysArrProps {
   monthDays: number;
   index: number;
   type: string;
+  lunarHolidays: string;
 }
 /**
  * 按每周分行
  * @returns daysArrProps
  */
-export function getWeeksArray(lastDays: number[], days: number[], nextDays: number[]) {
+export function getWeeksArray(lastDays: number[], days: number[], nextDays: number[], year: number, month: number) {
   let res: daysArrProps[] = [];
   let lastArr: daysArrProps[] = [];
   let currentArr: daysArrProps[] = [];
   let nextArr: daysArrProps[] = [];
   lastDays.forEach((lstVal, lstIndx) => {
-    lastArr.push({ monthDays: lstVal, index: lstIndx, type: 'last' });
+    let lunarHolidays = getLunarCalendar(year, month - 1, lstVal);
+    lastArr.push({ monthDays: lstVal, index: lstIndx, type: 'last', lunarHolidays: lunarHolidays });
   });
   days.forEach((Val, Indx) => {
-    currentArr.push({ monthDays: Val, index: Indx, type: 'current' });
+    let lunarHolidays = getLunarCalendar(year, month, Val);
+    currentArr.push({ monthDays: Val, index: Indx, type: 'current', lunarHolidays: lunarHolidays });
   });
   nextDays.forEach((nextVal, nextIndx) => {
-    nextArr.push({ monthDays: nextVal, index: nextIndx, type: 'next' });
+    let lunarHolidays = getLunarCalendar(year, month + 1, nextVal);
+    nextArr.push({ monthDays: nextVal, index: nextIndx, type: 'next', lunarHolidays: lunarHolidays });
   });
   res = res.concat(lastArr, currentArr, nextArr);
   let weekR: Array<daysArrProps[]> = [];
