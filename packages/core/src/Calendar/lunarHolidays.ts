@@ -1,9 +1,14 @@
 import { Dimensions, Text } from 'react-native';
 import { lunarInfo, nStr1, nStr2, lunarHoliday, solarTerm, sTermInfo, basejieri } from './lunarDatas';
+export interface CalendarProps {
+  lunarHolidays: string;
+  colorType: string;
+}
 /**
  * 获取农历
+ * @returns CalendarProps
  */
-export function getLunarCalendar(year: number, month: number, day: number): string {
+export function getLunarCalendar(year: number, month: number, day: number) {
   let lDate = Lunar(year, month, day);
   let y = lDate.years;
   let m = lDate.months;
@@ -12,7 +17,9 @@ export function getLunarCalendar(year: number, month: number, day: number): stri
   let paraHoliday = (m > 9 ? m : '0' + m) + '' + (d > 9 ? d : '0' + d);
   //农历节日
   if (lunarHoliday.hasOwnProperty(paraHoliday)) {
-    return lunarHoliday[paraHoliday as keyof typeof lunarHoliday];
+    let paraData = lunarHoliday[paraHoliday as keyof typeof lunarHoliday];
+    let getHoliday: CalendarProps = { lunarHolidays: paraData, colorType: 'type' };
+    return getHoliday;
   }
   if (m === 12) {
     let theLastDay = lDate.isLeap ? leapDays(y) : monthDays(y, m); //农历当月最後一天
@@ -30,7 +37,9 @@ export function getLunarCalendar(year: number, month: number, day: number): stri
   }
   //法定节日
   if (basejieri.hasOwnProperty(solarTermDay)) {
-    return basejieri[solarTermDay as keyof typeof basejieri];
+    let paraData = basejieri[solarTermDay as keyof typeof basejieri];
+    let getHoliday: CalendarProps = { lunarHolidays: paraData, colorType: 'type' };
+    return getHoliday;
   }
   if (d === 1) {
     lunar = nStr1[m] + '月';

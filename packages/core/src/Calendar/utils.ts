@@ -1,5 +1,7 @@
+import { bindAll } from 'lodash';
+import { string } from 'prop-types';
 import { Dimensions, Text } from 'react-native';
-import { getLunarCalendar } from './lunarHolidays';
+import { getLunarCalendar, CalendarProps } from './lunarHolidays';
 /**
  * 处理当月、上月、下月数据
  */
@@ -70,11 +72,22 @@ export function getNextMonthCount(year: number, month: number) {
   }
 }
 
+export function getJudge(lunarHoliday: string | CalendarProps) {
+  let getHoliday: CalendarProps;
+
+  if (typeof lunarHoliday === 'string') {
+    getHoliday = { lunarHolidays: lunarHoliday, colorType: '' };
+  } else {
+    getHoliday = { lunarHolidays: lunarHoliday.lunarHolidays, colorType: lunarHoliday.colorType };
+  }
+  return getHoliday;
+}
 export interface daysArrProps {
   monthDays: number;
   index: number;
   type: string;
   lunarHolidays: string;
+  colorType: string;
 }
 /**
  * 按每周分行
@@ -87,15 +100,36 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
   let nextArr: daysArrProps[] = [];
   lastDays.forEach((lstVal, lstIndx) => {
     let lunarHolidays = getLunarCalendar(year, month - 1, lstVal);
-    lastArr.push({ monthDays: lstVal, index: lstIndx, type: 'last', lunarHolidays: lunarHolidays });
+    let getHoliday = getJudge(lunarHolidays);
+    lastArr.push({
+      monthDays: lstVal,
+      index: lstIndx,
+      type: 'last',
+      lunarHolidays: getHoliday.lunarHolidays,
+      colorType: getHoliday.colorType,
+    });
   });
   days.forEach((Val, Indx) => {
     let lunarHolidays = getLunarCalendar(year, month, Val);
-    currentArr.push({ monthDays: Val, index: Indx, type: 'current', lunarHolidays: lunarHolidays });
+    let getHoliday = getJudge(lunarHolidays);
+    currentArr.push({
+      monthDays: Val,
+      index: Indx,
+      type: 'current',
+      lunarHolidays: getHoliday.lunarHolidays,
+      colorType: getHoliday.colorType,
+    });
   });
   nextDays.forEach((nextVal, nextIndx) => {
     let lunarHolidays = getLunarCalendar(year, month + 1, nextVal);
-    nextArr.push({ monthDays: nextVal, index: nextIndx, type: 'next', lunarHolidays: lunarHolidays });
+    let getHoliday = getJudge(lunarHolidays);
+    nextArr.push({
+      monthDays: nextVal,
+      index: nextIndx,
+      type: 'next',
+      lunarHolidays: getHoliday.lunarHolidays,
+      colorType: getHoliday.colorType,
+    });
   });
   res = res.concat(lastArr, currentArr, nextArr);
   let weekR: Array<daysArrProps[]> = [];
@@ -111,4 +145,31 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
     }
   });
   return weekR;
+}
+
+export function getType(
+  day: daysArrProps,
+  currentYear: number,
+  currentMonth: number,
+  currentDays: number,
+  toYear: number,
+  toMonth: number,
+  toDays: number,
+) {
+  let type = 0;
+  if (day.type === 'last' || day.type === 'next') {
+    type = 1;
+  } else if (
+    currentYear === toYear &&
+    currentMonth === toMonth &&
+    day.monthDays === currentDays &&
+    currentDays === toDays
+  ) {
+    type = 2;
+  } else if (day.monthDays === currentDays) {
+    type = 3;
+  } else {
+    type = 0;
+  }
+  return type;
 }

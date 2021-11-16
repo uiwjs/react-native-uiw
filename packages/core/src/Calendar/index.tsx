@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, ViewProps, TextProps, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { color } from 'src/utils';
 import Icon from '../Icon';
-import { getMonths, getWeeksArray, daysArrProps } from './utils';
-import { getLunarCalendar } from './lunarHolidays';
+import { getMonths, getWeeksArray, daysArrProps, getType } from './utils';
 
 export let MainWidth = Dimensions.get('window').width;
 export let newDates = new Date();
@@ -56,23 +55,15 @@ const Calendar = (props: CalendarProps) => {
   };
   const renderDays = (weekDays: daysArrProps[]) => {
     return weekDays.map((day, index) => {
-      let type = 0;
-      if (day.type === 'last' || day.type === 'next') {
-        type = 1;
-      } else if (
-        currentYear === toYear &&
-        currentMonth === toMonth &&
-        day.monthDays === currentDays &&
-        currentDays === toDays
-      ) {
-        type = 2;
-      } else if (day.monthDays === currentDays) {
-        type = 3;
-      } else {
-        type = 0;
-      }
+      let type = getType(day, currentYear, currentMonth, currentDays, toYear, toMonth, toDays);
       let lineHeight = lunarHoliday === true ? 0 : MainWidth / 7 - 4.5;
       let paddingTop = lunarHoliday === true ? 4 : 0;
+      let colorType = '';
+      if (day.colorType === '') {
+        colorType = '#828282';
+      } else {
+        colorType = color;
+      }
       return (
         <TouchableOpacity
           key={index}
@@ -104,7 +95,7 @@ const Calendar = (props: CalendarProps) => {
               style={[
                 styles.dayText,
                 {
-                  color: type === 1 ? '#B5B5B5' : type === 2 ? '#fff' : '#828282',
+                  color: type === 1 ? '#B5B5B5' : type === 2 ? '#fff' : colorType,
                   fontSize: 13,
                 },
               ]}
