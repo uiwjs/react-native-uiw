@@ -147,6 +147,9 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
   return weekR;
 }
 
+/**
+ * 处理当月、上月、下月状态判断
+ */
 export function getType(
   day: daysArrProps,
   currentYear: number,
@@ -172,4 +175,15 @@ export function getType(
     type = 0;
   }
   return type;
+}
+
+/**
+ * 农历及假日文字长度
+ */
+export function getNameLen(name: string): number {
+  let len = 0;
+  for (let i = 0; i < name.length; i++) {
+    len++;
+  }
+  return len;
 }
