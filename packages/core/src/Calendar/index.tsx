@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, ViewProps, TextProps, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { color } from 'src/utils';
 import Icon from '../Icon';
-import { getMonths, getWeeksArray, daysArrProps, getType } from './utils';
+import Ellipsis from '../Ellipsis';
+import { getMonths, getWeeksArray, daysArrProps, getType, getNameLen } from './utils';
 
 export let MainWidth = Dimensions.get('window').width;
 export let newDates = new Date();
@@ -57,6 +58,7 @@ const Calendar = (props: CalendarProps) => {
   const renderDays = (weekDays: daysArrProps[]) => {
     return weekDays.map((day, index) => {
       let type = getType(day, currentYear, currentMonth, currentDays, toYear, toMonth, toDays);
+      let nameLen = getNameLen(day.lunarHolidays);
       let lineHeight = lunarHoliday === true ? 0 : MainWidth / 7 - 4.5;
       let paddingTop = lunarHoliday === true ? 4 : 0;
       let colorType = '';
@@ -101,7 +103,7 @@ const Calendar = (props: CalendarProps) => {
                 },
               ]}
             >
-              {day.lunarHolidays}
+              {nameLen > 3 ? <Ellipsis maxLen={2}>{day.lunarHolidays}</Ellipsis> : day.lunarHolidays}
             </Text>
           )}
         </TouchableOpacity>

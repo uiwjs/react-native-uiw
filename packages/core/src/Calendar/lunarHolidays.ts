@@ -24,7 +24,8 @@ export function getLunarCalendar(year: number, month: number, day: number) {
   if (m === 12) {
     let theLastDay = lDate.isLeap ? leapDays(y) : monthDays(y, m); //农历当月最後一天
     if (theLastDay === d) {
-      return '除夕';
+      let getHoliday: CalendarProps = { lunarHolidays: '除夕', colorType: 'type' };
+      return getHoliday;
     }
   }
   // 节气
@@ -32,7 +33,9 @@ export function getLunarCalendar(year: number, month: number, day: number) {
   let sTermDateArr = sTermDate(year);
   for (var i = 0; i < sTermDateArr.length; i++) {
     if (solarTermDay === sTermDateArr[i]) {
-      return solarTerm[i];
+      let paraData = solarTerm[i];
+      let getHoliday: CalendarProps = { lunarHolidays: paraData, colorType: 'type' };
+      return getHoliday;
     }
   }
   //法定节日
