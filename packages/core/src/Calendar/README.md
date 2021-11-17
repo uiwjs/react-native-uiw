@@ -28,7 +28,7 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Calendar />
+            <Calendar onPress={() => navigation.goBack()}/>
           </Body>
           <Footer />
         </Layout>
@@ -77,3 +77,4 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
 |------|------|-----|------|
 | `color` | 设置日历颜色 | String | `#329BCB` |
 | `lunarHoliday` | 是否显示农历及假日 | Boolean | `false` |
+| `onPress` | 左上角按钮自定义跳转 | void | - |

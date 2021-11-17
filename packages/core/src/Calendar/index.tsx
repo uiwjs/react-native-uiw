@@ -14,10 +14,11 @@ export interface CalendarProps extends ViewProps {
   color: string;
   //是否显示农历及假日
   lunarHoliday: boolean;
+  //左上角按钮自定义跳转
+  onPress?: () => void;
 }
 const Calendar = (props: CalendarProps) => {
-  const { color = '#329BCB', lunarHoliday = false } = props;
-
+  const { color = '#329BCB', lunarHoliday = false, onPress } = props;
   const [currentYear, setCurrentYear] = useState<number>(toYear);
   const [currentMonth, setCurrentMonth] = useState<number>(toMonth);
   const [currentDays, setCurrentDays] = useState<number>(toDays);
@@ -158,13 +159,13 @@ const Calendar = (props: CalendarProps) => {
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
       <View style={[styles.header, { backgroundColor: color }]}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPress}>
           <View style={styles.headerBtn}>
             <Icon name="left" size={20} color={'#fff'} />
-            <Text style={styles.headerText}>Menu</Text>
           </View>
         </TouchableOpacity>
-        <View>
+
+        <View style={{ marginLeft: MainWidth / 5.5 - 10 }}>
           <Text style={styles.headerText}>Calendar</Text>
         </View>
         <TouchableOpacity onPress={() => goToday()}>
@@ -201,6 +202,7 @@ const Calendar = (props: CalendarProps) => {
 };
 const styles = StyleSheet.create({
   header: {
+    flex: 1,
     backgroundColor: '#329BCB',
     flexDirection: 'row',
     padding: 10,

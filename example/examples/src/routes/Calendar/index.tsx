@@ -10,7 +10,7 @@ export interface CalendarViewProps extends ComProps {}
 
 export default class CalendarView extends React.Component<CalendarViewProps> {
   render() {
-    const {route} = this.props;
+    const {route, navigation} = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
@@ -18,9 +18,13 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Calendar />
+            <Calendar onPress={() => navigation.goBack()} />
             <Spacing size={'large'} />
-            <Calendar color="red" lunarHoliday={true} />
+            <Calendar
+              color="red"
+              lunarHoliday={true}
+              onPress={() => navigation.goBack()}
+            />
           </Body>
           <Footer />
         </Layout>
