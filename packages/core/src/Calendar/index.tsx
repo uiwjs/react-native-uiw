@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ViewProps, TextProps, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, ViewProps, TextProps, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import { color } from 'src/utils';
 import Icon from '../Icon';
 import Ellipsis from '../Ellipsis';
@@ -59,7 +59,8 @@ const Calendar = (props: CalendarProps) => {
     return weekDays.map((day, index) => {
       let type = getType(day, currentYear, currentMonth, currentDays, toYear, toMonth, toDays);
       let nameLen = getNameLen(day.lunarHolidays);
-      let lineHeight = lunarHoliday === true ? 0 : MainWidth / 7 - 4.5;
+      let lineHeight =
+        lunarHoliday === true && Platform.OS === 'ios' ? 0 : lunarHoliday === true ? 18 : MainWidth / 7 - 4.5;
       let paddingTop = lunarHoliday === true ? 4 : 0;
       let colorType = '';
       if (day.colorType === '') {
@@ -167,7 +168,7 @@ const Calendar = (props: CalendarProps) => {
           </View>
         </TouchableOpacity>
 
-        <View style={{ marginLeft: MainWidth / 5.5 - 10 }}>
+        <View style={{ marginLeft: MainWidth / 11 }}>
           <Text style={styles.headerText}>Calendar</Text>
         </View>
         <TouchableOpacity onPress={() => goToday()}>
@@ -208,11 +209,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#329BCB',
     flexDirection: 'row',
     padding: 10,
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
   headerBtn: {
     flexDirection: 'row',
     alignItems: 'center',
+    width: 50,
   },
   headerText: {
     fontSize: 20,
