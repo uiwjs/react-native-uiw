@@ -26,7 +26,7 @@ jobs:
 
       - name: Is a tag created auto?
         id: create_tag
-        uses: jaywcjlove/create-tag-action@v1.3.2
+        uses: jaywcjlove/create-tag-action@v1.3.3
         with:
           package-path: ./packages/core/package.json
 
@@ -42,7 +42,7 @@ jobs:
 
 
       - name: Create Release
-        uses: jaywcjlove/create-tag-action@v1.3.2
+        uses: jaywcjlove/create-tag-action@v1.3.3
         with:
           package-path: ./packages/core/package.json
           release: true
