@@ -56,12 +56,18 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
     const { route } = this.props;
     const description = route.params.description;
     const title = route.params.title;
+     const barProps = {
+      barRightText: "返回啦",
+      title : "日历啦",
+      onPressBarLeft: () => { }, 
+      barLeftText: "今天啦" 
+    }
     return (
       <Container>
         <Layout>
           <Header title={title} description={description} />
           <Body>
-           <Calendar color="red" />
+           <Calendar color="red" bar={barProps} />
           </Body>
           <Footer />
         </Layout>
@@ -73,6 +79,23 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
 
 ### props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|-----|------|
-| `color` | 设置日历颜色 | String | "#329BCB" |
+```ts
+
+interface barState {
+  // 导航栏标题
+  title?: string
+  // 导航左侧文本
+  barRightText?: string;
+  // 导航右侧文本
+  barLeftText?: string;
+  // 导航左侧点击事件
+  onPressBarLeft?: () => void;
+  // 自定义导航栏
+  render?: React.ReactNode
+}
+export interface CalendarProps extends ViewProps {
+  // 日历颜色
+  color?: string;
+  bar: barState ;
+}
+```

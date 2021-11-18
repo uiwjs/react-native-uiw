@@ -13,14 +13,20 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
     const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
+    const barProps = {
+      barRightText: '返回啦',
+      title: '日历啦',
+      onPressBarLeft: () => {},
+      barLeftText: '今天啦',
+    };
     return (
       <Container>
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Calendar />
+            <Calendar bar={barProps} />
             <Spacing size={'large'} />
-            <Calendar color="red" />
+            <Calendar color="red" bar={{}} />
           </Body>
           <Footer />
         </Layout>
