@@ -1,8 +1,11 @@
+import { bindAll } from 'lodash';
+import { string } from 'prop-types';
 import { Dimensions, Text } from 'react-native';
+import { getLunarCalendar, CalendarProps } from './lunarHolidays';
 /**
  * 处理当月、上月、下月数据
  */
-export function getMonths(year: number, month: number) {
+export function getMonths(year: number, month: number, day: number) {
   let threeMonth: Array<number[]> = [];
   let monthDays = getMonthCount(year, month);
   let whereMonday = getWeekday(year, month);
@@ -69,28 +72,64 @@ export function getNextMonthCount(year: number, month: number) {
   }
 }
 
+export function getJudge(lunarHoliday: string | CalendarProps) {
+  let getHoliday: CalendarProps;
+
+  if (typeof lunarHoliday === 'string') {
+    getHoliday = { lunarHolidays: lunarHoliday, colorType: '' };
+  } else {
+    getHoliday = { lunarHolidays: lunarHoliday.lunarHolidays, colorType: lunarHoliday.colorType };
+  }
+  return getHoliday;
+}
 export interface daysArrProps {
   monthDays: number;
   index: number;
   type: string;
+  lunarHolidays: string;
+  colorType: string;
 }
 /**
  * 按每周分行
  * @returns daysArrProps
  */
-export function getWeeksArray(lastDays: number[], days: number[], nextDays: number[]) {
+export function getWeeksArray(lastDays: number[], days: number[], nextDays: number[], year: number, month: number) {
   let res: daysArrProps[] = [];
   let lastArr: daysArrProps[] = [];
   let currentArr: daysArrProps[] = [];
   let nextArr: daysArrProps[] = [];
   lastDays.forEach((lstVal, lstIndx) => {
-    lastArr.push({ monthDays: lstVal, index: lstIndx, type: 'last' });
+    let lunarHolidays = getLunarCalendar(year, month - 1, lstVal);
+    let getHoliday = getJudge(lunarHolidays);
+    lastArr.push({
+      monthDays: lstVal,
+      index: lstIndx,
+      type: 'last',
+      lunarHolidays: getHoliday.lunarHolidays,
+      colorType: getHoliday.colorType,
+    });
   });
   days.forEach((Val, Indx) => {
-    currentArr.push({ monthDays: Val, index: Indx, type: 'current' });
+    let lunarHolidays = getLunarCalendar(year, month, Val);
+    let getHoliday = getJudge(lunarHolidays);
+    currentArr.push({
+      monthDays: Val,
+      index: Indx,
+      type: 'current',
+      lunarHolidays: getHoliday.lunarHolidays,
+      colorType: getHoliday.colorType,
+    });
   });
   nextDays.forEach((nextVal, nextIndx) => {
-    nextArr.push({ monthDays: nextVal, index: nextIndx, type: 'next' });
+    let lunarHolidays = getLunarCalendar(year, month + 1, nextVal);
+    let getHoliday = getJudge(lunarHolidays);
+    nextArr.push({
+      monthDays: nextVal,
+      index: nextIndx,
+      type: 'next',
+      lunarHolidays: getHoliday.lunarHolidays,
+      colorType: getHoliday.colorType,
+    });
   });
   res = res.concat(lastArr, currentArr, nextArr);
   let weekR: Array<daysArrProps[]> = [];
@@ -106,4 +145,45 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
     }
   });
   return weekR;
+}
+
+/**
+ * 处理当月、上月、下月状态判断
+ */
+export function getType(
+  day: daysArrProps,
+  currentYear: number,
+  currentMonth: number,
+  currentDays: number,
+  toYear: number,
+  toMonth: number,
+  toDays: number,
+) {
+  let type = 0;
+  if (day.type === 'last' || day.type === 'next') {
+    type = 1;
+  } else if (
+    currentYear === toYear &&
+    currentMonth === toMonth &&
+    day.monthDays === currentDays &&
+    currentDays === toDays
+  ) {
+    type = 2;
+  } else if (day.monthDays === currentDays) {
+    type = 3;
+  } else {
+    type = 0;
+  }
+  return type;
+}
+
+/**
+ * 农历及假日文字长度
+ */
+export function getNameLen(name: string): number {
+  let len = 0;
+  for (let i = 0; i < name.length; i++) {
+    len++;
+  }
+  return len;
 }
