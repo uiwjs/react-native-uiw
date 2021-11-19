@@ -16,6 +16,7 @@ import {
   Div,
   Hr,
   Em,
+  RnText,
 } from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
@@ -72,6 +73,19 @@ export default class TypographyView extends React.Component<TypographyViewProps>
               <Text>一段文本</Text>
               <Hr />
               <Text>一段文本</Text>
+            </Card>
+            <Card title="可高亮文字<RnText />">
+              <RnText type="header" label="react-native-uiw" />
+              <RnText type="title" label="react-native-uiw" />
+              <RnText type="label" label="react-native-uiw" />
+              <RnText type="subLabel" label="react-native-uiw" />
+              <RnText
+                type="header"
+                uppercase
+                label="react-native-uiw"
+                highlightText="native"
+                highlightTextStyle={{fontSize: 24, color: 'red'}}
+              />
             </Card>
           </Body>
           <Footer />

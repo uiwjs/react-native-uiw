@@ -3599,6 +3599,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-2.1.0.tgz#1ef22d4e9b2e555d44b43453f51a46d8631f3182"
   integrity sha512-iJ/QaDrBMBaW6cFuQyR3DXzcn2h7c5O7mGgmNLCBQHTTtLNBZR+Sxogy6YleFPeToNdysG5mTTkXqBmlWHMQqg==
 
+"@react-native-picker/picker@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-2.2.0.tgz#e96ecc0808bdf2a706a263b422864bee5a0e6b76"
+  integrity sha512-zhzXsppY9t6TU39WMx/x1L1PyP3dPgGhtav7Yo8nlfihNGIAFwHnNcNuyC8CLdWxKj9n2+Z6+ZR6r/Kda82JnA==
+
 "@react-native/assets@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@react-native/assets/-/assets-1.0.0.tgz#c6f9bf63d274bafc8e970628de24986b30a55c8e"
@@ -4634,12 +4639,7 @@
   resolved "https://registry.yarnpkg.com/@uiw/formatter/-/formatter-1.2.4.tgz#cf1fc44b92410ad473f47fa823269a6a1d30a2b4"
   integrity sha512-anRNRNL+8Q/xRBGaVshpXNTq3xTs5yExyPw0/fGAimswUIeH2MXSxDTAMypBw+DaqNh8v554sidZFL/IWrWcTg==
 
-"@uiw/icons@2.5.1":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@uiw/icons/-/icons-2.5.1.tgz#a2faa548db5a9b0d1a530c8498b339ee8dad9347"
-  integrity sha512-Fxh0hH/HyPuF4A7FsrW19tbmajvf9Aho8N7hGwZP+7Dz6JfteemIUykYPHycHp5Ah6+EvAeewGb1Fx18xdmDpA==
-
-"@uiw/icons@^2.5.0":
+"@uiw/icons@2.5.3", "@uiw/icons@^2.5.0":
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/@uiw/icons/-/icons-2.5.3.tgz#3b8a16bbb495d684672a843797abbea9afed8a19"
   integrity sha512-fYtNcW0TAGhZAz4C8T5b4Xxf7y3s6nC7nAW4gtgHd2kw2BlrxqIOIx5FVG0RWfaZP/m582PPE6JS/4OfJ9+5XA==
@@ -16655,10 +16655,10 @@ pretty-format@^27.0.0, pretty-format@^27.3.1:
     ansi-styles "^5.0.0"
     react-is "^17.0.1"
 
-pretty-quick@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-3.1.1.tgz#93ca4e2dd38cc4e970e3f54a0ead317a25454688"
-  integrity sha512-ZYLGiMoV2jcaas3vTJrLvKAYsxDoXQBUn8OSTxkl67Fyov9lyXivJTl0+2WVh+y6EovGcw7Lm5ThYpH+Sh3XxQ==
+pretty-quick@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-3.1.2.tgz#89d8741af7122cbd7f34182df746c5a7ea360b5c"
+  integrity sha512-T+fpTJrDjTzewql4p3lKrRA7z3MrNyjBK1MKeaBm5PpKwATgVm885TpY7TgY8KFt5Q1Qn3QDseRQcyX9AKTKkA==
   dependencies:
     chalk "^3.0.0"
     execa "^4.0.0"

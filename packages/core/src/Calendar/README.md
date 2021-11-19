@@ -28,7 +28,7 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Calendar onPress={() => navigation.goBack()}/>
+            <Calendar />
           </Body>
           <Footer />
         </Layout>
@@ -61,7 +61,46 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-             <Calendar color="red" lunarHoliday={true} />
+           <Calendar color="red" lunarHoliday={true}/>
+          </Body>
+          <Footer />
+        </Layout>
+      </Container>
+    );
+  }
+}
+```
+
+### 自定义日历头部
+
+```jsx
+import React from 'react';
+import { Text, View } from 'react-native';
+import { Calendar } from '@uiw/react-native';
+import { ComProps } from '../../routes';
+import Layout, { Container } from '../../Layout';
+
+const { Header, Body, Card, Footer } = Layout;
+
+export interface CalendarViewProps extends ComProps { }
+
+export default class CalendarView extends React.Component<CalendarViewProps> {
+  render() {
+    const { route } = this.props;
+    const description = route.params.description;
+    const title = route.params.title;
+     const barProps = {
+      barRightText: "返回",
+      title : "日历",
+      onPressBarLeft: () => navigation.goBack(), 
+      barLeftText: "今天" 
+    }
+    return (
+      <Container>
+        <Layout>
+          <Header title={title} description={description} />
+          <Body>
+           <Calendar color="red" bar={barProps} lunarHoliday={true}/>
           </Body>
           <Footer />
         </Layout>
@@ -73,8 +112,27 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
 
 ### props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|-----|------|
-| `color` | 设置日历颜色 | String | `#329BCB` |
-| `lunarHoliday` | 是否显示农历及假日 | Boolean | `false` |
-| `onPress` | 左上角按钮自定义跳转 | void | - |
+```ts
+
+interface barState {
+  // 导航栏标题
+  title?: string
+  //是否显示农历及假日
+  lunarHoliday:Boolean
+  // 导航左侧文本
+  barRightText?: string;
+  // 导航右侧文本
+  barLeftText?: string;
+  // 导航左侧点击事件
+  onPressBarLeft?: () => void;
+  // 自定义导航栏
+  render?: React.ReactNode
+}
+export interface CalendarProps extends ViewProps {
+  // 日历颜色
+  color?: string;
+   //是否显示农历及假日
+  lunarHoliday: boolean;
+  bar: barState ;
+}
+```

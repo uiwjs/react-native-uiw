@@ -130,3 +130,20 @@ function Demo() {
   );
 }
 ```
+
+```jsx
+import { View } from 'react-native';
+import { RnText } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <View>
+      <RnText type="header" label="react-native-uiw" />
+      <RnText type="title" label="react-native-uiw" />
+      <RnText type="label" label="react-native-uiw" />
+      <RnText type="subLabel" label="react-native-uiw" />
+      <RnText type="header" label="react-native-uiw" highlightText="native" highlightTextStyle={{ fontSize: 24, color: "red" }} />
+    </View>
+  );
+}
+```

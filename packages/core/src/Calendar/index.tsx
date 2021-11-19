@@ -10,16 +10,32 @@ export let newDates = new Date();
 export let toYear = newDates.getFullYear();
 export let toMonth = newDates.getMonth();
 export let toDays = newDates.getDate();
+
+interface barState {
+  title?: string;
+  barRightText?: string;
+  barLeftText?: string;
+  onPressBarLeft?: () => void;
+  render?: React.ReactNode;
+}
 export interface CalendarProps extends ViewProps {
   // 日历颜色
   color: string;
   //是否显示农历及假日
   lunarHoliday: boolean;
-  //左上角按钮自定义跳转
-  onPress?: () => void;
+  bar?: barState;
 }
 const Calendar = (props: CalendarProps) => {
-  const { color = '#329BCB', lunarHoliday = false, onPress } = props;
+  const bars = {
+    barRightText: 'Menu',
+    title: 'Calendar',
+    barLeftText: 'Today',
+    onPressBarLeft: undefined,
+    render: undefined,
+  };
+  const { color = '#329BCB', lunarHoliday = false, bar = bars } = props;
+  const { barRightText, title, barLeftText, onPressBarLeft, render } = bar;
+
   const [currentYear, setCurrentYear] = useState<number>(toYear);
   const [currentMonth, setCurrentMonth] = useState<number>(toMonth);
   const [currentDays, setCurrentDays] = useState<number>(toDays);
@@ -33,6 +49,33 @@ const Calendar = (props: CalendarProps) => {
     setDayData(toMonths[1]);
     setNextData(toMonths[2]);
   }, [currentYear, currentMonth]);
+
+  /**
+   * 头部导航栏
+   * barRightText 左侧文字
+   * title 标题
+   * barLeftText 右侧文字
+   * onPressBarLeft 左侧点击事件
+   * render 自定义导航栏
+   */
+  const renderBar = render ? (
+    render
+  ) : (
+    <View style={[styles.header, { backgroundColor: color }]}>
+      <TouchableOpacity onPress={() => onPressBarLeft && onPressBarLeft()}>
+        <View style={styles.headerBtn}>
+          <Icon name="left" size={20} color={'#fff'} />
+          <Text style={styles.headerText}>{barRightText}</Text>
+        </View>
+      </TouchableOpacity>
+      <View>
+        <Text style={styles.headerText}>{title}</Text>
+      </View>
+      <TouchableOpacity onPress={() => goToday()}>
+        <Text style={styles.headerText}>{barLeftText}</Text>
+      </TouchableOpacity>
+    </View>
+  );
 
   const renderWeekDays = () => {
     let weekdays = ['日', '一', '二', '三', '四', '五', '六'];
@@ -161,21 +204,7 @@ const Calendar = (props: CalendarProps) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      <View style={[styles.header, { backgroundColor: color }]}>
-        <TouchableOpacity onPress={onPress}>
-          <View style={styles.headerBtn}>
-            <Icon name="left" size={20} color={'#fff'} />
-          </View>
-        </TouchableOpacity>
-
-        <View style={{ marginLeft: MainWidth / 11 }}>
-          <Text style={styles.headerText}>Calendar</Text>
-        </View>
-        <TouchableOpacity onPress={() => goToday()}>
-          <Text style={styles.headerText}>Today</Text>
-        </TouchableOpacity>
-      </View>
-
+      {renderBar}
       <View style={styles.calendarHeader}>
         <View style={styles.calendarHeaderItem}>
           <TouchableOpacity onPress={() => getCurrentYear('last')}>

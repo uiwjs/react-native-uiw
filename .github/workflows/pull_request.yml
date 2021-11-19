@@ -4,6 +4,7 @@ on:
 
 env:
   SKIP_PREFLIGHT_CHECK: true
+  NODE_OPTIONS: --max_old_space_size=8192
 
 jobs:
   build-deploy:
