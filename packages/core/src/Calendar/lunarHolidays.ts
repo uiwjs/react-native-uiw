@@ -1,53 +1,89 @@
 import { Dimensions, Text } from 'react-native';
-import { lunarInfo, nStr1, nStr2, lunarHoliday, solarTerm, sTermInfo, basejieri } from './lunarDatas';
+import { lunarInfo, nStr1, nStr2, nStr3, lunarHoliday, solarTerm, sTermInfo, basejieri } from './lunarDatas';
 export interface CalendarProps {
   lunarHolidays: string;
   colorType: string;
+  lunarMonth: string;
+  lunar: string;
 }
 /**
  * 获取农历
  * @returns CalendarProps
  */
-export function getLunarCalendar(year: number, month: number, day: number) {
+export function getLunarCalendar(year: number, month: number, day: number, type?: string) {
   let lDate = Lunar(year, month, day);
   let y = lDate.years;
   let m = lDate.months;
   let d = lDate.days;
   let lunar = '';
   let paraHoliday = (m > 9 ? m : '0' + m) + '' + (d > 9 ? d : '0' + d);
+
+  let lunarMonth = '';
+  if (type === 'currentMonth') {
+    lunarMonth = nStr3[m] + '月';
+  }
+
   //农历节日
   if (lunarHoliday.hasOwnProperty(paraHoliday)) {
     let paraData = lunarHoliday[paraHoliday as keyof typeof lunarHoliday];
-    let getHoliday: CalendarProps = { lunarHolidays: paraData, colorType: 'type' };
+    lunar = cDay(d);
+    let getHoliday: CalendarProps = {
+      lunarHolidays: paraData,
+      colorType: 'type',
+      lunarMonth: lunarMonth,
+      lunar: lunar,
+    };
     return getHoliday;
   }
   if (m === 12) {
     let theLastDay = lDate.isLeap ? leapDays(y) : monthDays(y, m); //农历当月最後一天
+    lunar = cDay(d);
     if (theLastDay === d) {
-      let getHoliday: CalendarProps = { lunarHolidays: '除夕', colorType: 'type' };
+      let getHoliday: CalendarProps = {
+        lunarHolidays: '除夕',
+        colorType: 'type',
+        lunarMonth: lunarMonth,
+        lunar: lunar,
+      };
       return getHoliday;
     }
   }
   // 节气
   let solarTermDay = (month + 1 > 9 ? month + 1 : '0' + (month + 1)) + '' + (day > 9 ? day : '0' + day);
+  lunar = cDay(d);
   let sTermDateArr = sTermDate(year);
   for (var i = 0; i < sTermDateArr.length; i++) {
     if (solarTermDay === sTermDateArr[i]) {
       let paraData = solarTerm[i];
-      let getHoliday: CalendarProps = { lunarHolidays: paraData, colorType: 'type' };
+      let getHoliday: CalendarProps = {
+        lunarHolidays: paraData,
+        colorType: 'type',
+        lunarMonth: lunarMonth,
+        lunar: lunar,
+      };
       return getHoliday;
     }
   }
   //法定节日
   if (basejieri.hasOwnProperty(solarTermDay)) {
     let paraData = basejieri[solarTermDay as keyof typeof basejieri];
-    let getHoliday: CalendarProps = { lunarHolidays: paraData, colorType: 'type' };
+    let getHoliday: CalendarProps = {
+      lunarHolidays: paraData,
+      colorType: 'type',
+      lunarMonth: lunarMonth,
+      lunar: lunar,
+    };
     return getHoliday;
   }
   if (d === 1) {
     lunar = nStr1[m] + '月';
+    let lunar1 = cDay(d);
+    let getHoliday: CalendarProps = { lunarHolidays: lunar, colorType: '', lunarMonth: lunarMonth, lunar: lunar1 };
+    return getHoliday;
   } else {
     lunar = cDay(d);
+    let getHoliday: CalendarProps = { lunarHolidays: '', colorType: '', lunarMonth: lunarMonth, lunar: lunar };
+    return getHoliday;
   }
   return lunar;
 }

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ViewProps, TextProps, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
-import { color } from 'src/utils';
 import Icon from '../Icon';
 import Ellipsis from '../Ellipsis';
 import { getMonths, getWeeksArray, daysArrProps, getType, getNameLen } from './utils';
+import ShowDate from './show';
 
 export let MainWidth = Dimensions.get('window').width;
+export let MainHeight = Dimensions.get('window').height;
 export let newDates = new Date();
 export let toYear = newDates.getFullYear();
 export let toMonth = newDates.getMonth();
 export let toDays = newDates.getDate();
-
 interface barState {
   title?: string;
   barRightText?: string;
@@ -18,13 +18,17 @@ interface barState {
   onPressBarLeft?: () => void;
   render?: React.ReactNode;
 }
+
 export interface CalendarProps extends ViewProps {
   // 日历颜色
   color: string;
   //是否显示农历及假日
   lunarHoliday: boolean;
   bar?: barState;
+  //农历详情
+  showLunar: boolean;
 }
+
 const Calendar = (props: CalendarProps) => {
   const bars = {
     barRightText: 'Menu',
@@ -33,15 +37,15 @@ const Calendar = (props: CalendarProps) => {
     onPressBarLeft: undefined,
     render: undefined,
   };
-  const { color = '#329BCB', lunarHoliday = false, bar = bars } = props;
+  const { color = '#329BCB', lunarHoliday = false, bar = bars, showLunar = false } = props;
   const { barRightText, title, barLeftText, onPressBarLeft, render } = bar;
-
   const [currentYear, setCurrentYear] = useState<number>(toYear);
   const [currentMonth, setCurrentMonth] = useState<number>(toMonth);
   const [currentDays, setCurrentDays] = useState<number>(toDays);
   const [dayData, setDayData] = useState<number[]>([]);
   const [lastData, setLastData] = useState<number[]>([]);
   const [nextData, setNextData] = useState<number[]>([]);
+  const [lunarName, setLunarName] = useState('');
 
   useEffect(() => {
     let toMonths = getMonths(currentYear, currentMonth, currentDays);
@@ -98,9 +102,14 @@ const Calendar = (props: CalendarProps) => {
       );
     });
   };
+
   const renderDays = (weekDays: daysArrProps[]) => {
     return weekDays.map((day, index) => {
-      let type = getType(day, currentYear, currentMonth, currentDays, toYear, toMonth, toDays);
+      let lunarAll = getType(day, currentYear, currentMonth, currentDays, toYear, toMonth, toDays);
+      if (lunarAll.lunarShow !== '' && lunarName === '') {
+        setLunarName(lunarAll.lunarShow);
+      }
+
       let nameLen = getNameLen(day.lunarHolidays);
       let lineHeight =
         lunarHoliday === true && Platform.OS === 'ios' ? 0 : lunarHoliday === true ? 18 : MainWidth / 7 - 4.5;
@@ -115,11 +124,11 @@ const Calendar = (props: CalendarProps) => {
         <TouchableOpacity
           key={index}
           style={
-            type === 1
+            lunarAll.type === 1
               ? styles.otherMonth
-              : type === 2
+              : lunarAll.type === 2
               ? [styles.currentMonth, { backgroundColor: color }]
-              : type === 3
+              : lunarAll.type === 3
               ? [styles.selectMonth, { borderColor: color }]
               : styles.day
           }
@@ -129,7 +138,7 @@ const Calendar = (props: CalendarProps) => {
             style={[
               styles.dayText,
               {
-                color: type === 1 ? '#B5B5B5' : type === 2 ? '#fff' : '#000',
+                color: lunarAll.type === 1 ? '#B5B5B5' : lunarAll.type === 2 ? '#fff' : '#000',
                 lineHeight: lineHeight,
                 paddingTop: paddingTop,
               },
@@ -142,12 +151,12 @@ const Calendar = (props: CalendarProps) => {
               style={[
                 styles.dayText,
                 {
-                  color: type === 1 ? '#B5B5B5' : type === 2 ? '#fff' : colorType,
+                  color: lunarAll.type === 1 ? '#B5B5B5' : lunarAll.type === 2 ? '#fff' : colorType,
                   fontSize: 13,
                 },
               ]}
             >
-              {nameLen > 3 ? <Ellipsis maxLen={2}>{day.lunarHolidays}</Ellipsis> : day.lunarHolidays}
+              {nameLen > 3 ? <Ellipsis maxLen={2}>{day.lunarHolidays}</Ellipsis> : day.lunarHolidays || day.lunar}
             </Text>
           )}
         </TouchableOpacity>
@@ -155,7 +164,9 @@ const Calendar = (props: CalendarProps) => {
     });
   };
   const goSelectDay = (day: daysArrProps) => {
+    let lunarName = `农历${day.lunarMonth}${day.lunar}`;
     if (day.type === 'current') {
+      setLunarName(lunarName);
       setCurrentDays(day.monthDays);
     } else if (day.type === 'last') {
       setCurrentDays(day.monthDays);
@@ -203,32 +214,35 @@ const Calendar = (props: CalendarProps) => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      {renderBar}
-      <View style={styles.calendarHeader}>
-        <View style={styles.calendarHeaderItem}>
-          <TouchableOpacity onPress={() => getCurrentYear('last')}>
-            <Icon name="left" size={20} color={'#333'} />
-          </TouchableOpacity>
-          <Text style={styles.calendarHeaderText}>{currentYear}年</Text>
-          <TouchableOpacity onPress={() => getCurrentYear('next')}>
-            <Icon name="right" size={20} color={'#333'} />
-          </TouchableOpacity>
+    <View style={{ flex: 1, position: 'relative' }}>
+      <View style={{ flex: 1, backgroundColor: '#fff' }}>
+        {renderBar}
+        <View style={styles.calendarHeader}>
+          <View style={styles.calendarHeaderItem}>
+            <TouchableOpacity onPress={() => getCurrentYear('last')}>
+              <Icon name="left" size={20} color={'#333'} />
+            </TouchableOpacity>
+            <Text style={styles.calendarHeaderText}>{currentYear}年</Text>
+            <TouchableOpacity onPress={() => getCurrentYear('next')}>
+              <Icon name="right" size={20} color={'#333'} />
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.calendarHeaderItem}>
+            <TouchableOpacity onPress={() => getCurrentMonth('last')}>
+              <Icon name="left" size={20} color={'#333'} />
+            </TouchableOpacity>
+            <Text style={styles.calendarHeaderText}>{currentMonth + 1}月</Text>
+            <TouchableOpacity onPress={() => getCurrentMonth('next')}>
+              <Icon name="right" size={20} color={'#333'} />
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <View style={styles.calendarHeaderItem}>
-          <TouchableOpacity onPress={() => getCurrentMonth('last')}>
-            <Icon name="left" size={20} color={'#333'} />
-          </TouchableOpacity>
-          <Text style={styles.calendarHeaderText}>{currentMonth + 1}月</Text>
-          <TouchableOpacity onPress={() => getCurrentMonth('next')}>
-            <Icon name="right" size={20} color={'#333'} />
-          </TouchableOpacity>
-        </View>
+        <View style={styles.calendarWeekdays}>{renderWeekDays()}</View>
+        <View style={styles.calendarDays}>{renderWeeks()}</View>
       </View>
-
-      <View style={styles.calendarWeekdays}>{renderWeekDays()}</View>
-      <View style={styles.calendarDays}>{renderWeeks()}</View>
+      {showLunar === true && <ShowDate iconColor={color} lunar={lunarName} />}
     </View>
   );
 };

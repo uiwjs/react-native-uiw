@@ -71,7 +71,7 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
 }
 ```
 
-### 自定义日历头部
+### 自定义日历头部及农历详情展示
 
 ```jsx
 import React from 'react';
@@ -100,7 +100,7 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-           <Calendar color="red" bar={barProps} lunarHoliday={true}/>
+           <Calendar color="red" bar={barProps} lunarHoliday={true} showLunar={true}/>
           </Body>
           <Footer />
         </Layout>
@@ -134,5 +134,7 @@ export interface CalendarProps extends ViewProps {
    //是否显示农历及假日
   lunarHoliday: boolean;
   bar: barState ;
+    //农历详情
+  showLunar: boolean;
 }
 ```

@@ -74,12 +74,17 @@ export function getNextMonthCount(year: number, month: number) {
 
 export function getJudge(lunarHoliday: string | CalendarProps) {
   let getHoliday: CalendarProps;
-
   if (typeof lunarHoliday === 'string') {
-    getHoliday = { lunarHolidays: lunarHoliday, colorType: '' };
+    getHoliday = { lunarHolidays: lunarHoliday, colorType: '', lunarMonth: '', lunar: '' };
   } else {
-    getHoliday = { lunarHolidays: lunarHoliday.lunarHolidays, colorType: lunarHoliday.colorType };
+    getHoliday = {
+      lunarHolidays: lunarHoliday.lunarHolidays,
+      colorType: lunarHoliday.colorType,
+      lunarMonth: lunarHoliday.lunarMonth,
+      lunar: lunarHoliday.lunar,
+    };
   }
+
   return getHoliday;
 }
 export interface daysArrProps {
@@ -88,6 +93,8 @@ export interface daysArrProps {
   type: string;
   lunarHolidays: string;
   colorType: string;
+  lunarMonth: string;
+  lunar: string;
 }
 /**
  * 按每周分行
@@ -107,10 +114,13 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
       type: 'last',
       lunarHolidays: getHoliday.lunarHolidays,
       colorType: getHoliday.colorType,
+      lunarMonth: getHoliday.lunarMonth,
+      lunar: getHoliday.lunar,
     });
   });
   days.forEach((Val, Indx) => {
-    let lunarHolidays = getLunarCalendar(year, month, Val);
+    let types = 'currentMonth';
+    let lunarHolidays = getLunarCalendar(year, month, Val, types);
     let getHoliday = getJudge(lunarHolidays);
     currentArr.push({
       monthDays: Val,
@@ -118,6 +128,8 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
       type: 'current',
       lunarHolidays: getHoliday.lunarHolidays,
       colorType: getHoliday.colorType,
+      lunarMonth: getHoliday.lunarMonth,
+      lunar: getHoliday.lunar,
     });
   });
   nextDays.forEach((nextVal, nextIndx) => {
@@ -129,6 +141,8 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
       type: 'next',
       lunarHolidays: getHoliday.lunarHolidays,
       colorType: getHoliday.colorType,
+      lunarMonth: getHoliday.lunarMonth,
+      lunar: getHoliday.lunar,
     });
   });
   res = res.concat(lastArr, currentArr, nextArr);
@@ -147,8 +161,13 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
   return weekR;
 }
 
+export interface getTypeProps {
+  type: number;
+  lunarShow: string;
+}
 /**
  * 处理当月、上月、下月状态判断
+ *@returns getTypeProps
  */
 export function getType(
   day: daysArrProps,
@@ -159,22 +178,24 @@ export function getType(
   toMonth: number,
   toDays: number,
 ) {
-  let type = 0;
+  let lunarAll: getTypeProps;
+  let lunarShow = `农历${day.lunarMonth}${day.lunar}`;
+
   if (day.type === 'last' || day.type === 'next') {
-    type = 1;
+    lunarAll = { type: 1, lunarShow: '' };
   } else if (
     currentYear === toYear &&
     currentMonth === toMonth &&
     day.monthDays === currentDays &&
     currentDays === toDays
   ) {
-    type = 2;
+    lunarAll = { type: 2, lunarShow: lunarShow };
   } else if (day.monthDays === currentDays) {
-    type = 3;
+    lunarAll = { type: 3, lunarShow: lunarShow };
   } else {
-    type = 0;
+    lunarAll = { type: 0, lunarShow: '' };
   }
-  return type;
+  return lunarAll;
 }
 
 /**
