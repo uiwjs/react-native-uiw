@@ -269,6 +269,10 @@ export const routeData = [
         path: '/components/calendar',
         component: lazy(() => import('../pages/components/calendar')),
       },
+      {
+        path: '/components/dragdrawer',
+        component: lazy(() => import('../pages/components/dragdrawer')),
+      },
     ],
   },
 ];

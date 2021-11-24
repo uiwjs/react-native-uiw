@@ -14,6 +14,7 @@ export const componentMenus: MenuData[] = [
   { path: '/components/winblank', name: 'WingBlank 两翼留白' },
   { divider: true, name: 'Navigation' },
   { path: '/components/drawer', name: 'Drawer 抽屉' },
+  { path: '/components/dragdrawer', name: 'DragDrawer 拖曳抽屉' },
   { path: '/components/menudropdown', name: 'MenuDropdown 菜单下拉按钮' },
   { path: '/components/swipeaction', name: 'SwipeAction 滑动操作组件' },
   { path: '/components/expandablesection', name: 'ExpandableSection 展开缩放组件' },
