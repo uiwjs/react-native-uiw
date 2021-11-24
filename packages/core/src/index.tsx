@@ -110,7 +110,8 @@ export { default as ScreenRoot } from './ScreenRoot';
 export * from './ScreenRoot';
 export { default as Calendar } from './Calendar';
 export * from './Calendar';
-
+export { default as DragDrawer } from './DragDrawer';
+export * from './DragDrawer';
 /**
  * Typography
  */

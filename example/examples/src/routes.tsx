@@ -466,4 +466,12 @@ export const stackPageData: Routes[] = [
       description: '展示日历',
     },
   },
+  {
+    name: 'DragDrawer',
+    component: require('./routes/DragDrawer').default,
+    params: {
+      title: 'DragDrawer 拖曳抽屉',
+      description: '可自定义拖曳抽屉高度',
+    },
+  },
 ];
