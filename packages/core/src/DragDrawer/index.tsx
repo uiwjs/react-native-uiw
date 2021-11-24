@@ -1,5 +1,5 @@
 import { number } from 'prop-types';
-import React, { useState, useRef, useEffect, useMemo, Fragment } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -21,25 +21,22 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 
 export interface DragDrawerProps extends ViewProps {
+  /** 抽屉高度 */
   drawerHeight?: number;
+  /** 抽屉颜色 */
   drawerBackgroundColor?: string;
+  /** 自定义图标 */
+  icon?: IconsName | React.ReactElement | React.ReactNode;
   children?: React.ReactNode;
 }
-export interface DragDrawerProps extends ViewProps {}
-function DragDrawer(props: DragDrawerProps) {
-  const { drawerBackgroundColor = '#fff', drawerHeight = 300, children } = props;
 
-  const [zIndexValue, setZIndexValue] = useState(0);
+function DragDrawer(props: DragDrawerProps) {
+  const { drawerBackgroundColor = '#fff', drawerHeight = 300, children, icon } = props;
+
   const [animatedViewHeight, setAnimatedViewHeight] = useState(new Animated.Value(drawerHeight));
   const [viewHeight, setViewHeight] = useState(drawerHeight);
   const [showAnimate, setShowAnimate] = useState(false);
 
-  const openDrawer = () => {
-    setZIndexValue(3002);
-  };
-  const closeDrawer = () => {
-    setZIndexValue(0);
-  };
   const dynamicDrawerStyles: any = {
     backgroundColor: drawerBackgroundColor,
     top: null,
@@ -48,6 +45,9 @@ function DragDrawer(props: DragDrawerProps) {
     width: '100%',
   };
 
+  /**
+   * 拖曳效果动画
+   *  */
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
@@ -65,7 +65,6 @@ function DragDrawer(props: DragDrawerProps) {
           }, // 可选的异步监听函数
         )(evt, gestureState);
       },
-
       onPanResponderRelease: (e, gestureState) => {
         let values = DEVICE_HEIGHT + 30 - gestureState.moveY;
         if (gestureState.dy >= 0) {
@@ -104,30 +103,35 @@ function DragDrawer(props: DragDrawerProps) {
     }),
   ).current;
 
+  /**
+   * 自定义图标
+   *  */
+  const IconCustom = (icon?: IconsName | React.ReactElement | React.ReactNode) => {
+    if (icon) {
+      return <>{typeof icon === 'string' ? <Icon name={icon as IconsName} size={25} color="#8F8F8F" /> : icon}</>;
+    } else {
+      return <Icon name="minus" size={25} color="#8F8F8F" />;
+    }
+  };
+
   return (
-    <Fragment>
-      <Animated.View
-        style={[
-          styles.drawer,
-          dynamicDrawerStyles,
-          {
-            height: animatedViewHeight,
-          },
-        ]}
-        {...panResponder.panHandlers}
-      >
-        <Animated.View style={[styles.viewPosition]}>
-          <View style={{}}>
-            <TouchableOpacity activeOpacity={1}>
-              <View style={[styles.homeContainer]}>
-                <Icon name="minus" size={25} fill="#8F8F8F" />
-              </View>
-            </TouchableOpacity>
-          </View>
-        </Animated.View>
-        {children}
+    <Animated.View
+      style={[
+        styles.drawer,
+        dynamicDrawerStyles,
+        {
+          height: animatedViewHeight,
+        },
+      ]}
+      {...panResponder.panHandlers}
+    >
+      <Animated.View style={[styles.viewPosition]}>
+        <TouchableOpacity activeOpacity={1}>
+          <View style={[styles.homeContainer]}>{IconCustom(icon)}</View>
+        </TouchableOpacity>
       </Animated.View>
-    </Fragment>
+      {children}
+    </Animated.View>
   );
 }
 
@@ -136,7 +140,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
   },
   homeContainer: {
     width: 50,
@@ -152,17 +155,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     flex: 1,
     zIndex: 3004,
-  },
-  positionFull: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  overlay: {
-    backgroundColor: '#000',
-    zIndex: 3002,
   },
 });
 
