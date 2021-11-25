@@ -54,3 +54,4 @@ export default function DragDrawerView({ route }: DragDrawerViewProps) {
 | `drawerHeight` | 抽屉高度 | Number | `300` |
 | `drawerBackgroundColor` | 指定抽屉背景色 | String | `#fff` |
 | `icon` | 自定义图标 | `IconsName | React.ReactElement | React.ReactNode` |  |
+| `style` | 自定义抽屉样式 | `StyleProp<ViewStyle>` |  |

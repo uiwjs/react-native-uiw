@@ -11,6 +11,7 @@ import {
   UIManager, // 动画
   Animated, // 动画
   PanResponder, // 手指拖拽
+  StyleProp,
 } from 'react-native';
 import Icon, { IconsName } from '../Icon';
 
@@ -28,10 +29,11 @@ export interface DragDrawerProps extends ViewProps {
   /** 自定义图标 */
   icon?: IconsName | React.ReactElement | React.ReactNode;
   children?: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
 }
 
 function DragDrawer(props: DragDrawerProps) {
-  const { drawerBackgroundColor = '#fff', drawerHeight = 300, children, icon } = props;
+  const { drawerBackgroundColor = '#fff', drawerHeight = 300, children, icon, style } = props;
 
   const [animatedViewHeight, setAnimatedViewHeight] = useState(new Animated.Value(drawerHeight));
   const [viewHeight, setViewHeight] = useState(drawerHeight);
@@ -119,6 +121,7 @@ function DragDrawer(props: DragDrawerProps) {
       style={[
         styles.drawer,
         dynamicDrawerStyles,
+        style,
         {
           height: animatedViewHeight,
         },
