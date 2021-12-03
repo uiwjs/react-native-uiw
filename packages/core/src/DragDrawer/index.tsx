@@ -29,7 +29,6 @@ export interface DragDrawerProps extends ViewProps {
   /** 自定义图标 */
   icon?: IconsName | React.ReactElement | React.ReactNode;
   children?: React.ReactNode;
-  style?: StyleProp<ViewStyle>;
 }
 
 function DragDrawer(props: DragDrawerProps) {
