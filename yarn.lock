@@ -4743,10 +4743,10 @@
     "@uiw/react-radio" "^4.9.7"
     "@uiw/utils" "^4.9.7"
 
-"@uiw/react-code-preview@2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@uiw/react-code-preview/-/react-code-preview-2.2.3.tgz#1354d2e0e850082ad135ca0bd54ddc217225c40e"
-  integrity sha512-H2tiu139fBZp24aC0swF+XTqgAxAzJqVJz7vrV8WaBTl91R9/fYDQLitwZYX7wOS3Hv+TV5XvOez51+4Sir9Iw==
+"@uiw/react-code-preview@2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@uiw/react-code-preview/-/react-code-preview-2.2.4.tgz#4a83f41e4bce95d13bec909e98c17947b932b58a"
+  integrity sha512-hBLdUgtTUMmijiy1EZR1ppH13doenZd0DEmIEZSR02O5tnXO4VmGPJEqhcHNZ0MifOrjkTBJ5NsHP1j3kkb0ug==
   dependencies:
     "@babel/core" "7.16.0"
     "@babel/plugin-transform-classes" "7.16.0"
