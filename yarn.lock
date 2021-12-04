@@ -1729,13 +1729,6 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.15.4":
-  version "7.15.4"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
-  integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/runtime@7.16.0":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.0.tgz#e27b977f2e2088ba24748bf99b5e1dece64e4f0b"
@@ -4750,10 +4743,10 @@
     "@uiw/react-radio" "^4.9.7"
     "@uiw/utils" "^4.9.7"
 
-"@uiw/react-code-preview@2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@uiw/react-code-preview/-/react-code-preview-2.2.3.tgz#1354d2e0e850082ad135ca0bd54ddc217225c40e"
-  integrity sha512-H2tiu139fBZp24aC0swF+XTqgAxAzJqVJz7vrV8WaBTl91R9/fYDQLitwZYX7wOS3Hv+TV5XvOez51+4Sir9Iw==
+"@uiw/react-code-preview@2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@uiw/react-code-preview/-/react-code-preview-2.2.4.tgz#4a83f41e4bce95d13bec909e98c17947b932b58a"
+  integrity sha512-hBLdUgtTUMmijiy1EZR1ppH13doenZd0DEmIEZSR02O5tnXO4VmGPJEqhcHNZ0MifOrjkTBJ5NsHP1j3kkb0ug==
   dependencies:
     "@babel/core" "7.16.0"
     "@babel/plugin-transform-classes" "7.16.0"
@@ -4922,20 +4915,21 @@
   dependencies:
     "@uiw/utils" "^4.9.7"
 
-"@uiw/react-markdown-preview@3.4.1":
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@uiw/react-markdown-preview/-/react-markdown-preview-3.4.1.tgz#d35f0b1d6242af1e7753dd21868bcd23d952f035"
-  integrity sha512-bRIENpp96K7NUTcNHwN/RM/0qo7Xchiq3moaEFPI0uWBh2BlN51n6PtJH44FBZDXQutcsxe4/9MkmpFN8frOYQ==
+"@uiw/react-markdown-preview@3.4.4":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@uiw/react-markdown-preview/-/react-markdown-preview-3.4.4.tgz#4b720045bdbdd16104ae650ad79eeff989a3c7f8"
+  integrity sha512-sHZeAbjOw9UWQ4IJPuF3IaNCGPFDG3rOoChMIZ/JXzV86Ouscnfp/zxtXFKdKJoVuRQnFVfnjjxNMjCz1M0M6Q==
   dependencies:
-    "@babel/runtime" "7.15.4"
+    "@babel/runtime" "7.16.3"
     "@mapbox/rehype-prism" "0.8.0"
-    react-markdown "7.1.0"
+    "@uiw/copy-to-clipboard" "1.0.12"
+    react-markdown "7.1.1"
     rehype-attr "2.0.6"
     rehype-autolink-headings "6.1.0"
     rehype-raw "6.1.0"
     rehype-rewrite "3.0.4"
     rehype-slug "5.0.0"
-    remark-gfm "3.0.0"
+    remark-gfm "3.0.1"
 
 "@uiw/react-menu@^4.7.16", "@uiw/react-menu@^4.9.7":
   version "4.9.7"
@@ -17105,10 +17099,10 @@ react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-markdown@7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-7.1.0.tgz#0ba62a4459daab6600ede83495a9228dae9d8f8e"
-  integrity sha512-hL8cLLkTydyoKlZWZOjlU6TvMYIw9qKLh1CCzVfnhKt/R/SnKVAqiyugetXY61CkjhBqJl2C5FdU3OwHYo7SrQ==
+react-markdown@7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-7.1.1.tgz#cb4d2c2fa3bc1292c889b068a5bf064ae4be1c60"
+  integrity sha512-bXS7indkcPlCLB6wRFFzX8Xdghr62TBxUF2587o+CUkaZlNaoILb2qNt+5pYmTZuCOC+OeEcdJ+06mu5whtCVQ==
   dependencies:
     "@types/hast" "^2.0.0"
     "@types/unist" "^2.0.0"
@@ -17766,10 +17760,10 @@ relateurl@^0.2.7:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-remark-gfm@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/remark-gfm/-/remark-gfm-3.0.0.tgz#a2efb06eceb8472610f095ccbff82d17daa1f415"
-  integrity sha512-CXJw5h1iwUW6czFwi4tveoOSlsEZU44hcdNzUxC5uiNi7r/OQySf46AoEihM8/NwBbW1LcsnyGIsHBnbURFw2g==
+remark-gfm@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/remark-gfm/-/remark-gfm-3.0.1.tgz#0b180f095e3036545e9dddac0e8df3fa5cfee54f"
+  integrity sha512-lEFDoi2PICJyNrACFOfDD3JlLkuSbOa5Wd8EPt06HUdptv8Gn0bxYTdbU/XXQ3swAPkEaGxxPN9cbnMHvVu1Ig==
   dependencies:
     "@types/mdast" "^3.0.0"
     mdast-util-gfm "^2.0.0"
