@@ -11,6 +11,7 @@ import {
   UIManager, // 动画
   Animated, // 动画
   PanResponder, // 手指拖拽
+  StyleProp,
 } from 'react-native';
 import Icon, { IconsName } from '../Icon';
 
@@ -31,7 +32,7 @@ export interface DragDrawerProps extends ViewProps {
 }
 
 function DragDrawer(props: DragDrawerProps) {
-  const { drawerBackgroundColor = '#fff', drawerHeight = 300, children, icon } = props;
+  const { drawerBackgroundColor = '#fff', drawerHeight = 300, children, icon, style } = props;
 
   const [animatedViewHeight, setAnimatedViewHeight] = useState(new Animated.Value(drawerHeight));
   const [viewHeight, setViewHeight] = useState(drawerHeight);
@@ -73,7 +74,7 @@ function DragDrawer(props: DragDrawerProps) {
             //结束位置在折叠线一下 则关闭
             setViewHeight(30);
             Animated.timing(animatedViewHeight, {
-              toValue: 30,
+              toValue: 50,
               duration: 300,
               useNativeDriver: false,
             }).start();
@@ -116,13 +117,7 @@ function DragDrawer(props: DragDrawerProps) {
 
   return (
     <Animated.View
-      style={[
-        styles.drawer,
-        dynamicDrawerStyles,
-        {
-          height: animatedViewHeight,
-        },
-      ]}
+      style={StyleSheet.flatten([styles.drawer, dynamicDrawerStyles, style, { height: animatedViewHeight }])}
       {...panResponder.panHandlers}
     >
       <Animated.View style={[styles.viewPosition]}>
