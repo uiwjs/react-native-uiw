@@ -25,7 +25,7 @@ export interface PickerProps {
   /** 显示几行, 默认 3 */
   lines?: number;
   /** 指定需要显示的 key, 默认使用 data 的 label 属性 */
-  key?: string;
+  rowKey?: string;
   /** 需要渲染的数据 */
   data?: Array<PickerData>;
   /** item 容器样式 */
@@ -53,7 +53,7 @@ export interface PickerProps {
 const Picker = (props: PickerProps) => {
   const {
     lines = 3,
-    key = 'label',
+    rowKey = 'label',
     data = new Array<PickerData>(),
     containerStyle = {},
     textStyle = {},
@@ -203,11 +203,11 @@ const Picker = (props: PickerProps) => {
               location(ItemHeights![index], index);
             }}
           >
-            {React.isValidElement(item.render?.(item[key], item, index)) ? (
-              item.render?.(item[key], item, index)
+            {React.isValidElement(item.render?.(item[rowKey], item, index)) ? (
+              item.render?.(item[rowKey], item, index)
             ) : (
               <View style={style.containerUn}>
-                <Text style={current === index ? style.textAc : style.textUn}>{item[key]}</Text>
+                <Text style={current === index ? style.textAc : style.textUn}>{item[rowKey]}</Text>
               </View>
             )}
           </Pressable>
