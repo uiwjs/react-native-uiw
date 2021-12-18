@@ -54,6 +54,17 @@ https://unpkg.com/@uiw/react-native-doc@<包版本>/web/index.html
 > 在项目根目录运行 `npm run version` 命令，即可更改所有包的版本。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
+文档还可以使用 [`Githack`](http://raw.githack.com) 来访问历史的文档。
+
+```bash
+# 最新文档
+https://raw.githack.com/uiwjs/react-native-uiw/gh-pages/index.html
+# v2.11.1 文档
+https://raw.githack.com/uiwjs/react-native-uiw/c08bdf4/index.html
+```
+
+Githack：[`v2.0.0+ 文档网站`](https://raw.githack.com/uiwjs/react-native-uiw/c08bdf4/index.html)
+
 ### `启动文档网站 & 预览文档`<!--rehype:style=color: white; background: #1c7bd0;-->
 
 组件文档存放在组件 `packages/core`<!--rehype:style=color: #039423; background: #e3efe7;--> 包目录中，其它文档放在文档源码目录 `website/src/pages`<!--rehype:style=color: #039423; background: #e3efe7;--> 中，根据路由地址建立。

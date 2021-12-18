@@ -4915,10 +4915,10 @@
   dependencies:
     "@uiw/utils" "^4.9.7"
 
-"@uiw/react-markdown-preview@3.4.4":
-  version "3.4.4"
-  resolved "https://registry.yarnpkg.com/@uiw/react-markdown-preview/-/react-markdown-preview-3.4.4.tgz#4b720045bdbdd16104ae650ad79eeff989a3c7f8"
-  integrity sha512-sHZeAbjOw9UWQ4IJPuF3IaNCGPFDG3rOoChMIZ/JXzV86Ouscnfp/zxtXFKdKJoVuRQnFVfnjjxNMjCz1M0M6Q==
+"@uiw/react-markdown-preview@3.4.5":
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/@uiw/react-markdown-preview/-/react-markdown-preview-3.4.5.tgz#1362999a028ca0651436cdc641670778ee9d7a62"
+  integrity sha512-oYZXqezHSuVu9f4RWWfcQe7RLVlJ+uqGrZsy0apVwfdXisfLEUv2GY3mJSh+KM02fGdzkLY+VX5WSoUt5TbLtg==
   dependencies:
     "@babel/runtime" "7.16.3"
     "@mapbox/rehype-prism" "0.8.0"
