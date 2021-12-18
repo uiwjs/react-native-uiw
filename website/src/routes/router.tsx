@@ -42,6 +42,14 @@ export const routeData = [
         component: lazy(() => import('../pages/docs/app-store/android')),
       },
       {
+        path: '/docs/unpack/android',
+        component: lazy(() => import('../pages/docs/unpack/android')),
+      },
+      {
+        path: '/docs/unpack/ios',
+        component: lazy(() => import('../pages/docs/unpack/ios')),
+      },
+      {
         path: '/docs/development/document',
         component: lazy(() => import('../pages/docs/development/document')),
       },
