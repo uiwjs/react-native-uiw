@@ -3,6 +3,8 @@ SelectCascader 级联选择
 
 可用于类似于省市区选择
 
+![](https://user-images.githubusercontent.com/57083007/146733028-5669f3a2-f8fe-4690-88e2-c80745bc10ff.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx

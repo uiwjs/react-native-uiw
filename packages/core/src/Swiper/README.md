@@ -3,6 +3,8 @@ Swiper 轮播图
 
 最基础的轮播图，可承载图片。
 
+![](https://user-images.githubusercontent.com/57083007/146733725-30e20a33-796a-49ec-9a95-4448a629c7b7.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 <!--DemoStart--> 

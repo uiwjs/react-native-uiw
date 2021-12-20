@@ -3,7 +3,7 @@ Progress 进度条
 
 表明某个任务的当前进度。
 
-<img src='https://user-images.githubusercontent.com/66067296/140003519-03faded1-e004-45eb-b9af-442d84d6f258.gif' alt='Progress' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/66067296/140003519-03faded1-e004-45eb-b9af-442d84d6f258.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 

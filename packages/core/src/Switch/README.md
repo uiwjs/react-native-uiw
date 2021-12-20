@@ -6,6 +6,8 @@ Switch 开关
 > 自带组件 Switch 已过时，将很快删除。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
+![](https://user-images.githubusercontent.com/57083007/146733820-dbdfdf2d-80f6-4cd7-b130-2528fcd0d682.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx

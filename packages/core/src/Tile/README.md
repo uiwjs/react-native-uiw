@@ -3,6 +3,8 @@ Tile 工具提示
 
 像卡片这样的磁贴是显示关于单个主题的相关内容的便捷方式
 
+![](https://user-images.githubusercontent.com/57083007/146733959-2fc5e22b-b4a8-4c82-96c7-88e8e4a43f4d.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx

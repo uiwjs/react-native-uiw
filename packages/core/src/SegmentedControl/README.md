@@ -6,6 +6,8 @@ SegmentedControl 分段器
 > 即将启用，交于社区维护 [@react-native-community/react-native-segmented-control](https://github.com/react-native-segmented-control/segmented-control)。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
+![](https://user-images.githubusercontent.com/57083007/146731624-abdd0e31-2f9a-4555-af33-a928770c72ba.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx

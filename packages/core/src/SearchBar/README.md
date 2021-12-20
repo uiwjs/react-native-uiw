@@ -1,6 +1,6 @@
 SearchBar 模糊搜素组件
 
-<img src='https://user-images.githubusercontent.com/66067296/140004480-cadbd892-afb3-483f-95a3-3bfe43a4bdfc.gif' alt='SearchBar' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/66067296/140004480-cadbd892-afb3-483f-95a3-3bfe43a4bdfc.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ---
 

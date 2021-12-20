@@ -1,6 +1,8 @@
 Table 表格
 ---
 
+![](https://user-images.githubusercontent.com/57083007/146733861-7c491a0b-d44d-41d2-94f4-6e7db5271cb0.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx

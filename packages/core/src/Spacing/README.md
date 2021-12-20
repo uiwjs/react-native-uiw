@@ -1,6 +1,8 @@
 Spacing 间距
 ---
 
+![](https://user-images.githubusercontent.com/57083007/146733395-aed1e7d6-724e-4e8e-9491-511253b9c0ff.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx
