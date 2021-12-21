@@ -1,7 +1,8 @@
 import React from 'react';
 import { Text as RNText, StyleSheet, TextProps as RNTextProps, TextStyle, Animated, StyleProp } from 'react-native';
 import _ from 'lodash';
-import { rnTextType, getTextPartsByHighlight } from '../utils/utils';
+import Tooltip from '../Tooltip';
+import { rnTextType, getTextPartsByHighlight, sliceText } from '../utils/rn-text';
 
 export type RnTextProps = RNTextProps & {
   // header:Header标题 ｜ title:列表/From标题 ｜ label:正文,说明,备注label ｜ subLabel:辅助性文字
@@ -21,8 +22,18 @@ export type RnTextProps = RNTextProps & {
   highlightTextStyle?: TextStyle;
   // 背景色
   backgroundColor?: any;
+  tooltipProps?: {
+    // 截取文本长度
+    number?: number;
+    // 提示的文本
+    content?: string;
+  };
   children?: React.ReactNode;
   style?: StyleProp<TextStyle | Animated.AnimatedProps<TextStyle>>;
+};
+
+const TooltipContainer = ({ content, children }: { content?: string; children?: any }) => {
+  return content ? <Tooltip title={content}>{children}</Tooltip> : <React.Fragment>{children}</React.Fragment>;
 };
 
 export default (props: RnTextProps) => {
@@ -38,8 +49,14 @@ export default (props: RnTextProps) => {
     label,
     highlightText,
     highlightTextStyle,
+    tooltipProps = {
+      number: 0,
+      content: '',
+    },
     ...others
   } = props;
+
+  const { number, content } = tooltipProps;
 
   const TextContainer: React.ClassType<any, any, any> = animated ? Animated.createAnimatedComponent(RNText) : RNText;
 
@@ -82,9 +99,11 @@ export default (props: RnTextProps) => {
   ];
 
   return (
-    <TextContainer {...others} style={textStyle}>
-      {renderText(label || children)}
-    </TextContainer>
+    <TooltipContainer content={content}>
+      <TextContainer {...others} style={textStyle}>
+        {number ? sliceText(renderText(label || children), number) : renderText(label || children)}
+      </TextContainer>
+    </TooltipContainer>
   );
 };
 

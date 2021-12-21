@@ -77,7 +77,11 @@ export default class TypographyView extends React.Component<TypographyViewProps>
             <Card title="可高亮文字<RnText />">
               <RnText type="header" label="react-native-uiw" />
               <RnText type="title" label="react-native-uiw" />
-              <RnText type="label" label="react-native-uiw" />
+              <RnText
+                type="label"
+                label="文字过长"
+                tooltipProps={{number: 4, content: 'react-native-uiw'}}
+              />
               <RnText type="subLabel" label="react-native-uiw" />
               <RnText
                 type="header"
