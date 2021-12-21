@@ -112,6 +112,8 @@ export { default as Calendar } from './Calendar';
 export * from './Calendar';
 export { default as DragDrawer } from './DragDrawer';
 export * from './DragDrawer';
+export { default as TreeSelect } from './TreeSelect';
+export * from './TreeSelect';
 /**
  * Typography
  */
