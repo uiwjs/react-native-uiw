@@ -50,7 +50,6 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
       });
     }
     traverse(undefined, props.options);
-
     return [deep, optionsMap, optionsParentMap];
   }, [props.options]);
 
@@ -82,7 +81,7 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
               onItemSelect(item);
             }
           }}
-          style={style.item}
+          style={[style.item, isActive ? { backgroundColor: '#fff' } : {}]}
         >
           <Text style={isActive ? { color: props.activeColor, fontWeight: 'bold' } : {}}>{item[labelName]}</Text>
         </TouchableOpacity>
@@ -103,7 +102,7 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
         width = `66.67%`;
       }
       const column = (
-        <ScrollView key={i} style={{ width, flex: 1 }}>
+        <ScrollView key={i} style={{ width, flex: 1, backgroundColor: '#fff' }}>
           {renderItems(i === 0 ? props.options : optionsMap.get(value[i - 1])?.[childrenName], i)}
         </ScrollView>
       );
