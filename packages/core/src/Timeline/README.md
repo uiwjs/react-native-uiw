@@ -3,6 +3,8 @@ Timeline 时间轴
 
 垂直展示一系列的时间流信息。
 
+![](https://user-images.githubusercontent.com/57083007/146734052-c3ca69ab-0d1e-4e15-ad95-f704a5253db0.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例 & 自定义图标
 
 ```jsx

@@ -474,4 +474,12 @@ export const stackPageData: Routes[] = [
       description: '可自定义拖曳抽屉高度',
     },
   },
+  {
+    name: 'TreeSelect',
+    component: require('./routes/TreeSelect').default,
+    params: {
+      title: 'TreeSelect 级联选择器',
+      description: '级联选择器',
+    },
+  },
 ];

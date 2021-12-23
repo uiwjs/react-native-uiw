@@ -3,6 +3,8 @@ Tooltip 工具提示
 
 当用户点击元素时，工具提示将显示信息。
 
+![](https://user-images.githubusercontent.com/57083007/146734166-271ec118-69b6-437a-885e-803e435cc05b.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx

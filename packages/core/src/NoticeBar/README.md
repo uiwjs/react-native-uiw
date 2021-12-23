@@ -3,7 +3,7 @@ NoticeBar 通告栏
 
 在导航栏下方，一般用作系统提醒、活动提醒等通知。
 
-<img src='https://user-images.githubusercontent.com/66067296/139399394-1eb887bc-6726-43a0-a158-22a25ebf9350.gif' alt='NoticeBar' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/66067296/139399394-1eb887bc-6726-43a0-a158-22a25ebf9350.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 

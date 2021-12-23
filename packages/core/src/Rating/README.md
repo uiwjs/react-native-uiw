@@ -3,7 +3,7 @@ Rating 评分
 
 在你想用任意需要评分的的地方使用。
 
-<img src='https://user-images.githubusercontent.com/66067296/140290956-1328745e-63da-4d17-8db9-238c18078272.gif' alt='Rating' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/66067296/140290956-1328745e-63da-4d17-8db9-238c18078272.gif')<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 

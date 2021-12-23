@@ -3,6 +3,8 @@ Tabs 选项卡
 
 选项卡组件跨不同屏幕、数据集和其他交互的内容。
 
+![](https://user-images.githubusercontent.com/57083007/146733908-4c795dc4-06cf-45cb-974e-cbbccff9732d.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx

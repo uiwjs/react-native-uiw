@@ -5,6 +5,8 @@ Typography 排版
 
 [`H1~H6`](#标题) · [`<Del>`](#删除线) · [`<S>`](#删除线) · [`<U>`](#下划线) · [`<Strong>`](#加粗) · [`<P />`](#段落) · [`<Br />`](#换行) · [`<Hr />`](#水平线) · [`<Div />`](#div)
 
+![](https://user-images.githubusercontent.com/57083007/146734264-8cb81fae-c4b5-4e02-9794-627442e580c9.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ### 标题

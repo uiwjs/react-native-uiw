@@ -6,6 +6,8 @@ Slider 滑块输入条
 > 自带 Slider 已经过时，交于社区维护 [`react-native-slider`](https://github.com/react-native-community/react-native-slider)，当前组件是重新封装保持 iOS/android 效果一致。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
+![](https://user-images.githubusercontent.com/57083007/146733306-cffada07-0f11-46cc-8969-1676c9070cda.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx

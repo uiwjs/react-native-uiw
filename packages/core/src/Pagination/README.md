@@ -3,7 +3,7 @@ Pagination 分页器
 
 用于展示页码、请求数据等。
 
-<img src='https://user-images.githubusercontent.com/66067296/140044665-d27bccd1-24ba-4eaf-949b-89b6dc9f0dad.png' alt='Pagination' style='zoom:33%;' />
+![](https://user-images.githubusercontent.com/66067296/140044665-d27bccd1-24ba-4eaf-949b-89b6dc9f0dad.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 

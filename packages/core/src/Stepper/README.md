@@ -2,6 +2,8 @@ Stepper 步进器
 ---
 用作增加或者减少当前数值。
 
+![](https://user-images.githubusercontent.com/57083007/146733528-a57250dd-a53f-4819-bdff-732af7fa7279.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx

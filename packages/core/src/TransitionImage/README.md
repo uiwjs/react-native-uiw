@@ -3,6 +3,8 @@ TransitionImage 图像
 
 直接替换标准 React Native Image 组件，该组件显示带有占位符和平滑图像加载转换的图像
 
+![](https://user-images.githubusercontent.com/57083007/146734209-c9e25051-3473-401e-ba3f-688f843da7df.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 ### 基础示例
 
 ```jsx
