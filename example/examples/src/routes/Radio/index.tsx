@@ -39,7 +39,9 @@ export default class RadioView extends React.Component<
           <Header title={title} description={description} />
           <Body>
             <Card title="基础实例">
-              <Radio>所有人可见</Radio>
+              <Radio checkedColor="#fd8a00" borderColor="#fd8a00">
+                所有人可见
+              </Radio>
               <Spacing />
               <Radio>超级管理员</Radio>
             </Card>

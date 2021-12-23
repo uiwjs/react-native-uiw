@@ -48,6 +48,8 @@ export interface RadioProps extends ViewProps {
   disabled?: boolean;
   circleSize?: number;
   color?: string;
+  checkedColor?: string;
+  borderColor?: string;
   thumbSize?: number;
   onPress?: (event: GestureResponderEvent) => void;
 }
@@ -62,6 +64,8 @@ export default class Radio extends Component<RadioProps, RadioState> {
   static defaultProps: RadioProps = {
     checked: false,
     circleSize: 20,
+    checkedColor: '#008EF0',
+    borderColor: '#bdc1cc',
     color: '#c3c5c7',
     thumbSize: 12,
   };
@@ -110,14 +114,23 @@ export default class Radio extends Component<RadioProps, RadioState> {
     });
   };
   render() {
-    const { style, color, circleSize, thumbSize, disabled, ...otherProps } = this.props;
+    const {
+      style,
+      color,
+      circleSize,
+      thumbSize,
+      disabled,
+      checkedColor,
+      borderColor: bdColor,
+      ...otherProps
+    } = this.props;
     const sizeValue = this.state.sizeValue.interpolate({
       inputRange: [0, thumbSize!],
       outputRange: [0, thumbSize!],
       // extrapolate: 'clamp',
     });
-    const backgroundColor = disabled ? color : '#008EF0';
-    const borderColor = disabled ? color : '#bdc1cc';
+    const backgroundColor = disabled ? color : checkedColor;
+    const borderColor = disabled ? color : bdColor;
     return (
       <View style={[styles.defalut, style]} {...otherProps}>
         <TouchableOpacity disabled={disabled} style={[styles.touch]} onPress={this.handlePress}>

@@ -84,4 +84,6 @@ function Demo() {
 | `circleSize` | Radio 大小 | Number | `20` |
 | `thumbSize` | Radio 选中部分大小 | Number | `12` |
 | `onPress` | 点击 Radio 的点击回调函数 | (event) => void | - |
-| `color`   | Radio 颜色 | string | `#008EF0` |
+| `color`   | Radio 禁用后颜色 | string | `#c3c5c7` |
+| `checkedColor`   | Radio 颜色 | string | `#008EF0` |
+| `borderColor`   | Radio 边框颜色 | string | `#bdc1cc` |
