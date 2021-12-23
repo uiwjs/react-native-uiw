@@ -45,6 +45,7 @@ iOS 打包
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ## 二. Xcode配置iOS证书和打包环境
+
 ### `Xcode打开需要打包的项目`<!--rehype:style=color: white; background: #1c7bd0;-->
 
 项目打开后，首先需要选择`Xcode`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->中的`Preferences`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->中登录已注册好的开发者账号。
