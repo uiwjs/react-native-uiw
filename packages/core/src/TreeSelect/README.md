@@ -1,7 +1,10 @@
 TreeSelect 级联选择器
 ---
 
-⚠️测试版本谨慎使用<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+> 🚧 注意：测试版本谨慎使用。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+![](https://user-images.githubusercontent.com/66067296/147198640-6df52d49-cd6d-4eea-a3d3-b062c0d1a999.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
