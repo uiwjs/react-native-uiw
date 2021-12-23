@@ -49,6 +49,13 @@ export default class Index extends Component<IndexProps, IndexState> {
               placeholder="请输入搜索关键字..."
               actionName="搜一下"
               value={this.state.value}
+              onSearch={() => {
+                this.setState({loading: true}, () => {
+                  setTimeout(() => {
+                    this.setState({loading: false});
+                  }, 3000);
+                });
+              }}
               touchProps={{
                 onPress: () => {
                   console.log('object', this.ref);
@@ -67,12 +74,12 @@ export default class Index extends Component<IndexProps, IndexState> {
               onClear={() => this.onClear('value2')}
               value={this.state.value2}
               placeholder="请输入搜索关键字"
+              showActionButton={true}
               searchRender={
                 <View style={styles.search}>
                   <Text>搜索</Text>
                 </View>
               }
-              showActionButton
               touchProps={{
                 onPress() {
                   Toast.info('你点击了搜一下', 2, 'info');

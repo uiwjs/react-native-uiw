@@ -35,7 +35,7 @@ export interface SearchInputBarProps extends TextInputProps {
   /** 点击清除图标时触发事件 */
   onClear?: Function;
   /** 自定义搜索 */
-  searchRender?: JSX.Element;
+  searchRender?: React.ReactNode;
   /** 输入框TextInput样式 */
   inputStyle?: TextStyle;
   /** loading加载 */
@@ -49,6 +49,7 @@ interface SearchInputBarState {
 
 export default class SearchInputBar extends React.Component<SearchInputBarProps, SearchInputBarState> {
   public inputRef = React.createRef<TextInput>();
+
   constructor(props: SearchInputBarProps) {
     super(props);
     this.state = {
@@ -59,7 +60,7 @@ export default class SearchInputBar extends React.Component<SearchInputBarProps,
   needFocus = (type: 'search' | 'close' | 'actived') => {
     if (type === 'close') {
       this.props.onClear?.();
-    } else if (type === 'search' && this.props.value) {
+    } else if (type === 'search') {
       this.props.onSearch?.();
       return;
     }
@@ -71,7 +72,7 @@ export default class SearchInputBar extends React.Component<SearchInputBarProps,
 
   // 右侧搜索
   renderSearch = () => {
-    const { showActionButton, searchRender, touchProps, actionName = '搜索', loading } = this.props;
+    const { showActionButton, searchRender, touchProps, actionName = '搜索' } = this.props;
     const { showIcon } = this.state;
     if (showActionButton || showIcon) {
       return searchRender ? (
@@ -94,14 +95,15 @@ export default class SearchInputBar extends React.Component<SearchInputBarProps,
       containerStyle,
       searchIcon,
       closeIcon,
-      loading,
+      loading = false,
       ...other
     } = this.props;
+
     return (
-      <Loader loading={loading ? loading : false} rounded={5} maskColor="transparent">
+      <Loader loading={loading} rounded={5} maskColor="transparent">
         <View style={[styles.centerFlex]}>
           <View style={StyleSheet.flatten([styles.searchContainer, styles.centerFlex, containerStyle])}>
-            <TouchableOpacity style={{}} onPress={() => this.needFocus('search')}>
+            <TouchableOpacity onPress={() => this.needFocus('search')}>
               <Icon name="search" size={14} color={colors.colorsPalette.grey40} height={'100%'} {...searchIcon} />
             </TouchableOpacity>
             <TextInput
@@ -117,7 +119,7 @@ export default class SearchInputBar extends React.Component<SearchInputBarProps,
                 other?.onFocus?.(e);
               }}
               onBlur={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-                if (showActionButton !== null && !value) {
+                if (showActionButton !== null && !value && !loading) {
                   this.setState({ showIcon: false });
                 }
                 other?.onBlur?.(e);
