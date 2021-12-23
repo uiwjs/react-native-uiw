@@ -281,6 +281,10 @@ export const routeData = [
         path: '/components/dragdrawer',
         component: lazy(() => import('../pages/components/dragdrawer')),
       },
+      {
+        path: '/components/treeSelect',
+        component: lazy(() => import('../pages/components/treeSelect')),
+      },
     ],
   },
 ];
