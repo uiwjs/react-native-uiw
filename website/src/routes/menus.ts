@@ -60,6 +60,8 @@ export const componentMenus: MenuData[] = [
   { path: '/components/actionSheet', name: 'ActionSheet 动作面板' },
   { path: '/components/search-input-bar', name: 'SearchInputBar 搜索栏' },
   { path: '/components/pagination', name: 'Pagination 分页器' },
+  { path: '/components/treeSelect', name: 'TreeSelect 级联选择器' },
+  { path: '/components/dragdrawer', name: 'Dragdrawer 拖拽抽屉' },
   { divider: true, name: '其它' },
   { href: 'https://github.com/uiwjs/react-native-alipay', name: 'Alipay 支付宝', target: '__blank' },
   {
