@@ -9,6 +9,7 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native';
+import Loader from '../Loader';
 import { colors } from '../utils';
 export interface dataSourceType {
   url: string;
@@ -30,6 +31,7 @@ export interface SwiperProps {
   autoplay?: boolean;
   // 指示点样式 dot: 圆点  block: 方块
   dotStyle?: dotType;
+  loading?: boolean;
 }
 const Swiper = (porps: SwiperProps) => {
   const gitwidth = Dimensions.get('window').width;
@@ -37,10 +39,11 @@ const Swiper = (porps: SwiperProps) => {
     dataSource = [],
     width = gitwidth,
     height = 130,
-    time = 3000,
+    time = 6000,
     autoplay = true,
     borderRadius = 0,
     dotStyle = 'dot',
+    loading = false,
   } = porps;
   let [curIndex, setCurIndex] = useState(0);
   let timer = useRef<NodeJS.Timeout | undefined>();
@@ -63,7 +66,7 @@ const Swiper = (porps: SwiperProps) => {
 
   // 开启播放
   useEffect(() => {
-    if (autoplay) autoPlay();
+    if (autoplay && !loading) autoPlay();
   }, [autoPlay]);
 
   // 页面离开停止播放
@@ -97,53 +100,55 @@ const Swiper = (porps: SwiperProps) => {
     scrollToRef.current.scrollTo({ x: width * index, y: 0, animated: true });
   };
   return (
-    <View style={StyleSheet.flatten([styles.banner, { width, height }])}>
-      <ScrollView
-        ref={scrollToRef}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        pagingEnabled={true}
-        onScrollBeginDrag={onScrollBeginDrag}
-        onScrollEndDrag={onScrollEndDrag}
-        onMomentumScrollEnd={onMomentumScrollEnd}
-      >
-        {dataSource.map((item: dataSourceType, index: number) => {
-          return (
-            <View key={index} style={{ width, height }}>
-              <View style={{ padding: 12 }}>
-                <TouchableOpacity
-                  activeOpacity={1}
-                  onPress={() => {
-                    item.onClick && item.onClick();
-                  }}
-                >
-                  <Image
-                    key={index}
-                    style={StyleSheet.flatten([{ borderRadius, width: '100%', height: '100%' }])}
-                    resizeMode="cover"
-                    source={typeof item.url === 'number' ? item.url : { uri: item.url }}
-                  />
-                </TouchableOpacity>
+    <Loader loading={loading} rounded={5} maskColor="transparent">
+      <View style={StyleSheet.flatten([styles.banner, { width, height }])}>
+        <ScrollView
+          ref={scrollToRef}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          pagingEnabled={true}
+          onScrollBeginDrag={onScrollBeginDrag}
+          onScrollEndDrag={onScrollEndDrag}
+          onMomentumScrollEnd={onMomentumScrollEnd}
+        >
+          {dataSource.map((item: dataSourceType, index: number) => {
+            return (
+              <View key={index} style={{ width, height }}>
+                <View style={{ padding: 12 }}>
+                  <TouchableOpacity
+                    activeOpacity={1}
+                    onPress={() => {
+                      item.onClick && item.onClick();
+                    }}
+                  >
+                    <Image
+                      key={index}
+                      style={StyleSheet.flatten([{ borderRadius, width: '100%', height: '100%' }])}
+                      resizeMode="cover"
+                      source={typeof item.url === 'number' ? item.url : { uri: item.url }}
+                    />
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          );
-        })}
-      </ScrollView>
-      <View style={styles.dotBox}>
-        {dataSource.map((_: dataSourceType, index: number) => {
-          return (
-            <TouchableOpacity
-              onPress={onClickDot.bind(this, index)}
-              key={index}
-              style={StyleSheet.flatten([
-                dotStyle === 'block' ? styles.block : styles.dot,
-                index === curIndex ? styles.dotSetColor : styles.dotColor,
-              ])}
-            />
-          );
-        })}
+            );
+          })}
+        </ScrollView>
+        <View style={styles.dotBox}>
+          {dataSource.map((_: dataSourceType, index: number) => {
+            return (
+              <TouchableOpacity
+                onPress={onClickDot.bind(this, index)}
+                key={index}
+                style={StyleSheet.flatten([
+                  dotStyle === 'block' ? styles.block : styles.dot,
+                  index === curIndex ? styles.dotSetColor : styles.dotColor,
+                ])}
+              />
+            );
+          })}
+        </View>
       </View>
-    </View>
+    </Loader>
   );
 };
 const styles = StyleSheet.create({
