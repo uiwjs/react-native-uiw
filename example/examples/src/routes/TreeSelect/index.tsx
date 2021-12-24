@@ -1,9 +1,8 @@
 import React from 'react';
-import {TreeSelect} from '@uiw/react-native';
-import {View} from 'react-native';
+import {TreeSelect, DragDrawer, Icon} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
-const {Header, Body, Footer} = Layout;
+const {Header} = Layout;
 
 export interface TreeSelectViewProps extends ComProps {}
 
@@ -95,22 +94,23 @@ export default class TreeSelectDemo extends React.Component<TreeSelectViewProps>
       },
     ];
     return (
-      <Container>
-        <Layout>
-          <Header title={title} description={description} />
-          <Body>
-            <TreeSelect
-              defaultValue={['01', '01-1']}
-              activeColor="#fd8a00"
-              options={option}
-              onChange={(value: any, nodes: any) => {
-                console.log(value, nodes);
-              }}
-            />
-          </Body>
-          <Footer />
-        </Layout>
-      </Container>
+      <React.Fragment>
+        <DragDrawer drawerHeight={500}>
+          <TreeSelect
+            defaultValue={['01', '01-1']}
+            activeColor="#fd8a00"
+            options={option}
+            onChange={(value: any, nodes: any) => {
+              console.log(value, nodes);
+            }}
+          />
+        </DragDrawer>
+        <Container>
+          <Layout>
+            <Header title={title} description={description} />
+          </Layout>
+        </Container>
+      </React.Fragment>
     );
   }
 }

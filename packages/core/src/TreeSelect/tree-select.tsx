@@ -70,9 +70,41 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
     });
   };
 
+  // item样式
+  const activeStyles = (index: number, isActive: boolean) => {
+    let styles;
+    // 选中第一排
+    if (isActive && index === 0) {
+      styles = {
+        ...style.active_first_item,
+      };
+    }
+    // 未选中第一排
+    if (!isActive && index === 0) {
+      styles = {
+        ...style.not_active_first_item,
+      };
+    }
+    // 选中后排
+    if (isActive && index !== 0) {
+      styles = {
+        ...style.active_nth_item,
+        borderColor: props.activeColor,
+      };
+    }
+    // 未选中后排
+    if (!isActive && index !== 0) {
+      styles = {
+        ...style.not_active_nth_item,
+      };
+    }
+    return styles;
+  };
+
   const renderItems = (columnOptions: TreeSelectOption[] = [], index: number) => {
     return columnOptions.map((item) => {
       const isActive = item[valueName] === value[index];
+      const active_font_color = index === 0 ? '#333' : props.activeColor;
       return (
         <TouchableOpacity
           key={item[valueName]}
@@ -81,9 +113,11 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
               onItemSelect(item);
             }
           }}
-          style={[style.item, isActive ? { backgroundColor: '#fff' } : {}]}
+          style={[style.item, { ...activeStyles(index, isActive) }]}
         >
-          <Text style={isActive ? { color: props.activeColor, fontWeight: 'bold' } : {}}>{item[labelName]}</Text>
+          <Text style={isActive ? { color: active_font_color, fontWeight: 'bold' } : { color: '#666' }}>
+            {item[labelName]}
+          </Text>
         </TouchableOpacity>
       );
     });
@@ -102,7 +136,7 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
         width = `66.67%`;
       }
       const column = (
-        <ScrollView key={i} style={{ width, flex: 1, backgroundColor: '#fff' }}>
+        <ScrollView key={i} style={{ width, flex: 1, backgroundColor: i === 0 ? '#f6f7f9' : '#fff' }}>
           {renderItems(i === 0 ? props.options : optionsMap.get(value[i - 1])?.[childrenName], i)}
         </ScrollView>
       );
