@@ -482,4 +482,12 @@ export const stackPageData: Routes[] = [
       description: '级联选择器',
     },
   },
+  {
+    name: 'TextArea',
+    component: require('./routes/TextArea').default,
+    params: {
+      title: 'TextArea 多行输入框',
+      description: '可输入多行文字',
+    },
+  },
 ];
