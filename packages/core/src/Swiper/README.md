@@ -38,3 +38,4 @@ export default SwiperDemo
 | borderRadius | 圆角边框       | Number    |  0 |
 | autoplay     | 是否开启定时器  | Boolean   | true|
 | dotStyle     | 圆点类型 ( dot : 圆点， block : 方块 )       | String    | dot |
+| loading      | 加载状态  | Boolean   | false |

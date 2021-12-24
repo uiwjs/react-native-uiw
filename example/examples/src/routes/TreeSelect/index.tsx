@@ -13,82 +13,39 @@ export default class TreeSelectDemo extends React.Component<TreeSelectViewProps>
     const title = route.params.title;
     const option = [
       {
-        label: '北京',
+        label: '2月23日(今天)',
         value: '01',
         children: [
           {
-            label: '东城区',
+            label: '9:00-10:00',
             value: '01-1',
+            children: [{label: '00:00', value: '01-1-1'}],
           },
           {
-            label: '西城区',
+            label: '10:00-11:00',
             value: '01-2',
           },
           {
-            label: '崇文区',
+            label: '11:00-12:00',
             value: '01-3',
-          },
-          {
-            label: '宣武区',
-            value: '01-4',
           },
         ],
       },
       {
-        label: '浙江',
+        label: '2月24日(明天)',
         value: '02',
         children: [
           {
-            label: '杭州',
+            label: '9:00-10:00',
             value: '02-1',
-            children: [
-              {
-                label: '西湖区',
-                value: '02-1-1',
-              },
-              {
-                label: '上城区',
-                value: '02-1-2',
-              },
-              {
-                label: '江干区',
-                value: '02-1-3',
-              },
-              {
-                label: '下城区',
-                value: '02-1-4',
-              },
-            ],
           },
           {
-            label: '宁波',
+            label: '10:00-11:00',
             value: '02-2',
-            children: [
-              {
-                label: 'xx区',
-                value: '02-2-1',
-              },
-              {
-                label: 'yy区',
-                value: '02-2-2',
-              },
-            ],
           },
           {
-            label: '温州',
+            label: '11:00-12:00',
             value: '02-3',
-          },
-          {
-            label: '嘉兴',
-            value: '02-4',
-          },
-          {
-            label: '湖州',
-            value: '02-5',
-          },
-          {
-            label: '绍兴',
-            value: '02-6',
           },
         ],
       },
@@ -97,8 +54,8 @@ export default class TreeSelectDemo extends React.Component<TreeSelectViewProps>
       <React.Fragment>
         <DragDrawer drawerHeight={500}>
           <TreeSelect
-            defaultValue={['01', '01-1']}
-            activeColor="#fd8a00"
+            defaultValue={['01', '01-1', '01-1-1']}
+            activeColor="red"
             options={option}
             onChange={(value: any, nodes: any) => {
               console.log(value, nodes);

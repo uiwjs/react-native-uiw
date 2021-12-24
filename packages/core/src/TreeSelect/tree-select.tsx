@@ -71,7 +71,7 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
   };
 
   // item样式
-  const activeStyles = (index: number, isActive: boolean) => {
+  const activeStyles = (index: number, isActive: boolean, isLast: boolean) => {
     let styles;
     // 选中第一排
     if (isActive && index === 0) {
@@ -90,12 +90,14 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
       styles = {
         ...style.active_nth_item,
         borderColor: props.activeColor,
+        marginRight: isLast ? 10 : 0,
       };
     }
     // 未选中后排
     if (!isActive && index !== 0) {
       styles = {
         ...style.not_active_nth_item,
+        marginRight: isLast ? 10 : 0,
       };
     }
     return styles;
@@ -105,6 +107,8 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
     return columnOptions.map((item) => {
       const isActive = item[valueName] === value[index];
       const active_font_color = index === 0 ? '#333' : props.activeColor;
+      // 是否是最后一列
+      const isLast = deep - 1 === index;
       return (
         <TouchableOpacity
           key={item[valueName]}
@@ -113,7 +117,7 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
               onItemSelect(item);
             }
           }}
-          style={[style.item, { ...activeStyles(index, isActive) }]}
+          style={[style.item, { ...activeStyles(index, isActive, isLast) }]}
         >
           <Text style={isActive ? { color: active_font_color, fontWeight: 'bold' } : { color: '#666' }}>
             {item[labelName]}
