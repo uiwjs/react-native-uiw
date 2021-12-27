@@ -285,6 +285,10 @@ export const routeData = [
         path: '/components/treeSelect',
         component: lazy(() => import('../pages/components/treeSelect')),
       },
+      {
+        path: '/components/textarea',
+        component: lazy(() => import('../pages/components/textarea')),
+      },
     ],
   },
 ];
