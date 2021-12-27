@@ -13,6 +13,7 @@ export default class TextAreaView extends Component<TextAreaProps> {
     value: '',
     value1: '只读状态不可输入',
     value3: '自定义输入框样式',
+    value4: '',
   };
 
   render() {
@@ -34,6 +35,16 @@ export default class TextAreaView extends Component<TextAreaProps> {
                 placeholder="默认提示语"
               />
             </Card>
+            <Card title="展示字数" style={styles.card}>
+              <TextArea
+                onChange={(value4: string) => {
+                  this.setState({value4});
+                }}
+                value={this.state.value4}
+                showWords={true}
+                placeholder="默认展示字数"
+              />
+            </Card>
             <Card title="只读状态" style={styles.card}>
               <TextArea
                 editable={false}
@@ -46,12 +57,15 @@ export default class TextAreaView extends Component<TextAreaProps> {
             <Card title="自定义输入框样式" style={styles.card}>
               <TextArea
                 style={{
+                  height: 150,
+                  borderColor: 'blue',
+                  borderWidth: 2,
+                }}
+                fontStyle={{
                   fontSize: 20,
                   color: 'blue',
-                  height: 200,
-                  borderColor: 'red',
-                  borderWidth: 1,
                 }}
+                showWords={true}
                 onChange={(value3: string) => {
                   this.setState({value3});
                 }}

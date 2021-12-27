@@ -10,6 +10,7 @@ import {
   StyleProp,
   Text,
   TextInput,
+  TextStyle,
 } from 'react-native';
 import Icon, { IconsName } from '../Icon';
 
@@ -32,6 +33,10 @@ export interface TextAreaProps extends ViewProps {
   onChange?: (val: string) => void;
   /** 文本框中的文字内容 */
   value?: string;
+  /** 是否展示字数 */
+  showWords?: boolean;
+  /** 输入框文字样式 */
+  fontStyle?: StyleProp<TextStyle>;
 }
 
 function TextArea(props: TextAreaProps) {
@@ -41,42 +46,60 @@ function TextArea(props: TextAreaProps) {
     placeholderTextColor = '#989FB2',
     numberOfLines = 30,
     onChange = () => {},
-    maxLength = 100,
+    maxLength = 50,
     value = '',
     editable = true,
+    showWords = false,
     style,
+    fontStyle,
     ...other
   } = props;
 
   return (
-    <View>
-      <TextInput
-        style={StyleSheet.flatten([styles.TextInput, style])}
-        multiline={true}
-        textAlignVertical={textAlignVertical}
-        placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
-        numberOfLines={numberOfLines}
-        maxLength={maxLength}
-        onChangeText={onChange}
-        editable={editable}
-        value={value}
-        {...other}
-      ></TextInput>
+    <View style={StyleSheet.flatten([styles.viewBody, style])}>
+      <View style={styles.bodyLayout}>
+        <TextInput
+          style={[styles.TextInput, fontStyle]}
+          multiline={true}
+          textAlignVertical={textAlignVertical}
+          placeholder={placeholder}
+          placeholderTextColor={placeholderTextColor}
+          numberOfLines={numberOfLines}
+          maxLength={maxLength}
+          onChangeText={onChange}
+          editable={editable}
+          value={value}
+          {...other}
+        ></TextInput>
+        {showWords === true && <Text style={[styles.textWords, fontStyle]}>{value.length + '/' + maxLength}</Text>}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  TextInput: {
+  viewBody: {
     height: 100,
-    padding: 10,
     marginHorizontal: 10,
     borderColor: 'gray',
     borderWidth: 0.2,
     borderRadius: 2,
     color: 'black',
     backgroundColor: '#fff',
+  },
+  bodyLayout: {
+    height: '100%',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  TextInput: {
+    height: '80%',
+  },
+  textWords: {
+    padding: 0,
+    color: 'gray',
+    textAlign: 'right',
   },
 });
 

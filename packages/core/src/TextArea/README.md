@@ -65,6 +65,54 @@ const { Header, Body, Card, Footer } = Layout;
 export interface TextAreaProps extends ComProps { }
 export default class TextAreaView extends Component<TextAreaProps> {
   state = {
+    value4: '',
+  };
+  render() {
+    const { route } = this.props;
+    const description = route.params.description;
+    const title = route.params.title;
+    return (
+      <Container>
+        <Layout>
+          <Header title={title} description={description} />
+          <Body>
+            <Card title="展示字数" style={styles.card}>
+              <TextArea
+                onChange={(value4: string) => {
+                  this.setState({ value4 });
+                }}
+                value={this.state.value4}
+                showWords={true}
+                placeholder="默认展示字数"
+              />
+            </Card>
+          </Body>
+          <Footer />
+        </Layout>
+      </Container>
+    );
+  }
+}
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#fff',
+  },
+});
+```
+
+### 只读状态
+
+```jsx
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
+import { TextArea } from '@uiw/react-native';
+import Layout, { Container } from '../../Layout';
+import { ComProps } from '../../routes';
+
+const { Header, Body, Card, Footer } = Layout;
+export interface TextAreaProps extends ComProps { }
+export default class TextAreaView extends Component<TextAreaProps> {
+  state = {
     value1: '只读状态不可输入',
   };
   render() {
@@ -124,14 +172,17 @@ export default class TextAreaView extends Component<TextAreaProps> {
           <Header title={title} description={description} />
           <Body>
            <Card title="自定义输入框样式" style={styles.card}>
-              <TextArea
+                <TextArea
                 style={{
-                  fontSize: 20,
-                  color: 'blue',
-                  height: 200,
-                  borderColor: 'red',
-                  borderWidth: 1,
+                  height: 150,
+                  borderColor: 'blue',
+                  borderWidth: 2,
                 }}
+                fontStyle={{
+                  fontSize: 16,
+                  color: 'blue',
+                }}
+                showWords={true}
                 onChange={(value3: string) => {
                   this.setState({ value3 });
                 }}
@@ -164,3 +215,5 @@ const styles = StyleSheet.create({
 | `editable` | 是否禁用 | `boolean` | `true` |
 | `onChange` | 文本域内容变化时触发 | `(val: string) => void` |  |
 | `value` | 文本框中的文字内容 | `string` |  |
+| `showWords` | 是否展示字数 | `boolean` | `false` |
+| `fontStyle` | 输入框文字样式 | ` StyleProp<TextStyle>` |  |
