@@ -1,5 +1,5 @@
 # V2 -> V3
-## `react-native-uiw@3.x.x`
+## `@uiw/react-native3.0.3`
 ### Presets Updates
 - #### 组件性能优化
 - #### 统一ios以及android组件差异
@@ -9,11 +9,11 @@
 
 ### New Components
 
-- Calendar
-- ScreenRoot
-- DragDrawer
-- TreeSelect
-- RNText
+- `Calendar` 日历
+- `ScreenRoot` 自定义导航栏
+- `DragDrawer` 拖曳抽屉
+- `TreeSelect` 级联选择器
+- `RNText` 字体文本
 
 --- 
 
@@ -49,6 +49,11 @@
 
 ##### Modal
 解决 Modal弹出动画底层延迟收起问题
+
+##### SwipeAction
+解决 SwipeAction key报错
+
+
 
 --- 
 
