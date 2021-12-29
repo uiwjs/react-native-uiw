@@ -3,6 +3,7 @@
 ### Presets Updates
 - #### 组件性能优化
 - #### 统一ios以及android组件差异
+- #### 减少第三方依赖 `即将删除 component SelectCascader 以及 dependencies @react-native-picker/picker `
 
 --- 
 
@@ -17,9 +18,6 @@
 --- 
 
 ### Components Change
-
-> 🚧 注意：下一版本即将删除 SelectCascader
-<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ##### Radio
 新增选中颜色
@@ -56,7 +54,4 @@
 
 ### Dependencies Update
 `react-native-gesture-handler@1.10.3` -> `react-native-gesture-handler@2.0.0`
-
-> 🚧 注意：下一版本即将删除 @react-native-picker/picker
-<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
