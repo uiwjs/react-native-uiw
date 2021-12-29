@@ -289,6 +289,10 @@ export const routeData = [
         path: '/components/textarea',
         component: lazy(() => import('../pages/components/textarea')),
       },
+      {
+        path: '/components/v3',
+        component: lazy(() => import('../pages/components/v3')),
+      },
     ],
   },
 ];
