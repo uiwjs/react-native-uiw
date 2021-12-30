@@ -490,4 +490,12 @@ export const stackPageData: Routes[] = [
       description: '可输入多行文字',
     },
   },
+  {
+    name: 'ActionBar',
+    component: require('./routes/ActionBar').default,
+    params: {
+      title: 'ActionBar 底部操作栏',
+      description: '底部操作栏',
+    },
+  },
 ];
