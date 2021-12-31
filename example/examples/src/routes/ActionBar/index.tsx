@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActionBar} from '@uiw/react-native';
+import {ActionBar, Button, Icon} from '@uiw/react-native';
 import {View, Alert} from 'react-native';
 import {ComProps} from '../../routes';
 import Layout from '../../Layout';
@@ -17,8 +17,8 @@ export default class ActionBarDemo extends React.Component<ActionBarProps> {
         <Header title={title} description={description} />
         <View style={{flex: 1}}>
           <ActionBar
-            backgroundColor="#5847FF"
             scroll={false}
+            backgroundColor="#5847FF"
             actions={[
               {
                 label: 'Delete',

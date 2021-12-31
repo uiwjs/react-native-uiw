@@ -25,3 +25,11 @@ export function arrayTreeFilter<T>(
   } while (children.length > 0);
   return result;
 }
+
+/**
+ * 判断元素是否在数组最后一位
+ * @param length 数组长度
+ * @param i 循环下标
+ * @returns
+ */
+export const last = (length: number, i: number) => length - 1 === i;
