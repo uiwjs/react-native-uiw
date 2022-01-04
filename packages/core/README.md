@@ -33,9 +33,8 @@ A UI component library based on React Native (Android & iOS).
 [快速上手](https://uimjs.github.io/#/docs/getting-started) | [参与组件开发](https://uimjs.github.io/#/docs/development/components) | [参与文档/网站编辑开发](https://uimjs.github.io/#/docs/development/document) | [组件库](https://uimjs.github.io/#/components/about)
 
 ## Install
-
 ```bash
-yarn add @uiw/react-native react-native-svg react-native-root-siblings @react-native-picker/picker react-native-gesture-handler
+yarn add @uiw/react-native react-native-svg@12.1.1 react-native-root-siblings@4.1.1 @react-native-picker/picker@2.2.0 react-native-gesture-handler@2.0.0
 ```
 
 ## Basic Usage

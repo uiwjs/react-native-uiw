@@ -116,6 +116,8 @@ export { default as TreeSelect } from './TreeSelect';
 export * from './TreeSelect';
 export { default as TextArea } from './TextArea';
 export * from './TextArea';
+export { default as ActionBar } from './ActionBar';
+export * from './ActionBar';
 /**
  * Typography
  */

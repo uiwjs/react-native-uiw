@@ -133,6 +133,8 @@ function Demo() {
 }
 ```
 
+### 可高亮文本 RnText
+
 ```jsx
 import { View } from 'react-native';
 import { RnText } from '@uiw/react-native';
