@@ -35,7 +35,7 @@
     "metro-react-native-babel-preset": "0.66.2",
     "react": "17.0.2",
     "react-native": "0.66.1",
-    "@jest/core": "26.6.3"
+    "@jest/core": "27.4.6"
   },
   "dependencies": {
     "husky": "7.0.4",
