@@ -118,9 +118,8 @@ function DragDrawer(props: DragDrawerProps) {
   return (
     <Animated.View
       style={StyleSheet.flatten([styles.drawer, dynamicDrawerStyles, style, { height: animatedViewHeight }])}
-      {...panResponder.panHandlers}
     >
-      <Animated.View style={[styles.viewPosition]}>
+      <Animated.View style={[styles.viewPosition]} {...panResponder.panHandlers}>
         <TouchableOpacity activeOpacity={1}>
           <View style={[styles.homeContainer]}>{IconCustom(icon)}</View>
         </TouchableOpacity>
