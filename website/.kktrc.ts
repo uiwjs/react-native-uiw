@@ -21,6 +21,8 @@ export default (conf: Configuration, env: 'development' | 'production', options:
       VERSION: JSON.stringify(pkg.version),
     }),
   );
-  conf.output = { ...conf.output, publicPath: './' };
+  if (env === 'production') {
+    conf.output = { ...conf.output, publicPath: './' };
+  }
   return conf;
 };
