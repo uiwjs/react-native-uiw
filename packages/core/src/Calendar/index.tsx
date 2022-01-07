@@ -11,7 +11,7 @@ export let newDates = new Date();
 export let toYear = newDates.getFullYear();
 export let toMonth = newDates.getMonth();
 export let toDays = newDates.getDate();
-interface barState {
+interface BarState {
   title?: string;
   barRightText?: string;
   barLeftText?: string;
@@ -24,7 +24,7 @@ export interface CalendarProps extends ViewProps {
   color: string;
   //是否显示农历及假日
   lunarHoliday: boolean;
-  bar?: barState;
+  bar?: BarState;
   //农历详情
   showLunar: boolean;
 }
