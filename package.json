@@ -21,7 +21,9 @@
     "<<<<<<<": "<<<<<<<",
     "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
     "pretty-quick": "pretty-quick --staged",
-    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
+    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
+    "remove": "lerna exec \"rm -rf node_modules package-lock.json\"",
+    "clean": "lerna clean --yes"
   },
   "devDependencies": {
     "@babel/core": "7.16.0",
