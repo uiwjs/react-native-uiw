@@ -82,5 +82,5 @@ export const getTextPartsByHighlight = (targetString = '', highlightText = '') =
  * @returns
  */
 export function sliceText(text = '', length: number) {
-  return text.slice(0, length) + '...';
+  return text.substr(0, length) + '...';
 }
