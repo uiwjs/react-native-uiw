@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@uiw/react-code-preview": "3.0.0",
-    "@uiw/react-markdown-preview": "3.4.6",
+    "@uiw/react-markdown-preview": "3.4.7",
     "@uiw/react-native": "3.0.3",
     "@uiw/react-native-template": "2.3.0",
     "@uiw/reset.css": "1.0.5",
