@@ -235,7 +235,7 @@ export const stackPageData: Routes[] = [
     component: require('./routes/Typography').default,
     params: {
       title: 'Typography 排版',
-      description: '包含 H1~H6,<U>,<S>,<P>等，类似于 HTML 中的标签。',
+      description: '包含 H1~H6,<U>,<S>,<P>,<RnText>等，类似于 HTML 中的标签。',
     },
   },
   {

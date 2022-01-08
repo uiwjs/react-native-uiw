@@ -20,7 +20,7 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
   render() {
     const right = [
       {
-        text: '查看备注',
+        text: '查看',
         color: 'orange',
         x: 250,
         onPress: () => {
