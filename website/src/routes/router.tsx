@@ -290,8 +290,8 @@ export const routeData = [
         component: lazy(() => import('../pages/components/textarea')),
       },
       {
-        path: '/components/v3',
-        component: lazy(() => import('../pages/components/v3')),
+        path: '/docs/changelog',
+        component: lazy(() => import('../pages/docs/changelog')),
       },
     ],
   },

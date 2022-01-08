@@ -2,7 +2,6 @@ import { MenuData } from '../component/SubMenus';
 
 export const componentMenus: MenuData[] = [
   { path: '/components/about', name: '关于 UIW' },
-  { path: '/components/v3', name: '迁移v2 -> v3' },
   { divider: true, name: '通用' },
   { path: '/components/button', name: 'Button 按钮' },
   { path: '/components/icon', name: 'Icon 图标' },
@@ -77,6 +76,7 @@ export const docsMenus: MenuData[] = [
   { path: '/docs/getting-started', name: '快速上手' },
   { path: '/docs/development/components', name: '参与组件开发' },
   { path: '/docs/development/document', name: '参与文档网站编辑开发' },
+  { path: '/docs/changelog', name: '更新日志' },
   { divider: true, name: '环境安装' },
   { path: '/docs/environment-setup/ios', name: 'iOS 环境安装' },
   { path: '/docs/environment-setup/android', name: 'Android(Mac) 环境安装' },
