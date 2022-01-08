@@ -63,6 +63,7 @@ export const componentMenus: MenuData[] = [
   { path: '/components/treeSelect', name: 'TreeSelect 级联选择器' },
   { path: '/components/dragdrawer', name: 'Dragdrawer 拖拽抽屉' },
   { path: '/components/textarea', name: 'TextArea 多行输入框' },
+  { path: '/components/imageViewer', name: 'ImageViewer 图片查看' },
   { divider: true, name: '其它' },
   { href: 'https://github.com/uiwjs/react-native-alipay', name: 'Alipay 支付宝', target: '__blank' },
   {

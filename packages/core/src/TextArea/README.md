@@ -205,6 +205,8 @@ const styles = StyleSheet.create({
 
 ### props
 
+组件继承 [`TextInput`](https://www.react-native.cn/docs/textinput)
+
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `textAlignVertical` | 文本位置 | `"top" | "center" | "auto" | "bottom"` | `top` |

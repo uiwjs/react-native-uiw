@@ -118,6 +118,8 @@ export { default as TextArea } from './TextArea';
 export * from './TextArea';
 export { default as ActionBar } from './ActionBar';
 export * from './ActionBar';
+export { default as ImageViewer } from './ImageViewer';
+export * from './ImageViewer';
 /**
  * Typography
  */
