@@ -1,10 +1,10 @@
 import React, {useState, Fragment} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, ListRenderItemInfo} from 'react-native';
 import {DragDrawer, Card, Icon, List} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
 const {Header, Body, Footer} = Layout;
-const data = [];
+const data: Array<number> = [];
 for (let i = 1; i < 21; i++) {
   data.push(i);
 }
@@ -13,8 +13,10 @@ export default function DragDrawerView({route}: DragDrawerViewProps) {
   const description = route.params.description;
   const title = route.params.title;
 
-  const renderItem = ({item}) => (
-    <View style={{borderWidth: 0.5, padding: 10, borderColor: '#D9D9D9'}}>
+  const renderItem = ({item}: ListRenderItemInfo<Number>) => (
+    <View
+      style={{borderWidth: 0.5, padding: 10, borderColor: '#D9D9D9'}}
+      key={item + ''}>
       <Text style={{fontSize: 20, textAlign: 'center'}}>{item}</Text>
     </View>
   );
@@ -28,7 +30,7 @@ export default function DragDrawerView({route}: DragDrawerViewProps) {
         <FlatList
           data={data}
           renderItem={renderItem}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item + ''}
         />
       </DragDrawer>
       <Container>

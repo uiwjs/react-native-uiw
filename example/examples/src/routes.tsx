@@ -199,14 +199,6 @@ export const stackPageData: Routes[] = [
     },
   },
   {
-    name: 'SelectCascader',
-    component: require('./routes/SelectCascader').default,
-    params: {
-      title: 'SelectCascader 级联选择',
-      description: '可用于类似于省市区选择。',
-    },
-  },
-  {
     name: 'Spacing',
     component: require('./routes/Spacing').default,
     params: {

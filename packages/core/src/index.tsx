@@ -56,8 +56,6 @@ export { default as SwipeAction } from './SwipeAction';
 export * from './SwipeAction';
 export { default as Input } from './Input';
 export * from './Input';
-export { default as SelectCascader } from './SelectCascader';
-export * from './SelectCascader';
 export { default as ExpandableSection } from './ExpandableSection';
 export * from './ExpandableSection';
 export { default as Steps } from './Steps';

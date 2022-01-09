@@ -34,7 +34,7 @@ A UI component library based on React Native (Android & iOS).
 
 ## Install
 ```bash
-yarn add @uiw/react-native react-native-svg@12.1.1 react-native-root-siblings@4.1.1 @react-native-picker/picker@2.2.0 react-native-gesture-handler@2.0.0
+yarn add @uiw/react-native react-native-svg@12.1.1 react-native-root-siblings@4.1.1  react-native-gesture-handler@2.0.0
 ```
 
 ## Basic Usage

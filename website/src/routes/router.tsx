@@ -150,10 +150,6 @@ export const routeData = [
         component: lazy(() => import('../pages/components/picker')),
       },
       {
-        path: '/components/selectcascader',
-        component: lazy(() => import('../pages/components/selectcascader')),
-      },
-      {
         path: '/components/avatar',
         component: lazy(() => import('../pages/components/avatar')),
       },
