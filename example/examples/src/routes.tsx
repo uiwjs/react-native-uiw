@@ -490,4 +490,12 @@ export const stackPageData: Routes[] = [
       description: '底部操作栏',
     },
   },
+  {
+    name: 'ImageViewer',
+    component: require('./routes/ImageViewer').default,
+    params: {
+      title: 'ImageViewer 图片查看',
+      description: '图片查看',
+    },
+  },
 ];

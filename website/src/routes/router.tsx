@@ -286,6 +286,10 @@ export const routeData = [
         component: lazy(() => import('../pages/components/textarea')),
       },
       {
+        path: '/components/imageViewer',
+        component: lazy(() => import('../pages/components/imageViewer')),
+      },
+      {
         path: '/docs/changelog',
         component: lazy(() => import('../pages/docs/changelog')),
       },
