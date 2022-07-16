@@ -32,6 +32,14 @@ A UI component library based on React Native (Android & iOS).
 
 [快速上手](https://uimjs.github.io/#/docs/getting-started) | [参与组件开发](https://uimjs.github.io/#/docs/development/components) | [参与文档/网站编辑开发](https://uimjs.github.io/#/docs/development/document) | [组件库](https://uimjs.github.io/#/components/about)
 
+您可以使用我们制定的模版([`@uiw/react-native-template`](https://github.com/uiwjs/react-native-template))创建一个新项目：
+
+<!--rehype:style=background-color: rgb(118 247 149);-->
+```shell
+# 此模板默认集成了一些必用的依赖，如路由，组件库等
+npx react-native init AwesomeProject --template @uiw/react-native-template
+```
+
 ## Install
 ```bash
 yarn add @uiw/react-native react-native-svg@12.1.1 react-native-root-siblings@4.1.1  react-native-gesture-handler@2.0.0

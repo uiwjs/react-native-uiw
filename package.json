@@ -34,9 +34,9 @@
     "@babel/preset-typescript": "7.15.0",
     "babel-preset-react-native": "4.0.1",
     "fs-extra": "10.0.0",
-    "metro-react-native-babel-preset": "0.66.2",
-    "react": "17.0.2",
-    "react-native": "0.66.1"
+    "metro-react-native-babel-preset": "0.70.3",
+    "react": "18.0.0",
+    "react-native": "0.69.1"
   },
   "dependencies": {
     "husky": "7.0.4",
