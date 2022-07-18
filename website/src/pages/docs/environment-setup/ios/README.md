@@ -19,7 +19,16 @@ brew install node
 brew install watchman
 ```
 
-如果您的系统上已经安装了 Node，请确保它是 Node 12 或更新版本。
+如果你已经安装了 Node，请检查其版本是否在 v14 以上。安装完 Node 后建议设置 npm 镜像（淘宝源）以加速后面的过程（或使用科学上网工具）。
+> 🚧 注意：不要使用 cnpm！cnpm 安装的模块路径比较奇怪，packager 不能正常识别！
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px; display: inline-block;-->
+```shell
+# 使用nrm工具切换淘宝源
+npx nrm use taobao
+
+# 如果之后需要切换回官方源可使用
+npx nrm use npm
+```
 
 [Watchman](https://facebook.github.io/watchman) 是 Facebook 的一个工具，用于观察文件系统中的变化。 强烈建议您安装它以获得更好的性能。
 
@@ -27,7 +36,7 @@ brew install watchman
 
 安装 Xcode 的最简单方法是通过 [Mac App Store](https://itunes.apple.com/cn/app/xcode/id497799835?mt=12)。 安装 Xcode 也将安装 iOS 模拟器和所有必要的工具来构建你的 iOS 应用程序。
 
-如果您已经在系统上安装了 Xcode，请确保它是 10 版或更新版本。
+如果您已经在系统上安装了 Xcode，请确保它是 12 版或更新版本。
 
 ![Xcode](./001.png)<!--rehype:style=max-width: 480px;-->
 
@@ -65,6 +74,17 @@ sudo gem install cocoapods -v 1.4.0
 ```
 
 有关更多信息，请访问 [CocoaPods 入门指南](https://guides.cocoapods.org/using/getting-started.html)。
+
+<details>
+    <summary>Mac M1 的注意事项</summary>
+Cocoapods 目前在 Mac M1 架构上可能还有一些兼容问题（我们建议使用brew install cocoapods来安装 Cocoapods）。如果你在安装 pods 依赖时出现问题，可以尝试运行下面的命令：
+
+- `sudo arch -x86_64 gem install ffi`
+- `arch -x86_64 pod install`
+
+以上命令会安装ffi包，用于在安装和装载 pods 时调用合适的系统架构。
+
+</details>
 
 ### `React Native 命令行界面`
 

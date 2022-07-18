@@ -11,18 +11,18 @@ Android 环境安装(for Windows)
 
 ### `Node, Python2, JDK`
 
-我们建议通过 [`Chocolatey`](https://chocolatey.org/)（一种流行的 Windows 包管理器）安装 `Node` 和 `Python2`。
+我们建议通过 [`Chocolatey`](https://chocolatey.org/)（一种流行的 Windows 包管理器）安装 `Node` ~~和 `Python2`~~。
 
-React Native 还需要 [Java SE Development Kit (JDK)](https://openjdk.java.net/projects/jdk8/) 以及 `Python2`。 两者都可以使用 Chocolatey 安装。
+React Native 还需要 [Java Development Kit [JDK] 11](https://www.oracle.com/java/technologies/downloads/#java11) ~~以及 `Python2`~~。 两者都可以使用 Chocolatey 安装。
 
 打开管理员命令提示符（右键单击命令提示符并选择“以管理员身份运行”），然后运行以下命令：
 
 ```shell
-choco install -y nodejs.install python2 openjdk8
+choco install -y nodejs.install openjdk11
 ```
 
-> 🚧 如果您的系统上已经安装了 Node，请确保它是 Node 10 或更新版本。 如果您的系统上已经有 JDK，请确保它是版本 8 或更高版本。
-> 您可以在 Node 的[下载页面](https://nodejs.org/en/download/)上找到其他安装选项。
+> 🚧 如果您的系统上已经安装了 Node，请确保它是 Node 14 或更新版本。(您可以在 Node 的[下载页面](https://nodejs.org/en/download/)上找到其他安装选项。)
+> 🚧 低于 0.67 版本的 React Native 需要 JDK 1.8 版本（官方也称 8 版本）。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 > 🚧 在键盘按下 <kbd>win</kbd> + <kbd>R</kbd> 键，输入 `cmd`，然后回车，打开 `cmd` 窗口

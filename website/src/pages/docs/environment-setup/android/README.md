@@ -29,10 +29,12 @@ brew install watchman
 我们建议使用 [Homebrew](http://brew.sh/) 安装 JDK。 安装 Homebrew 后，在终端中运行以下命令：
 
 ```shell
-brew install --cask adoptopenjdk/openjdk/adoptopenjdk8
+brew tap homebrew/cask-versions
+brew install --cask zulu11
 ```
+React Native 需要 Java Development Kit [JDK] 11。你可以在命令行中输入 javac -version（请注意是 javac，不是 java）来查看你当前安装的 JDK 版本。
 
-> 🚧 如果您的系统上已经安装了 JDK，请确保它是 JDK 8 或更新版本。
+> 🚧 低于 0.67 版本的 React Native 需要 JDK 1.8 版本（官方也称 8 版本）。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px; display: inline-block;-->
 
 ### `安卓开发环境`
