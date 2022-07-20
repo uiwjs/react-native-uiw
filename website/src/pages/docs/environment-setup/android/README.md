@@ -141,6 +141,9 @@ npx react-native init AwesomeProject --version X.XX.X
 
 您还可以使用自定义 React Native 模板（如 TypeScript）使用 `--template` 参数启动项目：
 
+>🚧 必须要看的注意事项：请`不要`单独使用常见的关键字作为项目名（如 class, native, new, package 等等）。请不要使用与核心模块同名的项目名（如 react, react-native 等）。请不要在目录、文件名中使用中文、空格等特殊符号。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
 ```bash
 npx react-native init AwesomeTSProject --template react-native-template-typescript
 ```

@@ -5,11 +5,11 @@ Android 环境安装(for Windows)
 
 ## 安装依赖
 
-您将需要 `Node`、`React Native` 命令行界面、`Python2`、`JDK` 和 `Android Studio`。
+您将需要 `Node`、`React Native` 命令行界面、`JDK` 和 `Android Studio`。
 
 虽然您可以使用您选择的任何编辑器来开发您的应用程序，但您需要安装 `Android Studio` 以设置必要的工具来为 `Android` 构建您的 `React Native` 应用程序。
 
-### `Node, Python2, JDK`
+### `Node, JDK`
 
 我们建议通过 [`Chocolatey`](https://chocolatey.org/)（一种流行的 Windows 包管理器）安装 `Node` ~~和 `Python2`~~。
 
@@ -53,8 +53,8 @@ yarn -v
 
 ## 安卓开发环境
 
-先到 [官网](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)下载 `JDK`，会跳转到一个 `Oracler` 的登录页面，登录之后才可下载，如果没有账号可以注册一个  
-注意 ：`JDK` 的版本必须是 `1.8`（目前不支持 1.9 及更高版本，注意 1.8 版本官方也直接称 8 版本）
+先到 [官网](https://www.oracle.com/java/technologies/downloads/#java11)下载 `JDK`，会跳转到一个 `Oracler` 的登录页面，登录之后才可下载，如果没有账号可以注册一个  
+注意 ：`JDK` 的版本必须是 `11`（低于 0.67 版本的 React Native 需要 JDK 1.8 版本（官方也称 8 版本））
 
 <img src="./013.png" /><!--rehype:style=max-width: 480px;-->
 
@@ -211,6 +211,15 @@ SDK 默认是安装在下面的目录：
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 您可以使用 React Native 的内置命令行界面来生成一个新项目。 让我们创建一个名为 `AwesomeProject` 的新 React Native 项目：
+
+> 🚧 必须要看的注意事项一： 请`不要`在目录、文件名中使用`中文、空格`等特殊符号。请`不要`单独使用常见的关键字作为项目名（如 class, native, new, package 等等）。请`不要`使用与核心模块同名的项目名（如 react, react-native 等）。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+> 🚧 必须要看的注意事项二：请`不要`在某些权限敏感的目录例如 System32 目录中 init 项目！会有各种权限限制导致不能运行！
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+> 🚧 必须要看的注意事项三：请`不要`使用一些移植的终端环境，例如`git bash`或`mingw`等等，这些在 windows 下可能导致找不到环境变量。请使用系统自带的命令行（CMD 或 powershell）运行。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ```shell
 npx react-native init AwesomeProject
