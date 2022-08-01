@@ -15,7 +15,6 @@
     "noEmit": false,
     "target": "esnext",
     "module": "esnext",
-    "types": ["node"],
     "baseUrl": "."
   },
   "exclude": ["node_modules"],

@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
 import React, { ReactNode, useMemo, useRef, useEffect } from 'react';
 import {
   StyleSheet,
@@ -94,7 +95,7 @@ function ActionBar({
   const onItemsLayout = (event: LayoutChangeEvent, index: number) => {
     const layout = event.nativeEvent.layout || {};
     itemsLayouts[index] = layout;
-    if (actions && _.keys(itemsLayouts).length === _.keys(actions).length) {
+    if (actions && keys(itemsLayouts).length === keys(actions).length) {
       onFocusIndex(focusIndex);
     }
   };
@@ -187,7 +188,7 @@ function ActionBar({
       <View
         style={[styles.container, { justifyContent: 'space-between', paddingHorizontal: scroll ? 0 : 20, ...style }]}
       >
-        {_.map(actions, ({ label = '', onPress, render, fontStyle }, i) => {
+        {map(actions, ({ label = '', onPress, render, fontStyle }, i) => {
           const prop = {
             onLayout: (event: LayoutChangeEvent) => onItemsLayout(event, i),
             key: i,
