@@ -82,7 +82,7 @@ Cocoapods 目前在 Mac M1 架构上可能还有一些兼容问题（我们建�
 - `sudo arch -x86_64 gem install ffi`
 - `arch -x86_64 pod install`
 
-以上命令会安装ffi包，用于在安装和装载 pods 时调用合适的系统架构。
+以上命令会安装ffi包，用于在安装和装载 pods 时调用合适的系统架构。如果一些依赖包过时导致安装报错，您可以使用 `pod repo update` 或 `pod install --repo-update` 更新过时的源代码库。
 
 </details>
 
