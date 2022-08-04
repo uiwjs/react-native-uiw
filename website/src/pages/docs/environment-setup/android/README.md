@@ -32,9 +32,17 @@ brew install watchman
 brew tap homebrew/cask-versions
 brew install --cask zulu11
 ```
-React Native 需要 Java Development Kit [JDK] 11。你可以在命令行中输入 javac -version（请注意是 javac，不是 java）来查看你当前安装的 JDK 版本。
 
-> 🚧 低于 0.67 版本的 React Native 需要 JDK 1.8 版本（官方也称 8 版本）。
+Zulu OpenJDK 发行版为 Intel 和 M1 Mac 提供了 JDK。与使用基于 Intel 的 JDK 相比，这将确保您在 M1 Mac 上的构建速度更快。
+
+你可以在命令行中输入 `javac -version`（请注意是 javac，不是 java）来查看你当前安装的 JDK 版本。
+
+```shell
+$ javac -version
+javac 11.0.16
+```
+
+> 🚧 低于 `0.67` 版本的 React Native 需要 JDK 1.8 版本（官方也称 8 版本），高于 `0.67+` 版本的 React Native，请确保它是 `JDK 11`<!--rehype:style=color: #fff;background: #f44336;--> 或更高版本。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px; display: inline-block;-->
 
 ### `安卓开发环境`
@@ -48,7 +56,7 @@ React Native 需要 Java Development Kit [JDK] 11。你可以在命令行中输�
 > 🚧 如果打不开，或者无法下载 [Android Studio](https://developer.android.google.cn/studio) 请确认下载地址 ~~`developer.android.com`~~ -> `developer.android.google.cn`。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px; display: inline-block;-->
 
-> 🚧 注意：如果您是 `MacBook M1`<!--rehype:style=color: #e00000;-->，你需要下载最新版 [`Android Studio Arctic Fox (2020.3.1) Canary 15, Mac (ARM)`](https://developer.android.google.cn/studio/archive) 预览版。
+> 🚧 注意：如果您是 `MacBook M1`<!--rehype:style=color: #e00000;-->，你需要下载最新版 [`android-studio-2021.2.1.16-mac_arm.dmg`](https://developer.android.google.cn/studio/archive) 。如果是 [`Android Studio Arctic Fox (2020.3.1) Canary 15, Mac (ARM)`](https://developer.android.google.cn/studio/archive) 预览版可以更新解决一些环境错误问题。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 在 Android Studio 安装向导中，确保选中以下所有项目旁边的框：
@@ -76,12 +84,12 @@ Android Studio 默认安装最新的 Android SDK。 但是，使用本机代码�
 
 从 `SDK Manager` 中选择 `SDK Platforms` 选项卡，然后选中右下角 `Show Package Details` 旁边的框。 查找并展开 `Android 10 (Q)` 条目，然后确保选中以下项目：
 
-- `Android SDK Platform 29`
-- `Intel x86 Atom_64 System Image` or `Google APIs Intel x86 Atom System Image`
+- `Android SDK Platform 31`
+- `Intel x86 Atom_64 System Image` 或 `Google APIs Intel x86 Atom System Image` 或 (for Apple M1 Silicon) `Google APIs ARM 64 v8a System Image`
 
 ![](./2.png)
 
-接下来，选择 `SDK Tools` 选项卡并在此处选中 `Show Package Details` 旁边的框。 查找并展开 `Android SDK Build-Tools` 条目，然后确保选择了 `29.0.2`。
+接下来，选择 `SDK Tools` 选项卡并在此处选中 `Show Package Details` 旁边的框。 查找并展开 `Android SDK Build-Tools` 条目，然后确保选择了 `31.0.0`。
 
 ![](./3.png)
 
@@ -96,11 +104,9 @@ React Native 工具需要设置一些环境变量才能使用本机代码构建�
 将以下行添加到您的 `$HOME/.bash_profile` 或 `$HOME/.bashrc`（如果您使用的是 `zsh`，则使用 `~/.zprofile` 或 `~/.zshrc`）配置文件：
 
 ```shell
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 ```
 
 > 🚧 `.bash_profile` 特定于 `bash`。 如果您使用另一个 `shell`，则需要编辑相应的特定于 `shell` 的配置文件。
@@ -120,7 +126,7 @@ React Native 有一个内置的命令行界面。 我们建议您在运行时使
 
 ## 创建一个新的应用程序
 
-> 🚧 如果您之前安装了全局 `react-native-cli` 包，请将其删除，因为它可能会导致意外问题。
+> 🚧 如果您之前安装了全局 `react-native-cli` 包，请将其删除 (`npm uninstall react-native-cli -g`)，因为它可能会导致意外问题。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 您可以使用 React Native 的内置命令行界面来生成一个新项目。 让我们创建一个名为 `AwesomeProject` 的新 React Native 项目：
