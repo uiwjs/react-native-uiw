@@ -71,15 +71,74 @@ class Demo extends Component {
 
 <!--rehype:bgWhite=true&codeSandbox=true&codePen=true&noCode=true-->
 ```jsx
+import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import svgPaths from '@uiw/icons/fonts/w-icon.json';
 
 function Demo() {
+  useEffect(()=>{
+    const dv = document.createElement('div')
+    dv.id='dv'
+    dv.setAttribute('style',`
+      width: 100px;
+      padding: 4px 10px;
+      border: 1px solid #fff;
+      text-align: center;
+      border-radius: 5px;
+      background: #fff;
+      box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+      pointer-events: none;
+      font-size: 12px;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      z-index: 9;
+      display: none;
+      color: green;
+    `)
+    dv.innerText = '复制成功!'
+    document.body.appendChild(dv)
+  },[])
+  const onClick = (keyname) => {
+    if (window.clipboardData) {
+      window.clipboardData.setData('text', `<Icon name="${keyname}" />`);
+      message()
+    } else {
+      (function (s) {
+        document.oncopy = function (e) {
+          e.clipboardData.setData('text', s);
+          e.preventDefault();
+          document.oncopy = null;
+        };
+      })(`<Icon name="${keyname}" size={46} />`);
+      document.execCommand('Copy');
+      message()
+    }
+  }
+  const message = () => {
+    document.getElementById('dv').style.display = 'block';
+    const timer = setTimeout(()=>{
+      document.getElementById('dv').style.display = 'none';
+      clearTimeout(timer)
+    },3000)
+  }
   return (
     <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
       {Object.keys(svgPaths).map((keyname, idx) => {
         return (
-          <div key={idx} style={{ display: 'flex', flexDirection: 'column', width: 180, paddingBottom: 14 }}>
+          <div 
+            key={idx} 
+            onClick={()=>onClick(keyname)}
+            style={{ 
+              display: 'flex',
+              cursor: 'pointer', 
+              flexDirection: 'column', 
+              width: 180, 
+              paddingBottom: 14,
+            }}
+          >
             <svg viewBox="0 0 24 24" width="21">
               {svgPaths[keyname].map((path, pathIdx) => (
                 <path d={path} key={pathIdx} fillRule="evenodd"/>
