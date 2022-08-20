@@ -231,9 +231,11 @@ export default function CardCollapse(props: CardCollapseProps) {
           style={[contentContainerStyle, styles.card, { borderRadius: itemBorderRadius }]}
           onPress={() => disablePresses && onItemPress(index)}
         >
-          <Animated.View style={index !== 0 ? { opacity: animatedContentOpacity } : undefined} collapsable={false}>
-            {item}
-          </Animated.View>
+          <TouchableOpacity onPress={close}>
+            <Animated.View style={index !== 0 ? { opacity: animatedContentOpacity } : undefined} collapsable={false}>
+              {item}
+            </Animated.View>
+          </TouchableOpacity>
         </Container>
       </Animated.View>
     );
@@ -241,7 +243,7 @@ export default function CardCollapse(props: CardCollapseProps) {
   return (
     <View style={containerStyle}>
       <View style={{ marginBottom: PEEP * 3 }}>
-        <Animated.View
+        {/* <Animated.View
           style={{
             position: 'absolute',
             right: 0,
@@ -254,7 +256,7 @@ export default function CardCollapse(props: CardCollapseProps) {
               <Icon xml={down} size={30} />
             </TouchableOpacity>
           )}
-        </Animated.View>
+        </Animated.View> */}
         {React.Children.map(children, (item, index) => {
           return renderItem(item, index);
         })}
