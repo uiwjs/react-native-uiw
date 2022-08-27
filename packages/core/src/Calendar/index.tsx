@@ -66,16 +66,16 @@ const Calendar = (props: CalendarProps) => {
     render
   ) : (
     <View style={[styles.header, { backgroundColor: color }]}>
-      <TouchableOpacity onPress={() => onPressBarLeft && onPressBarLeft()}>
+      <TouchableOpacity style={styles.headerBtnWrap} onPress={() => onPressBarLeft && onPressBarLeft()}>
         <View style={styles.headerBtn}>
           <Icon name="left" size={20} color={'#fff'} />
           <Text style={styles.headerText}>{barRightText}</Text>
         </View>
       </TouchableOpacity>
-      <View>
+      <View style={styles.headerTextWrap}>
         <Text style={styles.headerText}>{title}</Text>
       </View>
-      <TouchableOpacity onPress={() => goToday()}>
+      <TouchableOpacity style={styles.headerTextTouch} onPress={() => goToday()}>
         <Text style={styles.headerText}>{barLeftText}</Text>
       </TouchableOpacity>
     </View>
@@ -125,40 +125,42 @@ const Calendar = (props: CalendarProps) => {
           key={index}
           style={
             lunarAll.type === 1
-              ? styles.otherMonth
+              ? [styles.dateBase, styles.otherMonth]
               : lunarAll.type === 2
-              ? [styles.currentMonth, { backgroundColor: color }]
+              ? [styles.currentMonth, styles.dateBase, { backgroundColor: color }]
               : lunarAll.type === 3
-              ? [styles.selectMonth, { borderColor: color }]
-              : styles.day
+              ? [styles.selectMonth, styles.dateBase, { borderColor: color }]
+              : styles.dateBase
           }
           onPress={() => goSelectDay(day)}
         >
-          <Text
-            style={[
-              styles.dayText,
-              {
-                color: lunarAll.type === 1 ? '#B5B5B5' : lunarAll.type === 2 ? '#fff' : '#000',
-                lineHeight: lineHeight,
-                paddingTop: paddingTop,
-              },
-            ]}
-          >
-            {day.monthDays}
-          </Text>
-          {lunarHoliday === true && (
+          <View>
             <Text
               style={[
                 styles.dayText,
                 {
-                  color: lunarAll.type === 1 ? '#B5B5B5' : lunarAll.type === 2 ? '#fff' : colorType,
-                  fontSize: 13,
+                  color: lunarAll.type === 1 ? '#B5B5B5' : lunarAll.type === 2 ? '#fff' : '#000',
+                  lineHeight: lineHeight,
+                  paddingTop: paddingTop,
                 },
               ]}
             >
-              {nameLen > 3 ? <Ellipsis maxLen={2}>{day.lunarHolidays}</Ellipsis> : day.lunarHolidays || day.lunar}
+              {day.monthDays}
             </Text>
-          )}
+            {lunarHoliday === true && (
+              <Text
+                style={[
+                  styles.dayText,
+                  {
+                    color: lunarAll.type === 1 ? '#B5B5B5' : lunarAll.type === 2 ? '#fff' : colorType,
+                    fontSize: 13,
+                  },
+                ]}
+              >
+                {nameLen > 3 ? <Ellipsis maxLen={2}>{day.lunarHolidays}</Ellipsis> : day.lunarHolidays || day.lunar}
+              </Text>
+            )}
+          </View>
         </TouchableOpacity>
       );
     });
@@ -249,16 +251,29 @@ const Calendar = (props: CalendarProps) => {
 const styles = StyleSheet.create({
   header: {
     flex: 1,
+    display: 'flex',
     backgroundColor: '#329BCB',
     flexDirection: 'row',
     padding: 10,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  headerBtnWrap: {
+    flex: 1,
+  },
   headerBtn: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: 50,
+    // width: 50,
+  },
+  headerTextWrap: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  headerTextTouch: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'row-reverse',
   },
   headerText: {
     fontSize: 20,
@@ -299,31 +314,28 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 2,
   },
-  currentMonth: {
-    backgroundColor: '#329BCB',
-    borderRadius: 50,
+  dateBase: {
     marginHorizontal: 2,
     width: MainWidth / 7 - 4.5,
     height: MainWidth / 7 - 4.5,
+    ...Platform.select({
+      ios: {},
+      android: {
+        justifyContent: 'center',
+      },
+    }),
+  },
+  currentMonth: {
+    backgroundColor: '#329BCB',
+    borderRadius: 50,
   },
   selectMonth: {
     borderWidth: 1,
     borderColor: '#329BCB',
     borderRadius: 50,
-    marginHorizontal: 2,
-    width: MainWidth / 7 - 4.5,
-    height: MainWidth / 7 - 4.5,
   },
   otherMonth: {
     borderRadius: 50,
-    marginHorizontal: 2,
-    width: MainWidth / 7 - 4.5,
-    height: MainWidth / 7 - 4.5,
-  },
-  day: {
-    marginHorizontal: 2,
-    width: MainWidth / 7 - 4.5,
-    height: MainWidth / 7 - 4.5,
   },
   dayText: {
     textAlign: 'center',
