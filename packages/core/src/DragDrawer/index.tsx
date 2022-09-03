@@ -60,7 +60,7 @@ function DragDrawer(props: DragDrawerProps) {
             listener: () => {
               let values = DEVICE_HEIGHT - 30 - gestureState.moveY;
               setViewHeight(values);
-              animatedViewHeight.setValue(values);
+              animatedViewHeight.setValue(values > 50 ? values : 50);
             },
             useNativeDriver: false,
           }, // 可选的异步监听函数
