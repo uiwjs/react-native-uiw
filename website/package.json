@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Documentation site for React Native UIW.",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
   "dependencies": {
     "@uiw/react-code-preview": "3.0.0",
     "@uiw/react-markdown-preview": "3.4.7",
-    "@uiw/react-native": "3.0.5",
+    "@uiw/react-native": "3.0.6",
     "@uiw/react-native-template": "3.0.0",
     "@uiw/reset.css": "~1.0.6",
     "react": "18.0.0",
