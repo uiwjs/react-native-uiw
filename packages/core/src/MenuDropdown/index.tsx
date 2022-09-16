@@ -51,9 +51,14 @@ export default class MenuDropdown extends React.Component<MenuDropdownProps> {
   };
 
   animateClose = () => {
-    this.setState({
-      listHeightValue: new Animated.Value(0),
-    });
+    // this.setState({
+    //   listHeightValue: new Animated.Value(0),
+    // });
+    Animated.timing(this.state.listHeightValue, {
+      toValue: 0,
+      duration: 400,
+      useNativeDriver: false, // 动画值在不同的驱动方式之间是不能兼容的。因此如果你在某个动画中启用了原生驱动，那么所有和此动画依赖相同动画值的其他动画也必须启用原生驱动。
+    }).start();
   };
 
   menuContainer = (event: LayoutChangeEvent) => {
