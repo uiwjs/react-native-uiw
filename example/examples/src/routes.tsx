@@ -1,7 +1,4 @@
-import {
-  StackNavigationProp,
-  StackNavigationOptions,
-} from '@react-navigation/stack';
+import {StackNavigationProp, StackNavigationOptions} from '@react-navigation/stack';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -178,8 +175,7 @@ export const stackPageData: Routes[] = [
     component: require('./routes/Result').default,
     params: {
       title: 'Result 结果页',
-      description:
-        '在整张页面中组织插画、图标、文字等内容，向用户反馈操作结果。',
+      description: '在整张页面中组织插画、图标、文字等内容，向用户反馈操作结果。',
     },
   },
   {
@@ -339,8 +335,7 @@ export const stackPageData: Routes[] = [
     component: require('./routes/SpeedDial').default,
     params: {
       title: 'SpeedDial 悬浮标记',
-      description:
-        'SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。',
+      description: 'SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。',
     },
   },
   {
@@ -496,6 +491,14 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'ImageViewer 图片查看',
       description: '图片查看',
+    },
+  },
+  {
+    name: 'Form',
+    component: require('./routes/Form').default,
+    params: {
+      title: 'form',
+      description: 'form',
     },
   },
 ];

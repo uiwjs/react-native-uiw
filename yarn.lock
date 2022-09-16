@@ -5030,10 +5030,10 @@
     "@uiw/utils" "^4.21.14"
     react-transition-group "~4.4.2"
 
-"@uiw/reset.css@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@uiw/reset.css/-/reset.css-1.0.5.tgz#bba28f4050dbbfaca37000abecd17d7fc1ed8841"
-  integrity sha512-74Y6A1dPGkIUxA8L9poN/dh7V5TWS1SRgXxVkDzUlFIuFVuGksCvR019BzusiVyUBfGgzlVcxR5JES1bDcXwSA==
+"@uiw/reset.css@~1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/@uiw/reset.css/-/reset.css-1.0.6.tgz#5b4a0e291ac015118258e0e17442c3d4ccb966fd"
+  integrity sha512-PNN0LeBf9zHtO5LE6h55n5RyuPKFP9PzBkh/UclmlG9bUIxkhDtCbWInDBLtWV3FXEXrpGOXGTlE0+wIEmM1Ag==
 
 "@uiw/utils@^4.21.14":
   version "4.21.14"

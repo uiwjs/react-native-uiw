@@ -118,6 +118,8 @@ export { default as ActionBar } from './ActionBar';
 export * from './ActionBar';
 export { default as ImageViewer } from './ImageViewer';
 export * from './ImageViewer';
+export { default as Form } from './Form';
+export * from './Form';
 /**
  * Typography
  */
