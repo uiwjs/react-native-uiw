@@ -1,5 +1,20 @@
-interface FormProps {
+import Store from '../hooks/store';
+
+type KeyType = string | number | symbol;
+
+type FormInstance<
+  FormData = any,
+  FieldValue = FormData[keyof FormData],
+  FieldKey extends KeyType = keyof FormData,
+> = Pick<
+  Store<FormData, FieldValue, FieldKey>,
+  'innerSetInitialValues' | 'innerGetStore' | 'innerUpdateStore' | 'getStore' | 'getFieldValue'
+> & {};
+
+interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> {
   formDatas?: FormItemsProps[];
+  form?: FormInstance<FormData, FieldValue, FieldKey>;
+  initialValues?: any;
 }
 
 interface FormItemsProps {
@@ -7,4 +22,4 @@ interface FormItemsProps {
   type: string;
 }
 
-export type { FormProps, FormItemsProps };
+export type { FormProps, FormItemsProps, KeyType, FormInstance };

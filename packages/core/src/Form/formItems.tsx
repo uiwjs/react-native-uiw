@@ -1,27 +1,23 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import { FormProps } from './types';
-import { useFormContext } from './store';
+import { Context } from './hooks/context';
 import Input from '../Input';
 
-const FormItems: FC<FormProps> = ({ formDatas = [] }) => {
-  const {
-    state: { formValues },
-    dispatch,
-  } = useFormContext();
+const FormItems: FC<FormProps & any> = ({ formDatas = [], initialValues = {} }) => {
+  const { formInstance } = useContext(Context);
 
-  const change = (label: string, value: any) => {
-    dispatch({
-      formValues: { ...formValues, [label]: value },
-    });
-  };
+  const formValues = formInstance.innerGetStore();
+
+  const change = (field: string, value: any) => formInstance?.innerUpdateStore(field, value);
 
   const _render = () => {
-    return formDatas.map((v: any) => {
+    return formDatas.map((v: any, i: number) => {
       if (v.type === 'input') {
-        return <Input onChangeText={(value) => change(v.label, value)} />;
+        return <Input key={i} value={formValues[v.label]} onChangeText={(value) => change(v.label, value)} />;
       }
     });
   };
+
   return <React.Fragment>{_render()}</React.Fragment>;
 };
 
