@@ -15,9 +15,10 @@ const Form = <
 
   const isMount = useRef<boolean>();
   const [formInstance] = useForm<FormData, FieldValue, FieldKey>(form);
+  const innerMethods = formInstance.getInnerMethods(true);
 
   if (!isMount.current) {
-    formInstance.innerSetInitialValues(initialValues);
+    innerMethods.innerSetInitialValues(initialValues);
   }
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const Form = <
   }, []);
 
   const contextProps = {
-    formInstance: formInstance,
+    innerMethods: innerMethods,
   };
 
   return (

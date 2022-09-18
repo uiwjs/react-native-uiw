@@ -4,11 +4,11 @@ import { Context } from './hooks/context';
 import Input from '../Input';
 
 const FormItems: FC<FormProps & any> = ({ formDatas = [], initialValues = {} }) => {
-  const { formInstance } = useContext(Context);
+  const { innerMethods } = useContext(Context);
 
-  const formValues = formInstance.innerGetStore();
+  const formValues = innerMethods.innerGetStore();
 
-  const change = (field: string, value: any) => formInstance?.innerUpdateStore(field, value);
+  const change = (field: string, value: any) => innerMethods?.innerUpdateStore(field, value);
 
   const _render = () => {
     return formDatas.map((v: any, i: number) => {

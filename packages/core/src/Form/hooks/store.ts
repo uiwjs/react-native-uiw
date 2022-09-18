@@ -15,7 +15,7 @@ class Store<FormData = any, FieldValue = FormData[keyof FormData], FieldKey exte
     });
   };
 
-  public innerUpdateStore = (field: string, value?: any) => {
+  public innerUpdateStore = (field: FieldKey, value?: FieldValue) => {
     set(this.store, field, value);
   };
 
