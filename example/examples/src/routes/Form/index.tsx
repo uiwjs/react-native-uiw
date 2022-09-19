@@ -4,7 +4,17 @@ import Layout, {Container} from '../../Layout';
 const {Body, Footer} = Layout;
 
 const FormDemo = () => {
-  const items = [{type: 'input', label: 'name'}];
+  const items = [
+    {
+      type: 'input',
+      field: 'name',
+      validate: (val: any) => (!val ? `请输入name` : ''),
+    },
+    {
+      type: 'input',
+      field: 'age',
+    },
+  ];
 
   const initialValues = {name: '王滴滴'};
 

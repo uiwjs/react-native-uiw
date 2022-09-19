@@ -27,7 +27,7 @@ class Store<FormData = any, FieldValue = FormData[keyof FormData], FieldKey exte
     return cloneDeep(get(this.store, field));
   };
 
-  public getStore = () => {
+  public getStore = (): Partial<FormData> => {
     return this.store;
   };
 }

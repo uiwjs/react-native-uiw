@@ -5040,6 +5040,13 @@
   resolved "https://registry.yarnpkg.com/@uiw/utils/-/utils-4.21.14.tgz#e4f836bc52c386784c508e401391040b85de6ded"
   integrity sha512-0A9pEbUqMFjccpJTOR2Tv6DlhSSmiNpJ2gSTlU0IHjDA6Phatl7Eh65fSxZyZiiigjH6EFhCj/hqmwOOIbF5hg==
 
+"@validator.tool/hook@2.2.4":
+  version "2.2.4"
+  resolved "https://registry.npmjs.org/@validator.tool/hook/-/hook-2.2.4.tgz#e46262e3f2e7159ab069769a3b425a23e2dcb228"
+  integrity sha512-hW8nWhL33+wSZXYeqm2RI7E6kpaQxg883kcJdQo3XHgO6++xeVlUmoDLov7Dz6Sb0+S4iziR8JatE6EiVV6N+g==
+  dependencies:
+    validator.tool "2.2.4"
+
 "@vue/babel-helper-vue-transform-on@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@vue/babel-helper-vue-transform-on/-/babel-helper-vue-transform-on-1.0.2.tgz#9b9c691cd06fc855221a2475c3cc831d774bc7dc"
@@ -19009,6 +19016,11 @@ validate-npm-package-name@^4.0.0:
   integrity sha512-mzR0L8ZDktZjpX4OB46KT+56MAhl4EIazWP/+G/HPGuvfdaqg4YsCdtOm6U9+LOFyYDoh4dpnpxZRB9MQQns5Q==
   dependencies:
     builtins "^5.0.0"
+
+validator.tool@2.2.4:
+  version "2.2.4"
+  resolved "https://registry.npmjs.org/validator.tool/-/validator.tool-2.2.4.tgz#74877796be3eae23a038be06a74d00c0bbb47b82"
+  integrity sha512-JkjrGA16YeSbISFFijNJGiYjly0bybY7qBNNZGq0nHV7oL2wfKXD1EO8iyRpZlfS4cJjpdaXQ2BDrtcmas79jQ==
 
 vary@~1.1.2:
   version "1.1.2"

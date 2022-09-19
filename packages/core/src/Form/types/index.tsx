@@ -1,4 +1,5 @@
 import Store from '../hooks/store';
+import { RulesOption } from '@validator.tool/hook';
 
 type KeyType = string | number | symbol;
 
@@ -23,8 +24,9 @@ interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], Field
 }
 
 interface FormItemsProps {
-  label: string;
+  field: string;
   type: string;
+  validate?: RulesOption['validate'];
 }
 
 export type { FormProps, FormItemsProps, KeyType, FormInstance };
