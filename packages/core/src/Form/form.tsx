@@ -14,11 +14,11 @@ const Form = <
   const { formDatas, form, initialValues = {} } = baseProps;
 
   const isMount = useRef<boolean>();
-  const [formInstance] = useForm<FormData, FieldValue, FieldKey>(form);
-  const innerMethods = formInstance.getInnerMethods(true);
+
+  const innerMethods = form.getInnerMethods(true);
 
   if (!isMount.current) {
-    innerMethods.innerSetInitialValues(initialValues);
+    innerMethods.updateStore({ initialValues: initialValues, store: initialValues });
   }
 
   useEffect(() => {

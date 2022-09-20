@@ -18,7 +18,7 @@ const FormDemo = () => {
 
   const initialValues = {name: '王滴滴'};
 
-  const [form] = Form.useForm();
+  const form = Form.useForm();
 
   return (
     <Container>

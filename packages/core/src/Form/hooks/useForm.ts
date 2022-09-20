@@ -1,43 +1,59 @@
-import { useRef } from 'react';
-import { KeyType, InnerMethodsReturnType, FormInstance } from '../types';
-import Store from './store';
+import { KeyType, InnerMethodsReturnType } from '../types';
+import { useState } from 'react';
 
-export function getFormInstance<
-  FormData = any,
-  FieldValue = FormData[keyof FormData],
-  FieldKey extends KeyType = keyof FormData,
->() {
-  const store = new Store<FormData, FieldValue, FieldKey>();
-  return {
-    getStore: store.getStore,
-    getFieldValue: store.getFieldValue,
-    getInnerMethods: (inner?: boolean): InnerMethodsReturnType<FormData, FieldValue, FieldKey> => {
-      let methods = {} as InnerMethodsReturnType<FormData, FieldValue, FieldKey>;
-      if (inner) {
-        methods = {
-          innerSetInitialValues: store.innerSetInitialValues,
-          innerGetStore: store.innerGetStore,
-          innerUpdateStore: store.innerUpdateStore,
-        };
-      }
-      return methods;
-    },
-  };
-}
+type State<FormData = any> = {
+  store: Partial<FormData>;
+  initialValues: Partial<FormData>;
+  errorMessages: Partial<Record<string, string>>;
+};
 
 export default function useForm<
   FormData = any,
   FieldValue = FormData[keyof FormData],
   FieldKey extends KeyType = keyof FormData,
->(form?: FormInstance<FormData, FieldValue, FieldKey>): [FormInstance<FormData, FieldValue, FieldKey>] {
-  const formRef = useRef(form);
+>(): any {
+  const [state, setState] = useState<State>({
+    initialValues: {},
+    errorMessages: {},
+    store: {},
+  });
 
-  if (!formRef.current) {
-    if (form) {
-      formRef.current = form;
-    } else {
-      formRef.current = getFormInstance<FormData, FieldValue, FieldKey>();
-    }
-  }
-  return [formRef.current];
+  const updateStore = (datas: any) => {
+    setState({
+      ...state,
+      ...datas,
+    });
+  };
+
+  const innerUseValidator = () => {};
+
+  const getFieldValue = (field: FieldKey): FieldValue => {
+    const { store } = state;
+    return store[field];
+  };
+
+  const getStore = (): Partial<FormData> => {
+    const { store } = state;
+    return store;
+  };
+
+  const getFormInstance = () => {
+    return {
+      getStore: getStore,
+      getFieldValue: getFieldValue,
+      getInnerMethods: (inner?: boolean): InnerMethodsReturnType<FormData, FieldValue, FieldKey> => {
+        let methods = {} as any;
+        if (inner) {
+          methods = {
+            store: state.store,
+            initialValues: state.initialValues,
+            updateStore: updateStore,
+          };
+        }
+        return methods;
+      },
+    };
+  };
+
+  return getFormInstance();
 }
