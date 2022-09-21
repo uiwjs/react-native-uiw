@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import FormItems from './formItems';
 import { Provider } from './hooks/context';
 import { FormProps, KeyType } from './types';
+import { cloneDeep } from './utils';
 
 const Form = <
   FormData extends unknown = any,
@@ -17,7 +18,7 @@ const Form = <
   const innerMethods = form.getInnerMethods(true);
 
   useEffect(() => {
-    if (!isMount.current) innerMethods.updateStore({ initialValues: initialValues, store: initialValues });
+    if (!isMount.current) innerMethods.updateStore({ initialValues: cloneDeep(initialValues), store: initialValues });
   }, []);
 
   useEffect(() => {

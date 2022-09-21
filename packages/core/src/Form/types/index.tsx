@@ -20,6 +20,8 @@ type FormInstance<FormData = any, FieldValue = FormData[keyof FormData], FieldKe
   getFieldValue: (field: FieldKey) => FieldValue;
   setFieldValue: (field: FieldKey, value: FieldValue) => void;
   resetFieldValue: () => void;
+  validate: () => Partial<Record<string, string>>;
+  validateFields: () => Promise<FormData> | any;
   getInnerMethods: (inner?: boolean) => InnerMethodsReturnType<FormData, FieldValue, FieldKey>;
 };
 

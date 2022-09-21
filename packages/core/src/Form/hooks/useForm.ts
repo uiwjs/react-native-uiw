@@ -1,6 +1,8 @@
 import { KeyType, InnerMethodsReturnType } from '../types';
 import { useState } from 'react';
 import { useValidator } from '@validator.tool/hook';
+import { isObjectEmpty } from '../utils/is';
+import { cloneDeep } from '../utils';
 
 type State<FormData = any> = {
   store: Partial<FormData>;
@@ -51,6 +53,30 @@ export default function useForm<
     });
   };
 
+  // 触发验证
+  const validate = () => {
+    const { showMessages, errorMessages } = validator;
+    showMessages?.();
+    forceUpdate?.();
+    if (Object.keys(errorMessages).length > 0) {
+      return errorMessages;
+    }
+    return {};
+  };
+
+  // 验证并获取表单值
+  const validateFields = () => {
+    return new Promise(async function (resolve, reject) {
+      const errors = validate();
+      if (isObjectEmpty(errors)) {
+        const value = cloneDeep(state.store);
+        resolve(value);
+      } else {
+        reject(errors);
+      }
+    });
+  };
+
   const getStore = (): Partial<FormData> => {
     const { store } = state;
     return store;
@@ -58,12 +84,12 @@ export default function useForm<
 
   const getFormInstance = () => {
     return {
-      forceUpdate,
-      validator,
-      getStore: getStore,
-      getFieldValue: getFieldValue,
-      setFieldValue: setFieldValue,
+      getStore,
+      getFieldValue,
+      setFieldValue,
       resetFieldValue,
+      validate,
+      validateFields,
       getInnerMethods: (inner?: boolean): InnerMethodsReturnType<FormData, FieldValue, FieldKey> => {
         let methods = {} as any;
         if (inner) {

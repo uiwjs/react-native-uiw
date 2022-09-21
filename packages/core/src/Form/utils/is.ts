@@ -19,3 +19,10 @@ export function isNumber(obj: any): obj is number {
 export function isRegExp(obj: any) {
   return opt.call(obj) === '[object RegExp]';
 }
+
+export function isObjectEmpty(obj: any) {
+  for (let _key in obj) {
+    return false;
+  }
+  return true;
+}

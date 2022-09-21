@@ -11,8 +11,3 @@ export function cloneDeep(value: any) {
     }
   });
 }
-
-export function set<T extends { [key: string]: any }>(target: T, field: PropertyPath, value: any) {
-  lodashSet(target, field, cloneDeep(value));
-  return target;
-}
