@@ -1,4 +1,5 @@
 import { RulesOption } from '@validator.tool/hook';
+import Validator from 'validator.tool';
 
 type KeyType = string | number | symbol;
 
@@ -10,11 +11,15 @@ export type InnerMethodsReturnType<
   store: Partial<FormData>;
   initialValues: Partial<FormData>;
   updateStore: (value: any) => void;
+  validator: Validator;
+  forceUpdate: () => void;
 };
 
 type FormInstance<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> = {
   getStore: () => FormData;
-  getFieldValue: () => FieldValue;
+  getFieldValue: (field: FieldKey) => FieldValue;
+  setFieldValue: (field: FieldKey, value: FieldValue) => void;
+  resetFieldValue: () => void;
   getInnerMethods: (inner?: boolean) => InnerMethodsReturnType<FormData, FieldValue, FieldKey>;
 };
 

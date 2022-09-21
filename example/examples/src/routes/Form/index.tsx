@@ -16,7 +16,7 @@ const FormDemo = () => {
     },
   ];
 
-  const initialValues = {name: '王滴滴'};
+  const initialValues = {name: '王滴滴', age: ''};
 
   const form = Form.useForm();
 
@@ -29,9 +29,16 @@ const FormDemo = () => {
             type="primary"
             onPress={() => {
               const values = form.getStore();
+              const age = form.getFieldValue('age');
               console.log('values', values);
             }}>
             默认按钮
+          </Button>
+          <Button type="primary" onPress={() => form.setFieldValue('age', '456')}>
+            设置
+          </Button>
+          <Button type="primary" onPress={() => form.resetFieldValue()}>
+            重置
           </Button>
         </Body>
         <Footer />

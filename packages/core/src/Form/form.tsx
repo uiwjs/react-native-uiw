@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import FormItems from './formItems';
 import { Provider } from './hooks/context';
 import { FormProps, KeyType } from './types';
-import useForm from './hooks/useForm';
 
 const Form = <
   FormData extends unknown = any,
@@ -17,9 +16,9 @@ const Form = <
 
   const innerMethods = form.getInnerMethods(true);
 
-  if (!isMount.current) {
-    innerMethods.updateStore({ initialValues: initialValues, store: initialValues });
-  }
+  useEffect(() => {
+    if (!isMount.current) innerMethods.updateStore({ initialValues: initialValues, store: initialValues });
+  }, []);
 
   useEffect(() => {
     isMount.current = true;

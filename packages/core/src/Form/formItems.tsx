@@ -1,19 +1,19 @@
 import React, { FC, useContext, useEffect } from 'react';
-import { FormProps, KeyType, FormItemsProps } from './types';
+import { KeyType, FormItemsProps } from './types';
 import { Context } from './hooks/context';
 import Input from '../Input';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 
 const FormItems: FC<any> = ({ formDatas = [] }) => {
   const {
-    innerMethods: { store = {}, updateStore },
+    innerMethods: { store = {}, updateStore, forceUpdate, validator },
   } = useContext(Context);
 
   const change = (field: KeyType, value: any) => updateStore?.({ store: { ...store, [field]: value } });
 
-  const validate = async () => {
-    // showMessages();
-    // forceUpdate();
+  const validate = () => {
+    validator.showMessages();
+    forceUpdate();
   };
 
   const _render = () => {
@@ -27,11 +27,11 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
       return (
         <View key={i}>
           {_render}
-          {/* <Text style={{ color: 'red' }}>
-            {message(v.field, formValues[v.field], {
+          <Text style={{ color: 'red' }}>
+            {validator.message(v.field, store[v.field], {
               validate: v?.validate,
             })}
-          </Text> */}
+          </Text>
         </View>
       );
     });
