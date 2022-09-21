@@ -17,7 +17,7 @@ function Demo() {
         {label:'上海',value:1},
         {label:'南京',value:2}
       ]} 
-      onFocu={()=>{}}  
+      onFocus={()=>{}}  
       onChange={val=>console.log('val',val)} 
     />
   );

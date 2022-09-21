@@ -1,4 +1,5 @@
 import { RulesOption } from '@validator.tool/hook';
+import React from 'react';
 import Validator from 'validator.tool';
 
 type KeyType = string | number | symbol;
@@ -16,7 +17,6 @@ export type InnerMethodsReturnType<
 };
 
 type FormInstance<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> = {
-  getStore: () => FormData;
   getFieldValue: (field: FieldKey) => FieldValue;
   setFieldValue: (field: FieldKey, value: FieldValue) => void;
   resetFieldValue: () => void;
@@ -34,7 +34,11 @@ interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], Field
 interface FormItemsProps {
   field: string;
   type: string;
+  name: string;
   validate?: RulesOption['validate'];
+  options?: Array<{ label: string; value: KeyType | any }>;
+  attr?: any;
+  render?: React.ReactNode;
 }
 
 export type { FormProps, FormItemsProps, KeyType, FormInstance };

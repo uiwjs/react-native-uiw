@@ -7,6 +7,8 @@ import {
   TouchableWithoutFeedback,
   ActivityIndicator,
   Pressable,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
 import MaskLayer from '../MaskLayer';
 import SearchInputBar from '../SearchInputBar';
@@ -27,6 +29,7 @@ interface SearchBarProps {
   placeholder?: String;
   extra?: JSX.Element;
   showClear?: boolean;
+  contentStyle?: StyleProp<ViewStyle>;
 }
 
 interface OptionsState {
@@ -48,6 +51,7 @@ function SearchBar({
   placeholder,
   extra,
   showClear = true,
+  contentStyle = {},
 }: SearchBarProps) {
   const [curValue, setCurValue] = useState<any>(value);
   const [visible, setVisivble] = useState(false);
@@ -76,7 +80,7 @@ function SearchBar({
 
   return !visible ? (
     <Pressable onPress={showSearchBar}>
-      <View style={[styles.content]}>
+      <View style={[styles.content, contentStyle]}>
         <Text style={styles.contentTitle}>{textValue ? textValue : placeholder}</Text>
         {React.isValidElement(extra) ? (
           extra
@@ -91,7 +95,7 @@ function SearchBar({
             <Icon name="circle-close-o" size={18} color="#ccc" />
           </Pressable>
         ) : (
-          <Icon xml={down} size={18} color="#A19EA0" />
+          <Icon name="right" size={18} color="#A19EA0" />
         )}
       </View>
     </Pressable>

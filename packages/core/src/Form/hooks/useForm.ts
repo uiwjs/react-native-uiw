@@ -77,14 +77,8 @@ export default function useForm<
     });
   };
 
-  const getStore = (): Partial<FormData> => {
-    const { store } = state;
-    return store;
-  };
-
   const getFormInstance = () => {
     return {
-      getStore,
       getFieldValue,
       setFieldValue,
       resetFieldValue,
