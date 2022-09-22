@@ -22,13 +22,14 @@ export type CardActionsProps = {
     actionsTextStyle?: StyleProp<TextStyle>;
   }>;
   actionsContainerStyle?: StyleProp<ViewStyle>;
+  driver?: boolean;
   children?: React.ReactNode;
 };
 
-const CardActions = ({ actions = [], actionsContainerStyle, children }: CardActionsProps) => {
+const CardActions = ({ actions = [], actionsContainerStyle, children, driver = true }: CardActionsProps) => {
   return (
     <Fragment>
-      <Divider style={StyleSheet.flatten({ marginTop: 15 })} lineStyle={{ backgroundColor: '#e6e6e6' }} />
+      {driver && <Divider style={StyleSheet.flatten({ marginTop: 15 })} lineStyle={{ backgroundColor: '#e6e6e6' }} />}
       {React.isValidElement(children) ? React.cloneElement(children) : null}
       <View style={[styles.actionsContainer, actionsContainerStyle]}>
         {map(actions, (item, index) => {

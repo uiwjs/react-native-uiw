@@ -105,6 +105,23 @@ const FormDemo = () => {
       field: 'render',
       name: '自定义',
     },
+    {
+      type: 'cardList',
+      field: 'cardList',
+      name: '动态list',
+      items: [
+        {
+          type: 'input',
+          field: 'cardListItem1',
+          name: '动态表单项1',
+        },
+        {
+          type: 'input',
+          field: 'cardListItem2',
+          name: '动态表单项2',
+        },
+      ],
+    },
   ];
   const initialValues = {name: '王滴滴'};
 

@@ -29,7 +29,7 @@ const FormDemo = () => {
 ```
 <!--End-->
 
-### 自定义验证提交
+### form.validateFields进行表单验证提交
 
 <!--DemoStart--> 
 ```jsx
@@ -70,7 +70,7 @@ const FormDemo = () => {
 ```
 <!--End-->
 
-### 自定义表单组件
+### customComponentList自定义表单组件
 
 <!--DemoStart--> 
 ```jsx
@@ -107,7 +107,7 @@ const FormDemo = () => {
 ```
 <!--End-->
 
-### 监听表单变化
+### watch监听表单变化
 
 <!--DemoStart--> 
 ```jsx
@@ -130,6 +130,46 @@ const FormDemo = () => {
       field: 'name',
       name: '输入框',
       required: true,
+    }
+  ];
+  return (
+    <SafeAreaView>
+      <Form form={form} formDatas={items} initialValues={initialValues} />
+    </SafeAreaView>
+  );
+};
+```
+<!--End-->
+
+### 动态表单list
+
+> ⚠️ 警告:目前仅能嵌套一层cardList<!--rehype:style=background: #F08800; color: #fff;-->。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+<!--DemoStart--> 
+```jsx
+import { SafeAreaView,Toast } from 'react-native';
+import { Form } from '@uiw/react-native';
+
+const FormDemo = () => {
+  const form = Form.useForm({
+    changeValidate: true,
+  });
+  const initialValues = {name: ''};
+  const items = [
+    {
+      type: 'cardList',
+      field: 'cardList',
+      name: '动态list',
+      required: true,
+      items:[
+        {
+          type: 'input',
+          field: 'cardList',
+          name: '动态list',
+          required: true,
+        }
+      ]
     }
   ];
   return (
@@ -167,9 +207,10 @@ interface FormItemsProps {
   name: string;
   validate?: RulesOption['validate'];
   options?: Array<{ label: string; value: KeyType | any }>;
-  attr?: any;
+  attr?: un;
   required?: boolean;
   render?: JSX.Element;
+  hide?:boolean
 }
 ```
 

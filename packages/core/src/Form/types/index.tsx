@@ -38,6 +38,8 @@ interface FormItemsProps {
   attr?: any;
   required?: boolean;
   render?: JSX.Element;
+  items?: FormItemsProps[];
+  hide?: boolean;
 }
 
 export type { FormProps, FormItemsProps, KeyType, FormInstance, InnerMethodsReturnType };

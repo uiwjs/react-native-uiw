@@ -11,30 +11,38 @@ import FormDatePicker from './comps/datePicker';
 import Stepper from '../Stepper';
 import TextArea from '../TextArea';
 import Slider from '../Slider';
+import Button from '../Button';
+import Card from '../Card';
 import Label from './comps/label';
 import Tip from './comps/tip';
-import FormList from './formList';
 import { View, SafeAreaView, StyleSheet, TextInput } from 'react-native';
 import styles from './styles';
 
-const FormItems: FC<any> = ({ formDatas = [] }) => {
+const FormList: FC<any> = ({ formListValue = {} }) => {
   const {
-    innerMethods: { store = {}, updateStore, validator, innerValidate, watch, customComponentList },
+    innerMethods: { store = {}, updateStore, innerValidate, watch, customComponentList },
   } = useContext(Context);
 
-  const change = (field: KeyType, value: unknown) => {
-    updateStore?.({ store: { ...store, [field]: value } });
+  const change = (field: KeyType, value: unknown, index: number) => {
+    const list = store[formListValue.field] || [];
+    const obj = {
+      ...store[formListValue.field][index],
+      [field]: value,
+    };
+    list.splice(index, 1, obj);
+    updateStore?.({ store: { ...store, [field]: list } });
     watch[field]?.(value);
   };
 
-  const _renderComponent = (v: FormItemsProps) => {
+  const _renderComponent = (v: FormItemsProps, index: number) => {
     const options = v.options || [];
+    const values = { ...store[formListValue.field][index] };
     if (v.type === 'input') {
       return (
         <TextInput
-          value={store[v.field]}
+          value={values[v.field]}
           onChangeText={(value) => {
-            change(v.field, value);
+            change(v.field, value, index);
             innerValidate();
           }}
           {...v.attr}
@@ -45,7 +53,7 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
       return (
         <TextArea
           onChange={(value: string) => {
-            change(v.field, value);
+            change(v.field, value, index);
             innerValidate();
           }}
           value={store[v.field]}
@@ -57,9 +65,9 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
       return options.map((item, idx) => (
         <Radio
           key={idx}
-          checked={item.value === store[v.field]}
+          checked={item.value === values[v.field]}
           onPress={() => {
-            change(v.field, item.value);
+            change(v.field, item.value, index);
             innerValidate();
           }}
           {...v.attr}
@@ -70,20 +78,20 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
     }
     if (v.type === 'checkBox') {
       return options.map((item, idx) => {
-        const values = store[v.field] || [];
+        const value = values[v.field] || [];
         return (
           <CheckBox
             key={idx}
-            checked={values.includes(item.value)}
+            checked={value.includes(item.value)}
             onChange={() => {
-              let data = store[v.field] || [];
+              let data = value || [];
               if (!data.includes(item.value)) {
                 data.push(item.value);
               } else {
                 const idx = data.findIndex((v: KeyType) => v === item.value);
                 data.splice(idx, 1);
               }
-              change(v.field, data);
+              change(v.field, data, index);
               innerValidate();
             }}
             {...v.attr}
@@ -97,7 +105,7 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
       return (
         <Rating
           onPress={(number) => {
-            change(v.field, number);
+            change(v.field, number, index);
             innerValidate();
           }}
           {...v.attr}
@@ -107,9 +115,9 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
     if (v.type === 'switch') {
       return (
         <Switch
-          checked={store[v.field]}
-          onValueChange={(value) => {
-            change(v.field, !store[v.field]);
+          checked={values[v.field]}
+          onValueChange={() => {
+            change(v.field, !values[v.field], index);
             innerValidate();
           }}
           {...v.attr}
@@ -121,7 +129,7 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
         <SearchBar
           options={options}
           onChange={(value) => {
-            change(v.field, value);
+            change(v.field, value, index);
             innerValidate();
           }}
           contentStyle={{ paddingHorizontal: 0 }}
@@ -130,14 +138,14 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
       );
     }
     if (v.type === 'datePicker') {
-      return <FormDatePicker value={store[v.field]} ok={(value) => change(v.field, value)} {...v.attr} />;
+      return <FormDatePicker value={values[v.field]} ok={(value) => change(v.field, value, index)} {...v.attr} />;
     }
     if (v.type === 'stepper') {
       return (
         <Stepper
-          value={store[v.field]}
+          value={values[v.field]}
           onChange={(value) => {
-            change(v.field, value);
+            change(v.field, value, index);
             innerValidate();
           }}
           {...v.attr}
@@ -147,26 +155,23 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
     if (v.type === 'slider') {
       return (
         <Slider
-          value={store[v.field]}
+          value={values[v.field]}
           onChange={(value) => {
-            change(v.field, value);
+            change(v.field, value, index);
             innerValidate();
           }}
           {...v.attr}
         />
       );
     }
-    if (v.type === 'cardList') {
-      return <FormList formListValue={v} />;
-    }
     // 自定义组件
     if (!isObjectEmpty(customComponentList) && Object.keys(customComponentList).includes(v.type)) {
       return React.isValidElement(customComponentList[v.type])
         ? React.cloneElement(customComponentList[v.type], {
             ...v.attr,
-            value: store[v.field],
+            value: values[v.field],
             onChange: (value: unknown) => {
-              change(v.field, value);
+              change(v.field, value, index);
               innerValidate();
             },
           })
@@ -175,16 +180,19 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
     return null;
   };
 
-  const _render = () => {
-    return formDatas.map((v: FormItemsProps, i: number) => {
+  const _render = (index: number) => {
+    return (formListValue.items || []).map((v: FormItemsProps, i: number) => {
       if (v.hide) {
         return null;
+      }
+      if (v.type === 'cardList') {
+        return;
       }
       return (
         <View key={i} style={styles.form_items_container}>
           <View style={styles.form_items}>
             <Label v={v} />
-            {_renderComponent(v)}
+            {_renderComponent(v, index)}
             <Tip v={v} />
           </View>
         </View>
@@ -192,7 +200,37 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
     });
   };
 
-  return <SafeAreaView style={styles.warpper}>{_render()}</SafeAreaView>;
+  const handleOperate = (type = '', index?: number) => {
+    let list = store[formListValue.field] || [];
+    if (type === 'add') list.push({});
+    if (type === 'delete') list.splice(index, 1);
+    updateStore?.({ store: { ...store, [formListValue.field]: list } });
+  };
+
+  return (
+    <SafeAreaView style={styles.warpper}>
+      {(store[formListValue.field] || []).map((item: Record<string, unknown>, index: number) => (
+        <Card>
+          {_render(index)}
+          <Card.Actions
+            driver={false}
+            actions={[
+              {
+                text: '删除',
+                actionsTextStyle: { color: '#333' },
+                onPress: () => handleOperate('delete', index),
+              },
+            ]}
+          />
+        </Card>
+      ))}
+      <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 12 }}>
+        <Button onPress={() => handleOperate('add')} type="primary" size="default">
+          新增数据
+        </Button>
+      </View>
+    </SafeAreaView>
+  );
 };
 
-export default FormItems;
+export default FormList;
