@@ -3,7 +3,7 @@ import Validator from 'validator.tool';
 
 type KeyType = string | number | symbol;
 
-export type InnerMethodsReturnType<FormData = any> = {
+type InnerMethodsReturnType<FormData = any> = {
   store: Partial<FormData>;
   initialValues: Partial<FormData>;
   updateStore: (value: any) => void;
@@ -40,4 +40,4 @@ interface FormItemsProps {
   render?: JSX.Element;
 }
 
-export type { FormProps, FormItemsProps, KeyType, FormInstance };
+export type { FormProps, FormItemsProps, KeyType, FormInstance, InnerMethodsReturnType };
