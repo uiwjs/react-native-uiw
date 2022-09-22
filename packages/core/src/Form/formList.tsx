@@ -185,7 +185,7 @@ const FormList = ({
         return null;
       }
       if (v.type === 'cardList') {
-        return <FormList formListValue={v}></FormList>;
+        return;
       }
       return (
         <View key={i} style={styles.form_items_container}>

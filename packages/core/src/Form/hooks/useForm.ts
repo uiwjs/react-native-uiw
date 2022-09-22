@@ -40,8 +40,7 @@ export default function useForm<
   };
 
   const innerValidate = () => {
-    const { showMessages, errorMessages } = validator;
-    console.log('errorMessages', errorMessages);
+    const { showMessages } = validator;
     if (changeValidate) {
       showMessages?.();
       forceUpdate?.();
