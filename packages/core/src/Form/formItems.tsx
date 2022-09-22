@@ -1,5 +1,6 @@
 import React, { FC, useContext } from 'react';
 import { KeyType, FormItemsProps } from './types';
+import { isObjectEmpty } from './utils/is';
 import { Context } from './hooks/context';
 import Radio from '../Radio';
 import CheckBox from '../CheckBox';
@@ -15,23 +16,22 @@ import { View, Text, SafeAreaView, StyleSheet, TextInput } from 'react-native';
 
 const FormItems: FC<any> = ({ formDatas = [] }) => {
   const {
-    innerMethods: { store = {}, updateStore, validator, innerValidate },
+    innerMethods: { store = {}, updateStore, validator, innerValidate, watch, customComponentList },
   } = useContext(Context);
 
-  const change = (field: KeyType, value: any) => updateStore?.({ store: { ...store, [field]: value } });
+  const change = (field: KeyType, value: unknown) => {
+    updateStore?.({ store: { ...store, [field]: value } });
+    watch[field]?.(value);
+  };
 
   const _renderComponent = (v: FormItemsProps) => {
     const options = v.options || [];
-    if (v.type === 'render') {
-      return v.render;
-    }
     if (v.type === 'input') {
       return (
         <TextInput
           value={store[v.field]}
           onChangeText={(value) => {
             change(v.field, value);
-            v?.attr?.onChangeText?.(value);
             innerValidate();
           }}
           {...v.attr}
@@ -43,7 +43,6 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
         <TextArea
           onChange={(value: string) => {
             change(v.field, value);
-            v?.attr?.onChange?.(value);
             innerValidate();
           }}
           value={store[v.field]}
@@ -58,7 +57,6 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
           checked={item.value === store[v.field]}
           onPress={() => {
             change(v.field, item.value);
-            v?.attr?.onPress?.(item.value);
             innerValidate();
           }}
           {...v.attr}
@@ -83,7 +81,6 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
                 data.splice(idx, 1);
               }
               change(v.field, data);
-              v?.attr?.onChange?.(data);
               innerValidate();
             }}
             {...v.attr}
@@ -98,7 +95,6 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
         <Rating
           onPress={(number) => {
             change(v.field, number);
-            v?.attr?.onPress?.(number);
             innerValidate();
           }}
           {...v.attr}
@@ -111,7 +107,6 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
           checked={store[v.field]}
           onValueChange={(value) => {
             change(v.field, !store[v.field]);
-            v?.attr?.onValueChange?.(value);
             innerValidate();
           }}
           {...v.attr}
@@ -124,7 +119,6 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
           options={options}
           onChange={(value) => {
             change(v.field, value);
-            v?.attr?.onChange?.(value);
             innerValidate();
           }}
           contentStyle={{ paddingHorizontal: 0 }}
@@ -141,7 +135,6 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
           value={store[v.field]}
           onChange={(value) => {
             change(v.field, value);
-            v?.attr?.onChange?.(value);
             innerValidate();
           }}
           {...v.attr}
@@ -154,12 +147,23 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
           value={store[v.field]}
           onChange={(value) => {
             change(v.field, value);
-            v?.attr?.onChange?.(value);
             innerValidate();
           }}
           {...v.attr}
         />
       );
+    }
+    // 自定义组件
+    if (!isObjectEmpty(customComponentList) && Object.keys(customComponentList).includes(v.type)) {
+      return React.isValidElement(customComponentList[v.type])
+        ? React.cloneElement(customComponentList[v.type], {
+            ...v.attr,
+            onChange: (value: unknown) => {
+              change(v.field, value);
+              innerValidate();
+            },
+          })
+        : null;
     }
     return null;
   };

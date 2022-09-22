@@ -1,3 +1,4 @@
+import React from 'react';
 import { KeyType, InnerMethodsReturnType, FormInstance } from '../types';
 import { useState } from 'react';
 import { useValidator } from '@validator.tool/hook';
@@ -13,7 +14,15 @@ export default function useForm<
   FormData = any,
   FieldValue = FormData[keyof FormData],
   FieldKey extends KeyType = keyof FormData,
->({ changeValidate = false }: { changeValidate?: boolean }): FormInstance<FormData, FieldValue, FieldKey> {
+>({
+  changeValidate = false,
+  watch = {},
+  customComponentList,
+}: {
+  changeValidate?: boolean;
+  watch?: Partial<Record<string, (value: unknown) => void>>;
+  customComponentList?: Partial<Record<string, unknown>>;
+}): FormInstance<FormData, FieldValue, FieldKey> {
   const [state, setState] = useState<State>({
     initialValues: {},
     store: {},
@@ -102,6 +111,8 @@ export default function useForm<
             validator,
             forceUpdate,
             innerValidate,
+            watch,
+            customComponentList,
           };
         }
         return methods;

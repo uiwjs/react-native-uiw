@@ -1,11 +1,19 @@
 import React from 'react';
-import {Form, Button, Toast} from '@uiw/react-native';
+import {Form, Button, Toast, Slider, SearchBar} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
 const {Body, Footer} = Layout;
 
 const FormDemo = () => {
   const form = Form.useForm({
     changeValidate: true,
+    watch: {
+      name: (value: unknown) => {
+        console.log('value', value);
+      },
+    },
+    customComponentList: {
+      render: <Slider />,
+    },
   });
   const items = [
     {
@@ -91,6 +99,11 @@ const FormDemo = () => {
       attr: {
         step: 0.2,
       },
+    },
+    {
+      type: 'render',
+      field: 'render',
+      name: '自定义',
     },
   ];
   const initialValues = {name: '王滴滴'};

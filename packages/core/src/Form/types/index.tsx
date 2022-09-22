@@ -1,5 +1,4 @@
 import { RulesOption } from '@validator.tool/hook';
-import React from 'react';
 import Validator from 'validator.tool';
 
 type KeyType = string | number | symbol;
@@ -11,6 +10,8 @@ export type InnerMethodsReturnType<FormData = any> = {
   validator: Validator;
   forceUpdate: () => void;
   innerValidate: () => void;
+  watch: Partial<Record<string, (value: unknown) => void>>;
+  customComponentList: Partial<Record<string, JSX.Element>>;
 };
 
 type FormInstance<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> = {
@@ -36,7 +37,7 @@ interface FormItemsProps {
   options?: Array<{ label: string; value: KeyType | any }>;
   attr?: any;
   required?: boolean;
-  render?: React.ReactNode;
+  render?: JSX.Element;
 }
 
 export type { FormProps, FormItemsProps, KeyType, FormInstance };
