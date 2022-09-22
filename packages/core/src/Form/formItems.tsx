@@ -7,19 +7,18 @@ import Rating from '../Rating';
 import Switch from '../Switch';
 import SearchBar from '../SearchBar';
 import FormDatePicker from './comps/datePicker';
+import Stepper from '../Stepper';
+import TextArea from '../TextArea';
+import Slider from '../Slider';
+import Flex from '../Flex';
 import { View, Text, SafeAreaView, StyleSheet, TextInput } from 'react-native';
 
 const FormItems: FC<any> = ({ formDatas = [] }) => {
   const {
-    innerMethods: { store = {}, updateStore, forceUpdate, validator },
+    innerMethods: { store = {}, updateStore, validator, innerValidate },
   } = useContext(Context);
 
   const change = (field: KeyType, value: any) => updateStore?.({ store: { ...store, [field]: value } });
-
-  const validate = () => {
-    validator.showMessages();
-    forceUpdate();
-  };
 
   const _renderComponent = (v: FormItemsProps) => {
     const options = v.options || [];
@@ -30,8 +29,24 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
       return (
         <TextInput
           value={store[v.field]}
-          onChangeText={(value) => change(v.field, value)}
-          onBlur={() => validate()}
+          onChangeText={(value) => {
+            change(v.field, value);
+            v?.attr?.onChangeText?.(value);
+            innerValidate();
+          }}
+          {...v.attr}
+        />
+      );
+    }
+    if (v.type === 'textArea') {
+      return (
+        <TextArea
+          onChange={(value: string) => {
+            change(v.field, value);
+            v?.attr?.onChange?.(value);
+            innerValidate();
+          }}
+          value={store[v.field]}
           {...v.attr}
         />
       );
@@ -41,7 +56,11 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
         <Radio
           key={idx}
           checked={item.value === store[v.field]}
-          onPress={() => change(v.field, item.value)}
+          onPress={() => {
+            change(v.field, item.value);
+            v?.attr?.onPress?.(item.value);
+            innerValidate();
+          }}
           {...v.attr}
         >
           {item.label}
@@ -64,8 +83,9 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
                 data.splice(idx, 1);
               }
               change(v.field, data);
+              v?.attr?.onChange?.(data);
+              innerValidate();
             }}
-            onBlur={() => validate()}
             {...v.attr}
           >
             {item.label}
@@ -74,17 +94,39 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
       });
     }
     if (v.type === 'rate') {
-      return <Rating onPress={(number) => change(v.field, number)} {...v.attr} />;
+      return (
+        <Rating
+          onPress={(number) => {
+            change(v.field, number);
+            v?.attr?.onPress?.(number);
+            innerValidate();
+          }}
+          {...v.attr}
+        />
+      );
     }
     if (v.type === 'switch') {
-      return <Switch checked={store[v.field]} onValueChange={() => change(v.field, !store[v.field])} {...v.attr} />;
+      return (
+        <Switch
+          checked={store[v.field]}
+          onValueChange={(value) => {
+            change(v.field, !store[v.field]);
+            v?.attr?.onValueChange?.(value);
+            innerValidate();
+          }}
+          {...v.attr}
+        />
+      );
     }
     if (v.type === 'search') {
       return (
         <SearchBar
           options={options}
-          onChange={(val) => change(v.field, val)}
-          onBlur={() => validate()}
+          onChange={(value) => {
+            change(v.field, value);
+            v?.attr?.onChange?.(value);
+            innerValidate();
+          }}
           contentStyle={{ paddingHorizontal: 0 }}
           {...v.attr}
         />
@@ -93,14 +135,43 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
     if (v.type === 'datePicker') {
       return <FormDatePicker value={store[v.field]} ok={(value) => change(v.field, value)} {...v.attr} />;
     }
+    if (v.type === 'stepper') {
+      return (
+        <Stepper
+          value={store[v.field]}
+          onChange={(value) => {
+            change(v.field, value);
+            v?.attr?.onChange?.(value);
+            innerValidate();
+          }}
+          {...v.attr}
+        />
+      );
+    }
+    if (v.type === 'slider') {
+      return (
+        <Slider
+          value={store[v.field]}
+          onChange={(value) => {
+            change(v.field, value);
+            v?.attr?.onChange?.(value);
+            innerValidate();
+          }}
+          {...v.attr}
+        />
+      );
+    }
     return null;
   };
 
   const Label = (v: FormItemsProps) => {
     return (
-      <Text style={styles.label} {...v.attr}>
-        {v.name}
-      </Text>
+      <Flex>
+        {v.required && <Text style={{ color: 'red', marginRight: 5 }}>*</Text>}
+        <Text style={styles.label} {...v.attr}>
+          {v.name}
+        </Text>
+      </Flex>
     );
   };
 

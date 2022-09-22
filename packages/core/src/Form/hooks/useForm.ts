@@ -1,4 +1,4 @@
-import { KeyType, InnerMethodsReturnType } from '../types';
+import { KeyType, InnerMethodsReturnType, FormInstance } from '../types';
 import { useState } from 'react';
 import { useValidator } from '@validator.tool/hook';
 import { isObjectEmpty } from '../utils/is';
@@ -13,7 +13,7 @@ export default function useForm<
   FormData = any,
   FieldValue = FormData[keyof FormData],
   FieldKey extends KeyType = keyof FormData,
->(): any {
+>({ changeValidate = false }: { changeValidate?: boolean }): FormInstance<FormData, FieldValue, FieldKey> {
   const [state, setState] = useState<State>({
     initialValues: {},
     store: {},
@@ -28,6 +28,14 @@ export default function useForm<
       ...state,
       ...datas,
     });
+  };
+
+  const innerValidate = () => {
+    const { showMessages } = validator;
+    if (changeValidate) {
+      showMessages?.();
+      forceUpdate?.();
+    }
   };
 
   // 获取表单字段的值
@@ -84,7 +92,7 @@ export default function useForm<
       resetFieldValue,
       validate,
       validateFields,
-      getInnerMethods: (inner?: boolean): InnerMethodsReturnType<FormData, FieldValue, FieldKey> => {
+      getInnerMethods: (inner?: boolean): InnerMethodsReturnType<FormData> => {
         let methods = {} as any;
         if (inner) {
           methods = {
@@ -93,6 +101,7 @@ export default function useForm<
             updateStore: updateStore,
             validator,
             forceUpdate,
+            innerValidate,
           };
         }
         return methods;

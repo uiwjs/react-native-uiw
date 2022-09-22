@@ -4,16 +4,13 @@ import Validator from 'validator.tool';
 
 type KeyType = string | number | symbol;
 
-export type InnerMethodsReturnType<
-  FormData = any,
-  FieldValue = FormData[keyof FormData],
-  FieldKey extends KeyType = keyof FormData,
-> = {
+export type InnerMethodsReturnType<FormData = any> = {
   store: Partial<FormData>;
   initialValues: Partial<FormData>;
   updateStore: (value: any) => void;
   validator: Validator;
   forceUpdate: () => void;
+  innerValidate: () => void;
 };
 
 type FormInstance<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> = {
@@ -22,7 +19,7 @@ type FormInstance<FormData = any, FieldValue = FormData[keyof FormData], FieldKe
   resetFieldValue: () => void;
   validate: () => Partial<Record<string, string>>;
   validateFields: () => Promise<FormData> | any;
-  getInnerMethods: (inner?: boolean) => InnerMethodsReturnType<FormData, FieldValue, FieldKey>;
+  getInnerMethods: (inner?: boolean) => InnerMethodsReturnType<FormData>;
 };
 
 interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> {
@@ -38,6 +35,7 @@ interface FormItemsProps {
   validate?: RulesOption['validate'];
   options?: Array<{ label: string; value: KeyType | any }>;
   attr?: any;
+  required?: boolean;
   render?: React.ReactNode;
 }
 

@@ -118,7 +118,7 @@ function Stepper(props: StepProps) {
     onChange(valueRef.current);
   };
   return (
-    <View style={[ControlStyle.elementCenter]}>
+    <View style={[ControlStyle.elementCenter, { justifyContent: 'flex-start' }]}>
       <ControlValue
         size={size}
         delayLong={delayLong}

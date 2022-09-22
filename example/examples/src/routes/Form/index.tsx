@@ -4,25 +4,22 @@ import Layout, {Container} from '../../Layout';
 const {Body, Footer} = Layout;
 
 const FormDemo = () => {
-  const form = Form.useForm();
+  const form = Form.useForm({
+    changeValidate: true,
+  });
   const items = [
     {
       type: 'input',
       field: 'name',
-      name: '姓名',
+      name: '输入框',
       attr: {},
+      required: true,
       validate: (val: any) => (!val ? `请输入name` : ''),
-    },
-    {
-      type: 'input',
-      field: 'age',
-      name: '年龄',
-      validate: (val: any) => (Number(val) > 30 || Number(val) < 10 ? `起输入10-30` : ''),
     },
     {
       type: 'radio',
       field: 'sex',
-      name: '菜',
+      name: '单选框',
       options: [
         {label: '四川菜', value: 1},
         {label: '湖北菜', value: 2},
@@ -34,7 +31,7 @@ const FormDemo = () => {
     {
       type: 'checkBox',
       field: 'fruit',
-      name: '水果',
+      name: '多选框',
       options: [
         {label: '香蕉', value: 1},
         {label: '西瓜', value: 2},
@@ -70,8 +67,33 @@ const FormDemo = () => {
       name: '时间',
       attr: {},
     },
+    {
+      type: 'stepper',
+      field: 'stepper',
+      name: '步进器',
+      attr: {
+        size: 'small',
+      },
+    },
+    {
+      type: 'textArea',
+      field: 'textArea',
+      name: '多行输入框',
+      attr: {
+        showWords: true,
+        maxLength: 100,
+      },
+    },
+    {
+      type: 'slider',
+      field: 'slider',
+      name: '滑块输入条',
+      attr: {
+        step: 0.2,
+      },
+    },
   ];
-  const initialValues = {name: '王滴滴', age: '31'};
+  const initialValues = {name: '王滴滴'};
 
   return (
     <Container>
