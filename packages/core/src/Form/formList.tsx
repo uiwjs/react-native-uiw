@@ -15,12 +15,21 @@ import Button from '../Button';
 import Card from '../Card';
 import Label from './comps/label';
 import Tip from './comps/tip';
-import { View, SafeAreaView, StyleSheet, TextInput } from 'react-native';
+import { View, SafeAreaView, TextInput } from 'react-native';
 import styles from './styles';
+import { values } from 'lodash';
 
-const FormList: FC<any> = ({ formListValue = {} }) => {
+const FormList = ({
+  formListValue = {
+    field: '',
+    type: '',
+    name: '',
+  },
+}: {
+  formListValue: FormItemsProps;
+}) => {
   const {
-    innerMethods: { store = {}, updateStore, innerValidate, watch, customComponentList },
+    innerMethods: { store = {}, updateStore, customComponentList },
   } = useContext(Context);
 
   const change = (field: KeyType, value: unknown, index: number) => {
@@ -30,8 +39,7 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
       [field]: value,
     };
     list.splice(index, 1, obj);
-    updateStore?.({ store: { ...store, [field]: list } });
-    watch[field]?.(value);
+    updateStore?.({ store: { ...store, [formListValue.field]: list } });
   };
 
   const _renderComponent = (v: FormItemsProps, index: number) => {
@@ -43,7 +51,6 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
           value={values[v.field]}
           onChangeText={(value) => {
             change(v.field, value, index);
-            innerValidate();
           }}
           {...v.attr}
         />
@@ -54,7 +61,6 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
         <TextArea
           onChange={(value: string) => {
             change(v.field, value, index);
-            innerValidate();
           }}
           value={store[v.field]}
           {...v.attr}
@@ -68,7 +74,6 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
           checked={item.value === values[v.field]}
           onPress={() => {
             change(v.field, item.value, index);
-            innerValidate();
           }}
           {...v.attr}
         >
@@ -92,7 +97,6 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
                 data.splice(idx, 1);
               }
               change(v.field, data, index);
-              innerValidate();
             }}
             {...v.attr}
           >
@@ -106,7 +110,6 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
         <Rating
           onPress={(number) => {
             change(v.field, number, index);
-            innerValidate();
           }}
           {...v.attr}
         />
@@ -118,7 +121,6 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
           checked={values[v.field]}
           onValueChange={() => {
             change(v.field, !values[v.field], index);
-            innerValidate();
           }}
           {...v.attr}
         />
@@ -130,7 +132,6 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
           options={options}
           onChange={(value) => {
             change(v.field, value, index);
-            innerValidate();
           }}
           contentStyle={{ paddingHorizontal: 0 }}
           {...v.attr}
@@ -146,7 +147,6 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
           value={values[v.field]}
           onChange={(value) => {
             change(v.field, value, index);
-            innerValidate();
           }}
           {...v.attr}
         />
@@ -158,7 +158,6 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
           value={values[v.field]}
           onChange={(value) => {
             change(v.field, value, index);
-            innerValidate();
           }}
           {...v.attr}
         />
@@ -172,7 +171,6 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
             value: values[v.field],
             onChange: (value: unknown) => {
               change(v.field, value, index);
-              innerValidate();
             },
           })
         : null;
@@ -186,7 +184,7 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
         return null;
       }
       if (v.type === 'cardList') {
-        return;
+        return <FormList formListValue={v}></FormList>;
       }
       return (
         <View key={i} style={styles.form_items_container}>
@@ -210,7 +208,7 @@ const FormList: FC<any> = ({ formListValue = {} }) => {
   return (
     <SafeAreaView style={styles.warpper}>
       {(store[formListValue.field] || []).map((item: Record<string, unknown>, index: number) => (
-        <Card>
+        <Card key={index}>
           {_render(index)}
           <Card.Actions
             driver={false}

@@ -1,5 +1,6 @@
-import React from 'react';
-import {Form, Button, Toast, Slider, SearchBar} from '@uiw/react-native';
+import React, {useState} from 'react';
+import {Form, Button, Toast, Slider} from '@uiw/react-native';
+import {Text, View} from 'react-native';
 import Layout, {Container} from '../../Layout';
 const {Body, Footer} = Layout;
 
@@ -15,6 +16,7 @@ const FormDemo = () => {
       render: <Slider />,
     },
   });
+  const [state, setStore] = useState({});
   const items = [
     {
       type: 'input',
@@ -109,16 +111,16 @@ const FormDemo = () => {
       type: 'cardList',
       field: 'cardList',
       name: '动态list',
+      validate: (val: any) => {
+        console.log('val', val);
+        return '';
+      },
       items: [
         {
           type: 'input',
           field: 'cardListItem1',
           name: '动态表单项1',
-        },
-        {
-          type: 'input',
-          field: 'cardListItem2',
-          name: '动态表单项2',
+          required: true,
         },
       ],
     },
@@ -130,12 +132,15 @@ const FormDemo = () => {
       <Layout>
         <Body>
           <Form form={form} formDatas={items} initialValues={initialValues} />
+          <View>
+            <Text>{JSON.stringify(state)}</Text>
+          </View>
           <Button
             type="primary"
             onPress={() => {
               form
                 .validateFields()
-                .then((values: any) => Toast.success(JSON.stringify(values)))
+                .then((values: any) => setStore(values))
                 .catch((errors: any) => Toast.warning(JSON.stringify(errors)));
             }}>
             确定
