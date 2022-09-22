@@ -6,6 +6,7 @@ import CheckBox from '../CheckBox';
 import Rating from '../Rating';
 import Switch from '../Switch';
 import SearchBar from '../SearchBar';
+import FormDatePicker from './comps/datePicker';
 import { View, Text, SafeAreaView, StyleSheet, TextInput } from 'react-native';
 
 const FormItems: FC<any> = ({ formDatas = [] }) => {
@@ -64,6 +65,7 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
               }
               change(v.field, data);
             }}
+            onBlur={() => validate()}
             {...v.attr}
           >
             {item.label}
@@ -82,10 +84,14 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
         <SearchBar
           options={options}
           onChange={(val) => change(v.field, val)}
+          onBlur={() => validate()}
           contentStyle={{ paddingHorizontal: 0 }}
           {...v.attr}
         />
       );
+    }
+    if (v.type === 'datePicker') {
+      return <FormDatePicker value={store[v.field]} ok={(value) => change(v.field, value)} {...v.attr} />;
     }
     return null;
   };

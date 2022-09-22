@@ -23,7 +23,7 @@ export default function useForm<
     initValues: { initialValues: state.initialValues },
   });
 
-  const updateStore = (datas: Partial<any>) => {
+  const updateStore = (datas: Partial<State>) => {
     setState({
       ...state,
       ...datas,

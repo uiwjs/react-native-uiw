@@ -21,7 +21,7 @@ const reducer = (state: Partial<InitialState>, action: Partial<InitialState>) =>
   };
 };
 
-const Provider: FC<PropsWithChildren<any>> = ({ contextProps, children }) => {
+const Provider: FC<PropsWithChildren<Partial<Record<string, any>>>> = ({ contextProps, children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return <Context.Provider value={{ ...contextProps, state, dispatch }}>{children}</Context.Provider>;
 };

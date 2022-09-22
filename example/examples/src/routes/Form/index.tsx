@@ -64,6 +64,12 @@ const FormDemo = () => {
         showClear: true,
       },
     },
+    {
+      type: 'datePicker',
+      field: 'datePicker',
+      name: '时间',
+      attr: {},
+    },
   ];
   const initialValues = {name: '王滴滴', age: '31'};
 

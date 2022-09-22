@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text, View} from 'react-native';
 import {DatePicker, Button} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
@@ -28,6 +27,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
             </Button>
             <DatePicker
               visible={this.state.visible}
+              onOk={() => this.setState({visible: false})}
               onClosed={() => this.setState({visible: false})}
               precision="second"
               max="2021-11-30 23:50:50"
