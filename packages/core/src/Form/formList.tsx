@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { useContext } from 'react';
 import { KeyType, FormItemsProps } from './types';
 import { isObjectEmpty } from './utils/is';
 import { Context } from './hooks/context';
@@ -17,7 +17,10 @@ import Label from './comps/label';
 import Tip from './comps/tip';
 import { View, SafeAreaView, TextInput } from 'react-native';
 import styles from './styles';
-import { values } from 'lodash';
+
+interface FormListProps {
+  formListValue: Omit<FormItemsProps, 'validate' | 'required'>;
+}
 
 const FormList = ({
   formListValue = {
@@ -25,9 +28,7 @@ const FormList = ({
     type: '',
     name: '',
   },
-}: {
-  formListValue: FormItemsProps;
-}) => {
+}: FormListProps) => {
   const {
     innerMethods: { store = {}, updateStore, customComponentList },
   } = useContext(Context);

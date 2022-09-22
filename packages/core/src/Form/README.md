@@ -207,9 +207,8 @@ interface FormItemsProps {
   name: string;
   validate?: RulesOption['validate'];
   options?: Array<{ label: string; value: KeyType | any }>;
-  attr?: un;
+  attr?: any;
   required?: boolean;
-  render?: JSX.Element;
   hide?:boolean
 }
 ```

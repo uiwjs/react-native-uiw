@@ -37,7 +37,6 @@ interface FormItemsProps {
   options?: Array<{ label: string; value: KeyType | any }>;
   attr?: any;
   required?: boolean;
-  render?: JSX.Element;
   items?: FormItemsProps[];
   hide?: boolean;
 }
