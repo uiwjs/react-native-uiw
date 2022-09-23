@@ -4,6 +4,15 @@ import { useState } from 'react';
 import { useValidator } from '@validator.tool/hook';
 import { isObjectEmpty } from '../utils/is';
 import { cloneDeep } from '../utils';
+import TextArea from '../../TextArea';
+import Slider from '../../Slider';
+import SearchBar from '../../SearchBar';
+import Stepper from '../../Stepper';
+import Input from '../comps/input';
+import Rating from '../comps/rate';
+import Radio from '../comps/radio';
+import Switch from '../comps/switch';
+import CheckBox from '../comps/checkBox';
 
 type State<FormData = any> = {
   store: Partial<FormData>;
@@ -29,7 +38,7 @@ export default function useForm<
   });
 
   const { validator, forceUpdate } = useValidator({
-    initValues: { initialValues: state.initialValues },
+    initValues: state.initialValues,
   });
 
   const updateStore = (datas: Partial<State>) => {
@@ -107,12 +116,23 @@ export default function useForm<
           methods = {
             store: state.store,
             initialValues: state.initialValues,
-            updateStore: updateStore,
+            updateStore,
             validator,
             forceUpdate,
             innerValidate,
             watch,
-            customComponentList,
+            customComponentList: {
+              ...customComponentList,
+              input: <Input />,
+              textArea: <TextArea />,
+              slider: <Slider />,
+              rate: <Rating disabled={false} />,
+              radio: <Radio />,
+              search: <SearchBar />,
+              switch: <Switch />,
+              checkBox: <CheckBox />,
+              stepper: <Stepper value={0} onChange={() => {}} />,
+            },
           };
         }
         return methods;

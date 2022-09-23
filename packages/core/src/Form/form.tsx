@@ -31,7 +31,7 @@ const Form = <
 
   return (
     <Provider contextProps={contextProps}>
-      <FormItems formDatas={formDatas} initialValues={initialValues} />
+      <FormItems formDatas={formDatas} />
     </Provider>
   );
 };

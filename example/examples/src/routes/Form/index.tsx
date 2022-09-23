@@ -111,21 +111,16 @@ const FormDemo = () => {
       type: 'cardList',
       field: 'cardList',
       name: '动态list',
-      validate: (val: any) => {
-        console.log('val', val);
-        return '';
-      },
       items: [
         {
           type: 'input',
           field: 'cardListItem1',
           name: '动态表单项1',
-          required: true,
         },
       ],
     },
   ];
-  const initialValues = {name: '王滴滴'};
+  const initialValues = {name: '王滴滴', rate: 4};
 
   return (
     <Container>

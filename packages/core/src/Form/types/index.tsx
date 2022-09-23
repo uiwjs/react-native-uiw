@@ -37,7 +37,7 @@ interface FormItemsProps {
   options?: Array<{ label: string; value: KeyType | any }>;
   attr?: any;
   required?: boolean;
-  items?: FormItemsProps[];
+  items?: Omit<FormItemsProps, 'validate' | 'required'>[];
   hide?: boolean;
 }
 
