@@ -2,15 +2,16 @@ import React, { FC, useContext } from 'react';
 import { KeyType, FormItemsProps } from './types';
 import { isObjectEmpty } from './utils/is';
 import { Context } from './hooks/context';
-import Stepper from '../Stepper';
 import Label from './comps/label';
 import Tip from './comps/tip';
 import FormList from './formList';
-import { View, SafeAreaView } from 'react-native';
+import Container from './comps/container';
+import { View } from 'react-native';
 import styles from './styles';
 
-const FormItems: FC<any> = ({ formDatas = [] }) => {
+const FormItems: FC<any> = ({ schema = [] }) => {
   const {
+    mode,
     innerMethods: { store = {}, updateStore, innerValidate, watch, customComponentList, initialValues },
   } = useContext(Context);
 
@@ -40,14 +41,15 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
     return null;
   };
 
-  const _render = () => {
-    return formDatas.map((v: FormItemsProps, i: number) => {
+  const _render = (): JSX.Element => {
+    return schema.map((v: FormItemsProps, i: number) => {
+      const last = schema.length - 1 === i;
       if (v.hide) {
         return null;
       }
       return (
         <View key={i} style={styles.form_items_container}>
-          <View style={styles.form_items}>
+          <View style={[styles.form_items, last && styles.border_none]}>
             <Label v={v} />
             {_renderComponent(v)}
             <Tip v={v} />
@@ -57,7 +59,7 @@ const FormItems: FC<any> = ({ formDatas = [] }) => {
     });
   };
 
-  return <SafeAreaView style={styles.warpper}>{_render()}</SafeAreaView>;
+  return <Container mode={mode}>{_render()}</Container>;
 };
 
 export default FormItems;

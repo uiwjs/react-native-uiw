@@ -24,9 +24,13 @@ type FormInstance<FormData = any, FieldValue = FormData[keyof FormData], FieldKe
 };
 
 interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> {
-  formDatas?: FormItemsProps[];
+  schema?: FormItemsProps[];
   form: FormInstance<FormData, FieldValue, FieldKey>;
   initialValues?: Partial<FormData>;
+  /**
+   * 支持默认和卡片两种模式
+   */
+  mode?: 'default' | 'card';
 }
 
 interface FormItemsProps {
@@ -37,6 +41,8 @@ interface FormItemsProps {
   options?: Array<{ label: string; value: KeyType | any }>;
   attr?: any;
   required?: boolean;
+  renderHeader?: (index: number, { remove }: { remove: () => void }) => React.ReactNode;
+  renderAdd?: ({ add }: { add: () => void }) => React.ReactNode;
   items?: Omit<FormItemsProps, 'validate' | 'required'>[];
   hide?: boolean;
 }

@@ -1,6 +1,8 @@
 import React from 'react';
+import { View } from 'react-native';
 import { KeyType } from '../types';
 import CheckBox, { CheckBoxProps } from '../../CheckBox';
+import Flex from '../../Flex';
 
 interface FormCheckBoxProps extends CheckBoxProps {
   value?: KeyType[];
@@ -10,9 +12,9 @@ interface FormCheckBoxProps extends CheckBoxProps {
 
 const FormCheckBox = ({ value = [], onChange, options = [], ...others }: FormCheckBoxProps) => {
   return (
-    <React.Fragment>
-      {options.map((item, idx) => {
-        return (
+    <Flex justify="start" wrap="wrap" style={{ paddingTop: 15 }}>
+      {options.map((item, idx) => (
+        <View key={idx} style={{ marginRight: 15, marginBottom: 15, height: 24 }}>
           <CheckBox
             key={idx}
             checked={value.includes(item.value)}
@@ -30,9 +32,9 @@ const FormCheckBox = ({ value = [], onChange, options = [], ...others }: FormChe
           >
             {item.label}
           </CheckBox>
-        );
-      })}
-    </React.Fragment>
+        </View>
+      ))}
+    </Flex>
   );
 };
 

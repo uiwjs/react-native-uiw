@@ -11,7 +11,7 @@ const Form = <
 >(
   baseProps: FormProps,
 ) => {
-  const { formDatas, form, initialValues = {} } = baseProps;
+  const { schema, form, initialValues = {}, mode = 'default' } = baseProps;
 
   const isMount = useRef<boolean>();
 
@@ -27,11 +27,12 @@ const Form = <
 
   const contextProps = {
     innerMethods: innerMethods,
+    mode: mode,
   };
 
   return (
     <Provider contextProps={contextProps}>
-      <FormItems formDatas={formDatas} />
+      <FormItems schema={schema} />
     </Provider>
   );
 };

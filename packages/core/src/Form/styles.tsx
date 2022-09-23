@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderBottomColor: '#eee',
   },
+  border_none: {
+    borderBottomWidth: 0,
+  },
 });
 
 export default styles;

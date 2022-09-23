@@ -8,16 +8,15 @@ const FormDemo = () => {
   const form = Form.useForm({
     changeValidate: true,
     watch: {
-      name: (value: unknown) => {
-        console.log('value', value);
-      },
+      name: (value: unknown) => console.log('value', value),
     },
     customComponentList: {
       render: <Slider />,
     },
   });
   const [state, setStore] = useState({});
-  const items = [
+
+  const schema = [
     {
       type: 'input',
       field: 'name',
@@ -36,6 +35,11 @@ const FormDemo = () => {
         {label: '西北菜', value: 3},
         {label: '新疆菜', value: 4},
         {label: '东北菜', value: 5},
+        {label: '四川菜', value: 6},
+        {label: '湖北菜', value: 7},
+        {label: '西北菜', value: 8},
+        {label: '新疆菜', value: 9},
+        {label: '东北菜', value: 10},
       ],
     },
     {
@@ -46,12 +50,22 @@ const FormDemo = () => {
         {label: '香蕉', value: 1},
         {label: '西瓜', value: 2},
         {label: '猕猴桃', value: 3},
+        {label: '新疆菜', value: 4},
+        {label: '东北菜', value: 5},
+        {label: '四川菜', value: 6},
+        {label: '湖北菜', value: 7},
+        {label: '西北菜', value: 8},
+        {label: '新疆菜', value: 9},
+        {label: '东北菜', value: 10},
       ],
     },
     {
       type: 'rate',
       field: 'rate',
       name: '评分',
+      attr: {
+        defaultRating: 4,
+      },
     },
     {
       type: 'switch',
@@ -70,12 +84,6 @@ const FormDemo = () => {
         labelInValue: true,
         showClear: true,
       },
-    },
-    {
-      type: 'datePicker',
-      field: 'datePicker',
-      name: '时间',
-      attr: {},
     },
     {
       type: 'stepper',
@@ -110,23 +118,39 @@ const FormDemo = () => {
     {
       type: 'cardList',
       field: 'cardList',
-      name: '动态list',
+      name: '联系人集合',
+      renderHeader: (i: number, {remove}: {remove: () => void}) => (
+        <View style={{marginTop: 12, display: 'flex', justifyContent: 'space-between', flexDirection: 'row'}}>
+          <View>
+            <Text>{`联系人${i + 1}`}</Text>
+          </View>
+          <View>
+            <Text onPress={() => remove()}>删除</Text>
+          </View>
+        </View>
+      ),
+      renderAdd: ({add}: {add: () => void}) => (
+        <View style={{marginTop: 12}}>
+          <Button onPress={() => add()} type="primary" size="default" bordered={false}>
+            新增数据
+          </Button>
+        </View>
+      ),
       items: [
         {
           type: 'input',
           field: 'cardListItem1',
-          name: '动态表单项1',
+          name: '联系人姓名',
         },
       ],
     },
   ];
-  const initialValues = {name: '王滴滴', rate: 4};
 
   return (
     <Container>
       <Layout>
         <Body>
-          <Form form={form} formDatas={items} initialValues={initialValues} />
+          <Form form={form} schema={schema} initialValues={{name: '王滴滴', rate: 4}} />
           <View>
             <Text>{JSON.stringify(state)}</Text>
           </View>

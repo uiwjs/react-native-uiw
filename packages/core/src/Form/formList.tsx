@@ -2,11 +2,6 @@ import React, { useContext } from 'react';
 import { KeyType, FormItemsProps } from './types';
 import { isObjectEmpty } from './utils/is';
 import { Context } from './hooks/context';
-import Radio from '../Radio';
-import CheckBox from '../CheckBox';
-import Switch from '../Switch';
-import SearchBar from '../SearchBar';
-import Stepper from '../Stepper';
 import Button from '../Button';
 import Card from '../Card';
 import Label from './comps/label';
@@ -26,29 +21,31 @@ const FormList = ({
   },
 }: FormListProps) => {
   const {
-    innerMethods: { store = {}, updateStore, customComponentList, innerValidate },
+    innerMethods: { store = {}, updateStore, customComponentList },
   } = useContext(Context);
 
+  const { field, items = [], renderAdd, renderHeader } = formListValue;
+
   const handleOperate = (type = '', index?: number) => {
-    let list = store[formListValue.field] || [];
+    let list = store[field] || [];
     if (type === 'add') list.push({});
     if (type === 'delete') list.splice(index, 1);
-    updateStore?.({ store: { ...store, [formListValue.field]: list } });
+    updateStore?.({ store: { ...store, [field]: list } });
   };
 
-  const change = (field: KeyType, value: unknown, index: number) => {
-    const list = store[formListValue.field] || [];
+  const change = (fields: KeyType, value: unknown, index: number) => {
+    const list = store[field] || [];
     const obj = {
-      ...store[formListValue.field][index],
-      [field]: value,
+      ...store[field][index],
+      [fields]: value,
     };
     list.splice(index, 1, obj);
-    updateStore?.({ store: { ...store, [formListValue.field]: list } });
+    updateStore?.({ store: { ...store, [field]: list } });
   };
 
+  // 组件渲染
   const _renderComponent = (v: Omit<FormItemsProps, 'validate' | 'required'>, index: number) => {
-    const values = { ...store[formListValue.field][index] };
-    // 自定义组件
+    const values = { ...store[field][index] };
     if (!isObjectEmpty(customComponentList) && Object.keys(customComponentList).includes(v.type)) {
       return React.isValidElement(customComponentList[v.type])
         ? React.cloneElement(customComponentList[v.type], {
@@ -63,7 +60,8 @@ const FormList = ({
   };
 
   const _render = (index: number) => {
-    return (formListValue.items || []).map((v: Omit<FormItemsProps, 'validate' | 'required'>, i: number) => {
+    return items.map((v: Omit<FormItemsProps, 'validate' | 'required'>, i: number) => {
+      const last = items.length - 1 === i;
       if (v.hide) {
         return null;
       }
@@ -72,7 +70,7 @@ const FormList = ({
       }
       return (
         <View key={i} style={styles.form_items_container}>
-          <View style={styles.form_items}>
+          <View style={[styles.form_items, last && styles.border_none]}>
             <Label v={v} />
             {_renderComponent(v, index)}
             <Tip v={v} />
@@ -84,26 +82,13 @@ const FormList = ({
 
   return (
     <SafeAreaView style={styles.warpper}>
-      {(store[formListValue.field] || []).map((item: Record<string, unknown>, index: number) => (
-        <Card key={index}>
-          {_render(index)}
-          <Card.Actions
-            driver={false}
-            actions={[
-              {
-                text: '删除',
-                actionsTextStyle: { color: '#333' },
-                onPress: () => handleOperate('delete', index),
-              },
-            ]}
-          />
-        </Card>
+      {(store[field] || []).map((item: Record<string, unknown>, index: number) => (
+        <React.Fragment key={index}>
+          {renderHeader?.(index, { remove: () => handleOperate('delete', index) })}
+          <Card>{_render(index)}</Card>
+        </React.Fragment>
       ))}
-      <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 12 }}>
-        <Button onPress={() => handleOperate('add')} type="primary" size="default">
-          新增数据
-        </Button>
-      </View>
+      {renderAdd?.({ add: () => handleOperate('add') })}
     </SafeAreaView>
   );
 };
