@@ -3,7 +3,7 @@ import Card from '../../Card';
 import { SafeAreaView } from 'react-native';
 import styles from '../styles';
 
-const Container = ({ mode, children }: { mode: 'card' | 'default'; children?: JSX.Element }) => {
+const Container = ({ mode, children }: { mode: 'card' | 'default'; children?: React.ReactNode }) => {
   return mode === 'card' ? <Card>{children}</Card> : <SafeAreaView style={styles.warpper}>{children}</SafeAreaView>;
 };
 

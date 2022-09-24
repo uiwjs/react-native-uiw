@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {Form, Button, Toast, Slider, Flex} from '@uiw/react-native';
 import {Text, View} from 'react-native';
 import Layout, {Container} from '../../Layout';
@@ -13,15 +13,8 @@ interface actionProps {
 }
 
 const FormDemo = () => {
-  const form = Form.useForm({
-    changeValidate: true,
-    watch: {
-      name: (value: unknown) => console.log('value', value),
-    },
-    customComponentList: {
-      render: <Slider />,
-    },
-  });
+  const form = Form.useForm();
+  const ref = useRef();
   const [state, setStore] = useState({});
 
   const schema = [
@@ -170,7 +163,18 @@ const FormDemo = () => {
     <Container>
       <Layout>
         <Body>
-          <Form form={form} schema={schema} initialValues={{name: '王滴滴', rate: 4}} />
+          <Form
+            form={form}
+            schema={schema}
+            initialValues={{name: '王滴滴', rate: 4}}
+            watch={{
+              name: (value: unknown) => console.log('value', value),
+            }}
+            customComponentList={{
+              render: <Slider />,
+            }}
+            changeValidate={true}
+          />
           <View>
             <Text>{JSON.stringify(state)}</Text>
           </View>

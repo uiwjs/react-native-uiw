@@ -1,18 +1,9 @@
-import React from 'react';
+import { useRef } from 'react';
 import { KeyType, InnerMethodsReturnType, FormInstance } from '../types';
 import { useState } from 'react';
 import { useValidator } from '@validator.tool/hook';
 import { isObjectEmpty } from '../utils/is';
 import { cloneDeep } from '../utils';
-import TextArea from '../../TextArea';
-import Slider from '../../Slider';
-import SearchBar from '../../SearchBar';
-import Stepper from '../../Stepper';
-import Input from '../comps/input';
-import Rating from '../comps/rate';
-import Radio from '../comps/radio';
-import Switch from '../comps/switch';
-import CheckBox from '../comps/checkBox';
 
 type State<FormData = any> = {
   store: Partial<FormData>;
@@ -23,15 +14,7 @@ export default function useForm<
   FormData = any,
   FieldValue = FormData[keyof FormData],
   FieldKey extends KeyType = keyof FormData,
->({
-  changeValidate = false,
-  watch = {},
-  customComponentList,
-}: {
-  changeValidate?: boolean;
-  watch?: Partial<Record<string, (value: unknown) => void>>;
-  customComponentList?: Partial<Record<string, unknown>>;
-}): FormInstance<FormData, FieldValue, FieldKey> {
+>(): FormInstance<FormData, FieldValue, FieldKey> {
   const [state, setState] = useState<State>({
     initialValues: {},
     store: {},
@@ -50,10 +33,8 @@ export default function useForm<
 
   const innerValidate = () => {
     const { showMessages } = validator;
-    if (changeValidate) {
-      showMessages?.();
-      forceUpdate?.();
-    }
+    showMessages?.();
+    forceUpdate?.();
   };
 
   // 获取表单字段的值
@@ -111,7 +92,7 @@ export default function useForm<
       validate,
       validateFields,
       getInnerMethods: (inner?: boolean): InnerMethodsReturnType<FormData> => {
-        let methods = {} as any;
+        let methods = {} as InnerMethodsReturnType<FormData>;
         if (inner) {
           methods = {
             store: state.store,
@@ -120,19 +101,6 @@ export default function useForm<
             validator,
             forceUpdate,
             innerValidate,
-            watch,
-            customComponentList: {
-              ...customComponentList,
-              input: <Input />,
-              textArea: <TextArea />,
-              slider: <Slider />,
-              rate: <Rating disabled={false} />,
-              radio: <Radio />,
-              search: <SearchBar />,
-              switch: <Switch />,
-              checkBox: <CheckBox />,
-              stepper: <Stepper value={0} onChange={() => {}} />,
-            },
           };
         }
         return methods;

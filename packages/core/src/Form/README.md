@@ -37,9 +37,7 @@ import {  SafeAreaView,Toast } from 'react-native';
 import { Form } from '@uiw/react-native';
 
 const FormDemo = () => {
-  const form = Form.useForm({
-    changeValidate: true,
-  });
+  const form = Form.useForm();
   const initialValues = {name: ''};
   const items = [
     {
@@ -78,12 +76,10 @@ import { SafeAreaView,Toast,Slider } from 'react-native';
 import { Form } from '@uiw/react-native';
 
 const FormDemo = () => {
-  const form = Form.useForm({
-    changeValidate: true,
-    customComponentList: {
+  const form = Form.useForm();
+  const customComponentList = {
       render: <Slider />,
-    },
-  });
+  }
   const initialValues = {name: ''};
   const items = [
     {
@@ -100,7 +96,7 @@ const FormDemo = () => {
   ];
   return (
     <SafeAreaView>
-      <Form form={form} schema={items} initialValues={initialValues} />
+      <Form form={form} schema={items} changeValidate={true} customComponentList={customComponentList} initialValues={initialValues} />
     </SafeAreaView>
   );
 };
@@ -115,14 +111,10 @@ import { SafeAreaView,Toast } from 'react-native';
 import { Form } from '@uiw/react-native';
 
 const FormDemo = () => {
-  const form = Form.useForm({
-    changeValidate: true,
-    watch: {
-      name: (value: unknown) => {
-        console.log('value', value);
-      },
-    }
-  });
+  const form = Form.useForm();
+  const watch = {
+    name: (value) => console.log('value', value)
+  }
   const initialValues = {name: ''};
   const items = [
     {
@@ -134,7 +126,7 @@ const FormDemo = () => {
   ];
   return (
     <SafeAreaView>
-      <Form form={form} schema={items} initialValues={initialValues} />
+      <Form form={form} schema={items} watch={watch} initialValues={initialValues} />
     </SafeAreaView>
   );
 };
@@ -154,9 +146,7 @@ import { SafeAreaView,View,Text } from 'react-native';
 import { Form,Button,Flex } from '@uiw/react-native';
 
 const FormDemo = () => {
-  const form = Form.useForm({
-    changeValidate: true,
-  });
+  const form = Form.useForm();
   const initialValues = {name: ''};
   const items = [
     {
@@ -177,7 +167,7 @@ const FormDemo = () => {
           </Flex>
         </View>
       ),
-      renderAdd: ({add}: {add: () => void}) => (
+      renderAdd: ({ add }) => (
         <View style={{marginTop: 12}}>
           <Button onPress={() => add()} type="primary" size="default" bordered={false}>
             新增数据
@@ -225,7 +215,13 @@ interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], Field
   /**
    * 支持默认和卡片两种模式
   */
-  mode?:'default' | 'card'
+  mode?:'default' | 'card';
+  // 表单是否在onChange时进行验证
+  changeValidate?: boolean;
+  // 监听表单字段变化
+  watch?: Partial<Record<string, (value: unknown) => void>>;
+  // 自定义组件
+  customComponentList?: Partial<Record<string, JSX.Element>>;
 }
 ```
 
@@ -240,7 +236,7 @@ interface FormItemsProps {
   name: string;
   // 验证规则
   validate?: RulesOption['validate'];
-  options?: Array<{ label: string; value: KeyType | any }>;
+  options?: Array<{ label: string; value: KeyType }>;
   // 表单控件props
   attr?: any;
   // 展示是否必填
@@ -282,4 +278,6 @@ type FormInstance<FormData = any, FieldValue = FormData[keyof FormData], FieldKe
   getInnerMethods: (inner?: boolean) => InnerMethodsReturnType<FormData>;
 };
 ```
+
+
 

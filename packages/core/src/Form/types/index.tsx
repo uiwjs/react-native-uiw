@@ -10,8 +10,8 @@ type InnerMethodsReturnType<FormData = any> = {
   validator: Validator;
   forceUpdate: () => void;
   innerValidate: () => void;
-  watch: Partial<Record<string, (value: unknown) => void>>;
-  customComponentList: Partial<Record<string, JSX.Element>>;
+  // watch: Partial<Record<string, (value: unknown) => void>>;
+  // customComponentList: Partial<Record<string, JSX.Element>>;
 };
 
 type FormInstance<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> = {
@@ -31,6 +31,9 @@ interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], Field
    * 支持默认和卡片两种模式
    */
   mode?: 'default' | 'card';
+  watch?: Partial<Record<string, (value: unknown) => void>>;
+  customComponentList?: Partial<Record<string, JSX.Element>>;
+  changeValidate?: boolean;
 }
 
 interface actionProps {
@@ -46,7 +49,7 @@ interface FormItemsProps {
   type: string;
   name: string;
   validate?: RulesOption['validate'];
-  options?: Array<{ label: string; value: KeyType | any }>;
+  options?: Array<{ label: string; value: KeyType }>;
   attr?: any;
   required?: boolean;
   renderHeader?: (index: number, { remove, moveUp, moveDown }: actionProps) => React.ReactNode;

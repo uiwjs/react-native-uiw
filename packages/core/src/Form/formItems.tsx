@@ -1,5 +1,5 @@
-import React, { FC, useContext } from 'react';
-import { KeyType, FormItemsProps } from './types';
+import React, { useContext } from 'react';
+import { KeyType, FormItemsProps, FormProps } from './types';
 import { isObjectEmpty } from './utils/is';
 import { Context } from './hooks/context';
 import Label from './comps/label';
@@ -9,10 +9,13 @@ import Container from './comps/container';
 import { View } from 'react-native';
 import styles from './styles';
 
-const FormItems: FC<any> = ({ schema = [] }) => {
+const FormItems = ({ schema = [] }: Pick<FormProps, 'schema'>) => {
   const {
     mode,
-    innerMethods: { store = {}, updateStore, innerValidate, watch, customComponentList, initialValues },
+    innerMethods: { store = {}, updateStore, innerValidate },
+    watch,
+    customComponentList,
+    changeValidate,
   } = useContext(Context);
 
   const change = (field: KeyType, value: unknown) => {
@@ -33,7 +36,7 @@ const FormItems: FC<any> = ({ schema = [] }) => {
             value: store[v.field],
             onChange: (value: unknown) => {
               change(v.field, value);
-              innerValidate();
+              if (changeValidate) innerValidate();
             },
           })
         : null;
@@ -41,7 +44,7 @@ const FormItems: FC<any> = ({ schema = [] }) => {
     return null;
   };
 
-  const _render = (): JSX.Element => {
+  const _render = () => {
     return schema.map((v: FormItemsProps, i: number) => {
       const last = schema.length - 1 === i;
       if (v.hide) {

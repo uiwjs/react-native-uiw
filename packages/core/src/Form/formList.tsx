@@ -20,7 +20,8 @@ const FormList = ({
   },
 }: FormListProps) => {
   const {
-    innerMethods: { store = {}, updateStore, customComponentList },
+    innerMethods: { store = {}, updateStore },
+    customComponentList,
   } = useContext(Context);
 
   const { field, items = [], renderAdd, renderHeader } = formListValue;
