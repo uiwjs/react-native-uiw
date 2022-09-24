@@ -151,7 +151,7 @@ const FormDemo = () => {
 <!--DemoStart--> 
 ```jsx
 import { SafeAreaView,View,Text } from 'react-native';
-import { Form,Button } from '@uiw/react-native';
+import { Form,Button,Flex } from '@uiw/react-native';
 
 const FormDemo = () => {
   const form = Form.useForm({
@@ -159,19 +159,27 @@ const FormDemo = () => {
   });
   const initialValues = {name: ''};
   const items = [
-       {
+    {
       type: 'cardList',
       field: 'cardList',
       name: '联系人集合',
-      renderHeader: (i: number, { remove }: { remove: () => void }) => (
-        <View style={{ marginTop: 12, display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
-          <View><Text>{`联系人${i + 1}`}</Text></View>
-          <View><Text onPress={() => remove()}>删除</Text></View>
+      renderHeader: (i, { remove ,moveUp,moveDown,moveToTop,moveToBottom }) => (
+        <View style={{marginTop: 12, display: 'flex', justifyContent: 'space-between', flexDirection: 'row'}}>
+          <View>
+            <Text>{`联系人${i + 1}`}</Text>
+          </View>
+          <Flex>
+            <Text style={{marginRight:5}}  onPress={() => moveUp()}>上移</Text>
+            <Text style={{marginRight:5}}  onPress={() => moveDown()}>下移</Text>
+            <Text style={{marginRight:5}}  onPress={() => moveToTop()}>置顶</Text>
+            <Text style={{marginRight:5}}  onPress={() => moveToBottom()}>置底</Text>
+            <Text onPress={() => remove()}>删除</Text>
+          </Flex>
         </View>
       ),
-      renderAdd: ({ add }: { add: () => void }) => (
-        <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 12 }}>
-          <Button onPress={() => add()} type="primary" size="default">
+      renderAdd: ({add}: {add: () => void}) => (
+        <View style={{marginTop: 12}}>
+          <Button onPress={() => add()} type="primary" size="default" bordered={false}>
             新增数据
           </Button>
         </View>
@@ -179,8 +187,13 @@ const FormDemo = () => {
       items: [
         {
           type: 'input',
-          field: 'cardListItem1',
+          field: 'name',
           name: '联系人姓名',
+        },
+        {
+          type: 'input',
+          field: 'phone',
+          name: '联系人电话',
         },
       ],
     },

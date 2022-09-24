@@ -33,6 +33,14 @@ interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], Field
   mode?: 'default' | 'card';
 }
 
+interface actionProps {
+  remove: () => void;
+  moveUp: () => void;
+  moveDown: () => void;
+  moveToTop: () => void;
+  moveToBottom: () => void;
+}
+
 interface FormItemsProps {
   field: string;
   type: string;
@@ -41,7 +49,7 @@ interface FormItemsProps {
   options?: Array<{ label: string; value: KeyType | any }>;
   attr?: any;
   required?: boolean;
-  renderHeader?: (index: number, { remove }: { remove: () => void }) => React.ReactNode;
+  renderHeader?: (index: number, { remove, moveUp, moveDown }: actionProps) => React.ReactNode;
   renderAdd?: ({ add }: { add: () => void }) => React.ReactNode;
   items?: Omit<FormItemsProps, 'validate' | 'required'>[];
   hide?: boolean;

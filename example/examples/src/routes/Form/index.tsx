@@ -1,8 +1,16 @@
 import React, {useState} from 'react';
-import {Form, Button, Toast, Slider} from '@uiw/react-native';
+import {Form, Button, Toast, Slider, Flex} from '@uiw/react-native';
 import {Text, View} from 'react-native';
 import Layout, {Container} from '../../Layout';
 const {Body, Footer} = Layout;
+
+interface actionProps {
+  remove: () => void;
+  moveUp: () => void;
+  moveDown: () => void;
+  moveToTop: () => void;
+  moveToBottom: () => void;
+}
 
 const FormDemo = () => {
   const form = Form.useForm({
@@ -119,14 +127,26 @@ const FormDemo = () => {
       type: 'cardList',
       field: 'cardList',
       name: '联系人集合',
-      renderHeader: (i: number, {remove}: {remove: () => void}) => (
+      renderHeader: (i: number, {remove, moveUp, moveDown, moveToTop, moveToBottom}: actionProps) => (
         <View style={{marginTop: 12, display: 'flex', justifyContent: 'space-between', flexDirection: 'row'}}>
           <View>
             <Text>{`联系人${i + 1}`}</Text>
           </View>
-          <View>
+          <Flex>
+            <Text style={{marginRight: 5}} onPress={() => moveUp()}>
+              上移
+            </Text>
+            <Text style={{marginRight: 5}} onPress={() => moveDown()}>
+              下移
+            </Text>
+            <Text style={{marginRight: 5}} onPress={() => moveToTop()}>
+              置顶
+            </Text>
+            <Text style={{marginRight: 5}} onPress={() => moveToBottom()}>
+              置底
+            </Text>
             <Text onPress={() => remove()}>删除</Text>
-          </View>
+          </Flex>
         </View>
       ),
       renderAdd: ({add}: {add: () => void}) => (

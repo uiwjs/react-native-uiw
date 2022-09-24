@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { KeyType, FormItemsProps } from './types';
 import { isObjectEmpty } from './utils/is';
 import { Context } from './hooks/context';
-import Button from '../Button';
 import Card from '../Card';
 import Label from './comps/label';
 import Tip from './comps/tip';
@@ -26,10 +25,38 @@ const FormList = ({
 
   const { field, items = [], renderAdd, renderHeader } = formListValue;
 
-  const handleOperate = (type = '', index?: number) => {
+  const handleOperate = (type = '', index: number) => {
     let list = store[field] || [];
     if (type === 'add') list.push({});
     if (type === 'delete') list.splice(index, 1);
+    // 下移
+    if (type === 'moveDown') {
+      if (index !== list.length - 1) {
+        list[index] = list.splice(index + 1, 1, list[index])[0];
+      } else {
+        list.unshift(list.splice(index, 1)[0]);
+      }
+    }
+    // 上移
+    if (type === 'moveUp') {
+      if (index !== 0) {
+        list[index] = list.splice(index - 1, 1, list[index])[0];
+      } else {
+        list.push(list.shift());
+      }
+    }
+    // 置顶
+    if (type === 'moveToTop') {
+      if (index !== 0) {
+        list.unshift(list.splice(index, 1)[0]);
+      }
+    }
+    // 置底
+    if (type === 'moveToBottom') {
+      if (index !== list.length - 1) {
+        list.push(list.splice(index, 1)[0]);
+      }
+    }
     updateStore?.({ store: { ...store, [field]: list } });
   };
 
@@ -84,11 +111,17 @@ const FormList = ({
     <SafeAreaView style={styles.warpper}>
       {(store[field] || []).map((item: Record<string, unknown>, index: number) => (
         <React.Fragment key={index}>
-          {renderHeader?.(index, { remove: () => handleOperate('delete', index) })}
+          {renderHeader?.(index, {
+            remove: () => handleOperate('delete', index),
+            moveUp: () => handleOperate('moveUp', index),
+            moveDown: () => handleOperate('moveDown', index),
+            moveToTop: () => handleOperate('moveToTop', index),
+            moveToBottom: () => handleOperate('moveToBottom', index),
+          })}
           <Card>{_render(index)}</Card>
         </React.Fragment>
       ))}
-      {renderAdd?.({ add: () => handleOperate('add') })}
+      {renderAdd?.({ add: () => handleOperate('add', 0) })}
     </SafeAreaView>
   );
 };
