@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-native",
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "UIW for React Native",
   "homepage": "https://uiwjs.github.io/react-native-uiw/",
   "main": "lib/index.js",
@@ -55,14 +55,14 @@
     "@types/lodash": "4.14.172",
     "@types/react-native": "0.69.1",
     "@uiw/icons": "2.5.3",
+    "@validator.tool/hook": "2.2.4",
     "ahooks": "2.10.14",
     "color": "4.2.3",
     "lodash": "4.17.21",
     "prop-types": "15.7.2",
     "react-native-gesture-handler": "2.0.0",
     "react-native-root-siblings": "4.1.1",
-    "react-native-svg": "12.1.1",
-    "@validator.tool/hook":"2.2.4"
+    "react-native-svg": "12.1.1"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
