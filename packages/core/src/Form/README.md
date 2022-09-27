@@ -7,7 +7,7 @@ Form 表单
 
 <!--DemoStart--> 
 ```jsx
-import {  SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { Form } from '@uiw/react-native';
 
 const FormDemo = () => {
@@ -33,8 +33,8 @@ const FormDemo = () => {
 
 <!--DemoStart--> 
 ```jsx
-import {  SafeAreaView,Toast } from 'react-native';
-import { Form } from '@uiw/react-native';
+import { SafeAreaView,Toast } from 'react-native';
+import { Form,Button } from '@uiw/react-native';
 
 const FormDemo = () => {
   const form = Form.useForm();
@@ -72,7 +72,7 @@ const FormDemo = () => {
 
 <!--DemoStart--> 
 ```jsx
-import { SafeAreaView,Toast,Slider } from 'react-native';
+import { SafeAreaView,Slider } from 'react-native';
 import { Form } from '@uiw/react-native';
 
 const FormDemo = () => {
@@ -96,7 +96,7 @@ const FormDemo = () => {
   ];
   return (
     <SafeAreaView>
-      <Form form={form} schema={items} changeValidate={true} customComponentList={customComponentList} initialValues={initialValues} />
+      <Form form={form} schema={items}  customComponentList={customComponentList} initialValues={initialValues} />
     </SafeAreaView>
   );
 };
@@ -107,7 +107,7 @@ const FormDemo = () => {
 
 <!--DemoStart--> 
 ```jsx
-import { SafeAreaView,Toast } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { Form } from '@uiw/react-native';
 
 const FormDemo = () => {

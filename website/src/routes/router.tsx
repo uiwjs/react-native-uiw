@@ -290,6 +290,10 @@ export const routeData = [
         component: lazy(() => import('../pages/components/imageViewer')),
       },
       {
+        path: '/components/form',
+        component: lazy(() => import('../pages/components/form')),
+      },
+      {
         path: '/docs/changelog',
         component: lazy(() => import('../pages/docs/changelog')),
       },
