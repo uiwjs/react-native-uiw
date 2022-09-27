@@ -197,6 +197,58 @@ const FormDemo = () => {
 ```
 <!--End-->
 
+### class组件获取form
+
+<!--DemoStart--> 
+```jsx
+import { SafeAreaView,View,Text } from 'react-native';
+import { Form,Button,Flex } from '@uiw/react-native';
+
+class FormDemo extends React.Component {
+  render(){
+    const { form } = this.props
+    const schema = [
+      {
+        type: 'input',
+        field: 'name',
+        name: '输入框',
+        attr: {},
+        required: true,
+        validate: (val) => (!val ? `请输入name` : ''),
+      }
+    ];
+    return (
+      <SafeAreaView>
+        <Form
+          form={form}
+          schema={schema}
+          initialValues={{ name: '王滴滴', rate: 4 }}
+          watch={{
+            name: (value: unknown) => console.log('value', value),
+          }}
+          customComponentList={{
+            render: <Slider />,
+          }}
+          changeValidate={true}
+        />
+        <Button
+          type="primary"
+          onPress={() => form.validateFields().then((values) => {}).catch((errors) => {}) }>
+            确定
+        </Button>
+      </SafeAreaView>
+    );
+  }
+}
+
+const FormComponent = Form.create(FormDemo)
+
+export default FormComponent;
+```
+<!--End-->
+
+
+
 ### FormProps
 ```ts
 interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> {
