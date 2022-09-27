@@ -201,8 +201,9 @@ const FormDemo = () => {
 
 <!--DemoStart--> 
 ```jsx
-import { SafeAreaView,View,Text } from 'react-native';
-import { Form,Button,Flex } from '@uiw/react-native';
+import React from 'react'
+import { SafeAreaView } from 'react-native';
+import { Form, Button } from '@uiw/react-native';
 
 class FormDemo extends React.Component {
   render(){
@@ -222,14 +223,7 @@ class FormDemo extends React.Component {
         <Form
           form={form}
           schema={schema}
-          initialValues={{ name: '王滴滴', rate: 4 }}
-          watch={{
-            name: (value: unknown) => console.log('value', value),
-          }}
-          customComponentList={{
-            render: <Slider />,
-          }}
-          changeValidate={true}
+          initialValues={{ name: '王滴滴' }}
         />
         <Button
           type="primary"
