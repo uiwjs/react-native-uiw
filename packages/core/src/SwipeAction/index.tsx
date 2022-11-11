@@ -1,7 +1,7 @@
 import React, { useImperativeHandle, forwardRef, useRef } from 'react';
-import { Animated, StyleSheet, View, Text, I18nManager, StyleProp, ViewStyle } from 'react-native';
+import { Animated, StyleSheet, View, Text, I18nManager } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
+import Swipeable, { SwipeableProps } from 'react-native-gesture-handler/Swipeable';
 
 export interface Column {
   /** 显示文字 */
@@ -16,49 +16,31 @@ export interface Column {
   render?: (text: string, record: Column, index: number) => React.ReactNode;
 }
 
-export interface SwipeActionProps {
+export interface SwipeActionProps extends SwipeableProps {
   /** 右边滑动出来的元素 */
   right?: Array<Column>;
   /** 左边滑动出来的元素 */
   left?: Array<Column>;
   /** 按钮宽度 默认60 */
   buttonWidth?: number;
-  enableTrackpadTwoFingerGesture?: boolean;
-  friction?: number;
-  leftThreshold?: number;
-  rightThreshold?: number;
-  overshootLeft?: boolean;
-  overshootRight?: boolean;
-  overshootFriction?: number;
-  onSwipeableLeftOpen?: () => void;
-  onSwipeableRightOpen?: () => void;
-  onSwipeableOpen?: () => void;
-  onSwipeableClose?: () => void;
-  onSwipeableLeftWillOpen?: () => void;
-  onSwipeableRightWillOpen?: () => void;
-  onSwipeableWillOpen?: () => void;
-  onSwipeableWillClose?: () => void;
   children?: React.ReactNode;
-  renderLeftActions?: (
-    progressAnimatedValue: Animated.AnimatedInterpolation,
-    dragAnimatedValue: Animated.AnimatedInterpolation,
-  ) => React.ReactNode;
-  renderRightActions?: (
-    progressAnimatedValue: Animated.AnimatedInterpolation,
-    dragAnimatedValue: Animated.AnimatedInterpolation,
-  ) => React.ReactNode;
-  useNativeAnimations?: boolean;
-  animationOptions?: Record<string, unknown>;
-  containerStyle?: StyleProp<ViewStyle>;
-  childrenContainerStyle?: StyleProp<ViewStyle>;
 }
 
-const SwipeAction = (props: SwipeActionProps, ref: any) => {
-  const { children, right = [], left = [], buttonWidth = 60, ...others } = props;
+const SwipeAction = (
+  props: SwipeActionProps,
+  ref: React.ForwardedRef<Partial<React.LegacyRef<Swipeable>> | undefined | null>,
+) => {
+  const { right = [], left = [], buttonWidth = 60, children, ...others } = props;
   const swipeableRef: React.MutableRefObject<null> = useRef(null);
 
+  useImperativeHandle(ref, () => ({ swipeable: swipeableRef.current }));
+
   // 滑出
-  const renderRightAction = (progress: Animated.AnimatedInterpolation, dragX: any, isLeft = true) => {
+  const renderRightAction = (
+    progress: Animated.AnimatedInterpolation,
+    dragX: Animated.AnimatedInterpolation,
+    isLeft = true,
+  ) => {
     const buttons = isLeft ? left : right;
     if (!buttons) {
       return null;
@@ -100,25 +82,18 @@ const SwipeAction = (props: SwipeActionProps, ref: any) => {
     );
   };
 
-  // 暴露给父组件调用 Swipeable上的方法
-  useImperativeHandle(ref, () => ({
-    swipeable: swipeableRef.current,
-  }));
-
-  return (
-    <Swipeable
-      ref={swipeableRef}
-      friction={2}
-      enableTrackpadTwoFingerGesture
-      leftThreshold={30}
-      rightThreshold={40}
-      renderRightActions={(progress, dragX) => renderRightAction(progress, dragX, false)}
-      renderLeftActions={(progress, dragX) => renderRightAction(progress, dragX, true)}
-      {...others}
-    >
-      {children && children}
-    </Swipeable>
-  );
+  const commonProps: Omit<Partial<SwipeActionProps>, 'right' | 'left' | 'buttonWidth' | 'children'> & {
+    ref?: React.LegacyRef<Swipeable>;
+  } = {
+    ref: swipeableRef,
+    friction: 2,
+    enableTrackpadTwoFingerGesture: true,
+    rightThreshold: 40,
+    renderRightActions: (progress, dragX) => renderRightAction(progress, dragX, false),
+    renderLeftActions: (progress, dragX) => renderRightAction(progress, dragX, true),
+    ...others,
+  };
+  return <Swipeable {...commonProps}>{children && children}</Swipeable>;
 };
 
 const styles = StyleSheet.create({

@@ -60,7 +60,7 @@
     "color": "4.2.3",
     "lodash": "4.17.21",
     "prop-types": "15.7.2",
-    "react-native-gesture-handler": "2.0.0",
+    "react-native-gesture-handler": "2.8.0",
     "react-native-root-siblings": "4.1.1",
     "react-native-svg": "12.1.1"
   },
