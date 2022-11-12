@@ -8,6 +8,7 @@ import {
   Dimensions,
   GestureResponderEvent,
 } from 'react-native';
+import { debounce } from 'lodash';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
@@ -53,9 +54,10 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
       isOpen: !!props.isOpen,
     };
   }
-  handleDrawer = (isOpen: boolean) => {
+  handleDrawer = debounce((isOpen: boolean) => {
     isOpen ? this.openDrawer() : this.closeDrawer();
-  };
+  }, 100);
+
   componentDidUpdate(prevProps: DrawerProps, prevState: DrawerState) {
     if (prevState.isOpen !== this.state.isOpen) {
       this.handleDrawer(this.state.isOpen);
