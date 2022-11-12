@@ -29,7 +29,7 @@ export interface BadgeProps extends ViewProps {
   /** 标记颜色 */
   color?: colors.Colors | string;
   /** 文本内容 */
-  text?: string | Element;
+  text?: string | React.ReactNode;
   /**
    * 设置圆角，默认 `12`
    */

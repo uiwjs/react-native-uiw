@@ -25,7 +25,7 @@ export interface PanXY extends Animated.Value {
   _value: number;
 }
 
-export interface SpeedDialProps extends ViewProps {
+export interface SpeedDialProps {
   /** 显示的图标 [默认显示, 展开显示] */
   icon?: icoType;
   /** 盒子样式 */

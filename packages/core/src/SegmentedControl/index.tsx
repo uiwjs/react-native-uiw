@@ -19,7 +19,10 @@ export interface SegmentedControlState {
   selectedIndex: number;
 }
 
-export default class SegmentedControl<T> extends Component<SegmentedControlProps<T>, SegmentedControlState> {
+export default class SegmentedControl<T extends React.ReactPortal> extends Component<
+  SegmentedControlProps<T>,
+  SegmentedControlState
+> {
   constructor(props: SegmentedControlProps<T>) {
     super(props);
     this.state = {

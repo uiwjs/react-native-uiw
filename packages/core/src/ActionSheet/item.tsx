@@ -8,7 +8,6 @@ import {
   TextStyle,
   StyleSheet,
   Text,
-  TouchableOpacity,
   GestureResponderEvent,
 } from 'react-native';
 
@@ -23,6 +22,7 @@ export interface ActionSheetItemProps {
   /** 有触摸操作时显示出来的底层的颜色 */
   underlayColor?: string;
   onPress?: (event: GestureResponderEvent) => void;
+  children?: React.ReactNode;
 }
 
 export interface ActionSheetItemState {}

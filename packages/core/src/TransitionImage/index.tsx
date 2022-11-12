@@ -22,6 +22,7 @@ export type ImageProps = RNImageProps & {
   placeholderStyle?: StyleProp<ViewStyle>;
   transition?: boolean;
   transitionDuration?: number;
+  children?: React.ReactNode;
 };
 
 type ImageState = {

@@ -94,8 +94,8 @@ export default class List extends React.PureComponent<ListProps, ListState> {
       size,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       extra,
-      ListHeaderComponent,
       title,
+      ListHeaderComponent,
       ...otherProps
     } = this.props;
     const props = {} as ListProps & FlatListProps<{}>;
@@ -126,13 +126,17 @@ export default class List extends React.PureComponent<ListProps, ListState> {
     if (!flat) {
       return (
         <View {...otherProps}>
-          {header}
-          {((renderItem && (!data || data.length === 0)) ||
-            (!renderItem && (!children || React.Children.toArray(children).length === 0))) &&
-            otherProps.ListEmptyComponent}
-          {(props.data || []).map((item, idx) =>
-            React.cloneElement((props.renderItem && props.renderItem({ item, index: idx })) || <View />, { key: idx }),
-          )}
+          <>
+            {header}
+            {((renderItem && (!data || data.length === 0)) ||
+              (!renderItem && (!children || React.Children.toArray(children).length === 0))) &&
+              otherProps.ListEmptyComponent}
+            {(props.data || []).map((item, idx) =>
+              React.cloneElement((props.renderItem && props.renderItem({ item, index: idx })) || <View />, {
+                key: idx,
+              }),
+            )}
+          </>
         </View>
       );
     }
