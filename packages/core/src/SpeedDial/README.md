@@ -3,6 +3,9 @@ SpeedDial 悬浮标记
 
 SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示标记的形式显示指定相关动作。
 
+> 🚧 注意：测试版本谨慎使用。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
 ![](https://user-images.githubusercontent.com/57083007/146733457-f6cb4866-2f5c-4757-bb16-007881c5ef25.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例

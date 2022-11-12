@@ -5,6 +5,9 @@ DragDrawer 拖曳抽屉
 
 可自定义拖曳抽屉高度。
 
+> 🚧 注意：测试版本谨慎使用。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
 ### 基础示例
 
 ```jsx
