@@ -54,7 +54,7 @@ function Demo() {
 ```
 <!--End-->
 
-### 设置遮罩层颜色
+### 自定义提示文本
 
 <!--DemoStart--> 
 ```jsx
