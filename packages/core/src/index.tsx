@@ -104,8 +104,6 @@ export * from './Picker';
 export { default as DatePicker } from './DatePicker';
 export * from './DatePicker';
 
-export { default as ScreenRoot } from './ScreenRoot';
-export * from './ScreenRoot';
 export { default as Calendar } from './Calendar';
 export * from './Calendar';
 export { default as DragDrawer } from './DragDrawer';

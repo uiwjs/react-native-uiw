@@ -435,17 +435,6 @@ export const stackPageData: Routes[] = [
     },
   },
   {
-    name: 'ScreenRoot',
-    component: require('./routes/ScreenRoot').default,
-    params: {
-      title: 'ScreenRoot 屏幕头部导航',
-      description: 'ScreenRoot',
-    },
-    options: {
-      header: () => null,
-    },
-  },
-  {
     name: 'Calendar',
     component: require('./routes/Calendar').default,
     params: {

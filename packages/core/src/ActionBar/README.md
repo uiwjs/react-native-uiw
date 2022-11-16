@@ -12,9 +12,9 @@ import React from 'react';
 import { ActionBar } from '@uiw/react-native';
 import { View, Alert } from 'react-native'
 
-export interface ScreenRootProps extends ComProps { }
+export interface ActionBarProps extends ComProps { }
 
-export default class Demo extends React.Component<ScreenRootProps> {
+export default class Demo extends React.Component<ActionBarProps> {
   render() {
     return (
     <View style={{ flex: 1 }}>
@@ -38,9 +38,9 @@ import React from 'react';
 import { ActionBar } from '@uiw/react-native';
 import { View } from 'react-native'
 
-export interface ScreenRootProps extends ComProps { }
+export interface ActionBarProps extends ComProps { }
 
-export default class Demo extends React.Component<ScreenRootProps> {
+export default class Demo extends React.Component<ActionBarProps> {
   state = {
     selectedIndex: 0
   }
