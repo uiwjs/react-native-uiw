@@ -193,10 +193,10 @@ module.exports = {
 };
 ```
 
-> 🚧 注意：虽然配置模块依赖映射，可以隐射到具体的模块/包目录中，但是还是会报错，因为模块中的依赖路径导致错误。
+> 🚧 注意：虽然配置模块依赖映射，可以映射到具体的模块/包目录中，但是还是会报错，因为模块中的依赖路径导致错误。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-在 TypeScript 任然会出错，将在 [`example/examples/tsconfig.json`](https://github.com/uiwjs/react-native-uiw/blob/fe25f853fcdbe3590c3ac89924bf71326f11c58c/example/examples/tsconfig.json#L40-L44) 中配置，导入重新映射到相对于 `baseUrl` 的查找位置的一系列目录。
+在 TypeScript 仍然会出错，将在 [`example/examples/tsconfig.json`](https://github.com/uiwjs/react-native-uiw/blob/fe25f853fcdbe3590c3ac89924bf71326f11c58c/example/examples/tsconfig.json#L40-L44) 中配置，导入重新映射到相对于 `baseUrl` 的查找位置的一系列目录。
 
 ```js
 /* 用于解析非绝对模块名称的基目录。*/
