@@ -3,3 +3,4 @@
 
 # npx --no-install lint-staged
 npm run pretty-quick
+npm run test
