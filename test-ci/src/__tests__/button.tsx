@@ -9,5 +9,8 @@ import Button from '../lib/Button';
 import renderer from 'react-test-renderer';
 
 it('Button', () => {
-  renderer.create(<Button />);
+  // const component = TestRenderer.create(<Radio value="1">Radio</Radio>);
+  const component = renderer.create(<Button type="primary">按钮</Button>);
+  expect(component.root.props.type).toBe('primary');
+  expect(component.root.props.children).toBe('按钮');
 });
