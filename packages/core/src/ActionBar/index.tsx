@@ -21,15 +21,17 @@ import { useSetState } from 'ahooks';
 import RnText from '../Typography/RnText';
 import { last } from '../utils/utils';
 
+export interface ActionBarActionsProps {
+  label?: string;
+  onPress?: () => void;
+  fontStyle?: TextStyle;
+  render?: ReactNode;
+}
+
 export type ActionBarProps = {
   height?: number;
   backgroundColor?: string;
-  actions?: Array<{
-    label?: string;
-    onPress?: () => void;
-    fontStyle?: TextStyle;
-    render?: ReactNode;
-  }>;
+  actions?: ActionBarActionsProps[];
   keepAbsoulte?: boolean;
   style?: ViewStyle;
   scroll?: boolean;

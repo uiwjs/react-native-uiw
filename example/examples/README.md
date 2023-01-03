@@ -4,7 +4,7 @@ Components Examples
 # Root Directory
 npm run build
 
-cd example/base/ios
+cd example/examples/ios
 
 pod install && cd ..
 
