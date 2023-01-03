@@ -1,7 +1,26 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, SafeAreaView, ScrollView, ScrollViewProps, Text, Image } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  ViewStyle,
+  TextStyle,
+  ScrollViewProps,
+  ViewProps,
+} from 'react-native';
 
-const Header = (props) => {
+export interface LayoutHeaderProps {
+  children?: React.ReactNode;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  style?: ViewStyle;
+  titleStyle?: TextStyle;
+  descriptionStyle?: TextStyle;
+}
+
+const Header = (props: LayoutHeaderProps) => {
   const { children, title, description, style, titleStyle, descriptionStyle } = props;
   return (
     <View style={[styles.header, style]}>
@@ -12,7 +31,12 @@ const Header = (props) => {
   );
 };
 
-const Body = (props) => {
+export interface LayoutBodyProps extends ScrollViewProps {
+  children?: React.ReactNode;
+  isScroll?: boolean;
+}
+
+const Body = (props: LayoutBodyProps) => {
   const { children, style, isScroll, ...other } = props;
   return (
     <ScrollView style={[styles.body, style]} automaticallyAdjustContentInsets={false} {...other}>
@@ -21,7 +45,13 @@ const Body = (props) => {
   );
 };
 
-const Footer = (props) => {
+export interface LayoutFooterProps extends ViewProps {
+  children?: React.ReactNode;
+  copyright?: React.ReactNode;
+  isShowCopyRight?: boolean;
+}
+
+const Footer = (props: LayoutFooterProps) => {
   const { children, copyright, style, isShowCopyRight, ...other } = props;
   return (
     <View style={[styles.footer, style]} {...other}>
@@ -31,7 +61,16 @@ const Footer = (props) => {
   );
 };
 
-const Card = (props) => {
+export interface LayoutCardProps extends ViewProps {
+  children?: React.ReactNode;
+  title?: React.ReactNode;
+  titleStyle?: TextStyle;
+  bodyStyle?: ViewStyle;
+  showTitle?: boolean;
+  extra?: React.ReactNode;
+}
+
+const Card = (props: LayoutCardProps) => {
   const { title, titleStyle, bodyStyle, children, style, showTitle, extra, ...other } = props;
   return (
     <View style={style} {...other}>
@@ -52,7 +91,11 @@ const Card = (props) => {
   );
 };
 
-export const Container = (props) => {
+export interface LayoutContainerProps extends ScrollViewProps {
+  children?: React.ReactNode;
+}
+
+export const Container = (props: LayoutContainerProps) => {
   const { children, ...others } = props;
   return (
     <SafeAreaView style={{ backgroundColor: '#ededed' }} {...others}>
@@ -62,8 +105,16 @@ export const Container = (props) => {
     </SafeAreaView>
   );
 };
+export interface LayoutProps {
+  Header: typeof Header;
+  Body: typeof Body;
+  Footer: typeof Footer;
+  Card: typeof Card;
+  children?: React.ReactNode;
+  style?: ViewStyle;
+}
 
-export default class Layout extends PureComponent {
+export default class Layout extends PureComponent<LayoutProps> {
   static Header = Header;
   static Body = Body;
   static Footer = Footer;
