@@ -15,7 +15,7 @@ import React,{ Component } from "react"
 import  { Button, Spacing, Icon } from '@uiw/react-native';
 import { Text} from 'react-native';
 
-class Demo extends Component {
+class ButtonView extends React.Component{
   render() {
     return (
       <>
