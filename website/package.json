@@ -20,7 +20,7 @@
     "@uiw/reset.css": "~1.0.6",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-native": "0.69.1",
+    "react-native": "0.69.7",
     "react-native-web": "0.17.5",
     "react-router-dom": "6.2.1",
     "uiw": "4.7.16"

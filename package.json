@@ -41,7 +41,7 @@
     "fs-extra": "~10.1.0",
     "metro-react-native-babel-preset": "0.70.3",
     "react": "18.0.0",
-    "react-native": "0.69.1"
+    "react-native": "0.69.7"
   },
   "dependencies": {
     "husky": "^8.0.1",
