@@ -15,7 +15,7 @@ import React,{ Component } from "react"
 import  { Button, Spacing, Icon } from '@uiw/react-native';
 import { Text} from 'react-native';
 
-class ButtonView extends React.Component{
+class Demo extends Component {
   render() {
     return (
       <>
@@ -144,6 +144,9 @@ export default Demo
 import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
 
+import React,{ Component } from "react"
+import Button from '@uiw/react-native/lib/Button';
+import Spacing from '@uiw/react-native/lib/Spacing';
 function Demo() {
   return (
     <>
