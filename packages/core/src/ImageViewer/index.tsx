@@ -1,17 +1,5 @@
-import { number } from 'prop-types';
 import React, { useState, useMemo, useRef } from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  ViewProps,
-  ViewStyle,
-  Dimensions,
-  View,
-  Text,
-  StyleProp,
-  Image,
-  Animated,
-} from 'react-native';
+import { StyleSheet, ViewProps, Dimensions, View, Image, Animated } from 'react-native';
 import TransitionImage, { ImageProps } from '../TransitionImage';
 import MaskLayer, { MaskLayerProps } from '../MaskLayer';
 import { ActivityIndicator } from 'react-native';
