@@ -133,7 +133,28 @@ npx react-native init AwesomeProject --template @uiw/react-native-template
 
 ## 运行你的 React Native 应用程序
 
-#### `第 1 步`<!--rehype:style=background: #a5d4ff;--> 启动 Metro
+#### `第 1 步`<!--rehype:style=background: #a5d4ff;--> 安装依赖
+
+```bash
+$ yarn install # 根目录运行 安装node依赖
+```
+
+React Naitve 0.70+ 运行下面命令
+
+```bash
+$ cd ios # 进入 ios 目录
+$ bundle install # 安装 Bundler
+$ bundle exec pod install # 以安装 iOS 依赖项
+```
+
+React Naitve 0.60+ 运行下面命令
+
+```bash
+$ cd ios # 进入 ios 目录
+$ pod install
+```
+
+#### `第 2 步`<!--rehype:style=background: #a5d4ff;--> 启动 Metro
 
 首先，您需要启动 `Metro`，这是 `React Native` 附带的 `JavaScript` 打包器。 Metro “接收一个入口文件和各种选项，并返回一个包含所有代码及其依赖项的 JavaScript 文件。” —— [Metro Docs](https://facebook.github.io/metro/docs/concepts)
 
@@ -151,7 +172,7 @@ npx react-native start
 > 如果您熟悉 `Web` 开发，`Metro` 很像 `webpack` —— 用于 React Native 应用程序。 与 `Kotlin` 或 `Java` 不同，`JavaScript` 不会被编译，React Native 也不会。 Bundling 与编译不同，但它可以帮助提高启动性能并将一些特定于平台的 `JavaScript` 转换为更广泛支持的 `JavaScript`。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-#### `第 2 步`<!--rehype:style=background: #a5d4ff;--> 启动您的应用程序
+#### `第 3 步`<!--rehype:style=background: #a5d4ff;--> 启动您的应用程序
 
 让 Metro Bundler 在自己的终端中运行。 在 React Native 项目文件夹中打开一个新终端。 运行以下命令：
 
