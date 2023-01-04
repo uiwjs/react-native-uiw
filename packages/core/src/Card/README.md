@@ -120,6 +120,7 @@ export interface CardProps {
   selectedStyle?: {
     icon?: React.ReactNode;
     style?: ViewStyle
+    iconStyle?: ViewStyle;
   }
 }
 ```
