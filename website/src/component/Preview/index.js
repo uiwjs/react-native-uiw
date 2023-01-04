@@ -1,21 +1,23 @@
 import MarkdownPreview from '@uiw/react-markdown-preview';
 import styled from 'styled-components';
-import BackToUp from '@uiw/react-back-to-top';
+import { BackTop, Circle, Icon } from 'uiw';
 import { getMetaId, isMeta, getURLParameters } from 'markdown-react-code-preview-loader';
 import CodeLayout from 'react-code-preview-layout';
 import { useRef } from 'react';
 
-const Warpper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
   .w-rcpl-preview {
     white-space: normal;
   }
+  display: flex;
+  justify-content: center;
 `;
 
 const Markdown = styled(MarkdownPreview)`
-  padding: 50px 30px 120px 30px;
+  padding: 50px 50px 120px 50px;
   max-width: 1024px;
 `;
 
@@ -35,7 +37,7 @@ const getBooleanValue = (param, field, defaultValue) => {
 const Preview = (mdData) => {
   const $dom = useRef(null);
   return (
-    <Warpper ref={$dom}>
+    <Wrapper ref={$dom}>
       <Markdown
         disableCopy={true}
         source={mdData.source}
@@ -80,10 +82,17 @@ const Preview = (mdData) => {
           },
         }}
       />
-      <BackToUp element={$dom.current} style={{ float: 'right' }}>
-        Top
-      </BackToUp>
-    </Warpper>
+      <BackTop speed={500}>
+        {({ percent, scrollToTop }) => (
+          <Circle
+            width={50}
+            onClick={() => scrollToTop()}
+            format={() => <Icon type="arrow-up" />}
+            percent={percent}
+          ></Circle>
+        )}
+      </BackTop>
+    </Wrapper>
   );
 };
 export default Preview;
