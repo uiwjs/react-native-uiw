@@ -29,7 +29,7 @@ export default (conf: Configuration, env: 'development' | 'production', options:
     alias: {
       ...((conf.resolve || {}).alias || {}),
       'react-native$': 'react-native-web',
-      '@uiw/react-native': path.join(process.cwd(), './src/.react-native'),
+      '@uiw/react-native': path.join(process.cwd(), './src/react-native'),
     },
   };
   if (env === 'production') {
