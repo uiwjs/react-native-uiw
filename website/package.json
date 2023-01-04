@@ -24,7 +24,6 @@
     "@babel/plugin-syntax-jsx": "^7.18.6",
     "@babel/preset-react": "^7.18.6",
     "@uiw/icons": "2.5.3",
-    "@uiw/react-back-to-top": "^1.2.1",
     "@uiw/react-markdown-preview": "^4.1.6",
     "@validator.tool/hook": "2.2.4",
     "@wcj/dark-mode": "^1.0.15",
