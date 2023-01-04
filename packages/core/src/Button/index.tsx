@@ -123,9 +123,9 @@ export default class ButtonView<T> extends React.Component<ButtonProps> {
       sizeStyle = styles[size];
     }
     let boxStyle = {};
-    const stylKey = `${size}Box` as keyof typeof styles;
-    if (size && styles[stylKey]) {
-      boxStyle = styles[stylKey];
+    const styleKey = `${size}Box` as keyof typeof styles;
+    if (size && styles[styleKey]) {
+      boxStyle = styles[styleKey];
     }
     if (!children) {
       return null;
