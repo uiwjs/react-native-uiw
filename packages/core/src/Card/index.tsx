@@ -26,6 +26,7 @@ export type CardProps = {
   selectedStyle?: {
     icon?: React.ReactNode;
     style?: ViewStyle;
+    iconStyle?: ViewStyle;
   };
 };
 
@@ -40,6 +41,7 @@ const Card = ({
   selectedStyle = {
     icon: <Icon xml={checked} size={30} />,
     style: {},
+    iconStyle: {},
   },
   ...attributes
 }: CardProps) => {
@@ -66,7 +68,7 @@ const Card = ({
         ]}
         pointerEvents="none"
       >
-        <View style={styles.selectedIndicator}>{selectedStyle?.icon}</View>
+        <View style={[styles.selectedIndicator, selectedStyle?.iconStyle]}>{selectedStyle?.icon}</View>
       </Animated.View>
     );
   };
@@ -96,7 +98,7 @@ const Card = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    borderWidth: 1,
+    // borderWidth: 1,
     padding: 15,
     margin: 15,
     marginBottom: 0,
@@ -120,7 +122,7 @@ const styles = StyleSheet.create({
     borderColor: colors.colorsPalette.violet30,
   },
   selectedIndicator: {
-    borderRadius: 999,
+    // borderRadius: 999,
     position: 'absolute',
     top: 0,
     right: 0,
