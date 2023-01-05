@@ -87,6 +87,26 @@ yarn run lib:watch:type # Output type file d.ts
 yarn run start          # Run the preview document website locally
 ```
 
+## 本地文档预览
+
+**第一步安装文档包和预览工具**
+
+```bash
+ npm install @uiw/react-native-doc @kkt/doc -D # yarn add @uiw/react-native-doc @kkt/doc -D
+```
+
+**第二步配置命令**
+
+在`package.json`文件中配置命令
+
+```json
+  // ... 
+  "scripts":{
+    "doc":"kktd @uiw/react-native-doc/doc/build"
+  }
+```
+
+
 ### License
 
 Licensed under the MIT License.
