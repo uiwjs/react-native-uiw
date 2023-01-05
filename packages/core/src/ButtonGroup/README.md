@@ -3,13 +3,13 @@ ButtonGroup 按钮组
 
 用于一组按钮的排版展示。
 
-![](https://user-images.githubusercontent.com/57083007/137632086-8441bd1b-e8f9-4c15-828d-ad86310fdb72.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
 ### 基础示例
 
 <!--DemoStart--> 
-```jsx
-import { Button, ButtonGroup } from '@uiw/react-native';
+```jsx  mdx:preview
+import React,{ Component } from "react"
+import  Button  from '@uiw/react-native/lib/Button';
+import  ButtonGroup  from '@uiw/react-native/lib/ButtonGroup';
 
 class Demo extends Component {
   render() {
@@ -23,15 +23,19 @@ class Demo extends Component {
     )
   }
 }
+
+export default Demo
 ```
-<!--End-->
 
 ### 设置边框
 
 <!--DemoStart--> 
-```jsx
+```jsx  mdx:preview
+import React,{ Component } from "react"
 import { View } from 'react-native';
-import { Button, ButtonGroup } from '@uiw/react-native';
+import  Button  from '@uiw/react-native/lib/Button';
+import  ButtonGroup  from '@uiw/react-native/lib/ButtonGroup';
+import  Spacing  from '@uiw/react-native/lib/Spacing';
 
 class Demo extends Component {
   render() {
@@ -54,15 +58,21 @@ class Demo extends Component {
     )
   }
 }
+
+export default Demo
 ```
 <!--End-->
+
 
 ### 设置按钮组尺寸
 
 <!--DemoStart--> 
-```jsx
+```jsx  mdx:preview
+import React,{ Component } from "react"
 import { View } from 'react-native';
-import { Button, ButtonGroup } from '@uiw/react-native';
+import  Button  from '@uiw/react-native/lib/Button';
+import  ButtonGroup  from '@uiw/react-native/lib/ButtonGroup';
+import  Spacing  from '@uiw/react-native/lib/Spacing';
 
 class Demo extends Component {
   render() {
@@ -113,9 +123,10 @@ class Demo extends Component {
     )
   }
 }
+
+export default Demo
 ```
 <!--End-->
-
 
 ### Props
 
