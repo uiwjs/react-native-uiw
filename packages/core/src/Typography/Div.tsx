@@ -10,6 +10,7 @@ export default function Div<T>({ children, ...otherProps }: DivProps & TextProps
     return null;
   }
   const someStr = React.Children.toArray(children).every((item) => {
+    // eslint-disable-next-line no-mixed-operators
     return typeof item === 'string' || (item && (item as any).type && (item as any).type.displayName === 'Text');
   });
   if (someStr) {

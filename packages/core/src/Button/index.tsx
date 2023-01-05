@@ -101,7 +101,7 @@ export default class ButtonView<T> extends React.Component<ButtonProps> {
         ? color(buttonColor).darken(0.9).string()
         : color(buttonColor).lighten(0.9).string();
     }
-    if (rounded && typeof rounded === 'number') {
+    if (rounded && (typeof rounded === 'number' || typeof rounded === 'boolean')) {
       borderRadius = rounded;
     }
     if (backgroundColor) {
@@ -123,9 +123,9 @@ export default class ButtonView<T> extends React.Component<ButtonProps> {
       sizeStyle = styles[size];
     }
     let boxStyle = {};
-    const stylKey = `${size}Box` as keyof typeof styles;
-    if (size && styles[stylKey]) {
-      boxStyle = styles[stylKey];
+    const styleKey = `${size}Box` as keyof typeof styles;
+    if (size && styles[styleKey]) {
+      boxStyle = styles[styleKey];
     }
     if (!children) {
       return null;

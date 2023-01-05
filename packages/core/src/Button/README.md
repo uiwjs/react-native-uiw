@@ -3,174 +3,241 @@ Button 按钮
 
 按钮用于开始一个即时操作。
 
-![](https://user-images.githubusercontent.com/57083007/137631908-57393986-82b8-4e2e-b753-aa77dac58672.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-![](https://user-images.githubusercontent.com/57083007/137631915-8281cbac-ba0d-4795-8f8b-8274bcecc172.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+### 何时使用
 
-### 基础示例
+标记了一个或封装一组操作命令，响应用户点击行为，触发相应的业务逻辑。
 
-<!--DemoStart--> 
-```jsx
-import { View } from 'react-native';
-import { Button } from '@uiw/react-native';
+
+### 基础实例
+
+```jsx  mdx:preview
+import React,{ Component } from "react"
+import Button from '@uiw/react-native/lib/Button';
+import Spacing from '@uiw/react-native/lib/Spacing';
+import Icon from '@uiw/react-native/lib/Icon';
+import { Text} from 'react-native';
 
 class Demo extends Component {
   render() {
     return (
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap-reverse'
-        }}
-      >
-        <Button>默认按钮</Button>
-        <Button>默认按钮</Button>
-        <Button>按钮</Button>
-      </View>
+      <>
+        <Button>default</Button>
+        <Spacing/>
+        <Button disabled>disabled</Button>
+        <Spacing/>
+        <Button type="primary">primary</Button>
+        <Spacing/>
+        <Button type="warning">warning</Button>
+        <Spacing/>
+        <Button bordered={false} type="danger">
+          <Icon name="warning" fill="#fff" size={17} />
+          <Text> warning</Text>
+        </Button>
+        <Spacing/>
+        <Button  loading>loading</Button>
+      </>
     )
   }
 }
+export default Demo
 ```
-<!--End-->
+
+### 按钮圆角设置
+
+```jsx  mdx:preview
+import React,{ Component } from "react"
+import Button from '@uiw/react-native/lib/Button';
+import Spacing from '@uiw/react-native/lib/Spacing';
+
+class Demo extends Component {
+  render() {
+    return (
+      <>
+        <Spacing />
+        <Button rounded={23} type="primary">
+          自定义rounded
+        </Button>
+      </>
+    )
+  }
+}
+export default Demo
+```
 
 ### 不同颜色
 
-<!--DemoStart--> 
-```jsx
-import { View } from 'react-native';
-import { Button } from '@uiw/react-native';
+```jsx  mdx:preview
+import React,{ Component } from "react"
+import Button from '@uiw/react-native/lib/Button';
+import Spacing from '@uiw/react-native/lib/Spacing';
 
 class Demo extends Component {
   render() {
     return (
-      <View>
-        <Button>默认按钮</Button>
-        <Button disabled>默认禁用按钮</Button>
-        <Button type="primary">主要按钮</Button>
-        <Button type="primary" disabled>主要禁用</Button>
-        <Button type="warning">警告按钮</Button>
-        <Button type="warning" disabled>警告禁用按钮</Button>
-        <Button type="warning" loading>警告</Button>
-        <Button type="warning" loading disabled>警告按钮</Button>
-      </View>
+      <>
+        <Button>default</Button>
+        <Spacing/>
+        <Button type="primary">primary</Button>
+        <Spacing/>
+        <Button type="warning">warning</Button>
+        <Spacing/>
+        <Button type="success">success</Button>
+        <Spacing/>
+        <Button type="danger" >danger</Button>
+        <Spacing/>
+        <Button type="light" >light</Button>
+        <Spacing/>
+        <Button type="dark" >dark</Button>
+      </>
     )
   }
 }
+export default Demo
 ```
-<!--End-->
-
-### 加载中
-
-<!--DemoStart--> 
-```jsx
-import { View } from 'react-native';
-import { Button } from '@uiw/react-native';
-
-class Demo extends Component {
-  render() {
-    return (
-      <View>
-        <Button loading>默认按钮</Button>
-        <Button loading disabled>默认按钮 禁用</Button>
-      </View>
-    )
-  }
-}
-```
-<!--End-->
-
 
 ### 自定义颜色
 
-<!--DemoStart--> 
-```jsx
-import { View } from 'react-native';
-import { Button } from '@uiw/react-native';
+```jsx  mdx:preview
+import React,{ Component } from "react"
+import Button from '@uiw/react-native/lib/Button';
+import Spacing from '@uiw/react-native/lib/Spacing';
 
 class Demo extends Component {
   render() {
     return (
-      <View>
-        <Button color="#333">自定义颜色按钮</Button>
-        <Button color="#393E48">自定义颜色按钮</Button>
-        <Button color="#f6f8fa">自定义颜色按钮</Button>
-        <Button color="#ffc107">自定义颜色按钮</Button>
-      </View>
+      <>
+        <Button color="#333">#333</Button>
+        <Spacing />
+        <Button color="#28a745">#28a745</Button>
+        <Spacing />
+        <Button color="#008EF0">#008EF0</Button>
+      </>
     )
   }
 }
+export default Demo
 ```
-<!--End-->
 
+### 加载中
+
+
+```jsx  mdx:preview
+import React,{ Component } from "react"
+import Button from '@uiw/react-native/lib/Button';
+import Spacing from '@uiw/react-native/lib/Spacing';
+class Demo extends Component {
+  render() {
+    return (
+      <>
+        <Button loading>loading</Button>
+        <Spacing />
+        <Button loading disabled>loading disabled</Button>
+      </>
+    )
+  }
+}
+export default Demo
+```
 
 ### 显示边框
 
-```jsx
-import { Button } from '@uiw/react-native';
+```jsx  mdx:preview
+
+import React,{ Component } from "react"
+import Button from '@uiw/react-native/lib/Button';
+import Spacing from '@uiw/react-native/lib/Spacing';
+function Demo() {
+  return (
+    <>
+    <Button >显示边框</Button>
+    <Spacing />
+    <Button bordered={false} >不显示边框{`bordered={false}`}</Button>
+    </>
+  );
+}
+
+export default Demo
+
+```
+### 按钮尺寸
+
+```jsx  mdx:preview
+
+import React,{ Component } from "react"
+import Button from '@uiw/react-native/lib/Button';
+import Spacing from '@uiw/react-native/lib/Spacing';
+function Demo() {
+  return (
+    <>
+    <Button >default</Button>
+    <Spacing />
+    <Button size="small">small</Button>
+    <Spacing />
+    <Button size="large">large</Button>
+    <Spacing />
+    </>
+  );
+}
+
+export default Demo
+
+```
+
+### 自定义图标 
+
+```jsx mdx:preview
+
+import React,{ Component } from "react"
+import Spacing from '@uiw/react-native/lib/Spacing';
+import Button from '@uiw/react-native/lib/Button';
+import Icon from '@uiw/react-native/lib/Icon';
+import {View, Text} from 'react-native';
 
 function Demo() {
   return (
-    <Button bordered={false} color="#f6f8fa">不显示边框{`bordered={false}`}</Button>
+    <>
+      <Button bordered={false} color="#fff">
+        <Icon name="apple" size={17} />
+        <Text> apple</Text>
+      </Button>
+      <Spacing  />
+      <Button bordered={false} color="#fff">
+        <Icon name="menu-fold" size={17} />
+        <Text> menu-fold</Text>
+      </Button>
+      <Spacing />
+      <Button bordered={false} color="#ffc107">
+        <Icon name="warning" size={17} />
+        <Text> warning</Text>
+      </Button>
+      <Spacing />
+      <Button bordered={false} type="danger">
+        <Icon name="warning" fill="#fff" size={17} />
+        <Text> warning</Text>
+      </Button>
+    </>
   );
 }
+
+export default Demo
 ```
 
-### 自定义圆角
+### Button
 
-```jsx
-import { Fragment } from 'react';
-import { Button } from '@uiw/react-native';
-
-function Demo() {
-  return (
-    <Fragment>
-      <Button rounded={false} color="#333">设置圆角</Button>
-      <Spacing />
-      <Button rounded={23} color="#393E48">自定义圆角</Button>
-      <Spacing />
-      <Button rounded={10} color="#f6f8fa">自定义圆角</Button>
-      <Spacing />
-      <Button rounded={16} color="#ffc107">自定义圆角</Button>
-    </Fragment>
-  );
-}
-```
-
-### Props
+#### 属性
 
 组件继承 [`TouchableOpacity`](https://facebook.github.io/react-native/docs/touchableopacity#docsNav)
 
-```ts
-import { TextProps, TouchableOpacityProps } from 'react-native';
-export interface ButtonProps extends TouchableOpacityProps {
-  color?: string;
-  /**
-   * 如果子节点是文本，修改文本样式
-   */
-  textStyle?: TextProps['style'];
-  /**
-   * 设置禁用
-   */
-  disabled?: boolean;
-  /**
-   * 加载状态
-   */
-  loading?: boolean;
-  /**
-   * 按钮类型，可选值为
-   */
-  type?: 'primary' | 'success' | 'warning' | 'danger' | 'light' | 'dark';
-  /**
-   * 按钮尺寸
-   */
-  size?: 'small' | 'default' | 'large';
-  /**
-   * 设置按钮圆角
-   */
-  rounded?: boolean | number;
-  /**
-   * 设置是否显示边框
-   */
-  bordered?: boolean;
-}
-```
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| color | 自定义颜色 | `string` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| bordered | 设置是否显示边框 | `boolean` | `true` |
+| loading | 加载状态 | `boolean` | `false` |
+| rounded | 设置按钮圆角 | `boolean \| number` | `5` |
+| textStyle | 如果子节点是文本，修改文本样式 | - | - |
+| type | 按钮类型 | `'primary' \| 'success' \| 'warning' \| 'danger' \| 'light' \| 'dark'` | - |
+| size | 按钮尺寸 | `'small' \| 'default' \| 'large'` | `'default'` |
+
+
