@@ -87,7 +87,7 @@ yarn run lib:watch:type # Output type file d.ts
 yarn run start          # Run the preview document website locally
 ```
 
-## 本地文档预览
+## 文档本地预览
 
 **第一步安装文档包和预览工具**
 
