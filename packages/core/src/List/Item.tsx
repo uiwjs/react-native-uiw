@@ -59,7 +59,7 @@ export default class ListItem extends React.PureComponent<ListItemProps> {
           })}
         </View>
         {extra && (
-          <View style={{ paddingRight: 10, maxWidth: 50 }}>
+          <View style={{ paddingRight: 10 }}>
             {typeof extra === 'string' ? (
               <Text style={extraStyle}>{extra}</Text>
             ) : (
