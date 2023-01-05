@@ -12,9 +12,7 @@ Button 按钮
 
 ```jsx  mdx:preview
 import React,{ Component } from "react"
-import Button from '@uiw/react-native/lib/Button';
-import Spacing from '@uiw/react-native/lib/Spacing';
-import Icon from '@uiw/react-native/lib/Icon';
+import  { Button, Spacing, Icon } from '@uiw/react-native';
 import { Text} from 'react-native';
 
 class Demo extends Component {
@@ -46,8 +44,8 @@ export default Demo
 
 ```jsx  mdx:preview
 import React,{ Component } from "react"
-import Button from '@uiw/react-native/lib/Button';
-import Spacing from '@uiw/react-native/lib/Spacing';
+import  { Button, Spacing } from '@uiw/react-native';
+
 
 class Demo extends Component {
   render() {
@@ -68,8 +66,8 @@ export default Demo
 
 ```jsx  mdx:preview
 import React,{ Component } from "react"
-import Button from '@uiw/react-native/lib/Button';
-import Spacing from '@uiw/react-native/lib/Spacing';
+import  { Button, Spacing } from '@uiw/react-native';
+
 
 class Demo extends Component {
   render() {
@@ -99,8 +97,8 @@ export default Demo
 
 ```jsx  mdx:preview
 import React,{ Component } from "react"
-import Button from '@uiw/react-native/lib/Button';
-import Spacing from '@uiw/react-native/lib/Spacing';
+import  { Button, Spacing } from '@uiw/react-native';
+
 
 class Demo extends Component {
   render() {
@@ -123,8 +121,8 @@ export default Demo
 
 ```jsx  mdx:preview
 import React,{ Component } from "react"
-import Button from '@uiw/react-native/lib/Button';
-import Spacing from '@uiw/react-native/lib/Spacing';
+import  { Button, Spacing } from '@uiw/react-native';
+
 class Demo extends Component {
   render() {
     return (
@@ -144,8 +142,8 @@ export default Demo
 ```jsx  mdx:preview
 
 import React,{ Component } from "react"
-import Button from '@uiw/react-native/lib/Button';
-import Spacing from '@uiw/react-native/lib/Spacing';
+import  { Button, Spacing } from '@uiw/react-native';
+
 function Demo() {
   return (
     <>
@@ -164,8 +162,8 @@ export default Demo
 ```jsx  mdx:preview
 
 import React,{ Component } from "react"
-import Button from '@uiw/react-native/lib/Button';
-import Spacing from '@uiw/react-native/lib/Spacing';
+import  { Button, Spacing } from '@uiw/react-native';
+
 function Demo() {
   return (
     <>
@@ -188,9 +186,7 @@ export default Demo
 ```jsx mdx:preview
 
 import React,{ Component } from "react"
-import Spacing from '@uiw/react-native/lib/Spacing';
-import Button from '@uiw/react-native/lib/Button';
-import Icon from '@uiw/react-native/lib/Icon';
+import  { Button, Spacing, Icon } from '@uiw/react-native';
 import {View, Text} from 'react-native';
 
 function Demo() {
