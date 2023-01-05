@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, ViewStyle, TextStyle, StyleSheet, Text, TouchableHighlight, TextInput } from 'react-native';
 import { containerStyle, containerSize, contentSize } from './DirText';
 import { size } from './index';
-import Button from '../Button';
 
 export interface PageProps {
   size: size;
@@ -22,7 +21,6 @@ const Page = (props: PageProps) => {
     setJumpCurrent(String(current));
   }, [current]);
   const [jumpCurrent, setJumpCurrent] = useState('1');
-  const [currentType, setJumpCurrentType] = useState(true);
 
   const textSize = size === 'small' ? 1 : 2;
   if (renderPages) {
