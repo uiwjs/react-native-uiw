@@ -128,10 +128,13 @@ export default class List extends React.PureComponent<ListProps, ListState> {
         <View {...otherProps}>
           <>
             {header}
+            {/* eslint-disable-next-line */}
             {((renderItem && (!data || data.length === 0)) ||
+              // eslint-disable-next-line
               (!renderItem && (!children || React.Children.toArray(children).length === 0))) &&
               otherProps.ListEmptyComponent}
             {(props.data || []).map((item, idx) =>
+              // eslint-disable-next-line
               React.cloneElement((props.renderItem && props.renderItem({ item, index: idx })) || <View />, {
                 key: idx,
               }),
