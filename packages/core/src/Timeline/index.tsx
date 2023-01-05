@@ -62,7 +62,7 @@ const IconCustom = (icon?: IconsName | React.ReactElement | React.ReactNode, siz
   }
 };
 
-export default (props: TimelineProps) => {
+const TimeLine = (props: TimelineProps) => {
   const { items = [], isReverse, style, mode } = props;
 
   const [lineItem, setLineItem] = useState<TimelineItemsProps[]>([]);
@@ -148,6 +148,8 @@ export default (props: TimelineProps) => {
     </View>
   );
 };
+
+export default TimeLine;
 
 const styles = StyleSheet.create({
   timeline: {
