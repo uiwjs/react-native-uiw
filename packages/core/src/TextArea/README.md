@@ -1,206 +1,166 @@
 TextArea 多行输入框
 ---
 
-![](https://user-images.githubusercontent.com/66067296/147332763-7126a61c-0476-497e-8e52-5c2805ae346e.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
-可输入多行。
+<!-- ![](https://user-images.githubusercontent.com/66067296/147332763-7126a61c-0476-497e-8e52-5c2805ae346e.png) -->
+<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-```jsx
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { TextArea } from '@uiw/react-native';
-import Layout, { Container } from '../../Layout';
-import { ComProps } from '../../routes';
+```jsx  mdx:preview
+import React from 'react';
+import TextArea from '@uiw/react-native/lib/TextArea';
 
-const { Header, Body, Card, Footer } = Layout;
-export interface TextAreaProps extends ComProps { }
-export default class TextAreaView extends Component<TextAreaProps> {
-  state = {
-    value: '',
-  };
-  render() {
-    const { route } = this.props;
-    const description = route.params.description;
-    const title = route.params.title;
-    return (
-      <Container>
-        <Layout>
-          <Header title={title} description={description} />
-          <Body>
-            <Card title="基础实例" style={styles.card}>
-              <TextArea
-                onChange={(value: string) => {
-                  this.setState({ value });
-                }}
-                value={this.state.value}
-                placeholder='默认提示语'
-              />
-            </Card>
-          </Body>
-          <Footer />
-        </Layout>
-      </Container>
-    );
-  }
+function Demo() {
+  return (
+    <TextArea
+      value={"Hello TextArea \nplease input word"}
+      placeholder='请输入'
+    />
+  )
 }
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-  },
-});
+export default Demo
+```
+
+### 监听输入内容
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import TextArea from '@uiw/react-native/lib/TextArea';
+
+function Demo() {
+  const [value, setValue] = useState('修改我')
+
+  return (
+    <TextArea
+      onChange={(value) => {
+        console.log('输入内容: ', value);
+        setValue(value);
+      }}
+      value={value}
+      placeholder='请输入'
+    />
+  )
+}
+
+export default Demo
 ```
 
 ### 只读状态
 
-```jsx
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { TextArea } from '@uiw/react-native';
-import Layout, { Container } from '../../Layout';
-import { ComProps } from '../../routes';
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import TextArea from '@uiw/react-native/lib/TextArea';
 
-const { Header, Body, Card, Footer } = Layout;
-export interface TextAreaProps extends ComProps { }
-export default class TextAreaView extends Component<TextAreaProps> {
-  state = {
-    value4: '',
-  };
-  render() {
-    const { route } = this.props;
-    const description = route.params.description;
-    const title = route.params.title;
-    return (
-      <Container>
-        <Layout>
-          <Header title={title} description={description} />
-          <Body>
-            <Card title="展示字数" style={styles.card}>
-              <TextArea
-                onChange={(value4: string) => {
-                  this.setState({ value4 });
-                }}
-                value={this.state.value4}
-                showWords={true}
-                placeholder="默认展示字数"
-              />
-            </Card>
-          </Body>
-          <Footer />
-        </Layout>
-      </Container>
-    );
-  }
+function Demo() {
+  const [value, setValue] = useState('不可修改')
+
+  return (
+    <TextArea
+      editable={false}
+      value={value}
+      placeholder='请输入'
+    />
+  )
 }
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-  },
-});
+
+export default Demo
 ```
 
-### 只读状态
+### 显示输入文字数量
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import TextArea from '@uiw/react-native/lib/TextArea';
 
-```jsx
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { TextArea } from '@uiw/react-native';
-import Layout, { Container } from '../../Layout';
-import { ComProps } from '../../routes';
+function Demo() {
+  const [value, setValue] = useState('此处省略..字')
 
-const { Header, Body, Card, Footer } = Layout;
-export interface TextAreaProps extends ComProps { }
-export default class TextAreaView extends Component<TextAreaProps> {
-  state = {
-    value1: '只读状态不可输入',
-  };
-  render() {
-    const { route } = this.props;
-    const description = route.params.description;
-    const title = route.params.title;
-    return (
-      <Container>
-        <Layout>
-          <Header title={title} description={description} />
-          <Body>
-             <Card title="只读状态" style={styles.card}>
-              <TextArea
-                editable={false}
-                onChange={(value1: string) => {
-                  this.setState({ value1 });
-                }}
-                value={this.state.value1}
-              />
-            </Card>
-          </Body>
-          <Footer />
-        </Layout>
-      </Container>
-    );
-  }
+  return (
+    <TextArea
+      onChange={(value) => {
+        setValue(value);
+      }}
+      maxLength={100}
+      showWords={true}
+      value={value}
+      placeholder='请输入'
+    />
+  )
 }
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-  },
-});
+
+export default Demo
+```
+
+### 限制输入行数
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import TextArea from '@uiw/react-native/lib/TextArea';
+
+function Demo() {
+  const [value, setValue] = useState('第1行\n第2行\n第3行')
+
+  return (
+    <TextArea
+      onChange={(value) => {
+        setValue(value);
+      }}
+      numberOfLines={3}
+      value={value}
+      placeholder='请输入'
+    />
+  )
+}
+
+export default Demo
 ```
 
 ### 自定义输入框样式
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import TextArea from '@uiw/react-native/lib/TextArea';
 
-```jsx
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { TextArea } from '@uiw/react-native';
-import Layout, { Container } from '../../Layout';
-import { ComProps } from '../../routes';
+function Demo() {
+  const [value, setValue] = useState('')
 
-const { Header, Body, Card, Footer } = Layout;
-export interface TextAreaProps extends ComProps { }
-export default class TextAreaView extends Component<TextAreaProps> {
-  state = {
-    value3: '自定义输入框样式',
-  };
-  render() {
-    const { route } = this.props;
-    const description = route.params.description;
-    const title = route.params.title;
-    return (
-      <Container>
-        <Layout>
-          <Header title={title} description={description} />
-          <Body>
-           <Card title="自定义输入框样式" style={styles.card}>
-                <TextArea
-                style={{
-                  height: 150,
-                  borderColor: 'blue',
-                  borderWidth: 2,
-                }}
-                fontStyle={{
-                  fontSize: 16,
-                  color: 'blue',
-                }}
-                showWords={true}
-                onChange={(value3: string) => {
-                  this.setState({ value3 });
-                }}
-                value={this.state.value3}
-              />
-            </Card>
-          </Body>
-          <Footer />
-        </Layout>
-      </Container>
-    );
-  }
+  return (
+    <TextArea
+      onChange={(value) => {
+        setValue(value);
+      }}
+      style={{
+        height: 150,
+        borderColor: 'green',
+        borderWidth: 2,
+      }}
+      fontStyle={{ fontSize: 25 }}
+      value={value}
+      placeholder='请输入'
+    />
+  )
 }
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-  },
-});
+
+export default Demo
+```
+
+### 文字定位
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import TextArea from '@uiw/react-native/lib/TextArea';
+
+function Demo() {
+  const [value, setValue] = useState('我在这呢')
+
+  return (
+    <TextArea
+      onChange={(value) => {
+        setValue(value);
+      }}
+      textAlignVertical="center"
+      value={value}
+      placeholder='请输入'
+    />
+  )
+}
+
+export default Demo
 ```
 
 ### props
@@ -209,7 +169,7 @@ const styles = StyleSheet.create({
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
-| `textAlignVertical` | 文本位置 | `"top" | "center" | "auto" | "bottom"` | `top` |
+| `textAlignVertical` | 文本位置 | "top" \| "center" \| "auto" \| "bottom" | `top` |
 | `placeholder` | 默认提示语 | String | |
 | `placeholderTextColor` | 提示语颜色 | `string` | `#989FB2` |
 | `maxLength` | 最大字符数 | `number` | `100` |
