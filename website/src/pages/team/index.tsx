@@ -12,7 +12,7 @@ const data: { username: string; nickname?: string }[] = [
   { username: 'wj0990', nickname: 'wangjie' },
   { username: 'yaob421123', nickname: 'yaobin' },
   { username: 'jaywcjlove', nickname: '小弟调调™' },
-  { username: 'didiboji', nickname: 'didiboji' },
+  { username: 'star-hamster', nickname: 'star-hamster' },
   { username: 'Amber-Nan', nickname: 'Amber-Nan' },
   { username: 'cuilanxin', nickname: 'cuilanxin' },
   { username: 'zuojiahui', nickname: '左嘉辉' },

@@ -3,38 +3,32 @@ Card 卡片
 
 最基础的卡片容器，可承载文字、列表、图片、段落。
 
-![](https://user-images.githubusercontent.com/57083007/137632175-fc80bff2-7224-4843-97ec-9f8d9cbc6746.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
 ### 基础示例
 
-<!--DemoStart--> 
-```jsx
-import {  SafeAreaView, View, Image  } from 'react-native';
-import { Card } from '@uiw/react-native';
-
+```jsx mdx:preview
+import React,{ Component } from "react"
+import { SafeAreaView, View, Image  } from 'react-native';
+import Card from '@uiw/react-native/lib/Card';
 class Demo extends Component {
   render() {
     return (
     <SafeAreaView style={{ flex: 1 }}>
       <Card>
         <View>
-          <Image source={{ uri: 'https://img11.51tietu.net/pic/2016-071418/20160714181543xyu10ukncwf221991.jpg' }} style={{ height: 150 }} />
+          <Image source={{ uri: 'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2019%2F04%2F22%2Fca22d8623fe7454ea9cdb33f3137d14e.jpeg&thumbnail=650x2147483647&quality=80&type=jpg' }} style={{ height: 150 }} />
         </View>
       </Card>
     </SafeAreaView>
     )
   }
 }
+export default Demo
 ```
-<!--End-->
-
 ### 带标题圆角卡片
-
-<!--DemoStart--> 
-```jsx
-import {  SafeAreaView, View, Image  } from 'react-native';
-import { Card } from '@uiw/react-native';
-
+```jsx mdx:preview
+import React,{ Component } from "react"
+import { SafeAreaView, View, Image } from 'react-native';
+import Card from '@uiw/react-native/lib/Card';
 class Demo extends Component {
   render() {
    return (
@@ -52,16 +46,14 @@ class Demo extends Component {
     )
   }
 }
+export default Demo
 ```
-<!--End-->
-
 ### 可点击选中带操作卡片
-
-<!--DemoStart--> 
-```jsx
+```jsx mdx:preview
 import React, { useState } from 'react';
-import {  SafeAreaView, View, Image  } from 'react-native';
-import { Card ,Icon } from '@uiw/react-native';
+import { SafeAreaView, View, Image  } from 'react-native';
+import Card from '@uiw/react-native/lib/Card';
+import Icon from '@uiw/react-native/lib/Icon';
 
 const Demo = () => {
   const [selected, setSelected] = useState(false)
@@ -77,18 +69,18 @@ const Demo = () => {
             {
               text: '点赞',
               icon: <Icon name="like-o" size={16} color="#5847FF" />,
-              onPress: (e: any, index: number) => { }
+              onPress: () => {}
             },
             {
               text: '分享',
               icon: <Icon name="share" size={16} color="#5847FF" />,
-              onPress: (e: any, index: number) => { }
+              onPress: () => {}
             },
           ]}
         />
         <Image
           source={{
-            uri: 'https://wx1.sinaimg.cn/mw690/4718260ely1gt2cg5r9zij22yo1o0x6p.jpg',
+            uri: 'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2019%2F04%2F22%2Fca22d8623fe7454ea9cdb33f3137d14e.jpeg&thumbnail=650x2147483647&quality=80&type=jpg'
           }}
           style={{ height: 200 }}
         />
@@ -96,55 +88,35 @@ const Demo = () => {
     </SafeAreaView>
     )
 }
+export default Demo
 ```
-<!--End-->
+#### 属性
+## CardProps
 
-### CardProps
-```ts
-export interface CardProps {
-  /** 外容器样式（可选） */
-  containerStyle?: StyleProp<ViewStyle>;
-  /** 内容器样式（可选） */
-  wrapperStyle?: StyleProp<ViewStyle>;
-  /** 设置卡片圆角度数（可选） */
-  borderRadius?: number;
-  /** 是否选中（可选） */
-  selected?: boolean;
-  /** 渲染内容 */
-  children?: React.ReactNode;
-  /** 按下卡片时的动作（可选） */
-  onPress?: TouchableOpacityProps['onPress'];
-  /** 长按下卡片时的动作（可选） */
-  onLongPress?: TouchableOpacityProps['onLongPress'];
-  /** 自定义选中样式 */
-  selectedStyle?: {
-    icon?: React.ReactNode;
-    style?: ViewStyle
-    iconStyle?: ViewStyle;
-  }
-}
-```
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| containerStyle | 外容器样式（可选） | `StyleProp<ViewStyle>` | - |
+| wrapperStyle | 内容器样式（可选） | `StyleProp<ViewStyle>` | - |
+| borderRadius | 设置卡片圆角度数（可选） | `number` | - |
+| selected | 是否选中（可选） | `boolean` | - |
+| children | 渲染内容 | `React.ReactNode` | - |
+| onPress | 按下卡片时的动作（可选） | `TouchableOpacityProps['onPress']` | - |
+| onLongPress | 长按下卡片时的动作（可选） | `TouchableOpacityProps['onLongPress']`  | - |
+| selectedStyle | 自定义选中样式 | `{ icon?: React.ReactNode;style?: ViewStyle}` | - |
 
-### CardTitleProps
-```ts
-type CardTitleProps = {
-  title?: string;
-  titleStyle?: StyleProp<TextStyle>
-  children?: React.ReactNode;
-};
-```
+## CardTitleProps
 
-### CardActionsProps
-```ts
- type CardActionsProps = {
-  actions?: Array<{
-    text?: string;
-    icon?: JSX.Element;
-    onPress?: (e: GestureResponderEvent, index: number) => void;
-    actionsTextStyle?: StyleProp<TextStyle>
-  }>;
-  actionsContainerStyle?: StyleProp<ViewStyle>
-  children?: React.ReactNode;
-};
-```
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| title | 标题 | `string` | - |
+| titleStyle | 标题样式 | `StyleProp<TextStyle>` | - |
+| children | 自定义标题 | `React.ReactNode` | - |
+
+## CardActionsProps
+| 属性 | 说明 | 类型 |  默认值  |
+| --- | --- | --- | --- |
+| actions | 操作 | `Array<{ text?: string; icon?: JSX.Element; onPress?: (e: GestureResponderEvent, index: number) => void; actionsTextStyle?: StyleProp<TextStyle>}>` | - |
+| actionsContainerStyle | 操作容器样式 | `StyleProp<ViewStyle>` | - |
+| children | 自定义操作 | `React.ReactNode` | - |
+
 
