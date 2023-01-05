@@ -6,7 +6,8 @@ import lessModules from '@kkt/less-modules';
 import scopePluginOptions from '@kkt/scope-plugin-options';
 import pkg from './package.json';
 import { mdCodeModulesLoader } from 'markdown-react-code-preview-loader';
-
+// @ts-ignore
+import MDS from 'babel-transform-import-plugin';
 export default (conf: Configuration, env: 'development' | 'production', options: LoaderConfOptions) => {
   conf = lessModules(conf, env, options);
   // conf = rawModules(conf, env, { ...options });
@@ -22,14 +23,25 @@ export default (conf: Configuration, env: 'development' | 'production', options:
       VERSION: JSON.stringify(pkg.version),
     }),
   );
-  conf = mdCodeModulesLoader(conf);
+  // conf = mdCodeModulesLoader(conf);
+  conf = mdCodeModulesLoader(conf, undefined, {
+    babelPlugins: [
+      [
+        MDS,
+        {
+          libraryName: '@uiw/react-native',
+          alias: '@uiw/react-native/lib',
+        },
+      ],
+    ],
+  });
 
   conf.resolve = {
     ...(conf.resolve || {}),
     alias: {
       ...((conf.resolve || {}).alias || {}),
       'react-native$': 'react-native-web',
-      '@uiw/react-native': path.join(process.cwd(), './src/.react-native'),
+      '@uiw/react-native': path.join(process.cwd(), './src/react-native'),
     },
   };
   if (env === 'production') {

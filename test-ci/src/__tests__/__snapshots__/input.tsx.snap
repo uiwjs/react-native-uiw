@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`input snapshot 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#fff",
+        "flexDirection": "row",
+        "height": 30,
+        "paddingVertical": 0,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "flexDirection": "row",
+          "height": "100%",
+          "marginBottom": 0,
+          "marginTop": 0,
+        },
+        {
+          "borderColor": "#ccc",
+          "flex": 1,
+        },
+        {
+          "borderBottomWidth": 1,
+        },
+      ]
+    }
+  >
+    <TextInput
+      editable={true}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      style={
+        [
+          {
+            "fontSize": 14,
+          },
+          {
+            "backgroundColor": "transparent",
+            "color": "#000",
+            "flex": 1,
+            "paddingVertical": 0,
+          },
+          [],
+        ]
+      }
+      testID="input"
+      value="aaaa"
+    />
+  </View>
+</View>
+`;

@@ -14,7 +14,7 @@ export type NoticeBarProps = {
   marqueeProps?: MarqueeProps;
 };
 
-export default (props: NoticeBarProps) => {
+const NoticeBar = (props: NoticeBarProps) => {
   const [show, setShow] = useState(true);
 
   const onPress = () => {
@@ -103,3 +103,5 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
 });
+
+export default NoticeBar;

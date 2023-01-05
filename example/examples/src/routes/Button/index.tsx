@@ -112,9 +112,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                 字号调整{'textStyle = {{fontSize:20}}'}
               </Button>
               <Spacing />
-              <Button textStyle={{color: 'blue'}}>
-                文本颜色{'textStyle={{color:"blue"}}'}
-              </Button>
+              <Button textStyle={{color: 'blue'}}>文本颜色{'textStyle={{color:"blue"}}'}</Button>
               <Spacing />
               <Button color="#f6f8fa" textStyle={{letterSpacing: 2}}>
                 文本间距{'textStyle={{letterSpacing:3}}'}
@@ -131,7 +129,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
             </Card>
             <Card title="显示图标">
               <View
-                // eslint-disable-next-line react-native/no-inline-styles
+                // eslint-disable-next-line
                 style={{
                   display: 'flex',
                   flexDirection: 'row',

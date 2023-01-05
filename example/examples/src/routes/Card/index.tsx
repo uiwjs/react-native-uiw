@@ -12,8 +12,7 @@ const CardDemo = (props: any) => {
   const [loading, setLoad] = useState(true);
   const basicRender = (
     <Fragment>
-      <View
-        style={{display: 'flex', alignItems: 'center', flexDirection: 'row'}}>
+      <View style={{display: 'flex', alignItems: 'center', flexDirection: 'row'}}>
         <Image
           source={{
             uri: 'https://c-ssl.duitang.com/uploads/item/202004/13/20200413013923_25wds.jpeg',
@@ -35,9 +34,8 @@ const CardDemo = (props: any) => {
       </View>
       <View style={{marginTop: 10}}>
         <Text style={{color: '#20303C'}}>
-          Welcome to @uiw/react-native! Title two is a long title that will not
-          get cut by default, but can be limited, Title number three, Title
-          number four, Title number five!
+          Welcome to @uiw/react-native! Title two is a long title that will not get cut by default, but can be limited, Title number three, Title number four,
+          Title number five!
         </Text>
       </View>
       <Loader loading={loading}>
@@ -96,6 +94,7 @@ const CardDemo = (props: any) => {
         //   style: {
         //     borderColor: "#fd8a00",
         //   }
+        //   iconStyle: {alignItems: 'flex-end', justifyContent: 'flex-start'},
         // }}
       >
         {basicRender}

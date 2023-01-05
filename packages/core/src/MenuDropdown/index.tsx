@@ -83,7 +83,7 @@ export default class MenuDropdown extends React.Component<MenuDropdownProps> {
         <Animated.View
           style={[
             styles.list,
-            // eslint-disable-next-line react-native/no-inline-styles
+            // eslint-disable-next-line
             {
               opacity: listHeightValue,
               height: listHeightValue.interpolate({

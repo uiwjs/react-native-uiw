@@ -3,38 +3,33 @@ QuickList 快速请求列表
 
 快速完成上拉下拉请求列表。
 
-![](https://user-images.githubusercontent.com/66067296/140003953-6d3c5a99-a656-4bd3-a1e9-3711550cb87d.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
 ### 基础示例
 
-<!--DemoStart--> 
-```jsx
+```jsx mdx:preview
 import React, { useRef, useState } from 'react';
 import { SafeAreaView, Image, View, Text } from 'react-native';
-import { QuickList, List } from '@uiw/react-native';
+import QuickList from '@uiw/react-native/lib/QuickList';
+import List from '@uiw/react-native/lib/List';
 
-const imageUrl = 'https://c-ssl.duitang.com/uploads/item/202004/13/20200413013923_25wds.jpeg'
 
 const defaultData = [
-  { name: '@uiw/react-native QuickList', id: 1, img: imageUrl },
-  { name: '@uiw/react-native QuickList', id: 2, img: imageUrl },
-  { name: '@uiw/react-native QuickList', id: 3, img: imageUrl },
-  { name: '@uiw/react-native QuickList', id: 4, img: imageUrl },
-  { name: '@uiw/react-native QuickList', id: 5, img: imageUrl },
-  { name: '@uiw/react-native QuickList', id: 6, img: imageUrl },
-  { name: '@uiw/react-native QuickList', id: 7, img: imageUrl },
-  { name: '@uiw/react-native QuickList', id: 8, img: imageUrl },
-  { name: '@uiw/react-native QuickList', id: 9, img: imageUrl },
-  { name: '@uiw/react-native QuickList', id: 10, img: imageUrl },
+  { name: '@uiw/react-native QuickList', id: 1 },
+  { name: '@uiw/react-native QuickList', id: 2 },
+  { name: '@uiw/react-native QuickList', id: 3 },
+  { name: '@uiw/react-native QuickList', id: 4 },
+  { name: '@uiw/react-native QuickList', id: 5 },
+  { name: '@uiw/react-native QuickList', id: 6 },
+  { name: '@uiw/react-native QuickList', id: 7 },
+  { name: '@uiw/react-native QuickList', id: 8 },
+  { name: '@uiw/react-native QuickList', id: 9 },
+  { name: '@uiw/react-native QuickList', id: 10 },
 ];
 
 const QuickListDemo = (props) => {
   const baseRef = useRef();
   const [total, setTotal] = useState(0)
   const [data, setData] = useState([])
-
   const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(''), time))
-
   // 模拟请求
   const fethList = async (params) => {
     const { page, pageSize } = params
@@ -46,8 +41,7 @@ const QuickListDemo = (props) => {
       for (let i = 0; i < pageSize; i++) {
         const id = (data.length + 1 / 10 * pageSize) + i
         const name = `@uiw/react-native QuickList`;
-        const img = imageUrl
-        let obj = { name, id,img }
+        let obj = { name, id }
         fetchData.push(obj)
       }
       let newData = [...data, ...fetchData]
@@ -57,17 +51,11 @@ const QuickListDemo = (props) => {
     setTotal(40)
   }
   // 列表渲染
-  const ListItem = (item:any) => {
+  const ListItem = (item) => {
     return (
       <List flat={false}>
         <View
           style={{ padding: 10, display: "flex", alignItems: "center", flexDirection: "row" }}>
-          <Image
-            source={{
-              uri: item.img,
-            }}
-            style={{ height: 70, width: 70, borderRadius: 50 }}
-          />
           <View style={{ marginLeft: 10 }}>
             <Text style={{ marginBottom: 5, fontSize: 18 }}>react-native</Text>
             <Text style={{ color:"#808080"}}>{item.name}</Text>
@@ -78,7 +66,7 @@ const QuickListDemo = (props) => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ height:300 }}>
       <QuickList
         ref={baseRef}
         onFetch={fethList}
@@ -92,24 +80,16 @@ const QuickListDemo = (props) => {
 }
 export default QuickListDemo
 ```
-<!--End-->
 
 ### Props
 
-```ts
-interface QuickListProps<ItemT> extends FlatListProps<ItemT> {
-  onFetch: (params: any) => void // 请求的接口函数
-  data: Array<any>, // 数据源
-  renderItem: ListRenderItem<any>, // 从data列表中获取一个项目并将其渲染到列表中
-  keyId: string | number,// 唯一健
-  emptyView?: void | any,// 当列表为空时呈现
-  pageSize?: number, // 每次加载数据条数
-  total: number, // 总条数
-  style?: Object,// 样式
-}
-
-export type QuickListComponent<ItemT = any> = (
-  props: QuickListProps<ItemT>,
-  ref?:  Ref<FlatList<ItemT>> | any
-) => React.ReactElement
-```
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| onFetch | 请求的接口函数） | `(params: any) => void` | - |
+| data | 数据 | `Array<any>` | [] |
+| renderItem | 从data列表中获取一个项目并将其渲染到列表中 | `ListRenderItem<any>` | - |
+| keyId | 唯一健 | `string | number` | - |
+| emptyView | 当列表为空时呈现 | `() => React.ReactNode` | - |
+| pageSize | 每次加载数据条数 | `number` | - |
+| total | 总条数 | `number`  | - |
+| style | 样式 | `Object` | - |
