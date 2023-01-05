@@ -21,7 +21,7 @@ export interface MoreDirProps {
 }
 
 const MoreDir = (props: MoreDirProps) => {
-  const { size, borderColor = '#8d8d8d', color, setCurrent, current } = props;
+  const { setCurrent, current } = props;
   const [jumpCurrent, setJumpCurrent] = useState(1);
 
   return (
