@@ -81,6 +81,8 @@
       "**/@babel/**",
       "**/markdown-react-code-preview-loader",
       "**/markdown-react-code-preview-loader/**",
+      "**/babel-transform-import-plugin",
+      "**/babel-transform-import-plugin/**",
       "**/webpack",
       "**/webpack/**"
     ]
