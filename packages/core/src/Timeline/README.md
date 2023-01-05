@@ -3,12 +3,14 @@ Timeline 时间轴
 
 垂直展示一系列的时间流信息。
 
-![](https://user-images.githubusercontent.com/57083007/146734052-c3ca69ab-0d1e-4e15-ad95-f704a5253db0.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
 ### 基础示例 & 自定义图标
 
-```jsx
-import { Timeline } from '@uiw/react-native';
+```jsx  mdx:preview
+import React from 'react'
+import Timeline from '@uiw/react-native/lib/Timeline';
+import WingBlank from '@uiw/react-native/lib/WingBlank';
+import Icon from '@uiw/react-native/lib/Icon';
+import Card from '@uiw/react-native/lib/Card';
 
 function Demo() {
  const item = [
@@ -38,24 +40,55 @@ function Demo() {
     },
   ];
   return (
-     <Card title={`基础用法 & 自定义图标`}>
-    <WingBlank>
-      <Timeline
-       style={{ backgroundColor: '#fff' }}
-       items={item}
-       />
-    </WingBlank>
-  </Card>
+    <Card title={`基础用法 & 自定义图标`}>
+      <WingBlank>
+        <Timeline
+          style={{ backgroundColor: '#fff' }}
+          items={item}
+        />
+      </WingBlank>
+    </Card>
   );
 }
+export default Demo
 ```
 
 ### 交替展现
 
-```jsx
-import { Timeline } from '@uiw/react-native';
+```jsx  mdx:preview
+import React from 'react'
+import Timeline from '@uiw/react-native/lib/Timeline';
+import WingBlank from '@uiw/react-native/lib/WingBlank';
+import Card from '@uiw/react-native/lib/Card';
+import Icon from '@uiw/react-native/lib/Icon';
 
 function Demo() {
+   const item = [
+     {
+      title: '声明式声明式',
+      tips: '2021-08-07 12:00:00',
+      desc: 'React 使创建交互式',
+      icon: <Icon name="smile" fill="red" size={18} />
+    },
+    {
+      title: '组件化',
+      tips: '2021-08-08 12:00:00',
+      desc: '构建管理自身状态。',
+      size: 20,
+      color: 'blue',
+      icon: 'qq'
+    },
+    {
+      title: '随处编写',
+      tips: '2021-08-09 12:00:00',
+      desc: '服务器渲染。',
+    },
+    {
+      title: '一次学习，随处编写',
+      tips: '2021-08-10 12:00:00',
+      desc: '开发新功能。',
+    },
+  ];
   return (
     <Card title="交替展现">
       <WingBlank>
@@ -68,14 +101,45 @@ function Demo() {
     </Card>
   );
 }
+export default Demo
 ```
 
 ### 展示在左边
 
-```jsx
-import { Timeline } from '@uiw/react-native';
+```jsx  mdx:preview
+import React from 'react'
+import Timeline from '@uiw/react-native/lib/Timeline';
+import WingBlank from '@uiw/react-native/lib/WingBlank';
+import Card from '@uiw/react-native/lib/Card';
+import Icon from '@uiw/react-native/lib/Icon';
 
 function Demo() {
+   const item = [
+     {
+      title: '声明式声明式',
+      tips: '2021-08-07 12:00:00',
+      desc: 'React 使创建交互式',
+      icon: <Icon name="smile" fill="red" size={18} />
+    },
+    {
+      title: '组件化',
+      tips: '2021-08-08 12:00:00',
+      desc: '构建管理自身状态。',
+      size: 20,
+      color: 'blue',
+      icon: 'qq'
+    },
+    {
+      title: '随处编写',
+      tips: '2021-08-09 12:00:00',
+      desc: '服务器渲染。',
+    },
+    {
+      title: '一次学习，随处编写',
+      tips: '2021-08-10 12:00:00',
+      desc: '开发新功能。',
+    },
+  ];
   return (
    <Card title="展示在左边">
     <WingBlank>
@@ -88,11 +152,12 @@ function Demo() {
    </Card>
   );
 }
+export default Demo
 ```
 
 ### Props
 
-```ts
+<!-- ```ts
 export interface TimelineItemsProps {
   /** 标题 */
   title: string;
@@ -116,4 +181,4 @@ export interface TimelineProps extends ViewProps {
   /** 改变时间轴和内容的相对位置 */
   mode?: 'left' | 'alternate';
 }
-```
+``` -->

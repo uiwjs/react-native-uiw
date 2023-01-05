@@ -112,7 +112,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
             styles.drawer,
             dynamicDrawerStyles,
             style,
-            // eslint-disable-next-line react-native/no-inline-styles
+            // eslint-disable-next-line
             {
               [changeStyle]: isOpen ? (isTopOrBottom ? drawerHeight : drawerWidth) : 0,
               transform: [
@@ -140,7 +140,7 @@ export default class Drawer extends Component<DrawerProps, DrawerState> {
           <TouchableOpacity
             style={[
               styles.positionFull,
-              // eslint-disable-next-line react-native/no-inline-styles
+              // eslint-disable-next-line
               {
                 zIndex: 3003,
                 position: 'absolute',

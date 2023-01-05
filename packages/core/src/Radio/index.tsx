@@ -139,7 +139,7 @@ export default class Radio extends Component<RadioProps, RadioState> {
           </Animated.View>
           {this.props.children && (
             <MaybeTextOrView
-              // eslint-disable-next-line react-native/no-inline-styles
+              // eslint-disable-next-line
               style={[styles.label, { opacity: disabled ? 0.3 : 1 }]}
             >
               {this.props.children}

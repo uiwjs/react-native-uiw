@@ -164,14 +164,14 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
         {disabled && <View style={[styles.position, styles.disabled]} />}
         <Animated.View style={[styles.bg, styles.position, trackStyle, { borderWidth: bgBorder }]} />
         <TouchableOpacity
-          // eslint-disable-next-line react-native/no-inline-styles
+          // eslint-disable-next-line
           style={[styles.position, { zIndex: 1 }]}
           onPress={this.onPress}
         />
         <Animated.View
           style={[
             styles.position,
-            // eslint-disable-next-line react-native/no-inline-styles
+            // eslint-disable-next-line
             {
               backgroundColor: this.state.checked ? color : '',
               borderRadius: 16,
