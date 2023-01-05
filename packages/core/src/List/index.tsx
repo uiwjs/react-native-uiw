@@ -109,10 +109,10 @@ export default class List extends React.PureComponent<ListProps, ListState> {
     let header = ListHeaderComponent;
     if (title) {
       header = (
-        // eslint-disable-next-line react-native/no-inline-styles
+        // eslint-disable-next-line
         <View style={[{ paddingLeft, paddingVertical: 12 }, titleStyle]}>
           {typeof title === 'string' ? (
-            // eslint-disable-next-line react-native/no-inline-styles
+            // eslint-disable-next-line
             <Text style={{ color: '#808080' }}>{title}</Text>
           ) : (
             <View>{title}</View>
