@@ -10,12 +10,13 @@ env:
 
 jobs:
   build-deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: 16
+          registry-url: 'https://registry.npmjs.org'
 
       - run: yarn install
       - run: npm run build
@@ -26,13 +27,13 @@ jobs:
 
       - name: Is a tag created auto?
         id: create_tag
-        uses: jaywcjlove/create-tag-action@v1.3.8
+        uses: jaywcjlove/create-tag-action@main
         with:
           package-path: ./packages/core/package.json
 
       - name: Generate Changelog
         id: changelog
-        uses: jaywcjlove/changelog-generator@v1.5.7
+        uses: jaywcjlove/changelog-generator@main
         if: steps.create_tag.outputs.successful
         with:
           head-ref: ${{ steps.create_tag.outputs.version }}
@@ -41,7 +42,7 @@ jobs:
 
 
       - name: Create Release
-        uses: jaywcjlove/create-tag-action@v1.3.8
+        uses: jaywcjlove/create-tag-action@main
         with:
           package-path: ./packages/core/package.json
           release: true
@@ -53,17 +54,20 @@ jobs:
             ${{ steps.changelog.outputs.changelog }}
 
       - run: git status
-      - name: 📦  @uiw/react-native publish to NPM
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./packages/core/package.json
 
-      - name: 📦  @uiw/react-native-doc publish to NPM
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./packages/docs/package.json
+      - name: 📦 @uiw/react-native publish to NPM
+        run: npm publish
+        working-directory: packages/core
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
+
+      - name: 📦 @uiw/react-native-doc publish to NPM
+        run: npm publish
+        working-directory: packages/docs
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
