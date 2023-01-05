@@ -61,9 +61,9 @@ function SearchBar({
     setCurValue(value);
   }, [value]);
 
-  useEffect(() => {
-    visible && onFocus;
-  }, [visible]);
+  // useEffect(() => {
+  //   visible && onFocus;
+  // }, [visible]);
 
   // 搜索
   const onHandleChangeText = (val: string) => {

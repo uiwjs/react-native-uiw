@@ -56,12 +56,6 @@
     "markdown-react-code-preview-loader": "~2.1.2",
     "metro-react-native-babel-preset": "0.73.6"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
