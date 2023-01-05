@@ -245,10 +245,9 @@ const iconData: IconsName[] = [
 const LinkButtons = () => {
   return useMemo(
     () => (
-      <TouchableOpacity
-        onPress={() => Linking.openURL('https://uiwjs.github.io/icons/')}>
+      <TouchableOpacity onPress={() => Linking.openURL('https://uiwjs.github.io/icons/')}>
         <Text
-          // eslint-disable-next-line react-native/no-inline-styles
+          // eslint-disable-next-line
           style={{color: '#0366d6'}}>
           图标 web 预览
         </Text>
