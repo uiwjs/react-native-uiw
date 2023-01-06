@@ -8,8 +8,7 @@ ButtonGroup 按钮组
 <!--DemoStart--> 
 ```jsx  mdx:preview
 import React,{ Component } from "react"
-import  Button  from '@uiw/react-native/lib/Button';
-import  ButtonGroup  from '@uiw/react-native/lib/ButtonGroup';
+import  {Button,ButtonGroup}  from '@uiw/react-native';
 
 class Demo extends Component {
   render() {
@@ -33,9 +32,7 @@ export default Demo
 ```jsx  mdx:preview
 import React,{ Component } from "react"
 import { View } from 'react-native';
-import  Button  from '@uiw/react-native/lib/Button';
-import  ButtonGroup  from '@uiw/react-native/lib/ButtonGroup';
-import  Spacing  from '@uiw/react-native/lib/Spacing';
+import  {Button,ButtonGroup,Spacing}  from '@uiw/react-native';
 
 class Demo extends Component {
   render() {
@@ -70,9 +67,7 @@ export default Demo
 ```jsx  mdx:preview
 import React,{ Component } from "react"
 import { View } from 'react-native';
-import  Button  from '@uiw/react-native/lib/Button';
-import  ButtonGroup  from '@uiw/react-native/lib/ButtonGroup';
-import  Spacing  from '@uiw/react-native/lib/Spacing';
+import  {Button,ButtonGroup,Spacing}  from '@uiw/react-native';
 
 class Demo extends Component {
   render() {

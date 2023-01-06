@@ -8,7 +8,7 @@ Divider 分割线
 ```jsx  mdx:preview
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
-import  Divider  from '@uiw/react-native/lib/Divider';
+import  { Divider }  from '@uiw/react-native';
 
 class Demo extends Component {
   render() {
@@ -32,7 +32,7 @@ export default Demo
 ```jsx  mdx:preview
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
-import  Divider  from '@uiw/react-native/lib/Divider';
+import  { Divider }  from '@uiw/react-native';
 
 class Demo extends Component {
   render() {
@@ -57,7 +57,7 @@ export default Demo
 ```jsx  mdx:preview
 import React,{Component} from "react"
 import { View, Text } from 'react-native';
-import  Divider  from '@uiw/react-native/lib/Divider';
+import  { Divider }  from '@uiw/react-native';
 
 class Demo extends Component {
   render() {
