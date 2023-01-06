@@ -112,7 +112,7 @@ const Calendar = (props: CalendarProps) => {
 
       let nameLen = getNameLen(day.lunarHolidays);
       let lineHeight =
-        lunarHoliday === true && Platform.OS === 'ios' ? 0 : lunarHoliday === true ? 18 : MainWidth < 1000 ? MainWidth / 7 - 4.5 : MainWidth / 14.5;
+        lunarHoliday === true && Platform.OS === 'ios' ? 0 : lunarHoliday === true ? MainWidth < 1000 ? 18 : 55 : MainWidth < 1000 ? MainWidth / 7 - 4.5 : MainWidth / 14.5;
       let paddingTop = lunarHoliday === true ? 4 : 0;
       let colorType = '';
       if (day.colorType === '') {
