@@ -16,7 +16,7 @@ function Demo() {
   return (
     <Fragment>
        <Tile
-          imageSrc={require("https://avatars.githubusercontent.com/u/33082374?s=200&v=4")}
+          imageSrc={"https://avatars.githubusercontent.com/u/33082374?s=200&v=4"}
           width={200}
           height={200}
           icon={{name: 'uiw',color:'#333333', size: 38}}
@@ -41,7 +41,7 @@ function Demo() {
        <Tile
           width={200}
           height={200}
-          imageSrc={require("https://avatars.githubusercontent.com/u/33082374?s=200&v=4")}
+          imageSrc={"https://avatars.githubusercontent.com/u/33082374?s=200&v=4"}
           icon={{ name: 'uiw',color:'#333333', size: 38 }}
           title="native Tile"
           titleStyle={{color: '#000', fontSize: 25, textAlign:'center', paddingTop: 150}}
@@ -87,10 +87,10 @@ function Demo() {
        <Tile
           width={200}
           height={200}
-          imageSrc={require("https://avatars.githubusercontent.com/u/33082374?s=200&v=4")}
-          icon={{ name: 'uiw',color:'#333333', size: 38 }}
-          captionStyle={{color: '#666', fontSize: 16, textAlign:'center',paddingHorizontal: 20}}
-          caption="uiw react native Tile component"
+          imageSrc={"https://avatars.githubusercontent.com/u/33082374?s=200&v=4"}
+          icon={{ name: 'uiw native tile',color:'#333333', size: 38 }}
+          captionStyle={{color: '#aaa', fontSize: 18, textAlign:'center' }}
+          caption="The uiw react native Tile component"
         />
     </Fragment>
   );
