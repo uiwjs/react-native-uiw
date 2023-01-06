@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   TextInput,
   TextInputProps,
@@ -52,123 +52,122 @@ interface InputState {
   value?: string;
   control: 'props' | 'state';
 }
-export default class Input extends React.Component<InputProps, InputState> {
-  state: InputState = {
-    value: this.props.value,
-    control: 'state',
-  };
-  static getDerivedStateFromProps(props: InputProps, state: InputState) {
-    if (state.control === 'state' && props.value === state.value) {
-      return {
-        control: 'props',
-      };
+
+const Input = (props: InputProps) => {
+  const {
+    wrongfulHandle,
+    rule,
+    value,
+    onChangeText,
+    onFocus,
+    clearText,
+    disabled = false,
+    clear,
+    clearStyle,
+    renderClear,
+    extraStart,
+    extraEnd,
+    style = [],
+    containerStyle,
+    border = 'bottom',
+    borderColor = '#ccc',
+    error = false,
+    renderError,
+    inputRef,
+    ...others
+  } = props;
+
+  const [defaultValue, setDefaultValue] = useState<string | undefined>(value);
+  const [control, setControl] = useState<string>('state');
+
+  useEffect(() => {
+    if (control === 'state' && value === defaultValue) {
+      setControl('props');
     }
-    if (props.value !== state.value) {
-      if (state.control === 'state') {
-        return {
-          control: 'props',
-        };
+    if (value !== defaultValue) {
+      if (control === 'state') {
+        setControl('props');
+      } else {
+        setDefaultValue(value);
+        setControl('props');
       }
-      return {
-        value: props.value,
-        control: 'props',
-      };
     }
-    return null;
-  }
-  onChangeText = (value: string) => {
+  }, [value, control]);
+
+  const fontSize = StyleSheet.flatten(style).fontSize || 14;
+  const minHeight = StyleSheet.flatten(containerStyle)?.height || 30;
+
+  const onInputChange = (value: string) => {
     let flag = true;
-    if (this.props.rule instanceof RegExp) {
-      flag = this.props.rule.test(value);
+    if (rule instanceof RegExp) {
+      flag = rule.test(value);
     }
-    if (typeof this.props.rule === 'function') {
-      flag = this.props.rule(value);
+    if (typeof rule === 'function') {
+      flag = rule(value);
     }
     if (flag) {
-      this.setState({ value, control: 'state' });
-      this.props.onChangeText?.(value);
+      setDefaultValue(value);
+      setControl('state');
+      onChangeText?.(value);
       return false;
     }
-    this.setState({ value: this.state.value || '', control: 'state' });
-    this.props.onChangeText?.(this.state.value || '');
-    this.props.wrongfulHandle?.();
+    setDefaultValue(defaultValue || '');
+    setControl('state');
+    onChangeText?.(defaultValue || '');
+    wrongfulHandle?.();
   };
-  onFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-    if (this.props.clearText) {
-      this.setState({ value: '', control: 'state' });
-      this.props.onChangeText?.('');
+
+  const onInputFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    if (clearText) {
+      setDefaultValue('');
+      setControl('state');
+      onChangeText?.('');
     }
-    this.props.onFocus?.(e);
+    onFocus && onFocus(e);
   };
-  render() {
-    const {
-      wrongfulHandle,
-      rule,
-      value,
-      onChangeText,
-      clearText,
-      disabled = false,
-      clear,
-      clearStyle,
-      renderClear,
-      extraStart,
-      extraEnd,
-      style = [],
-      containerStyle,
-      border = 'bottom',
-      borderColor = '#ccc',
-      error = false,
-      renderError,
-      inputRef,
-      ...others
-    } = this.props;
-    const fontSize = StyleSheet.flatten(style).fontSize || 14;
-    const minHeight = StyleSheet.flatten(containerStyle)?.height || 30;
-    return (
-      <View
-        style={[
-          {
-            flexDirection: 'row',
-            backgroundColor: '#fff',
-            alignItems: 'center',
-            paddingVertical: 0,
-            height: minHeight,
-          },
-          containerStyle,
-        ]}
-      >
-        <View style={[inputStyles.container, { flex: 1, borderColor: borderColor }, border ? inputStyles[border] : {}]}>
-          {typeof extraStart === 'string' ? (
-            <Text style={{ color: '#888888', fontSize }}>{extraStart}</Text>
-          ) : (
-            extraStart
-          )}
-          <TextInput
-            {...others}
-            ref={inputRef}
-            editable={!disabled}
-            value={this.state.value}
-            onChangeText={this.onChangeText}
-            onFocus={this.onFocus}
-            style={[{ fontSize }, inputStyles.input, style]}
-          />
-          {typeof extraEnd === 'string' ? <Text style={{ color: '#888888', fontSize }}>{extraEnd}</Text> : extraEnd}
-          {error && (renderError || <Icon name="circle-close" color="#dc3545" />)}
-        </View>
-        {clear && (
-          <TouchableOpacity
-            onPress={() => {
-              this.setState({ value: '', control: 'state' });
-              this.props.onChangeText?.('');
-            }}
-          >
-            {renderClear || <Text style={[{ color: '#888888', fontSize }, clearStyle]}>清除</Text>}
-          </TouchableOpacity>
-        )}
+
+  return (
+    <View
+      style={[
+        {
+          flexDirection: 'row',
+          backgroundColor: '#fff',
+          alignItems: 'center',
+          paddingVertical: 0,
+          height: minHeight,
+        },
+        containerStyle,
+      ]}
+    >
+      <View style={[inputStyles.container, { flex: 1, borderColor: borderColor }, border ? inputStyles[border] : {}]}>
+        {typeof extraStart === 'string' ? <Text style={{ color: '#888888', fontSize }}>{extraStart}</Text> : extraStart}
+        <TextInput
+          {...others}
+          ref={inputRef}
+          editable={!disabled}
+          value={defaultValue}
+          onChangeText={onInputChange}
+          onFocus={onInputFocus}
+          style={[{ fontSize }, inputStyles.input, style]}
+        />
+        {typeof extraEnd === 'string' ? <Text style={{ color: '#888888', fontSize }}>{extraEnd}</Text> : extraEnd}
+        {error && (renderError || <Icon name="circle-close" color="#dc3545" />)}
       </View>
-    );
-  }
-}
+      {clear && (
+        <TouchableOpacity
+          onPress={() => {
+            setDefaultValue('');
+            setControl('state');
+            onInputChange?.('');
+          }}
+        >
+          {renderClear || <Text style={[{ color: '#888888', fontSize }, clearStyle]}>清除</Text>}
+        </TouchableOpacity>
+      )}
+    </View>
+  );
+};
+export default Input;
 
 const inputStyles = StyleSheet.create({
   container: {
