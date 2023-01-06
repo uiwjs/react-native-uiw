@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ViewProps, TextProps, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
+import { View, Text, ViewProps, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import Icon from '../Icon';
 import Ellipsis from '../Ellipsis';
 import { getMonths, getWeeksArray, daysArrProps, getType, getNameLen } from './utils';
@@ -211,9 +211,9 @@ const Calendar = (props: CalendarProps) => {
     setCurrentMonth(toMonth);
     setCurrentDays(toDays);
   };
-  const goCurrentDay = (day: number) => {
-    setCurrentDays(day);
-  };
+  // const goCurrentDay = (day: number) => {
+  //   setCurrentDays(day);
+  // };
 
   return (
     <View style={{ flex: 1, position: 'relative' }}>
