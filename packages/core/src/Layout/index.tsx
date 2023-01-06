@@ -207,7 +207,7 @@ Layout.Footer = Footer;
 Layout.Card = Card;
 
 Footer.defaultProps = {
-  copyright: 'uiw © 2017 React Native UIW',
+  copyright: 'uiw © 2023 React Native UIW',
   isShowCopyRight: true,
 };
 

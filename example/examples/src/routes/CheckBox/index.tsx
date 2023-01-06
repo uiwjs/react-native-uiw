@@ -38,6 +38,18 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
               </List.Item>
               <List.Item style={{paddingVertical: 0}}>
                 <CheckBox
+                  checked={true}
+                  checkedIcon="check-square"
+                  unCheckedIcon="square-o"
+                  style={{paddingVertical: 10}}
+                  onChange={checked => {
+                    console.log(checked);
+                  }}>
+                  方形选中框
+                </CheckBox>
+              </List.Item>
+              <List.Item style={{paddingVertical: 0}}>
+                <CheckBox
                   disabled
                   style={{paddingVertical: 10}}
                   onChange={checked => {

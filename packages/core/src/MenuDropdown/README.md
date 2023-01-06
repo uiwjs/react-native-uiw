@@ -3,31 +3,101 @@ MenuDropdown
 
 菜单下拉按钮
 
-![](https://user-images.githubusercontent.com/66067296/139398975-4c6e1e06-385d-4729-a467-5799cfa0bb9c.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-<!--DemoStart-->
-```jsx
+
+```jsx mdx:preview
 import React, { Component } from 'react';
 import { Text  } from 'react-native';
+import { MenuDropdown} from '@uiw/react-native';
 
-export default class MenuDropdownView extends Component{
-
-  render() {
-    return (
+const Demo = () => {
+  return (
     <MenuDropdown title="菜单">
       <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
       <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
       <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
     </MenuDropdown>
     );
-  }
 }
 
-
+export default Demo;
 ```
-<!--End-->
+### 按钮颜色
+
+
+```jsx mdx:preview
+import React, { Component } from 'react';
+import { Text  } from 'react-native';
+import { MenuDropdown} from '@uiw/react-native';
+
+const Demo = () => {
+  return (
+    <MenuDropdown title="菜单" color="skyblue">
+      <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+    </MenuDropdown>
+    );
+}
+
+export default Demo;
+```
+### 加载状态
+
+
+```jsx mdx:preview
+import React, { Component } from 'react';
+import { Text  } from 'react-native';
+import { MenuDropdown} from '@uiw/react-native';
+
+const Demo = () => {
+  return (
+    <MenuDropdown title="菜单" loading>
+      <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+    </MenuDropdown>
+    );
+}
+
+export default Demo;
+```
+
+
+### 按钮尺寸
+
+
+```jsx mdx:preview
+import React, { Component } from 'react';
+import { Text  } from 'react-native';
+import { MenuDropdown} from '@uiw/react-native';
+
+const Demo = () => {
+  return (
+    <>
+      <MenuDropdown title="small" size="small">
+        <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+      </MenuDropdown>
+      <MenuDropdown title="default">
+        <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+      </MenuDropdown>
+      <MenuDropdown title="large" size="large">
+        <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+      </MenuDropdown>
+    </>
+    );
+}
+
+export default Demo;
+```
 
 
 ### props
@@ -43,5 +113,5 @@ export default class MenuDropdownView extends Component{
 | `loading` | 加载状态 | Boolean | - |
 | `rounded` | 设置圆角 | Boolean/Number | `5` |
 | `bordered` | 是否有边框 | Boolean | `true` |
-| `size` | 按钮尺寸 | `small`, `default`, `large` | `default` |
+| `size` | 按钮尺寸 | `small`, `default`, `large` | - |
 | `type` | 按钮类型，可选值为 | `primary`, `success`, `warning`, `danger`, `light`, `dark` | - |
