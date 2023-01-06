@@ -3,37 +3,43 @@ ExpandableSection 展开缩放
 
 ExpandableSection 组件以在 sectionHeader标题 下方或上方呈现展开的内容部分
 
-![](https://user-images.githubusercontent.com/66067296/137708253-1b6c2dfb-9c89-477a-a6ea-0c46120bf86d.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
 ### 基础示例
 
-<!--DemoStart--> 
-```js
-import React from 'react';
-import { ExpandableSection,H5 } from '@uiw/react-native';
+```jsx mdx:preview
+import React, {useState} from 'react';
+import { ExpandableSection } from '@uiw/react-native';
+import { View, Text } from 'react-native'
 
-export default class ExpandableSectionDemo extends Component {
-  state={
-    expanded:false,
-    top:false
-  }
-  render() {
-    return (
-       <ExpandableSection
-          expanded={this.state.expanded}
-          onPress={() => this.setState({ expanded: !this.state.expanded })}
-          sectionHeader={<H5>我是标题</H5>}
-          top={this.state.top}
-        >
-        <View>
-          <Text style={{ color: 'red' }}>展开的内容</Text>
-        </View>
+const Demo = () => {
+  const [state, setState] = useState({
+    expanded: false,
+    top: false
+  })
+
+  return (
+    <View style={{height: 100}}>
+      <ExpandableSection
+        expanded={state.expanded}
+        onPress={() => setState({...state, expanded: !state.expanded })}
+        sectionHeader={<Text >点击我</Text>}
+        top={state.top}
+      >
+        <Text style={{ color: 'red' }}>
+          有一天路标迁了希望你能从容
+
+          有一天桥墩断了希望你能渡越
+
+          有一天栋梁倒了希望你能坚强
+
+          有一天期待蔫了希望你能理解
+      </Text>
       </ExpandableSection>
-    )
-  }
+    </View>
+  )
 }
+
+export default Demo
 ```
-<!--End-->
 
 ### Props
 
