@@ -1,7 +1,5 @@
-import { has } from 'lodash';
 import React, { useRef, useState, useEffect } from 'react';
 import { Animated, View, StyleSheet, ViewProps, LayoutChangeEvent, Text } from 'react-native';
-import { Flex } from 'src';
 import { run } from './svg';
 import Icon from '../Icon';
 
@@ -44,7 +42,9 @@ export default (props: ProgressProps) => {
   const [wrapWidth, setWrapWidth] = useState<number>(0);
 
   useEffect(() => {
-    startAnimation();
+    if (wrapWidth && progress) {
+      startAnimation();
+    }
   }, [wrapWidth, progress]);
 
   const startAnimation = () => {
