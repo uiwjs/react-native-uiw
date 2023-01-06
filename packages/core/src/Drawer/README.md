@@ -1,21 +1,21 @@
 Drawer 抽屉
 ---
 
-![](https://user-images.githubusercontent.com/66067296/137705595-a9eb337a-90f7-42bd-a662-579063731db3.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 
 用于在屏幕边缘显示应用导航等内容的面板。
 
 ### 基础示例
 
-```jsx
-import { Fragment, useState } from 'react';
+```jsx mdx:preview
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
 
 function Demo() {
   const [visible, setVisible] = useState(false);
   return (
-    <Fragment>
+    <>
       <Drawer
         isOpen={visible}
         onChange={(isOpen) => setVisible(isOpen)}
@@ -25,65 +25,102 @@ function Demo() {
         </View>
       </Drawer>
       <Button onPress={() => setVisible(!visible)}>左边打开抽屉</Button>
-    </Fragment>
+    </>
   );
 }
+
+export default Demo
+
 ```
 
 ### 右边展示
 
-```jsx
-import { Fragment, useState } from 'react';
+```jsx mdx:preview
+import  React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
 
 function Demo() {
   const [visible, setVisible] = useState(false);
   return (
-    <Fragment>
+    <>
       <Drawer
         isOpen={visible}
         placement="right"
         onChange={(isOpen) => setVisible(isOpen)}
       >
         <View>
-          <Text>左边打开抽屉内容</Text>
+          <Text>右边打开抽屉内容</Text>
         </View>
       </Drawer>
-      <Button onPress={() => setVisible(!visible)}>左边打开抽屉</Button>
-    </Fragment>
+      <Button onPress={() => setVisible(!visible)}>右边打开抽屉</Button>
+    </>
   );
 }
+
+export default Demo
 ```
+### 设置Drawer高度
 
-### 注意事项 - 抽屉高度是页面有效高度
-
-```jsx
-import { Fragment, useState } from 'react';
+```jsx mdx:preview
+import  React, { useState } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
 
 function Demo() {
   const [visible, setVisible] = useState(false);
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{height: 200}}>
       <Drawer
         isOpen={visible}
+        placement="bottom"
+         drawerHeight={100}
         onChange={(isOpen) => setVisible(isOpen)}
       >
         <View>
-          <Text>左边打开抽屉内容</Text>
+          <Text>下边打开抽屉内容</Text>
         </View>
       </Drawer>
-      <Button onPress={() => setVisible(!visible)}>左边打开抽屉</Button>
+      <Button onPress={() => setVisible(!visible)}>下边打开抽屉</Button>
     </SafeAreaView>
   );
 }
+
+export default Demo
+```
+
+### 修改Drawer宽度
+
+```jsx mdx:preview
+import  React, { useState } from 'react';
+import { View, Text, SafeAreaView } from 'react-native';
+import { Drawer, Button } from '@uiw/react-native';
+
+function Demo() {
+  const [visible, setVisible] = useState(false);
+  return (
+    <View style={{height: 200}}>
+      <Drawer
+        isOpen={visible}
+        onChange={(isOpen) => setVisible(isOpen)}
+        drawerHeight={10}
+      >
+        <View>
+          <Text>打开抽屉内容</Text>
+        </View>
+      </Drawer>
+      <Button onPress={() => setVisible(!visible)}>打开抽屉</Button>
+    </View>
+  );
+}
+export default Demo
+
 ```   
 
 ### 抽屉覆盖全屏
 
 - 可查看 [react-native-root-siblings](https://www.npmjs.com/package/react-native-root-siblings) 文档
+  
 ```jsx
 // 在 App.js 文件中 
 import React from 'react';
