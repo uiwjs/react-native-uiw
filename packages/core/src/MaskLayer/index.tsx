@@ -45,7 +45,7 @@ export interface MaskLayerProps extends RNModalProps {
   children?: Array<JSX.Element> | JSX.Element;
 }
 
-export default (props: MaskLayerProps = {}) => {
+const MaskLayer = (props: MaskLayerProps = {}) => {
   const {
     maskClosable = true,
     children,
@@ -114,3 +114,5 @@ export default (props: MaskLayerProps = {}) => {
     </Modal>
   );
 };
+
+export default MaskLayer;
