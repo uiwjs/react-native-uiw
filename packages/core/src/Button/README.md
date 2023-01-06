@@ -236,4 +236,3 @@ export default Demo
 | type | 按钮类型 | `'primary' \| 'success' \| 'warning' \| 'danger' \| 'light' \| 'dark'` | - |
 | size | 按钮尺寸 | `'small' \| 'default' \| 'large'` | `'default'` |
 
-
