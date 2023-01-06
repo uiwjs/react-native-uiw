@@ -80,7 +80,7 @@ export default class ButtonGroup extends Component<ButtonGroupProps> {
             childStyle.borderWidth = 0;
           }
           if (bordered && !gutter) {
-            if ((idx > 0 && idx < (children as ButtonProps[]).length - 1) || idx === 0) {
+            if (((idx > 0 && idx < (children as ButtonProps[]).length - 1)) || idx === 0) {
               childStyle.borderRightWidth = StyleSheet.hairlineWidth;
             }
             if (idx > 0 && idx < (children as ButtonProps[]).length) {

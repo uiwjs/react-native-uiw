@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ViewProps, TextProps, StyleSheet, TouchableOpacity } from 'react-native';
-import Icon from '../Icon';
+import React from 'react';
+import { View, Text, ViewProps, StyleSheet } from 'react-native';
+// import Icon from '../Icon';
 
 export interface ShowProps extends ViewProps {
   iconColor?: string;
   lunar?: string;
 }
 const Show = (props: ShowProps) => {
-  const { iconColor = '#329BCB', lunar = '' } = props;
+  const { lunar = '' } = props;
   return (
     <View style={styles.show}>
       <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{lunar}</Text>
