@@ -87,17 +87,10 @@ function Demo() {
        <Tile
           width={200}
           height={200}
-<<<<<<< HEAD
           imageSrc={"https://avatars.githubusercontent.com/u/33082374?s=200&v=4"}
           icon={{ name: 'uiw native tile',color:'#333333', size: 38 }}
           captionStyle={{color: '#aaa', fontSize: 18, textAlign:'center' }}
           caption="The uiw react native Tile component"
-=======
-          imageSrc={require("https://avatars.githubusercontent.com/u/33082374?s=200&v=4")}
-          icon={{ name: 'uiw',color:'#333333', size: 38 }}
-          captionStyle={{color: '#666', fontSize: 16, textAlign:'center',paddingHorizontal: 20}}
-          caption="uiw react native Tile component"
->>>>>>> 8db27a31 (doc(Tile):  重构工具提示文档)
         />
     </Fragment>
   );
