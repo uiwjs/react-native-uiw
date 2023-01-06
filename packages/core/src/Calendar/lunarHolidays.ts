@@ -85,7 +85,7 @@ export function getLunarCalendar(year: number, month: number, day: number, type?
     let getHoliday: CalendarProps = { lunarHolidays: '', colorType: '', lunarMonth: lunarMonth, lunar: lunar };
     return getHoliday;
   }
-  return lunar;
+  // return lunar;
 }
 
 export interface lunarProps {
@@ -120,7 +120,7 @@ export function Lunar(year: number, month: number, day: number): lunarProps {
   isLeap = false;
   for (i = 1; i < 13 && offset > 0; i++) {
     // 闰月
-    if (leap > 0 && i == leap + 1 && isLeap == false) {
+    if (leap > 0 && i === leap + 1 && isLeap === false) {
       --i;
       isLeap = true;
       temp = leapDays(years);
@@ -128,13 +128,13 @@ export function Lunar(year: number, month: number, day: number): lunarProps {
       temp = monthDays(years, i);
     }
     // 解除闰月
-    if (isLeap == true && i == leap + 1) {
+    if (isLeap === true && i === leap + 1) {
       isLeap = false;
     }
     offset -= temp;
   }
 
-  if (offset == 0 && leap > 0 && i == leap + 1) {
+  if (offset === 0 && leap > 0 && i === leap + 1) {
     if (isLeap) {
       isLeap = false;
     } else {
@@ -173,7 +173,7 @@ export function lYearDays(year: number) {
  */
 export function leapDays(year: number) {
   if (leapMonth(year)) {
-    return (lunarInfo[year - 1899] & 0xf) == 0xf ? 30 : 29;
+    return (lunarInfo[year - 1899] & 0xf) === 0xf ? 30 : 29;
   } else {
     return 0;
   }
@@ -184,14 +184,14 @@ export function leapDays(year: number) {
  */
 export function leapMonth(year: number) {
   let lm = lunarInfo[year - 1900] & 0xf;
-  return lm == 0xf ? 0 : lm;
+  return lm === 0xf ? 0 : lm;
 }
 
 /**
  *返回农历y年m月的总天数
  */
 export function monthDays(year: number, month: number) {
-  return lunarInfo[year - 1900] & (0x10000 >> month) ? 30 : 29;
+  return (lunarInfo[year - 1900] & (0x10000 >> month)) ? 30 : 29;
 }
 
 /**

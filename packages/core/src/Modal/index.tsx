@@ -10,7 +10,7 @@ export interface ModalProps extends MaskLayerProps {
   onClosed?: () => void;
 }
 
-export default (props: ModalProps = {}) => {
+const Modal = (props: ModalProps = {}) => {
   const { onClosed, visible, children, placement = 'bottom', ...otherProps } = props;
   const AnimatedOpacity: Animated.Value = useRef(new Animated.Value(0)).current;
   // const [display] = useState<'none' | 'flex'>('none');
@@ -111,6 +111,8 @@ export default (props: ModalProps = {}) => {
     </MaskLayer>
   );
 };
+
+export default Modal;
 
 const styles = StyleSheet.create({
   content: {

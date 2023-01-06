@@ -42,6 +42,7 @@ const Pagination = (props: PaginationProps) => {
     jumpBtn = false,
     simple = false,
     currentColor,
+    current: currents = 1,
     total,
     pageSize = 10,
     borderColor,
@@ -51,8 +52,8 @@ const Pagination = (props: PaginationProps) => {
   } = props;
   const [current, setCurrent] = useState<number>(1);
   useEffect(() => {
-    setCurrent(props.current || 1);
-  }, [props.current]);
+    setCurrent(currents || 1);
+  }, [currents]);
   /** 页码 */
   const onPageChange = (type: 'prev' | 'next') => {
     if (current === 1 && type === 'prev') {

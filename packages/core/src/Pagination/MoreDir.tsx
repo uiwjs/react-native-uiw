@@ -1,9 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, ViewStyle, TextStyle, StyleSheet, Text, TextInput } from 'react-native';
-import Icon from '../Icon';
-import Button from '../Button';
 import { size } from './index';
-import { number } from 'prop-types';
 
 export enum containerSize {
   small = 30,
@@ -24,7 +21,7 @@ export interface MoreDirProps {
 }
 
 const MoreDir = (props: MoreDirProps) => {
-  const { size, borderColor = '#8d8d8d', color, setCurrent, current } = props;
+  const { setCurrent, current } = props;
   const [jumpCurrent, setJumpCurrent] = useState(1);
 
   return (
