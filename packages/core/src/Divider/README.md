@@ -1,18 +1,17 @@
 Divider 分割线
 ---
 
-![](https://user-images.githubusercontent.com/66067296/140264880-2e3ad121-d86f-4625-8149-7bf452b348db.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
 区隔内容的分割线。
 
 ### 基础示例
 
-```jsx
-import { Fragment } from 'react';
+```jsx  mdx:preview
+import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
-import { Divider } from '@uiw/react-native';
+import  { Divider }  from '@uiw/react-native';
 
-function Demo() {
+class Demo extends Component {
+  render() {
   return (
     <Fragment>
       <Text>分割线</Text>
@@ -22,17 +21,21 @@ function Demo() {
       <Text>分割线</Text>
     </Fragment>
   );
+  }
 }
+export default Demo
+
 ```
 
 ### 分割线标题位置
 
-```jsx
-import { Fragment } from 'react';
+```jsx  mdx:preview
+import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
-import { Divider } from '@uiw/react-native';
+import  { Divider }  from '@uiw/react-native';
 
-function Demo() {
+class Demo extends Component {
+  render() {
   return (
     <Fragment>
       <Text>分割线</Text>
@@ -43,22 +46,30 @@ function Demo() {
       <Divider label="right" orientation="right" labelStyle={{ fontWeight: 'bold' }} />
     </Fragment>
   );
+  }
 }
+export default Demo
+
 ```
 
 ### 纵向分割线
 
-```jsx
+```jsx  mdx:preview
+import React,{Component} from "react"
 import { View, Text } from 'react-native';
-import { Divider } from '@uiw/react-native';
+import  { Divider }  from '@uiw/react-native';
 
-function Demo() {
+class Demo extends Component {
+  render() {
   return (
-    <View style={{ height: 200 }}>
+   <View style={{ height: 200 }}>
       <Divider type="vertical" label="OR" />
     </View>
   );
+  }
 }
+export default Demo
+
 ```
 
 ### props

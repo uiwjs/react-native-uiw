@@ -30,7 +30,7 @@ export function getMonths(year: number, month: number, day: number) {
  * 判断年闰年
  */
 export function isLeapYear(year: number) {
-  return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
+  return (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0));
 }
 
 /**

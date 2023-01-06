@@ -1,7 +1,12 @@
 {
-  "extends": ["react-app", "react-app/jest"],
+  "extends": [
+    "react-app",
+    "react-app/jest"
+  ],
   "rules": {
     "react-hooks/exhaustive-deps": 0,
-    "no-mixed-operators": 0
+    "no-mixed-operators": 0,
+    "import/no-anonymous-default-export": 0,
+    "array-callback-return": 0
   }
 }
