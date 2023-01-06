@@ -3,7 +3,7 @@ SwipeAction 滑动操作组件。
 
 结合手势操作，从屏幕一侧唤出操作。
 
-![](https://user-images.githubusercontent.com/57083007/146733663-6c83fca4-72df-424d-8364-47533f57ece6.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+![](https://user-images.githubusercontent.com/57083007/146733663-6c83fca4-72df-424d-8364-47533f57ece6.gif)
 
 ### 基础示例
 
