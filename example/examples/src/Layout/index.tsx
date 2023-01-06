@@ -1,17 +1,5 @@
 import React, {PureComponent} from 'react';
-import {
-  StyleSheet,
-  View,
-  ViewProps,
-  ViewStyle,
-  SafeAreaView,
-  ScrollView,
-  ScrollViewProps,
-  Text,
-  TextStyle,
-  Image,
-  StyleProp,
-} from 'react-native';
+import {StyleSheet, View, ViewProps, ViewStyle, SafeAreaView, ScrollView, ScrollViewProps, Text, TextStyle, Image, StyleProp} from 'react-native';
 import PropTypes from 'prop-types';
 
 export interface HeaderProps {
@@ -25,31 +13,16 @@ export interface HeaderProps {
 }
 
 const Header = (props: HeaderProps) => {
-  const {
-    children,
-    title,
-    description,
-    style,
-    hasLogo,
-    titleStyle,
-    descriptionStyle,
-  } = props;
+  const {children, title, description, style, hasLogo, titleStyle, descriptionStyle} = props;
   return (
     <View style={[styles.header, style]}>
       {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
       {hasLogo && (
         <View style={styles.logo}>
-          <Image
-            source={require('../image/logo.png')}
-            style={{width: 103, height: 18}}
-          />
+          <Image source={require('../image/logo.png')} style={{width: 103, height: 18}} />
         </View>
       )}
-      {description && (
-        <Text style={[styles.description, descriptionStyle]}>
-          {description}
-        </Text>
-      )}
+      {description && <Text style={[styles.description, descriptionStyle]}>{description}</Text>}
       {children}
     </View>
   );
@@ -64,10 +37,7 @@ export interface BodyProps extends ScrollViewProps {
 const Body = (props: BodyProps) => {
   const {children, style, isScroll, ...other} = props;
   return (
-    <ScrollView
-      style={[styles.body, style]}
-      automaticallyAdjustContentInsets={false}
-      {...other}>
+    <ScrollView style={[styles.body, style]} automaticallyAdjustContentInsets={false} {...other}>
       {children}
     </ScrollView>
   );
@@ -101,16 +71,7 @@ export interface CardProps extends ViewProps {
 }
 
 const Card = (props: CardProps) => {
-  const {
-    title,
-    titleStyle,
-    bodyStyle,
-    children,
-    style,
-    showTitle,
-    extra,
-    ...other
-  } = props;
+  const {title, titleStyle, bodyStyle, children, style, showTitle, extra, ...other} = props;
   return (
     <View style={style} {...other}>
       {extra ? (
@@ -123,21 +84,9 @@ const Card = (props: CardProps) => {
           <View>{extra}</View>
         </View>
       ) : (
-        showTitle && (
-          <Text
-            style={
-              titleStyle ? [styles.cardTitle, titleStyle] : [styles.cardTitle]
-            }>
-            {title}
-          </Text>
-        )
+        showTitle && <Text style={titleStyle ? [styles.cardTitle, titleStyle] : [styles.cardTitle]}>{title}</Text>
       )}
-      {children && (
-        <View
-          style={bodyStyle ? [styles.cardBody, bodyStyle] : [styles.cardBody]}>
-          {children}
-        </View>
-      )}
+      {children && <View style={bodyStyle ? [styles.cardBody, bodyStyle] : [styles.cardBody]}>{children}</View>}
     </View>
   );
 };
@@ -271,7 +220,7 @@ Footer.propTypes = {
 };
 
 Footer.defaultProps = {
-  copyright: 'uiw © 2017 React Native UIW',
+  copyright: 'uiw © 2023 React Native UIW',
   isShowCopyRight: true,
 };
 
