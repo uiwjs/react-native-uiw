@@ -18,9 +18,6 @@ interface CloudProps extends ViewProps {
 }
 
 export default class Cloud extends React.Component<CloudProps> {
-  constructor(props: CloudProps) {
-    super(props);
-  }
   render() {
     const { title, isDown, isStart, triangle, backgroundColor, borderRadius } = this.props;
     const style: ViewStyle = {
