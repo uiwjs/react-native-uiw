@@ -4,17 +4,13 @@ Flex Flex布局
 
 Flex 是 React Native CSS flex 布局的一个封装。
 
-![](https://user-images.githubusercontent.com/66067296/137708776-ad9d357f-9aad-4131-8bb1-408f4ae90a08.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-![](https://user-images.githubusercontent.com/66067296/137708793-79f69f8b-1d8d-4278-9aa9-6562ea6f1094.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-![](https://user-images.githubusercontent.com/66067296/137708799-435612a4-0139-411e-b7fa-b9f4c63be07f.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
 ### 基础示例
 
-```jsx
-import { Fragment } from 'react';
+```jsx  mdx:preview
+import React,{ Fragment } from 'react';
 import { Flex, Button } from '@uiw/react-native';
 
-function Demo() {
+const Demo = () => {
   return (
     <Fragment>
       <Flex>
@@ -31,41 +27,56 @@ function Demo() {
     </Fragment>
   );
 }
+
+export default Demo
 ```
 
 ### 对齐方式
 
-```jsx
-import { Fragment } from 'react';
-import { Flex, Button } from '@uiw/react-native';
-
-const Circle = (props: any) => {
-  const size = props.size || 20;
-  const style = {
-    borderRadius: size / 2,
-    backgroundColor: 'red',
-    width: size,
-    height: size,
-    margin: 1,
-  };
-  return <View style={style} />;
-};
-
-function Demo() {
+```jsx  mdx:preview
+import React,{ Fragment } from 'react';
+import  {Flex, Button, Spacing, Icon } from '@uiw/react-native';
+import {View, Text} from 'react-native';
+const Demo = () => {
   return (
     <Fragment>
       <Flex justify="start">
-        <Circle /> <Circle /> <Circle /> <Circle /> <Circle />
+          <Button>警告</Button>
+          <Button>警告</Button>
+          <Button>主要</Button>
+          <Button>警告</Button>
       </Flex>
+      <Spacing />
       <Flex justify="center">
-        <Circle /> <Circle /> <Circle /> <Circle /> <Circle />
+      <Button  color="#fff">
+        <Icon name="apple" size={17} />
+        <Text> apple</Text>
+      </Button>
+      <Button  color="#fff">
+        <Icon name="menu-fold" size={17} />
+        <Text> menu-fold</Text>
+      </Button>
+      <Button  color="#ffc107">
+        <Icon name="warning" size={17} />
+        <Text> warning</Text>
+      </Button>
+      <Button  type="danger">
+        <Icon name="warning" fill="#fff" size={17} />
+        <Text> warning</Text>
+      </Button>
       </Flex>
+      <Spacing />
       <Flex justify="end">
-        <Circle /> <Circle /> <Circle /> <Circle /> <Circle />
+           <Button>警告</Button>
+          <Button>警告</Button>
+          <Button>主要</Button>
+          <Button>警告</Button>
       </Flex>
     </Fragment>
   );
 }
+export default Demo
+
 ```
 
 ### Props
