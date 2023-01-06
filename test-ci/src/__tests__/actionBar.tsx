@@ -26,7 +26,6 @@ it('ActionBar', () => {
   const component = renderer.create(
     <ActionBar scroll keepAbsoulte useSafeArea focusIndex={1} height={48} backgroundColor="red" actions={actions} />,
   );
-
   expect(component.root.props.scroll).toBeTruthy();
   expect(component.root.props.keepAbsoulte).toBeTruthy();
   expect(component.root.props.useSafeArea).toBeTruthy();
