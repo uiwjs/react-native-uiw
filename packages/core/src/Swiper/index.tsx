@@ -31,6 +31,8 @@ export interface SwiperProps {
   autoplay?: boolean;
   // 指示点样式 dot: 圆点  block: 方块
   dotStyle?: dotType;
+  // 初始位置
+  index?: number;
   loading?: boolean;
 }
 const Swiper = (porps: SwiperProps) => {
@@ -44,10 +46,20 @@ const Swiper = (porps: SwiperProps) => {
     borderRadius = 0,
     dotStyle = 'dot',
     loading = false,
+    index = 0,
   } = porps;
-  let [curIndex, setCurIndex] = useState(0);
+  let [curIndex, setCurIndex] = useState(index);
   let timer = useRef<NodeJS.Timeout | undefined>();
   const scrollToRef: any = useRef();
+
+  useEffect(() => {
+    if (scrollToRef && scrollToRef.current && index !== 0) {
+      setTimeout(() => {
+        onClickDot(index);
+        scrollToRef.current.scrollTo({ x: width * index, y: 0, animated: true });
+      }, 0);
+    }
+  }, [scrollToRef, index]);
 
   // 自动播放
   const autoPlay = useCallback(() => {
