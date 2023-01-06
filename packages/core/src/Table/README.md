@@ -1,14 +1,14 @@
 Table 表格
 ---
-
-![](https://user-images.githubusercontent.com/57083007/146733861-7c491a0b-d44d-41d2-94f4-6e7db5271cb0.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
+一个非常好用的Table表格 😄
 ### 基础示例
 
-```jsx
-import { Table } from '@uiw/react-native';
+```jsx  mdx:preview
+import React from 'react';
+import  {Table, Button } from '@uiw/react-native';
+import {View} from 'react-native';
 
-function Demo() {
+const Demo = () => {
   return (
      <Table
         columns={[
@@ -31,17 +31,15 @@ function Demo() {
             title: '备注',
             dataIndex: 'remark',
             ellipsis: true,
-            style: { width: 100 },
+            style: { width: 400 },
           },
           {
             title: '操作',
             dataIndex: 'id',
-            style: { width: 90 },
+            style: { width: 50 },
             render: () => {
               return (
-                <TouchableHighlight  onPress={() => { }}>
-                  <Text style={{ color: '#888' }}>查看</Text>
-                </TouchableHighlight>
+                    <Button size="small">详情</Button>
               );
             },
           },
@@ -56,6 +54,8 @@ function Demo() {
       />
   );
 }
+export default Demo
+
 ```
 
 ### props
