@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { ViewProps } from 'react-native';
 import Icon from '../Icon';
 
 type statusType = 'success' | 'error' | string;
@@ -10,14 +11,14 @@ export interface StepsItemsProps {
   status?: statusType;
 }
 
-export interface StepsProps {
+export interface StepsProps extends ViewProps {
   items: StepsItemsProps[];
   current?: number;
   onChange?: (value: number) => void;
 }
 
 export default (props: StepsProps) => {
-  const { items = [], current = 0, onChange } = props;
+  const { items = [], current = 0, onChange, ...others } = props;
 
   const onStepsPress = (index: number) => {
     // onChange?.(index);
@@ -25,7 +26,7 @@ export default (props: StepsProps) => {
   };
 
   return (
-    <View style={styles.steps}>
+    <View style={styles.steps} {...others}>
       {items.map((item, index) => (
         <TouchableOpacity style={[styles.item]} key={index} onPress={() => onStepsPress(index)}>
           <View style={styles.wrap}>
