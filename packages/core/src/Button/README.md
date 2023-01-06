@@ -144,9 +144,6 @@ export default Demo
 import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
 
-import React,{ Component } from "react"
-import Button from '@uiw/react-native/lib/Button';
-import Spacing from '@uiw/react-native/lib/Spacing';
 function Demo() {
   return (
     <>
@@ -238,5 +235,4 @@ export default Demo
 | textStyle | 如果子节点是文本，修改文本样式 | - | - |
 | type | 按钮类型 | `'primary' \| 'success' \| 'warning' \| 'danger' \| 'light' \| 'dark'` | - |
 | size | 按钮尺寸 | `'small' \| 'default' \| 'large'` | `'default'` |
-
 
