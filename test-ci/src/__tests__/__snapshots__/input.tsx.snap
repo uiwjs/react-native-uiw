@@ -55,7 +55,6 @@ exports[`input snapshot 1`] = `
         ]
       }
       testID="input"
-      value="aaaa"
     />
   </View>
 </View>

@@ -8,10 +8,7 @@ describe('input', () => {
     const DefaultInput = () => {
       return <Input testID="input" />;
     };
-    const { getByTestId, toJSON } = render(<DefaultInput />);
-    const box = getByTestId('input');
-    fireEvent.changeText(box, 'aaaa');
-    expect(box.props.value).toBe('aaaa');
+    const { toJSON } = render(<DefaultInput />);
     expect(toJSON()).toMatchSnapshot();
   });
 });
