@@ -2,104 +2,195 @@ Stepper 步进器
 ---
 用作增加或者减少当前数值。
 
-![](https://user-images.githubusercontent.com/57083007/146733528-a57250dd-a53f-4819-bdff-732af7fa7279.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+<!-- ![](https://user-images.githubusercontent.com/57083007/146733528-a57250dd-a53f-4819-bdff-732af7fa7279.gif) -->
+<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-```jsx
-import {List, Stepper} from '@uiw/react-native';
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import { Stepper } from '@uiw/react-native';
 
 function Demo() {
+  const [value, setValue] = useState(1)
+
   return (
-    <List  flat={false} extra="test">
-      <List.Item
-        extra={
-          <Stepper
-            value={this.state.value}
-            onChange={(value)=>{
-              this.setState({value})
-            }}
-        />}
-      >
-        基本使用：
-      </List.Item>
-      <List.Item
-        extra={
-          <Stepper
-            size='small'
-            value={this.state.value}
-            onChange={(value)=>{
-              this.setState({value})
-            }}
-          />
-        }
-      >
-        尺寸控制(size: small | default | large)：
-      </List.Item>
-      <List.Item
-        extra={
-          <Stepper
-            disabledLongPress={true}
-            value={this.state.value2}
-            onChange={(value2)=>{
-              this.setState({value2})
-            }}
-          />
-        }>
-        按钮开启长按(disabledLongPress: boolean)：
-      </List.Item>
-      <List.Item
-        extra={
-          <Stepper
-            width={120}
-            value={this.state.value2}
-            onChange={(value2)=>{
-              this.setState({value2})
-            }}
-          />
-        }>
-        自定义宽度(width: number)：
-      </List.Item>
-      <List.Item
-        extra={
-          <Stepper
-            value={this.state.value}
-            color={{color: '#ccc',borderColor: '#999',controlColor: 'red',valueColor: '#000'}}
-            onChange={(value)=>{
-              this.setState({value})
-            }}
-          />
-        }>
-        自定义颜色(color: Color)：
-      </List.Item>
-      <List.Item
-        extra={
-          <Stepper
-            disabledInput={false}
-            value={this.state.value1}
-            onChange={(value1)=>{
-              this.setState({value1})
-            }}
-          />
-        }>
-        不禁止输入(disabledInput: boolean)：
-      </List.Item>
-      <List.Item
-        extra={
-          <Stepper
-            disabled={true}
-            disabledInput={false}
-            value={this.state.value1}
-            onChange={(value1)=>{
-              this.setState({value1})
-            }}
-          />
-        }>
-        禁止点击(disabled: boolean)：
-      </List.Item>
-    </List>
+    <Stepper
+      size='small'
+      value={value}
+      onChange={(value)=>{
+        setValue(value)
+      }}
+    />
   );
 }
+
+export default Demo
+```
+
+### 尺寸
+可选尺寸`small` `default` `large`：
+
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import { Stepper } from '@uiw/react-native';
+import { View } from 'react-native';
+
+function Demo() {
+  const [value, setValue] = useState(1)
+
+  return (
+    <View style={{ display:'flex', height: 150, justifyContent:'space-around' }}>
+      <Stepper
+        size='small'
+        value={value}
+        onChange={(value)=>{
+          setValue(value)
+        }}
+      />
+      <Stepper
+        size='default'
+        value={value}
+        onChange={(value)=>{
+          setValue(value)
+        }}
+      />
+      <Stepper
+        size='large'
+        value={value}
+        onChange={(value)=>{
+          setValue(value)
+        }}
+      />
+    </View>
+  );
+}
+
+export default Demo
+```
+
+### 设置样式
+
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import { Stepper } from '@uiw/react-native';
+
+function Demo() {
+  const [value, setValue] = useState(10)
+
+  return (
+    <Stepper
+      value={value}
+      disabled={true}
+      width={150}
+      color={{color: '#ccc',borderColor: '#999',controlColor: 'red',valueColor: '#000'}}
+      onChange={(value)=>{
+        setValue(value)
+      }}
+    />
+  );
+}
+
+export default Demo
+```
+
+### 长按增加
+长按按钮自动增长数值
+
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import { Stepper } from '@uiw/react-native';
+
+function Demo() {
+  const [value, setValue] = useState(1)
+
+  return (
+    <Stepper
+      disabledLongPress={true}
+      delayLong={500}
+      value={value}
+      onChange={(value)=>{
+        setValue(value)
+      }}
+    />
+  );
+}
+
+export default Demo
+```
+
+
+### 限制取值范围
+最大值`20`,最小值`10`
+
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import { Stepper } from '@uiw/react-native';
+
+function Demo() {
+  const [value, setValue] = useState(10)
+
+  return (
+    <Stepper
+      value={value}
+      min={10}
+      max={20}
+      onChange={(value)=>{
+        setValue(value)
+      }}
+    />
+  );
+}
+
+export default Demo
+```
+
+### 设置步进数
+每次单击增长值 `5`
+
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import { Stepper } from '@uiw/react-native';
+
+function Demo() {
+  const [value, setValue] = useState(10)
+
+  return (
+    <Stepper
+      value={value}
+      step={5}
+      onChange={(value)=>{
+        setValue(value)
+      }}
+    />
+  );
+}
+
+export default Demo
+```
+
+
+### 禁止手动输入
+
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import { Stepper } from '@uiw/react-native';
+
+function Demo() {
+  const [value, setValue] = useState(10)
+
+  return (
+    <Stepper
+      value={value}
+      disabledInput={true}
+      onChange={(value)=>{
+        setValue(value)
+      }}
+    />
+  );
+}
+
+export default Demo
 ```
 
 ### Stepper Props
@@ -146,4 +237,4 @@ export interface StepProps {
   /** 输入框尝试输入错误数据触发的事件	 */
   onErrorInput?: (type: 'OVER' | 'LOW', errorValue: number) => void
 };
-``` 
+```
