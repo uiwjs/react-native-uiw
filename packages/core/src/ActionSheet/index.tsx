@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Dimensions, StyleSheet, TextStyle, StyleProp, ViewStyle } from 'react-native';
 import Modal, { ModalProps } from '../Modal';
-export { default as ActionSheetItem } from './item';
 import ActionSheetItem from './item';
+export { default as ActionSheetItem } from './item';
 
 let MainWidth = Dimensions.get('window').width;
 
