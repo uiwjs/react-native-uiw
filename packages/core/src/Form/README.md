@@ -8,8 +8,9 @@ Form 表单
 
 ### 基础示例
 
-<!--DemoStart--> 
-```jsx
+<!--DemoStart-->
+```jsx  mdx:preview
+import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { Form } from '@uiw/react-native';
 
@@ -20,7 +21,8 @@ const FormDemo = () => {
     {
       type: 'input',
       field: 'name',
-      name: '输入框',
+      name: 'lable',
+      placeholder: '请输入'
     }
   ];
   return (
@@ -29,13 +31,15 @@ const FormDemo = () => {
     </SafeAreaView>
   );
 }
+export default FormDemo
 ```
 <!--End-->
 
 ### form.validateFields进行表单验证提交
 
-<!--DemoStart--> 
-```jsx
+<!--DemoStart-->
+```jsx  mdx:preview
+import React from 'react';
 import { SafeAreaView,Toast } from 'react-native';
 import { Form,Button } from '@uiw/react-native';
 
@@ -46,8 +50,9 @@ const FormDemo = () => {
     {
       type: 'input',
       field: 'name',
-      name: '输入框',
+      name: 'lable',
       attr: {},
+      placeholder: '请输入',
       required: true,
       validate: (val) => (!val ? `请输入name` : ''),
     }
@@ -68,14 +73,16 @@ const FormDemo = () => {
     </SafeAreaView>
   );
 };
+export default FormDemo
 ```
 <!--End-->
 
 ### customComponentList自定义表单组件
 
-<!--DemoStart--> 
-```jsx
-import { SafeAreaView,Slider } from 'react-native';
+<!--DemoStart-->
+```jsx  mdx:preview
+import React from 'react';
+import { SafeAreaView, Slider } from 'react-native';
 import { Form } from '@uiw/react-native';
 
 const FormDemo = () => {
@@ -88,28 +95,38 @@ const FormDemo = () => {
     {
       type: 'input',
       field: 'name',
-      name: '输入框',
+      name: 'lable',
+      placeholder: '请输入',
       required: true,
     },
     {
       type: 'render',
       field: 'render',
+      placeholder: '请输入',
       name: '自定义',
     },
   ];
   return (
     <SafeAreaView>
-      <Form form={form} schema={items}  customComponentList={customComponentList} initialValues={initialValues} />
+      <Form
+        form={form}
+        schema={items}
+        // customComponentList={customComponentList}
+        initialValues={initialValues}
+      />
     </SafeAreaView>
   );
 };
+export default FormDemo
 ```
 <!--End-->
 
+
 ### watch监听表单变化
 
-<!--DemoStart--> 
-```jsx
+<!--DemoStart-->
+```jsx  mdx:preview
+import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { Form } from '@uiw/react-native';
 
@@ -123,7 +140,8 @@ const FormDemo = () => {
     {
       type: 'input',
       field: 'name',
-      name: '输入框',
+      name: 'lable',
+      placeholder: '请输入',
       required: true,
     }
   ];
@@ -133,6 +151,7 @@ const FormDemo = () => {
     </SafeAreaView>
   );
 };
+export default FormDemo
 ```
 <!--End-->
 
@@ -143,8 +162,9 @@ const FormDemo = () => {
   2.我们暂时无法验证到添加的表单项里的每一个字段<!--rehype:style=background: #F08800; color: #fff;-->。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-<!--DemoStart--> 
-```jsx
+<!--DemoStart-->
+```jsx  mdx:preview
+import React from 'react';
 import { SafeAreaView,View,Text } from 'react-native';
 import { Form,Button,Flex } from '@uiw/react-native';
 
@@ -155,6 +175,7 @@ const FormDemo = () => {
     {
       type: 'cardList',
       field: 'cardList',
+      placeholder: '请输入',
       name: '联系人集合',
       renderHeader: (i, { remove ,moveUp,moveDown,moveToTop,moveToBottom }) => (
         <View style={{marginTop: 12, display: 'flex', justifyContent: 'space-between', flexDirection: 'row'}}>
@@ -181,11 +202,13 @@ const FormDemo = () => {
         {
           type: 'input',
           field: 'name',
+          placeholder: '请输入',
           name: '联系人姓名',
         },
         {
           type: 'input',
           field: 'phone',
+          placeholder: '请输入',
           name: '联系人电话',
         },
       ],
@@ -197,13 +220,14 @@ const FormDemo = () => {
     </SafeAreaView>
   );
 };
+export default FormDemo
 ```
 <!--End-->
 
 ### class组件获取form
 
-<!--DemoStart--> 
-```jsx
+<!--DemoStart-->
+```jsx  mdx:preview
 import React from 'react'
 import { SafeAreaView } from 'react-native';
 import { Form, Button } from '@uiw/react-native';
@@ -215,9 +239,10 @@ class FormDemo extends React.Component {
       {
         type: 'input',
         field: 'name',
-        name: '输入框',
+        name: 'lable',
         attr: {},
         required: true,
+        placeholder: '请输入',
         validate: (val) => (!val ? `请输入name` : ''),
       }
     ];
@@ -242,8 +267,7 @@ const FormComponent = Form.create(FormDemo)
 
 export default FormComponent;
 ```
-<!--End-->
-
+End
 
 
 ### FormProps
