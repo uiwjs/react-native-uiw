@@ -6,19 +6,21 @@ SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示�
 > 🚧 注意：测试版本谨慎使用。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-![](https://user-images.githubusercontent.com/57083007/146733457-f6cb4866-2f5c-4757-bb16-007881c5ef25.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+<!-- ![](https://user-images.githubusercontent.com/57083007/146733457-f6cb4866-2f5c-4757-bb16-007881c5ef25.gif) -->
 
 ### 基础示例
 
-```jsx
-import { Fragment } from 'react';
+```jsx  mdx:preview
+import React, { Fragment } from 'react';
 import { SpeedDial, Icon } from '@uiw/react-native';
-import { Text } from '@uiw/react-native';
+import { View, Text, Dimensions } from 'react-native';
 
 function Demo() {
   return (
-    <Fragment>
+    <View style={{ height: 800, background: '#ddd' }}>
       <SpeedDial
+        onOpen={()=>console.log('onOpen')}
+        onClose={()=>console.log('onClose')}
         children={[
           {
             icon: 'plus',
@@ -39,45 +41,12 @@ function Demo() {
           }
         ]}
       />
-    </Fragment>
+    </View>
   );
 }
+export default Demo
 ```
 
-### 使用 Icon
-
-```jsx
-import { Fragment } from 'react';
-import { SpeedDial, Icon } from '@uiw/react-native';
-function Demo() {
-  return (
-    <Fragment>
-      <SpeedDial
-        icon={['star-on','star-off']}
-        children={[
-          {
-            icon: <Icon name='plus' color="#fff" size={18} />,
-            title: <Text>'Add'</Text>,
-            onPress:()=>console.log('Add')
-          },
-          {
-            icon: <Icon name='star-on' color="#fff" size={18} />,
-            title: 'Star'
-          },
-          {
-            icon: <Icon name='mail' color="#fff" size={18} />,
-            title: 'Mail'
-          },
-          {
-            icon: <Icon name='share' color="#fff" size={18} />,
-            title: 'Share'
-          }
-        ]}
-      />
-    </Fragment>
-  );
-}
-```
 
 ### SpeedDial Props
 
@@ -85,27 +54,26 @@ function Demo() {
 import { ViewStyle,ViewProps } from 'react-native';
 import { icoType,SpeedDialItemProps } from '@uiw/react-native';
 
-
 export interface SpeedDialProps extends ViewProps {
   /** 显示的图标 [默认显示, 展开显示] */
   icon?: icoType,
   /** 盒子样式 */
   style?: ViewStyle,
   /** 初始距离下边位置 */
-  bottom?: number,   // 
+  bottom?: number,   //
   /** 初始距离右边位置 */
-  right?: number,   // 
+  right?: number,   //
   /** 展开显示的标记 */
   children?: Array<SpeedDialItemProps>,
   /** 是否支持拖拽 */
   isDrag?: boolean,
   /** 动画时间 */
   transitionDuration?: number,
-  /** 
+  /**
   * 打开时触发
   */
   onOpen?: Function,
-  /** 
+  /**
   * 关闭时触发
   */
   onClose?: Function,
@@ -127,7 +95,7 @@ export interface SpeedDialItemProps {
   titleStyle?: ViewStyle,
   /** 右边图标盒子样式 */
   iconStyle?: ViewStyle,
-  /** 
+  /**
    * 点击右边时触发
    */
   onPress?: Function,
