@@ -5,11 +5,11 @@ WingBlank 两翼留白
 
 ### 基础示例
 
-<!--DemoStart--> 
+
 ```jsx  mdx:preview
 import React,{Component} from 'react';
-import { View, Text } from 'react-native';
-import { WingBlank, Button } from '@uiw/react-native';
+import { Text } from 'react-native';
+import { WingBlank } from '@uiw/react-native';
 
 class Demo extends Component {
   render() {
@@ -22,7 +22,7 @@ class Demo extends Component {
 }
 export default Demo
 ```
-<!--End-->
+
 
 ### WingBlank
 
