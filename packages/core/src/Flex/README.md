@@ -1,5 +1,5 @@
 
-Flex Flex布局
+flex布局
 ---
 
 Flex 是 React Native CSS flex 布局的一个封装。
@@ -8,20 +8,26 @@ Flex 是 React Native CSS flex 布局的一个封装。
 
 ```jsx  mdx:preview
 import React,{ Fragment } from 'react';
-import { Flex, Button } from '@uiw/react-native';
+import { Flex, Button, WingBlank } from '@uiw/react-native';
 
 const Demo = () => {
   return (
     <Fragment>
       <Flex>
         <Flex.Item>
-          <Button size="small">按钮1</Button>
+          <WingBlank>
+            <Button>A</Button>
+          </WingBlank>
         </Flex.Item>
         <Flex.Item>
-          <Button size="small">按钮2</Button>
+          <WingBlank>
+            <Button>B</Button>
+          </WingBlank>
         </Flex.Item>
         <Flex.Item>
-          <Button size="small">按钮3</Button>
+          <WingBlank>
+            <Button>C</Button>
+          </WingBlank>
         </Flex.Item>
       </Flex>
     </Fragment>
@@ -35,42 +41,30 @@ export default Demo
 
 ```jsx  mdx:preview
 import React,{ Fragment } from 'react';
-import  {Flex, Button, Spacing, Icon } from '@uiw/react-native';
+import  {Flex, Button, Spacing, Icon, WingBlank } from '@uiw/react-native';
 import {View, Text} from 'react-native';
 const Demo = () => {
   return (
     <Fragment>
+      <Text>默认左对齐</Text>
       <Flex justify="start">
-          <Button>警告</Button>
-          <Button>警告</Button>
-          <Button>主要</Button>
-          <Button>警告</Button>
+        <WingBlank><Button>A</Button></WingBlank>
+        <WingBlank><Button>B</Button></WingBlank>
+        <WingBlank><Button>C</Button></WingBlank>
       </Flex>
       <Spacing />
+      <Text>居中</Text>
       <Flex justify="center">
-      <Button  color="#fff">
-        <Icon name="apple" size={17} />
-        <Text> apple</Text>
-      </Button>
-      <Button  color="#fff">
-        <Icon name="menu-fold" size={17} />
-        <Text> menu-fold</Text>
-      </Button>
-      <Button  color="#ffc107">
-        <Icon name="warning" size={17} />
-        <Text> warning</Text>
-      </Button>
-      <Button  type="danger">
-        <Icon name="warning" fill="#fff" size={17} />
-        <Text> warning</Text>
-      </Button>
+        <WingBlank><Button>D</Button></WingBlank>
+        <WingBlank><Button>E</Button></WingBlank>
+        <WingBlank><Button>F</Button></WingBlank>
       </Flex>
       <Spacing />
+      <Text>右对齐</Text>
       <Flex justify="end">
-           <Button>警告</Button>
-          <Button>警告</Button>
-          <Button>主要</Button>
-          <Button>警告</Button>
+        <WingBlank><Button>H</Button></WingBlank>
+        <WingBlank><Button>I</Button></WingBlank>
+        <WingBlank><Button>J</Button></WingBlank>
       </Flex>
     </Fragment>
   );
