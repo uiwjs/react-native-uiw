@@ -3,22 +3,24 @@ Picker 选择器
 
 解决 ios 与 android 和用户交互方式不同问题.
 > 🚧测试版本
-> 避免出现样式错乱问题, 请尽量使用统一整数数字高度。 
+> 避免出现样式错乱问题, 请尽量使用统一整数数字高度。
 > 激活状态尽量不要改变高度, 只是修改颜色作为标记。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-![](https://user-images.githubusercontent.com/66067296/139409471-846bdddb-99cc-4b2d-b2da-278da81b0c22.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+<!-- ![](https://user-images.githubusercontent.com/66067296/139409471-846bdddb-99cc-4b2d-b2da-278da81b0c22.gif) -->
+<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
- 
-```jsx
+
+```jsx  mdx:preview
+import React from 'react';
 import { View } from 'react-native';
 import { Picker } from '@uiw/react-native';
 
 function Demo() {
   return (
     <View style={{ flex: 1 }}>
-      <Picker 
+      <Picker
         data={[
           {label: '1'},
           {label: '2'},
@@ -30,30 +32,33 @@ function Demo() {
     </View>
   )
 }
+export default Demo
 ```
 
 ### 使用自定义元素
 
-```jsx
+```jsx  mdx:preview
+import React from 'react';
 import { View, Text } from 'react-native';
 import { Picker } from '@uiw/react-native';
 
 function Demo() {
   return (
     <View style={{ flex: 1 }}>
-      <Picker 
+      <Picker
         data={[
           {label: '1'},
           {label: '2'},
           {label: '3'},
           {label: '4'},
           {label: '5'},
-          {label: '5',render: (label, record, index)=><Text>123</Text>},
+          {label: '5',render: (label, record, index)=><Text>end</Text>},
         ]}
       />
     </View>
   )
 }
+export default Demo
 ```
 
 
