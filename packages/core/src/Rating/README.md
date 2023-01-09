@@ -3,97 +3,96 @@ Rating 评分
 
 在你想用任意需要评分的的地方使用。
 
-![](https://user-images.githubusercontent.com/66067296/140290956-1328745e-63da-4d17-8db9-238c18078272.gif')<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-```jsx
-import { Fragment } from 'react';
+```jsx  mdx:preview
+import React from 'react';
 import { Rating } from '@uiw/react-native';
 function Demo() {
   return (
-    <Fragment>
-      <Rating />
-    </Fragment>
+   <Rating />
   );
 }
+
+export default Demo
+
 ```
 
 ### 指定 Icon
 
-```jsx
-import { Fragment } from 'react';
+```jsx mdx:preview
+import React from 'react';
 import { Rating, Icon } from '@uiw/react-native';
+import {Text} from 'react-native'
 function Demo() {
   return (
-    <Fragment>
-     <Rating 
-        icon={[<Icon name="star-off"  />,<Icon name="star-on" />]}
+    <>
+      <Text>1. 直接传uiw icon name</Text>
+      <Rating icon={{actived: 'smile', unactived: 'smile-o' }} />
+      <Text>2. Icon组件</Text>
+       <Rating
+        icon={{
+          unactived: <Icon name="star-off" fill="skyblue" />,
+          actived: <Icon name="star-on" fill="skyblue" />,
+        }}
       />
-    </Fragment>
+    </>
   );
 }
-function Demo() {
-  return (
-    <Fragment>
-     <Rating 
-        icon={["star-off", "star-on"]}
-      />
-    </Fragment>
-  );
-}
+
+export default Demo
 ```
 
 ### 默认选中及总数
 
-```jsx
-import { Fragment } from 'react';
+```jsx mdx:preview
+import React from 'react';
 import { Rating, Icon } from '@uiw/react-native';
 function Demo() {
   return (
-    <Fragment>
-     <Rating
+    <Rating
       defaultRating={3}
       resultRating={10}
       icon={{
-      unactived: <Icon name="smile-o" fill="red" />,
-      actived: <Icon name="smile" fill="red" />,
+        unactived: <Icon name="smile-o" fill="skyblue" />,
+        actived: <Icon name="smile" fill="skyblue" />,
       }}
       onPress={console.log}
       />
-    </Fragment>
   );
 }
+
+export default Demo
 ```
 
 ### 评分组件加上文案展示及样式修改
 
-```jsx
-import { Fragment } from 'react';
+```jsx mdx:preview
+import React from 'react';
 import { Rating, Icon } from '@uiw/react-native';
+
 function Demo() {
   const desc = ['0星', '1星', '2星', '3星', '4星', '5星'];
   return (
-    <Fragment>
-      <Rating tooltips={desc}  tooltipsStyle={{ fontSize: 25, color: 'blue' }} />
-    </Fragment>
+    <Rating tooltips={desc}  tooltipsStyle={{ fontSize: 25, color: 'blue' }} />
   );
 }
+export default Demo
 ```
 
 ### 只读
 
-```jsx
-import { Fragment } from 'react';
+```jsx mdx:preview
+import React from 'react';
 import { Rating, Icon } from '@uiw/react-native';
 function Demo() {
   const desc = ['0星', '1星', '2星', '3星', '4星', '5星'];
   return (
-    <Fragment>
-      <Rating defaultRating={3} color="green" disabled />
-    </Fragment>
+    <Rating defaultRating={3} color="green" disabled />
   );
 }
+export default Demo
 ```
 
 ### Props
