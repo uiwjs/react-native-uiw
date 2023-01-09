@@ -6,24 +6,23 @@ Swiper 轮播图
 > 🚧 注意：测试版本谨慎使用。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-![](https://user-images.githubusercontent.com/57083007/146733725-30e20a33-796a-49ec-9a95-4448a629c7b7.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+![](https://user-images.githubusercontent.com/57083007/146733725-30e20a33-796a-49ec-9a95-4448a629c7b7.gif)
 
 ### 基础示例
 
-<!--DemoStart--> 
-```jsx
+<!--DemoStart-->
+```jsx  mdx:preview
 import React from 'react';
 import { Swiper } from '@uiw/react-native';
+
 const SwiperDemo = () => {
     const data = [
-        { url: "https://reactnative.dev/img/tiny_logo.png", onClick: () => { console.log("你好！uiw/react-native") } },
+        { url: "https://avatars.githubusercontent.com/u/33082374?s=200&v=4", onClick: () => { console.log("你好！uiw/react-native") } },
         { url: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==' },
-        { url: require('@expo/snack-static/react-native-logo.png') }
+        // { url: require('@expo/snack-static/react-native-logo.png') }
     ]
     return (
-        <View>
-            <Swiper width={200} dataSource={data} height={150} borderRadius={24} />
-        </View>
+        <Swiper width={200} dataSource={data} height={150} borderRadius={24} />
     )
 }
 export default SwiperDemo
