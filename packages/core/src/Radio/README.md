@@ -3,24 +3,31 @@ Radio 单选框
 
 单选框，在一组备选项中进行单选。
 
-![](https://user-images.githubusercontent.com/66067296/140004062-402c9ff6-0783-44a8-9745-83f0c62438db.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-```jsx
+```jsx  mdx:preview
 import { Radio } from '@uiw/react-native';
+import React from "react"
 
 function Demo() {
   return (
-    <Radio>所有人可见</Radio>
+    <>
+      <Radio>Radio</Radio>
+      <Radio checked>Radio checked</Radio>
+    </>
+    
   );
 }
+
+export default Demo
+
 ```
 
 ### 受控组件
 
-```jsx
-import { useState } from 'react';
+```jsx  mdx:preview
+import React, { useState } from 'react';
 import { Radio } from '@uiw/react-native';
 
 function Demo() {
@@ -32,16 +39,18 @@ function Demo() {
         setChecked(!checked);
       }}
     >
-      所有人可见
+      Radio
     </Radio>
   );
 }
+
+export default Demo
 ```
 
 ### 单选
 
-```jsx
-import { useState } from 'react';
+```jsx   mdx:preview
+import React,  { useState } from 'react';
 import { View } from 'react-native';
 import { Radio } from '@uiw/react-native';
 
@@ -73,6 +82,10 @@ function Demo() {
     </View>
   );
 }
+
+export default Demo
+
+
 ```
 
 ### Props
