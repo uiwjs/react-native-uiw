@@ -182,13 +182,14 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
         <Animated.View
           style={[
             styles.grip,
-            thumbStyle,
+
             disabled ? styles.shadowDisable : styles.shadow,
             {
               backgroundColor: thumbColor,
               width: containerSize.width,
               height: containerSize.height,
             },
+            thumbStyle,
             {
               transform: [{ translateX: this.state.translateXValue }],
             },
