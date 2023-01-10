@@ -1,11 +1,12 @@
 Badge 标记
 ---
 
-![](https://user-images.githubusercontent.com/57083007/137631808-f3899eb4-69c1-4dd5-a686-0f8bb38fe4b6.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-```jsx
+
+```jsx  mdx:preview
+import React from "react"
 import { View, Text } from 'react-native';
 import { Badge } from '@uiw/react-native';
 
@@ -17,6 +18,29 @@ function Demo() {
     </View>
   );
 }
+
+export default Demo;
+
+```
+### 设置类型
+
+
+```jsx  mdx:preview
+import React from "react"
+import { View, Text } from 'react-native';
+import { Badge } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <View style={{ flexDirection: 'row' }}>
+      <Text>一文带你搞懂 API 网关</Text>
+      <Badge text="标记" type="dot" color="skyblue" />
+    </View>
+  );
+}
+
+export default Demo;
+
 ```
 
 ### Props
