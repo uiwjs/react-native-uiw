@@ -36,10 +36,22 @@ const getBooleanValue = (param, field, defaultValue) => {
 
 const Preview = (mdData) => {
   const $dom = useRef(null);
+
+  const transformImageUri = (url) => {
+    const callback = (path) => {
+      const reqImage = require.context(path, true, /\.(png|gif|jpg|svg)$/);
+      const urlImage = reqImage(url);
+      return urlImage;
+    };
+    return mdData.transformImageUriPath(callback);
+  };
+
   return (
     <Wrapper ref={$dom}>
       <Markdown
+        {...mdData}
         disableCopy={true}
+        // transformImageUri={transformImageUri}
         source={mdData.source}
         rehypeRewrite={(node, index, parent) => {
           if (node.type === 'element' && parent && parent.type === 'root' && /h(1|2|3|4|5|6)/.test(node.tagName)) {
