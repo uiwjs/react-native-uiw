@@ -1,13 +1,11 @@
 SearchBar 模糊搜素组件
-
-![](https://user-images.githubusercontent.com/66067296/140004480-cadbd892-afb3-483f-95a3-3bfe43a4bdfc.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
 ---
 
 ### 基础示例
 
-```jsx
+```jsx mdx:preview
 import { SearchBar } from '@uiw/react-native';
+import React from 'react';
 
 function Demo() {
   return (
@@ -18,10 +16,14 @@ function Demo() {
         {label:'南京',value:2}
       ]} 
       onFocus={()=>{}}  
-      onChange={val=>console.log('val',val)} 
+      onChange={val=>console.log('val',val)}
+      placeholder="请输入搜索"
     />
   );
 }
+
+export default Demo
+
 ```
 
 ### props
