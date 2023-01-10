@@ -40,6 +40,16 @@ const getBooleanValue = (param, field, defaultValue) => {
 
 const Preview = ({ path, ...mdData }) => {
   const $dom = useRef(null);
+
+  const transformImageUri = (url) => {
+    const callback = (path) => {
+      const reqImage = require.context(path, true, /\.(png|gif|jpg|svg)$/);
+      const urlImage = reqImage(url);
+      return urlImage;
+    };
+    return mdData.transformImageUriPath(callback);
+  };
+
   return (
     <Wrapper ref={$dom}>
       <Markdown
