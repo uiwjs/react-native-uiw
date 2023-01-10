@@ -3,11 +3,11 @@ Steps 步骤条
 
 引导用户按照流程完成任务的分步导航条，可根据实际应用场景设定步骤，步骤不得少于 2 步。
 
-![](https://user-images.githubusercontent.com/57083007/146733593-0e6583f2-4caa-4e37-9f5d-6e6c9a821d4e.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-```jsx
+```jsx mdx:preview
+import React from 'react';
 import { Steps } from '@uiw/react-native';
 
 function Demo() {
@@ -22,6 +22,7 @@ function Demo() {
     />
   );
 }
+export default Demo;
 ```
 
 ### props
