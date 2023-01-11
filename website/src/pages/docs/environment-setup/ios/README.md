@@ -162,6 +162,8 @@ $ pod install
 
 ```shell
 npx react-native start
+# or 进入项目根目录
+yarn start
 ```
 
 `react-native start` 启动 Metro Bundler。
@@ -178,6 +180,8 @@ npx react-native start
 
 ```bash
 npx react-native run-ios
+# or 进入项目根目录
+yarn run ios
 ```
 
 您应该很快就会看到您的新应用程序在 iOS 模拟器中运行。
