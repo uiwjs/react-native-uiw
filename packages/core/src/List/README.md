@@ -3,17 +3,16 @@ List 列表
 
 单个连续模块垂直排列，显示当前的内容、状态和可进行的操作。eg：联系人列表。
 
-![](https://user-images.githubusercontent.com/66067296/139397639-1bb004ac-fd66-495e-8991-6b6910f84e60.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-![](https://user-images.githubusercontent.com/66067296/139397695-5de2fb65-4931-454b-baed-9115a80abebc.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-<!--DemoStart--> 
-```jsx
+```jsx mdx:preview
+
 import { View, Text } from 'react-native';
 import { List } from '@uiw/react-native';
+import React from "react"
 
-export default function Demo() {
+function Demo() {
   return (
     <List>
       <List.Item style={{ height: 50 }}>"X战警新变种人"首曝海报特写诡异人脸</List.Item>
@@ -27,15 +26,18 @@ export default function Demo() {
     </List>
   );
 }
+
+export default Demo
+
 ```
-<!--End-->
 
-### 简单
+### 自定义渲染列表
 
-<!--DemoStart--> 
-```jsx
+```jsx mdx:preview
+
 import { View, Text } from 'react-native';
 import { List } from '@uiw/react-native';
+import React from "react"
 
 export default function Demo() {
   return (
@@ -49,7 +51,7 @@ export default function Demo() {
       ]}
       renderItem={({ item }) => {
         return (
-          <View>
+          <View style={{borderWidth: 1}}>
             <Text>{item.date}</Text>
             <Text>{item.time}</Text>
           </View>
@@ -59,51 +61,9 @@ export default function Demo() {
   )
 }
 ```
-<!--End-->
 
 
-### 基础示例
 
-<!--DemoStart--> 
-```jsx
-import { View, Text } from 'react-native';
-import { List, Icon } from '@uiw/react-native';
-
-export default function Demo() {
-  return (
-    <List
-      flat={true}
-      data={[
-        { date: '8月12日', title: '这里是标题', des: '这里是详情内容' },
-        { date: '8月10日', title: 'SO18081000004', des: '这里是详情内容' },
-        { date: '8月2日', title: 'SO18080200003', des: '这里是详情内容' },
-        { date: '8月1日', title: 'SO18080100002', des: '这里是详情内容' },
-        { date: '8月1日', title: 'SO18080100001', des: '这里是详情内容' }
-      ]}
-      renderItem={({ item, index }) => {
-        return (
-          <List.Item
-            key={index}
-            extra={<Icon name="right" fill="#abb0b5" size={14} />}
-            size="large"
-            paddingLeft={15}
-            style={{ borderBottomWidth: 0, }}
-            onPress={() => { }}
-          >
-            <View>
-              <Text>{item.title}</Text>
-              <View>
-                <Text>{item.des}</Text>
-              </View>
-            </View>
-          </List.Item>
-        )
-      }}
-    />
-  );
-}
-```
-<!--End-->
 
 ### Props
 
@@ -142,7 +102,7 @@ export default function Demo() {
 
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
-| `size` | 单元格大小 | `small`, `default`, `large` | List`default`, List.Item '-' |
+| `size` | 单元格大小 | `small`, `default`, `large` | `default` | 
 | `extra` | 额外内容，展示右侧内容 | ReactNode | - |
 | `extraStyle` | 设置 `extra` 包裹样式 | ViewProps['style'] | TextProps['style'] | - |
 | `paddingLeft` | 左边补白 | Number | `16` |
