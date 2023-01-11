@@ -8,7 +8,7 @@ Modal 模态框
 
 ### 基础示例
 
-<!--DemoStart-->
+
 ```jsx  mdx:preview
 import React, { useState, Fragment } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
@@ -39,7 +39,6 @@ function ButtonGroupView() {
 }
 export default ButtonGroupView
 ```
-<!--End-->
 
 ### Props
 
