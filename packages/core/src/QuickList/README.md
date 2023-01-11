@@ -88,7 +88,7 @@ export default QuickListDemo
 | onFetch | 请求的接口函数） | `(params: any) => void` | - |
 | data | 数据 | `Array<any>` | [] |
 | renderItem | 从data列表中获取一个项目并将其渲染到列表中 | `ListRenderItem<any>` | - |
-| keyId | 唯一健 | `string | number` | - |
+| keyId | 唯一健 | `string` \| `number` | - |
 | emptyView | 当列表为空时呈现 | `() => React.ReactNode` | - |
 | pageSize | 每次加载数据条数 | `number` | - |
 | total | 总条数 | `number`  | - |
