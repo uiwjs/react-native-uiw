@@ -7,14 +7,20 @@ export default function (props) {
     : `https://github.com/uiwjs/react-native-uiw/edit/master/${path?.replace(/^\//, '')}`;
   return (
     <div style={{ paddingBlock: 20 }}>
-      {path && url && <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: '#333' }}></a>}
+      {path && url && (
+        <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: '#333' }}>
+          在Github上编辑本页！
+        </a>
+      )}
       <Divider type="vertical" />
       <a
         target="_blank"
         rel="noopener noreferrer"
         href="https://github.com/uiwjs/react-native-uiw/issues"
         style={{ color: '#333' }}
-      ></a>
+      >
+        提交bug
+      </a>
     </div>
   );
 }
