@@ -2,10 +2,12 @@ import { Divider } from 'uiw';
 
 export default function (props) {
   const { path } = props;
-  const url = /^http/.test(path || '') ? path : `https://github.com/uiwjs/react-native-uiw/edit/master/${path}`;
+  const url = /^http/.test(path || '')
+    ? path
+    : `https://github.com/uiwjs/react-native-uiw/edit/master/${path?.replace(/^\//, '')}`;
   return (
     <div style={{ paddingBlock: 20 }}>
-      {url && (
+      {path && url && (
         <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: '#333' }}>
           在Github上编辑本页！
         </a>
