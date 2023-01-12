@@ -40,7 +40,6 @@ const getBooleanValue = (param, field, defaultValue) => {
 
 const Preview = ({ path, ...mdData }) => {
   const $dom = useRef(null);
-
   return (
     <Wrapper ref={$dom}>
       <Markdown
