@@ -82,6 +82,7 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
         </div>
       );
     }
+
     return (
       <Fragment>
         <div className={styles.warpper} style={style}>
