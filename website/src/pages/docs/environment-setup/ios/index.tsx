@@ -7,5 +7,5 @@ const transformImageUri = (url: string) => {
   return urlAddr
 }
 
-const DEMO = () => <Preview {...md} transformImageUri={transformImageUri} />;
+const DEMO = () => <Preview {...md} transformImageUri={transformImageUri} path="website/src/pages/docs/environment-setup/ios/README.md" />;
 export default DEMO;
