@@ -116,7 +116,7 @@ export interface InputProps extends TextInputProps {
 | `containerStyle` | 容器样式 | `StyleProp<ViewStyle>` | - |
 | `error` | 显示错误 | boolean | - |
 | `renderError` | 自定义错误提示 | React.ReactNode | - |
-| `border` | 边框 | `'bottom'|'top'|'left'|'right'|null|'always'` | - |
+| `border` | 边框 | `bottom`\|`top`\|`left`\|`right`\| `null`\|`always` | - |
 | `borderColor` | 边框颜色 | string | - |
 | `keyboardType` | 唤起键盘类型 | KeyboardTypeOptions | - |
 
