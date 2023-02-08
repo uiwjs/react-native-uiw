@@ -21,7 +21,8 @@ const Wrapper = styled.div`
 
 const Markdown = styled(MarkdownPreview)`
   padding: 50px 50px 120px 50px;
-  max-width: 1024px;
+  /* max-width: 1024px; */
+  width: 1024px;
 `;
 
 const getBooleanValue = (param, field, defaultValue) => {
