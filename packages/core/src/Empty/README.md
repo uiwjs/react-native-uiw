@@ -132,27 +132,11 @@ class Demo extends Component {
 
 ### Props
 
-```ts
-export interface EmptyProps extends FlexProps {
-  /**
-   * 设置提示文本
-   */
-  label?: string;
-  /**
-   * 设置提示音样式
-   */
-  labelStyle?: TextProps['style'];
-  /**
-   * 设置 图标尺寸
-   */
-  size?: number;
-  /**
-   * 传递 SVG xml 字符串，自定义图标，设为 `null` 将不展示图标。
-   */
-  xml?: string;
-  /**
-   * 不光提示文本，还有更多内容，`label` 将不起作用
-   */
-  children?: React.ReactNode;
-}
-```
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| label | 设置提示文本 | `string` | - |
+| labelStyle | 设置提示音样式 | `TextProps['style']` | - |
+| size | 设置图标尺寸 | `number` | - |
+| xml | 传递 SVG xml 字符串，自定义图标，设为 `null` 将不展示图标 | `string` | - |
+| children | 不光提示文本，还有更多内容，`label` 将不起作用 | `React.ReactNode` | - |
+
