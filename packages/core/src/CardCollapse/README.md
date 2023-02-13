@@ -3,56 +3,55 @@ CardCollapse 可折叠卡片列表
 
 可折叠卡片列表
 
-![](https://user-images.githubusercontent.com/66067296/137702190-e48c11e3-77d9-40c3-8d59-09ac6ddc9efb.gif)
-
 ### 基础示例
 
 <!--DemoStart--> 
-```jsx
-import React from 'react';
+```jsx mdx:preview
+import React,{ Component } from 'react';
 import { ScrollView, View,Image } from 'react-native';
 import { CardCollapse } from '@uiw/react-native';
-import Layout from '../../Layout';
+import Layout from '../Layout';
 import map from 'lodash/map'
 
+const { Header} = Layout;
 const contents = [
-  'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2019%2F04%2F22%2Fca22d8623fe7454ea9cdb33f3137d14e.jpeg&thumbnail=650x2147483647&quality=80&type=jpg',
-  'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2019%2F04%2F22%2Fca22d8623fe7454ea9cdb33f3137d14e.jpeg&thumbnail=650x2147483647&quality=80&type=jpg',
-  'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2019%2F04%2F22%2Fca22d8623fe7454ea9cdb33f3137d14e.jpeg&thumbnail=650x2147483647&quality=80&type=jpg',
-  'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2019%2F04%2F22%2Fca22d8623fe7454ea9cdb33f3137d14e.jpeg&thumbnail=650x2147483647&quality=80&type=jpg'
+  'https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg',
+  'https://wx1.sinaimg.cn/mw690/4718260ely1gt2cg5r9zij22yo1o0x6p.jpg',
+  'https://wx1.sinaimg.cn/mw690/4718260ely1gt2cg5r9zij22yo1o0x6p.jpg',
+  'https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg',
 ];
 
-const CardCollapseDemo = (props: any) => {
-  const { Header } = Layout;
-  const { route } = props;
-  const description = route.params.description;
-  const title = route.params.title;
-
-  const renderItem = (_: string, index: number) => {
+class Demo extends Component {
+  render() {
+  const renderItem = (_, index) => {
     return (
-      <View key={index} style={{ padding: 18 }}>
-        <Image source={{uri: contents[index]}} style={{ height: 150 }} />
+      <View key={index} style={{ padding: 20,backgroundColor: '#fff'}}>
+          <Image source={{uri: contents[index]}} style={{ height: 120 }} /> 
       </View>
     );
   }
-  return (
+    return (
     <ScrollView style={{ flex: 1 }}>
-      <Header title={title} description={description} />
       <Header description={'基本使用'} />
       <CardCollapse
-       isCollapsed
-       disablePresses={true}
+       isCollapsed={false}//是否折叠
+        disablePresses={true}//卡片是否可以点击
+        onCollapseWillChange={()=>{}}
+        onCollapseChanged={()=>{}}
       >
         {map(contents, (item, index) => {
           return renderItem(item, index);
         })}
       </CardCollapse>
     </ScrollView>
-  );
-};
-export default CardCollapseDemo;
+    )
+  }
+}
+
+export default Demo
 
 ```
+
 <!--End-->
 
 ### Props
