@@ -21,4 +21,10 @@ const colorRgb = (color: string): string => {
   return sColor;
 };
 
-export { colorRgb };
+const toObject = (arr: any) => arr.reduce((obj: object, item: any) => ({ ...obj, ...(item || {}) }), {});
+
+export type keys = {
+  [key: string]: any;
+};
+
+export { colorRgb, toObject };
