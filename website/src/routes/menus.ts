@@ -28,7 +28,7 @@ export const componentMenus: MenuData[] = [
   { path: '/components/segmentedcontrol', name: 'SegmentedControl 分段器' },
   { path: '/components/slider', name: 'Slider 滑块输入条' },
   { path: '/components/switch', name: 'Switch 开关' },
-  { path: '/components/searchbar', name: 'SearchBar 模糊搜素组件' },
+  { path: '/components/searchbar', name: 'SearchBar 模糊搜索组件' },
   { divider: true, name: 'Data Display' },
   { path: '/components/avatar', name: 'Avatar 头像' },
   { path: '/components/badge', name: 'Badge 标记' },
