@@ -19,29 +19,34 @@ export interface IconsProps extends SvgProps {
   xml?: string;
 }
 
-export default class Icons extends React.Component<IconsProps> {
-  static displayName = 'uiwm.Icon';
-  static defaultProps: IconsProps = {
-    size: 26,
-  };
-  render() {
-    const { name, size, fill = '#000000', stroke, xml, paths, color, ...otherProps } = this.props;
-    if (xml) {
-      return <SvgXml xml={xml} height={size} width={size} {...otherProps} />;
-    }
-    let pathData = paths;
-    if (!pathData) {
-      if (!name || !svgPaths[name]) {
-        return null;
-      }
-      pathData = svgPaths[name] as string[];
-    }
-    return (
-      <Svg fill={color || fill} stroke={stroke} height={size} width={size} viewBox="0 0 20 20" {...otherProps}>
-        {pathData.map((d: string, i: number) => (
-          <Path key={i} d={d} fillRule="evenodd" />
-        ))}
-      </Svg>
-    );
+export default (props: IconsProps) => {
+  const { size = 26, name, fill = '#000000', stroke, xml, paths, color, ...otherProps } = props;
+
+  if (xml) {
+    return <SvgXml testID="RNE__Icon__svgXml" xml={xml} height={size} width={size} {...otherProps} />;
   }
-}
+
+  let pathData = paths;
+  if (!pathData) {
+    if (!name || !svgPaths[name]) {
+      return null;
+    }
+    pathData = svgPaths[name] as string[];
+  }
+
+  return (
+    <Svg
+      testID="RNE__Icon__svg"
+      fill={color || fill}
+      stroke={stroke}
+      height={size}
+      width={size}
+      viewBox="0 0 20 20"
+      {...otherProps}
+    >
+      {pathData.map((d: string, i: number) => (
+        <Path key={i} d={d} fillRule="evenodd" />
+      ))}
+    </Svg>
+  );
+};

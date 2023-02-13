@@ -1,7 +1,3 @@
-// import ButtonGroup from '../lib/ButtonGroup';
-// import Button from '../lib/Button';
-// import renderer from 'react-test-renderer';
-
 import 'react-native';
 import React from 'react';
 import ButtonGroup from '../lib/ButtonGroup';
