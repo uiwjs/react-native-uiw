@@ -20,13 +20,12 @@ export interface ImageViewerProps extends ViewProps {
   height?: number;
   /** 图像源（远程URL或本地文件资源 */
   src?: string | ImageViewerDataSourceProps[];
-  /** 默认显示第几张图片 */
-  defaultIndex?: number;
 }
 
 function ImageViewer(props: ImageViewerProps) {
-  const { width = 150, height = 150, src = defaultImage, defaultIndex = 0, ...others } = props;
+  const { width = 150, height = 150, src = defaultImage, ...others } = props;
   const [visible, setVisible] = useState(false);
+  const [index, setIndex] = useState<number>(0);
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useMemo(() => {
@@ -43,10 +42,15 @@ function ImageViewer(props: ImageViewerProps) {
 
   const imgUrl = useMemo(() => {
     if (Array.isArray(src)) {
-      return src[defaultIndex].url;
+      return src[0].url;
     }
     return src;
   }, [src]);
+
+  const onImgClick = (index: number) => {
+    setIndex(index);
+    setVisible(true);
+  };
 
   return (
     <View style={{}}>
@@ -57,7 +61,7 @@ function ImageViewer(props: ImageViewerProps) {
               <TransitionImage
                 key={index}
                 style={{ width: width, height: height, flex: 1 }}
-                onPress={() => setVisible(true)}
+                onPress={() => onImgClick(index)}
                 source={{ uri: item.url }}
                 PlaceholderContent={<ActivityIndicator />}
                 transition={true}
@@ -79,7 +83,7 @@ function ImageViewer(props: ImageViewerProps) {
       <MaskLayer visible={visible} onDismiss={() => setVisible(false)} opacity={0.9}>
         <Animated.View style={[styles.content, { opacity: fadeAnim }]}>
           {Array.isArray(src) ? (
-            <Swiper dataSource={src} height={200} autoplay={false} />
+            <Swiper dataSource={src} height={200} autoplay={false} index={index} />
           ) : (
             <Image style={{ width: '100%', height: '100%', resizeMode: 'contain' }} source={{ uri: src }} />
           )}

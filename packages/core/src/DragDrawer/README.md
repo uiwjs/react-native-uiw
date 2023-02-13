@@ -1,7 +1,7 @@
 DragDrawer 拖曳抽屉
 ---
 
-![](https://user-images.githubusercontent.com/66067296/143187302-bee614b4-7799-49d1-9cab-470ad8228372.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+![](https://user-images.githubusercontent.com/66067296/143187302-bee614b4-7799-49d1-9cab-470ad8228372.gif)
 
 可自定义拖曳抽屉高度。
 
@@ -10,33 +10,27 @@ DragDrawer 拖曳抽屉
 
 ### 基础示例
 
-```jsx
+```jsx  mdx:preview
 import React, { useState, Fragment } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import { DragDrawer, Card, Icon, List } from '@uiw/react-native';
-import Layout, { Container } from '../../Layout';
-import { ComProps } from '../../routes';
-const { Header, Body, Footer } = Layout;
+import { DragDrawer, Card, Icon, List, Layout } from '@uiw/react-native';
+
 const data = [];
 for (let i = 1; i < 21; i++) {
   data.push(i);
 }
-export interface DragDrawerViewProps extends ComProps { }
-export default function DragDrawerView({ route }: DragDrawerViewProps) {
-  const description = route.params.description;
-  const title = route.params.title;
 
+function DragDrawerView({ route }) {
   const renderItem = ({ item }) => (
     <View style={{ borderWidth: 0.5, padding: 10, borderColor: '#D9D9D9' }}>
       <Text style={{ fontSize: 20, textAlign: 'center' }}>{item}</Text>
     </View>
   )
+
   return (
-    <Fragment>
+    <View style={{ height:360 }}>
       <DragDrawer
         drawerHeight={350}
-      // drawerBackgroundColor='lightblue' //抽屉背景
-      // icon={<Icon name="smile" fill="red" size={30} />} //自定义拖曳图标
       >
         <FlatList
           data={data}
@@ -44,14 +38,48 @@ export default function DragDrawerView({ route }: DragDrawerViewProps) {
           keyExtractor={item => item.id}
         />
       </DragDrawer>
-      <Container>
-        <Layout>
-          <Header title={title} description={description} />
-        </Layout>
-      </Container>
-    </Fragment>
+    </View>
   );
 }
+export default DragDrawerView
+```
+
+### 基础示例
+
+```jsx  mdx:preview
+import React, { useState, Fragment } from 'react';
+import { View, Text, FlatList } from 'react-native';
+import { DragDrawer, Card, Icon, List, Layout } from '@uiw/react-native';
+
+const data = [];
+for (let i = 1; i < 21; i++) {
+  data.push(i);
+}
+
+function DragDrawerView({ route }) {
+  const renderItem = ({ item }) => (
+    <View style={{ borderWidth: 0.5, padding: 10, borderColor: '#D9D9D9' }}>
+      <Text style={{ fontSize: 20, textAlign: 'center' }}>{item}</Text>
+    </View>
+  )
+
+  return (
+    <View style={{ height:360 }}>
+      <DragDrawer
+        drawerHeight={350}
+        drawerBackgroundColor='#ddd' //抽屉背景
+        icon={<Icon name="smile" fill="red" size={30} />} //自定义拖曳图标
+      >
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+        />
+      </DragDrawer>
+    </View>
+  );
+}
+export default DragDrawerView
 ```
 
 ### props
@@ -60,5 +88,5 @@ export default function DragDrawerView({ route }: DragDrawerViewProps) {
 |------|------|-----|------|
 | `drawerHeight` | 抽屉高度 | Number | `300` |
 | `drawerBackgroundColor` | 指定抽屉背景色 | String | `#fff` |
-| `icon` | 自定义图标 | `IconsName | React.ReactElement | React.ReactNode` |  |
+| `icon` | 自定义图标 | IconsName | React.ReactElement | React.ReactNode` |  |
 | `style` | 自定义抽屉样式 | `StyleProp<ViewStyle>` |  |

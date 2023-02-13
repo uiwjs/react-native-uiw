@@ -72,7 +72,7 @@ export default NoticeBarExample;
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| mode    | 提示类型，可选 `closable`,`link`   | String |  ''  |
+| mode    | 提示类型，可选 `closable`,`link`   | String |  -  |
 | icon    | 在开始位置设置图标  |  ReactNode | `<Icon type={require('./trips.svg')} size="xxs" />`|
 | onPress | 点击关闭或者操作区域的回调函数        | () => void |   |
 | marqueeProps | marquee 参数 | Object | `{loop: false, leading: 500, trailing: 800, fps: 40, style: {}}`  |

@@ -1,11 +1,11 @@
-import Markdown, { importAll } from '../../../../component/Markdown';
+import Preview from 'src/component/Preview';
+import md from './README.md';
 
-export default class Page extends Markdown {
-  path = '/website/src/pages/docs/environment-setup/ios/README.md';
-  getMarkdown = async () => {
-    const md = await import('./README.md');
-    // 支持 markdown 中，相对于当前 index.tsx 相对路径引入图片资源
-    importAll((require as any).context('./', true, /\.(png|gif|jpg|svg)$/), this.imageFiles);
-    return md.default || md;
-  };
+const transformImageUri = (url: string) => {
+  const reqImage = (require as any).context!('./', true, /\.(png|gif|jpg|svg)$/)
+  const urlAddr = reqImage(url)
+  return urlAddr
 }
+
+const DEMO = () => <Preview {...md} transformImageUri={transformImageUri} path="website/src/pages/docs/environment-setup/ios/README.md" />;
+export default DEMO;

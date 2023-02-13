@@ -6,26 +6,59 @@ Switch 开关
 > 自带组件 Switch 已过时，将很快删除。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-![](https://user-images.githubusercontent.com/57083007/146733820-dbdfdf2d-80f6-4cd7-b130-2528fcd0d682.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
+### 禁用
+
+```jsx mdx:preview
+import { Switch } from '@uiw/react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <Switch disabled />
+  );
+}
+export default Demo
+```
 
 ### 基础示例
 
-```jsx
+```jsx mdx:preview
 import { Switch } from '@uiw/react-native';
+import React from 'react';
 
 function Demo() {
   return (
     <Switch />
   );
 }
+export default Demo
+```
+
+### 自定义颜色
+
+```jsx mdx:preview
+import { Switch } from '@uiw/react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <Switch
+      color="red"
+      thumbStyle={{backgroundColor: 'skyblue'}}
+      trackStyle={{backgroundColor: 'pink'}}
+    />
+  );
+}
+export default Demo
 ```
 
 ### 尺寸大小
 
-这是一个受控组件，需要一个 `onValueChange` 回调来更新值属性，以使该组件反映用户操作。
 
-```jsx
+```jsx mdx:preview
 import { Spacing, Flex, Switch } from '@uiw/react-native';
+import React from 'react';
 
 function Demo() {
   return (
@@ -38,14 +71,16 @@ function Demo() {
     </Flex>
   );
 }
+
+export default Demo
 ```
 
 ### 受控组件
 
 这是一个受控组件，需要一个 `onValueChange` 回调来更新值属性，以使该组件反映用户操作。
 
-```jsx
-import { useState } from 'react';
+```jsx mdx:preview
+import React, { useState } from 'react';
 import { Switch } from '@uiw/react-native';
 
 function Demo() {
@@ -54,6 +89,8 @@ function Demo() {
     <Switch  checked={checked} onValueChange={() => setChecked(!checked)} />
   );
 }
+
+export default Demo
 ```
 
 ### props
@@ -61,7 +98,7 @@ function Demo() {
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
 | `checked` | 是否被选中 | Boolean | `false` |
-| `color` | 设置 | Boolean | `false` |
+| `color` | 颜色 | String | - |
 | `size` | 尺寸大小 | `small`, `default`, `large` | `default` |
 | `disabled` | 如果为`true`，则用户将无法切换开关。 | Boolean | `false` |
 | `trackStyle` | 设置背景样式。 | ViewStyle | - |
