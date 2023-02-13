@@ -1,125 +1,54 @@
 SwipeAction 滑动操作组件。
 ---
-
 结合手势操作，从屏幕一侧唤出操作。
-
-![](https://user-images.githubusercontent.com/57083007/146733663-6c83fca4-72df-424d-8364-47533f57ece6.gif)
 
 ### 基础示例
 
-```tsx
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { SwipeAction } from '@uiw/react-native';
+```jsx
+import React from 'react';
+import {SwipeAction} from '@uiw/react-native';
+import { View,Text } from 'react-native'
 
-export interface SwipeActionProps {
+function Demo() {
+  const right = [
+    {
+      text: '查看',
+      color: 'orange',
+      x: 250,
+    },
+    {
+      text: '删除',
+      color: 'red',
+      x: 400,
+    },
+    {
+      text: '不显示',
+      color: 'green',
+      x: 400,
+    },
+  ];
+  return (
+    <SwipeAction buttonWidth={60} right={right}>
+      <View><Text>滑动</Text></View>
+    </SwipeAction>
+  );
 }
-
-export default class SwipeActionView extends Component<SwipeActionProps> {
-  newRef: any;
-  render() {
-    const right = [
-      {
-        text: '查看',
-        color: 'orange',
-        x: 250,
-        onPress: () => {
-          this.newRef?.swipeable?.close()
-        },
-      },
-      {
-        text: '删除',
-        color: 'red',
-        x: 400,
-        onPress: () => {
-          this.newRef?.swipeable?.close()
-        },
-      },
-      {
-        text: '不显示',
-        color: 'green',
-        x: 400,
-        onPress: () => {
-          this.newRef?.swipeable?.close()
-        },
-      },
-    ];
-    return (
-          <SwipeAction
-            buttonWidth={60}
-            ref={ref => this.newRef = ref}
-            right={right}
-            onSwipeableRightOpen={() => console.log('right')}
-            onSwipeableLeftOpen={() => () => console.log('left')}
-          >
-            <View style={[styles.view]}>
-              <Text>滑动</Text>
-            </View>
-          </SwipeAction>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingBottom: 30,
-  },
-  view: {
-    height: 30
-  },
-});
-
+export default Demo;
 ```
 
-
-### Props
 组件继承react-native-gesture-handler[`Swipeable`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/components/swipeable)
-```tsx
-export interface Column {
-  /** 显示文字 */
-  text: string;
-  /** 背景色 */
-  color: string;
-  /** 点击元素触发 */
-  onPress?: () => void;
-  /** 是否禁用 */ 
-  disabled?: boolean;
-  /** 自定义元素 */
-  render?: (text: string, record: Column, index: number) => React.ReactNode;
-}
+### Props
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `right` | 右边滑动出来的元素 | Array<Column> | - |
+| `left` | 左边滑动出来的元素 | Array<Column> | - |
+| `buttonWidth` | 按钮宽度 |  string | number | 60 |
 
-export interface SwipeActionProps {
-  /** 右边滑动出来的元素 */
-  right?: Array<Column>;
-  /** 左边滑动出来的元素 */
-  left?: Array<Column>;
-  /** 按钮宽度 默认60 */
-  buttonWidth?:string | number
-  /** 其余api参考文档 react-native-gesture-handler/Swipeable */
-  enableTrackpadTwoFingerGesture?: boolean;
-  friction?: number;
-  leftThreshold?: number;
-  rightThreshold?: number;
-  overshootLeft?: boolean;
-  overshootRight?: boolean;
-  overshootFriction?: number;
-  onSwipeableLeftOpen?: () => void;
-  onSwipeableRightOpen?: () => void;
-  onSwipeableOpen?: () => void;
-  onSwipeableClose?: () => void;
-  onSwipeableLeftWillOpen?: () => void;
-  onSwipeableRightWillOpen?: () => void;
-  onSwipeableWillOpen?: () => void;
-  onSwipeableWillClose?: () => void;
-  children?: React.ReactNode;
-  renderLeftActions?: (progressAnimatedValue: Animated.AnimatedInterpolation, dragAnimatedValue: Animated.AnimatedInterpolation) => React.ReactNode;
-  renderRightActions?: (progressAnimatedValue: Animated.AnimatedInterpolation, dragAnimatedValue: Animated.AnimatedInterpolation) => React.ReactNode;
-  useNativeAnimations?: boolean;
-  animationOptions?: Record<string, unknown>;
-  containerStyle?: StyleProp<ViewStyle>;
-  childrenContainerStyle?: StyleProp<ViewStyle>;
-}
-```
+### ColumnProps
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `text` | 显示文字 | string | - |
+| `color` | 背景色 | string | - |
+| `onPress` | 点击元素触发 |  () => void | - |
+| `disabled` | 是否禁用 | Boolean | - |
+| `render` | 自定义元素 | (text: string, record: Column, index: number) => React.ReactNode | - |
