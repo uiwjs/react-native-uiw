@@ -5,16 +5,18 @@ SwipeAction 滑动操作组件。
 ### 基础示例
 
 ```jsx
-import React from 'react';
+import React,{ useRef } from 'react';
 import {SwipeAction} from '@uiw/react-native';
 import { View,Text } from 'react-native'
 
 function Demo() {
+  const ref = useRef()
   const right = [
     {
       text: '查看',
       color: 'orange',
       x: 250,
+      onPress: () => ref?.current?.swipeable.close()
     },
     {
       text: '删除',
@@ -28,7 +30,7 @@ function Demo() {
     },
   ];
   return (
-    <SwipeAction buttonWidth={60} right={right}>
+    <SwipeAction ref={ref} buttonWidth={60} right={right}>
       <View><Text>滑动</Text></View>
     </SwipeAction>
   );
@@ -42,7 +44,7 @@ export default Demo;
 |------|------|-----|------|
 | `right` | 右边滑动出来的元素 | Array<Column> | - |
 | `left` | 左边滑动出来的元素 | Array<Column> | - |
-| `buttonWidth` | 按钮宽度 |  string | number | 60 |
+| `buttonWidth` | 按钮宽度 |  number | 60 |
 
 ### ColumnProps
 | 参数 | 说明 | 类型 | 默认值 |
