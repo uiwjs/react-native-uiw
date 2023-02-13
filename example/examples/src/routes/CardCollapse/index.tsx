@@ -1,6 +1,6 @@
 import React from 'react';
-import {ScrollView, View, Image} from 'react-native';
-import {CardCollapse} from '@uiw/react-native';
+import { ScrollView, View, Image } from 'react-native';
+import { CardCollapse } from '@uiw/react-native';
 import Layout from '../../Layout';
 import map from 'lodash/map';
 
@@ -12,20 +12,20 @@ const contents = [
 ];
 
 const CardCollapseDemo = (props: any) => {
-  const {Header} = Layout;
-  const {route} = props;
+  const { Header } = Layout;
+  const { route } = props;
   const description = route.params.description;
   const title = route.params.title;
 
   const renderItem = (_: string, index: number) => {
     return (
-      <View key={index} style={{padding: 12}}>
-        <Image source={{uri: contents[index]}} style={{height: 180}} />
+      <View key={index} style={{ padding: 12 }}>
+        <Image source={{ uri: contents[index] }} style={{ height: 180 }} />
       </View>
     );
   };
   return (
-    <ScrollView style={{flex: 1}}>
+    <ScrollView style={{ flex: 1 }}>
       <Header title={title} description={description} />
       <Header description={'基本使用'} />
       <CardCollapse isCollapsed={false} disablePresses={false}>
