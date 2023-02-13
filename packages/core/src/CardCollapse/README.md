@@ -23,10 +23,10 @@ const contents = [
 
 class Demo extends Component {
   render() {
-      const renderItem = (_, index) => {
+  const renderItem = (_, index) => {
     return (
-      <View key={index} style={{ padding: 18 }}>
-        <Image source={{uri: contents[index]}} style={{ height: 150 }} />
+      <View key={index} style={{ padding: 20,backgroundColor: '#fff'}}>
+          <Image source={{uri: contents[index]}} style={{ height: 120 }} /> 
       </View>
     );
   }

@@ -92,17 +92,6 @@ export default function CardCollapse(props: CardCollapseProps) {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
   }, [collapsed]);
 
-  function getItemScale(index: number) {
-    if (collapsed) {
-      if (index === itemsCount - 2) {
-        return 0.95;
-      }
-      if (index === itemsCount - 1) {
-        return 0.9;
-      }
-    }
-    return 1;
-  }
   // 动画
   const animate = async () => {
     return Promise.all([animateValues(), animateCards()]);
@@ -132,6 +121,13 @@ export default function CardCollapse(props: CardCollapseProps) {
       ]).start(resolve);
     });
   };
+
+  function getItemScale(index: number) {
+    if (collapsed) {
+      return 0.9;
+    }
+    return 1;
+  }
 
   const animateCards = () => {
     const promises = [];
@@ -210,21 +206,23 @@ export default function CardCollapse(props: CardCollapseProps) {
 
   const renderItem = (item: JSX.Element | JSX.Element[], index: number) => {
     return (
-      <Animated.View
+      < Animated.View
         key={index}
-        onLayout={index === 0 ? onLayout : undefined}
-        style={[
-          Platform.OS === 'ios' && styles.containerShadow,
-          getStyle(index),
-          {
-            borderRadius: Platform.OS === 'ios' ? itemBorderRadius : undefined,
-            alignSelf: 'center',
-            zIndex: itemsCount - index,
-            transform: [{ scaleX: animatedScaleArray[index] }],
-            width: Dimensions.get('screen').width - 40,
-            height: collapsed ? firstItemHeight : undefined,
-          },
-        ]}
+        onLayout={index === 0 ? onLayout : undefined
+        }
+        style={
+          [
+            Platform.OS === 'ios' && styles.containerShadow,
+            getStyle(index),
+            {
+              borderRadius: Platform.OS === 'ios' ? itemBorderRadius : undefined,
+              alignSelf: 'center',
+              zIndex: itemsCount - index,
+              transform: [{ scaleX: animatedScaleArray[index] }],
+              width: Dimensions.get('screen').width - 40,
+              height: collapsed ? firstItemHeight : undefined,
+            },
+          ]}
         collapsable={false}
       >
         <Container
@@ -237,7 +235,7 @@ export default function CardCollapse(props: CardCollapseProps) {
             </Animated.View>
           </TouchableOpacity>
         </Container>
-      </Animated.View>
+      </Animated.View >
     );
   };
   return (
