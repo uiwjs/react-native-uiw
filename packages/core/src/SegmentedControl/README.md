@@ -3,65 +3,72 @@ SegmentedControl 分段器
 
 由至少 2 个分段控件组成，用作不同视图的显示；是 iOS 的推荐组件。
 
-> 即将启用，交于社区维护 [@react-native-community/react-native-segmented-control](https://github.com/react-native-segmented-control/segmented-control)。
-<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-![](https://user-images.githubusercontent.com/57083007/146731624-abdd0e31-2f9a-4555-af33-a928770c72ba.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-```jsx
+
+```jsx mdx:preview
 import { Text } from 'react-native';
 import { SegmentedControl } from '@uiw/react-native';
+import React from 'react';
 
 function Demo() {
   return (
     <SegmentedControl value={['申请', '审批', '提交']} />
   );
 }
+
+export default Demo;
 ```
 
 ### 设置颜色
 
-```jsx
+
+```jsx mdx:preview
 import { SegmentedControl } from '@uiw/react-native';
+import React from 'react';
 
 function Demo() {
   return (
     <SegmentedControl color="#dc3545" value={['申请', '审批', '提交']} />
   );
 }
+export default Demo;
 ```
 
 ### 设置间距
 
-```jsx
+```jsx mdx:preview
 import { SegmentedControl } from '@uiw/react-native';
+import React from 'react';
 
 function Demo() {
   return (
     <SegmentedControl gutter={10} selectedIndex={2} value={['申请', '审批', '提交']} />
   );
 }
+export default Demo;
 ```
 
 ### 设置尺寸
 
-```jsx
-import { Fragment } from 'react';
+```jsx mdx:preview
+import React from 'react';
 import { SegmentedControl, Spacing } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <Fragment>
+    <>
       <SegmentedControl size="large" gutter={10} selectedIndex={1} value={['申请', '审批', '提交']} />
       <Spacing />
       <SegmentedControl size="default" selectedIndex={2} value={['申请', '审批', '提交']} />
       <Spacing />
       <SegmentedControl size="small" gutter={10} selectedIndex={2} value={['申请', '审批', '提交']} />
-    </Fragment>
+    </>
   );
 }
+export default Demo;
 ```
 
 ### Props

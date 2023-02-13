@@ -4,6 +4,7 @@ import { BackTop, Circle, Icon } from 'uiw';
 import { getMetaId, isMeta, getURLParameters } from 'markdown-react-code-preview-loader';
 import CodeLayout from 'react-code-preview-layout';
 import { useRef } from 'react';
+import Footer from './Footer';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -14,11 +15,14 @@ const Wrapper = styled.div`
   }
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const Markdown = styled(MarkdownPreview)`
   padding: 50px 50px 120px 50px;
-  max-width: 1024px;
+  /* max-width: 1024px; */
+  width: 1024px;
 `;
 
 const getBooleanValue = (param, field, defaultValue) => {
@@ -34,12 +38,14 @@ const getBooleanValue = (param, field, defaultValue) => {
   return defaultValue;
 };
 
-const Preview = (mdData) => {
+const Preview = ({ path, ...mdData }) => {
   const $dom = useRef(null);
   return (
     <Wrapper ref={$dom}>
       <Markdown
+        {...mdData}
         disableCopy={true}
+        // transformImageUri={transformImageUri}
         source={mdData.source}
         rehypeRewrite={(node, index, parent) => {
           if (node.type === 'element' && parent && parent.type === 'root' && /h(1|2|3|4|5|6)/.test(node.tagName)) {
@@ -82,6 +88,7 @@ const Preview = (mdData) => {
           },
         }}
       />
+      <Footer path={path} />
       <BackTop speed={500}>
         {({ percent, scrollToTop }) => (
           <Circle

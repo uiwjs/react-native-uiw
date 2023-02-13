@@ -7,10 +7,7 @@ Timeline 时间轴
 
 ```jsx  mdx:preview
 import React from 'react'
-import Timeline from '@uiw/react-native/lib/Timeline';
-import WingBlank from '@uiw/react-native/lib/WingBlank';
-import Icon from '@uiw/react-native/lib/Icon';
-import Card from '@uiw/react-native/lib/Card';
+import { Card, Icon, WingBlank, Timeline  } from '@uiw/react-native';
 
 function Demo() {
  const item = [
@@ -57,10 +54,7 @@ export default Demo
 
 ```jsx  mdx:preview
 import React from 'react'
-import Timeline from '@uiw/react-native/lib/Timeline';
-import WingBlank from '@uiw/react-native/lib/WingBlank';
-import Card from '@uiw/react-native/lib/Card';
-import Icon from '@uiw/react-native/lib/Icon';
+import { Card, Icon, WingBlank, Timeline  } from '@uiw/react-native';
 
 function Demo() {
    const item = [
@@ -108,10 +102,8 @@ export default Demo
 
 ```jsx  mdx:preview
 import React from 'react'
-import Timeline from '@uiw/react-native/lib/Timeline';
-import WingBlank from '@uiw/react-native/lib/WingBlank';
-import Card from '@uiw/react-native/lib/Card';
-import Icon from '@uiw/react-native/lib/Icon';
+import { Card, Icon, WingBlank, Timeline  } from '@uiw/react-native';
+
 
 function Demo() {
    const item = [
@@ -157,7 +149,7 @@ export default Demo
 
 ### Props
 
-<!-- ```ts
+```ts
 export interface TimelineItemsProps {
   /** 标题 */
   title: string;
@@ -181,4 +173,4 @@ export interface TimelineProps extends ViewProps {
   /** 改变时间轴和内容的相对位置 */
   mode?: 'left' | 'alternate';
 }
-``` -->
+```

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
   Animated,
+  ViewProps,
 } from 'react-native';
 import Icon from '../Icon';
 import { checked } from './svg';
@@ -15,7 +16,7 @@ import { colors } from '../utils';
 import CardTitle from './Card.Title';
 import CardActions from './Card.Actions';
 
-export type CardProps = {
+export interface CardProps extends ViewProps {
   containerStyle?: StyleProp<ViewStyle>;
   wrapperStyle?: StyleProp<ViewStyle>;
   borderRadius?: number;
@@ -28,7 +29,7 @@ export type CardProps = {
     style?: ViewStyle;
     iconStyle?: ViewStyle;
   };
-};
+}
 
 const Card = ({
   children,
@@ -77,6 +78,7 @@ const Card = ({
     <Container
       {...attributes}
       onPress={onPress}
+      onLongPress={onLongPress}
       delayPressIn={10}
       activeOpacity={0.6}
       style={StyleSheet.flatten([

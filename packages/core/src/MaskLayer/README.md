@@ -3,24 +3,25 @@ MaskLayer 遮罩层
 
 用于模态对话框，中的遮罩层。
 
-![](https://user-images.githubusercontent.com/66067296/139398306-d038225d-0fee-4009-a4f7-a06c7beabf45.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+<!-- ![](https://user-images.githubusercontent.com/66067296/139398306-d038225d-0fee-4009-a4f7-a06c7beabf45.gif) -->
+<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-<!--DemoStart--> 
-```jsx
-import { Fragment } from 'react';
+<!--DemoStart-->
+```jsx  mdx:preview
+import React, { Fragment, useState } from 'react';
 import { Text,  SafeAreaView } from 'react-native';
 import { Button, MaskLayer } from '@uiw/react-native';
 
-export default () => {
-  const [visible, setVisible] = useState(true);
+const Demo = () => {
+  const [visible, setVisible] = useState(false);
   return (
     <Fragment>
       <MaskLayer
         visible={visible}
         onDismiss={() => {
-          setVisible(false);
+          setVisible(!visible);
         }}>
         <SafeAreaView>
           <Text style={{color: '#fff'}}>展示内容</Text>
@@ -35,6 +36,7 @@ export default () => {
     </Fragment>
   );
 }
+export default Demo
 ```
 <!--End-->
 

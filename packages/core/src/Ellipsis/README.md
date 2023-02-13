@@ -3,22 +3,22 @@ Ellipsis 超出省略
 
 用于文本过长，超出长度显示 `...`。
 
-![](https://user-images.githubusercontent.com/66067296/137707584-8883d475-52a7-4022-a6dd-ceb91be028e2.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
 
-```jsx
-import { Fragment } from 'react';
+
+```jsx  mdx:preview
+import React from "react"
 import { Ellipsis } from '@uiw/react-native';
 
 function Demo() {
-  const [visible, setVisible] = useState(false);
+
   return (
-    <Fragment>
-      <Ellipsis maxLen={5}>用于文本过长，超出长度显示</Ellipsis>
-    </Fragment>
+    <Ellipsis maxLen={5}>用于文本过长，超出长度显示</Ellipsis>
   );
 }
+
+export default Demo;
 ```
 
 ### Props

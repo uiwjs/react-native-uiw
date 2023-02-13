@@ -7,19 +7,60 @@ Input 文本输入
 
 ```jsx mdx:preview
 import React,{ Component } from "react"
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
+import  { Input  }  from '@uiw/react-native';
+
+const Demo = () => {
+  const [value, setValue] = React.useState(666)
+  return <View>
+    <Text>受控组件</Text>
+    <Input  value={value} onChange={(e) => setValue(e.target.value)} containerStyle={{marginBottom: 10}} />
+    <Text>后缀</Text>
+    <Input extraEnd="小数" placeholder="请输入" containerStyle={{marginBottom: 10}} />
+    <Text>错误错误</Text>
+    <Input error containerStyle={{marginBottom: 10}} />
+  </View>
+}
+export default Demo
+```
+
+### 设置边框
+
+```jsx mdx:preview
+import React,{ Component } from "react"
+import { View, Text } from 'react-native';
 import  { Input }  from '@uiw/react-native';
 
  class BasicInputExample extends Component {
   render() {
     return <View>
-      <Input  value={6666} />
-      <Input extra="小数" />
-      <Input error />
+      <Text>下边框</Text>
+      <Input border="bottom" containerStyle={{marginBottom: 10}}  />
+      <Text>左边框</Text>
+      <Input border="left" borderColor="red"  />
     </View>
   }
 }
 export default BasicInputExample
+```
+### 校验输入内容
+
+```jsx mdx:preview
+import React,{ Component } from "react"
+import { View, Text } from 'react-native';
+import  { Input }  from '@uiw/react-native';
+
+const Demo = () => {
+  const [value, setValue] = React.useState()
+  return <Input
+      value={value}
+      border="bottom"
+      rule={/^[\d]+$/}
+      wrongfulHandle={() => {alert('请输入数字')}}
+      placeholder="请输入数字"
+    />
+}
+export default Demo
 ```
 
 

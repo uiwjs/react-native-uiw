@@ -6,68 +6,110 @@ Slider 滑块输入条
 > 自带 Slider 已经过时，交于社区维护 [`react-native-slider`](https://github.com/react-native-community/react-native-slider)，当前组件是重新封装保持 iOS/android 效果一致。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-![](https://user-images.githubusercontent.com/57083007/146733306-cffada07-0f11-46cc-8969-1676c9070cda.gif)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+
 
 ### 基础示例
 
-```jsx
-import { Fragment, useState } from 'react';
+```jsx mdx:preview
+import React, { useState } from 'react';
 import { Text } from 'react-native';
 import { Slider } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState(0.3);
   return (
-    <Fragment>
+    <>
       <Slider
         value={value}
         onChange={(cValue) => setValue(cValue)}
       />
       <Text>值：{value.toFixed(1)}</Text>
-    </Fragment>
+    </>
   );
 }
+
+export default Demo
+
 ```
 
 ### 不显示滑块
 
-```jsx
-import { Fragment,useState } from 'react';
+```jsx mdx:preview
+import React, { useState } from 'react';
 import { Slider } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState(0.3);
   return (
-    <Fragment>
-      <Slider
-        shownThumb={false}
-        value={value}
-        onChange={(cValue) => setValue(cValue)}
-      />
-    </Fragment>
+    <Slider
+      shownThumb={false}
+      value={value}
+      onChange={(cValue) => setValue(cValue)}
+    />
   );
 }
+
+export default Demo
+
+
 ```
 
 ### 设置步长
 
-```jsx
-import { Fragment, useState } from 'react';
+```jsx mdx:preview
+import React, { useState } from 'react';
 import { Slider } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState(0.3);
   return (
-    <Fragment>
-      <Slider
-        step={0.2}
-        shownThumb={false}
-        value={value}
-        onChange={(cValue) => setValue(cValue)}
-      />
-    </Fragment>
+    <Slider
+      step={0.2}
+      value={value}
+      onChange={(cValue) => setValue(cValue)}
+    />
   );
 }
+
+export default Demo
+```
+### 自定义颜色
+
+```jsx mdx:preview
+import React, { useState } from 'react';
+import { Slider } from '@uiw/react-native';
+
+function Demo() {
+  const [value, setValue] = useState(0.3);
+  return (
+    <Slider
+      value={value}
+      onChange={(cValue) => setValue(cValue)}
+      thumbTintColor="pink"
+      maximumTrackTintColor="pink"
+      minimumTrackTintColor="purple"
+    />
+  );
+}
+
+export default Demo
+```
+### 禁用
+
+```jsx mdx:preview
+import React from 'react';
+import { Slider } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <Slider
+      disabled
+      value={0.5}
+    />
+  );
+}
+
+export default Demo
 ```
 
 ### Props

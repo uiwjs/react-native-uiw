@@ -3,32 +3,12 @@ CheckBox 复选框
 
 一组备选项中进行多选。
 
-### 基础示例
-
-![](https://user-images.githubusercontent.com/66067296/137703908-c4370f9c-fce7-423a-abd7-7951d5a48d06.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
-```jsx
-import { CheckBox } from '@uiw/react-native';
-
-function Demo() {
-  return (
-    <CheckBox
-      checked={true}
-      onChange={(checked) => {
-        console.log(checked)
-      }}
-    >
-      默认点击选中
-    </CheckBox>
-  );
-}
-```
-
 
 ### 基础示例
 
-```jsx
+```jsx mdx:preview
 import { Badge, List, CheckBox } from '@uiw/react-native';
+import React from 'react';
 
 function Demo() {
   return (
@@ -48,13 +28,45 @@ function Demo() {
       <List.Item style={{ paddingVertical: 0 }}>
         <CheckBox style={{ paddingVertical: 10 }} onChange={(checked) => { console.log(checked)}}>默认未选中</CheckBox>
       </List.Item>
-      <List.Item style={{ paddingVertical: 0 }}>
-        <CheckBox style={{ paddingVertical: 10 }} onChange={(checked) => { console.log(checked)}}>默认未选中</CheckBox>
-      </List.Item>
     </List>
   );
 }
+
+export default Demo
 ```
+
+### 设置颜色	
+
+
+```jsx mdx:preview
+import { CheckBox } from '@uiw/react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <CheckBox color="pink" >CheckBox</CheckBox>
+
+  );
+}
+export default Demo
+```
+
+### 自定义图标
+
+
+```jsx mdx:preview
+import { CheckBox, Icon } from '@uiw/react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <CheckBox unCheckedIcon="apple"  checkedIcon="android">CheckBox</CheckBox>
+
+  );
+}
+export default Demo
+```
+
 
 ### props
 

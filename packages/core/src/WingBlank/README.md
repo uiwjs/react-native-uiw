@@ -1,25 +1,28 @@
 WingBlank 两翼留白
 ---
 
-布局控件
-
-![](https://user-images.githubusercontent.com/57083007/146734301-dd0b7af2-c823-463c-ab8a-075ef0ffdc48.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
+左右两边空出一点距离
 
 ### 基础示例
 
-<!--DemoStart--> 
-```jsx
-import { View, Text } from 'react-native';
-import { WingBlank, Button } from '@uiw/react-native';
 
-export default function Demo() {
-  return (
-    <WingBlank>
-    </WingBlank>
-  );
+```jsx  mdx:preview
+import React,{Component} from 'react';
+import { Text } from 'react-native';
+import { WingBlank } from '@uiw/react-native';
+
+class Demo extends Component {
+  render() {
+    return (
+      <WingBlank>
+        <Text>两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留两翼留白两翼留白两翼留白两翼留白</Text>
+      </WingBlank>
+    );
+   }
 }
+export default Demo
 ```
-<!--End-->
+
 
 ### WingBlank
 
