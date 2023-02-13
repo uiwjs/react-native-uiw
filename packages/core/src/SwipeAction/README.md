@@ -2,7 +2,39 @@ SwipeAction 滑动操作组件。
 ---
 结合手势操作，从屏幕一侧唤出操作。
 
+![](https://user-images.githubusercontent.com/57083007/146733663-6c83fca4-72df-424d-8364-47533f57ece6.gif)
+
 ### 基础示例
+
+```jsx
+import React from 'react';
+import {SwipeAction} from '@uiw/react-native';
+import { View,Text } from 'react-native'
+
+function Demo() {
+  const right = [
+    {
+      text: '查看',
+      color: 'orange',
+      x: 250,
+      onPress: () => ref?.current?.swipeable.close()
+    },
+    {
+      text: '删除',
+      color: 'red',
+      x: 250,
+    },
+  ];
+  return (
+    <SwipeAction ref={ref} buttonWidth={60} right={right}>
+      <View><Text>滑动</Text></View>
+    </SwipeAction>
+  );
+}
+export default Demo;
+```
+
+### 禁用
 
 ```jsx
 import React,{ useRef } from 'react';
@@ -16,7 +48,6 @@ function Demo() {
       text: '查看',
       color: 'orange',
       x: 250,
-      onPress: () => ref?.current?.swipeable.close()
     },
     {
       text: '删除',
