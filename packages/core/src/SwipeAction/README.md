@@ -5,11 +5,12 @@ SwipeAction 滑动操作组件。
 ### 基础示例
 
 ```jsx
-import React from 'react';
+import React,{ useRef } from 'react';
 import {SwipeAction} from '@uiw/react-native';
 import { View,Text } from 'react-native'
 
 function Demo() {
+  const ref = useRef()
   const right = [
     {
       text: '查看',
