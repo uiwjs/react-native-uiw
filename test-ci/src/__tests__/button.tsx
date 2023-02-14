@@ -55,12 +55,6 @@ describe('Button', () => {
     expect(styles.fontSize).toBe(20);
   });
 
-  it('type', () => {
-    const { getByTestId } = render(<Button type="success">success</Button>);
-    const component = getByTestId('RNE__Button__wrap');
-    expect(component.props.style.backgroundColor).toBe(colorRgb(colors.green));
-  });
-
   describe.each`
     type
     ${'primary'}
