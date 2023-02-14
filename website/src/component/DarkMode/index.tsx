@@ -7,7 +7,7 @@ export default function DarkMode() {
   const theme = localStorage.getItem('theme');
   const [dark, setDark] = useState(!!theme);
   useEffect(() => {
-    document.documentElement.dataset.theme = dark ? 'dark' : '';
+    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
   }, [dark]);
   return (
     <Switch

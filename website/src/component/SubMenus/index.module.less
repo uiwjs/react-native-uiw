@@ -1,6 +1,7 @@
 .warpper {
   padding-right: 16px;
   position: relative;
+
   a {
     color: #5a5a5a;
     transition: all 0.3s;
@@ -8,20 +9,28 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 10px 10px 0;
+
     svg {
       fill: #bbb;
       transition: fill 0.3s;
     }
+
     &:hover {
       color: #1890ff;
+
       svg {
         fill: #1890ff;
       }
     }
+
     &:global(.active) {
       color: #1890ff;
       background-color: #f5f8fa;
       padding-left: 10px;
+
+      html[data-color-mode*='dark'] &:global {
+        background-color: #061c31;
+      }
     }
   }
 }
@@ -49,4 +58,12 @@
   position: fixed;
   top: 60px;
   bottom: 0;
+}
+
+html[data-color-mode*='dark'] .divider {
+  border-bottom: 1px solid #032438;
+}
+
+html[data-color-mode*='dark'] .inner {
+  border-right: 1px solid #032438;
 }
