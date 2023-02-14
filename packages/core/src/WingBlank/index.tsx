@@ -20,7 +20,7 @@ export default class WingBlank extends Component<WingBlankProps> {
     } else if (size && styles[size]) {
       sizeStyle = styles[size];
     }
-    return <View {...restProps} style={[sizeStyle, style]} />;
+    return <View testID="RNE__WingBlank__view" {...restProps} style={[sizeStyle, style]} />;
   }
 }
 
