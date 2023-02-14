@@ -55,7 +55,7 @@ export default class Flex extends Component<FlexProps> {
       sty.alignItems = align.replace(/^start$/g, 'flex-start').replace(/^end$/g, 'flex-end') as FlexStyle['alignItems'];
     }
     return (
-      <View style={[sty, style]}>
+      <View testID="RNE__Flex__wrap" style={[sty, style]}>
         {children &&
           React.Children.map(children, (child: React.ReactNode) => {
             if (!React.isValidElement(child)) {
