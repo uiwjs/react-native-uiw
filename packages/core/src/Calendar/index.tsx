@@ -298,10 +298,10 @@ const styles = StyleSheet.create({
   },
   calendarWeekdays: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     paddingHorizontal: MainWidth < 1000 ? MainWidth / 7 - 33 : MainWidth / 30,
-    paddingTop: 10,
+    paddingTop: 12,
   },
   calendarWedText: {
     color: '#616161',
@@ -312,10 +312,10 @@ const styles = StyleSheet.create({
   },
   weekDay: {
     flexDirection: 'row',
-    paddingHorizontal: 2,
+    paddingHorizontal: 22,
   },
   dateBase: {
-    marginHorizontal: 2,
+    marginHorizontal: 8,
     width: MainWidth < 1000 ? MainWidth / 7 - 4.5 : MainWidth / 14,
     height: MainHeight < 300 ? MainWidth / 7 - 4.5 : MainWidth / 14,
     ...Platform.select({
@@ -327,15 +327,15 @@ const styles = StyleSheet.create({
   },
   currentMonth: {
     backgroundColor: '#329BCB',
-    borderRadius: 50,
+    borderRadius: 60,
   },
   selectMonth: {
     borderWidth: 1,
     borderColor: '#329BCB',
-    borderRadius: 50,
+    borderRadius: 60,
   },
   otherMonth: {
-    borderRadius: 50,
+    borderRadius: 60,
   },
   dayText: {
     textAlign: 'center',

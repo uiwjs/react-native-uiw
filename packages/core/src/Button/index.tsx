@@ -132,6 +132,7 @@ export default class ButtonView<T> extends React.Component<ButtonProps> {
     }
     return (
       <TouchableOpacity
+        testID="RNE__Button__wrap"
         style={[styles.button, styles.content, buttonStyle, boxStyle, style]}
         disabled={disabled}
         {...restProps}
@@ -139,7 +140,7 @@ export default class ButtonView<T> extends React.Component<ButtonProps> {
         {loading && <ActivityIndicator size={16} color={textColor} style={styles.icon} />}
         {React.Children.toArray(children).map((child: any, idx) => {
           return (
-            <Div key={idx} style={[sizeStyle, styles.label, textStyle, childStyle]}>
+            <Div testID="RNE__Button__div" key={idx} style={[sizeStyle, styles.label, textStyle, childStyle]}>
               {child}
             </Div>
           );

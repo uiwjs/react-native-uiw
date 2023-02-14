@@ -3,29 +3,31 @@ Typography 排版
 
 包含 H1~H6,`<U>`, `<S>`, `<P>` 等，类似于 HTML 中的标签。
 
-[`H1~H6`](#标题) · [`<Del>`](#删除线) · [`<S>`](#删除线) · [`<U>`](#下划线) · [`<Strong>`](#加粗) · [`<P />`](#段落) · [`<Br />`](#换行) · [`<Hr />`](#水平线) · [`<Div />`](#div)
-
-![](https://user-images.githubusercontent.com/57083007/146734264-8cb81fae-c4b5-4e02-9794-627442e580c9.png)<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
 ### 基础示例
 
 ### 标题
 
-```jsx
-import { Fragment } from 'react';
-import { H1, H2, H3, H4, H5, H6 } from '@uiw/react-native';
+```jsx  mdx:preview
+import React from "react"
+import { View } from 'react-native';
+import H1 from '@uiw/react-native/lib/Typography/H1';
+import H2 from '@uiw/react-native/lib/Typography/H2';
+import H3 from '@uiw/react-native/lib/Typography/H3';
+import H4 from '@uiw/react-native/lib/Typography/H4';
+import H5 from '@uiw/react-native/lib/Typography/H5';
+import H6 from '@uiw/react-native/lib/Typography/H6';
 
-function Demo() {
+export default function Demo() {
   return (
-    <Fragment>
-      <H1>这是标题一</H1>
-      <H2>这是标题二</H2>
-      <H3>这是标题二</H3>
-      <H4>这是标题二</H4>
-      <H5>这是标题二</H5>
-      <H6>这是标题二</H6>
-    </Fragment>
-  );
+    <>
+      <View><H1>这是标题一</H1></View>
+      <View><H2>这是标题二</H2></View>
+      <View><H3>这是标题三</H3></View>
+      <View><H4>这是标题四</H4></View>
+      <View><H5>这是标题五</H5></View>
+      <View><H6>这是标题六</H6></View>
+    </>
+  )
 }
 ```
 
@@ -33,26 +35,30 @@ function Demo() {
 
 `<s>` 标签是 `<strike>` 标签的缩写版本
 
-```jsx
-import { Fragment } from 'react';
-import { Del, S } from '@uiw/react-native';
+```jsx  mdx:preview
+import React from "react"
+import { View } from 'react-native';
+import Del from '@uiw/react-native/lib/Typography/S';
+import S from '@uiw/react-native/lib/Typography/S';
 
-function Demo() {
+export default function Demo() {
   return (
-    <Fragment>
-      <S>这段字符串中间有条删除线</S>
-      <Del>这段字符串中间有条删除线</Del>
-    </Fragment>
+    <>
+      <View><S>这段字符串中间有条删除线</S></View>
+      <View><Del>删除线的两种写法😂</Del></View>
+    </>
   );
 }
 ```
 
 ### 下划线
 
-```jsx
-import { U } from '@uiw/react-native';
+```jsx  mdx:preview
+import React from "react"
+import { View } from 'react-native';
+import U from '@uiw/react-native/lib/Typography/U';
 
-function Demo() {
+export default function Demo() {
   return (
     <U>这段文字有下划线</U>
   );
@@ -61,10 +67,12 @@ function Demo() {
 
 ### 加粗
 
-```jsx
-import { Strong } from '@uiw/react-native';
+```jsx  mdx:preview
+import React from "react"
+import { View } from 'react-native';
+import Strong from '@uiw/react-native/lib/Typography/Strong';
 
-function Demo() {
+export default function Demo() {
   return (
     <Strong>这段文字加粗</Strong>
   );
@@ -73,11 +81,12 @@ function Demo() {
 
 ### 换行
 
-```jsx
+```jsx  mdx:preview
+import React from "react"
 import { Text } from 'react-native';
-import { Br } from '@uiw/react-native';
+import Br from '@uiw/react-native/lib/Typography/Br';
 
-function Demo() {
+export default function Demo() {
   return (
     <Text>文本开始<Br />换行结束</Text>
   );
@@ -86,23 +95,28 @@ function Demo() {
 
 ### 段落
 
-```jsx
-import { Br } from '@uiw/react-native';
+```jsx  mdx:preview
+import React from "react"
+import P from '@uiw/react-native/lib/Typography/P';
 
-function Demo() {
+export default function Demo() {
   return (
+    <>
     <P>这是一个段落{`<P>`}</P>
+    <P>这是第二个段落{`<P>`}</P>
+    </>
   );
 }
 ```
 
 ### Div
 
-```jsx
+```jsx  mdx:preview
+import React from "react"
 import { View, Text } from 'react-native';
-import { Div } from '@uiw/react-native';
+import Div from '@uiw/react-native/lib/Typography/Div';
 
-function Demo() {
+export default function Demo() {
   return (
     <View>
       <Div>这是一段文本{`<Div>`}</Div>
@@ -118,11 +132,12 @@ function Demo() {
 
 ### 水平线
 
-```jsx
+```jsx  mdx:preview
+import React from "react"
 import { View, Text } from 'react-native';
-import { Hr } from '@uiw/react-native';
+import Hr from '@uiw/react-native/lib/Typography/Hr';
 
-function Demo() {
+export default function Demo() {
   return (
     <View>
       <Text>一段文本</Text>
@@ -135,11 +150,12 @@ function Demo() {
 
 ### 可高亮文本 RnText
 
-```jsx
+```jsx  mdx:preview
+import React from "react"
 import { View } from 'react-native';
-import { RnText } from '@uiw/react-native';
+import RnText from '@uiw/react-native/lib/Typography/RnText';
 
-function Demo() {
+export default function Demo() {
   return (
     <View>
       <RnText type="header" label="react-native-uiw" />

@@ -135,6 +135,7 @@ export default class Tooltip extends React.Component<TooltipProps, TooltipState>
     return (
       <View>
         <Modal
+          testID="RNE__Tooltip__wrap"
           animationType="fade" // slide  none  fade
           transparent={true}
           visible={this.state.modalVisible}
@@ -173,7 +174,7 @@ export default class Tooltip extends React.Component<TooltipProps, TooltipState>
           </Animated.View>
         </Modal>
 
-        <Pressable {...{ [toggleAction]: this.onOpen }} delayLongPress={250}>
+        <Pressable testID="RNE__Tooltip__pressable" {...{ [toggleAction]: this.onOpen }} delayLongPress={250}>
           <View style={[styles.followView, { ...this.state.followStyle }]} ref={this.refFollow}>
             {children}
           </View>

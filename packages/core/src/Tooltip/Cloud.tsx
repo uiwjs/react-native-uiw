@@ -46,7 +46,7 @@ export default class Cloud extends React.Component<CloudProps> {
             },
           ]}
         />
-        <View style={[{ ...TextContainerStyle }]}>
+        <View testID="RNE__Tooltip__cloud__view" style={[{ ...TextContainerStyle }]}>
           <Text style={[styles.cloudText]}>{title}</Text>
         </View>
       </View>

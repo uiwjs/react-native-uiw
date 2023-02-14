@@ -138,10 +138,15 @@ const Input = (props: InputProps) => {
         },
         containerStyle,
       ]}
+      testID="RNE__Input__wrap"
     >
-      <View style={[inputStyles.container, { flex: 1, borderColor: borderColor }, border ? inputStyles[border] : {}]}>
+      <View
+        style={[inputStyles.container, { flex: 1, borderColor: borderColor }, border ? inputStyles[border] : {}]}
+        testID="RNE__Input__view"
+      >
         {typeof extraStart === 'string' ? <Text style={{ color: '#888888', fontSize }}>{extraStart}</Text> : extraStart}
         <TextInput
+          testID="RNE__Input__input"
           {...others}
           ref={inputRef}
           editable={!disabled}
