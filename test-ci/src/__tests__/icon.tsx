@@ -2,7 +2,7 @@ import 'react-native';
 import React from 'react';
 import Icon from '../lib/Icon';
 import { render, fireEvent } from '@testing-library/react-native';
-import svgPaths from '@uiw/icons/fonts/w-icon.json';
+// import svgPaths from '@uiw/icons/fonts/w-icon.json';
 
 describe('Icon', () => {
   // it('name', () => {
