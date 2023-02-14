@@ -28,12 +28,7 @@ const Markdown = styled(MarkdownPreview)`
 const getBooleanValue = (param, field, defaultValue) => {
   if (Reflect.has(param, field)) {
     const newValue = Reflect.get(param, field);
-    if (newValue === 'true') {
-      return true;
-    }
-    if (newValue === 'false') {
-      return false;
-    }
+    return newValue === 'true';
   }
   return defaultValue;
 };
