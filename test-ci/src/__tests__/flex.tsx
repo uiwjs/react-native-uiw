@@ -92,7 +92,6 @@ describe('Flex', () => {
       );
       const component = getByTestId('RNE__Flex__wrap');
       const styles = toObject(component.props.style);
-      console.log(1, styles);
       expect(styles.alignItems).toBe(ALIGNS[align]);
     });
   });
