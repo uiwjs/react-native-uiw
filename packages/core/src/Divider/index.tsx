@@ -42,7 +42,12 @@ export default class Divider extends Component<DividerProps> {
       if (labelStyle && typeof labelStyle === 'number') {
         labelStyle = StyleSheet.flatten(labelStyle);
       }
-      children = <Text style={[styles.label, labelStyle]}> {label} </Text>;
+      children = (
+        <Text testID="RNE__Divider__label" style={[styles.label, labelStyle]}>
+          {' '}
+          {label}{' '}
+        </Text>
+      );
     }
     if (lineStyle && typeof lineStyle === 'number') {
       lineStyle = StyleSheet.flatten(lineStyle);
@@ -53,10 +58,14 @@ export default class Divider extends Component<DividerProps> {
     if (orientation === 'right') {
       startStyles.unshift({ flexGrow: 100 });
     }
-    const lineStart = <View style={[styles.lineStart, ...lineStyleArr, ...startStyles, lineStyle]} />;
-    const lineEnd = <View style={[styles.lineEnd, ...lineStyleArr, ...endStyles, lineStyle]} />;
+    const lineStart = (
+      <View testID="RNE__Divider__start" style={[styles.lineStart, ...lineStyleArr, ...startStyles, lineStyle]} />
+    );
+    const lineEnd = (
+      <View testID="RNE__Divider__end" style={[styles.lineEnd, ...lineStyleArr, ...endStyles, lineStyle]} />
+    );
     return (
-      <View style={[styles.warpper, ...warpperStyles, style]} {...restProps}>
+      <View testID="RNE__Divider__wrap" style={[styles.warpper, ...warpperStyles, style]} {...restProps}>
         {lineStart}
         {children}
         {children && lineEnd}
