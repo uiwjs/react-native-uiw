@@ -3,8 +3,8 @@ import renderer from 'react-test-renderer';
 import 'react-native';
 import React from 'react';
 import Divider from '../lib/Divider';
-import { render, fireEvent } from '@testing-library/react-native';
-import { keys, colorRgb, toObject } from '../utils';
+import { render } from '@testing-library/react-native';
+import { keys, toObject } from '../utils';
 
 const TYPES: keys = {
   horizontal: 'row',
