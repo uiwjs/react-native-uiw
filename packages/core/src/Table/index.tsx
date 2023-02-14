@@ -26,9 +26,9 @@ const Table = ({ data, columns, rowKey, horizontal = true, style }: TableProps) 
   };
 
   return (
-    <ScrollView style={[styles.conW, style]} horizontal={horizontal}>
+    <ScrollView testID="RNE__Table__wrap" style={[styles.conW, style]} horizontal={horizontal}>
       <ScrollView horizontal={!horizontal}>
-        <View style={styles.conTitle}>
+        <View testID="RNE__Table__header" style={styles.conTitle}>
           {columns.map((itm, idx) => (
             <View
               key={itm.dataIndex + idx}
@@ -38,17 +38,19 @@ const Table = ({ data, columns, rowKey, horizontal = true, style }: TableProps) 
             </View>
           ))}
         </View>
-        {data.map((item, idx) => {
-          const key = getRowKey(item);
-          return (
-            <BodyRow
-              key={key}
-              columns={columns}
-              record={item}
-              style={{ borderBottomWidth: idx === data.length - 1 ? 1 : 1 }}
-            />
-          );
-        })}
+        <View testID="RNE__Table__body">
+          {data.map((item, idx) => {
+            const key = getRowKey(item);
+            return (
+              <BodyRow
+                key={key}
+                columns={columns}
+                record={item}
+                style={{ borderBottomWidth: idx === data.length - 1 ? 1 : 1 }}
+              />
+            );
+          })}
+        </View>
         {data.length === 0 && <Text style={styles.noDataText}>暂无数据...</Text>}
       </ScrollView>
     </ScrollView>
