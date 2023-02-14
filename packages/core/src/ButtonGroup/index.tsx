@@ -55,7 +55,7 @@ export default class ButtonGroup extends Component<ButtonGroupProps> {
     }
 
     return (
-      <Flex style={styles.default} {...flexProps} {...otherProps}>
+      <Flex testID="RNE__ButtonGroup__wrap" style={styles.default} {...flexProps} {...otherProps}>
         {childs.map((child: React.ReactNode, idx: number) => {
           if (!React.isValidElement(child)) {
             return null;
@@ -80,7 +80,7 @@ export default class ButtonGroup extends Component<ButtonGroupProps> {
             childStyle.borderWidth = 0;
           }
           if (bordered && !gutter) {
-            if (((idx > 0 && idx < (children as ButtonProps[]).length - 1)) || idx === 0) {
+            if ((idx > 0 && idx < (children as ButtonProps[]).length - 1) || idx === 0) {
               childStyle.borderRightWidth = StyleSheet.hairlineWidth;
             }
             if (idx > 0 && idx < (children as ButtonProps[]).length) {
