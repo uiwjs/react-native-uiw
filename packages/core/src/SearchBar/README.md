@@ -1,4 +1,4 @@
-SearchBar 模糊搜素组件
+SearchBar 模糊搜索组件
 ---
 
 ### 基础示例
