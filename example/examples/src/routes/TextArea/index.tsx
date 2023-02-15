@@ -14,6 +14,7 @@ export default class TextAreaView extends Component<TextAreaProps> {
     value1: '只读状态不可输入',
     value3: '自定义输入框样式',
     value4: '',
+    value5: '',
   };
 
   render() {
@@ -33,6 +34,16 @@ export default class TextAreaView extends Component<TextAreaProps> {
                 }}
                 value={this.state.value}
                 placeholder="默认提示语"
+              />
+            </Card>
+            <Card title="根据内容自动调整高度" style={styles.card}>
+              <TextArea
+                onChange={(value5: string) => {
+                  this.setState({value5});
+                }}
+                value={this.state.value5}
+                placeholder="默认提示语"
+                autoSize
               />
             </Card>
             <Card title="展示字数" style={styles.card}>
