@@ -46,10 +46,10 @@ export default Demo
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
-| maskClosable | 遮罩层是否禁止点击 | `Boolean` | `true` |
-| visible | 遮罩层是否隐藏 |`Boolean` | - |
-| opacity | 遮罩层透明度 | - | 0.6 |
-| onDismiss | 隐藏消除回调事件 | () => void | - |
-| children | 子元素 | JSX.Element |  |
+| `maskClosable` | 遮罩层是否禁止点击 | `Boolean` | `true` |
+| `visible` | 遮罩层是否隐藏 |`Boolean` | - |
+| `opacity` | 遮罩层透明度 | - | 0.6 |
+| `onDismiss` | 隐藏消除回调事件 | () => void | - |
+| `children` | 子元素 | JSX.Element |  |
 
 
