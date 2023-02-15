@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import pkg from '@uiw/react-native/package.json';
 import styles from './index.module.less';
-import DarkMode from '../DarkMode';
+import '@wcj/dark-mode';
 import { ReactComponent } from '../../assets/logo-dark.svg';
 import { ReactComponent as Github } from '../../assets/github.svg';
 
@@ -43,7 +43,7 @@ export default function Header(props: HeaderProps) {
             Web 组件
           </a>
           <NavLink to="/team">团队</NavLink>
-          <DarkMode />
+          <dark-mode permanent style={{ display: 'flex', alignItems: 'center' }} />
           <a target="__blank" href="https://github.com/uiwjs/react-native-uiw">
             <Github />
           </a>

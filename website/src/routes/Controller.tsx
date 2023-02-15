@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Key, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Loader } from 'uiw';
 import { routeData } from '../routes/router';
@@ -16,7 +16,7 @@ export default function Controller() {
       <Route path="/" element={<Navigate replace to="/home" />} />
       <Route path="/docs" element={<Navigate replace to="/docs/getting-started" />} />
       <Route path="/components" element={<Navigate replace to="/components/about" />} />
-      {routeData.map(({ component: BasicLayout, path, children = [] }, idx) => (
+      {routeData.map(({ component: BasicLayout, path, children = [] }: any, idx) => (
         <Route
           path={path}
           key={idx}
@@ -26,7 +26,7 @@ export default function Controller() {
             </Suspense>
           }
         >
-          {children.map((child, idx) => {
+          {children.map((child: { component: any; path: string }, idx: Key | null | undefined) => {
             const Child = child.component as any;
             return (
               <Route

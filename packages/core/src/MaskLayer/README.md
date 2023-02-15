@@ -42,28 +42,14 @@ export default Demo
 
 ### Props
 
-继承原生 Modal 属性 [`ModalProps`](https://facebook.github.io/react-native/docs/modal.html#props)
+继承原生 Modal 属性 [`ModalProps`](https://facebook.github.io/react-native/docs/modal.html#props) 
 
-```typescript
-interface MaskLayerProps extends RNModalProps {
-  /**
-   * 遮罩层是否禁止点击
-   * defult: `true`
-   */
-  maskClosable?: boolean;
-  /**
-   * 是否隐藏
-   */
-  visible?: boolean;
-  /**
-   * 遮罩层透明度
-   * defult: `0.6`
-   */
-  opacity?: number;
-  /**
-   * 隐藏消除回调事件
-   */
-  onDismiss?: () => void;
-  children?: JSX.Element;
-}
-```
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `maskClosable` | 遮罩层是否禁止点击 | `Boolean` | `true` |
+| `visible` | 遮罩层是否隐藏 |`Boolean` | - |
+| `opacity` | 遮罩层透明度 | - | 0.6 |
+| `onDismiss` | 隐藏消除回调事件 | () => void | - |
+| `children` | 子元素 | JSX.Element |  |
+
+

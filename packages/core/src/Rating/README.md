@@ -97,34 +97,15 @@ export default Demo
 
 ### Props
 
-```ts
-import { TabsItemIconTypes } from '@uiw/react-native'
 
-export type icoType = [TabsItemIconTypes, TabsItemIconTypes]
-export interface RatingProps {
-  /**  默认选中几个 */
-  defaultRating?: number;
-  /** 总数*/
-  resultRating?: number;
-  /** icon 大小 */
-  size?: number;
-  /** icon 颜色 */
-  color?: string;
-  /** actived 激活 unactived 未激活 */
-  icon?: {
-    actived?: TabsItemIconTypes,
-    unactived?: TabsItemIconTypes
-  };
-  /**
-   * void
-   * @param score type: number 选中几个
-   */
-  onPress?: (score: number) => void;
-    /** 自定义每项的提示信息 */
-  tooltips?: string[];
-  /** 自定义提示信息样式 */
-  tooltipsStyle?: StyleProp<TextStyle>;
-    /** 只读模式 */
-  disabled: boolean
-}
-```
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `defaultRating` | 默认选中几个 | number | - |
+| `resultRating` | 总数 | number | - |
+| `size` | icon 大小 | number | - |
+| `color` | icon 颜色 | string | - |
+| `icon` | `actived` 激活 `unactived` 未激活 | obj | - |
+| `onPress` | 选中事件 | fn | - |
+| `tooltips` | 自定义每项的提示信息 | arr | - |
+| `resultRating` | 只读模式 | boolean | - |
+ 

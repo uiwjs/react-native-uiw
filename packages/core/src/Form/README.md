@@ -267,90 +267,44 @@ const FormComponent = Form.create(FormDemo)
 
 export default FormComponent;
 ```
-End
 
+### Props
 
-### FormProps
-```ts
-interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> {
-  /**
-   * 表单集合
-  */
-  schema?: FormItemsProps[];
-  /**
-   * 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建
-  */
-  form: FormInstance<FormData, FieldValue, FieldKey>;
-  /**
-   * 表单默认值，只有初始化以及重置时生效
-  */
-  initialValues?: Partial<FormData>;
-  /**
-   * 支持默认和卡片两种模式
-  */
-  mode?:'default' | 'card';
-  // 表单是否在onChange时进行验证
-  changeValidate?: boolean;
-  // 监听表单字段变化
-  watch?: Partial<Record<string, (value: unknown) => void>>;
-  // 自定义组件
-  customComponentList?: Partial<Record<string, JSX.Element>>;
-}
-```
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `schema` | 表单集合 | FormItemsProps[] | [] |
+| `form` | 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建 | FormInstance<`FormData`, `FieldValue`, `FieldKey`> | - |
+| `initialValues` | 表单默认值，只有初始化以及重置时生效 | Partial<`FormData`> | - |
+| `mode` | 支持默认和卡片两种模式 | `default` \| `card` | | default |
+| `changeValidate` | 表单是否在onChange时进行验证 | boolean | false |
+| `watch` | 监听表单字段变化 | Partial<Record<string, (value: unknown) => void>> | - |
+| `customComponentList` | 自定义组件 | Partial<Record<string, JSX.Element>> | - |
 
 ### FormItemsProps
-```ts
-interface FormItemsProps {
-  // 字段名
-  field: string;
-  // 字段类型(默认继承了react-native-uiw中的 input | textArea | slider | rate | radio | search | switch | checkBox | stepper ｜ cardList   )
-  type: string;
-  // 标签名
-  name: string;
-  // 验证规则
-  validate?: RulesOption['validate'];
-  options?: Array<{ label: string; value: KeyType }>;
-  // 表单控件props
-  attr?: any;
-  // 展示是否必填
-  required?: boolean;
-  // 是否隐藏
-  hide?:boolean
-  // 当type为cardList生效,渲染每一项的头部内容
-  renderHeader?:(index:number,{ remove }:{ remove:()=>void })=>React.ReactNode;
-  // 当type为cardList生效,渲染添加按钮的文案
-  renderAdd?:( { add }:{ add:()=>void } )=>React.ReactNode;
-  // 当type为cardList生效,配置表单项
-  items?: Omit<FormItemsProps, 'validate' | 'required'>[];
-}
-```
 
-### FormInstance
-```ts
-type FormInstance<FormData = any, FieldValue = FormData[keyof FormData], FieldKey extends KeyType = keyof FormData> = {
-  /**
-   * 获取对应字段名的值
-  */
-  getFieldValue: (field: FieldKey) => FieldValue;
-   /**
-   * 设置对应字段名的值
-  */
-  setFieldValue: (field: FieldKey, value: FieldValue) => void;
-   /**
-   * 重制表单
-  */
-  resetFieldValue: () => void;
-  /**
-   * 触发验证
-  */
-  validate: () => Partial<Record<string, string>>;
-  /**
-   * 触发表单验证获取表单数据
-  */
-  validateFields: () => Promise<FormData> | any;
-  getInnerMethods: (inner?: boolean) => InnerMethodsReturnType<FormData>;
-};
-```
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `field` | 字段名 | string | - |
+| `type` | 字段类型(默认继承了react-native-uiw中的 input | textArea | slider | rate | radio | search | switch | checkBox | stepper ｜ cardList   ) | string | - |
+| `name` | 标签名 | string | - |
+| `validate` | 验证规则 | RulesOption['validate'] | - |
+| `options` | 集合 | Array<{ label: string; value: KeyType }> | - |
+| `attr` | 表单控件props | any | - |
+| `required` | 展示是否必填 | boolean | - |
+| `hide` | 是否隐藏 | boolean | - |
+| `renderHeader` | 当type为cardList生效,渲染每一项的头部内容 | (index:number,{ remove }:{ remove:()=>void })=>React.ReactNode | - |
+| `renderAdd` | 当type为cardList生效,渲染添加按钮的文案 | ( { add }:{ add:()=>void } )=>React.ReactNode | - |
+| `items` | 当type为cardList生效,配置表单项 | Omit<FormItemsProps, `validate` \| `required`>[] | - |
 
+### FormInstanceProps
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `getFieldValue` | 获取对应字段名的值 | (field: FieldKey) => FieldValue | - |
+| `setFieldValue` | 设置对应字段名的值 | (field: FieldKey, value: FieldValue) => void | - |
+| `resetFieldValue` | 重制表单 | () => void | - |
+| `validate` | 触发验证 | () => Partial<Record<string, string>> | - |
+| `validateFields` | 触发表单验证获取表单数据 | () => Promise<FormData> \| any | - |
+| `getInnerMethods` | 组件内部方法集合 | (inner?: boolean) => InnerMethodsReturnType<FormData> | - |
 
 
