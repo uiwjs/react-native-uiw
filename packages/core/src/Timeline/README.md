@@ -148,29 +148,19 @@ export default Demo
 ```
 
 ### Props
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| items | 步骤条数据列表 | `TimelineItemsProps[]` | - |
+| isReverse | 是否倒序 |  `boolean` | - |
+| mode | 改变时间轴和内容的相对位置 | `'left' \| 'alternate'` | - |
 
-```ts
-export interface TimelineItemsProps {
-  /** 标题 */
-  title: string;
-  /** 子标题 */
-  tips?: string;
-  /** 子项内容 */
-  desc?: string | string[]; 
-  /** 自定义图标 */
-  icon?: IconsName | React.ReactElement | React.ReactNode;
-  /** 自定义图标颜色 */
-  color?: string;
-  /** 自定义图标尺寸 */
-  size?: number;
-}
 
-export interface TimelineProps extends ViewProps {
-  /** 是否倒序 */
-  isReverse?: boolean;
-  /** 步骤条数据列表 */
-  items: TimelineItemsProps[];
-  /** 改变时间轴和内容的相对位置 */
-  mode?: 'left' | 'alternate';
-}
-```
+### TimelineItemsProps
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| title | 标题 | `string` | - |
+| tips | 子标题 | `string` | - |
+| desc | 子项内容 | `string \| string[]` | - |
+| icon | 自定义图标 | `IconsName \| React.ReactElement \| React.ReactNode` | - |
+| color | 自定义图标颜色 | `string` | - |
+| size | 自定义图标尺寸 | `number` | - |
