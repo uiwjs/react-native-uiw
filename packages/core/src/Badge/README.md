@@ -47,22 +47,11 @@ export default Demo;
 
 继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
 
-```ts
-import { ViewProps } from 'react-native';
-
-export interface BadgeProps extends ViewProps {
-  children?: React.ReactNode;
-  /** 标记颜色 */
-  color?: colors.Colors | string;
-  /** 文本内容 */
-  text?: string | Element;
-  /**
-   * 设置圆角，默认 `12`
-   */
-  rounded?: number;
-  /** 设置类型 */
-  type?: 'dot' | 'text';
-  /** 文本样式 */
-  textStyles?: StyleProp<TextStyle>;
-}
-```
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| color | 标记颜色 | `colors.Colors \| string` | - |
+| text | 文本内容 | `string \| Element` | - |
+| rounded | 设置圆角 | `boolean \| number` | `12` |
+| textStyles | 文本样式 | `StyleProp<TextStyle>` | - |
+| type | 设置类型 | `'dot' \| 'text'` | - |
+| children | 更多内容 | `React.ReactNode` | - |

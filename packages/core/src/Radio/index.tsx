@@ -132,10 +132,21 @@ export default class Radio extends Component<RadioProps, RadioState> {
     const backgroundColor = disabled ? color : checkedColor;
     const borderColor = disabled ? color : bdColor;
     return (
-      <View style={[styles.defalut, style]} {...otherProps}>
-        <TouchableOpacity disabled={disabled} style={[styles.touch]} onPress={this.handlePress}>
-          <Animated.View style={[styles.checkBg, { width: circleSize, height: circleSize, borderColor }]}>
-            <Animated.View style={[styles.check, { width: sizeValue, height: sizeValue, backgroundColor }]} />
+      <View testID="RNE__Radio__wrap" style={[styles.defalut, style]} {...otherProps}>
+        <TouchableOpacity
+          disabled={disabled}
+          style={[styles.touch]}
+          onPress={this.handlePress}
+          testID="RNE__Radio__view"
+        >
+          <Animated.View
+            style={[styles.checkBg, { width: circleSize, height: circleSize, borderColor }]}
+            testID="RNE__Radio__border"
+          >
+            <Animated.View
+              style={[styles.check, { width: sizeValue, height: sizeValue, backgroundColor }]}
+              testID="RNE__Radio__box"
+            />
           </Animated.View>
           {this.props.children && (
             <MaybeTextOrView

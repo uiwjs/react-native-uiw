@@ -9,6 +9,11 @@
   width: 100%;
 }
 
+html[data-color-mode*='dark'] .warpper {
+  background-color: #0d1117;
+  border-bottom: 1px solid #032438;
+}
+
 .inner {
   margin: 0 auto;
   display: flex;
@@ -19,6 +24,7 @@
 
 .menus {
   display: flex;
+
   a {
     transition: all 0.3s;
     color: #333;
@@ -27,9 +33,11 @@
     display: flex;
     align-items: center;
   }
+
   a + a {
     margin-left: 6px;
   }
+
   :global(.active),
   a:hover {
     background: #00000017;
@@ -41,6 +49,7 @@
   display: flex;
   align-items: center;
   color: #333;
+
   img {
     margin-right: 8px;
     height: 38px;
@@ -53,9 +62,11 @@
   line-height: 14px;
   font-weight: bold;
   padding-left: 8px;
+
   > :first-child {
     font-size: 18px;
   }
+
   > :last-child {
     margin-bottom: -10px;
     font-size: 12px;

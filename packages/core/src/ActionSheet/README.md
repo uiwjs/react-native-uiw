@@ -54,33 +54,26 @@ export default Demo
 
 ### Props
 
-```js
-import { StyleProp, ViewStyle } from 'react-native';
-import { ModalProps } from '@uiw/react-native';
-
-export interface DividerStyle {
-  itemDivider?: StyleProp<ViewStyle>,
-  actionDivider?: StyleProp<ViewStyle>,
-}
-```
-
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | onCancel | 点击蒙层是否关闭 | Boolean | `false` |
-| dividerStyle | 分割线样式 | DividerStyle | - |
-| containerStyle | 取消的容器样式 | StyleProp<ViewStyle> | - |
+| dividerStyle | 分割线样式 | DividerStyleProps | - |
+| containerStyle | 取消的容器样式 | StyleProp<`ViewStyle`> | - |
 | activeOpacity | 动作在被触摸操作激活时以多少不透明度显示 | number | `#f1f1f1` |
 | underlayColor | 动作有触摸操作时显示出来的底层的颜色 | string | `#f1f1f1` |
 | cancelText | 取消的文本 | `React.ReactNode` | - |
 | textStyle | 取消的文本样式 | `StyleProp<TextStyle>` | - |
 
-### ActionSheetItem Props
-```js
-import { TextStyle, StyleProp, ViewStyle } from 'react-native';
-```
+### DividerStyleProps
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| itemDivider | - | StyleProp<`ViewStyle`> | `false` |
+| actionDivider | - | StyleProp<`ViewStyle`> | - |
 
+### ActionSheetItemProps
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | containerStyle | 容器样式 | `StyleProp<ViewStyle>` | - |
 | textStyle | 文本样式 | `StyleProp<ViewStyle>` | - |
 | onPress | 点击 ActionSheetItem 触发的事件 | `(event: GestureResponderEvent) => void` | - |
+
