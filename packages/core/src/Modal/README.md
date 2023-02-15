@@ -43,9 +43,8 @@ export default ButtonGroupView
 
 继承原生 Modal 属性 [`ModalProps`](https://facebook.github.io/react-native/docs/modal.html#props)
 
-```ts
-export interface ModalProps extends MaskLayerProps {
-  placement?: 'top' | 'right' | 'bottom' | 'left';
-  onClosed?: () => void;
-}
-```
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| placement | 模态框的方向 | `'top' \| 'right' \| 'bottom' \| 'left'` | bottom |
+| onClosed | 关闭函数 | `() => void` | - |
+
