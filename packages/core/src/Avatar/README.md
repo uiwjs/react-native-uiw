@@ -26,7 +26,7 @@ export default Demo
 
 ```
 
-### props
+### Props
 
 继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
 
