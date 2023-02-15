@@ -213,26 +213,14 @@ function Demo() {
 export default Demo
 ```
 
+### Props
 
-### TransitionImage Props
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| options | 级联数据 | TreeSelectOption[] | - |
+| defaultValue | 默认选中项 | string[] | - |
+| value | 选中项 | string[] | - |
+| onChange | value 变化时触发 | (value: string[], extend: { options: TreeSelectOption[] }) => void | - |
+| fieldNames | 自定义 options 中 label value children 的字段 | {{ label: string, value: string, children: string }} \| any | - |
+| activeColor | 选中文本颜色 | `string` | - |
 
-```ts
-export interface TreeSelectOption {
-  [key: string]: any
-}
-
-export type TreeSelectProps = {
-  // 级联数据
-  options: TreeSelectOption[]
-  // 默认选中项
-  defaultValue?: string[]
-  // 选中项
-  value?: string[]
-  // value 变化时触发
-  onChange?: (value: string[], extend: { options: TreeSelectOption[] }) => void
-  // 自定义 options 中 label value children 的字段
-  fieldNames?: {{ label: string, value: string, children: string } } | any
-  // 选中文本颜色
-  activeColor?:ColorValue
-}
-```
