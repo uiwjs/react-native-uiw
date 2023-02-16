@@ -20,9 +20,32 @@ brew install node
 brew install watchman
 ```
 
-如果您的系统上已经安装了 Node，请确保它是 Node 12 或更新版本。
+如果您的系统上已经安装了 Node，请确保它是 Node 14 或更新版本。
+
+> 🚧 注意：不要使用 cnpm！cnpm 安装的模块路径比较奇怪，packager 不能正常识别！
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+```shell
+# 使用nrm工具切换淘宝源
+npx nrm use taobao
+
+# 如果之后需要切换回官方源可使用
+npx nrm use npm
+```
+
 
 [Watchman](https://facebook.github.io/watchman/) 是 Facebook 的一个工具，用于观察文件系统中的变化。强烈建议您安装它以获得更好的性能。
+
+### `Yarn`
+
+[Yarn](https://yarnpkg.com/) 是 Facebook 提供的替代 npm 的工具，可以加速 node 模块的下载
+
+```
+npm install -g yarn
+```
+
+安装完 yarn 之后就可以用 yarn 代替 npm 了，例如用`yarn`代替`npm install`命令，用`yarn add 某第三方库名`代替`npm install 某第三方库名`。
 
 ### `Java 开发工具包`
 
@@ -66,14 +89,14 @@ javac 11.0.16
 - `Android Virtual Device`
 - 如果您尚未使用 Hyper-V：`Performance (Intel ® HAXM)`（[请参阅此处](https://android-developers.googleblog.com/2018/07/android-emulator-amd-processor-hyper-v.html)了解 AMD 或 Hyper-V）
 
-> 🚧 如果复选框变灰，您稍后将有机会安装这些组件。
+> 🚧 如果复选框变灰，您也可以先跳过，稍后再来安装这些组件。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 设置完成并显示欢迎屏幕后，继续下一步。
 
 #### `第 2 步`<!--rehype:style=background: #a5d4ff;--> 安装 Android SDK
 
-Android Studio 默认安装最新的 Android SDK。 但是，使用本机代码构建 React Native 应用程序特别需要 `Android 10 (Q)` SDK。 可以通过 Android Studio 中的 SDK Manager 安装其他 Android SDK。
+Android Studio 默认安装最新的 Android SDK。 但是，使用本机代码构建 React Native 应用程序特别需要 `Android 12 (S)` SDK。 可以通过 Android Studio 中的 SDK Manager 安装其他 Android SDK。
 
 为此，请打开 Android Studio，单击 `Configure` 按钮并选择 `SDK Manager`。
 
@@ -82,7 +105,7 @@ Android Studio 默认安装最新的 Android SDK。 但是，使用本机代码�
 > 🚧 `SDK Manager` 也可以在 Android Studio 的 `Preferences` 对话框中找到，在 `Appearance & Behavior` → `System Settings` → `Android SDK` 下。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-从 `SDK Manager` 中选择 `SDK Platforms` 选项卡，然后选中右下角 `Show Package Details` 旁边的框。 查找并展开 `Android 10 (Q)` 条目，然后确保选中以下项目：
+从 `SDK Manager` 中选择 `SDK Platforms` 选项卡，然后选中右下角 `Show Package Details` 旁边的框。 查找并展开 `Android 12 (S)` 条目，然后确保选中以下项目：
 
 - `Android SDK Platform 31`
 - `Intel x86 Atom_64 System Image` 或 `Google APIs Intel x86 Atom System Image` 或 (for Apple M1 Silicon) `Google APIs ARM 64 v8a System Image`
@@ -101,11 +124,14 @@ Android Studio 默认安装最新的 Android SDK。 但是，使用本机代码�
 
 React Native 工具需要设置一些环境变量才能使用本机代码构建应用程序。
 
-将以下行添加到您的 `$HOME/.bash_profile` 或 `$HOME/.bashrc`（如果您使用的是 `zsh`，则使用 `~/.zprofile` 或 `~/.zshrc`）配置文件：
+将以下行添加到您的 `$HOME/.bash_profile` 或 `$HOME/.bashrc`（如果您使用的是 `zsh`，则使用 `~/.zprofile` 或 `~/.zshrc`；如果是 `bash` 则为`~/.bash_profile`）配置文件：
 
 ```shell
+# 如果你不是通过Android Studio安装的sdk，则其路径可能不同，请自行确定清楚
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 ```
 
@@ -126,7 +152,7 @@ React Native 有一个内置的命令行界面。 我们建议您在运行时使
 
 ## 创建一个新的应用程序
 
-> 🚧 如果您之前安装了全局 `react-native-cli` 包，请将其删除 (`npm uninstall react-native-cli -g`)，因为它可能会导致意外问题。
+> 🚧 如果您之前安装了全局 `react-native-cli` 包，请将其删除 (`npm uninstall -g react-native-cli`)，因为它可能会导致意外问题。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 您可以使用 React Native 的内置命令行界面来生成一个新项目。 让我们创建一个名为 `AwesomeProject` 的新 React Native 项目：
@@ -181,13 +207,13 @@ npx react-native init AwesomeProject --template @uiw/react-native-template
 
 ![](./5.png)
 
-如果您最近安装了 Android Studio，您可能需要创建一个新的 AVD。 选择 `Create Virtual Device...`，然后从列表中选择任何电话并单击 `Next`，然后选择 Q API 级别 29 镜像。
+如果您最近安装了 Android Studio，您可能需要先[创建一个虚拟设备](https://developer.android.com/studio/run/managing-avds.html)， 选择 `Create Virtual Device...`，然后从列表中选择任何电话并单击 `Next`，然后选择 R API Level 30 image.
 
 ![](./6.png)
 
 ![](./7.png)
 
-![](./9.png)
+<!--![](./9.png)-->
 
 > 🚧 注意：如果您是 `MacBook M1`<!--rehype:style=color: #e00000;-->，你需要下载 `arm64` 镜像，以下是最新版本的配置方法。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
@@ -223,7 +249,9 @@ yarn start
 ```shell
 npx react-native run-android
 # or 进入项目根目录
-yarn run android
+yarn android
+# or 进入项目根目录
+yarn react-native run-android
 ```
 
 如果一切设置正确，您应该很快就会看到您的新应用程序在您的 Android 模拟器中运行。
@@ -231,6 +259,9 @@ yarn run android
 ![Android Studio](./10.png)
 
 `npx react-native run-android` 是运行您的应用程序的一种方式 - 您也可以直接从 Android Studio 中运行它。
+
+> 注：建议在`run-android`成功后再尝试使用 Android Studio 启动。请不要轻易点击 Android Studio 中可能弹出的建议更新项目中某依赖项的建议，否则可能导致无法运行。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 如果您无法使其正常工作，请参阅[故障排除页面](https://reactnative.dev/docs/troubleshooting#content)。
 

@@ -34,6 +34,15 @@ choco install -y nodejs.install openjdk11
 
 > 🚧 如果您使用的是最新版本的 `Java Development Kit`，则需要更改项目的 `Gradle` 版本，以便它能够识别 `JDK`。 您可以通过转到 `{project root folder}\android\gradle\wrapper\gradle-wrapper.properties` 并更改 `distributionUrl` 值以升级 Gradle 版本来实现。 您可以在此处查看 [Gradle 的最新版本](https://gradle.org/releases/)。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+```
+# 使用nrm工具切换淘宝源
+npx nrm use taobao
+
+# 如果之后需要切换回官方源可使用
+npx nrm use npm
+```
 
 ### `Yarn 的安装`
 
@@ -155,7 +164,7 @@ javac
 
 #### `第 2 步`<!--rehype:style=background: #a5d4ff;--> 安装 Android SDK
 
-Android Studio 默认安装最新的 Android SDK。 但是，使用本机代码构建 React Native 应用程序特别需要 `Android 10 (Q)` SDK。 可以通过 Android Studio 中的 SDK Manager 安装其他 Android SDK。
+Android Studio 默认安装最新的 Android SDK。 但是，使用本机代码构建 React Native 应用程序特别需要 `Android 12 (S)` SDK (注意 SDK 版本不等于终端系统版本，RN 目前支持 android 5 以上设备。) 可以通过 Android Studio 中的 SDK Manager 安装其他 Android SDK。
 
 为此，请打开 Android Studio，单击 `Configure` 按钮并选择 `SDK Manager`。
 
@@ -165,18 +174,18 @@ Android Studio 默认安装最新的 Android SDK。 但是，使用本机代码�
 > 🚧 `SDK Manager` 也可以在 Android Studio 的 `Preferences` 对话框中找到，在 `Appearance & Behavior` → `System Settings` → `Android SDK` 下。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-从 `SDK Manager` 中选择 `SDK Platforms` 选项卡，然后选中右下角 `Show Package Details` 旁边的框。 查找并展开 `Android 10 (Q)` 条目，然后确保选中以下项目：
+从 `SDK Manager` 中选择 `SDK Platforms` 选项卡，然后选中右下角 `Show Package Details` 旁边的框。 查找并展开 `Android 12 (S)` 条目，然后确保选中以下项目：
 
-- `Android SDK Platform 29`
+- `Android SDK Platform 31`
 - `Intel x86 Atom_64 System Image` or `Google APIs Intel x86 Atom System Image`
 
-接下来，选择 `SDK Tools` 选项卡并在此处选中 `Show Package Details` 旁边的框。 查找并展开 `Android SDK Build-Tools` 条目，然后确保选择了 `29.0.2`。
+接下来，选择 `SDK Tools` 选项卡并在此处选中 `Show Package Details` 旁边的框。 查找并展开 `Android SDK Build-Tools` 条目，然后确保选择了 `31.0.0`。
 
 最后，点击 `Apply` 下载并安装 Android SDK 和相关的构建工具。
 
-接下来，选择 `SDK Tools` 选项卡并在此处选中 `Show Package Details` 旁边的框。 查找并展开 `Android SDK Build-Tools` 条目，然后确保选择了 `29.0.2`。选中并 `Android SDK Command-line Tools (latest)`
+接下来，选择 `SDK Tools` 选项卡并在此处选中 `Show Package Details` 旁边的框。 查找并展开 `Android SDK Build-Tools` 条目，然后确保选择了 `31.0.0`。选中并 `Android SDK Command-line Tools (latest)`
 
-<img src="./030.png" /><!--rehype:style=max-width: 580px;-->
+<!-- <img src="./030.png" /> --><!--rehype:style=max-width: 580px;-->
 
 <img src="./031.png" /><!--rehype:style=max-width: 580px;-->
 
@@ -219,6 +228,7 @@ SDK 默认是安装在下面的目录：
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 > 🚧 必须要看的注意事项三：请`不要`使用一些移植的终端环境，例如`git bash`或`mingw`等等，这些在 windows 下可能导致找不到环境变量。请使用系统自带的命令行（CMD 或 powershell）运行。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 ```shell
@@ -315,7 +325,10 @@ yarn run android
 
 ![Android Studio](./006.png)
 
-`npx react-native run-android` 是运行您的应用程序的一种方式 - 您也可以直接从 Android Studio 中运行它。  
+`npx react-native run-android` 是运行您的应用程序的一种方式 - 您也可以直接从 Android Studio 中运行它。
+
+> 注：建议在`run-android`成功后再尝试使用 Android Studio 启动。请不要轻易点击 Android Studio 中可能弹出的建议更新项目中某依赖项的建议，否则可能导致无法运行。
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;--> 
 
 如果您无法使其正常工作，请参阅[故障排除页面](https://reactnative.dev/docs/troubleshooting#content)。
 
