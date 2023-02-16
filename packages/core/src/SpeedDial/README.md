@@ -19,7 +19,7 @@ function Demo() {
   return (
     <View style={{ height: 800, background: '#ddd' }}>
       <SpeedDial
-        onOpen={()=>console.log('onOpen')}
+        onOpen={()=>console.log('onOpen2')}
         onClose={()=>console.log('onClose')}
         children={[
           {
@@ -47,6 +47,45 @@ function Demo() {
 export default Demo
 ```
 
+### 设置动画时间
+
+```jsx  mdx:preview
+import React, { Fragment } from 'react';
+import { SpeedDial, Icon } from '@uiw/react-native';
+import { View, Text, Dimensions } from 'react-native';
+
+function Demo() {
+  return (
+    <View style={{ height: 800, background: '#ddd' }}>
+      <SpeedDial
+       transitionDuration={2000}
+        onOpen={()=>console.log('onOpen')}
+        onClose={()=>console.log('onClose')}
+        children={[
+          {
+            icon: 'plus',
+            title: <Text>Add</Text>,
+            onPress:()=>console.log('Add')
+          },
+          {
+            icon: <Icon name='star-on' color="#fff" size={18} />,
+            title: 'Star'
+          },
+          {
+            icon: <Icon name='mail' color="#fff" size={18} />,
+            title: 'Mail'
+          },
+          {
+            icon: <Icon name='share' color="#fff" size={18} />,
+            title: 'Share'
+          }
+        ]}
+      />
+    </View>
+  );
+}
+export default Demo
+```
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值|
