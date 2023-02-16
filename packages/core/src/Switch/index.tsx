@@ -1,4 +1,5 @@
-import React from 'react';
+import { number } from 'prop-types';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   TouchableOpacity,
   Animated,
@@ -33,172 +34,174 @@ export interface SwitchState {
   animatedStart: (checked: boolean) => void;
 }
 
-export default class Switch extends React.Component<SwitchProps, SwitchState> {
-  translateXValue: number = 2;
-  height: number = 16;
-  static defaultProps: SwitchProps = {
-    checked: false,
-    size: 'default',
-    thumbColor: '#fff',
-    color: '#4DD964',
-    onValueChange: () => {},
-  };
-  private animatedStart: (checked: boolean) => void;
-  constructor(props: SwitchProps) {
-    super(props);
-    this.animatedStart = (checked: boolean) => {
-      const obj = {
-        height: this.height,
-        number: 1,
-        translateXValue: this.translateXValue,
-      };
-      if (!checked) {
-        obj.height = 2;
-        obj.number = 0;
-        obj.translateXValue = 2;
-      }
-      Animated.parallel([
-        Animated.sequence([
-          Animated.spring(this.state.borderValue, {
-            toValue: obj.height,
-            overshootClamping: true,
-            useNativeDriver: false,
-          }),
-          Animated.spring(this.state.bgOpacity, {
-            toValue: obj.number,
-            overshootClamping: true,
-            useNativeDriver: false,
-          }),
-        ]),
-        Animated.spring(this.state.translateXValue, {
-          toValue: obj.translateXValue,
+function Switch(props: SwitchProps) {
+  const {
+    style,
+    size,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    checked = false,
+    color,
+    disabled,
+    thumbColor,
+    trackStyle,
+    thumbStyle,
+    ...otherProps
+  } = props;
+  const [height, setHeight] = useState(16);
+  const [translateXValue, setTranslateXValue] = useState(2);
+
+  const animatedStart = (checked: boolean) => {
+    const obj = {
+      height: height,
+      number: 1,
+      translateXValue: translateXValue,
+    };
+
+    if (!checked) {
+      obj.height = 2;
+      obj.number = 0;
+      obj.translateXValue = 2;
+    }
+
+    Animated.parallel([
+      Animated.sequence([
+        Animated.spring(state.borderValue, {
+          toValue: obj.height,
           overshootClamping: true,
           useNativeDriver: false,
         }),
-      ]).start();
-    };
-    this.state = {
-      checked: !!this.props.checked,
-      containerSize: { width: 0, height: 0 },
-      borderValue: new Animated.Value(0),
-      translateXValue: new Animated.Value(2),
-      bgOpacity: new Animated.Value(props.value ? 1 : 0),
-      control: 'state',
-      animatedStart: this.animatedStart,
-    };
-    this.animatedStart(!!this.props.checked);
-  }
-  static getDerivedStateFromProps(props: SwitchProps, state: SwitchState) {
-    if (state.control === 'state') {
-      return {
-        control: 'props',
-      };
-    }
-    if (props.checked !== state.checked) {
-      state.animatedStart(!!props.checked);
-      return {
-        checked: !!props.checked,
-        control: 'props',
-      };
-    }
-    return null;
-  }
-  onPress = () => {
-    const checked = !this.state.checked;
-    this.setState({ checked, control: 'state' }, () => {
-      this.animatedStart(checked);
-      this.props.onValueChange!(checked);
-    });
+        Animated.spring(state.bgOpacity, {
+          toValue: obj.number,
+          overshootClamping: true,
+          useNativeDriver: false,
+        }),
+      ]),
+      Animated.spring(state.translateXValue, {
+        toValue: obj.translateXValue,
+        overshootClamping: true,
+        useNativeDriver: false,
+      }),
+    ]).start();
   };
-  measureContainer = (event: LayoutChangeEvent) => {
-    const { checked } = this.state;
-    const { translateXValue } = this.state;
+
+  const [state, setState] = useState<SwitchState>({
+    checked: checked,
+    containerSize: { width: 0, height: 0 },
+    borderValue: new Animated.Value(0),
+    translateXValue: new Animated.Value(2),
+    bgOpacity: new Animated.Value(props.value ? 1 : 0),
+    control: 'state',
+    animatedStart: animatedStart,
+  });
+
+  const { containerSize } = state;
+
+  const onPress = () => {
+    const checked = !state.checked;
+    setState({ ...state, checked, control: 'state' });
+
+    animatedStart(checked);
+    props.onValueChange!(checked);
+  };
+
+  const measureContainer = (event: LayoutChangeEvent) => {
+    animatedStart(!!props.checked);
+    let { checked, translateXValue } = state;
+    const {} = state;
     const { height: layoutHeight, width: layoutWidth } = event.nativeEvent.layout;
-    const height = layoutHeight - 4;
+    let height = layoutHeight - 4;
     const width = height;
     const size = { width, height };
-    this.height = height / 2;
-    const state = { containerSize: size };
-    this.translateXValue = layoutWidth - 2 - width;
+    setHeight(height / 2);
+    setTranslateXValue(layoutWidth - 2 - width);
     translateXValue.setValue(checked ? layoutWidth - 2 - width : 2);
-    this.setState({ ...state, control: 'state' }, () => {
-      this.animatedStart(!!this.props.checked);
-    });
+    setState({ ...state, containerSize: size, control: 'state' });
+    animatedStart(!!props.checked);
   };
-  render() {
-    const {
-      style,
-      size,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      checked,
-      color,
-      disabled,
-      thumbColor,
-      trackStyle,
-      thumbStyle,
-      ...otherProps
-    } = this.props;
-    const { containerSize } = this.state;
-    const bgBorder = this.state.borderValue.interpolate({
-      inputRange: [2, this.height],
-      outputRange: [2, this.height],
-      // extrapolate: 'clamp',
-    });
-    const sizeStyl: ViewStyle = {};
-    switch (size) {
-      case 'small':
-        sizeStyl.height = 20;
-        sizeStyl.width = 30;
-        break;
-      case 'large':
-        sizeStyl.height = 30;
-        sizeStyl.width = 48;
-        break;
-      default:
-        sizeStyl.height = 26;
-        sizeStyl.width = 38;
-        break;
-    }
-    return (
-      <View {...otherProps} onLayout={this.measureContainer} style={[styles.warpper, sizeStyl, style]}>
-        {disabled && <View style={[styles.position, styles.disabled]} />}
-        <Animated.View style={[styles.bg, styles.position, trackStyle, { borderWidth: bgBorder }]} />
-        <TouchableOpacity
-          // eslint-disable-next-line
-          style={[styles.position, { zIndex: 1 }]}
-          onPress={this.onPress}
-        />
-        <Animated.View
-          style={[
-            styles.position,
-            // eslint-disable-next-line
-            {
-              backgroundColor: this.state.checked ? color : '',
-              borderRadius: 16,
-              opacity: this.state.bgOpacity,
-            },
-          ]}
-        />
-        <Animated.View
-          style={[
-            styles.grip,
 
-            disabled ? styles.shadowDisable : styles.shadow,
-            {
-              backgroundColor: thumbColor,
-              width: containerSize.width,
-              height: containerSize.height,
-            },
-            thumbStyle,
-            {
-              transform: [{ translateX: this.state.translateXValue }],
-            },
-          ]}
-        />
-      </View>
-    );
+  // if (state.control === 'state') {
+  //   setState({ ...state, control: 'props' });
+  // }
+  // if (props.checked !== state.checked) {
+  //   state.animatedStart(!!props.checked);
+  //   setState({
+  //     ...state,
+  //     checked: !!props.checked,
+  //     control: 'props',
+  //   });
+  // }
+
+  const bgBorder = state.borderValue.interpolate({
+    inputRange: [2, height],
+    outputRange: [2, height],
+    // extrapolate: 'clamp',
+  });
+
+  const sizeStyl: ViewStyle = {};
+  switch (size) {
+    case 'small':
+      sizeStyl.height = 20;
+      sizeStyl.width = 30;
+      break;
+    case 'large':
+      sizeStyl.height = 30;
+      sizeStyl.width = 48;
+      break;
+    default:
+      sizeStyl.height = 26;
+      sizeStyl.width = 38;
+      break;
   }
+
+  return (
+    <View {...otherProps} onLayout={measureContainer} style={[styles.warpper, sizeStyl, style]}>
+      {disabled && <View style={[styles.position, styles.disabled]} />}
+      <Animated.View style={[styles.bg, styles.position, trackStyle, { borderWidth: bgBorder }]} />
+      <TouchableOpacity
+        // eslint-disable-next-line
+        style={[styles.position, { zIndex: 1 }]}
+        onPress={onPress}
+      />
+      <Animated.View
+        style={[
+          styles.position,
+          // eslint-disable-next-line
+          {
+            backgroundColor: state.checked ? color : '',
+            borderRadius: 16,
+            opacity: state.bgOpacity,
+          },
+        ]}
+      />
+      <Animated.View
+        style={[
+          styles.grip,
+
+          disabled ? styles.shadowDisable : styles.shadow,
+          {
+            backgroundColor: thumbColor,
+            width: containerSize.width,
+            height: containerSize.height,
+          },
+          thumbStyle,
+          {
+            transform: [{ translateX: state.translateXValue }],
+          },
+        ]}
+      />
+    </View>
+  );
 }
+
+Switch.defaultProps = {
+  checked: false,
+  size: 'default',
+  thumbColor: '#fff',
+  color: '#4DD964',
+  onValueChange: () => {},
+};
+
+export default Switch;
 
 const styles = StyleSheet.create({
   warpper: {
