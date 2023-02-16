@@ -207,7 +207,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#E6E6E6',
   },
   disabled: {
-    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    // backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    backgroundColor: '#0001',
     borderRadius: 16,
     zIndex: 22,
   },
@@ -230,9 +231,10 @@ const styles = StyleSheet.create({
   },
   shadowDisable: {
     shadowColor: '#000',
+    background: '#0001',
     shadowOffset: {
-      width: 10,
-      height: 10,
+      width: 5,
+      height: 4,
     },
     shadowOpacity: 0.3,
     shadowRadius: 2,
