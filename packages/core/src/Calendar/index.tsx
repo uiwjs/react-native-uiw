@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ViewProps, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
+import { View, Text, ViewProps, TextProps, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import Icon from '../Icon';
 import Ellipsis from '../Ellipsis';
 import { getMonths, getWeeksArray, daysArrProps, getType, getNameLen } from './utils';
@@ -112,7 +112,7 @@ const Calendar = (props: CalendarProps) => {
 
       let nameLen = getNameLen(day.lunarHolidays);
       let lineHeight =
-        lunarHoliday === true && Platform.OS === 'ios' ? 0 : lunarHoliday === true ? MainWidth < 1000 ? 18 : 55 : MainWidth < 1000 ? MainWidth / 7 - 4.5 : MainWidth / 14.5;
+        lunarHoliday === true && Platform.OS === 'ios' ? 0 : lunarHoliday === true ? 18 : MainWidth / 7 - 4.5;
       let paddingTop = lunarHoliday === true ? 4 : 0;
       let colorType = '';
       if (day.colorType === '') {
@@ -211,9 +211,9 @@ const Calendar = (props: CalendarProps) => {
     setCurrentMonth(toMonth);
     setCurrentDays(toDays);
   };
-  // const goCurrentDay = (day: number) => {
-  //   setCurrentDays(day);
-  // };
+  const goCurrentDay = (day: number) => {
+    setCurrentDays(day);
+  };
 
   return (
     <View style={{ flex: 1, position: 'relative' }}>
@@ -298,10 +298,10 @@ const styles = StyleSheet.create({
   },
   calendarWeekdays: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: MainWidth < 1000 ? MainWidth / 7 - 33 : MainWidth / 30,
-    paddingTop: 12,
+    paddingHorizontal: MainWidth / 7 - 33,
+    paddingTop: 10,
   },
   calendarWedText: {
     color: '#616161',
@@ -312,12 +312,12 @@ const styles = StyleSheet.create({
   },
   weekDay: {
     flexDirection: 'row',
-    paddingHorizontal: 22,
+    paddingHorizontal: 2,
   },
   dateBase: {
-    marginHorizontal: 8,
-    width: MainWidth < 1000 ? MainWidth / 7 - 4.5 : MainWidth / 14,
-    height: MainHeight < 300 ? MainWidth / 7 - 4.5 : MainWidth / 14,
+    marginHorizontal: 2,
+    width: MainWidth / 7 - 4.5,
+    height: MainWidth / 7 - 4.5,
     ...Platform.select({
       ios: {},
       android: {
@@ -327,15 +327,15 @@ const styles = StyleSheet.create({
   },
   currentMonth: {
     backgroundColor: '#329BCB',
-    borderRadius: 60,
+    borderRadius: 50,
   },
   selectMonth: {
     borderWidth: 1,
     borderColor: '#329BCB',
-    borderRadius: 60,
+    borderRadius: 50,
   },
   otherMonth: {
-    borderRadius: 60,
+    borderRadius: 50,
   },
   dayText: {
     textAlign: 'center',

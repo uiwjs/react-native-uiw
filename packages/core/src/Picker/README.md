@@ -61,45 +61,16 @@ function Demo() {
 export default Demo
 ```
 
-
-
 ### Props
 
-```ts
-import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+属性 | 说明 | 类型 | 默认值
+----|-----|------|------
+| lines   | 显示行数   | number |  3  |
+| rowKey    | 在开始位置设置图标  |  string | - |
+| data   | 需要渲染的数据   | Array |  -  |
+| containerStyle   | item 容器样式   | obj |  -  |
+| textStyle    | 容器的文本样式  | TextStyle | -  |
+| value | 选中当前项的下标   | number | -  |
+| onChange | value 改变时触发       | fn | -  |
+| readonly | 是否只读  | fn | -  |
 
-export interface PickerData {
-  label?: string,
-  render?: (key: string, record: PickerData, index: number)=>React.ReactNode,
-  [key: string]: any
-}
-
-export interface PickerProps {
-  /** 显示几行, 默认 3 */
-  lines?: number,
-  /** 指定需要显示的 key, 默认使用 data 的 label 属性 */
-  rowKey?: string,
-  /** 需要渲染的数据 */
-  data?: Array<PickerData>,
-  /** item 容器样式 */
-  containerStyle?: {
-    /** 激活的容器样式 */
-    actived?: StyleProp<ViewStyle>,
-    /** 未激活的容器样式 */
-    unactived?: StyleProp<ViewStyle>,
-  },
-  /** 容器的文本样式 */
-  textStyle?: {
-    /** 激活的文本样式 */
-    actived?: StyleProp<TextStyle>,
-    /** 未激活的文本样式 */
-    unactived?: StyleProp<TextStyle>,
-  },
-  /** 选中当前项的下标 */
-  value?: number,
-  /** value 改变时触发 */
-  onChange?: (value: number)=>unknown,
-  /** 是否只读 不能点击不能滑动但可以通过value控制 */
-  readonly?: boolean
-}
-```

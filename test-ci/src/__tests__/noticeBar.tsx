@@ -44,30 +44,30 @@ describe('NoticeBar', () => {
     expect(component.props.style).toMatchObject({ fontSize: 12 });
   });
 
-  // it('onPress', () => {
-  //   const fn = jest.fn();
-  //   const { getByTestId } = render(<NoticeBar onPress={fn}>onPress</NoticeBar>);
-  //   const component = getByTestId('RNE__NoticeBar__wrap');
-  //   fireEvent(component, 'press');
-  //   expect(fn).toHaveBeenCalled();
-  // });
+  it('textStyle', () => {
+    const { UNSAFE_getByType } = render(<NoticeBar textStyle={{ fontSize: 20 }} />);
+    const component = UNSAFE_getByType(Marquee);
+    expect(component.props.style[1].fontSize).toBe(20);
+  });
 
-  // it('action', () => {
-  //   const { getByText } = render(<NoticeBar action={<Text>去看看</Text>} />);
-  //   expect(getByText('去看看')).toBeTruthy();
-  // });
+  it('onPress events', () => {
+    const fn = jest.fn();
+    const { getByTestId } = render(<NoticeBar mode="link" onPress={fn}>onPress</NoticeBar>);
+    const component = getByTestId('RNE__NoticeBar__link');
+    fireEvent(component, 'press');
+    expect(fn).toHaveBeenCalled();
+  });
 
-  // it('style', () => {
-  //   const { getByTestId } = render(<NoticeBar style={{ height: 50 }} />);
-  //   const component = getByTestId('RNE__NoticeBar__wrap');
-  //   const styles = toObject(component.props.style);
-  //   expect(styles.height).toBe(50);
-  // });
+  it('action', () => {
+    const { getByText } = render(<NoticeBar mode="closable" action={<Text>去看看</Text>} />);
+    expect(getByText('去看看')).toBeTruthy();
+  });
 
-  // it('textStyle', () => {
-  //   const { getByTestId } = render(<NoticeBar textStyle={{ fontSize: 20 }} />);
-  //   const component = getByTestId('RNE__NoticeBar__div');
-  //   const styles = toObject(component.props.style);
-  //   expect(styles.fontSize).toBe(20);
-  // });
+  it('style', () => {
+    const { getByTestId } = render(<NoticeBar mode="closable" style={{ height: 50 }} />);
+    const component = getByTestId('RNE__NoticeBar__style');
+    const styles = toObject(component.props.style);
+    expect(styles.height).toBe(50);
+  });
+
 });

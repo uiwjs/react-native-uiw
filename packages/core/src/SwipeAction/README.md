@@ -113,6 +113,36 @@ function Demo() {
       text: '删除',
       color: 'red',
       x: 250,
+    },
+  ];
+  return (
+    <SwipeAction ref={ref} buttonWidth={60} right={right}>
+      <View><Text>滑动</Text></View>
+    </SwipeAction>
+  );
+}
+export default Demo;
+```
+
+### 禁用
+
+```jsx
+import React,{ useRef } from 'react';
+import {SwipeAction} from '@uiw/react-native';
+import { View,Text } from 'react-native'
+
+function Demo() {
+  const ref = useRef()
+  const right = [
+    {
+      text: '查看',
+      color: 'orange',
+      x: 250,
+    },
+    {
+      text: '删除',
+      color: 'red',
+      x: 250,
       disabled:true
     },
   ];
