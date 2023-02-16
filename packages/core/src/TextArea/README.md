@@ -112,6 +112,29 @@ function Demo() {
 export default Demo
 ```
 
+### 根据内容自动调整高度
+
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import TextArea from '@uiw/react-native/lib/TextArea';
+
+function Demo() {
+  const [value, setValue] = useState('')
+
+  return (
+    <TextArea
+      value={value}
+      onChange={(value) => {
+        setValue(value);
+      }}
+      placeholder='请输入'
+      autoSize
+    />
+  )
+}
+export default Demo
+```
+
 ### 自定义输入框样式
 ```jsx  mdx:preview
 import React, { useState } from 'react';

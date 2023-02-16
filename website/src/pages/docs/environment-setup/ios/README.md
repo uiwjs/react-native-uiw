@@ -21,7 +21,9 @@ brew install watchman
 
 如果你已经安装了 Node，请检查其版本是否在 v14 以上。安装完 Node 后建议设置 npm 镜像（淘宝源）以加速后面的过程（或使用科学上网工具）。
 > 🚧 注意：不要使用 cnpm！cnpm 安装的模块路径比较奇怪，packager 不能正常识别！
-<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px; display: inline-block;-->
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
 ```shell
 # 使用nrm工具切换淘宝源
 npx nrm use taobao
@@ -30,13 +32,25 @@ npx nrm use taobao
 npx nrm use npm
 ```
 
-[Watchman](https://facebook.github.io/watchman) 是 Facebook 的一个工具，用于观察文件系统中的变化。 强烈建议您安装它以获得更好的性能。
+[Watchman](https://facebook.github.io/watchman) 是 Facebook 的一个工具，用于观察文件系统中的变化。 强烈建议您安装它以获得更好的性能（packager 可以快速捕捉文件的变化从而实现实时刷新）。
+
+### `Yarn`
+
+[Yarn](https://yarnpkg.com/) 是 Facebook 提供的替代 npm 的工具，可以加速 node 模块的下载
+
+```
+npm install -g yarn
+```
+
+安装完 yarn 之后就可以用 yarn 代替 npm 了，例如用`yarn`代替`npm install`命令，用`yarn add 某第三方库名`代替`npm install 某第三方库名`。
+
+
 
 ### `Xcode`
 
 安装 Xcode 的最简单方法是通过 [Mac App Store](https://itunes.apple.com/cn/app/xcode/id497799835?mt=12)。 安装 Xcode 也将安装 iOS 模拟器和所有必要的工具来构建你的 iOS 应用程序。
 
-如果您已经在系统上安装了 Xcode，请确保它是 12 版或更新版本。
+如果您已经在系统上安装了 Xcode，请确保它是 12 版或更高版本。
 
 ![Xcode](./001.png)<!--rehype:style=max-width: 480px;-->
 
@@ -82,7 +96,7 @@ Cocoapods 目前在 Mac M1 架构上可能还有一些兼容问题（我们建�
 - `sudo arch -x86_64 gem install ffi`
 - `arch -x86_64 pod install`
 
-以上命令会安装ffi包，用于在安装和装载 pods 时调用合适的系统架构。如果一些依赖包过时导致安装报错，您可以使用 `pod repo update` 或 `pod install --repo-update` 更新过时的源代码库。
+以上命令会安装`ffi`包，用于在安装和装载 pods 时调用合适的系统架构。如果一些依赖包过时导致安装报错，您可以使用 `pod repo update` 或 `pod install --repo-update` 更新过时的源代码库。
 
 </details>
 
@@ -95,7 +109,7 @@ React Native 有一个内置的命令行界面。 我们建议您在运行时使
 
 ## 创建一个新的应用程序
 
-> 🚧 如果您之前安装了全局 `react-native-cli` 包，请将其删除，因为它可能会导致意外问题。
+> 🚧 如果您之前安装了全局 `react-native-cli` 包，请使用`npm uninstall -g react-native-cli`将其删除，因为它可能会导致意外问题。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 您可以使用 React Native 的内置命令行界面来生成一个新项目。 让我们创建一个名为 `AwesomeProject` 的新 React Native 项目：
@@ -136,7 +150,8 @@ npx react-native init AwesomeProject --template @uiw/react-native-template
 #### `第 1 步`<!--rehype:style=background: #a5d4ff;--> 安装依赖
 
 ```bash
-$ yarn install # 根目录运行 安装node依赖
+$ cd AwesomeProject  # 根目录运行 
+$ yarn install # 安装node依赖
 ```
 
 React Naitve 0.70+ 运行下面命令

@@ -19,12 +19,12 @@ function Demo() {
   return (
     <View style={{ height: 800, background: '#ddd' }}>
       <SpeedDial
-        onOpen={()=>console.log('onOpen')}
+        onOpen={()=>console.log('onOpen2')}
         onClose={()=>console.log('onClose')}
         children={[
           {
             icon: 'plus',
-            title: <Text>'Add'</Text>,
+            title: <Text>Add</Text>,
             onPress:()=>console.log('Add')
           },
           {
@@ -47,57 +47,67 @@ function Demo() {
 export default Demo
 ```
 
+### 设置动画时间
 
-### SpeedDial Props
+```jsx  mdx:preview
+import React, { Fragment } from 'react';
+import { SpeedDial, Icon } from '@uiw/react-native';
+import { View, Text, Dimensions } from 'react-native';
 
-```ts
-import { ViewStyle,ViewProps } from 'react-native';
-import { icoType,SpeedDialItemProps } from '@uiw/react-native';
-
-export interface SpeedDialProps extends ViewProps {
-  /** 显示的图标 [默认显示, 展开显示] */
-  icon?: icoType,
-  /** 盒子样式 */
-  style?: ViewStyle,
-  /** 初始距离下边位置 */
-  bottom?: number,   //
-  /** 初始距离右边位置 */
-  right?: number,   //
-  /** 展开显示的标记 */
-  children?: Array<SpeedDialItemProps>,
-  /** 是否支持拖拽 */
-  isDrag?: boolean,
-  /** 动画时间 */
-  transitionDuration?: number,
-  /**
-  * 打开时触发
-  */
-  onOpen?: Function,
-  /**
-  * 关闭时触发
-  */
-  onClose?: Function,
+function Demo() {
+  return (
+    <View style={{ height: 800, background: '#ddd' }}>
+      <SpeedDial
+       transitionDuration={2000}
+        onOpen={()=>console.log('onOpen')}
+        onClose={()=>console.log('onClose')}
+        children={[
+          {
+            icon: 'plus',
+            title: <Text>Add</Text>,
+            onPress:()=>console.log('Add')
+          },
+          {
+            icon: <Icon name='star-on' color="#fff" size={18} />,
+            title: 'Star'
+          },
+          {
+            icon: <Icon name='mail' color="#fff" size={18} />,
+            title: 'Mail'
+          },
+          {
+            icon: <Icon name='share' color="#fff" size={18} />,
+            title: 'Share'
+          }
+        ]}
+      />
+    </View>
+  );
 }
+export default Demo
 ```
+### Props
+
+| 参数 | 说明 | 类型 | 默认值|
+|------|------|-----|------|
+| `icon` | 显示的图标 | `string` | `plus` \| `close` |
+| `style` | 盒子样式  | `string` | - |
+| `bottom` | 初始距离下边位置 | `number` | 350 |
+| `right` | 初始距离右边位置 | `number`  | 40 |
+| `children` | 展开显示的标记 | Array<`SpeedDialItemProps`> | - |
+| `isDrag` | 是否支持拖拽 | `boolean` | `false` |
+| `transitionDuration` | 动画时间 | `number` | 200 |
+| `onOpen` | 打开时触发  | Function | - |
+| `onClose` | 关闭时触发 | Function | - |
 
 
-### SpeedDialItem Props
+### SpeedDialItemProps
 
-```ts
-import { TabsItemIconTypes,IconsName } from '@uiw/react-native';
+| 参数 | 说明 | 类型 | 默认值|
+|------|------|-----|------|
+| `icon` | 右边显示的图标 | `string` | - |
+| `title` | 左边文字  | `JSX.Element` \| `string` \| `number` | - |
+| `titleStyle` | 左边文字盒子样式 | ViewStyle | - |
+| `iconStyle` | 右边图标盒子样式 | ViewStyle  | - |
+| `onPress` | 点击右边时触发 | Function | - |
 
-export interface SpeedDialItemProps {
-  /** 右边 显示的图标 */
-  icon: TabsItemIconTypes,
-  /** 左边文字 */
-  title: JSX.Element | string | number,
-  /** 左边文字盒子样式 */
-  titleStyle?: ViewStyle,
-  /** 右边图标盒子样式 */
-  iconStyle?: ViewStyle,
-  /**
-   * 点击右边时触发
-   */
-  onPress?: Function,
-}
-```

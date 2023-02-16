@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, ViewProps, Image, ImageProps, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -36,31 +36,23 @@ export interface AvatarProps extends ViewProps {
   shape?: 'circle' | 'square';
 }
 
-export default class Avatar extends Component<AvatarProps> {
-  static defaultProps: AvatarProps = {
-    src: defaultImage,
-    shape: 'square',
-    rounded: 3,
-    size: 40,
-  };
-  render() {
-    const { style, src, size, shape, rounded, imageProps, ...otherProps } = this.props;
-    return (
-      <View
-        style={[
-          styles.defalut,
-          style,
-          { width: size, height: size },
-          { borderRadius: shape === 'circle' ? size! / 2 : rounded },
-        ]}
-        {...otherProps}
-      >
-        <Image
-          style={{ width: size, height: size }}
-          source={typeof src === 'number' ? src : { uri: src as string }}
-          {...imageProps}
-        />
-      </View>
-    );
-  }
+export default function Avatar(props: AvatarProps) {
+  const { style, src = defaultImage, size = 40, shape = 'square', rounded = 3, imageProps, ...otherProps } = props;
+  return (
+    <View
+      style={[
+        styles.defalut,
+        style,
+        { width: size, height: size },
+        { borderRadius: shape === 'circle' ? size! / 2 : rounded },
+      ]}
+      {...otherProps}
+    >
+      <Image
+        style={{ width: size, height: size }}
+        source={typeof src === 'number' ? src : { uri: src as string }}
+        {...imageProps}
+      />
+    </View>
+  );
 }
