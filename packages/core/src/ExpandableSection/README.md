@@ -25,14 +25,40 @@ const Demo = () => {
         top={state.top}
       >
         <Text style={{ color: 'red' }}>
-          有一天路标迁了希望你能从容
+          有一天路标迁了希望你能从容、有一天桥墩断了希望你能渡越、有一天栋梁倒了希望你能坚强、有一天期待蔫了希望你能理解
+        </Text>
+      </ExpandableSection>
+    </View>
+  )
+}
 
-          有一天桥墩断了希望你能渡越
+export default Demo
+```
 
-          有一天栋梁倒了希望你能坚强
+### 显示位置
 
-          有一天期待蔫了希望你能理解
-      </Text>
+```jsx mdx:preview
+import React, {useState} from 'react';
+import { ExpandableSection } from '@uiw/react-native';
+import { View, Text } from 'react-native'
+
+const Demo = () => {
+  const [state, setState] = useState({
+    expanded: false,
+    top: true
+  })
+
+  return (
+    <View style={{height: 100}}>
+      <ExpandableSection
+        expanded={state.expanded}
+        onPress={() => setState({...state, expanded: !state.expanded })}
+        sectionHeader={<Text >标题 : 点击我</Text>}
+        top={state.top}
+      >
+        <Text style={{ color: 'red' }}>
+          有一天路标迁了希望你能从容、有一天桥墩断了希望你能渡越、有一天栋梁倒了希望你能坚强、有一天期待蔫了希望你能理解
+        </Text>
       </ExpandableSection>
     </View>
   )
