@@ -116,7 +116,35 @@ function Demo() {
 export default Demo
 
 ```   
+### 点击遮罩层是否允许关闭
 
+```jsx mdx:preview
+import  React, { useState } from 'react';
+import { View, Text, SafeAreaView } from 'react-native';
+import { Drawer, Button } from '@uiw/react-native';
+
+function Demo() {
+  const [visible, setVisible] = useState(false);
+  return (
+    <View style={{height: 200}}>
+      <Drawer
+        isOpen={visible}
+        onChange={(isOpen) => setVisible(isOpen)}
+        drawerHeight={10}
+        maskClosable={false}
+        drawerBackgroundColor='red'
+      >
+        <View>
+          <Text>点击遮罩层不允许关闭</Text>
+        </View>
+      </Drawer>
+      <Button onPress={() => setVisible(!visible)}>打开抽屉</Button>
+    </View>
+  );
+}
+export default Demo
+
+```  
 ### 抽屉覆盖全屏
 
 - 可查看 [react-native-root-siblings](https://www.npmjs.com/package/react-native-root-siblings) 文档
