@@ -56,44 +56,14 @@ export default Demo
 
 ### Props
 
-```ts
-type CardCollapseProps = ViewProps & {
-  /**
-    * 是否折叠
-    */
-  isCollapsed: boolean;
-  /**
-   * 渲染的内容
-   */
-  children: JSX.Element | JSX.Element[]
-  /**
-   * 外层样式
-   */
-  containerStyle?: StyleProp<ViewStyle>;
-  /**
-   * 内容样式
-   */
-  contentContainerStyle?: StyleProp<ViewStyle>;
-  /**
-   * 卡片圆角
-   */
-  itemBorderRadius?: number;
-  /**
-   * 点击卡片回调
-   */
-  onItemPress?: (index: number) => void;
-  /**
-   * 卡片折叠回调（值是未来折叠状态）
-   */
-  onCollapseWillChange?: (changed: boolean) => void;
-  /**
-   * 卡片折叠回调（值是目前状态）
-   */
-  onCollapseChanged?: (changed: boolean) => void;
-  /**
-   * 卡片是否可以点击
-   */
-  disablePresses?: boolean;
-};
-```
-
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `isCollapsed` | 是否折叠 | `boolean` | - |
+| `children` | 渲染的内容 | `JSX.Element, JSX.Element[]` | - |
+| `containerStyle` | 外层样式 | `StyleProp<ViewStyle>` | - |
+| `contentContainerStyle` | 内容样式 | `StyleProp<ViewStyle>` | - |
+| `itemBorderRadius` | 卡片圆角 | `number` | - |
+| `onItemPress` | 点击卡片回调 | (`index: number) => void` | - |
+| `onCollapseWillChange` | 卡片折叠回调（值是未来折叠状态） | `(changed: boolean) => void` | - |
+| `onCollapseChanged` | 卡片折叠回调（值是目前状态） | `(changed: boolean) => void` | - |
+| `disablePresses` | 卡片是否可以点击 | `boolean` | - |
