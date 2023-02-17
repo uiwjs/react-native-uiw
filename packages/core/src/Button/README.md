@@ -23,7 +23,7 @@ class Demo extends Component {
         <Spacing/>
         <Button disabled>disabled</Button>
         <Spacing/>
-        <Button type="primary">primary</Button>
+        <Button type="primary" onPress={()=>console.log("The Button")}>primary</Button>
         <Spacing/>
         <Button type="warning">warning</Button>
         <Spacing/>
@@ -181,7 +181,7 @@ export default Demo
 
 ```
 
-### 自定义图标 
+### 自定义图标
 
 ```jsx mdx:preview
 
