@@ -31,12 +31,12 @@ const Demo = () => {
             title: '备注',
             dataIndex: 'remark',
             ellipsis: true,
-            style: { width: 400 },
+            style: { width: 200 },
           },
           {
             title: '操作',
             dataIndex: 'id',
-            style: { width: 50 },
+            style: { width: 100 },
             render: () => {
               return (
                     <Button size="small">详情</Button>
@@ -51,6 +51,64 @@ const Demo = () => {
           { id: '4',  partName: 'Chanel', partBrand: '香奈儿', partModel: 'xl', remark: 'ff爱zz,三生三世用相随' },
         ]}
         rowKey="id"
+      />
+  );
+}
+export default Demo
+
+```
+
+`horizontal` 水平排成一行
+
+```jsx  mdx:preview
+import React from 'react';
+import  {Table, Button } from '@uiw/react-native';
+import {View} from 'react-native';
+
+const Demo = () => {
+  return (
+     <Table
+        columns={[
+          {
+            title: '配件名称',
+            dataIndex: 'partName',
+            style: { width: 100 },
+          },
+          {
+            title: '配件品牌',
+            dataIndex: 'partBrand',
+            style: { width: 100 },
+          },
+          {
+            title: '配件型号',
+            dataIndex: 'partModel',
+            style: { width: 100 },
+          },
+          {
+            title: '备注',
+            dataIndex: 'remark',
+            ellipsis: true,
+            style: { width: 300 },
+          },
+          {
+            title: '操作',
+            dataIndex: 'id',
+            style: { width: 110 },
+            render: () => {
+              return (
+                    <Button size="small">详情</Button>
+              );
+            },
+          },
+        ]}
+        data={[
+          { id: '1',  partName: 'Chanel', partBrand: '香奈儿', partModel: 'xl', remark: 'ff爱zz,三生三世用相随' },
+          { id: '2',  partName: 'Chanel', partBrand: '香奈儿', partModel: 'xl', remark: 'ff爱zz,三生三世用相随' },
+          { id: '3',  partName: 'Chanel', partBrand: '香奈儿', partModel: 'xl', remark: 'ff爱zz,三生三世用相随' },
+          { id: '4',  partName: 'Chanel', partBrand: '香奈儿', partModel: 'xl', remark: 'ff爱zz,三生三世用相随' },
+        ]}
+        rowKey="id"
+        horizontal={false}
       />
   );
 }
@@ -73,7 +131,7 @@ export default Demo
 | 参数                 | 说明         | 类型    | 默认值  |
 | -------------------- | ------------ | ------- | ------- |
 | `dataIndex`           |	列数据在数据项中对应的路径，支持通过数组查询嵌套路径      | string | string[] | - |
-| `ellipsis`            | 超过宽度将自动省略 | - |
+| `ellipsis`            | 超过宽度将自动省略 | - | - |
 | `title`           | 列头显示文字    | string | -   | 
 | `render`           | 生成复杂数据的渲染函数,参数为当前行数据    | function(record) {} | -   | 
 | `style`           | Table行内样式    | object | -   | 
