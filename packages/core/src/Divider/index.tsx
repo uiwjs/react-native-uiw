@@ -12,66 +12,69 @@ export interface DividerProps extends ViewProps {
   orientation?: 'left' | 'right' | 'center';
 }
 
-export default class Divider extends Component<DividerProps> {
-  static defaultProps: DividerProps = {
-    type: 'horizontal',
-    gutter: 8,
-    orientation: 'center',
-  };
-  render() {
-    let { children, style, gutter, label, lineStyle, labelStyle, type, orientation, ...restProps } = this.props;
-    if (typeof children === 'string') {
-      label = children;
-      children = null;
+export default function Divider(props: DividerProps) {
+  let {
+    children,
+    style,
+    gutter = 8,
+    label,
+    lineStyle,
+    labelStyle,
+    type = 'horizontal',
+    orientation = 'center',
+    ...restProps
+  } = props;
+  if (typeof children === 'string') {
+    label = children;
+    children = null;
+  }
+  const lineStyleArr = [];
+  const warpperStyles = [];
+  const startStyles = [];
+  const endStyles = [];
+  if (type === 'horizontal') {
+    warpperStyles.unshift(styles.horizontal);
+    lineStyleArr.unshift(styles.lineHorizontal);
+    lineStyleArr.unshift({ marginHorizontal: gutter });
+  }
+  if (type === 'vertical') {
+    warpperStyles.unshift(styles.vertical);
+    lineStyleArr.unshift(styles.lineVertical);
+    lineStyleArr.unshift({ marginVertical: gutter });
+  }
+  if (!children && label) {
+    if (labelStyle && typeof labelStyle === 'number') {
+      labelStyle = StyleSheet.flatten(labelStyle);
     }
-    const lineStyleArr = [];
-    const warpperStyles = [];
-    const startStyles = [];
-    const endStyles = [];
-    if (type === 'horizontal') {
-      warpperStyles.unshift(styles.horizontal);
-      lineStyleArr.unshift(styles.lineHorizontal);
-      lineStyleArr.unshift({ marginHorizontal: gutter });
-    }
-    if (type === 'vertical') {
-      warpperStyles.unshift(styles.vertical);
-      lineStyleArr.unshift(styles.lineVertical);
-      lineStyleArr.unshift({ marginVertical: gutter });
-    }
-    if (!children && label) {
-      if (labelStyle && typeof labelStyle === 'number') {
-        labelStyle = StyleSheet.flatten(labelStyle);
-      }
-      children = (
-        <Text testID="RNE__Divider__label" style={[styles.label, labelStyle]}>
-          {' '}
-          {label}{' '}
-        </Text>
-      );
-    }
-    if (lineStyle && typeof lineStyle === 'number') {
-      lineStyle = StyleSheet.flatten(lineStyle);
-    }
-    if (orientation === 'left') {
-      endStyles.unshift({ flexGrow: 100 });
-    }
-    if (orientation === 'right') {
-      startStyles.unshift({ flexGrow: 100 });
-    }
-    const lineStart = (
-      <View testID="RNE__Divider__start" style={[styles.lineStart, ...lineStyleArr, ...startStyles, lineStyle]} />
-    );
-    const lineEnd = (
-      <View testID="RNE__Divider__end" style={[styles.lineEnd, ...lineStyleArr, ...endStyles, lineStyle]} />
-    );
-    return (
-      <View testID="RNE__Divider__wrap" style={[styles.warpper, ...warpperStyles, style]} {...restProps}>
-        {lineStart}
-        {children}
-        {children && lineEnd}
-      </View>
+    children = (
+      <Text testID="RNE__Divider__label" style={[styles.label, labelStyle]}>
+        {' '}
+        {label}{' '}
+      </Text>
     );
   }
+  if (lineStyle && typeof lineStyle === 'number') {
+    lineStyle = StyleSheet.flatten(lineStyle);
+  }
+  if (orientation === 'left') {
+    endStyles.unshift({ flexGrow: 100 });
+  }
+  if (orientation === 'right') {
+    startStyles.unshift({ flexGrow: 100 });
+  }
+  const lineStart = (
+    <View testID="RNE__Divider__start" style={[styles.lineStart, ...lineStyleArr, ...startStyles, lineStyle]} />
+  );
+  const lineEnd = (
+    <View testID="RNE__Divider__end" style={[styles.lineEnd, ...lineStyleArr, ...endStyles, lineStyle]} />
+  );
+  return (
+    <View testID="RNE__Divider__wrap" style={[styles.warpper, ...warpperStyles, style]} {...restProps}>
+      {lineStart}
+      {children}
+      {children && lineEnd}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
