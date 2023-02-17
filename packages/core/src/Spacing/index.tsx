@@ -6,23 +6,17 @@ export interface SpacingProps extends ViewProps {
   type?: 'horizontal' | 'vertical';
 }
 
-export default class Spacing extends Component<SpacingProps> {
-  static defaultProps: SpacingProps = {
-    size: 'default',
-    type: 'vertical',
-  };
-  render() {
-    const { size, style, type, ...otherProps } = this.props;
-    const sty: SpacingProps['style'] = {};
-    const keyName = type === 'vertical' ? 'height' : 'width';
-    sty[keyName] = 10;
-    if (size === 'small') {
-      sty[keyName] = 5;
-    } else if (size === 'large') {
-      sty[keyName] = 15;
-    } else if (typeof size === 'number') {
-      sty[keyName] = size;
-    }
-    return <View style={[sty, style]} {...otherProps} />;
+export default function Spacing(props: SpacingProps) {
+  const { size = 'default', style, type = 'vertical', ...otherProps } = props;
+  const sty: SpacingProps['style'] = {};
+  const keyName = type === 'vertical' ? 'height' : 'width';
+  sty[keyName] = 10;
+  if (size === 'small') {
+    sty[keyName] = 5;
+  } else if (size === 'large') {
+    sty[keyName] = 15;
+  } else if (typeof size === 'number') {
+    sty[keyName] = size;
   }
+  return <View style={[sty, style]} {...otherProps} />;
 }
