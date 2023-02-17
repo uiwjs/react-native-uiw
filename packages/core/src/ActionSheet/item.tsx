@@ -27,24 +27,23 @@ export interface ActionSheetItemProps {
 
 export interface ActionSheetItemState {}
 
-export default class ActionSheetItem extends React.Component<ActionSheetItemProps, ActionSheetItemState> {
-  render() {
-    const {
-      onPress = () => {},
-      activeOpacity = 1,
-      underlayColor = '#f1f1f1',
-      containerStyle,
-      textStyle,
-      children,
-    } = this.props;
-    return (
-      <TouchableHighlight activeOpacity={activeOpacity} underlayColor={underlayColor} onPress={onPress}>
-        <View style={StyleSheet.flatten([styles.actionSheetItem, containerStyle])}>
-          <Text style={StyleSheet.flatten([styles.actionSheetItemText, textStyle])}>{children}</Text>
-        </View>
-      </TouchableHighlight>
-    );
-  }
+export default function ActionSheetItem(props: ActionSheetItemProps) {
+  const {
+    onPress = () => {},
+    activeOpacity = 1,
+    underlayColor = '#f1f1f1',
+    containerStyle,
+    textStyle,
+    children,
+  } = props;
+
+  return (
+    <TouchableHighlight activeOpacity={activeOpacity} underlayColor={underlayColor} onPress={onPress}>
+      <View style={StyleSheet.flatten([styles.actionSheetItem, containerStyle])}>
+        <Text style={StyleSheet.flatten([styles.actionSheetItemText, textStyle])}>{children}</Text>
+      </View>
+    </TouchableHighlight>
+  );
 }
 
 const styles = StyleSheet.create({

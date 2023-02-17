@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Dimensions, StyleSheet, TextStyle, StyleProp, ViewStyle } from 'react-native';
 import Modal, { ModalProps } from '../Modal';
 import ActionSheetItem from './item';
@@ -33,84 +33,80 @@ interface ActionSheetState {
   control: 'props' | 'state';
 }
 
-export default class ActionSheet extends React.Component<ActionSheetProps, ActionSheetState> {
-  constructor(props: ActionSheetProps) {
-    super(props);
-    this.state = {
-      stateVisible: !!props.visible,
-      control: 'props',
-    };
-  }
-  static getDerivedStateFromProps(props: ActionSheetProps, state: ActionSheetState) {
+export default function ActionSheet(props: ActionSheetProps) {
+  const {
+    children,
+    visible: props_visible,
+    activeOpacity,
+    underlayColor,
+    cancelText = '取消',
+    dividerStyle,
+    onCancel,
+    containerStyle,
+    textStyle,
+    ...other
+  } = props;
+
+  const visible = !!props_visible;
+
+  const [state, setState] = useState({
+    stateVisible: !!visible,
+    control: 'props',
+  });
+
+  useEffect(() => {
     if (props.visible === state.stateVisible && state.control === 'state') {
-      return {
+      setState({
         control: 'props',
         stateVisible: props.visible,
-      };
+      });
     }
     if (props.visible !== state.stateVisible) {
       if (state.control === 'state') {
-        return {
-          control: 'props',
-        };
+        setState({ ...state, control: 'props' });
       }
-      return {
+      setState({
         control: 'props',
-        stateVisible: props.visible,
-      };
+        stateVisible: !!props.visible,
+      });
     }
-    return null;
-  }
-  onClose = () => {
-    this.setState({ stateVisible: false, control: 'state' });
+  }, [state.stateVisible]);
+
+  const onClose = () => {
+    setState({ stateVisible: false, control: 'state' });
   };
 
-  render() {
-    const {
-      children,
-      visible,
-      activeOpacity,
-      underlayColor,
-      cancelText = '取消',
-      dividerStyle,
-      onCancel,
-      containerStyle,
-      textStyle,
-      ...other
-    } = this.props;
-    const { stateVisible } = this.state;
-    return (
-      <Modal
-        placement="bottom"
-        animationType="fade" // slide  none  fade
-        transparent={true}
-        {...other}
-        visible={stateVisible}
-        onClosed={this.onClose}
-      >
-        <>
-          {React.Children.toArray(children).map((item, index) => (
-            <View key={index}>
-              {index !== 0 && <View style={StyleSheet.flatten([styles.itemDivider, dividerStyle?.itemDivider])} />}
-              {React.cloneElement(item as React.DetailedReactHTMLElement<any, HTMLElement>, {
-                activeOpacity: activeOpacity,
-                underlayColor: underlayColor,
-              })}
-            </View>
-          ))}
-          <View style={StyleSheet.flatten([styles.actionDivider, dividerStyle?.actionDivider])} />
-          <ActionSheetItem
-            activeOpacity={activeOpacity}
-            underlayColor={underlayColor}
-            onPress={this.onClose}
-            children={cancelText}
-            containerStyle={containerStyle}
-            textStyle={textStyle}
-          />
-        </>
-      </Modal>
-    );
-  }
+  return (
+    <Modal
+      placement="bottom"
+      animationType="fade" // slide  none  fade
+      transparent={true}
+      {...other}
+      visible={state.stateVisible}
+      onClosed={onClose}
+    >
+      <>
+        {React.Children.toArray(children).map((item, index) => (
+          <View key={index}>
+            {index !== 0 && <View style={StyleSheet.flatten([styles.itemDivider, dividerStyle?.itemDivider])} />}
+            {React.cloneElement(item as React.DetailedReactHTMLElement<any, HTMLElement>, {
+              activeOpacity: activeOpacity,
+              underlayColor: underlayColor,
+            })}
+          </View>
+        ))}
+        <View style={StyleSheet.flatten([styles.actionDivider, dividerStyle?.actionDivider])} />
+        <ActionSheetItem
+          activeOpacity={activeOpacity}
+          underlayColor={underlayColor}
+          onPress={onClose}
+          children={cancelText}
+          containerStyle={containerStyle}
+          textStyle={textStyle}
+        />
+      </>
+    </Modal>
+  );
 }
 
 const styles = StyleSheet.create({
