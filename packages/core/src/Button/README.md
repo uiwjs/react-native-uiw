@@ -23,7 +23,7 @@ class Demo extends Component {
         <Spacing/>
         <Button disabled>disabled</Button>
         <Spacing/>
-        <Button type="primary">primary</Button>
+        <Button type="primary" onPress={()=>console.log("The Button")}>primary</Button>
         <Spacing/>
         <Button type="warning">warning</Button>
         <Spacing/>
@@ -181,7 +181,7 @@ export default Demo
 
 ```
 
-### 自定义图标 
+### 自定义图标
 
 ```jsx mdx:preview
 
@@ -227,7 +227,7 @@ export default Demo
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| color | 自定义颜色 | `string` |
+| color | 自定义颜色 | `string` | -｜
 | disabled | 是否禁用 | `boolean` | `false` |
 | bordered | 设置是否显示边框 | `boolean` | `true` |
 | loading | 加载状态 | `boolean` | `false` |

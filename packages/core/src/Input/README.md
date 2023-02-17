@@ -15,6 +15,8 @@ const Demo = () => {
   return <View>
     <Text>受控组件</Text>
     <Input  value={value} onChange={(e) => setValue(e.target.value)} containerStyle={{marginBottom: 10}} />
+    <Text>前缀</Text>
+    <Input extraStart="你是？" placeholder="请输入" containerStyle={{marginBottom: 10}} />
     <Text>后缀</Text>
     <Input extraEnd="小数" placeholder="请输入" containerStyle={{marginBottom: 10}} />
     <Text>错误错误</Text>
@@ -43,6 +45,75 @@ import  { Input }  from '@uiw/react-native';
 }
 export default BasicInputExample
 ```
+
+### 禁用输入框
+
+```jsx mdx:preview
+import React,{ Component } from "react"
+import { View, Text } from 'react-native';
+import  { Input }  from '@uiw/react-native';
+
+ class BasicInputExample extends Component {
+  render() {
+    return <View>
+      <Text>禁用输入框</Text>
+      <Input  disabled/>
+    </View>
+  }
+}
+export default BasicInputExample
+```
+
+### 限制文本框中最多的字符数
+```jsx mdx:preview
+import React,{ Component } from "react"
+import { View, Text } from 'react-native';
+import  { Input }  from '@uiw/react-native';
+
+ class BasicInputExample extends Component {
+  render() {
+    return <View>
+      <Text>禁用输入框</Text>
+      <Input  maxLength='5'/>
+    </View>
+  }
+}
+export default BasicInputExample
+```
+
+### 清除按钮
+
+```jsx mdx:preview
+import React,{ Component } from "react"
+import { View, Text } from 'react-native';
+import  { Input  }  from '@uiw/react-native';
+
+const Demo = () => {
+  return <View>
+    <Text>清除按钮</Text>
+    <Input clear  />
+  </View>
+}
+export default Demo
+```
+
+
+### 每次输入清除内容
+
+```jsx mdx:preview
+import React,{ Component } from "react"
+import { View, Text } from 'react-native';
+import  { Input  }  from '@uiw/react-native';
+
+const Demo = () => {
+  return <View>
+    <Text>每次输入清除内容</Text>
+    <Input clearText={true}  />
+  </View>
+}
+export default Demo
+```
+
 ### 校验输入内容
 
 ```jsx mdx:preview

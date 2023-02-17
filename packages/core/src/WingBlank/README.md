@@ -23,6 +23,32 @@ class Demo extends Component {
 export default Demo
 ```
 
+size两翼留白的间距,默认`default`
+
+```jsx  mdx:preview
+import React,{Component,Fragment} from 'react';
+import { Text } from 'react-native';
+import { WingBlank } from '@uiw/react-native';
+
+class Demo extends Component {
+  render() {
+    return (
+    <Fragment>
+      <WingBlank size='small'>
+        <Text>两翼留白两翼留白</Text>
+      </WingBlank>
+      <WingBlank size='default'>
+        <Text>两翼留白两翼留白</Text>
+      </WingBlank>
+      <WingBlank size='large'>
+        <Text>两翼留白两翼留白</Text>
+      </WingBlank>
+    </Fragment>
+    );
+   }
+}
+export default Demo
+```
 
 ### WingBlank
 

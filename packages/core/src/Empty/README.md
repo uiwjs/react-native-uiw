@@ -11,13 +11,14 @@ Empty 空状态
 ```js
 import { Empty } from '@uiw/react-native';
 
-class Demo extends Component {
+const Demo = () => {
   render() {
     return (
       <Empty />
     )
   }
 }
+export default Demo
 ```
 <!--End-->
 
@@ -27,13 +28,14 @@ class Demo extends Component {
 ```js
 import { Empty } from '@uiw/react-native';
 
-class Demo extends Component {
+const Demo = () => {
   render() {
     return (
       <Empty label="冇得数据咯"/>
     )
   }
 }
+export default Demo
 ```
 <!--End-->
 
@@ -67,13 +69,14 @@ const xml = `
 </svg>
 `;
 
-class Demo extends Component {
+const Demo = () => {
   render() {
     return (
       <Empty label="冇得数据咯" xml={xml}/>
     )
   }
 }
+export default Demo
 ```
 <!--End-->
 
@@ -83,13 +86,14 @@ class Demo extends Component {
 ```js
 import { Empty } from '@uiw/react-native';
 
-class Demo extends Component {
+const Demo = () => {
   render() {
     return (
       <Empty label="冇得数据咯" size={120} />
     )
   }
 }
+export default Demo
 ```
 <!--End-->
 
@@ -99,13 +103,14 @@ class Demo extends Component {
 ```js
 import { Empty } from '@uiw/react-native';
 
-class Demo extends Component {
+const Demo = () => {
   render() {
     return (
       <Empty label="冇得数据咯" labelStyle={{ color: 'red' }} />
     )
   }
 }
+export default Demo
 ```
 <!--End-->
 
@@ -116,7 +121,7 @@ class Demo extends Component {
 import { Empty } from '@uiw/react-native';
 import {View, Text } from 'react-native';
 
-class Demo extends Component {
+const Demo = () => {
   render() {
     return (
       <Empty>
@@ -127,6 +132,7 @@ class Demo extends Component {
     )
   }
 }
+export default Demo
 ```
 <!--End-->
 
