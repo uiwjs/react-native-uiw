@@ -31,35 +31,33 @@ const xml = `
 
 export interface DividerViewProps extends ComProps {}
 
-export default class DividerView extends React.Component<DividerViewProps> {
-  render() {
-    const {route} = this.props;
-    const description = route.params.description;
-    const title = route.params.title;
-    return (
-      <Container>
-        <Layout>
-          <Header title={title} description={description} />
-          <Body>
-            <Card title="默认基础实例">
-              <Empty />
-            </Card>
-            <Card title="自定义文字 label?: string">
-              <Empty label="冇得数据咯" />
-            </Card>
-            <Card title="替换默认图标 xml?: string;">
-              <Empty label="冇得数据咯" xml={xml} />
-            </Card>
-            <Card title="自定义图标尺寸 size?: number">
-              <Empty label="冇得数据咯" size={120} />
-            </Card>
-            <Card title="自定义文字样式 labelStyle?: TextProps['style']">
-              <Empty label="冇得数据咯" labelStyle={{color: 'red'}} />
-            </Card>
-          </Body>
-          <Footer />
-        </Layout>
-      </Container>
-    );
-  }
+export default function DividerView(props: DividerViewProps) {
+  const {route} = props || {};
+  const description = route.params.description;
+  const title = route.params.title;
+  return (
+    <Container>
+      <Layout>
+        <Header title={title} description={description} />
+        <Body>
+          <Card title="默认基础实例">
+            <Empty />
+          </Card>
+          <Card title="自定义文字 label?: string">
+            <Empty label="冇得数据咯" />
+          </Card>
+          <Card title="替换默认图标 xml?: string;">
+            <Empty label="冇得数据咯" xml={xml} />
+          </Card>
+          <Card title="自定义图标尺寸 size?: number">
+            <Empty label="冇得数据咯" size={120} />
+          </Card>
+          <Card title="自定义文字样式 labelStyle?: TextProps['style']">
+            <Empty label="冇得数据咯" labelStyle={{color: 'red'}} />
+          </Card>
+        </Body>
+        <Footer />
+      </Layout>
+    </Container>
+  );
 }
