@@ -37,7 +37,8 @@ export interface AvatarProps extends ViewProps {
 }
 
 export default function Avatar(props: AvatarProps) {
-  const { style, src = defaultImage, size = 40, shape = 'square', rounded = 3, imageProps, ...otherProps } = props;
+  const { style, src, size, shape, rounded, imageProps, ...otherProps } = props;
+
   return (
     <View
       style={[
@@ -56,3 +57,10 @@ export default function Avatar(props: AvatarProps) {
     </View>
   );
 }
+
+Avatar.defaultProps = {
+  src: defaultImage,
+  shape: 'square',
+  rounded: 3,
+  size: 40,
+} as AvatarProps;
