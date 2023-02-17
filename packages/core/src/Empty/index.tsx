@@ -38,24 +38,17 @@ export interface EmptyProps extends FlexProps {
   children?: React.ReactNode;
 }
 
-export default class Empty extends Component<EmptyProps> {
-  static defaultProps: EmptyProps = {
-    size: 64,
-    label: '暂无数据',
-    xml: iconStr,
-  };
-  render() {
-    const { size, label, xml, labelStyle, children, ...props } = this.props;
-    return (
-      <Flex direction="column" justify="center" align="center" {...props}>
-        {xml && <Icon xml={xml} size={size} />}
-        {!!children
-          ? children
-          : label &&
-            typeof label === 'string' && <Text style={StyleSheet.flatten([styles.label, labelStyle])}>{label}</Text>}
-      </Flex>
-    );
-  }
+export default function Empty(props: EmptyProps) {
+  const { size = 64, label = '暂无数据', xml = iconStr, labelStyle, children, ...otherProps } = props;
+  return (
+    <Flex direction="column" justify="center" align="center" {...otherProps}>
+      {xml && <Icon xml={xml} size={size} />}
+      {!!children
+        ? children
+        : label &&
+          typeof label === 'string' && <Text style={StyleSheet.flatten([styles.label, labelStyle])}>{label}</Text>}
+    </Flex>
+  );
 }
 
 const styles = StyleSheet.create({
