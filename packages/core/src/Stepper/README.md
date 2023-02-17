@@ -69,7 +69,7 @@ function Demo() {
 export default Demo
 ```
 
-### 设置样式
+### 按钮禁止点击
 
 ```jsx  mdx:preview
 import React, { useState } from 'react';
@@ -107,7 +107,7 @@ function Demo() {
   return (
     <Stepper
       disabledLongPress={true}
-      delayLong={500}
+      delayLong={100}
       value={value}
       onChange={(value)=>{
         setValue(value)
