@@ -147,6 +147,9 @@ class Demo extends Component {
 }
 
 export default Demo
+```
+
+#### 属性
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
