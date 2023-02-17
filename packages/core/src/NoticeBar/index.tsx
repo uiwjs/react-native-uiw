@@ -40,7 +40,7 @@ const NoticeBar = (props: NoticeBarProps) => {
     operationDom = <View style={styles.actionWrap}>{action ? action : <Text style={[styles.link]}>∟</Text>}</View>;
   }
   const main = (
-    <View style={[styles.notice, style]}>
+    <View style={[styles.notice, style]} testID="RNE__NoticeBar__style">
       {icon && <View style={styles.left15}>{icon}</View>}
       <View style={[styles.container, icon ? styles.left6 : styles.left15]}>
         <Marquee style={[styles.content, textStyle]} text={children} {...marqueeProps} />
@@ -54,7 +54,7 @@ const NoticeBar = (props: NoticeBarProps) => {
         mode === 'closable' ? (
           main
         ) : (
-          <TouchableWithoutFeedback onPress={onPress}>{main}</TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={onPress} testID="RNE__NoticeBar__link" >{main}</TouchableWithoutFeedback>
         )
       ) : null}
     </View>

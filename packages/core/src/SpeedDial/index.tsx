@@ -68,7 +68,7 @@ function SpeedDial(props: SpeedDialProps) {
   const pan: Animated.ValueXY = useRef(new Animated.ValueXY()).current;
   const panResponder = useRef(
     PanResponder.create({
-      onMoveShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => isDrag,
       onPanResponderGrant: () => {
         pan.setOffset({
           x: (pan.x as PanXY)._value,
@@ -136,24 +136,30 @@ function SpeedDial(props: SpeedDialProps) {
   return (
     <View>
       <Animated.View
-        style={[styles.viewPosition, { transform: [{ translateX: pan.x }, { translateY: pan.y }] }]}
+        style={[
+          styles.viewPosition,
+          {
+            bottom: bottom - MainHeight,
+            right: right,
+          },
+          { transform: [{ translateX: pan.x }, { translateY: pan.y }] },
+        ]}
         // {...panResponder.panHandlers}
       >
-        {success &&
-          children.map((item, i) => (
-            <Animated.View
-              style={[
-                styles.fadingContainer,
-                {
-                  // Bind opacity to animated value
-                  opacity: fadeAnim[i],
-                },
-              ]}
-              key={i}
-            >
-              <Item {...item} move={panResponder.panHandlers} />
-            </Animated.View>
-          ))}
+        {children.map((item, i) => (
+          <Animated.View
+            style={[
+              styles.fadingContainer,
+              {
+                // Bind opacity to animated value
+                opacity: fadeAnim[i],
+              },
+            ]}
+            key={i}
+          >
+            <Item {...item} move={panResponder.panHandlers} />
+          </Animated.View>
+        ))}
 
         <View {...panResponder.panHandlers} style={{ alignItems: 'flex-end' }}>
           <TouchableOpacity activeOpacity={1} onPress={onOpenHome}>
@@ -174,8 +180,6 @@ const styles = StyleSheet.create({
   },
   viewPosition: {
     position: 'absolute',
-    bottom: 350 - MainHeight,
-    right: 40,
   },
 
   homeContainer: {

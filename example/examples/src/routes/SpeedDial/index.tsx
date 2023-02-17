@@ -42,7 +42,7 @@ export default class Index extends Component<IndexProps, IndexState> {
                 children={[
                   {
                     icon: <Icon name="plus" color="#fff" size={18} />,
-                    title: <Text>'Add'</Text>,
+                    title: <Text>Add</Text>,
                     onPress: () => console.log('Add'),
                   },
                   {

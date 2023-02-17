@@ -27,6 +27,31 @@ export default Demo
 
 ```
 
+### 分割线间距
+
+根据 `type` 来设置上下或者左右间距，默认为 8
+
+```jsx  mdx:preview
+import React,{Component, Fragment } from "react"
+import { View, Text } from 'react-native';
+import  { Divider }  from '@uiw/react-native';
+
+class Demo extends Component {
+  render() {
+  return (
+    <Fragment>
+      <Text>分割线</Text>
+      <Divider label="OR" gutter={50}/>
+      <Text>分割线</Text>
+      <Divider label="OR" gutter={100}/>
+    </Fragment>
+  );
+  }
+}
+export default Demo
+
+```
+
 ### 分割线标题位置
 
 ```jsx  mdx:preview
@@ -80,5 +105,5 @@ export default Demo
 |------|------|-----|------|
 | `label` | 分割线标题，文本内容 | String | - |
 | `type` | 水平还是垂直类型 | `horizontal`, `vertical` | `horizontal` |
-| `gutter` | 间距，更具 `type` 来设置上下或者左右间距 | Number | `8` |
+| `gutter` | 间距，根据 `type` 来设置上下或者左右间距 | Number | `8` |
 | `orientation` | 分割线标题的位置 |  `left`, `right`,`center`| `center` |

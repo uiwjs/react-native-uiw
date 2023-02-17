@@ -33,7 +33,7 @@ export default function Demo() {
 
 ### 删除线
 
-`<s>` 标签是 `<strike>` 标签的缩写版本
+`<S>` 标签是 `<strike>` 标签的缩写版本
 
 ```jsx  mdx:preview
 import React from "react"

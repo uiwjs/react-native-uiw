@@ -65,6 +65,64 @@ const Demo = () => {
 export default Demo;
 ```
 
+### 禁用状态
+
+```jsx mdx:preview
+import React, { Component } from 'react';
+import { Text  } from 'react-native';
+import { MenuDropdown} from '@uiw/react-native';
+
+const Demo = () => {
+  return (
+    <MenuDropdown title="菜单" disabled>
+      <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+    </MenuDropdown>
+    );
+}
+
+export default Demo;
+```
+### 按钮圆角
+
+```jsx mdx:preview
+import React, { Component } from 'react';
+import { Text  } from 'react-native';
+import { MenuDropdown} from '@uiw/react-native';
+
+const Demo = () => {
+  return (
+    <MenuDropdown title="菜单" rounded='20'>
+      <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+    </MenuDropdown>
+    );
+}
+
+export default Demo;
+```
+
+### 按钮无边框
+
+```jsx mdx:preview
+import React, { Component } from 'react';
+import { Text  } from 'react-native';
+import { MenuDropdown} from '@uiw/react-native';
+
+const Demo = () => {
+  return (
+    <MenuDropdown title="菜单" bordered={false}>
+      <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+    </MenuDropdown>
+    );
+}
+
+export default Demo;
+```
 
 ### 按钮尺寸
 
@@ -99,7 +157,52 @@ const Demo = () => {
 export default Demo;
 ```
 
+### 按钮类型
 
+```jsx mdx:preview
+import React, { Component } from 'react';
+import { Text  } from 'react-native';
+import { MenuDropdown} from '@uiw/react-native';
+
+const Demo = () => {
+  return (
+    <>
+      <MenuDropdown title="small" type="primary">
+        <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+      </MenuDropdown>
+      <MenuDropdown title="default" type="success">
+        <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+      </MenuDropdown>
+      <MenuDropdown title="large" type="warning">
+        <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+      </MenuDropdown>
+        <MenuDropdown title="large" type="danger">
+        <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+      </MenuDropdown>
+      <MenuDropdown title="large" type="light">
+        <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+      </MenuDropdown>
+      <MenuDropdown title="large" type="dark">
+        <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+        <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+      </MenuDropdown>
+    </>
+    );
+}
+
+export default Demo;
+```
 ### props
 
 组件继承 [`TouchableOpacity`](https://facebook.github.io/react-native/docs/touchableopacity#docsNav)

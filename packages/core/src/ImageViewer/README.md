@@ -62,15 +62,11 @@ export default Demo
 
 ### props
 
-```ts
-export interface ImageViewerProps extends ViewProps {
-  /** 图片宽度 */
-  width?: number,
-  /** 图片高度 */
-  height?: number,
-  /** 图像源（远程URL或本地文件资源 */
-  src?: string | number;
-  /** 默认展示第几张图片 */
-  defaultIndex: number
-}
-```
+组件继承 [`ViewProps`](https://reactnative.dev/docs/view)
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| `width` | 图片宽度 | `number` | - |
+| `height` | 图片高度 | `number` | - |
+| `src` | 图像源（远程URL或本地文件资源) | `'string' \| 'number'` | - |
+| `defaultIndex` | 默认展示第几张图片 | `number` | - |

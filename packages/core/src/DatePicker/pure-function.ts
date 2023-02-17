@@ -197,26 +197,31 @@ export function getPickerData(timerDiff: TimerDiff, type: DateKey): ResultDate {
 export function minData(key: DateKey, changeParams: ChangeParams, precision: DateKey): ResultDate {
   const { MINTIMER = {}, nextLabel = {} } = changeParams;
   const newObj: ResultDate = {};
-  if (key === 'second') return newObj;
-  if (MINTIMER.second !== '00') {
-    newObj.second = getMinutesOrSeconds();
+  if (key === 'month') {
+    return newObj;
   }
-  if (key === 'minute') return newObj;
-  if (MINTIMER.minute !== '00') {
-    newObj.minute = getMinutesOrSeconds();
+  if (MINTIMER.month !== '01') {
+    newObj.month = getMonths();
+  }
+  if (key === 'day') {
+    return newObj;
+  }
+  if (MINTIMER.day !== '01' || Number(nextLabel.month) !== 2) {
+    newObj.day = getDays(Number(nextLabel.year), Number(nextLabel.month));
   }
   if (key === 'hour') return newObj;
   if (MINTIMER.hour !== '00') {
     newObj.hour = getHours();
   }
-  if (key === 'day') return newObj;
-  if (MINTIMER.day !== '01' || Number(nextLabel.month) !== 2) {
-    newObj.day = getDays(Number(nextLabel.year), Number(nextLabel.month));
+  if (key === 'minute') return newObj;
+  if (MINTIMER.minute !== '00') {
+    newObj.minute = getMinutesOrSeconds();
   }
-  if (key === 'month') return newObj;
-  if (MINTIMER.month !== '01') {
-    newObj.month = getMonths();
+  if (key === 'second') return newObj;
+  if (MINTIMER.second !== '00') {
+    newObj.second = getMinutesOrSeconds();
   }
+
   return newObj;
 }
 /** 最大时间改变的 */
