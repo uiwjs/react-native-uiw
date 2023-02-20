@@ -15,7 +15,7 @@ const { Item } = Tabs
 function Demo() {
   return (
     <Fragment>
-      <Tabs>
+      <Tabs >
         <Item
           title="喜欢"
         />
@@ -57,6 +57,48 @@ function Demo() {
       <Tabs.Item
         title="信息"
         icon='mail'
+      />
+    </Tabs>
+    </Fragment>
+  );
+}
+export default Demo
+```
+
+### 使用文字和不使用文字
+
+```jsx  mdx:preview
+import React, { Fragment } from 'react';
+import { Tabs, Icon } from '@uiw/react-native';
+import Spacing from '@uiw/react-native/lib/Spacing';
+
+function Demo() {
+  return (
+    <Fragment>
+     <Tabs>
+      <Tabs.Item
+        icon='home'
+      />
+      <Tabs.Item
+        icon={<Icon name='bell' color="#fff" size={24} />}
+      />
+      <Tabs.Item
+        icon='user'
+      />
+    </Tabs>
+    <Spacing />
+    <Tabs>
+      <Tabs.Item
+        title='主页'
+        icon='home'
+      />
+      <Tabs.Item
+        title='提醒'
+        icon={<Icon name='bell' color="#fff" size={24} />}
+      />
+      <Tabs.Item
+        title='我的'
+        icon='user'
       />
     </Tabs>
     </Fragment>

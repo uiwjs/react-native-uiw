@@ -68,6 +68,64 @@ const NoticeBarExample = () => {
 export default NoticeBarExample;
 ```
 
+### 设置图标
+
+```jsx mdx:preview
+import React from 'react';
+import { Image,View,Text } from 'react-native'
+import NoticeBar from '@uiw/react-native/lib/NoticeBar';
+import Spacing from '@uiw/react-native/lib/Spacing';
+import Icon from '@uiw/react-native/lib/Icon';
+
+const NoticeBarExample = () => {
+  return (
+      <View style={{ marginTop: 10 }}>
+        <NoticeBar mode="link" icon={<Icon name="apple"  size={15} />}  onPress={() => console.log('link')}>
+          : 春节放假时间为30天，请务必关好门窗，断开所有电源！
+        </NoticeBar>
+        <Spacing />
+        <NoticeBar mode="link" icon={<Icon name="alipay"  size={15} />}  onPress={() => console.log('link')}>
+          : 即今日2月20日开始，停水40天！请知悉。
+        </NoticeBar>
+        <Spacing />
+        <NoticeBar mode="link" icon={<Icon name="baidu"  size={15} />}  onPress={() => console.log('link')}>
+          : 告诉大家一个‘幸福’的好消息，我们退休将延迟至65岁！！
+        </NoticeBar>
+      </View>
+    )
+}
+export default NoticeBarExample;
+```
+
+### 设置通告栏样式和文字样式
+
+```jsx mdx:preview
+import React from 'react';
+import { Image,View,Text } from 'react-native'
+import NoticeBar from '@uiw/react-native/lib/NoticeBar';
+import Spacing from '@uiw/react-native/lib/Spacing';
+import Icon from '@uiw/react-native/lib/Icon';
+
+const NoticeBarExample = () => {
+  return (
+      <View style={{ marginTop: 10 }}>
+        <NoticeBar mode="link"  style={{backgroundColor:'#fff'}} textStyle={{color:'orange'}}  onPress={() => console.log('link')}>
+          通知: 春节放假时间为30天！
+        </NoticeBar>
+        <Spacing />
+        <NoticeBar mode="link"   style={{backgroundColor:'orange'}} textStyle={{color:'#fff'}}  onPress={() => console.log('link')}>
+          : 告诉大家一个‘幸福’的好消息，我们退休将延迟至65岁！！
+        </NoticeBar>
+        <Spacing />
+        <NoticeBar mode="link"   style={{backgroundColor:'#fff'}} textStyle={{color:'blue'}} onPress={() => console.log('link')}>
+          : 告诉大家一个‘幸福’的好消息，我们退休将延迟至65岁！！
+        </NoticeBar>
+      </View>
+    )
+}
+export default NoticeBarExample;
+```
+
 ### Props
 
 属性 | 说明 | 类型 | 默认值
