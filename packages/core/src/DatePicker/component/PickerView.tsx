@@ -27,7 +27,7 @@ export interface PickerViewProps extends PickerProps {
 }
 
 const PickerView = (props: PickerViewProps) => {
-  const { title, showTitle, titleStyle, renderTitle, getTypeDate, value, ...other } = props;
+  const { title, showTitle, titleStyle, renderTitle, getTypeDate, value, onScrollEnd, ...other } = props;
   const textStyle = StyleSheet.flatten([styles.textStyle, titleStyle]);
   const [state, setState] = useState<number>(0);
   useEffect(() => {
