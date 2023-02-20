@@ -33,7 +33,7 @@ export interface TextAreaProps extends ViewProps {
   /** 是否禁用 */
   editable?: boolean;
   /** 文本域内容变化时触发 */
-  onChangeText?: (val: string) => void;
+  onChange?: (val: string) => void;
   /** 文本框中的文字内容 */
   value?: string;
   /** 是否展示字数 */
@@ -50,7 +50,7 @@ function TextArea(props: TextAreaProps) {
     placeholder = '',
     placeholderTextColor = '#989FB2',
     numberOfLines = 30,
-    onChangeText = () => {},
+    onChange = () => {},
     maxLength = 50,
     value = '',
     editable = true,
@@ -64,7 +64,7 @@ function TextArea(props: TextAreaProps) {
   const [defaultText, setDefaultText] = useState<string>('');
   const [height = 0, setHeight] = useState<number>(0);
 
-  const onChange = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
+  const onChangeValue = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
     if (autoSize) {
       setDefaultText(event.nativeEvent.text);
     }
@@ -87,8 +87,8 @@ function TextArea(props: TextAreaProps) {
           placeholderTextColor={placeholderTextColor}
           numberOfLines={numberOfLines}
           maxLength={maxLength}
-          onChangeText={onChangeText}
-          onChange={onChange}
+          onChangeText={onChange}
+          onChange={onChangeValue}
           onContentSizeChange={onContentSizeChange}
           editable={editable}
           value={value}
