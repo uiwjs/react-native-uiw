@@ -36,6 +36,9 @@ export default function Header(props: HeaderProps) {
           <NavLink to="/home">首页</NavLink>
           <NavLink to="/docs">文档</NavLink>
           <NavLink to="/components">RN组件</NavLink>
+          <a target="__blank" href="https://pushy.reactnative.cn/">
+            热更新
+          </a>
           <a target="__blank" href="https://github.com/uiwjs/react-native-uiw/issues">
             问题反馈
           </a>
