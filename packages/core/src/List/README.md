@@ -15,6 +15,109 @@ import React from "react"
 function Demo() {
   return (
     <List>
+      <List.Item style={{ height: 50 }}>首曝海报特写诡异人脸</List.Item>
+      <List.Item>六大变五大？传迪士尼600亿收购福斯</List.Item>
+      <List.Item>快跑!《侏罗纪世界2》正式预告要来了</List.Item>
+      <List.Item>
+        <View>
+          <Text>因为爱过，所以慈悲；因为懂得，所以宽容。</Text>
+        </View>
+      </List.Item>
+    </List>
+  );
+}
+
+export default Demo
+
+```
+
+### 设置头部
+
+```jsx mdx:preview
+
+import { View, Text } from 'react-native';
+import { List } from '@uiw/react-native';
+import React from "react"
+
+export default function Demo() {
+  return (
+    <List
+      title='这是头部，设置头部设置头部'
+      data={[
+        { date: '8月12日', time: '18:25', orderCode: 'SO18081200005', transCode: '123456', weight: '69.5Kg', money: '+241.00元', type: '收入' },
+        { date: '8月10日', time: '12:01', orderCode: 'SO18081000004', transCode: '123789', weight: '968.6Kg', money: '+8834.00元', type: '收入' },
+        { date: '8月2日', time: '10:08', orderCode: 'SO18080200003', transCode: '309876', weight: '465.6Kg', money: '-2520.00元', type: '支出' },
+        { date: '8月1日', time: '09:30', orderCode: 'SO18080100002', transCode: '783456', weight: '169.3Kg', money: '+1526.00元', type: '收入' },
+        { date: '8月1日', time: '06:47', orderCode: 'SO18080100001', transCode: '456234', weight: '395.6Kg', money: '+3234.00元', type: '收入' }
+      ]}
+      renderItem={({ item }) => {
+        return (
+          <View style={{borderWidth: 1}}>
+            <Text>{item.orderCode}</Text>
+            <Text>{item.weight}</Text>
+          </View>
+        );
+      }}
+    />
+  )
+}
+```
+
+### 设置单元格大小
+
+```jsx mdx:preview
+
+import { View, Text } from 'react-native';
+import { List } from '@uiw/react-native';
+import React from "react"
+
+export default function Demo() {
+  return (
+      <View >
+    <List
+    size='small'
+      data={[
+        {  weight: '69.5Kg', money: '+241.00元', type: '收入' },
+        {   weight: '968.6Kg', money: '+8834.00元', type: '收入' },
+      ]}
+      renderItem={({ item }) => {
+        return (
+          <View style={{borderWidth: 0.5}}>
+            <Text>{item.weight}</Text>
+          </View>
+        );
+      }}
+    />
+        <List
+    size='large'
+      data={[
+        { money: '+241.00元', type: '收入' },
+        { money: '+8834.00元', type: '收入' },
+      ]}
+      renderItem={({ item }) => {
+        return (
+          <View style={{borderWidth: 0.5}}>
+            <Text>{item.money}</Text>
+          </View>
+        );
+      }}
+    />
+      </View>
+  )
+}
+```
+
+### 展示右侧内容
+
+```jsx mdx:preview
+
+import { View, Text } from 'react-native';
+import { List } from '@uiw/react-native';
+import React from "react"
+
+function Demo() {
+  return (
+    <List extra={<Text>因为爱过，所以慈悲；因为懂得，所以宽容。</Text>}>
       <List.Item style={{ height: 50 }}>"X战警新变种人"首曝海报特写诡异人脸</List.Item>
       <List.Item>六大变五大？传迪士尼600亿收购福斯</List.Item>
       <List.Item>快跑!《侏罗纪世界2》正式预告要来了</List.Item>

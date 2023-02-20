@@ -47,6 +47,23 @@ function Demo() {
 export default Demo
 ```
 
+### 禁用状态
+
+```jsx  mdx:preview
+import React from 'react';
+import { Radio } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <Radio  disabled  >
+      Radio
+    </Radio>
+  );
+}
+
+export default Demo
+```
+
 ### 单选
 
 ```jsx   mdx:preview

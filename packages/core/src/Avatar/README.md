@@ -15,7 +15,7 @@ const uri = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAMAAAC7m5rvA
 
 function Demo() {
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: 'row',justifyContent:'space-around' }}>
       <Avatar src="https://avatars.githubusercontent.com/u/24369183?v=4" />
       <Avatar src={uri} />
     </View>
@@ -26,6 +26,72 @@ export default Demo
 
 ```
 
+### 头像尺寸
+
+```jsx mdx:preview
+import React from 'react';
+import { View } from 'react-native';
+import { Avatar } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <View style={{ flexDirection: 'row',justifyContent:'space-around' }}>
+      <Avatar size={20} src="https://avatars.githubusercontent.com/u/24369183?v=4" />
+      <Avatar size={30} src="https://avatars.githubusercontent.com/u/24369183?v=4" />
+      <Avatar size={40} src="https://avatars.githubusercontent.com/u/24369183?v=4" />
+      <Avatar size={50} src="https://avatars.githubusercontent.com/u/24369183?v=4" />
+    </View>
+  );
+}
+
+export default Demo
+
+```
+
+### 设置头像圆角
+
+```jsx mdx:preview
+import React from 'react';
+import { View } from 'react-native';
+import { Avatar } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <View style={{ flexDirection: 'row',justifyContent:'space-around' }}>
+      <Avatar rounded={0} src="https://avatars.githubusercontent.com/u/24369183?v=4" />
+      <Avatar rounded={5} src="https://avatars.githubusercontent.com/u/24369183?v=4" />
+      <Avatar rounded={10} src="https://avatars.githubusercontent.com/u/24369183?v=4" />
+      <Avatar rounded={20} src="https://avatars.githubusercontent.com/u/24369183?v=4" />
+    </View>
+  );
+}
+
+export default Demo
+
+```
+
+### 指定头像的形状
+
+circle  圆头像  
+square  正方形头像  
+
+```jsx mdx:preview
+import React from 'react';
+import { View } from 'react-native';
+import { Avatar } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <View style={{ flexDirection: 'row',justifyContent:'space-around' }}>
+      <Avatar shape='circle' src="https://avatars.githubusercontent.com/u/24369183?v=4" />
+      <Avatar rounded='square' src="https://avatars.githubusercontent.com/u/24369183?v=4" />
+    </View>
+  );
+}
+
+export default Demo
+
+```
 ### Props
 
 继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。

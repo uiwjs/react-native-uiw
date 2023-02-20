@@ -50,6 +50,19 @@ function Demo() {
 }
 export default Demo;
 ```
+### 设置禁用
+
+```jsx mdx:preview
+import React from 'react';
+import { SegmentedControl } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <SegmentedControl disabled gutter={10} selectedIndex={2} value={['申请', '审批', '提交']} />
+  );
+}
+export default Demo;
+```
 
 ### 设置尺寸
 
