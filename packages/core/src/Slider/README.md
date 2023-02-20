@@ -118,7 +118,6 @@ export default Demo
 |------|------|-----|------|
 | `value` | 初始值 | Number | - |
 | `step` | 滑块的步长值。该值应介于`0`到 `maxValue`~ `minValue`之间） | Number | - |
-| `disabled` | 初始值 | Number | - |
 | `maxValue` | 最大值 | Number | `1` |
 | `minValue` | 最小值 | Number | `0` |
 | `disabled` | 值为 `true` 时，滑块为禁用状态 | Boolean | - |
