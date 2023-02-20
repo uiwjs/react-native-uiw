@@ -66,7 +66,27 @@ function Demo() {
 }
 export default Demo
 ```
+### 禁用状态
 
+```jsx mdx:preview
+import { Badge, List, CheckBox } from '@uiw/react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <List size="large" flat={false}>
+      <List.Item style={{ paddingVertical: 0 }}>
+        <CheckBox disabled style={{ paddingVertical: 10 }} onChange={(checked) => { console.log(checked)}}>禁用未选中</CheckBox>
+      </List.Item>
+      <List.Item style={{ paddingVertical: 0 }}>
+        <CheckBox checked={true} disabled style={{ paddingVertical: 10 }} onChange={(checked) => { console.log(checked)}}>禁用选中</CheckBox>
+      </List.Item>
+    </List>
+  );
+}
+
+export default Demo
+```
 
 ### props
 
@@ -78,6 +98,7 @@ export default Demo
 | `textStyle` | 设置文本样式 | TextStyle & ViewStyle | - |
 | `color` | 设置颜色 | String | - |
 | `checked` | 指定当前是否选中 | Boolean | - |
+| `disabled` | 设置是否禁用 | Boolean | false |
 | `checkedIcon` | 选中图标 | Icon['name']/`JSX.Elemen` | - |
 | `unCheckedIcon` | 未选中图标 | Icon['name']/`JSX.Elemen` | - |
 | `onChange` | 事件触发的回调函数 | (checked):void | `5` |
