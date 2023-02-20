@@ -80,7 +80,7 @@ function SearchBar({
 
   return !visible ? (
     <Pressable onPress={showSearchBar}>
-      <View style={[styles.content, contentStyle]}>
+      <View style={[disabled ? styles.disabled : styles.content, contentStyle]}>
         <Text style={styles.contentTitle}>{textValue ? textValue : placeholder}</Text>
         {React.isValidElement(extra) ? (
           extra
@@ -134,9 +134,9 @@ function SearchBar({
                   const selectValue:
                     | any
                     | {
-                        key: string;
-                        label: string;
-                      } = labelInValue ? { key: itm.value, label: itm.label } : itm.value;
+                      key: string;
+                      label: string;
+                    } = labelInValue ? { key: itm.value, label: itm.label } : itm.value;
                   onChange && onChange(selectValue);
                   setCurValue(selectValue);
                   setVisivble(false);
@@ -193,6 +193,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   disabled: {
+    flexDirection: 'row',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingRight: 5,
     backgroundColor: '#f5f5f5',
+    paddingHorizontal: 16,
   },
 });

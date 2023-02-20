@@ -16,7 +16,7 @@ import { motorcycle } from './svg';
 function Demo() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Progress progress={30} position="fixed"/>
+      <Progress progress={30} />
     </SafeAreaView>
   )
 }
@@ -38,6 +38,27 @@ function Demo() {
           progressColor="#5847FF"
           progressShow={false}
           progress={30}
+        />
+    </SafeAreaView>
+  )
+}
+export default Demo
+```
+### 自定义百分比,展示进度
+
+<!--DemoStart-->
+```jsx mdx:preview
+import React from 'react';
+import {  SafeAreaView } from 'react-native';
+import { Progress } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+     <Progress
+          progressColor="#5847FF"
+          progressShow={true}
+          progress={90}
         />
     </SafeAreaView>
   )

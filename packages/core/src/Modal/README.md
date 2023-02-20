@@ -11,27 +11,72 @@ Modal 模态框
 ```jsx  mdx:preview
 import React, { useState, Fragment } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
-import { Modal, Button } from '@uiw/react-native';
+import { Modal, Button,Grid, Icon } from '@uiw/react-native';
 
 function ButtonGroupView() {
-  const [modalVisible,setModalVisible]= useState(false)
-
+  const [lowerModal,setLowerModal]= useState(false)
+  const [topModal,setTopModal]= useState(false)
+  const [leftModal,setLeftModal]= useState(false)
+  const [rightModal,setRightModal]= useState(false)
+  const data = Array.from(new Array(24)).map((_val, i) => {
+    return { icon: <Icon name="heart-on" color="red" />, text: `${i}`}
+  });
   return (
     <Fragment>
-      <Modal
-        visible={modalVisible}
-      >
+      <Modal visible={lowerModal}>
         <SafeAreaView>
           <View>
-            <Text>Hello World!</Text>
-            <Button onPress={() => setModalVisible(false)}>
-              隐藏模态框
+            <Button onPress={() => setLowerModal(false)}>
+              隐藏下面弹出的模态框
+            </Button>
+            <Grid data={data} columns='6' hasLine={false}/>
+          </View>
+        </SafeAreaView>
+      </Modal>
+
+      <Modal visible={topModal} placement='top'>
+        <SafeAreaView>
+          <View>
+            <Grid data={data} columns='6' hasLine={false}/>
+            <Button onPress={() => setTopModal(false)}>
+              隐藏上面弹出的模态框
             </Button>
           </View>
         </SafeAreaView>
       </Modal>
-      <Button onPress={() => setModalVisible(true)}>
-        显示模态框
+
+      <Modal visible={leftModal} placement='left' >
+        <SafeAreaView style={{width:600}}>
+          <View>
+            <Grid data={data} columns='6' hasLine={false}/>
+            <Button onPress={() => setLeftModal(false)}>
+              隐藏左边弹出的模态框
+            </Button>
+          </View>
+        </SafeAreaView>
+      </Modal>
+
+      <Modal visible={rightModal} placement='right'>
+        <SafeAreaView style={{width:600}}>
+          <View>
+            <Grid data={data} columns='6' hasLine={false}/>
+            <Button onPress={() => setRightModal(false)}>
+              隐藏右边弹出的模态框
+            </Button>
+          </View>
+        </SafeAreaView>
+      </Modal>
+      <Button onPress={() => setLowerModal(true)}>
+        下面显示
+      </Button>
+         <Button onPress={() => setTopModal(true)}>
+        上面显示
+      </Button>
+         <Button onPress={() => setLeftModal(true)}>
+        左边显示
+      </Button>
+         <Button onPress={() => setRightModal(true)}>
+        右边显示
       </Button>
     </Fragment>
   );

@@ -12,10 +12,13 @@ MaskLayer 遮罩层
 ```jsx  mdx:preview
 import React, { Fragment, useState } from 'react';
 import { Text,  SafeAreaView } from 'react-native';
-import { Button, MaskLayer } from '@uiw/react-native';
+import { Button, MaskLayer,Grid,Icon } from '@uiw/react-native';
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
+    const data = Array.from(new Array(24)).map((_val, i) => {
+    return { icon: <Icon name="heart-on" color="red" />, text: `${i}`}
+  });
   return (
     <Fragment>
       <MaskLayer
@@ -23,8 +26,8 @@ const Demo = () => {
         onDismiss={() => {
           setVisible(!visible);
         }}>
-        <SafeAreaView>
-          <Text style={{color: '#fff'}}>展示内容</Text>
+        <SafeAreaView style={{alignItems:'center'}}>
+            <Grid style={{width:500,heigth:500,}} data={data} columns='6' hasLine={false}/>
         </SafeAreaView>
       </MaskLayer>
       <Button

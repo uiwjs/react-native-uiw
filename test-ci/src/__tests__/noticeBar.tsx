@@ -1,15 +1,15 @@
 import 'react-native';
 import React from 'react';
 import NoticeBar from '../lib/NoticeBar';
-import Marquee from '../lib/NoticeBar/Marquee'
+import Marquee from '../lib/NoticeBar/Marquee';
 import { Text, Image } from 'react-native';
 import { render, fireEvent } from '@testing-library/react-native';
 import { keys, toObject } from '../utils';
 
 const MODES: keys = {
   closable: '×',
-  link: '∟'
-}
+  link: '∟',
+};
 
 describe('NoticeBar', () => {
   describe.each`
@@ -25,14 +25,9 @@ describe('NoticeBar', () => {
 
   it('icon', () => {
     const source = {
-      uri: 'https://zos.alipayobjects.com/rmsportal/bRnouywfdRsCcLU.png'
-    }
-    const customIcon = (
-      <Image
-        source={source}
-        style={{ width: 12, height: 12 }}
-      />
-    )
+      uri: 'https://zos.alipayobjects.com/rmsportal/bRnouywfdRsCcLU.png',
+    };
+    const customIcon = <Image source={source} style={{ width: 12, height: 12 }} />;
     const { UNSAFE_getByType } = render(<NoticeBar icon={customIcon} />);
     const component = UNSAFE_getByType(Image);
     expect(component.props.source).toMatchObject(source);
