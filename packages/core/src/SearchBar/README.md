@@ -26,6 +26,108 @@ export default Demo
 
 ```
 
+### 禁用状态
+
+```jsx mdx:preview
+import { SearchBar } from '@uiw/react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <SearchBar 
+      disabled
+      labelInValue 
+      options={[
+        {label:'上海',value:1},
+        {label:'南京',value:2}
+      ]} 
+      onFocus={()=>{}}  
+      onChange={val=>console.log('val',val)}
+      placeholder="请输入搜索"
+    />
+  );
+}
+
+export default Demo
+
+```
+
+### 加载中的状态
+
+```jsx mdx:preview
+import { SearchBar } from '@uiw/react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <SearchBar 
+      loading
+      labelInValue 
+      options={[
+        {label:'上海',value:1},
+        {label:'南京',value:2}
+      ]} 
+      onFocus={()=>{}}  
+      onChange={val=>console.log('val',val)}
+      placeholder="请输入搜索"
+    />
+  );
+}
+
+export default Demo
+
+```
+
+### 搜索框自定义文本
+
+```jsx mdx:preview
+import { SearchBar } from '@uiw/react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <SearchBar 
+      labelInValue 
+      options={[
+        {label:'上海',value:1},
+        {label:'南京',value:2}
+      ]} 
+      onFocus={()=>{}}  
+      onChange={val=>console.log('val',val)}
+      placeholder="点击这里输入查询吧！！！"
+    />
+  );
+}
+
+export default Demo
+
+```
+### 展示清除按钮
+
+```jsx mdx:preview
+import { SearchBar } from '@uiw/react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <SearchBar 
+      showClear
+      labelInValue 
+      options={[
+        {label:'上海',value:1},
+        {label:'南京',value:2}
+      ]} 
+      onFocus={()=>{}}  
+      onChange={val=>console.log('val',val)}
+      placeholder="请输入搜索"
+    />
+  );
+}
+
+export default Demo
+
+```
+
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
@@ -40,7 +142,7 @@ export default Demo
 | loading | 加载中状态 | Boolean | - |
 | placeholder | 搜索框默认文本 | String | - |
 | extra | 图标 | JSX.Element | - |
-| showClear | 是否展示清楚图标 | boolean | - |
+| showClear | 是否展示清除图标 | boolean | - |
 
 ### OptionsStateProps
 
