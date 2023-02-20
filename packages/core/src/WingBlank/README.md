@@ -11,14 +11,12 @@ import React,{Component} from 'react';
 import { Text } from 'react-native';
 import { WingBlank } from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
-    return (
-      <WingBlank>
-        <Text>两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留两翼留白两翼留白两翼留白两翼留白</Text>
-      </WingBlank>
-    );
-   }
+function Demo() {
+  return (
+    <WingBlank>
+      <Text>两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留两翼留白两翼留白两翼留白两翼留白</Text>
+    </WingBlank>
+  );
 }
 export default Demo
 ```
@@ -30,22 +28,20 @@ import React,{Component,Fragment} from 'react';
 import { Text } from 'react-native';
 import { WingBlank } from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
-    return (
-    <Fragment>
-      <WingBlank size='small'>
-        <Text>两翼留白两翼留白</Text>
-      </WingBlank>
-      <WingBlank size='default'>
-        <Text>两翼留白两翼留白</Text>
-      </WingBlank>
-      <WingBlank size='large'>
-        <Text>两翼留白两翼留白</Text>
-      </WingBlank>
-    </Fragment>
-    );
-   }
+function Demo() {
+  return (
+  <Fragment>
+    <WingBlank size='small'>
+      <Text>两翼留白两翼留白</Text>
+    </WingBlank>
+    <WingBlank size='default'>
+      <Text>两翼留白两翼留白</Text>
+    </WingBlank>
+    <WingBlank size='large'>
+      <Text>两翼留白两翼留白</Text>
+    </WingBlank>
+  </Fragment>
+  );
 }
 export default Demo
 ```
