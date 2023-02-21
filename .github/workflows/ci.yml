@@ -26,13 +26,6 @@ jobs:
       - run: mkdir -p packages/docs/doc
       - run: cp -r website/build/ packages/docs/doc
 
-      - name: Create README.md of Build
-        working-directory: build
-        run: |
-          cat > README.md << EOF
-          Preview the document `@uiw/react-native-uiw@v3`: https://raw.githack.com/uiwjs/react-native-uiw/v3-doc/index.html
-          EOF
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
