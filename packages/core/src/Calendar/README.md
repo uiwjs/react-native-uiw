@@ -12,8 +12,7 @@ import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
 const { Header, Body,  Footer } = Layout;
 
- class CalendarView extends Component {
-  render() {
+ function CalendarView() {
     const title = 'Calendar';
     return (
         <Container>
@@ -25,7 +24,6 @@ const { Header, Body,  Footer } = Layout;
           </Layout>
         </Container>
     );
-  }
 }
 export default CalendarView
 ```
@@ -39,8 +37,7 @@ import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
 const { Header, Body,  Footer } = Layout;
 
-class CalendarView extends Component {
-  render() {
+function CalendarView() {
     return (
         <Container>
           <Layout>
@@ -51,7 +48,6 @@ class CalendarView extends Component {
           </Layout>
         </Container>
     );
-  }
 }
 export default CalendarView
 
@@ -66,8 +62,7 @@ import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
 const { Header, Body,  Footer } = Layout;
 
-class CalendarView extends Component {
-  render() {
+function CalendarView() {
      const barProps = {
       barRightText: "返回",
       title : "日历",
@@ -84,7 +79,6 @@ class CalendarView extends Component {
           </Layout>
         </Container>
     );
-  }
 }
 export default CalendarView
 ```
