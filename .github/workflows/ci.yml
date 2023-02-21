@@ -2,7 +2,7 @@ name: Build & Deploy
 on:
   push:
     branches:
-      - master
+      - v3
 
 env:
   SKIP_PREFLIGHT_CHECK: true
@@ -26,6 +26,22 @@ jobs:
       - run: mkdir -p packages/docs/doc
       - run: cp -r website/build/ packages/docs/doc
 
+      - name: Create README.md of Build
+        working-directory: build
+        run: |
+          cat > README.md << EOF
+          Preview the document `@uiw/react-native-uiw@v3`: https://raw.githack.com/uiwjs/react-native-uiw/v3-doc/index.html
+          EOF
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: v3-doc
+          publish_dir: ./website/build
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          
       - name: Is a tag created auto?
         id: create_tag
         uses: jaywcjlove/create-tag-action@main
@@ -54,36 +70,3 @@ jobs:
 
             ${{ steps.changelog.outputs.changelog }}
 
-      - run: git status
-
-      - name: 📦 @uiw/react-native publish to NPM
-        run: npm publish
-        working-directory: packages/core
-        continue-on-error: true
-        env:
-          NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
-
-      - name: 📦 @uiw/react-native-doc publish to NPM
-        run: npm publish
-        working-directory: packages/docs
-        continue-on-error: true
-        env:
-          NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./website/build
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Deploy to uimjs.github.io
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.PERSONAL_TOKEN_UIM }}
-          publish_dir: ./website/build
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          publish_branch: master
-          external_repository: uimjs/uimjs.github.io
