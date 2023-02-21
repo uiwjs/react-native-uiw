@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "~7.20.7",
-    "@babel/preset-env": "7.20.2",
+    "@babel/plugin-proposal-private-property-in-object": "~7.21.0",
     "@kkt/less-modules": "^7.3.2",
     "@kkt/raw-modules": "7.0.5",
     "@kkt/scope-plugin-options": "7.0.5",
