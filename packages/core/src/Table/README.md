@@ -116,6 +116,62 @@ export default Demo
 
 ```
 
+### 超出自动省略
+
+```jsx  mdx:preview
+import React from 'react';
+import  {Table, Button } from '@uiw/react-native';
+import {View} from 'react-native';
+
+const Demo = () => {
+  return (
+     <Table
+        columns={[
+          {
+            title: '名称',
+            dataIndex: 'partName',
+            ellipsis: true,
+          },
+          {
+            title: '品牌',
+            dataIndex: 'partBrand',
+            ellipsis: true,
+          },
+          {
+            title: '型号',
+            dataIndex: 'partModel',
+            ellipsis: true,
+          },
+          {
+            title: '备注',
+            dataIndex: 'remark',
+            ellipsis: true,
+          },
+          {
+            title: '操作',
+            dataIndex: 'id',
+            style: { width: 50 },
+            render: () => {
+              return (
+                    <Button size="small">详情</Button>
+              );
+            },
+          },
+        ]}
+        data={[
+          { id: '1',  partName: 'React Native UIW 组件库', partBrand: '一个基于 React Native 的 UI 组件库', partModel: 'React Native UI 组件库 - UIW', remark: 'UIW，ff爱zz,三生三世用相随' },
+          { id: '2',  partName: 'React Native UIW 组件库', partBrand: '一个基于 React Native 的 UI 组件库', partModel: 'React Native UI 组件库- UIW', remark: 'UIW，ff爱zz,三生三世用相随' },
+          { id: '3',  partName: 'React Native UIW 组件库', partBrand: '一个基于 React Native 的 UI 组件库', partModel: 'React Native UI 组件库- UIW', remark: 'UIW, ff爱zz,三生三世用相随' },
+          { id: '4',  partName: 'React Native UIW 组件库', partBrand: '一个基于 React Native 的 UI 组件库', partModel: 'React Native UI 组件库- UIW', remark: 'UIW, ff爱zz,三生三世用相随' },
+        ]}
+        rowKey="id"
+      />
+  );
+}
+export default Demo
+
+```
+
 ### props
 
 | 参数                 | 说明         | 类型    | 默认值  |
