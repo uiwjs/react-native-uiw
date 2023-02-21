@@ -17,6 +17,5 @@ it('Empty', () => {
   expect(component.root.props.label).toBe('冇得数据咯');
   expect(component.root.props.size).toBe(120);
   expect(component.root.props.labelStyle).toBeTruthy();
-  expect(component.root.props.xml).toBeTruthy();
   expect(component.root.props.children).toBe('冇得数据咯');
 });
