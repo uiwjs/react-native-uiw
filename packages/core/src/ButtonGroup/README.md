@@ -10,8 +10,7 @@ ButtonGroup 按钮组
 import React,{ Component } from "react"
 import  {Button,ButtonGroup}  from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
+function Demo() {
     return (
       <ButtonGroup>
         <Button type="warning">警告</Button>
@@ -20,7 +19,6 @@ class Demo extends Component {
         <Button type="warning">警告</Button>
       </ButtonGroup>
     )
-  }
 }
 
 export default Demo
@@ -34,8 +32,7 @@ import React,{ Component } from "react"
 import { View } from 'react-native';
 import  {Button,ButtonGroup,Spacing}  from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
+function Demo() {
     return (
       <View>
         <ButtonGroup bordered={false}>
@@ -53,7 +50,6 @@ class Demo extends Component {
         </ButtonGroup>
       </View>
     )
-  }
 }
 
 export default Demo
@@ -69,8 +65,7 @@ import React,{ Component } from "react"
 import { View } from 'react-native';
 import  {Button,ButtonGroup,Spacing}  from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
+function Demo() {
     return (
       <View>
         <ButtonGroup size="small">
@@ -116,7 +111,6 @@ class Demo extends Component {
         </ButtonGroup>
       </View>
     )
-  }
 }
 
 export default Demo
