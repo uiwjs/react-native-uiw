@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, StyleSheet, ViewProps, TouchableOpacity, Modal, Pressable, ModalProps, Animated } from 'react-native';
 import Cloud from './Cloud';
 import { getLocation, xLocation, getLocationReturn, MainWidth } from './utils';
@@ -26,6 +26,12 @@ export interface TooltipProps extends ModalProps {
    * 关闭时触发
    */
   onClose?: Function;
+
+  isDown?: boolean;
+  triangle?: number;
+  fadeAnim?: any;
+  isStart?: any;
+  refCloud?: any;
 }
 
 export interface style extends ViewProps {
@@ -47,38 +53,72 @@ interface TooltipState {
   modalViewStyle: style;
 }
 
-export default class Tooltip extends React.Component<TooltipProps, TooltipState> {
-  private fadeAnim: Array<Animated.Value> = [new Animated.Value(0), new Animated.Value(0)];
-  private refFollow = React.createRef<View>();
-  private refCloud = React.createRef<View>();
-  private isDown: boolean = false; // 三角 上下
-  private isStart: xLocation = xLocation.start; // 三角 左 中 右
-  private triangle: number = 0; // 三角 位置
+export default function Tooltip(props: TooltipProps) {
+  const {
+    width = 100,
+    height = 20,
+    children,
+    title,
+    toggleAction = 'onPress',
+    backgroundColor = '#000000',
+    borderRadius = 10,
+    fadeAnim = [new Animated.Value(0), new Animated.Value(0)],
+    refCloud = React.createRef<View>(),
+    triangle = 0,
+    isStart = 'flex-start',
+    isDown = false,
+    ...other
+  } = props;
+  const refFollow: any = useRef<View>();
+  const [state, setState] = useState<any>({
+    modalVisible: false,
+    cloudStyle: {
+      left: 0,
+      top: 0,
+    },
+    followStyle: {
+      width,
+      height,
+    },
+    modalViewStyle: {},
+  });
 
-  constructor(props: TooltipProps) {
-    super(props);
-    const { width = 100, height = 20 } = props;
-    this.state = {
-      modalVisible: false,
-      cloudStyle: {
-        left: 0,
-        top: 0,
-      },
-      followStyle: {
-        width,
-        height,
-      },
-      modalViewStyle: {},
-    };
-  }
+  useEffect(() => {
+    Animated.stagger(
+      50,
+      fadeAnim.map((item: Animated.Value, index: number) =>
+        Animated.timing(item, {
+          toValue: index === 0 ? 0.6 : 1,
+          duration: 300,
+          useNativeDriver: true,
+        }),
+      ),
+    ).start(({ finished }) => {
+      props.onOpen && props.onOpen();
+    });
+  }, [props.onOpen]);
 
-  onOpen = () => {
-    this.setState({ modalVisible: true }, () => {
-      this.refFollow.current &&
-        this.refFollow.current.measure((_frameOffsetX, _frameOffsetY, _width, _height, pageOffsetX, pageOffsetY) => {
-          this.refCloud.current &&
-            this.refCloud.current.measure((_X, _Y, _W, _H, _PX, _PY) => {
-              this.setState({
+  const onOpen = () => {
+    const { fadeAnim } = props;
+    setState({ modalVisible: true });
+    refFollow.current &&
+      refFollow.current.measure(
+        (
+          _frameOffsetX: number,
+          _frameOffsetY: number,
+          _width: number,
+          _height: number,
+          pageOffsetX: number,
+          pageOffsetY: number,
+        ) => {
+          refCloud.current &&
+            refCloud.current.measure((_X: number, _Y: number, _W: number, _H: number, _PX: number, _PY: number) => {
+              const cloudStyle: getLocationReturn = getLocation(_width, _height, pageOffsetX, pageOffsetY, _W, _H);
+              let isDown = cloudStyle.isDown;
+              let isStart = cloudStyle.isStart;
+              let triangle = cloudStyle.triangle;
+
+              setState({
                 modalViewStyle: {
                   width: _width,
                   height: _height,
@@ -87,102 +127,88 @@ export default class Tooltip extends React.Component<TooltipProps, TooltipState>
                   left: pageOffsetX,
                   top: pageOffsetY,
                 },
-              });
-              const cloudStyle: getLocationReturn = getLocation(_width, _height, pageOffsetX, pageOffsetY, _W, _H);
-              this.isDown = cloudStyle.isDown;
-              this.isStart = cloudStyle.isStart;
-              this.triangle = cloudStyle.triangle;
-              this.setState({ cloudStyle: cloudStyle.style });
-              Animated.stagger(
-                50,
-                this.fadeAnim.map((item: Animated.Value, index: number) => {
-                  return Animated.timing(item, {
-                    toValue: index === 0 ? 0.6 : 1,
-                    duration: 300,
-                    useNativeDriver: true,
-                  });
-                }),
-              ).start(({ finished }) => {
-                this.props.onOpen && this.props.onOpen();
+                cloudStyle: cloudStyle.style,
               });
             });
-        });
-    });
+        },
+      );
   };
 
-  onClose = () => {
+  const onClose = () => {
     Animated.stagger(
       50,
-      this.fadeAnim
-        .map((item) => {
-          return Animated.timing(item, {
+      fadeAnim
+        .map((item: Animated.Value, index: number) =>
+          Animated.timing(item, {
             toValue: 0,
             duration: 300,
             useNativeDriver: true,
-          });
-        })
+          }),
+        )
         .reverse(),
     ).start(({ finished }) => {
-      this.setState({ modalVisible: false });
-      this.props.onClose && this.props.onClose();
+      props.onClose && props.onClose();
     });
+    setState({ ...state, modalVisible: false });
   };
-  render() {
-    const {
-      props: { children, title, toggleAction = 'onPress', backgroundColor = '#000', borderRadius = 10, ...other },
-      isDown,
-    } = this;
-    return (
-      <View>
-        <Modal
-          testID="RNE__Tooltip__wrap"
-          animationType="fade" // slide  none  fade
-          transparent={true}
-          visible={this.state.modalVisible}
-          {...other}
-        >
-          <TouchableOpacity activeOpacity={1} style={styles.position} onPress={this.onClose}>
-            <Animated.View
-              style={[
-                styles.position,
-                styles.backdrop,
-                {
-                  opacity: this.fadeAnim[0],
-                },
-              ]}
-            ></Animated.View>
-          </TouchableOpacity>
-          <View style={[styles.followView, { ...this.state.modalViewStyle }]}>{children}</View>
+  return (
+    <View>
+      <Modal
+        testID="RNE__Tooltip__wrap"
+        animationType="fade" // slide  none  fade
+        transparent={true}
+        visible={state.modalVisible}
+        {...other}
+      >
+        <TouchableOpacity activeOpacity={1} style={styles.position} onPress={onClose}>
           <Animated.View
             style={[
-              styles.containerView,
+              styles.position,
+              styles.backdrop,
               {
-                opacity: this.fadeAnim[1],
+                opacity: fadeAnim[0],
               },
             ]}
-          >
-            <View style={[styles.containerView, { ...this.state.cloudStyle }]} ref={this.refCloud}>
-              <Cloud
-                title={title}
-                isDown={isDown}
-                isStart={this.isStart}
-                triangle={this.triangle}
-                backgroundColor={backgroundColor}
-                borderRadius={borderRadius}
-              />
-            </View>
-          </Animated.View>
-        </Modal>
-
-        <Pressable testID="RNE__Tooltip__pressable" {...{ [toggleAction]: this.onOpen }} delayLongPress={250}>
-          <View style={[styles.followView, { ...this.state.followStyle }]} ref={this.refFollow}>
-            {children}
+          ></Animated.View>
+        </TouchableOpacity>
+        <View style={[styles.followView, { ...state.modalViewStyle }]}>{children}</View>
+        <Animated.View
+          style={[
+            styles.containerView,
+            {
+              opacity: fadeAnim[1],
+            },
+          ]}
+        >
+          <View style={[styles.containerView, { ...state.cloudStyle }]} ref={refCloud}>
+            <Cloud
+              title={title}
+              isDown={isDown}
+              isStart={isStart}
+              triangle={triangle}
+              backgroundColor={backgroundColor}
+              borderRadius={borderRadius}
+            />
           </View>
-        </Pressable>
-      </View>
-    );
-  }
+        </Animated.View>
+      </Modal>
+
+      <Pressable testID="RNE__Tooltip__pressable" {...{ [toggleAction]: onOpen }} delayLongPress={250}>
+        <View style={[styles.followView, { ...state.followStyle }]} ref={refFollow}>
+          {children}
+        </View>
+      </Pressable>
+    </View>
+  );
 }
+Tooltip.defaultProps = {
+  fadeAnim: [new Animated.Value(0), new Animated.Value(0)],
+  refFollow: React.createRef<View>(),
+  refCloud: React.createRef<View>(),
+  isDown: false, // 三角 上下
+  isStart: xLocation.start, // 三角 左 中 右
+  triangle: 0, // 三角 位置
+};
 
 const styles = StyleSheet.create({
   position: {
