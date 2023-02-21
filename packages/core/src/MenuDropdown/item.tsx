@@ -5,10 +5,8 @@ export interface ItemProps {
   children?: React.ReactNode;
 }
 
-export default class Item extends React.Component<ItemProps> {
-  render() {
-    return <View style={styles.item}>{this.props.children}</View>;
-  }
+export default function Item(props: ItemProps) {
+  return <View style={styles.item}>{props.children}</View>;
 }
 
 const styles = StyleSheet.create({

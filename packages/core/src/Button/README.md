@@ -15,27 +15,25 @@ import React,{ Component } from "react"
 import  { Button, Spacing, Icon } from '@uiw/react-native';
 import { Text} from 'react-native';
 
-class Demo extends Component {
-  render() {
-    return (
-      <>
-        <Button>default</Button>
-        <Spacing/>
-        <Button disabled>disabled</Button>
-        <Spacing/>
-        <Button type="primary" onPress={()=>console.log("The Button")}>primary</Button>
-        <Spacing/>
-        <Button type="warning">warning</Button>
-        <Spacing/>
-        <Button bordered={false} type="danger">
-          <Icon name="warning" fill="#fff" size={17} />
-          <Text> warning</Text>
-        </Button>
-        <Spacing/>
-        <Button  loading>loading</Button>
-      </>
-    )
-  }
+function Demo() {
+  return (
+    <>
+      <Button>default</Button>
+      <Spacing/>
+      <Button disabled>disabled</Button>
+      <Spacing/>
+      <Button type="primary" onPress={()=>console.log("The Button")}>primary</Button>
+      <Spacing/>
+      <Button type="warning">warning</Button>
+      <Spacing/>
+      <Button bordered={false} type="danger">
+        <Icon name="warning" fill="#fff" size={17} />
+        <Text> warning</Text>
+      </Button>
+      <Spacing/>
+      <Button  loading>loading</Button>
+    </>
+  )
 }
 export default Demo
 ```
@@ -47,17 +45,15 @@ import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
 
 
-class Demo extends Component {
-  render() {
-    return (
-      <>
-        <Spacing />
-        <Button rounded={23} type="primary">
-          自定义rounded
-        </Button>
-      </>
-    )
-  }
+function Demo() {
+  return (
+    <>
+      <Spacing />
+      <Button rounded={23} type="primary">
+        自定义rounded
+      </Button>
+    </>
+  )
 }
 export default Demo
 ```
@@ -69,26 +65,24 @@ import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
 
 
-class Demo extends Component {
-  render() {
-    return (
-      <>
-        <Button>default</Button>
-        <Spacing/>
-        <Button type="primary">primary</Button>
-        <Spacing/>
-        <Button type="warning">warning</Button>
-        <Spacing/>
-        <Button type="success">success</Button>
-        <Spacing/>
-        <Button type="danger" >danger</Button>
-        <Spacing/>
-        <Button type="light" >light</Button>
-        <Spacing/>
-        <Button type="dark" >dark</Button>
-      </>
-    )
-  }
+function Demo() {
+  return (
+    <>
+      <Button>default</Button>
+      <Spacing/>
+      <Button type="primary">primary</Button>
+      <Spacing/>
+      <Button type="warning">warning</Button>
+      <Spacing/>
+      <Button type="success">success</Button>
+      <Spacing/>
+      <Button type="danger" >danger</Button>
+      <Spacing/>
+      <Button type="light" >light</Button>
+      <Spacing/>
+      <Button type="dark" >dark</Button>
+    </>
+  )
 }
 export default Demo
 ```
@@ -100,18 +94,16 @@ import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
 
 
-class Demo extends Component {
-  render() {
-    return (
-      <>
-        <Button color="#333">#333</Button>
-        <Spacing />
-        <Button color="#28a745">#28a745</Button>
-        <Spacing />
-        <Button color="#008EF0">#008EF0</Button>
-      </>
-    )
-  }
+function Demo() {
+  return (
+    <>
+      <Button color="#333">#333</Button>
+      <Spacing />
+      <Button color="#28a745">#28a745</Button>
+      <Spacing />
+      <Button color="#008EF0">#008EF0</Button>
+    </>
+  )
 }
 export default Demo
 ```
@@ -123,16 +115,14 @@ export default Demo
 import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
-    return (
-      <>
-        <Button loading>loading</Button>
-        <Spacing />
-        <Button loading disabled>loading disabled</Button>
-      </>
-    )
-  }
+function Demo() {
+  return (
+    <>
+      <Button loading>loading</Button>
+      <Spacing />
+      <Button loading disabled>loading disabled</Button>
+    </>
+  )
 }
 export default Demo
 ```

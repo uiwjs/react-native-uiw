@@ -21,8 +21,7 @@ const contents = [
   'https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg',
 ];
 
-class Demo extends Component {
-  render() {
+function Demo() {
   const renderItem = (_, index) => {
     return (
       <View key={index} style={{ padding: 20,backgroundColor: '#fff'}}>
@@ -45,7 +44,6 @@ class Demo extends Component {
       </CardCollapse>
     </ScrollView>
     )
-  }
 }
 
 export default Demo
@@ -70,8 +68,7 @@ const contents = [
   'https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg',
 ];
 
-class Demo extends Component {
-  render() {
+function Demo() {
   const renderItem = (_, index) => {
     return (
       <View key={index} style={{ padding: 20,backgroundColor: '#fff'}}>
@@ -94,7 +91,6 @@ class Demo extends Component {
       </CardCollapse>
     </ScrollView>
     )
-  }
 }
 
 export default Demo
@@ -118,8 +114,7 @@ const contents = [
   'https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg',
 ];
 
-class Demo extends Component {
-  render() {
+function Demo() {
   const renderItem = (_, index) => {
     return (
       <View key={index} style={{ padding: 20,backgroundColor: '#fff'}}>
@@ -143,7 +138,6 @@ class Demo extends Component {
       </CardCollapse>
     </ScrollView>
     )
-  }
 }
 
 export default Demo

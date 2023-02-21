@@ -25,6 +25,26 @@ function Demo() {
 export default Demo;
 ```
 
+### 步骤索引值
+
+```jsx mdx:preview
+import React from 'react';
+import { Steps } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <Steps
+      items={[
+        { 'title': '步骤一', 'desc': '当前服务正在申请中',status:'success'},
+        { 'title': '步骤二', 'desc': '当前服务正在审批中',status:'success'},
+        { 'title': '步骤三', 'desc': '当前服务审批失败',status:'error'}
+      ]}
+      current={0}
+    />
+  );
+}
+export default Demo;
+```
 ### props
 
 | 参数                 | 说明         | 类型    | 默认值  |

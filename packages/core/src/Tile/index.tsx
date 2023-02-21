@@ -49,7 +49,7 @@ export type TileProps = TouchableOpacityProps &
     /** 继承image的api */
     imageProps?: Partial<ImageProps>;
     /** Custom ImageComponent for Tile. */
-    ImageComponent?: typeof React.Component;
+    ImageComponent?: Function;
   };
 
 const Tile = ({
