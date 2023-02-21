@@ -75,7 +75,7 @@ import { Rating, Icon } from '@uiw/react-native';
 function Demo() {
   const desc = ['0星', '1星', '2星', '3星', '4星', '5星'];
   return (
-    <Rating tooltips={desc}  tooltipsStyle={{ fontSize: 25, color: 'blue' }} />
+    <Rating tooltips={desc}  tooltipsStyle={{ fontSize: 20, color: '#e6c45d' }} />
   );
 }
 export default Demo

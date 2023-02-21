@@ -9,8 +9,7 @@ Card 卡片
 import React,{ Component } from "react"
 import { SafeAreaView, View, Image  } from 'react-native';
 import Card from '@uiw/react-native/lib/Card';
-class Demo extends Component {
-  render() {
+function Demo() {
     return (
     <SafeAreaView style={{ flex: 1 }}>
       <Card>
@@ -20,7 +19,6 @@ class Demo extends Component {
       </Card>
     </SafeAreaView>
     )
-  }
 }
 export default Demo
 ```
@@ -29,8 +27,7 @@ export default Demo
 import React,{ Component } from "react"
 import { SafeAreaView, View, Image } from 'react-native';
 import Card from '@uiw/react-native/lib/Card';
-class Demo extends Component {
-  render() {
+function Demo() {
    return (
     <SafeAreaView style={{ flex: 1 }}>
      <Card borderRadius={12}>
@@ -44,7 +41,6 @@ class Demo extends Component {
       </Card>
     </SafeAreaView>
     )
-  }
 }
 export default Demo
 ```

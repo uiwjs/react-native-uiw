@@ -6,8 +6,6 @@ Grid 宫格
 
 ### 基础示例
 
-
-
 ```jsx mdx:preview
 import { Grid, Icon } from '@uiw/react-native';
 import React from "react"
@@ -21,6 +19,50 @@ const data = Array.from(new Array(10)).map((_val, i) => {
 function Demo() {
   return (
     <Grid data={data} />
+  );
+}
+
+export default Demo
+
+```
+
+### 自定义列数
+
+```jsx mdx:preview
+import { Grid, Icon } from '@uiw/react-native';
+import React from "react"
+
+
+const data = Array.from(new Array(10)).map((_val, i) => {
+
+  return { icon: <Icon name="heart-on" color="red" />, text: `${i}`}
+});
+
+function Demo() {
+  return (
+    <Grid data={data} columns='6'/>
+  );
+}
+
+export default Demo
+
+```
+
+### 是否需要间隔线
+
+```jsx mdx:preview
+import { Grid, Icon } from '@uiw/react-native';
+import React from "react"
+
+
+const data = Array.from(new Array(24)).map((_val, i) => {
+
+  return { icon: <Icon name="heart-on" color="red" />, text: `${i}`}
+});
+
+function Demo() {
+  return (
+    <Grid data={data} columns='6' hasLine={false}/>
   );
 }
 

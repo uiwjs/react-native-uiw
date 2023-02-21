@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet, Text, Animated, LayoutChangeEvent, Easing } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text, Animated, LayoutChangeEvent } from 'react-native';
 import Item from './item';
 import Button, { ButtonProps } from '../Button';
 import Icon, { IconsName } from '../Icon';
@@ -15,91 +15,74 @@ interface IState {
   listHeight: number;
 }
 
-export default class MenuDropdown extends React.Component<MenuDropdownProps> {
-  static defaultProps: MenuDropdownProps = {
-    title: '菜单',
-  };
-
-  static Item: typeof Item;
-
-  state: IState = {
+export default function MenuDropdown(props: MenuDropdownProps) {
+  const [state, setState] = useState<IState>({
     btnIcon: 'down',
     visibleMenu: false,
     listHeightValue: new Animated.Value(0),
     listHeight: 0,
-  };
+  });
 
-  handleonPress = () => {
-    const { visibleMenu } = this.state;
-    this.setState({
+  const { title = '菜单', children, size, ...btnProps } = props;
+  const { btnIcon, listHeightValue, listHeight, visibleMenu } = state;
+
+  const handleonPress = () => {
+    setState({
+      ...state,
       visibleMenu: !visibleMenu,
       btnIcon: visibleMenu ? 'down' : 'up',
     });
     if (visibleMenu) {
-      this.animateClose();
+      animateClose();
     } else {
-      this.animateStart();
+      animateStart();
     }
   };
-
-  animateStart = () => {
-    Animated.timing(this.state.listHeightValue, {
+  const animateStart = () => {
+    Animated.timing(listHeightValue, {
       toValue: 1,
       duration: 500,
       useNativeDriver: false, // 动画值在不同的驱动方式之间是不能兼容的。因此如果你在某个动画中启用了原生驱动，那么所有和此动画依赖相同动画值的其他动画也必须启用原生驱动。
     }).start();
   };
-
-  animateClose = () => {
-    // this.setState({
-    //   listHeightValue: new Animated.Value(0),
-    // });
-    Animated.timing(this.state.listHeightValue, {
+  const animateClose = () => {
+    Animated.timing(listHeightValue, {
       toValue: 0,
       duration: 400,
       useNativeDriver: false, // 动画值在不同的驱动方式之间是不能兼容的。因此如果你在某个动画中启用了原生驱动，那么所有和此动画依赖相同动画值的其他动画也必须启用原生驱动。
     }).start();
   };
-
-  menuContainer = (event: LayoutChangeEvent) => {
+  const menuContainer = (event: LayoutChangeEvent) => {
     const { height } = event.nativeEvent.layout;
-    this.setState({
+    setState({
+      ...state,
       listHeight: height,
     });
   };
-
-  render() {
-    const { title, children, size, ...btnProps } = this.props;
-
-    const { btnIcon, listHeightValue, listHeight } = this.state;
-    return (
-      <View style={[styles.menuBox, { height: this.state.listHeight + 50 }]}>
-        <Button {...btnProps} onPress={this.handleonPress} size={size}>
-          <Text>{title}</Text>
-          <Icon name={btnIcon} size={17} />
-        </Button>
-        {/* {
-        visibleMenu && */}
-        <Animated.View
-          style={[
-            styles.list,
-            // eslint-disable-next-line
-            {
-              opacity: listHeightValue,
-              height: listHeightValue.interpolate({
-                inputRange: [0, 1],
-                outputRange: [0, listHeight || 5],
-              }),
-              top: size === 'large' ? 35 : size === 'small' ? 21 : 30,
-            },
-          ]}
-        >
-          <View onLayout={this.menuContainer}>{children}</View>
-        </Animated.View>
-        {/* } */}
-      </View>
-    );
-  }
+  return (
+    <View style={[styles.menuBox, { height: listHeight + 50 }]}>
+      <Button {...btnProps} onPress={handleonPress} size={size}>
+        <Text>{title}</Text>
+        <Icon name={btnIcon} size={17} />
+      </Button>
+      <Animated.View
+        style={[
+          styles.list,
+          // eslint-disable-next-line
+          {
+            opacity: listHeightValue,
+            height: listHeightValue.interpolate({
+              inputRange: [0, 1],
+              outputRange: [0, listHeight || 5],
+            }),
+            top: size === 'large' ? 35 : size === 'small' ? 21 : 30,
+          },
+        ]}
+      >
+        <View onLayout={menuContainer}>{children}</View>
+      </Animated.View>
+    </View>
+  );
 }
 
 MenuDropdown.Item = Item;

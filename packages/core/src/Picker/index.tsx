@@ -48,6 +48,7 @@ export interface PickerProps {
   readonly?: boolean;
   /** value 改变时触发 */
   onChange?: (value: number) => unknown;
+  onScrollEnd?: () => void;
 }
 
 const Picker = (props: PickerProps) => {
@@ -60,6 +61,7 @@ const Picker = (props: PickerProps) => {
     value = 0,
     onChange,
     readonly = false,
+    onScrollEnd,
   } = props;
   const Y = useRef(new Animated.Value(0)).current;
   const scrollView = useRef<ScrollView>();
@@ -171,6 +173,10 @@ const Picker = (props: PickerProps) => {
     };
   }, [lines]);
 
+  const onMomentumScrollEnd = () => {
+    onScrollEnd?.();
+  };
+
   return (
     <View style={{ paddingVertical: 0, height: (style.containerHeight as number) * lines }}>
       <ScrollView
@@ -183,6 +189,7 @@ const Picker = (props: PickerProps) => {
           useNativeDriver: false,
         })}
         scrollEnabled={!readonly}
+        onMomentumScrollEnd={onMomentumScrollEnd}
       >
         {
           <Pressable

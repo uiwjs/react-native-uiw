@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   TouchableOpacity,
   TouchableOpacityProps,
@@ -29,76 +29,69 @@ export interface CheckBoxState {
   controlChecked: 'props' | 'state';
 }
 
-export default class CheckBox extends React.Component<CheckBoxProps, CheckBoxState> {
-  constructor(props: CheckBoxProps) {
-    super(props);
-    this.state = {
-      checked: !!props.checked,
-      controlChecked: 'props',
-    };
-  }
-  static defaultProps = {
-    checkedIcon: 'circle-check',
-    unCheckedIcon: 'circle-o',
-    color: '#008EF0',
-    size: 16,
-  };
-  static getDerivedStateFromProps(props: CheckBoxProps, state: CheckBoxState) {
-    if (props.checked === state.checked && state.controlChecked === 'props') {
-      return null;
-    }
-    if (state.controlChecked === 'props') {
-      return {
-        checked: props.checked,
-      };
-    }
-    return {
-      controlChecked: 'props',
-    };
-  }
+function CheckBox(props: CheckBoxProps) {
+  const [state, setState] = useState({
+    checked: !!props.checked,
+    controlChecked: 'props',
+  });
 
-  onPress = () => {
-    const { onChange } = this.props;
-    this.setState({ checked: !this.state.checked, controlChecked: 'state' }, () => {
-      onChange && onChange(this.state.checked);
-    });
+  useEffect(() => {
+    if (state.controlChecked === 'props') {
+      setState({ ...state, checked: !!props.checked });
+    }
+    setState({ ...state, controlChecked: 'props' });
+  }, []);
+
+  const onPress = () => {
+    const { onChange } = props;
+    setState({ checked: !state.checked, controlChecked: 'state' });
+
+    onChange && onChange(state.checked);
   };
-  render() {
-    const {
-      children,
-      style,
-      textStyle,
-      checkedIcon,
-      unCheckedIcon,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      checked,
-      disabled,
-      color: $color,
-      size,
-      ...otherProps
-    } = this.props;
-    const { checked: $checked } = this.state;
-    const iconName = ($checked ? checkedIcon : unCheckedIcon) as IconsName;
-    const styIcon: ViewProps['style'] = {};
-    if (children) {
-      styIcon.marginRight = 6;
-    }
-    let colorIcon = $color;
-    let divStyl: ViewProps['style'] = {};
-    if (disabled) {
-      colorIcon = color(colorIcon).alpha(0.52).rgb().string();
-      divStyl.opacity = 0.5;
-    }
-    return (
-      <TouchableOpacity disabled={disabled} {...otherProps} style={[styles.default, style]} onPress={this.onPress}>
-        <View style={[styIcon]}>
-          {typeof iconName === 'string' ? <Icon size={size} fill={colorIcon} name={iconName} /> : iconName}
-        </View>
-        {children && <Div children={children} style={[divStyl, textStyle]} />}
-      </TouchableOpacity>
-    );
+
+  const {
+    children,
+    style,
+    textStyle,
+    checkedIcon,
+    unCheckedIcon,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    checked,
+    disabled,
+    color: $color,
+    size,
+    ...otherProps
+  } = props;
+  const { checked: $checked } = state;
+  const iconName = ($checked ? checkedIcon : unCheckedIcon) as IconsName;
+  const styIcon: ViewProps['style'] = {};
+  if (children) {
+    styIcon.marginRight = 6;
   }
+  let colorIcon = $color;
+  let divStyl: ViewProps['style'] = {};
+  if (disabled) {
+    colorIcon = color(colorIcon).alpha(0.52).rgb().string();
+    divStyl.opacity = 0.5;
+  }
+  return (
+    <TouchableOpacity disabled={disabled} {...otherProps} style={[styles.default, style]} onPress={onPress}>
+      <View style={[styIcon]}>
+        {typeof iconName === 'string' ? <Icon size={size} fill={colorIcon} name={iconName} /> : iconName}
+      </View>
+      {children && <Div children={children} style={[divStyl, textStyle]} />}
+    </TouchableOpacity>
+  );
 }
+
+CheckBox.defaultProps = {
+  checkedIcon: 'circle-check',
+  unCheckedIcon: 'circle-o',
+  color: '#008EF0',
+  size: 16,
+};
+
+export default CheckBox;
 
 const styles = StyleSheet.create({
   default: {

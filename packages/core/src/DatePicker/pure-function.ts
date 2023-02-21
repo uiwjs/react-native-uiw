@@ -159,8 +159,8 @@ export function getHours(initial: number = 0, type: 'star' | 'end' = 'star'): Pi
   return arr;
 }
 /** 得到分钟或者秒 */
-export function getMinutesOrSeconds(initial: number = 1, type: 'star' | 'end' = 'star'): PickerData[] {
-  const star = type === 'star' ? initial : 1;
+export function getMinutesOrSeconds(initial: number = 0, type: 'star' | 'end' = 'star'): PickerData[] {
+  const star = type === 'star' ? initial : 0;
   const end = type === 'end' ? initial : 59;
   const arr: PickerData[] = createDate(star, end);
   return arr;
