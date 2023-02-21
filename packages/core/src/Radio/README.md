@@ -55,7 +55,7 @@ import { Radio } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <Radio  disabled  >
+    <Radio  disabled color='red'  >
       Radio
     </Radio>
   );
@@ -103,6 +103,24 @@ function Demo() {
 export default Demo
 
 
+```
+
+### 自定义颜色
+
+```jsx  mdx:preview
+import React, { useState } from 'react';
+import { Radio } from '@uiw/react-native';
+
+function Demo() {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Radio  checkedColor='red' borderColor='#008EF0' >
+      Radio
+    </Radio>
+  );
+}
+
+export default Demo
 ```
 
 ### Props
