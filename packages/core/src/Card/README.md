@@ -45,7 +45,7 @@ function Demo() {
 export default Demo
 ```
 ### 可点击选中带操作卡片
-```jsx mdx:preview
+```jsx
 import React, { useState } from 'react';
 import { SafeAreaView, View, Image  } from 'react-native';
 import Card from '@uiw/react-native/lib/Card';
@@ -86,6 +86,7 @@ const Demo = () => {
 }
 export default Demo
 ```
+
 #### 属性
 ## CardProps
 
