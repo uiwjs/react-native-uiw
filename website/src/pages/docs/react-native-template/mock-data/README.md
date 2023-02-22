@@ -79,7 +79,8 @@ export default connect(
 )(Dome);
 
 ```
-### 三、modal文件处理
+### 三、使用react-query调用api
+[react-query](https://tanstack.com/query/latest) 更详细的使用，请参照官方文档
 
 ```
 import { Alert } from 'react-native';
