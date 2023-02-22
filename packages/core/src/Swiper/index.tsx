@@ -52,14 +52,13 @@ const Swiper = (porps: SwiperProps) => {
   let timer = useRef<NodeJS.Timeout | undefined>();
   const scrollToRef: any = useRef();
 
-  useEffect(() => {
+  // 设置初始变量
+  const onContentSizeChange = () => {
     if (scrollToRef && scrollToRef.current && index !== 0) {
-      setTimeout(() => {
-        onClickDot(index);
-        scrollToRef.current.scrollTo({ x: width * index, y: 0, animated: true });
-      }, 0);
+      setCurIndex(index);
+      scrollToRef.current.scrollTo({ x: width * index, y: 0, animated: false });
     }
-  }, [scrollToRef, index]);
+  };
 
   // 自动播放
   const autoPlay = useCallback(() => {
@@ -122,6 +121,7 @@ const Swiper = (porps: SwiperProps) => {
           onScrollBeginDrag={onScrollBeginDrag}
           onScrollEndDrag={onScrollEndDrag}
           onMomentumScrollEnd={onMomentumScrollEnd}
+          onContentSizeChange={onContentSizeChange}
         >
           {dataSource.map((item: dataSourceType, index: number) => {
             return (
