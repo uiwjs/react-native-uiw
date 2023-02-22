@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Animated, Easing, LayoutChangeEvent, StyleProp, Text, TextStyle, View } from 'react-native';
 
 export interface MarqueeProps {
@@ -12,129 +12,107 @@ export interface MarqueeProps {
   maxWidth?: number;
 }
 
-class Marquee extends React.PureComponent<MarqueeProps, any> {
-  static defaultProps = {
-    text: '',
-    loop: false,
-    leading: 500,
-    trailing: 800,
-    fps: 40,
-    maxWidth: 1000,
-  };
+type StateType = { twidth: number; width: number };
 
-  texts: any;
-  left: any;
+function Marquee(props: MarqueeProps) {
+  // const [texts, setTexts] = useState({});
+  const [left, _setLeft] = useState(new Animated.Value(0));
+  const [state, setState] = useState<StateType>({ twidth: 0, width: 0 });
 
-  constructor(props: MarqueeProps) {
-    super(props);
-
-    this.texts = {};
-    this.left = new Animated.Value(0);
-    this.state = {
-      twidth: 0,
-      width: 0,
-    };
+  function tryStart(state: StateType) {
+    if (state.twidth > state.width && state.width) {
+      startMove();
+    }
   }
 
-  onLayout = (e: LayoutChangeEvent) => {
-    if (this.state.twidth) {
+  const onLayout = (e: LayoutChangeEvent) => {
+    if (state.twidth) {
       return;
     }
 
-    this.setState(
-      {
-        twidth: e.nativeEvent.layout.width,
-      },
-      () => {
-        // onLayout may be earlier than onLayoutContainer on android, can not be sure width < twidth at that time.
-        this.tryStart();
-      },
-    );
+    const states = { ...state, twidth: e.nativeEvent.layout.width };
+    setState(states);
+    tryStart(states);
   };
 
-  tryStart() {
-    if (this.state.twidth > this.state.width && this.state.width) {
-      this.startMove();
-    }
-  }
-
-  onLayoutContainer = (e: LayoutChangeEvent) => {
-    if (!this.state.width) {
-      this.setState(
-        {
-          width: e.nativeEvent.layout.width,
-        },
-        () => {
-          this.left.setValue(0);
-          this.tryStart();
-        },
-      );
+  const onLayoutContainer = (e: LayoutChangeEvent) => {
+    if (!state.width) {
+      const states = { ...state, width: e.nativeEvent.layout.width };
+      setState(states);
+      left.setValue(0);
+      tryStart(states);
     }
   };
 
-  startMove = () => {
-    const { fps = 40, loop } = this.props;
+  const startMove = () => {
+    const { fps = 40, loop } = props;
     const SPPED = (1 / fps) * 1000;
     // tslint:disable-next-line:no-this-assignment
-    const { props } = this;
-    Animated.timing(this.left, {
+    Animated.timing(left, {
       toValue: 1,
-      duration: this.state.twidth * SPPED,
+      duration: state.twidth * SPPED,
       easing: Easing.linear,
       delay: props.leading,
       isInteraction: false,
       useNativeDriver: true,
     }).start(() => {
       if (loop) {
-        this.moveToHeader();
+        moveToHeader();
       }
     });
   };
 
-  moveToHeader = () => {
-    Animated.timing(this.left, {
+  const moveToHeader = () => {
+    Animated.timing(left, {
       toValue: 0,
       duration: 0,
-      delay: this.props.trailing,
+      delay: props.trailing,
       isInteraction: false,
       useNativeDriver: true,
     }).start(() => {
-      this.startMove();
+      startMove();
     });
   };
 
-  render() {
-    const { width, twidth } = this.state;
-    const { style, text, maxWidth } = this.props;
+  const { width, twidth } = state;
+  const { style, text, maxWidth } = props;
 
-    const textChildren = (
-      <Text onLayout={this.onLayout} numberOfLines={1} ellipsizeMode="tail" style={style}>
-        {text}
-      </Text>
-    );
+  const textChildren = (
+    <Text onLayout={onLayout} numberOfLines={1} ellipsizeMode="tail" style={style}>
+      {text}
+    </Text>
+  );
 
-    return (
-      <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }} onLayout={this.onLayoutContainer}>
-        <Animated.View
-          // tslint:disable-next-line:jsx-no-multiline-js
-          style={{
-            flexDirection: 'row',
-            transform: [
-              {
-                translateX: this.left.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0, -twidth + width],
-                }),
-              },
-            ],
-            width: maxWidth,
-          }}
-        >
-          {textChildren}
-        </Animated.View>
-      </View>
-    );
-  }
+  return (
+    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }} onLayout={onLayoutContainer}>
+      <Animated.View
+        // tslint:disable-next-line:jsx-no-multiline-js
+        style={{
+          flexDirection: 'row',
+          transform: [
+            {
+              translateX: left.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, -twidth + width],
+              }),
+            },
+          ],
+          width: maxWidth,
+        }}
+      >
+        {textChildren}
+      </Animated.View>
+    </View>
+  );
 }
+
+Marquee.defaultProps = {
+  text: '',
+  loop: false,
+  leading: 500,
+  trailing: 800,
+  fps: 40,
+  maxWidth: 1000,
+} as MarqueeProps;
 
 export default Marquee;
