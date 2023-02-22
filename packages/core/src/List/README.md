@@ -179,7 +179,7 @@ export default function Demo() {
 | `data` | 渲染头部 | [] | - |
 | `flat` | 当值为 `true` 使用 `FlatList` 组件渲染列表，当值为 `false` 时，使用 `View` 渲染界面 | Boolean | `true` |
 | `renderItem` | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
-| `title` | 设置所有 `Item` 左边补白 | Number | `16` |
+| `title` | 标题 | Number | `React.ReactNode` |
 | `titleStyle` | 当设置 `title` 参数之后可以设置其标题容器样式。| ViewStyle | - |
 | `horizontal` | 设置为 `true` 则变为水平布局模式。(`flat=true` 支持) | Boolean | `false` |
 | `numColumns` | 多列布局只能在非水平模式下使用，即必须是 `horizontal={false}`。此时组件内元素会从左到右从上到下按 `Z` 字形排列，类似启用了 `flexWrap` 的布局。组件内元素必须是等高的——暂时还无法支持瀑布流布局。(`flat=true` 支持) | Number | - |
