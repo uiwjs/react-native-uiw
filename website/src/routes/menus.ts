@@ -89,6 +89,7 @@ export const docsMenus: MenuData[] = [
   { divider: true, name: 'React Native Template' },
   { path: '/docs/react-native-template/quickstart', name: '快速开始' },
   { path: '/docs/react-native-template/mock-data', name: 'Mock 数据' },
+  { path: '/docs/react-native-template/log-management', name: '日志管理' },
   { divider: true, name: '发布应用商店' },
   { path: '/docs/app-store/ios', name: '发布 iOS 应用商店' },
   { path: '/docs/app-store/android', name: '发布 Android 应用商店' },

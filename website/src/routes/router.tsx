@@ -70,6 +70,10 @@ export const routeData = [
         component: lazy(() => import('../pages/docs/react-native-template/mock-data')),
       },
       {
+        path: '/docs/react-native-template/log-management',
+        component: lazy(() => import('../pages/docs/react-native-template/log-management')),
+      },
+      {
         path: '/components/about',
         component: lazy(() => import('../pages/components/about')),
       },
