@@ -36,13 +36,13 @@ export default function BodyRow({ columns, record, style }: BodyRowProps) {
         let textEllipsize: textEllipsizeState | any =
           itm.ellipsis && itm.ellipsis
             ? {
-                numberOfLines: 1,
-                ellipsizeMode: 'tail',
-              }
+              numberOfLines: 1,
+              ellipsizeMode: 'tail',
+            }
             : null;
 
         return (
-          <View key={itm.dataIndex} style={[idx === 0 && styles.firstLeftCell, styles.cell, itm.style]}>
+          <View key={itm.dataIndex} style={[(columns.length - 1 === idx) ? styles.firstLeftCell : styles.cell, itm.style ? itm.style : styles.titleFlex]}>
             {itm.render ? (
               itm.render(record)
             ) : (
@@ -63,23 +63,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
     borderBottomWidth: 1,
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
     borderColor: colors.colorsPalette.dark70,
   },
   cell: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
     borderRightWidth: 1,
     borderColor: colors.colorsPalette.dark70,
-    paddingTop: 4,
-    paddingBottom: 4,
-    backgroundColor: '#fff',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   firstLeftCell: {
-    borderLeftWidth: 1,
-    borderColor: colors.colorsPalette.dark70,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRightWidth: 1,
+    borderColor: '#FFF',
   },
   content: {
     color: '#888888',
   },
+  titleFlex: {
+    flex: 1,
+  }
 });

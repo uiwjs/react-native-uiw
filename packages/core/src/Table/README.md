@@ -39,7 +39,10 @@ const Demo = () => {
             style: { width: 100 },
             render: () => {
               return (
-                    <Button size="small">详情</Button>
+                <>
+                    <Button size="small" bordered={false} textStyle={{color:'#3b8ee9'}}>编辑</Button>
+                    <Button size="small" bordered={false} textStyle={{color:'#3b8ee9'}}>详情</Button>
+                </>
               );
             },
           },
@@ -96,8 +99,11 @@ const Demo = () => {
             style: { width: 110 },
             render: () => {
               return (
-                    <Button size="small">详情</Button>
-              );
+                <>
+                    <Button size="small" bordered={false} textStyle={{color:'#3b8ee9'}}>编辑</Button>
+                    <Button size="small" bordered={false} textStyle={{color:'#3b8ee9'}}>详情</Button>
+                </>         
+                );
             },
           },
         ]}
@@ -131,30 +137,37 @@ const Demo = () => {
             title: '名称',
             dataIndex: 'partName',
             ellipsis: true,
+            style: { width: 100 },
           },
           {
             title: '品牌',
             dataIndex: 'partBrand',
             ellipsis: true,
+            style: { width: 100 },
           },
           {
             title: '型号',
             dataIndex: 'partModel',
             ellipsis: true,
+            style: { width: 100 },
           },
           {
             title: '备注',
             dataIndex: 'remark',
             ellipsis: true,
+            style: { width: 100 },
           },
           {
             title: '操作',
             dataIndex: 'id',
-            style: { width: 50 },
+            style: { width: 100 },
             render: () => {
               return (
-                    <Button size="small">详情</Button>
-              );
+                <>
+                    <Button size="small" bordered={false} textStyle={{color:'#3b8ee9'}}>编辑</Button>
+                    <Button size="small" bordered={false} textStyle={{color:'red'}}>详情</Button>
+                </>
+               );
             },
           },
         ]}

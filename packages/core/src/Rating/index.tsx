@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, StyleProp, TextStyle } from 'react-native';
 
 import Icon, { IconsName } from '../Icon';
@@ -44,13 +44,11 @@ export interface RatingState {
   disabled: boolean;
 }
 
-export default class Rating extends React.Component<RatingProps, RatingState> {
-  constructor(props: RatingProps) {
-    super(props);
+function Rating(props: RatingProps) {
+  const [state, setState] = useState<RatingState>(() => {
     let start = (props.icon && props.icon.unactived) || 'star-off';
     let end = (props.icon && props.icon.actived) || 'star-on';
-
-    this.state = {
+    return {
       defaultRating: props.defaultRating || 0,
       resultRating: props.resultRating || 5,
       icon: [],
@@ -61,71 +59,72 @@ export default class Rating extends React.Component<RatingProps, RatingState> {
       tooltipsText: '',
       disabled: false,
     };
-  }
-  componentDidMount() {
-    const { defaultRating } = this.state;
-    this.updateIcon(defaultRating);
-  }
-
-  flag = true;
-  updateIcon = (index: number) => {
-    const { resultRating } = this.state;
-    const { onPress, disabled } = this.props;
-    let start = this.state.typeIcon[0];
-    let end = this.state.typeIcon[1];
+  });
+  const [flag, setFlag] = useState(true);
+  const updateIcon = (index: number) => {
+    const { resultRating } = state;
+    const { onPress, disabled } = props;
+    let start = state.typeIcon[0];
+    let end = state.typeIcon[1];
     if (disabled) {
-      this.setState({ disabled: disabled });
+      setState({ ...state, disabled: disabled });
     }
-    if (index === 1 && this.flag) {
-      this.setState({ icon: [...new Array(index).fill(end), ...new Array(resultRating - index).fill(start)] });
+    if (index === 1 && flag) {
+      setState({ ...state, icon: [...new Array(index).fill(end), ...new Array(resultRating - index).fill(start)] });
       onPress?.(1);
-      if (this.state.tooltips) {
-        this.setState({ tooltipsText: this.state.tooltips[index] });
+      if (state.tooltips) {
+        setState({ ...state, tooltipsText: state.tooltips[index] });
       }
-      this.flag = false;
-    } else if (index === 1 && !this.flag) {
-      this.setState({ icon: [...new Array(index - 1).fill(end), ...new Array(resultRating - index + 1).fill(start)] });
-      if (this.state.tooltips) {
-        this.setState({ tooltipsText: this.state.tooltips[index - 1] });
+      setFlag(false);
+    } else if (index === 1 && !flag) {
+      setState({
+        ...state,
+        icon: [...new Array(index - 1).fill(end), ...new Array(resultRating - index + 1).fill(start)],
+      });
+      if (state.tooltips) {
+        setState({ ...state, tooltipsText: state.tooltips[index - 1] });
       }
-      this.flag = true;
+      setFlag(true);
       onPress?.(0);
     } else {
-      this.setState({ icon: [...new Array(index).fill(end), ...new Array(resultRating - index).fill(start)] });
-      if (this.state.tooltips) {
-        this.setState({ tooltipsText: this.state.tooltips[index] });
+      setState({ ...state, icon: [...new Array(index).fill(end), ...new Array(resultRating - index).fill(start)] });
+      if (state.tooltips) {
+        setState({ ...state, tooltipsText: state.tooltips[index] });
       }
-      this.flag = true;
+      setFlag(true);
       onPress?.(index);
     }
   };
-  render() {
-    const { icon, size, color, tooltipsText, disabled } = this.state;
-    const { tooltipsStyle } = this.props;
-    return (
-      <View>
-        <View style={styles.RatingContainer}>
-          {icon.map((item, index) => {
-            return (
-              <TouchableOpacity
-                onPress={() => {
-                  if (disabled === false) {
-                    this.updateIcon(index + 1);
-                  }
-                }}
-                key={index}
-              >
-                {typeof item === 'string' ? <Icon name={item as IconsName} color={color} size={size} /> : item}
-              </TouchableOpacity>
-            );
-          })}
-          <Text style={[styles.tooltipsText, { fontSize: size - 5, color: color }, tooltipsStyle]}>{tooltipsText}</Text>
-        </View>
-      </View>
-    );
-  }
-}
 
+  useEffect(() => {
+    updateIcon(state.defaultRating);
+  }, []);
+
+  const { icon, size, color, tooltipsText, disabled } = state;
+  const { tooltipsStyle } = props;
+  return (
+    <View>
+      <View style={styles.RatingContainer}>
+        {icon.map((item, index) => {
+          return (
+            <TouchableOpacity
+              onPress={() => {
+                if (disabled === false) {
+                  updateIcon(index + 1);
+                }
+              }}
+              key={index}
+            >
+              {typeof item === 'string' ? <Icon name={item as IconsName} color={color} size={size} /> : item}
+            </TouchableOpacity>
+          );
+        })}
+        <Text style={[styles.tooltipsText, { fontSize: size - 5, color: color }, tooltipsStyle]}>{tooltipsText}</Text>
+      </View>
+    </View>
+  );
+}
+export default Rating;
 const styles = StyleSheet.create({
   RatingContainer: {
     flexDirection: 'row',

@@ -49,16 +49,13 @@ export interface ResultProps extends ViewProps {
   message?: React.ReactNode;
 }
 
-export default class Result extends Component<ResultProps> {
-  static defaultProps: ResultProps = {};
-  render() {
-    const { style, title, message, img, ...otherProps } = this.props;
-    return (
-      <View style={[styles.defalut, style]} {...otherProps}>
-        {img}
-        {title && <MaybeTextOrView style={styles.title}>{title}</MaybeTextOrView>}
-        {message && <MaybeTextOrView style={styles.message}>{message}</MaybeTextOrView>}
-      </View>
-    );
-  }
+export default function Result(props: ResultProps) {
+  const { style, title, message, img, ...otherProps } = props;
+  return (
+    <View style={[styles.defalut, style]} {...otherProps}>
+      {img}
+      {title && <MaybeTextOrView style={styles.title}>{title}</MaybeTextOrView>}
+      {message && <MaybeTextOrView style={styles.message}>{message}</MaybeTextOrView>}
+    </View>
+  );
 }

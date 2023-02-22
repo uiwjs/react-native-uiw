@@ -20,10 +20,12 @@ export interface ImageViewerProps extends ViewProps {
   height?: number;
   /** 图像源（远程URL或本地文件资源 */
   src?: string | ImageViewerDataSourceProps[];
+  /** 默认显示第几张图片 */
+  defaultIndex?: number;
 }
 
 function ImageViewer(props: ImageViewerProps) {
-  const { width = 150, height = 150, src = defaultImage, ...others } = props;
+  const { width = 150, height = 150, src = defaultImage, defaultIndex = 0, ...others } = props;
   const [visible, setVisible] = useState(false);
   const [index, setIndex] = useState<number>(0);
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -42,7 +44,7 @@ function ImageViewer(props: ImageViewerProps) {
 
   const imgUrl = useMemo(() => {
     if (Array.isArray(src)) {
-      return src[0].url;
+      return src[defaultIndex].url;
     }
     return src;
   }, [src]);
