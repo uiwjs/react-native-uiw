@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import {
   View,
   ViewProps,
@@ -60,31 +60,20 @@ export interface RadioState {
   control: 'state' | 'props';
 }
 
-export default class Radio extends Component<RadioProps, RadioState> {
-  static defaultProps: RadioProps = {
-    checked: false,
-    circleSize: 20,
-    checkedColor: '#008EF0',
-    borderColor: '#bdc1cc',
-    color: '#c3c5c7',
-    thumbSize: 12,
-  };
-  constructor(props: RadioProps) {
-    super(props);
-    this.state = {
-      checked: props.checked,
-      sizeValue: new Animated.Value(0),
-      control: 'state',
-    };
-  }
-  componentDidMount() {
-    this.animatedStart(this.props.checked);
-  }
-  static getDerivedStateFromProps(props: RadioProps, state: RadioState) {
+export default function Radio(props: RadioProps) {
+  const [state, setState] = useState({
+    checked: props.checked,
+    sizeValue: new Animated.Value(0),
+    control: 'state',
+  });
+
+  useEffect(() => {
+    animatedStart(props.checked);
+  }, []);
+
+  useEffect(() => {
     if (state.control === 'state' && props.checked === state.checked) {
-      return {
-        control: 'props',
-      };
+      return setState({ ...state, control: 'props' });
     }
     if (props.checked !== state.checked) {
       Animated.spring(state.sizeValue, {
@@ -92,72 +81,65 @@ export default class Radio extends Component<RadioProps, RadioState> {
         overshootClamping: true,
         useNativeDriver: false,
       }).start();
-      return {
-        checked: props.checked,
-        control: 'props',
-      };
+      return setState({ ...state, checked: props.checked, control: 'props' });
     }
-    return null;
-  }
-  animatedStart(checked?: boolean) {
-    Animated.spring(this.state.sizeValue, {
-      toValue: !!checked ? this.props.thumbSize! : 0,
+  }, [props.checked]);
+
+  function animatedStart(checked?: boolean) {
+    Animated.spring(state.sizeValue, {
+      toValue: !!checked ? props.thumbSize! : 0,
       overshootClamping: true,
       useNativeDriver: false,
     }).start();
   }
-  handlePress = (event: GestureResponderEvent) => {
-    const { onPress } = this.props;
-    this.setState({ checked: true, control: 'state' }, () => {
-      this.animatedStart(true);
-      onPress && onPress(event);
-    });
+
+  const handlePress = (event: GestureResponderEvent) => {
+    const { onPress } = props;
+    setState({ ...state, checked: true, control: 'state' });
+
+    animatedStart(true);
+    onPress && onPress(event);
   };
-  render() {
-    const {
-      style,
-      color,
-      circleSize,
-      thumbSize,
-      disabled,
-      checkedColor,
-      borderColor: bdColor,
-      ...otherProps
-    } = this.props;
-    const sizeValue = this.state.sizeValue.interpolate({
-      inputRange: [0, thumbSize!],
-      outputRange: [0, thumbSize!],
-      // extrapolate: 'clamp',
-    });
-    const backgroundColor = disabled ? color : checkedColor;
-    const borderColor = disabled ? color : bdColor;
-    return (
-      <View testID="RNE__Radio__wrap" style={[styles.defalut, style]} {...otherProps}>
-        <TouchableOpacity
-          disabled={disabled}
-          style={[styles.touch]}
-          onPress={this.handlePress}
-          testID="RNE__Radio__view"
+
+  const { style, color, circleSize, thumbSize, disabled, checkedColor, borderColor: bdColor, ...otherProps } = props;
+  const sizeValue = state.sizeValue.interpolate({
+    inputRange: [0, thumbSize!],
+    outputRange: [0, thumbSize!],
+    // extrapolate: 'clamp',
+  });
+  const backgroundColor = disabled ? color : checkedColor;
+  const borderColor = disabled ? color : bdColor;
+
+  return (
+    <View testID="RNE__Radio__wrap" style={[styles.defalut, style]} {...otherProps}>
+      <TouchableOpacity disabled={disabled} style={[styles.touch]} onPress={handlePress} testID="RNE__Radio__view">
+        <Animated.View
+          style={[styles.checkBg, { width: circleSize, height: circleSize, borderColor }]}
+          testID="RNE__Radio__border"
         >
           <Animated.View
-            style={[styles.checkBg, { width: circleSize, height: circleSize, borderColor }]}
-            testID="RNE__Radio__border"
+            style={[styles.check, { width: sizeValue, height: sizeValue, backgroundColor }]}
+            testID="RNE__Radio__box"
+          />
+        </Animated.View>
+        {props.children && (
+          <MaybeTextOrView
+            // eslint-disable-next-line
+            style={[styles.label, { opacity: disabled ? 0.3 : 1 }]}
           >
-            <Animated.View
-              style={[styles.check, { width: sizeValue, height: sizeValue, backgroundColor }]}
-              testID="RNE__Radio__box"
-            />
-          </Animated.View>
-          {this.props.children && (
-            <MaybeTextOrView
-              // eslint-disable-next-line
-              style={[styles.label, { opacity: disabled ? 0.3 : 1 }]}
-            >
-              {this.props.children}
-            </MaybeTextOrView>
-          )}
-        </TouchableOpacity>
-      </View>
-    );
-  }
+            {props.children}
+          </MaybeTextOrView>
+        )}
+      </TouchableOpacity>
+    </View>
+  );
 }
+
+Radio.defaultProps = {
+  checked: false,
+  circleSize: 20,
+  checkedColor: '#008EF0',
+  borderColor: '#bdc1cc',
+  color: '#c3c5c7',
+  thumbSize: 12,
+} as RadioProps;
