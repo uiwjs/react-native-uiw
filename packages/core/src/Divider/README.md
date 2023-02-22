@@ -10,8 +10,7 @@ import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
+function Demo() {
   return (
     <Fragment>
       <Text>分割线</Text>
@@ -21,7 +20,6 @@ class Demo extends Component {
       <Text>分割线</Text>
     </Fragment>
   );
-  }
 }
 export default Demo
 
@@ -36,8 +34,7 @@ import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
+function Demo() {
   return (
     <Fragment>
       <Text>分割线</Text>
@@ -46,7 +43,6 @@ class Demo extends Component {
       <Divider label="OR" gutter={100}/>
     </Fragment>
   );
-  }
 }
 export default Demo
 
@@ -59,8 +55,7 @@ import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
+function Demo() {
   return (
     <Fragment>
       <Text>分割线</Text>
@@ -71,7 +66,6 @@ class Demo extends Component {
       <Divider label="right" orientation="right" labelStyle={{ fontWeight: 'bold' }} />
     </Fragment>
   );
-  }
 }
 export default Demo
 
@@ -84,14 +78,12 @@ import React,{Component} from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
 
-class Demo extends Component {
-  render() {
+function Demo() {
   return (
    <View style={{ height: 200 }}>
       <Divider type="vertical" label="OR" />
     </View>
   );
-  }
 }
 export default Demo
 
