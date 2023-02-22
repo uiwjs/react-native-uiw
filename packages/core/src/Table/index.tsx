@@ -32,7 +32,7 @@ const Table = ({ data, columns, rowKey, horizontal = true, style }: TableProps) 
           {columns.map((itm, idx) => (
             <View
               key={itm.dataIndex + idx}
-              style={[styles.contRight, { borderRightWidth: idx === columns.length - 1 ? 0 : 1 }, itm.style]}
+              style={[styles.contRight, { borderRightWidth: idx === columns.length - 1 ? 0 : 1 }, itm.style ? itm.style : styles.titleFlex]}
             >
               <Text style={styles.content}>{itm.title}</Text>
             </View>
@@ -46,7 +46,6 @@ const Table = ({ data, columns, rowKey, horizontal = true, style }: TableProps) 
                 key={key}
                 columns={columns}
                 record={item}
-                style={{ borderBottomWidth: idx === data.length - 1 ? 1 : 1 }}
               />
             );
           })}
@@ -72,7 +71,6 @@ const styles = StyleSheet.create({
   },
   contRight: {
     borderRightWidth: 1,
-    flex: 1,
     borderRightColor: colors.colorsPalette.dark70,
     borderBottomColor: colors.colorsPalette.dark70,
     color: '#888888',
@@ -91,6 +89,9 @@ const styles = StyleSheet.create({
     paddingTop: 4,
     paddingBottom: 4,
   },
+  titleFlex: {
+    flex: 1
+  }
 });
 
 export default Table;
