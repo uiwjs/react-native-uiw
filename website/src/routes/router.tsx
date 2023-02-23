@@ -70,8 +70,16 @@ export const routeData = [
         component: lazy(() => import('../pages/docs/react-native-template/menu-route')),
       },
       {
+        path: '/docs/react-native-template/new-page',
+        component: lazy(() => import('../pages/docs/react-native-template/new-page')),
+      },
+      {
         path: '/docs/react-native-template/mock-data',
         component: lazy(() => import('../pages/docs/react-native-template/mock-data')),
+      },
+      {
+        path: '/docs/react-native-template/log-management',
+        component: lazy(() => import('../pages/docs/react-native-template/log-management')),
       },
       {
         path: '/components/about',
