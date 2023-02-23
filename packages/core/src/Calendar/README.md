@@ -91,8 +91,10 @@ export default CalendarView
 |------|------|-----|------|
 | `color` | 日历颜色 | string | - |
 | `lunarHoliday` | 是否显示农历及假日 | Boolean | `false` |
-| `showLunar` | 农历详情 | Boolean | `false` |
+| `showLunar` | 是否显示农历详情 | Boolean | `false` |
+| `showBar` | 是否显示导航栏 | Boolean | `true` |
 | `bar` | 导航栏 | React.ReactNode | - |
+| `onChange` | 选择时间事件 |  (value: string) => void | - |
 
 ### bar 参数
 | 参数 | 说明 | 类型 | 默认值 |
