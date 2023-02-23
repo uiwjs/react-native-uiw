@@ -21,15 +21,17 @@ interface BarState {
 
 export interface CalendarProps extends ViewProps {
   // 日历颜色
-  color: string;
+  color?: string;
   // 是否显示农历及假日
-  lunarHoliday: boolean;
+  lunarHoliday?: boolean;
   bar?: BarState;
   // 是否显示农历详情
-  showLunar: boolean;
+  showLunar?: boolean;
   onChange?: (value: string) => void;
   // 是否显示头部导航栏
   showBar?: boolean;
+  // 自定义渲染日期额外内容
+  renderDay?: (date: any) => React.ReactNode | JSX.Element;
 }
 
 const Calendar = (props: CalendarProps) => {
@@ -40,7 +42,15 @@ const Calendar = (props: CalendarProps) => {
     onPressBarLeft: undefined,
     render: undefined,
   };
-  const { color = '#329BCB', lunarHoliday = false, bar = bars, showLunar = false, onChange, showBar = true } = props;
+  const {
+    color = '#329BCB',
+    lunarHoliday = false,
+    bar = bars,
+    showLunar = false,
+    onChange,
+    showBar = true,
+    renderDay,
+  } = props;
   const { barRightText, title, barLeftText, onPressBarLeft, render } = bar;
   const [currentYear, setCurrentYear] = useState<number>(toYear);
   const [currentMonth, setCurrentMonth] = useState<number>(toMonth);
@@ -140,6 +150,7 @@ const Calendar = (props: CalendarProps) => {
           onPress={() => goSelectDay(day)}
         >
           <View>
+            {renderDay?.(day.date || '')}
             <Text
               style={[
                 styles.dayText,
