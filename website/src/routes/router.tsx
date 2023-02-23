@@ -66,6 +66,10 @@ export const routeData = [
         component: lazy(() => import('../pages/docs/react-native-template/quickstart')),
       },
       {
+        path: '/docs/react-native-template/new-page',
+        component: lazy(() => import('../pages/docs/react-native-template/new-page')),
+      },
+      {
         path: '/docs/react-native-template/mock-data',
         component: lazy(() => import('../pages/docs/react-native-template/mock-data')),
       },
