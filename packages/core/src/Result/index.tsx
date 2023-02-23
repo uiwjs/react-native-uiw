@@ -59,3 +59,5 @@ export default function Result(props: ResultProps) {
     </View>
   );
 }
+
+Result.defaultProps = {} as ResultProps;
