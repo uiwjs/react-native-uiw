@@ -4,6 +4,15 @@
   background: linear-gradient(60deg, #393e48c4 0%, #dfe2e5 100%);
   color: white;
 }
+html[data-color-mode*='dark'] .header {
+  background: linear-gradient(10deg, #393e48c4 0%, var(--color-theme-bg) 80%);
+  color: rgb(255, 255, 255);
+  h2,
+  p,
+  a:hover {
+    text-shadow: 1px 3px 5px cornflowerblue;
+  }
+}
 
 .headerContent {
   padding-top: 140px;
@@ -25,6 +34,7 @@
   }
   p {
     padding-top: 52px;
+    font-size: 25px;
   }
 }
 .innerHeader {
@@ -60,6 +70,23 @@
     & > use:nth-child(4) {
       animation-delay: -5s;
       animation-duration: 20s;
+    }
+  }
+}
+
+html[data-color-mode*='dark'] .waves {
+  :global(.parallax) {
+    & > use:nth-child(1) {
+      fill: #0d1117b5;
+    }
+    & > use:nth-child(2) {
+      fill: #0d111783;
+    }
+    & > use:nth-child(3) {
+      fill: #0d11173c;
+    }
+    & > use:nth-child(4) {
+      fill: var(--color-theme-bg);
     }
   }
 }

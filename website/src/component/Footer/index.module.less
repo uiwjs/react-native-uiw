@@ -1,6 +1,7 @@
 .warpper {
   background: white;
   border-top: 1px solid #e1e4e8;
+  width: 100%;
 }
 
 .inner {
@@ -78,4 +79,9 @@
   a {
     margin: 0 5px;
   }
+}
+
+html[data-color-mode*='dark'] .warpper {
+  border-top: 1px solid #032438;
+  background: var(--color-theme-bg);
 }
