@@ -56,13 +56,14 @@ export default Demo
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
-| onCancel | 点击蒙层是否关闭 | Boolean | `false` |
+| isCancel | 点击蒙层是否关闭 | Boolean | `true` |
 | dividerStyle | 分割线样式 | DividerStyleProps | - |
 | containerStyle | 取消的容器样式 | StyleProp<`ViewStyle`> | - |
 | activeOpacity | 动作在被触摸操作激活时以多少不透明度显示 | number | `#f1f1f1` |
 | underlayColor | 动作有触摸操作时显示出来的底层的颜色 | string | `#f1f1f1` |
 | cancelText | 取消的文本 | `React.ReactNode` | - |
 | textStyle | 取消的文本样式 | `StyleProp<TextStyle>` | - |
+| onCancel | 蒙层关闭回调 | `() => void` | - |
 
 ### DividerStyleProps
 | 参数 | 说明 | 类型 | 默认值 |

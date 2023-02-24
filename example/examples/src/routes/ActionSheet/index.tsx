@@ -41,17 +41,15 @@ export default class Index extends Component<IndexProps, IndexState> {
               maskClosable={true}
               dividerStyle={{
                 itemDivider: {height: 2},
-              }}>
+              }}
+              onCancel={this.onCancel}>
               <ActionSheetItem
                 onPress={() => {
                   Toast.info('你点击了按钮一', 2, 'info');
                 }}>
                 按钮一
               </ActionSheetItem>
-              <ActionSheetItem
-                onPress={() => Toast.info('你点击了按钮二', 2, 'info')}>
-                按钮二
-              </ActionSheetItem>
+              <ActionSheetItem onPress={() => Toast.info('你点击了按钮二', 2, 'info')}>按钮二</ActionSheetItem>
               <ActionSheetItem onPress={this.onCancel}>关闭</ActionSheetItem>
             </ActionSheet>
           </Body>

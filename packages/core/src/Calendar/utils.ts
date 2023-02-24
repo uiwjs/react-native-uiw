@@ -30,7 +30,7 @@ export function getMonths(year: number, month: number, day: number) {
  * 判断年闰年
  */
 export function isLeapYear(year: number) {
-  return (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0));
+  return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
 }
 
 /**
@@ -95,6 +95,7 @@ export interface daysArrProps {
   colorType: string;
   lunarMonth: string;
   lunar: string;
+  date?: string;
 }
 /**
  * 按每周分行
@@ -116,6 +117,7 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
       colorType: getHoliday.colorType,
       lunarMonth: getHoliday.lunarMonth,
       lunar: getHoliday.lunar,
+      date: year + '-' + (month + 1) + '-' + lstVal,
     });
   });
   days.forEach((Val, Indx) => {
@@ -130,6 +132,7 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
       colorType: getHoliday.colorType,
       lunarMonth: getHoliday.lunarMonth,
       lunar: getHoliday.lunar,
+      date: year + '-' + (month + 1) + '-' + Val,
     });
   });
   nextDays.forEach((nextVal, nextIndx) => {
@@ -143,6 +146,7 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
       colorType: getHoliday.colorType,
       lunarMonth: getHoliday.lunarMonth,
       lunar: getHoliday.lunar,
+      date: year + '-' + (month + 1) + '-' + nextVal,
     });
   });
   res = res.concat(lastArr, currentArr, nextArr);

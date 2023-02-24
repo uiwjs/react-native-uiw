@@ -10,7 +10,7 @@
 }
 
 html[data-color-mode*='dark'] .warpper {
-  background-color: #0d1117;
+  background-color: var(--color-theme-bg);
   border-bottom: 1px solid #032438;
 }
 
@@ -25,9 +25,10 @@ html[data-color-mode*='dark'] .warpper {
 .menus {
   display: flex;
 
+  span,
   a {
     transition: all 0.3s;
-    color: #333;
+    color: var(--color-fg-default);
     border-radius: 3px;
     padding: 2px 8px 2px 8px;
     display: flex;
@@ -39,12 +40,12 @@ html[data-color-mode*='dark'] .warpper {
   }
 
   :global(.active),
+  span:hover,
   a:hover {
     background: #00000017;
     color: #0366d6;
   }
 }
-
 .logo {
   display: flex;
   align-items: center;
@@ -72,5 +73,11 @@ html[data-color-mode*='dark'] .warpper {
     font-size: 12px;
     color: #9a9a9a;
     font-weight: 300;
+  }
+}
+
+html[data-color-mode*='dark'] {
+  :global(.github) {
+    fill: white;
   }
 }

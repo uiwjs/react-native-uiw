@@ -50,7 +50,7 @@ function TextArea(props: TextAreaProps) {
     placeholder = '',
     placeholderTextColor = '#989FB2',
     numberOfLines = 30,
-    onChange = () => {},
+    onChange,
     maxLength = 50,
     value = '',
     editable = true,
@@ -87,13 +87,15 @@ function TextArea(props: TextAreaProps) {
           placeholderTextColor={placeholderTextColor}
           numberOfLines={numberOfLines}
           maxLength={maxLength}
-          onChangeText={onChange}
+          onChangeText={(value) => {
+            onChange?.(value);
+          }}
           onChange={onChangeValue}
           onContentSizeChange={onContentSizeChange}
           editable={editable}
           value={value}
           {...other}
-        ></TextInput>
+        />
         {showWords === true && <Text style={[styles.textWords, fontStyle]}>{value.length + '/' + maxLength}</Text>}
       </View>
     </View>

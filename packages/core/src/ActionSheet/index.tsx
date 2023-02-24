@@ -13,7 +13,7 @@ export interface DividerStyle {
 
 export interface ActionSheetProps extends ModalProps {
   /** 点击蒙层是否关闭 */
-  onCancel?: Boolean;
+  isCancel?: Boolean;
   /** 分割线样式 */
   dividerStyle?: DividerStyle;
   /** 取消的容器样式 */
@@ -26,6 +26,8 @@ export interface ActionSheetProps extends ModalProps {
   underlayColor?: string;
   /** 取消的文本 */
   cancelText?: React.ReactNode;
+  /** 蒙层关闭回调 */
+  onCancel?: () => void;
 }
 
 interface ActionSheetState {
@@ -41,9 +43,10 @@ export default function ActionSheet(props: ActionSheetProps) {
     underlayColor,
     cancelText = '取消',
     dividerStyle,
-    onCancel,
+    isCancel = true,
     containerStyle,
     textStyle,
+    onCancel,
     ...other
   } = props;
 
@@ -70,7 +73,14 @@ export default function ActionSheet(props: ActionSheetProps) {
         stateVisible: !!props.visible,
       });
     }
-  }, [state.stateVisible]);
+  }, [state.stateVisible, props.visible]);
+
+  const onModalClose = () => {
+    if (isCancel) {
+      setState({ stateVisible: false, control: 'state' });
+      onCancel?.();
+    }
+  };
 
   const onClose = () => {
     setState({ stateVisible: false, control: 'state' });
@@ -83,7 +93,7 @@ export default function ActionSheet(props: ActionSheetProps) {
       transparent={true}
       {...other}
       visible={state.stateVisible}
-      onClosed={onClose}
+      onClosed={onModalClose}
     >
       <>
         {React.Children.toArray(children).map((item, index) => (

@@ -2,6 +2,20 @@
 
 一个基于 [uiw/react-native](https://github.com/uiwjs/react-native-uiw) 的 React Native 模板。
 
+
+## 特性
+
+该模板包括以下内容：
+
+1. 直接优雅地使用 [React Native CLI](https://github.com/react-native-community/cli)
+1. 支持 [React Native](https://github.com/facebook/react-native) 0.60 (现在有了 Hooks 🙌)
+1. 易于使用和理解的文件夹结构，让您尽快启动和运行
+1. [@uiw/react-native](https://github.com/uiwjs/react-native-uiw) 组件框架和主题
+1. 使用 [react-navigation](https://github.com/react-navigation/react-navigation) 来路由和导航您的 React Native 应用程序
+1. 支持 [Redux](https://github.com/reduxjs/redux) (以 [@rematch](https://github.com/rematch/rematch) 为例)
+1. [ESLint](https://github.com/eslint/eslint), 和 [Prettier](https://github.com/prettier/prettier) 开箱即用
+1. 使用 [mocker-api](https://github.com/jaywcjlove/mocker-api) 创建模拟的 REST API
+
 ## 安装与使用
 
 🚧 此模板仅适用于新的 CLI。 此模板适用于 >= 0.61 的 React Native 版本。 它没有用以前的版本进行测试。
@@ -109,52 +123,3 @@ npm run ios
 ├── index.js                          # app entry file
 └── package.json                      # This document is all you need to know about what’s required in your package.json file.
 ```
-## 新增页面
-
-在 src / pages 下创建新的 js 文件。 如果有多个相关页面，您可以创建一个新文件夹来放置相关文件
-```bash
-src
-  models
-  pages
-+   NewPage
-+     index.js
-  ...
-...
-package.json
-```
-
-为了更好的演示，我们初始化NewPage/index.js的内容如下：
-```jsx
-import React, {Component} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
-
-export default class MyNewPage extends Component {
-  render() {
-    return (
-      <SafeAreaView>
-        <View>
-          <Text>我的</Text>
-        </View>
-      </SafeAreaView>
-    );
-  }
-}
-```
-将文件加入菜单和路由
-在 src / routes 下homeTab.js中使用 component 配置我们页面到路由中
-```jsx
-import MyNewPage from '../pages/NewPage';
-
-export const stackPageData = [
-  {
-    name: 'MyNewPage',
-    component: MyNewPage,
-    options: {
-      title: '我的',
-    },
-  },
-];
-```
-路由配置完成后，访问页面即可看到效果，如需要配置 `title`，`tabBarIcon`，`header`等更多设置可以在这里找到[React Navigation](https://reactnavigation.org/docs/stack-navigator/)
-
-如此回到之前新建的 NewPage.js，可以开始写业务代码了！

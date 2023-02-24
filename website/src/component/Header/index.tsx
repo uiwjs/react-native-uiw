@@ -22,6 +22,7 @@ export default function Header(props: HeaderProps) {
   if (enableStyle) {
     style.background = '#f7f7f7';
   }
+
   return (
     <header className={styles.warpper} style={style}>
       <div className={styles.inner}>
@@ -36,9 +37,6 @@ export default function Header(props: HeaderProps) {
           <NavLink to="/home">首页</NavLink>
           <NavLink to="/docs">文档</NavLink>
           <NavLink to="/components">RN组件</NavLink>
-          <a target="__blank" href="https://pushy.reactnative.cn/">
-            热更新
-          </a>
           <a target="__blank" href="https://github.com/uiwjs/react-native-uiw/issues">
             问题反馈
           </a>
@@ -46,7 +44,9 @@ export default function Header(props: HeaderProps) {
             Web 组件
           </a>
           <NavLink to="/team">团队</NavLink>
-          <dark-mode permanent style={{ display: 'flex', alignItems: 'center' }} />
+          <span>
+            <dark-mode permanent />
+          </span>
           <a target="__blank" href="https://github.com/uiwjs/react-native-uiw">
             <Github />
           </a>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ViewProps, TextProps, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
+import { View, Text, ViewProps, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import Icon from '../Icon';
 import Ellipsis from '../Ellipsis';
 import { getMonths, getWeeksArray, daysArrProps, getType, getNameLen } from './utils';
@@ -21,12 +21,19 @@ interface BarState {
 
 export interface CalendarProps extends ViewProps {
   // 日历颜色
-  color: string;
-  //是否显示农历及假日
-  lunarHoliday: boolean;
+  color?: string;
+  // 是否显示农历及假日
+  lunarHoliday?: boolean;
   bar?: BarState;
-  //农历详情
-  showLunar: boolean;
+  // 是否显示农历详情
+  showLunar?: boolean;
+  onChange?: (value: string) => void;
+  // 是否显示头部导航栏
+  showBar?: boolean;
+  // 自定义渲染日期额外内容
+  renderDay?: (date: string, currentDate: string) => React.ReactNode | JSX.Element;
+  // 值
+  value?: Date;
 }
 
 const Calendar = (props: CalendarProps) => {
@@ -37,7 +44,16 @@ const Calendar = (props: CalendarProps) => {
     onPressBarLeft: undefined,
     render: undefined,
   };
-  const { color = '#329BCB', lunarHoliday = false, bar = bars, showLunar = false } = props;
+  const {
+    color = '#329BCB',
+    lunarHoliday = false,
+    bar = bars,
+    showLunar = false,
+    onChange,
+    showBar = true,
+    renderDay,
+    value,
+  } = props;
   const { barRightText, title, barLeftText, onPressBarLeft, render } = bar;
   const [currentYear, setCurrentYear] = useState<number>(toYear);
   const [currentMonth, setCurrentMonth] = useState<number>(toMonth);
@@ -48,11 +64,24 @@ const Calendar = (props: CalendarProps) => {
   const [lunarName, setLunarName] = useState('');
 
   useEffect(() => {
+    if (value) {
+      let toYear = value.getFullYear();
+      let toMonth = value.getMonth();
+      let toDays = value.getDate();
+      setCurrentYear(toYear);
+      setCurrentMonth(toMonth);
+      setCurrentDays(toDays);
+    }
+  }, [value]);
+
+  useEffect(() => {
     let toMonths = getMonths(currentYear, currentMonth, currentDays);
     setLastData(toMonths[0]);
     setDayData(toMonths[1]);
     setNextData(toMonths[2]);
-  }, [currentYear, currentMonth]);
+    const date = currentYear + '-' + (currentMonth + 1) + '-' + currentDays;
+    onChange?.(date);
+  }, [currentYear, currentMonth, currentDays]);
 
   /**
    * 头部导航栏
@@ -127,14 +156,15 @@ const Calendar = (props: CalendarProps) => {
             lunarAll.type === 1
               ? [styles.dateBase, styles.otherMonth]
               : lunarAll.type === 2
-                ? [styles.currentMonth, styles.dateBase, { backgroundColor: color }]
-                : lunarAll.type === 3
-                  ? [styles.selectMonth, styles.dateBase, { borderColor: color }]
-                  : styles.dateBase
+              ? [styles.currentMonth, styles.dateBase, { backgroundColor: color }]
+              : lunarAll.type === 3
+              ? [styles.selectMonth, styles.dateBase, { borderColor: color }]
+              : styles.dateBase
           }
           onPress={() => goSelectDay(day)}
         >
           <View>
+            {renderDay?.(day.date || '', currentYear + '-' + (currentMonth + 1))}
             <Text
               style={[
                 styles.dayText,
@@ -218,7 +248,7 @@ const Calendar = (props: CalendarProps) => {
   return (
     <View style={{ flex: 1, position: 'relative' }}>
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
-        {renderBar}
+        {showBar && renderBar}
         <View style={styles.calendarHeader}>
           <View style={styles.calendarHeaderItem}>
             <TouchableOpacity onPress={() => getCurrentYear('last')}>

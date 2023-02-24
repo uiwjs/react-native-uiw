@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -47,33 +47,30 @@ interface SearchInputBarState {
   showIcon: boolean;
 }
 
-export default class SearchInputBar extends React.Component<SearchInputBarProps, SearchInputBarState> {
-  public inputRef = React.createRef<TextInput>();
+function SearchInputBar(props: SearchInputBarProps) {
+  const inputRef = React.createRef<TextInput>();
 
-  constructor(props: SearchInputBarProps) {
-    super(props);
-    this.state = {
-      showIcon: false,
-    };
-  }
+  const [state, setState] = useState<SearchInputBarState>({
+    showIcon: false,
+  });
 
-  needFocus = (type: 'search' | 'close' | 'actived') => {
+  const needFocus = (type: 'search' | 'close' | 'actived') => {
     if (type === 'close') {
-      this.props.onClear?.();
+      props.onClear?.();
     } else if (type === 'search') {
-      this.props.onSearch?.();
+      props.onSearch?.();
       return;
     }
     if (type === 'actived') {
-      this.setState({ showIcon: true });
+      setState({ showIcon: true });
     }
-    this.inputRef.current && this.inputRef.current.focus();
+    inputRef.current && inputRef.current.focus();
   };
 
   // 右侧搜索
-  renderSearch = () => {
-    const { showActionButton, searchRender, touchProps, actionName = '搜索' } = this.props;
-    const { showIcon } = this.state;
+  const renderSearch = () => {
+    const { showActionButton, searchRender, touchProps, actionName = '搜索' } = props;
+    const { showIcon } = state;
     if (showActionButton || showIcon) {
       return searchRender ? (
         searchRender
@@ -86,57 +83,57 @@ export default class SearchInputBar extends React.Component<SearchInputBarProps,
     return null;
   };
 
-  render() {
-    const {
-      value,
-      onChangeText,
-      showActionButton,
-      inputStyle,
-      containerStyle,
-      searchIcon,
-      closeIcon,
-      loading = false,
-      ...other
-    } = this.props;
+  const {
+    value,
+    onChangeText,
+    showActionButton,
+    inputStyle,
+    containerStyle,
+    searchIcon,
+    closeIcon,
+    loading = false,
+    ...other
+  } = props;
 
-    return (
-      <Loader loading={loading} rounded={5} maskColor="transparent">
-        <View style={[styles.centerFlex]}>
-          <View style={StyleSheet.flatten([styles.searchContainer, styles.centerFlex, containerStyle])}>
-            <TouchableOpacity onPress={() => this.needFocus('search')}>
-              <Icon name="search" size={14} color={colors.colorsPalette.grey40} height={'100%'} {...searchIcon} />
+  return (
+    <Loader loading={loading} rounded={5} maskColor="transparent">
+      <View style={[styles.centerFlex]}>
+        <View style={StyleSheet.flatten([styles.searchContainer, styles.centerFlex, containerStyle])}>
+          <TouchableOpacity onPress={() => needFocus('search')}>
+            <Icon name="search" size={14} color={colors.colorsPalette.grey40} height={'100%'} {...searchIcon} />
+          </TouchableOpacity>
+          <TextInput
+            {...other}
+            value={value}
+            onChangeText={onChangeText}
+            ref={inputRef}
+            style={[styles.textInput, inputStyle]}
+            onFocus={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+              if (showActionButton !== null) {
+                setState({ showIcon: true });
+              }
+              other?.onFocus?.(e);
+            }}
+            onBlur={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+              if (showActionButton !== null && !value && !loading) {
+                setState({ showIcon: false });
+              }
+              other?.onBlur?.(e);
+            }}
+          />
+          {Boolean(value) && (
+            <TouchableOpacity style={{}} onPress={() => needFocus('close')}>
+              <Icon name="close" size={14} color={colors.colorsPalette.grey40} height={'100%'} {...closeIcon} />
             </TouchableOpacity>
-            <TextInput
-              {...other}
-              value={value}
-              onChangeText={onChangeText}
-              ref={this.inputRef}
-              style={[styles.textInput, inputStyle]}
-              onFocus={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-                if (showActionButton !== null) {
-                  this.setState({ showIcon: true });
-                }
-                other?.onFocus?.(e);
-              }}
-              onBlur={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-                if (showActionButton !== null && !value && !loading) {
-                  this.setState({ showIcon: false });
-                }
-                other?.onBlur?.(e);
-              }}
-            />
-            {Boolean(value) && (
-              <TouchableOpacity style={{}} onPress={() => this.needFocus('close')}>
-                <Icon name="close" size={14} color={colors.colorsPalette.grey40} height={'100%'} {...closeIcon} />
-              </TouchableOpacity>
-            )}
-          </View>
-          {this.renderSearch()}
+          )}
         </View>
-      </Loader>
-    );
-  }
+        {renderSearch()}
+      </View>
+    </Loader>
+  );
 }
+
+export default React.forwardRef(SearchInputBar);
 
 const styles = StyleSheet.create({
   centerFlex: {

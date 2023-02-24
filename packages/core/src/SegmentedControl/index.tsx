@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { ViewStyle, TextStyle, Text } from 'react-native';
 import ButtonGroup, { ButtonGroupProps } from '../ButtonGroup';
 import Button from '../Button';
@@ -19,68 +19,64 @@ export interface SegmentedControlState {
   selectedIndex: number;
 }
 
-export default class SegmentedControl<T extends React.ReactPortal> extends Component<
-  SegmentedControlProps<T>,
-  SegmentedControlState
-> {
-  constructor(props: SegmentedControlProps<T>) {
-    super(props);
-    this.state = {
-      selectedIndex: props.selectedIndex || 0,
-    };
-  }
-  static defaultProps: SegmentedControlProps<{}> = {
-    value: [],
-    size: 'small',
-    selectedIndex: 0,
-    color: '#108ee9',
+export default function SegmentedControl<T extends React.ReactPortal>(props: SegmentedControlProps<T>) {
+  const [state, setState] = useState({
+    selectedIndex: props.selectedIndex || 0,
+  });
+
+  const handlePress = (label: string | T, selectedIndex: number) => {
+    setState({ selectedIndex });
+
+    const { onValueChange } = props;
+    onValueChange && onValueChange(label, selectedIndex);
+    return undefined;
   };
-  handlePress = (label: string | T, selectedIndex: number) => {
-    const { onValueChange } = this.props;
-    this.setState({ selectedIndex }, () => {
-      onValueChange && onValueChange(label, selectedIndex);
-    });
-  };
-  render() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {
-      value,
-      selectedIndex,
-      renderItem,
-      textColor = {
-        actived: '#fff',
-        unactived: this.props.color ?? '#108ee9',
-      },
-      ...otherProps
-    } = this.props;
-    return (
-      <ButtonGroup {...otherProps}>
-        {value &&
-          (value as (string | T)[]).map((label: string | T, key: number) => {
-            const styl: ViewStyle = {};
-            const textStyle: TextStyle = {};
-            let textStyleColor: string = textColor.actived!;
-            if (this.state.selectedIndex !== key + 1) {
-              styl.backgroundColor = '#fff';
-              textStyle.color = otherProps.color;
-              textStyleColor = textColor.unactived!;
-            }
-            const props: ButtonGroupProps = {
-              type: 'primary',
-              style: [styl, otherProps.textStyle],
-              textStyle: [textStyle],
-              onPress: this.handlePress.bind(this, label, key + 1),
-            };
-            if (renderItem) {
-              return renderItem(label, key + 1, props);
-            }
-            return React.cloneElement(
-              <Button key={key} />,
-              { ...props },
-              <Text style={{ color: textStyleColor }}>{label}</Text>,
-            );
-          })}
-      </ButtonGroup>
-    );
-  }
+
+  const {
+    value,
+    selectedIndex,
+    renderItem,
+    textColor = {
+      actived: '#fff',
+      unactived: props.color ?? '#108ee9',
+    },
+    ...otherProps
+  } = props;
+
+  return (
+    <ButtonGroup {...otherProps}>
+      {value &&
+        (value as (string | T)[]).map((label: string | T, key: number) => {
+          const styl: ViewStyle = {};
+          const textStyle: TextStyle = {};
+          let textStyleColor: string = textColor.actived!;
+          if (state.selectedIndex !== key + 1) {
+            styl.backgroundColor = '#fff';
+            textStyle.color = otherProps.color;
+            textStyleColor = textColor.unactived!;
+          }
+          const props: ButtonGroupProps = {
+            type: 'primary',
+            style: [styl, otherProps.textStyle],
+            textStyle: [textStyle],
+            onPress: () => handlePress(label, key + 1),
+          };
+          if (renderItem) {
+            return renderItem(label, key + 1, props);
+          }
+          return React.cloneElement(
+            <Button key={key} />,
+            { ...props },
+            <Text style={{ color: textStyleColor }}>{label}</Text>,
+          );
+        })}
+    </ButtonGroup>
+  );
 }
+
+SegmentedControl.defaultProps = {
+  value: [],
+  size: 'small',
+  selectedIndex: 0,
+  color: '#108ee9',
+} as SegmentedControlProps<{}>;

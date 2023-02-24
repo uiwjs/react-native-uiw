@@ -19,7 +19,7 @@ package.json
 
 > 在/mocker/user.mock.js目录下进行mock数据编写，比如：
 
-```ts
+```js
 module.exports = {
   'POST /api/login': (req, res) => {
     let {username, password} = req.body;
@@ -41,22 +41,24 @@ module.exports = {
 
 ### 二、界面渲染
 
-```
-import React, {  useState } from 'react';
+```js
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button } from '@uiw/react-native';
-import Global from '../../global';
-import { useLogin } from '../../hooks/users'
+import { login } from '../../hooks/users'
 
-const Dome = ({ update }) => {
-  
-  const { mutate, isLoading } = useLogin({
+const Demo = ({ update }) => {
+  const [store, setStore] = useState({
+    formData: {
+      username: 'admin',
+      password: 'admin!',
+    },
+  })
+
+  const { mutate, isLoading } = login({
     update,
     formData,
   })
-
-  const loginIn = () => mutate?.({ ...formData })
 
   return (
      <Button
@@ -65,31 +67,29 @@ const Dome = ({ update }) => {
        color="#BFBFBF"
        loading={isLoading}
        disabled={isLoading}
-       onPress={loginIn}>
+       onPress={() => mutate?.({ ...formData })}>
        Sign In
      </Button>
   );
 }
 
 export default connect(
-  ({ }) => ({}),
+  ({}) => ({}),
   ({ global }) => ({
     update: global.update
   }),
-)(Dome);
+)(Demo);
 
 ```
 ### 三、使用react-query调用api
 [react-query](https://tanstack.com/query/latest) 更详细的使用，请参照官方文档
 
-```
-import { Alert } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+```js
 import { userLogin } from '../services/users';
 import { useQuery, useMutation } from 'react-query'
 
 // 登录
-export const useLogin = ({ config = {}, update, formData, remember }) => {
+export const login = ({ config = {}, update, formData }) => {
   const mutation = useMutation({
     mutationFn: userLogin,
     onSuccess: async (data) => {
@@ -107,14 +107,12 @@ export const useLogin = ({ config = {}, update, formData, remember }) => {
 
 > 配合系统封装的request进行mock数据请求。如需区分是mock数据，还是真实后端数据，调用真实数据时,注释mocker数据配置即可
 
-```ts
-  import { request } from "@uiw-admin/utils"
+```js
+  import { fetch } from '../utils';
 
   export async function userLogin(params) {
-  return fetch('/api/login', {
-    body: params,
-  });
-}
+    return fetch('/api/login', { body: params });
+  }
 ```
 
 注：mock功能只推荐在开发模式下开启。
