@@ -83,6 +83,81 @@ function CalendarView() {
 export default CalendarView
 ```
 
+### 隐藏头部
+
+```jsx  mdx:preview
+import React,{Component} from 'react';
+import { View } from 'react-native';
+import { Calendar } from '@uiw/react-native';
+import Layout, { Container }  from '../Layout';
+const { Header, Body,  Footer } = Layout;
+
+ function CalendarView() {
+    const title = 'Calendar';
+    return (
+        <Container>
+          <Layout>
+            <Body>
+              <Calendar showBar={false} />
+            </Body>
+            <Footer />
+          </Layout>
+        </Container>
+    );
+}
+export default CalendarView
+```
+
+### 自定义日期额外内容
+
+```jsx  mdx:preview
+import React,{Component} from 'react';
+import { View,Text } from 'react-native';
+import { Calendar } from '@uiw/react-native';
+import Layout, { Container }  from '../Layout';
+const { Header, Body,  Footer } = Layout;
+
+ function CalendarView() {
+    const title = 'Calendar';
+    return (
+        <Container>
+          <Layout>
+            <Body>
+              <Calendar renderDay={()=><View><Text>1</Text></View>} />
+            </Body>
+            <Footer />
+          </Layout>
+        </Container>
+    );
+}
+export default CalendarView
+```
+
+### value值
+
+```jsx  mdx:preview
+import React,{Component} from 'react';
+import { View,Text } from 'react-native';
+import { Calendar } from '@uiw/react-native';
+import Layout, { Container }  from '../Layout';
+const { Header, Body,  Footer } = Layout;
+
+ function CalendarView() {
+    const title = 'Calendar';
+    return (
+        <Container>
+          <Layout>
+            <Body>
+              <Calendar value={new Date('2023-1-1')} />
+            </Body>
+            <Footer />
+          </Layout>
+        </Container>
+    );
+}
+export default CalendarView
+```
+
 ### Props
 
 集成继承 `Button` 组件自定义属性，外层包裹继承 [`Flex`] 组件。
