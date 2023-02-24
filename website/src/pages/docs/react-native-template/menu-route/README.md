@@ -73,35 +73,22 @@ iOS上后退按钮使用的标题字符串。默认为前一个场景的headerTi
 ## 路由跳转
 
 ```js
-import {View} from 'react-native';
-import { List, Icon} from '@uiw/react-native';
+import React from 'react';
+import { Button } from '@uiw/react-native';
 
-        <List
-            flat={true}
-            data={[
-              {title: '企业开票'},
-              {title: '我的熟车'},
-              {title: '设置', onPress: () => navigation.navigate('MyHomeSetting')},
-              {title: '退出登录', onPress: () => navigation.replace('SignIn')},
-            ]}
-            renderItem={({item, index}) => {
-              return (
-                <List.Item
-                  key={index}
-                  extra={<Icon name="right" fill="#abb0b5" size={14} />}
-                  size="large"
-                  paddingLeft={15}
-                  style={{borderBottomWidth: 0}}
-                  onPress={item.onPress || null}>
-                  <View>
-                    <Text>{item.title}</Text>
-                  </View>
-                </List.Item>
-              );
-            }}
-          />
+const Demo = ({ navigation }) => {
+
+  return (
+     <Button
+       textStyle={{ fontSize: 16, fontWeight: '200' }}
+       bordered={false}
+       color="#BFBFBF"
+       onPress={() => navigation.replace('SignIn')}>
+        跳转
+     </Button>
+  );
+}
+
 ```
-
-
 
 

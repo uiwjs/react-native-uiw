@@ -36,7 +36,7 @@
 ```
 
 为了更好的演示，我们初始化NewPage/index.js的内容如下：
-```jsx
+```js
 import React, {Component} from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 
@@ -55,7 +55,7 @@ export default class MyNewPage extends Component {
 将文件加入菜单和路由
 
 在 src / routes 下homeTab.js中使用 component 配置我们页面到路由中
-```jsx
+```js
 import MyNewPage from '../pages/NewPage';
 
 export const stackPageData = [
