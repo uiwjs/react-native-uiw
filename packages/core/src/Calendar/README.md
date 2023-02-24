@@ -96,6 +96,7 @@ export default CalendarView
 | `bar` | 导航栏 | React.ReactNode | - |
 | `onChange` | 选择时间事件 |  (value: string) => void | - |
 | `renderDay` | 自定义渲染日期额外内容 | (date:any) => React.ReactNode | JSX.Element | - |
+| `value` | 值 |  Date | - |
 
 
 ### bar 参数

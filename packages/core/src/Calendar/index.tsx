@@ -32,6 +32,8 @@ export interface CalendarProps extends ViewProps {
   showBar?: boolean;
   // 自定义渲染日期额外内容
   renderDay?: (date: any) => React.ReactNode | JSX.Element;
+  // 值
+  value?: Date;
 }
 
 const Calendar = (props: CalendarProps) => {
@@ -50,6 +52,7 @@ const Calendar = (props: CalendarProps) => {
     onChange,
     showBar = true,
     renderDay,
+    value,
   } = props;
   const { barRightText, title, barLeftText, onPressBarLeft, render } = bar;
   const [currentYear, setCurrentYear] = useState<number>(toYear);
@@ -59,6 +62,17 @@ const Calendar = (props: CalendarProps) => {
   const [lastData, setLastData] = useState<number[]>([]);
   const [nextData, setNextData] = useState<number[]>([]);
   const [lunarName, setLunarName] = useState('');
+
+  useEffect(() => {
+    if (value) {
+      let toYear = value.getFullYear();
+      let toMonth = value.getMonth();
+      let toDays = value.getDate();
+      setCurrentYear(toYear);
+      setCurrentMonth(toMonth);
+      setCurrentDays(toDays);
+    }
+  }, [value]);
 
   useEffect(() => {
     let toMonths = getMonths(currentYear, currentMonth, currentDays);
