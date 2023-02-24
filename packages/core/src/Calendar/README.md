@@ -170,7 +170,7 @@ export default CalendarView
 | `showBar` | 是否显示导航栏 | Boolean | `true` |
 | `bar` | 导航栏 | React.ReactNode | - |
 | `onChange` | 选择时间事件 |  (value: string) => void | - |
-| `renderDay` | 自定义渲染日期额外内容 | (date:any) => React.ReactNode | JSX.Element | - |
+| `renderDay` | 自定义渲染日期额外内容 | (date: string, currentDate: string) => React.ReactNode | JSX.Element | - |
 | `value` | 值 |  Date | - |
 
 

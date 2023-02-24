@@ -31,7 +31,7 @@ export interface CalendarProps extends ViewProps {
   // 是否显示头部导航栏
   showBar?: boolean;
   // 自定义渲染日期额外内容
-  renderDay?: (date: any) => React.ReactNode | JSX.Element;
+  renderDay?: (date: string, currentDate: string) => React.ReactNode | JSX.Element;
   // 值
   value?: Date;
 }
@@ -164,7 +164,7 @@ const Calendar = (props: CalendarProps) => {
           onPress={() => goSelectDay(day)}
         >
           <View>
-            {renderDay?.(day.date || '')}
+            {renderDay?.(day.date || '', currentYear + '-' + (currentMonth + 1))}
             <Text
               style={[
                 styles.dayText,
