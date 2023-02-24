@@ -2,18 +2,37 @@
 
 这里的『页面』指配置了路由，能够通过链接直接访问的模块。
 
+## 目录结构
+
+```
+
+├── mocker                            # mocker data
+├── android                           # native android code
+├── ios                               # native ios code
+├── src                               # code directory
+│   ├── components                    # react components
+│   ├── models                        # The models brings together state, reducers, async actions & action creators in one place
+│   ├── pages                         # route pages
+│   ├── routes                        # route configuration
+│   ├── services                      # api request
+│   ├── utils                         # public method
+│   ├── App.js                        # route entery page
+│   ├── config.js                     # app configuration
+│   └── global.js                     # Store some global objects for easy calling
+├── .eslintrc                         # eslint configuration
+├── index.js                          # app entry file
+└── package.json                      # This document is all you need to know about what’s required in your package.json file.
+```
+
 ## 手动创建
 
 在 src / pages 下创建新的 js 文件。 如果有多个相关页面，您可以创建一个新文件夹来放置相关文件
-```bash
-src
-  models
-  pages
-+   NewPage
-+     index.js
-  ...
-...
-package.json
+
+```
+├── src
+│   ├── pages
+│   │   └── NewPage # 📑 添加 新页面目录
+│   │       └── index.js # 📑 添加 新页面
 ```
 
 为了更好的演示，我们初始化NewPage/index.js的内容如下：

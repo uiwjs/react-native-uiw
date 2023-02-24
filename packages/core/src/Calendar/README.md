@@ -123,7 +123,7 @@ const { Header, Body,  Footer } = Layout;
         <Container>
           <Layout>
             <Body>
-              <Calendar renderDay={()=><View><Text>1</Text></View>} />
+              <Calendar renderDay={(date)=><View><Text>1</Text></View>} />
             </Body>
             <Footer />
           </Layout>
