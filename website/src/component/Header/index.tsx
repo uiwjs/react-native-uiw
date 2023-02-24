@@ -47,9 +47,9 @@ export default function Header(props: HeaderProps) {
             Web 组件
           </a>
           <NavLink to="/team">团队</NavLink>
-          <a>
+          <span>
             <dark-mode permanent />
-          </a>
+          </span>
           <a target="__blank" href="https://github.com/uiwjs/react-native-uiw">
             <Github />
           </a>

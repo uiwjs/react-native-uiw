@@ -25,6 +25,7 @@ html[data-color-mode*='dark'] .warpper {
 .menus {
   display: flex;
 
+  span,
   a {
     transition: all 0.3s;
     color: var(--color-fg-default);
@@ -39,6 +40,7 @@ html[data-color-mode*='dark'] .warpper {
   }
 
   :global(.active),
+  span:hover,
   a:hover {
     background: #00000017;
     color: #0366d6;
