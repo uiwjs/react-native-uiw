@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Animated, StyleProp, ViewStyle } from 'react-native';
 import Icon, { IconsName } from '../Icon';
 
@@ -13,29 +13,22 @@ export interface ToastProps {
   style?: StyleProp<ViewStyle>;
 }
 
-export default class ToastContainer extends Component<ToastProps, any> {
-  static defaultProps = {
-    duration: 3,
-    type: 'info',
-  };
+export default function ToastContainer(props: ToastProps) {
+  const [anim, setAnim] = useState<Animated.CompositeAnimation | null | undefined>();
 
-  anim: Animated.CompositeAnimation | null | undefined;
+  const [state, setState] = useState({
+    fadeAnim: new Animated.Value(1),
+  });
 
-  constructor(props: ToastProps) {
-    super(props);
-    this.state = {
-      fadeAnim: new Animated.Value(1),
-    };
-  }
-  componentDidMount() {
-    const { onClose, onAnimationEnd } = this.props;
-    const duration = this.props.duration as number;
+  useEffect(() => {
+    const { onClose, onAnimationEnd } = props;
+    const duration = props.duration as number;
     const timing = Animated.timing;
-    if (this.anim) {
-      this.anim = null;
+    if (anim) {
+      setAnim(null);
     }
     const animArr = [
-      timing(this.state.fadeAnim, {
+      timing(state.fadeAnim, {
         toValue: 1,
         duration: 200,
         useNativeDriver: true,
@@ -44,17 +37,17 @@ export default class ToastContainer extends Component<ToastProps, any> {
     ];
     if (duration > 0) {
       animArr.push(
-        timing(this.state.fadeAnim, {
+        timing(state.fadeAnim, {
           toValue: 0,
           duration: 200,
           useNativeDriver: true,
         }),
       );
     }
-    this.anim = Animated.sequence(animArr);
-    this.anim.start(() => {
+    setAnim(Animated.sequence(animArr));
+    anim?.start(() => {
       if (duration > 0) {
-        this.anim = null;
+        setAnim(null);
         if (onClose) {
           onClose();
         }
@@ -63,18 +56,18 @@ export default class ToastContainer extends Component<ToastProps, any> {
         }
       }
     });
-  }
 
-  componentWillUnmount() {
-    if (this.anim) {
-      this.anim.stop();
-      this.anim = null;
-    }
-  }
+    return () => {
+      if (anim) {
+        anim.stop();
+        setAnim(null);
+      }
+    };
+  }, []);
 
-  renderIcon = () => {
-    const { type } = this.props;
-    let icon = this.props.icon;
+  const renderIcon = () => {
+    const { type } = props;
+    let icon = props.icon;
     let color = '';
     if (!icon) {
       switch (type) {
@@ -101,23 +94,26 @@ export default class ToastContainer extends Component<ToastProps, any> {
     return { icon, color };
   };
 
-  render() {
-    const { content, type, style } = this.props;
+  const { content, type, style } = props;
 
-    return (
-      <View style={[styles.container, style]}>
-        <View style={[styles.innerContainer]}>
-          <Animated.View style={{ opacity: this.state.fadeAnim }}>
-            <View style={[styles.content, styles[type]]}>
-              <Icon name={this.renderIcon().icon} size={16} style={[styles.icon]} color={this.renderIcon().color} />
-              <Text>{content}</Text>
-            </View>
-          </Animated.View>
-        </View>
+  return (
+    <View style={[styles.container, style]}>
+      <View style={[styles.innerContainer]}>
+        <Animated.View style={{ opacity: state.fadeAnim }}>
+          <View style={[styles.content, styles[type]]}>
+            <Icon name={renderIcon().icon} size={16} style={[styles.icon]} color={renderIcon().color} />
+            <Text>{content}</Text>
+          </View>
+        </Animated.View>
       </View>
-    );
-  }
+    </View>
+  );
 }
+
+ToastContainer.defaultProps = {
+  duration: 3,
+  type: 'info',
+} as ToastProps;
 
 const styles = StyleSheet.create({
   container: {
