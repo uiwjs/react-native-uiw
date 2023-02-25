@@ -117,7 +117,7 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
       colorType: getHoliday.colorType,
       lunarMonth: getHoliday.lunarMonth,
       lunar: getHoliday.lunar,
-      date: year + '-' + (month + 1) + '-' + lstVal,
+      date: year + '-' + month + '-' + lstVal,
     });
   });
   days.forEach((Val, Indx) => {
@@ -146,7 +146,7 @@ export function getWeeksArray(lastDays: number[], days: number[], nextDays: numb
       colorType: getHoliday.colorType,
       lunarMonth: getHoliday.lunarMonth,
       lunar: getHoliday.lunar,
-      date: year + '-' + (month + 1) + '-' + nextVal,
+      date: year + '-' + (month + 2) + '-' + nextVal,
     });
   });
   res = res.concat(lastArr, currentArr, nextArr);
