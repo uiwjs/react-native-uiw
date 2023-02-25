@@ -6,7 +6,7 @@ Calendar 日历
 ### 基础示例
 
 ```jsx  mdx:preview
-import React,{Component} from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
@@ -31,7 +31,7 @@ export default CalendarView
 ### 自定义日历颜色、农历及假日展示
 
 ```jsx  mdx:preview
-import React,{Component} from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
@@ -56,7 +56,7 @@ export default CalendarView
 ### 自定义日历头部及农历详情展示
 
 ```jsx  mdx:preview
-import React,{ Component } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
@@ -86,7 +86,7 @@ export default CalendarView
 ### 隐藏头部
 
 ```jsx  mdx:preview
-import React,{Component} from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
@@ -111,7 +111,7 @@ export default CalendarView
 ### 自定义日期额外内容
 
 ```jsx  mdx:preview
-import React,{Component} from 'react';
+import React from 'react';
 import { View,Text } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
@@ -133,22 +133,22 @@ const { Header, Body,  Footer } = Layout;
 export default CalendarView
 ```
 
-### value值
+### 默认value值
 
 ```jsx  mdx:preview
-import React,{Component} from 'react';
+import React,{ useState } from 'react';
 import { View,Text } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
 const { Header, Body,  Footer } = Layout;
 
  function CalendarView() {
-    const title = 'Calendar';
+    const [ time,setTime ] = useState('2023-1-1')
     return (
         <Container>
           <Layout>
             <Body>
-              <Calendar value={new Date('2023-1-1')} />
+              <Calendar value={new Date(time)} onChange={(time)=>setTime(time)} />
             </Body>
             <Footer />
           </Layout>
