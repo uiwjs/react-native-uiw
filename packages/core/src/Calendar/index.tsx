@@ -79,8 +79,8 @@ const Calendar = (props: CalendarProps) => {
     setLastData(toMonths[0]);
     setDayData(toMonths[1]);
     setNextData(toMonths[2]);
-    const date = currentYear + '-' + (currentMonth + 1) + '-' + currentDays;
-    onChange?.(date);
+    // const date = currentYear + '-' + (currentMonth + 1) + '-' + currentDays;
+    // onChange?.(date);
   }, [currentYear, currentMonth, currentDays]);
 
   /**
@@ -207,6 +207,7 @@ const Calendar = (props: CalendarProps) => {
       setCurrentDays(day.monthDays);
       getCurrentMonth('next');
     }
+    onChange?.(day.date || '');
   };
   const getCurrentYear = (type: string) => {
     if (type === 'last') {
