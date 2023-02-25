@@ -114,16 +114,15 @@ export interface LayoutProps {
   style?: ViewStyle;
 }
 
-export default class Layout extends PureComponent<LayoutProps> {
-  static Header = Header;
-  static Body = Body;
-  static Footer = Footer;
-  static Card = Card;
-  render() {
-    const { children, style } = this.props;
-    return <View style={[styles.container, style]}>{children}</View>;
-  }
+export default function Layout(props: LayoutProps) {
+  const { children, style } = props;
+  return <View style={[styles.container, style]}>{children}</View>;
 }
+
+Layout.Header = Header;
+Layout.Body = Body;
+Layout.Footer = Footer;
+Layout.Card = Card;
 
 const styles = StyleSheet.create({
   container: {
