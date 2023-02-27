@@ -14,11 +14,11 @@ class Demo extends Component {
   render() {
   return (
     <Fragment>
-      <Text>分割线</Text>
-      <Divider label="OR" />
-      <Text>横向分割线</Text>
-      <Divider />
-      <Text>分割线</Text>
+      <Text style={{ color: '#555' }}>分割线</Text>
+      <Divider label="OR" labelStyle={{ color: '#555' }}/>
+      <Text style={{ color: '#555' }}>横向分割线</Text>
+      <Divider labelStyle={{ color: '#555' }}/>
+      <Text style={{ color: '#555' }}>分割线</Text>
     </Fragment>
   );
   }
@@ -40,10 +40,10 @@ class Demo extends Component {
   render() {
   return (
     <Fragment>
-      <Text>分割线</Text>
-      <Divider label="OR" gutter={50}/>
-      <Text>分割线</Text>
-      <Divider label="OR" gutter={100}/>
+      <Text style={{ color: '#555' }}>分割线</Text>
+      <Divider label="OR" gutter={50} labelStyle={{ color: '#555' }}/>
+      <Text style={{ color: '#555' }}>分割线</Text>
+      <Divider label="OR" gutter={100} labelStyle={{ color: '#555' }}/>
     </Fragment>
   );
   }
@@ -63,12 +63,12 @@ class Demo extends Component {
   render() {
   return (
     <Fragment>
-      <Text>分割线</Text>
-      <Divider label="left" orientation="left" labelStyle={{ fontWeight: 'bold' }} />
-      <Text>分割线</Text>
-      <Divider label="center" labelStyle={{ fontWeight: 'bold' }} />
-      <Text>分割线</Text>
-      <Divider label="right" orientation="right" labelStyle={{ fontWeight: 'bold' }} />
+      <Text style={{ color: '#555' }}>分割线</Text>
+      <Divider label="left" orientation="left" labelStyle={{ fontWeight: 'bold', color: '#555' }} />
+      <Text style={{ color: '#555' }}>分割线</Text>
+      <Divider label="center" labelStyle={{ fontWeight: 'bold', color: '#555' }} />
+      <Text style={{ color: '#555' }}>分割线</Text>
+      <Divider label="right" orientation="right" labelStyle={{ fontWeight: 'bold', color: '#555' }} />
     </Fragment>
   );
   }
@@ -88,7 +88,7 @@ class Demo extends Component {
   render() {
   return (
    <View style={{ height: 200 }}>
-      <Divider type="vertical" label="OR" />
+      <Divider type="vertical" label="OR"  labelStyle={{ color: '#555' }} />
     </View>
   );
   }
