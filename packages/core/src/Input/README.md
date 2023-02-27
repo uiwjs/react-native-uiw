@@ -161,8 +161,5 @@ export default Demo
 | `style` | 输入框样式 | `StyleProp<TextStyle>` | - |
 | `containerStyle` | 容器样式 | `StyleProp<ViewStyle>` | - |
 
-<<<<<<< HEAD
 
 > 更多 react-native Input 属性请参考 react-native TextInput (https://www.react-native.cn/docs/textinput)
-=======
->>>>>>> dev
