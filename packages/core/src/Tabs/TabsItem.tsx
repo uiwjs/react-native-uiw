@@ -17,8 +17,6 @@ export interface TabsItemStyle {
   iconSize?: number;
   /** border 宽度 */
   borderWidth?: number;
-  /** border 距离底部距离一般与 Tabs paddingBottom 相等 */
-  borderBottom?: number;
   /** border 粗细 */
   borderHeight?: number;
 }
