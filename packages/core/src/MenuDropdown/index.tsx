@@ -61,7 +61,7 @@ export default function MenuDropdown(props: MenuDropdownProps) {
   };
   return (
     <View style={[styles.menuBox, { height: listHeight + 50 }]}>
-      <Button {...btnProps} onPress={handleonPress} size={size}>
+      <Button {...btnProps} color={btnProps.color} onPress={handleonPress} size={size}>
         <Text>{title}</Text>
         <Icon name={btnIcon} size={17} />
       </Button>

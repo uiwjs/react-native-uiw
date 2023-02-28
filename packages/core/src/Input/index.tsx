@@ -182,12 +182,15 @@ const inputStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'transparent',
+    border: '1px solid',
+    paddingHorizontal: 5,
   },
   input: {
     flex: 1,
     color: '#000',
     backgroundColor: 'transparent',
     paddingVertical: 0,
+    paddingTop: 5,
   },
   always: {
     borderWidth: 1,

@@ -1,7 +1,7 @@
-MenuDropdown
+MenuDropdown 下拉菜单
 ---
 
-菜单下拉按钮
+展开式菜单
 
 
 ### 基础示例
@@ -24,26 +24,7 @@ const Demo = () => {
 
 export default Demo;
 ```
-### 按钮颜色
 
-
-```jsx mdx:preview
-import React, { Component } from 'react';
-import { Text  } from 'react-native';
-import { MenuDropdown} from '@uiw/react-native';
-
-const Demo = () => {
-  return (
-    <MenuDropdown title="菜单" color="skyblue">
-      <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
-      <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
-      <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
-    </MenuDropdown>
-    );
-}
-
-export default Demo;
-```
 ### 加载状态
 
 
@@ -126,7 +107,6 @@ export default Demo;
 
 ### 按钮尺寸
 
-
 ```jsx mdx:preview
 import React, { Component } from 'react';
 import { Text  } from 'react-native';
@@ -203,6 +183,27 @@ const Demo = () => {
 
 export default Demo;
 ```
+
+### 按钮颜色
+
+```jsx mdx:preview
+import React, { Component } from 'react';
+import { Text  } from 'react-native';
+import { MenuDropdown} from '@uiw/react-native';
+
+const Demo = () => {
+  return (
+    <MenuDropdown title="菜单" color="skyblue">
+      <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+    </MenuDropdown>
+    );
+}
+
+export default Demo;
+```
+
 ### props
 
 组件继承 [`TouchableOpacity`](https://facebook.github.io/react-native/docs/touchableopacity#docsNav)
