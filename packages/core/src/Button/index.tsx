@@ -105,7 +105,7 @@ export default function ButtonView<T>(props: ButtonProps) {
     borderWidth = 0;
   }
   const buttonStyle = {
-    backgroundColor,
+    backgroundColor: backgroundColor || '#fff5',
     borderColor,
     borderWidth,
     borderRadius,
