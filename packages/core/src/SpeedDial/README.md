@@ -17,10 +17,11 @@ import { View, Text, Dimensions } from 'react-native';
 
 function Demo() {
   return (
-    <View style={{ height: 800, background: '#ddd' }}>
+    <View style={{ height: 180, background: '#ddd' }}>
       <SpeedDial
         onOpen={()=>console.log('onOpen2')}
         onClose={()=>console.log('onClose')}
+        bottom={750}
         children={[
           {
             icon: 'plus',
@@ -56,11 +57,12 @@ import { View, Text, Dimensions } from 'react-native';
 
 function Demo() {
   return (
-    <View style={{ height: 800, background: '#ddd' }}>
+    <View style={{ height: 180, background: '#ddd' }}>
       <SpeedDial
        transitionDuration={2000}
         onOpen={()=>console.log('onOpen')}
         onClose={()=>console.log('onClose')}
+        bottom={750}
         children={[
           {
             icon: 'plus',
