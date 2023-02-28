@@ -113,6 +113,9 @@ export default Demo
 |------|------|-----|------|
 | `children` | 子元素 | JSX.Element | - |
 | `style` | 容器样式 | `ViewStyle` | - |
+| `value` | 值 | `number` | - |
+| `onChange` | 点击tab栏变化 | `(value: number) => void` | - |
+| `activeColor` | 选中后颜色 | `string` | `#035bb6` |
 
 ### Tabs.Item Props
 
@@ -120,21 +123,17 @@ export default Demo
 |------|------|-----|------|
 | `title` | 显示的文字 | string | - |
 | `style` | 样式集合,具体项见下表 | TabsItemStyle | - |
-| `onPress` | 点击时触发 | (title: string) => void | - |
 | `icon` | 图标 | JSX.Element, React.ReactNode, React.ReactElement, IconsName | - |
-| `border` | 是否显示下边框 | boolean | - |
+
 
 ### TabsItemStyle
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `width` | 宽度 | number | - |
-| `titleColor` | 文字颜色 | string | - |
 | `titleFontWeight` | 文字粗细 |`'100' \| '200' \| '300' \| '400' \| '500' \| '600' \| '700' \| '800' \| '900' \| 'bold' \| 'normal'`| - |
 | `titleSize` | 文字大小 | number | - |
-| `iconColor` | icon 颜色 | string | - |
 | `iconSize` | icon 大小 | number | - |
 | `borderWidth` | border 宽度 | number | - |
-| `borderColor` | border 颜色 | string | - |
 | `borderBottom` | border 底部距离 | number | - |
 | `borderHeight` | border 粗细 | number | - |
 

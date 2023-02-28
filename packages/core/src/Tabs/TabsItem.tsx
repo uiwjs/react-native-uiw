@@ -9,20 +9,14 @@ export type TabsItemIconTypes = IconsName | React.ReactElement | React.ReactNode
 export interface TabsItemStyle {
   /** 宽度 */
   width?: number;
-  /** 文字颜色 */
-  titleColor?: string;
   /** 文字粗细 */
   titleFontWeight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | 'bold' | 'normal';
   /** 文字大小 */
   titleSize?: number;
-  /** icon 颜色 */
-  iconColor?: string;
   /** icon 大小 */
   iconSize?: number;
   /** border 宽度 */
   borderWidth?: number;
-  /** border 颜色 */
-  borderColor?: string;
   /** border 距离底部距离一般与 Tabs paddingBottom 相等 */
   borderBottom?: number;
   /** border 粗细 */
@@ -41,11 +35,15 @@ export interface TabsItemProps {
   onPress?: (title: string) => void;
   /** 图标 */
   icon?: TabsItemIconTypes;
-  /** 是否显示下边框 */
-  border?: boolean;
+  activeColor?: string;
+  value?: number;
+  onChange?: (value: number) => void;
+  index?: number;
 }
 
 function TabsItem(props: TabsItemProps) {
+  const { activeColor, icon, index, value, onChange } = props;
+  console.log('value', value, 'index', index);
   const style = useCallback(() => {
     const { style = {} } = props;
     const titleBoxStyle = {
@@ -53,21 +51,21 @@ function TabsItem(props: TabsItemProps) {
     };
     const titleStyle = {
       fontSize: style.titleSize ?? 20,
-      color: style.titleColor ?? '#fff',
+      color: index === value && activeColor ? activeColor : '#035bb6',
       fontWeight: style.titleFontWeight ?? '600',
     };
     const iconBoxStyle = {
       width: style.width ?? 100,
     };
     const iconStyle = {
-      color: style.iconColor ?? '#fff',
+      color: index === value && activeColor ? activeColor : '#035bb6',
       size: style.iconSize ?? 24,
     };
     const borderColor = {
       width: style.borderWidth ?? 40,
       borderBottomWidth: style.borderHeight ?? 4,
-      borderBottomColor: style.borderColor ?? '#fff',
-      bottom: -(style.borderBottom ?? 20),
+      borderBottomColor: index === value && activeColor ? activeColor : '#035bb6',
+      bottom: 0,
     };
     return {
       titleBoxStyle,
@@ -76,38 +74,36 @@ function TabsItem(props: TabsItemProps) {
       iconStyle,
       borderColor,
     };
-  }, [props.style]);
+  }, [value, activeColor]);
 
   const IconDom = useMemo(() => {
     const isIconDom = () => {
-      if (typeof props.icon === 'string') {
-        return <Icon name={props.icon as IconsName} color={style().iconStyle.color} size={style().iconStyle.size} />;
+      if (typeof icon === 'string') {
+        return <Icon name={icon as IconsName} color={style().iconStyle.color} size={style().iconStyle.size} />;
       } else {
-        return <React.Fragment>{props.icon}</React.Fragment>;
+        return <React.Fragment>{icon}</React.Fragment>;
       }
     };
-    if (props.icon) {
+    if (icon) {
       return <View style={[styles.iconBox, { ...style().iconBoxStyle }]}>{isIconDom()}</View>;
-    } else return null;
-  }, [props.icon, props.style]);
+    }
+    return null;
+  }, [icon, props.style, value, activeColor]);
 
   const BorderDom = useMemo(() => {
-    if (props.border) {
+    if (value === index) {
       return (
         <View style={styles.bottomView}>
           <View style={[styles.bottom, { ...style().borderColor }]} />
         </View>
       );
-    } else return null;
-  }, [props.border]);
+    }
+    return null;
+  }, [value]);
 
   return (
     <View style={styles.TabsItemContainer}>
-      <TouchableOpacity
-        onPress={() => {
-          props.onPress && props.onPress(props.title);
-        }}
-      >
+      <TouchableOpacity onPress={() => (index === 0 || index) && onChange?.(index)}>
         {IconDom}
         <View style={[styles.titleBox, { ...style().titleBoxStyle }]}>
           <Text style={[styles.title, { ...style().titleStyle }]}>{props.title}</Text>
@@ -131,6 +127,7 @@ const styles = StyleSheet.create({
   },
   titleBox: {
     paddingTop: 10,
+    paddingBottom: 10,
   },
   title: {
     textAlign: 'center',

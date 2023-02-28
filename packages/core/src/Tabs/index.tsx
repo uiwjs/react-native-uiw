@@ -10,10 +10,13 @@ export interface TabsProps extends ViewProps {
   children?: JSX.Element | Array<JSX.Element>;
   /** 容器样式 */
   style?: ViewStyle;
+  value?: number;
+  onChange?: (value: number) => void;
+  activeColor?: string;
 }
 
 function Tabs(props: TabsProps) {
-  const { style, children, ...other } = props;
+  const { style, children, onChange, activeColor, value } = props;
   if (!children) {
     return null;
   }
@@ -34,11 +37,20 @@ function Tabs(props: TabsProps) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={[styles.TabsContainer, style]} {...other}>
-          {props.children}
-        </View>
-      </ScrollView>
+      <View style={[styles.TabsContainer, style]}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {children &&
+            React.Children.toArray(children).map((child, index) => {
+              if (!React.isValidElement(child)) {
+                return;
+              }
+              return React.cloneElement(child, {
+                ...child.props,
+                ...{ value: value, onChange: onChange, index: index, activeColor: activeColor },
+              });
+            })}
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -49,10 +61,10 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0,
   },
   TabsContainer: {
-    backgroundColor: '#3e8ad5',
+    backgroundColor: '#fff',
     minWidth: 1 * MainWidth,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    display: 'flex',
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: 15,
     paddingBottom: 20,
