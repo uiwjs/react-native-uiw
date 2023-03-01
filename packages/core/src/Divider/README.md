@@ -13,11 +13,11 @@ import  { Divider }  from '@uiw/react-native';
 function Demo() {
   return (
     <Fragment>
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="OR" labelStyle={{ color: '#555' }}/>
-      <Text style={{ color: '#555' }}>横向分割线</Text>
-      <Divider labelStyle={{ color: '#555' }}/>
-      <Text style={{ color: '#555' }}>分割线</Text>
+      <Text >分割线</Text>
+      <Divider label="OR" />
+      <Text >横向分割线</Text>
+      <Divider />
+      <Text >分割线</Text>
     </Fragment>
   );
 }
@@ -37,10 +37,10 @@ import  { Divider }  from '@uiw/react-native';
 function Demo() {
   return (
     <Fragment>
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="OR" gutter={50} labelStyle={{ color: '#555' }}/>
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="OR" gutter={100} labelStyle={{ color: '#555' }}/>
+      <Text >分割线</Text>
+      <Divider label="OR" gutter={50} />
+      <Text >分割线</Text>
+      <Divider label="OR" gutter={100} />
     </Fragment>
   );
 }
@@ -58,12 +58,12 @@ import  { Divider }  from '@uiw/react-native';
 function Demo() {
   return (
     <Fragment>
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="left" orientation="left" labelStyle={{ fontWeight: 'bold', color: '#555' }} />
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="center" labelStyle={{ fontWeight: 'bold', color: '#555' }} />
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="right" orientation="right" labelStyle={{ fontWeight: 'bold', color: '#555' }} />
+      <Text >分割线</Text>
+      <Divider label="left" orientation="left" labelStyle={{ fontWeight: 'bold' }} />
+      <Text >分割线</Text>
+      <Divider label="center" labelStyle={{ fontWeight: 'bold',}} />
+      <Text >分割线</Text>
+      <Divider label="right" orientation="right" labelStyle={{ fontWeight: 'bold' }} />
     </Fragment>
   );
 }
@@ -81,7 +81,7 @@ import  { Divider }  from '@uiw/react-native';
 function Demo() {
   return (
    <View style={{ height: 200 }}>
-      <Divider type="vertical" label="OR"  labelStyle={{ color: '#555' }} />
+      <Divider type="vertical" label="OR"   />
     </View>
   );
 }
