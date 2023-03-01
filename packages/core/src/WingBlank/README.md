@@ -6,9 +6,9 @@ WingBlank 两翼留白
 ### 基础示例
 
 
-```jsx  mdx:preview
-import React,{ Component } from 'react';
-import { View, Text } from 'react-native';
+```jsx mdx:preview&background=#bebebe29
+import React,{Component} from 'react';
+import { Text } from 'react-native';
 import { WingBlank } from '@uiw/react-native';
 
 function Demo() {
@@ -25,7 +25,7 @@ export default Demo
 
 `size`两翼留白的间距,默认`default`
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component,Fragment} from 'react';
 import { Text } from 'react-native';
 import { WingBlank } from '@uiw/react-native';

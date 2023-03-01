@@ -8,7 +8,7 @@ Tile 工具提示
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment, useState } from 'react';
 import { Tile } from '@uiw/react-native';
 
@@ -31,7 +31,7 @@ export default Demo
 
 ### 自定义标题
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment, useState } from 'react';
 import { Tile } from '@uiw/react-native';
 
@@ -54,7 +54,7 @@ export default Demo
 ```
 
 ### 纯文字
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment, useState } from 'react';
 import { Tile } from '@uiw/react-native';
 
@@ -77,7 +77,7 @@ export default Demo
 ```
 
 ### 图片文字内容
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment, useState } from 'react';
 import { Tile } from '@uiw/react-native';
 

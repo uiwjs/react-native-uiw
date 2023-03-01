@@ -9,7 +9,7 @@ Form 表单
 ### 基础示例
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { Form } from '@uiw/react-native';
@@ -38,7 +38,7 @@ export default FormDemo
 ### form.validateFields进行表单验证提交
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { SafeAreaView,Toast } from 'react-native';
 import { Form,Button } from '@uiw/react-native';
@@ -80,7 +80,7 @@ export default FormDemo
 ### customComponentList自定义表单组件
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { SafeAreaView, Slider } from 'react-native';
 import { Form } from '@uiw/react-native';
@@ -125,7 +125,7 @@ export default FormDemo
 ### watch监听表单变化
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { Form } from '@uiw/react-native';
@@ -163,7 +163,7 @@ export default FormDemo
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { SafeAreaView,View,Text } from 'react-native';
 import { Form,Button,Flex } from '@uiw/react-native';
@@ -227,7 +227,7 @@ export default FormDemo
 ### class组件获取form
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react'
 import { SafeAreaView } from 'react-native';
 import { Form, Button } from '@uiw/react-native';

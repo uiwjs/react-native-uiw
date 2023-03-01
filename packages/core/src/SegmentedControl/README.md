@@ -8,7 +8,7 @@ SegmentedControl 分段器
 ### 基础示例
 
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Text } from 'react-native';
 import { SegmentedControl } from '@uiw/react-native';
 import React from 'react';
@@ -25,7 +25,7 @@ export default Demo;
 ### 设置颜色
 
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { SegmentedControl } from '@uiw/react-native';
 import React from 'react';
 
@@ -39,7 +39,7 @@ export default Demo;
 
 ### 设置间距
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { SegmentedControl } from '@uiw/react-native';
 import React from 'react';
 
@@ -52,7 +52,7 @@ export default Demo;
 ```
 ### 设置禁用
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { SegmentedControl } from '@uiw/react-native';
 
@@ -66,7 +66,7 @@ export default Demo;
 
 ### 设置尺寸
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { SegmentedControl, Spacing } from '@uiw/react-native';
 

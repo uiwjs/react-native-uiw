@@ -7,7 +7,7 @@ Drawer 抽屉
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
@@ -35,7 +35,7 @@ export default Demo
 
 ### 右边展示
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import  React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
@@ -62,7 +62,7 @@ export default Demo
 ```
 ### 设置Drawer高度
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import  React, { useState } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
@@ -91,7 +91,7 @@ export default Demo
 
 ### 修改Drawer宽度
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import  React, { useState } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
@@ -115,10 +115,10 @@ function Demo() {
 }
 export default Demo
 
-```   
+```
 ### 点击遮罩层是否允许关闭
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import  React, { useState } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { Drawer, Button } from '@uiw/react-native';
@@ -144,13 +144,13 @@ function Demo() {
 }
 export default Demo
 
-```  
+```
 ### 抽屉覆盖全屏
 
 - 可查看 [react-native-root-siblings](https://www.npmjs.com/package/react-native-root-siblings) 文档
-  
+
 ```jsx
-// 在 App.js 文件中 
+// 在 App.js 文件中
 import React from 'react';
 import {Provider} from 'react-redux';
 import {store} from './models';
@@ -159,7 +159,7 @@ import {RootSiblingParent} from 'react-native-root-siblings';
 export default () => {
   return (
     <Provider store={store}>
-      <RootSiblingParent> 
+      <RootSiblingParent>
        {/* ...你的导航之类的组件 */}
       </RootSiblingParent>
     </Provider>
@@ -183,7 +183,7 @@ function Demo() {
           onChange={(isOpen) => setVisible(isOpen)}
         >
           {/* SafeAreaView 这样做是有必要的，因为手机时间是需要与内容分开的，除非你并不需要 */}
-          <SafeAreaView> 
+          <SafeAreaView>
             <Text>左边打开抽屉内容</Text>
           </SafeAreaView>
         </Drawer>
@@ -192,7 +192,7 @@ function Demo() {
     </SafeAreaView>
   );
 }
-``` 
+```
 
 ### props
 

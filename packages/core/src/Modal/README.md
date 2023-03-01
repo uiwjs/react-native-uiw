@@ -8,7 +8,7 @@ Modal 模态框
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState, Fragment } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { Modal, Button,Grid, Icon } from '@uiw/react-native';

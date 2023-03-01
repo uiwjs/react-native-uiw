@@ -6,7 +6,7 @@ Grid 宫格
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Grid, Icon } from '@uiw/react-native';
 import React from "react"
 
@@ -28,7 +28,7 @@ export default Demo
 
 ### 自定义列数
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Grid, Icon } from '@uiw/react-native';
 import React from "react"
 
@@ -50,7 +50,7 @@ export default Demo
 
 ### 是否需要间隔线
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Grid, Icon } from '@uiw/react-native';
 import React from "react"
 
@@ -73,7 +73,7 @@ export default Demo
 ### 自定义icon
 
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Text, View } from 'react-native';
 import { Grid } from '@uiw/react-native';
 import React from "react"
@@ -100,7 +100,7 @@ export default Demo
 ### 自定义单元格
 
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Text, View } from 'react-native';
 import { Grid, Icon } from '@uiw/react-native';
 import React from "react"

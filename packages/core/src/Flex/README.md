@@ -6,7 +6,7 @@ Flex 是 React Native CSS flex 布局的一个封装。
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Fragment } from 'react';
 import { Flex, Button, WingBlank } from '@uiw/react-native';
 
@@ -39,7 +39,7 @@ export default Demo
 
 ### 对齐方式
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Fragment } from 'react';
 import  {Flex, Button, Spacing, Icon, WingBlank } from '@uiw/react-native';
 import {View, Text} from 'react-native';

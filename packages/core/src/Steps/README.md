@@ -6,7 +6,7 @@ Steps 步骤条
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Steps } from '@uiw/react-native';
 
@@ -27,7 +27,7 @@ export default Demo;
 
 ### 步骤索引值
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Steps } from '@uiw/react-native';
 

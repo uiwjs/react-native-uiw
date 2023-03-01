@@ -9,7 +9,7 @@ Loader 加载
 ### 基础示例
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Loader, Button, ButtonGroup } from '@uiw/react-native';
 
@@ -30,7 +30,7 @@ export default Demo
 ### 设置颜色
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Button,Loader } from '@uiw/react-native';
 
@@ -46,7 +46,7 @@ export default Demo
 ### 设置遮罩层颜色
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Button,Loader } from '@uiw/react-native';
 
@@ -64,7 +64,7 @@ export default Demo
 ### 自定义提示文本
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Button, Loader } from '@uiw/react-native';
 

@@ -10,7 +10,7 @@ DragDrawer 拖曳抽屉
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState, Fragment } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { DragDrawer, Card, Icon, List, Layout } from '@uiw/react-native';
@@ -46,7 +46,7 @@ export default DragDrawerView
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState, Fragment } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { DragDrawer, Card, Icon, List, Layout } from '@uiw/react-native';

@@ -9,7 +9,7 @@ TreeSelect 级联选择器
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { TreeSelect } from '@uiw/react-native';
 
@@ -112,7 +112,7 @@ export default Demo
 
 ### 自定义字段名称
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { TreeSelect } from '@uiw/react-native';
 

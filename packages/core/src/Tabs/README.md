@@ -8,9 +8,8 @@ Tabs 选项卡
 
 ### 基础示例
 
-```jsx
-import React, { Fragment,useState } from 'react';
-import { View } from 'react-native'
+```jsx mdx:preview&background=#bebebe29
+import React, { Fragment } from 'react';
 import { Tabs } from '@uiw/react-native';
 const { Item } = Tabs
 function Demo() {
@@ -29,8 +28,8 @@ export default Demo
 ```
 ### 使用 Icon
 
-```jsx
-import React, { useState } from 'react';
+```jsx mdx:preview&background=#bebebe29
+import React, { Fragment } from 'react';
 import { Tabs, Icon } from '@uiw/react-native';
 function Demo() {
   const [value,setValue]= useState(0)
@@ -47,8 +46,8 @@ export default Demo
 
 ### 选中色更改
 
-```jsx
-import React, { useState } from 'react';
+```jsx mdx:preview&background=#bebebe29
+import React, { Fragment } from 'react';
 import { Tabs, Icon } from '@uiw/react-native';
 function Demo() {
   const [value,setValue]= useState(0)
@@ -64,7 +63,7 @@ export default Demo
 ```
 ### Tabs Props
 
-继承原生 View 属性 [`ViewProps`](https://reactnative.dev/docs/view) 
+继承原生 View 属性 [`ViewProps`](https://reactnative.dev/docs/view)
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `children` | 子元素 | JSX.Element | - |

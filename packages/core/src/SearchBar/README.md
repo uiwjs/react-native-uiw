@@ -3,19 +3,19 @@ SearchBar 模糊搜索组件
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { SearchBar } from '@uiw/react-native';
 import React from 'react';
 
 function Demo() {
   return (
-    <SearchBar 
-      labelInValue 
+    <SearchBar
+      labelInValue
       options={[
         {label:'上海',value:1},
         {label:'南京',value:2}
-      ]} 
-      onFocus={()=>{}}  
+      ]}
+      onFocus={()=>{}}
       onChange={val=>console.log('val',val)}
       placeholder="请输入搜索"
     />
@@ -28,20 +28,20 @@ export default Demo
 
 ### 禁用状态
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { SearchBar } from '@uiw/react-native';
 import React from 'react';
 
 function Demo() {
   return (
-    <SearchBar 
+    <SearchBar
       disabled
-      labelInValue 
+      labelInValue
       options={[
         {label:'上海',value:1},
         {label:'南京',value:2}
-      ]} 
-      onFocus={()=>{}}  
+      ]}
+      onFocus={()=>{}}
       onChange={val=>console.log('val',val)}
       placeholder="请输入搜索"
     />
@@ -54,20 +54,20 @@ export default Demo
 
 ### 加载中的状态
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { SearchBar } from '@uiw/react-native';
 import React from 'react';
 
 function Demo() {
   return (
-    <SearchBar 
+    <SearchBar
       loading
-      labelInValue 
+      labelInValue
       options={[
         {label:'上海',value:1},
         {label:'南京',value:2}
-      ]} 
-      onFocus={()=>{}}  
+      ]}
+      onFocus={()=>{}}
       onChange={val=>console.log('val',val)}
       placeholder="请输入搜索"
     />
@@ -80,19 +80,19 @@ export default Demo
 
 ### 搜索框自定义文本
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { SearchBar } from '@uiw/react-native';
 import React from 'react';
 
 function Demo() {
   return (
-    <SearchBar 
-      labelInValue 
+    <SearchBar
+      labelInValue
       options={[
         {label:'上海',value:1},
         {label:'南京',value:2}
-      ]} 
-      onFocus={()=>{}}  
+      ]}
+      onFocus={()=>{}}
       onChange={val=>console.log('val',val)}
       placeholder="点击这里输入查询吧！！！"
     />
@@ -104,20 +104,20 @@ export default Demo
 ```
 ### 展示清除按钮
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { SearchBar } from '@uiw/react-native';
 import React from 'react';
 
 function Demo() {
   return (
-    <SearchBar 
+    <SearchBar
       showClear
-      labelInValue 
+      labelInValue
       options={[
         {label:'上海',value:1},
         {label:'南京',value:2}
-      ]} 
-      onFocus={()=>{}}  
+      ]}
+      onFocus={()=>{}}
       onChange={val=>console.log('val',val)}
       placeholder="请输入搜索"
     />

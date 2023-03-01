@@ -6,7 +6,7 @@ Rating 评分
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Rating } from '@uiw/react-native';
 function Demo() {
@@ -21,7 +21,7 @@ export default Demo
 
 ### 指定 Icon
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Rating, Icon } from '@uiw/react-native';
 import {Text} from 'react-native'
@@ -108,4 +108,7 @@ export default Demo
 | `onPress` | 选中事件 | fn | - |
 | `tooltips` | 自定义每项的提示信息 | arr | - |
 | `resultRating` | 只读模式 | boolean | - |
- 
+
+ arr | - |
+| `resultRating` | 只读模式 | boolean | - |
+

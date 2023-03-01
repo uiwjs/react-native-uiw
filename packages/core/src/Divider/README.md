@@ -5,7 +5,7 @@ Divider 分割线
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
@@ -29,7 +29,7 @@ export default Demo
 
 根据 `type` 来设置上下或者左右间距，默认为 8
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
@@ -50,7 +50,7 @@ export default Demo
 
 ### 分割线标题位置
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
@@ -73,7 +73,7 @@ export default Demo
 
 ### 纵向分割线
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component} from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';

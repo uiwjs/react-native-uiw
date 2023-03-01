@@ -5,7 +5,7 @@ Badge 标记
 ### 基础示例
 
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View, Text } from 'react-native';
 import { Badge } from '@uiw/react-native';
@@ -25,7 +25,7 @@ export default Demo;
 ### 设置文本内容
 
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View, Text } from 'react-native';
 import { Badge } from '@uiw/react-native';
@@ -45,9 +45,9 @@ export default Demo;
 
 ```
 
-### 设置颜色 
+### 设置颜色
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View, Text } from 'react-native';
 import { Badge } from '@uiw/react-native';
@@ -69,7 +69,7 @@ export default Demo;
 ### 设置类型
 
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View, Text } from 'react-native';
 import { Badge } from '@uiw/react-native';
