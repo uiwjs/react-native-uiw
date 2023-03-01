@@ -5,7 +5,7 @@ ExpandableSection 组件以在 sectionHeader标题 下方或上方呈现展开�
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, {useState} from 'react';
 import { ExpandableSection } from '@uiw/react-native';
 import { View, Text } from 'react-native'
@@ -37,7 +37,7 @@ export default Demo
 
 ### 显示位置
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, {useState} from 'react';
 import { ExpandableSection } from '@uiw/react-native';
 import { View, Text } from 'react-native'

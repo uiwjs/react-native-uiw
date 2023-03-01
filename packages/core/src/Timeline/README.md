@@ -5,7 +5,7 @@ Timeline 时间轴
 
 ### 基础示例 & 自定义图标
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react'
 import { Card, Icon, WingBlank, Timeline  } from '@uiw/react-native';
 
@@ -52,7 +52,7 @@ export default Demo
 
 ### 交替展现
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react'
 import { Card, Icon, WingBlank, Timeline  } from '@uiw/react-native';
 
@@ -100,7 +100,7 @@ export default Demo
 
 ### 展示在左边
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react'
 import { Card, Icon, WingBlank, Timeline  } from '@uiw/react-native';
 

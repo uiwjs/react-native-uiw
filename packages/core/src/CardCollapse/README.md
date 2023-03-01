@@ -5,8 +5,8 @@ CardCollapse 可折叠卡片列表
 
 ### 基础示例
 
-<!--DemoStart--> 
-```jsx mdx:preview
+<!--DemoStart-->
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from 'react';
 import { ScrollView, View,Image } from 'react-native';
 import { CardCollapse } from '@uiw/react-native';
@@ -25,7 +25,7 @@ function Demo() {
   const renderItem = (_, index) => {
     return (
       <View key={index} style={{ padding: 20,backgroundColor: '#fff'}}>
-          <Image source={{uri: contents[index]}} style={{ height: 120 }} /> 
+          <Image source={{uri: contents[index]}} style={{ height: 120 }} />
       </View>
     );
   }
@@ -52,8 +52,8 @@ export default Demo
 
 ### 默认不折叠
 
-<!--DemoStart--> 
-```jsx mdx:preview
+<!--DemoStart-->
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from 'react';
 import { ScrollView, View,Image } from 'react-native';
 import { CardCollapse } from '@uiw/react-native';
@@ -72,7 +72,7 @@ function Demo() {
   const renderItem = (_, index) => {
     return (
       <View key={index} style={{ padding: 20,backgroundColor: '#fff'}}>
-          <Image source={{uri: contents[index]}} style={{ height: 120 }} /> 
+          <Image source={{uri: contents[index]}} style={{ height: 120 }} />
       </View>
     );
   }
@@ -98,8 +98,8 @@ export default Demo
 ```
 ### 卡片圆角
 
-<!--DemoStart--> 
-```jsx mdx:preview
+<!--DemoStart-->
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from 'react';
 import { ScrollView, View,Image } from 'react-native';
 import { CardCollapse } from '@uiw/react-native';
@@ -118,7 +118,7 @@ function Demo() {
   const renderItem = (_, index) => {
     return (
       <View key={index} style={{ padding: 20,backgroundColor: '#fff'}}>
-          <Image source={{uri: contents[index]}} style={{ height: 120 }} /> 
+          <Image source={{uri: contents[index]}} style={{ height: 120 }} />
       </View>
     );
   }

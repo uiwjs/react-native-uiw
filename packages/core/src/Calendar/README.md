@@ -1,12 +1,12 @@
-Calendar 日历 
+Calendar 日历
 ---
 
 展示日历
 
 ### 基础示例
 
-```jsx  mdx:preview
-import React from 'react';
+```jsx mdx:preview&background=#bebebe29
+import React,{Component} from 'react';
 import { View } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
@@ -30,8 +30,8 @@ export default CalendarView
 
 ### 自定义日历颜色、农历及假日展示
 
-```jsx  mdx:preview
-import React from 'react';
+```jsx mdx:preview&background=#bebebe29
+import React,{Component} from 'react';
 import { View } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
@@ -55,8 +55,8 @@ export default CalendarView
 
 ### 自定义日历头部及农历详情展示
 
-```jsx  mdx:preview
-import React from 'react';
+```jsx mdx:preview&background=#bebebe29
+import React,{ Component } from 'react';
 import { Text, View } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
@@ -66,8 +66,8 @@ function CalendarView() {
      const barProps = {
       barRightText: "返回",
       title : "日历",
-      onPressBarLeft: () => navigation.goBack(), 
-      barLeftText: "今天" 
+      onPressBarLeft: () => navigation.goBack(),
+      barLeftText: "今天"
     }
     return (
         <Container>
@@ -85,8 +85,8 @@ export default CalendarView
 
 ### 隐藏头部
 
-```jsx  mdx:preview
-import React from 'react';
+```jsx mdx:preview&background=#bebebe29
+import React,{Component} from 'react';
 import { View } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
@@ -110,8 +110,8 @@ export default CalendarView
 
 ### 自定义日期额外内容
 
-```jsx  mdx:preview
-import React from 'react';
+```jsx mdx:preview&background=#bebebe29
+import React,{Component} from 'react';
 import { View,Text } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';
@@ -135,8 +135,8 @@ export default CalendarView
 
 ### 默认value值
 
-```jsx  mdx:preview
-import React,{ useState } from 'react';
+```jsx mdx:preview&background=#bebebe29
+import React,{Component} from 'react';
 import { View,Text } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';

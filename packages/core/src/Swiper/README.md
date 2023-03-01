@@ -9,7 +9,7 @@ Swiper 轮播图
 ### 基础示例
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Swiper } from '@uiw/react-native';
 

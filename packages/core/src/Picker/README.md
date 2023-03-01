@@ -12,7 +12,7 @@ Picker 选择器
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { View } from 'react-native';
 import { Picker } from '@uiw/react-native';
@@ -37,7 +37,7 @@ export default Demo
 
 ### 使用自定义元素
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Picker } from '@uiw/react-native';

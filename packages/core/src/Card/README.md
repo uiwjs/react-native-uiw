@@ -5,7 +5,7 @@ Card 卡片
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { SafeAreaView, View, Image  } from 'react-native';
 import Card from '@uiw/react-native/lib/Card';
@@ -23,7 +23,7 @@ function Demo() {
 export default Demo
 ```
 ### 带标题圆角卡片
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { SafeAreaView, View, Image } from 'react-native';
 import Card from '@uiw/react-native/lib/Card';

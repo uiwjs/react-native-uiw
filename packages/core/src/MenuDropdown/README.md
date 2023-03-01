@@ -7,7 +7,7 @@ MenuDropdown 下拉菜单
 ### 基础示例
 
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Component } from 'react';
 import { Text  } from 'react-native';
 import { MenuDropdown} from '@uiw/react-native';
@@ -25,10 +25,28 @@ const Demo = () => {
 export default Demo;
 ```
 
+
+```jsx mdx:preview&background=#bebebe29
+import React, { Component } from 'react';
+import { Text  } from 'react-native';
+import { MenuDropdown} from '@uiw/react-native';
+
+const Demo = () => {
+  return (
+    <MenuDropdown title="菜单" color="skyblue">
+      <MenuDropdown.Item><Text>首页</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>个人中心</Text></MenuDropdown.Item>
+      <MenuDropdown.Item><Text>列表</Text></MenuDropdown.Item>
+    </MenuDropdown>
+    );
+}
+
+export default Demo;
+```
 ### 加载状态
 
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Component } from 'react';
 import { Text  } from 'react-native';
 import { MenuDropdown} from '@uiw/react-native';
@@ -48,7 +66,7 @@ export default Demo;
 
 ### 禁用状态
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Component } from 'react';
 import { Text  } from 'react-native';
 import { MenuDropdown} from '@uiw/react-native';
@@ -67,7 +85,7 @@ export default Demo;
 ```
 ### 按钮圆角
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Component } from 'react';
 import { Text  } from 'react-native';
 import { MenuDropdown} from '@uiw/react-native';
@@ -87,7 +105,7 @@ export default Demo;
 
 ### 按钮无边框
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Component } from 'react';
 import { Text  } from 'react-native';
 import { MenuDropdown} from '@uiw/react-native';
@@ -107,7 +125,8 @@ export default Demo;
 
 ### 按钮尺寸
 
-```jsx mdx:preview
+
+```jsx mdx:preview&background=#bebebe29
 import React, { Component } from 'react';
 import { Text  } from 'react-native';
 import { MenuDropdown} from '@uiw/react-native';
@@ -139,7 +158,7 @@ export default Demo;
 
 ### 按钮类型
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Component } from 'react';
 import { Text  } from 'react-native';
 import { MenuDropdown} from '@uiw/react-native';

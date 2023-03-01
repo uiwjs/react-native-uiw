@@ -7,7 +7,7 @@ ActionSheet 动作面板
 <!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
 
 ### 基础示例
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment, useState } from 'react';
 import { Button, ActionSheet }  from '@uiw/react-native';
 import { ActionSheetItem } from '@uiw/react-native/lib/ActionSheet'
@@ -28,7 +28,7 @@ export default Demo
 ```
 
 ### 自定义按钮文字
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment, useState } from 'react';
 import { Button, ActionSheet }  from '@uiw/react-native';
 import { ActionSheetItem } from '@uiw/react-native/lib/ActionSheet'

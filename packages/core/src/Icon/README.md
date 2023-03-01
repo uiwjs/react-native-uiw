@@ -6,7 +6,7 @@ Icon 图标
 
 ### 基础实例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import  { Icon } from '@uiw/react-native';
 
@@ -22,7 +22,7 @@ export default function Demo() {
 
 ### 自定义图标轮廓颜色
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import  { Icon } from '@uiw/react-native';
 
@@ -38,7 +38,7 @@ export default function Demo() {
 
 ### 自定义图标
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import  { Icon } from '@uiw/react-native';
 import { View } from 'react-native';
@@ -96,7 +96,7 @@ export default function Demo() {
 
 ⚠️ 此示例，只是在文档中预览 Icon 图标，并展示图标名称，也可以通过图标 web 官网，网站预览[所有的图标](https://uiwjs.github.io/icons)。
 
-```jsx  mdx:preview&noCode=true
+```jsx mdx:preview&background=#bebebe29&noCode=true
 import React from "react"
 import  { Icon } from '@uiw/react-native';
 import { View , StyleSheet} from 'react-native';

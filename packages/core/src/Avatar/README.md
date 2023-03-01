@@ -6,7 +6,7 @@ Avatar 头像
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { View } from 'react-native';
 import { Avatar } from '@uiw/react-native';
 import React from 'react';
@@ -28,7 +28,7 @@ export default Demo
 
 ### 头像尺寸
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { View } from 'react-native';
 import { Avatar } from '@uiw/react-native';
@@ -50,7 +50,7 @@ export default Demo
 
 ### 设置头像圆角
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { View } from 'react-native';
 import { Avatar } from '@uiw/react-native';
@@ -72,10 +72,10 @@ export default Demo
 
 ### 指定头像的形状
 
-circle  圆头像  
-square  正方形头像  
+circle  圆头像
+square  正方形头像
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { View } from 'react-native';
 import { Avatar } from '@uiw/react-native';

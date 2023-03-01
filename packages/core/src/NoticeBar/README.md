@@ -5,7 +5,7 @@ NoticeBar 通告栏
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Image,View,Text } from 'react-native'
 import NoticeBar from '@uiw/react-native/lib/NoticeBar';
@@ -70,7 +70,7 @@ export default NoticeBarExample;
 
 ### 设置图标
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Image,View,Text } from 'react-native'
 import NoticeBar from '@uiw/react-native/lib/NoticeBar';
@@ -99,7 +99,7 @@ export default NoticeBarExample;
 
 ### 设置通告栏样式和文字样式
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Image,View,Text } from 'react-native'
 import NoticeBar from '@uiw/react-native/lib/NoticeBar';

@@ -5,7 +5,7 @@ Divider 分割线
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
@@ -13,11 +13,11 @@ import  { Divider }  from '@uiw/react-native';
 function Demo() {
   return (
     <Fragment>
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="OR" labelStyle={{ color: '#555' }}/>
-      <Text style={{ color: '#555' }}>横向分割线</Text>
-      <Divider labelStyle={{ color: '#555' }}/>
-      <Text style={{ color: '#555' }}>分割线</Text>
+      <Text >分割线</Text>
+      <Divider label="OR" />
+      <Text >横向分割线</Text>
+      <Divider />
+      <Text >分割线</Text>
     </Fragment>
   );
 }
@@ -29,7 +29,7 @@ export default Demo
 
 根据 `type` 来设置上下或者左右间距，默认为 8
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
@@ -37,10 +37,10 @@ import  { Divider }  from '@uiw/react-native';
 function Demo() {
   return (
     <Fragment>
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="OR" gutter={50} labelStyle={{ color: '#555' }}/>
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="OR" gutter={100} labelStyle={{ color: '#555' }}/>
+      <Text >分割线</Text>
+      <Divider label="OR" gutter={50} />
+      <Text >分割线</Text>
+      <Divider label="OR" gutter={100} />
     </Fragment>
   );
 }
@@ -50,7 +50,7 @@ export default Demo
 
 ### 分割线标题位置
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
@@ -58,12 +58,12 @@ import  { Divider }  from '@uiw/react-native';
 function Demo() {
   return (
     <Fragment>
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="left" orientation="left" labelStyle={{ fontWeight: 'bold', color: '#555' }} />
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="center" labelStyle={{ fontWeight: 'bold', color: '#555' }} />
-      <Text style={{ color: '#555' }}>分割线</Text>
-      <Divider label="right" orientation="right" labelStyle={{ fontWeight: 'bold', color: '#555' }} />
+      <Text >分割线</Text>
+      <Divider label="left" orientation="left" labelStyle={{ fontWeight: 'bold' }} />
+      <Text >分割线</Text>
+      <Divider label="center" labelStyle={{ fontWeight: 'bold',}} />
+      <Text >分割线</Text>
+      <Divider label="right" orientation="right" labelStyle={{ fontWeight: 'bold' }} />
     </Fragment>
   );
 }
@@ -73,7 +73,7 @@ export default Demo
 
 ### 纵向分割线
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component} from "react"
 import { View, Text } from 'react-native';
 import  { Divider }  from '@uiw/react-native';
@@ -81,7 +81,7 @@ import  { Divider }  from '@uiw/react-native';
 function Demo() {
   return (
    <View style={{ height: 200 }}>
-      <Divider type="vertical" label="OR"  labelStyle={{ color: '#555' }} />
+      <Divider type="vertical" label="OR"   />
     </View>
   );
 }

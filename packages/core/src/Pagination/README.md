@@ -8,7 +8,7 @@ Pagination 分页器
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import Pagination from '@uiw/react-native/lib/Pagination';
 
@@ -31,7 +31,7 @@ export default Demo
 
 
 ### 修改尺寸
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import Pagination from '@uiw/react-native/lib/Pagination';
 
@@ -51,7 +51,7 @@ export default Demo
 
 
 ### 页码跳转
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import Pagination from '@uiw/react-native/lib/Pagination';
 
@@ -70,7 +70,7 @@ export default Demo
 ```
 
 ### 指定初始页码
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import Pagination from '@uiw/react-native/lib/Pagination';
 
@@ -88,7 +88,7 @@ export default Demo
 ```
 
 ### 翻页按钮图标展示
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import Pagination from '@uiw/react-native/lib/Pagination';
 
@@ -107,7 +107,7 @@ export default Demo
 ```
 
 ### 自定义页码指示器
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import Pagination from '@uiw/react-native/lib/Pagination';
 

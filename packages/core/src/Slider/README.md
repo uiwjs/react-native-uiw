@@ -10,7 +10,7 @@ Slider 滑块输入条
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Text } from 'react-native';
 import { Slider } from '@uiw/react-native';
@@ -34,7 +34,7 @@ export default Demo
 
 ### 不显示滑块
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Slider } from '@uiw/react-native';
 
@@ -56,7 +56,7 @@ export default Demo
 
 ### 设置步长
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Slider } from '@uiw/react-native';
 
@@ -75,7 +75,7 @@ export default Demo
 ```
 ### 自定义颜色
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Slider } from '@uiw/react-native';
 
@@ -96,7 +96,7 @@ export default Demo
 ```
 ### 禁用
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Slider } from '@uiw/react-native';
 

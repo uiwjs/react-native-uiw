@@ -8,7 +8,7 @@ Tooltip 工具提示
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Tooltip } from '@uiw/react-native';
 
@@ -24,7 +24,7 @@ export default Demo
 
 ### 自定义提示内容
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Tooltip, Icon } from '@uiw/react-native';
 

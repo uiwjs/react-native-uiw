@@ -8,7 +8,7 @@ Result 结果页
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Text } from 'react-native';
 import { Result, Icon } from '@uiw/react-native';

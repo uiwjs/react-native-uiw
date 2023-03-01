@@ -3,7 +3,7 @@ Table 表格
 一个非常好用的Table表格 😄
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import  {Table, Button } from '@uiw/react-native';
 import {View} from 'react-native';
@@ -63,7 +63,7 @@ export default Demo
 
 `horizontal` 水平排成一行
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import  {Table, Button } from '@uiw/react-native';
 import {View} from 'react-native';
@@ -102,7 +102,7 @@ const Demo = () => {
                 <>
                     <Button size="small" bordered={false} textStyle={{color:'#3b8ee9'}}>编辑</Button>
                     <Button size="small" bordered={false} textStyle={{color:'#3b8ee9'}}>详情</Button>
-                </>         
+                </>
                 );
             },
           },
@@ -124,7 +124,7 @@ export default Demo
 
 ### 超出自动省略
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import  {Table, Button } from '@uiw/react-native';
 import {View} from 'react-native';
@@ -201,6 +201,6 @@ export default Demo
 | -------------------- | ------------ | ------- | ------- |
 | `dataIndex`           |	列数据在数据项中对应的路径，支持通过数组查询嵌套路径      | string | string[] | - |
 | `ellipsis`            | 超过宽度将自动省略 | - | - |
-| `title`           | 列头显示文字    | string | -   | 
-| `render`           | 生成复杂数据的渲染函数,参数为当前行数据    | function(record) {} | -   | 
-| `style`           | Table行内样式    | object | -   | 
+| `title`           | 列头显示文字    | string | -   |
+| `render`           | 生成复杂数据的渲染函数,参数为当前行数据    | function(record) {} | -   |
+| `style`           | Table行内样式    | object | -   |

@@ -8,7 +8,7 @@ TransitionImage 图片
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Fragment } from 'react';
 import { TransitionImage } from '@uiw/react-native';
@@ -31,7 +31,7 @@ export default Demo
 
 ### 过度动画效果
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Fragment } from 'react';
 import { TransitionImage } from '@uiw/react-native';

@@ -6,7 +6,7 @@ Radio 单选框
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Radio } from '@uiw/react-native';
 import React from "react"
 
@@ -16,7 +16,7 @@ function Demo() {
       <Radio>Radio</Radio>
       <Radio checked>Radio checked</Radio>
     </>
-    
+
   );
 }
 
@@ -26,7 +26,7 @@ export default Demo
 
 ### 受控组件
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Radio } from '@uiw/react-native';
 
@@ -49,7 +49,7 @@ export default Demo
 
 ### 禁用状态
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Radio } from '@uiw/react-native';
 
@@ -107,7 +107,7 @@ export default Demo
 
 ### 自定义颜色
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Radio } from '@uiw/react-native';
 

@@ -9,7 +9,7 @@ Switch 开关
 
 ### 禁用
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Switch } from '@uiw/react-native';
 import React from 'react';
 
@@ -23,7 +23,7 @@ export default Demo
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Switch } from '@uiw/react-native';
 import React from 'react';
 
@@ -37,7 +37,7 @@ export default Demo
 
 ### 自定义颜色
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Switch } from '@uiw/react-native';
 import React from 'react';
 
@@ -56,7 +56,7 @@ export default Demo
 ### 尺寸大小
 
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Spacing, Flex, Switch } from '@uiw/react-native';
 import React from 'react';
 
@@ -79,7 +79,7 @@ export default Demo
 
 这是一个受控组件，需要一个 `onValueChange` 回调来更新值属性，以使该组件反映用户操作。
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Switch } from '@uiw/react-native';
 

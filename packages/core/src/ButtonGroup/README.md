@@ -5,8 +5,8 @@ ButtonGroup 按钮组
 
 ### 基础示例
 
-<!--DemoStart--> 
-```jsx  mdx:preview
+<!--DemoStart-->
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import  {Button,ButtonGroup}  from '@uiw/react-native';
 
@@ -26,8 +26,8 @@ export default Demo
 
 ### 设置边框
 
-<!--DemoStart--> 
-```jsx  mdx:preview
+<!--DemoStart-->
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { View } from 'react-native';
 import  {Button,ButtonGroup,Spacing}  from '@uiw/react-native';
@@ -59,8 +59,8 @@ export default Demo
 
 ### 设置按钮组尺寸
 
-<!--DemoStart--> 
-```jsx  mdx:preview
+<!--DemoStart-->
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { View } from 'react-native';
 import  {Button,ButtonGroup,Spacing}  from '@uiw/react-native';
