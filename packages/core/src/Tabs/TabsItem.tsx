@@ -37,11 +37,11 @@ export interface TabsItemProps {
   value?: number;
   onChange?: (value: number) => void;
   index?: number;
+  defaultColor?: string;
 }
 
 function TabsItem(props: TabsItemProps) {
-  const { activeColor, icon, index, value, onChange } = props;
-  console.log('value', value, 'index', index);
+  const { activeColor, icon, index, value, onChange, defaultColor } = props;
   const style = useCallback(() => {
     const { style = {} } = props;
     const titleBoxStyle = {
@@ -49,20 +49,20 @@ function TabsItem(props: TabsItemProps) {
     };
     const titleStyle = {
       fontSize: style.titleSize ?? 20,
-      color: index === value && activeColor ? activeColor : '#035bb6',
+      color: index === value && activeColor ? activeColor : defaultColor,
       fontWeight: style.titleFontWeight ?? '600',
     };
     const iconBoxStyle = {
       width: style.width ?? 100,
     };
     const iconStyle = {
-      color: index === value && activeColor ? activeColor : '#035bb6',
+      color: index === value && activeColor ? activeColor : defaultColor,
       size: style.iconSize ?? 24,
     };
     const borderColor = {
       width: style.borderWidth ?? 40,
       borderBottomWidth: style.borderHeight ?? 4,
-      borderBottomColor: index === value && activeColor ? activeColor : '#035bb6',
+      borderBottomColor: index === value && activeColor ? activeColor : defaultColor,
       bottom: 0,
     };
     return {

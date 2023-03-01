@@ -12,11 +12,12 @@ export interface TabsProps extends ViewProps {
   style?: ViewStyle;
   value?: number;
   onChange?: (value: number) => void;
+  defaultColor?: string;
   activeColor?: string;
 }
 
 function Tabs(props: TabsProps) {
-  const { style, children, onChange, activeColor, value } = props;
+  const { style, children, onChange, activeColor, value, defaultColor = '#035bb6' } = props;
   if (!children) {
     return null;
   }
@@ -46,7 +47,13 @@ function Tabs(props: TabsProps) {
               }
               return React.cloneElement(child, {
                 ...child.props,
-                ...{ value: value, onChange: onChange, index: index, activeColor: activeColor },
+                ...{
+                  value: value,
+                  onChange: onChange,
+                  index: index,
+                  activeColor: activeColor,
+                  defaultColor: defaultColor,
+                },
               });
             })}
         </ScrollView>

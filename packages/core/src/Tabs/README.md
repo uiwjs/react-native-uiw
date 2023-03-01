@@ -45,6 +45,24 @@ function Demo() {
 export default Demo
 ```
 
+### 修改默认色
+
+```jsx
+import React, { useState } from 'react';
+import { Tabs, Icon } from '@uiw/react-native';
+function Demo() {
+  const [value,setValue]= useState(0)
+  return (
+     <Tabs onChange={(value)=>setValue(value)} value={value} defaultColor="red">
+      <Tabs.Item title="喜欢" icon='heart-on' />
+      <Tabs.Item title="关注" icon={<Icon name='star-on' color={value===1?'#035bb6':'red'} size={24} />} />
+      <Tabs.Item title="信息" icon='mail' />
+    </Tabs>
+  );
+}
+export default Demo
+```
+
 ### 选中色更改
 
 ```jsx
@@ -72,6 +90,7 @@ export default Demo
 | `value` | 值 | `number` | - |
 | `onChange` | 点击tab栏变化 | `(value: number) => void` | - |
 | `activeColor` | 选中后颜色 | `string` | `#035bb6` |
+| `defaultColor` | 组件默认眼色 | `string` | `#035bb6` |
 
 ### Tabs.Item Props
 
