@@ -2,7 +2,6 @@ Drawer 抽屉
 ---
 
 
-
 用于在屏幕边缘显示应用导航等内容的面板。
 
 ### 基础示例
@@ -116,7 +115,7 @@ function Demo() {
 export default Demo
 
 ```
-### 点击遮罩层是否允许关闭
+### 禁用点击遮罩层关闭
 
 ```jsx mdx:preview&background=#bebebe29
 import  React, { useState } from 'react';
@@ -132,7 +131,6 @@ function Demo() {
         onChange={(isOpen) => setVisible(isOpen)}
         drawerHeight={10}
         maskClosable={false}
-        drawerBackgroundColor='red'
       >
         <View>
           <Text>点击遮罩层不允许关闭</Text>
@@ -145,6 +143,64 @@ function Demo() {
 export default Demo
 
 ```
+
+### 自定义遮罩层样式
+
+```jsx mdx:preview&background=#bebebe29
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+import { Drawer, Button } from '@uiw/react-native';
+
+function Demo() {
+  const [visible, setVisible] = useState(false);
+  return (
+    <>
+      <Drawer
+        isOpen={visible}
+        onChange={(isOpen) => setVisible(isOpen)}
+        style={{ backgroundColor:'#fff5', borderRadius: '0px 10px 10px 0px'}}
+      >
+        <View>
+          <Text>左边打开抽屉内容</Text>
+        </View>
+      </Drawer>
+      <Button onPress={() => setVisible(!visible)}>左边打开抽屉</Button>
+    </>
+  );
+}
+
+export default Demo
+
+```
+
+### 内容居中
+```jsx mdx:preview&background=#bebebe29
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+import { Drawer, Button } from '@uiw/react-native';
+
+function Demo() {
+  const [visible, setVisible] = useState(false);
+  return (
+    <>
+      <Drawer
+        isOpen={visible}
+        onChange={(isOpen) => setVisible(isOpen)}
+        style={{ justifyContent: 'center', textAlign: 'center' }}
+      >
+        <View>
+          <Text>内容居中</Text>
+        </View>
+      </Drawer>
+      <Button onPress={() => setVisible(!visible)}>内容居中</Button>
+    </>
+  );
+}
+
+export default Demo
+
+```
+
 ### 抽屉覆盖全屏
 
 - 可查看 [react-native-root-siblings](https://www.npmjs.com/package/react-native-root-siblings) 文档
