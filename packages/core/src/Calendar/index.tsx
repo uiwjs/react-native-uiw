@@ -210,30 +210,38 @@ const Calendar = (props: CalendarProps) => {
     onChange?.(day.date || '');
   };
   const getCurrentYear = (type: string) => {
+    let year = 0;
+    let month;
     if (type === 'last') {
-      let year = currentYear - 1;
+      year = currentYear - 1;
       setCurrentYear(year);
+      month = currentMonth === 0 ? 11 : currentMonth;
     } else {
-      let year = currentYear + 1;
+      year = currentYear + 1;
       setCurrentYear(year);
+      month = currentMonth === 11 ? 0 : currentMonth;
     }
+    onChange?.(year + '-' + (month + 1) + '-' + currentDays);
   };
   const getCurrentMonth = (type: string) => {
+    let month;
     if (type === 'last') {
-      let month = currentMonth - 1;
+      month = currentMonth - 1;
       if (month < 0) {
-        getCurrentYear('last');
         setCurrentMonth(11);
+        getCurrentYear('last');
       } else {
         setCurrentMonth(month);
+        onChange?.(currentYear + '-' + (month + 1) + '-' + currentDays);
       }
     } else {
-      let month = currentMonth + 1;
+      month = currentMonth + 1;
       if (month > 11) {
-        getCurrentYear('next');
         setCurrentMonth(0);
+        getCurrentYear('next');
       } else {
         setCurrentMonth(month);
+        onChange?.(currentYear + '-' + (month + 1) + '-' + currentDays);
       }
     }
   };
@@ -241,6 +249,7 @@ const Calendar = (props: CalendarProps) => {
     setCurrentYear(toYear);
     setCurrentMonth(toMonth);
     setCurrentDays(toDays);
+    onChange?.(toYear + '-' + (toMonth + 1) + '-' + toDays);
   };
   const goCurrentDay = (day: number) => {
     setCurrentDays(day);
