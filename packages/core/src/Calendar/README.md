@@ -136,7 +136,7 @@ export default CalendarView
 ### 默认value值
 
 ```jsx mdx:preview&background=#bebebe29
-import React,{Component} from 'react';
+import React,{ Component, useState} from 'react';
 import { View,Text } from 'react-native';
 import { Calendar } from '@uiw/react-native';
 import Layout, { Container }  from '../Layout';

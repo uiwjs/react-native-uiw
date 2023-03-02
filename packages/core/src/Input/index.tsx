@@ -190,7 +190,7 @@ const inputStyles = StyleSheet.create({
     color: '#000',
     backgroundColor: 'transparent',
     paddingVertical: 0,
-    paddingTop: 5,
+    paddingTop: 0,
   },
   always: {
     borderWidth: 1,
