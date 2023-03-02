@@ -285,7 +285,7 @@ export default FormComponent;
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `field` | 字段名 | string | - |
-| `type` | 字段类型(默认继承了react-native-uiw中的 input | textArea | slider | rate | radio | search | switch | checkBox | stepper ｜ cardList   ) | string | - |
+| `type` | 字段类型(`input` \| `textArea`  \| `slider` \| `rate` \| `radio` \| `search`\| `switch`\| `checkBox`\| `stepper`\| `cardList`) | string | - |
 | `name` | 标签名 | string | - |
 | `validate` | 验证规则 | RulesOption['validate'] | - |
 | `options` | 集合 | Array<{ label: string; value: KeyType }> | - |
