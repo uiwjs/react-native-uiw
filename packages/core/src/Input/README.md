@@ -56,7 +56,6 @@ import  { Input }  from '@uiw/react-native';
  class BasicInputExample extends Component {
   render() {
     return <View>
-      <Text>禁用输入框</Text>
       <Input  disabled/>
     </View>
   }
@@ -73,7 +72,6 @@ import  { Input }  from '@uiw/react-native';
  class BasicInputExample extends Component {
   render() {
     return <View>
-      <Text>禁用输入框</Text>
       <Input  maxLength='5'/>
     </View>
   }
@@ -90,7 +88,6 @@ import  { Input  }  from '@uiw/react-native';
 
 const Demo = () => {
   return <View>
-    <Text>清除按钮</Text>
     <Input clear  />
   </View>
 }
@@ -107,7 +104,6 @@ import  { Input  }  from '@uiw/react-native';
 
 const Demo = () => {
   return <View>
-    <Text>每次输入清除内容</Text>
     <Input clearText={true}  />
   </View>
 }

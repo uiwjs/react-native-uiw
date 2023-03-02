@@ -31,10 +31,9 @@ export default Demo
 
 ```
 
-### 设置头部
+### 设置标题
 
 ```jsx mdx:preview&background=#bebebe29
-
 import { View, Text } from 'react-native';
 import { List } from '@uiw/react-native';
 import React from "react"
@@ -42,7 +41,8 @@ import React from "react"
 export default function Demo() {
   return (
     <List
-      title='这是头部，设置头部设置头部'
+      title='今日股市'
+      titleLabelStyle={{ fontSize: '20px' }}
       data={[
         { date: '8月12日', time: '18:25', orderCode: 'SO18081200005', transCode: '123456', weight: '69.5Kg', money: '+241.00元', type: '收入' },
         { date: '8月10日', time: '12:01', orderCode: 'SO18081000004', transCode: '123789', weight: '968.6Kg', money: '+8834.00元', type: '收入' },
@@ -67,9 +67,9 @@ export default function Demo() {
 
 ```jsx mdx:preview&background=#bebebe29
 
+import React from "react"
 import { View, Text } from 'react-native';
 import { List } from '@uiw/react-native';
-import React from "react"
 
 export default function Demo() {
   return (
@@ -181,6 +181,7 @@ export default function Demo() {
 | `renderItem` | 当使用 `data` 时，可以用 `renderItem` 自定义渲染列表项 | ({item}) => { } | - |
 | `title` | 标题 | React.ReactNode | - |
 | `titleStyle` | 当设置 `title` 参数之后可以设置其标题容器样式。| ViewStyle | - |
+| `titleLabelStyle` | 设置标题文字器样式。| ViewStyle | - |
 | `horizontal` | 设置为 `true` 则变为水平布局模式。(`flat=true` 支持) | Boolean | `false` |
 | `numColumns` | 多列布局只能在非水平模式下使用，即必须是 `horizontal={false}`。此时组件内元素会从左到右从上到下按 `Z` 字形排列，类似启用了 `flexWrap` 的布局。组件内元素必须是等高的——暂时还无法支持瀑布流布局。(`flat=true` 支持) | Number | - |
 | `ListHeaderComponent` | 呈现在列表的顶部。如果设置了 `title` 标题，这个参数将失效  | ReactNode | - |
