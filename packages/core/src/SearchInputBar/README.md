@@ -35,6 +35,7 @@ export default Demo
 ```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import SearchInputBar from '@uiw/react-native/lib/SearchInputBar';
+import { Button } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState('')
@@ -45,13 +46,14 @@ function Demo() {
         value={value}
         placeholder="请输入搜索关键字"
         searchRender={
-          <div
-            style={{ display:'flex', alignItems:'center', padding: '0px 16px 0px 16px' }}
+          <Button
+            style={{  marginLeft: 15, background: 'rgb(240, 244, 247)' }}
+            textStyle={{color:'block'}}
+            type="link"
           >
-            <label>搜索</label>
-          </div>
+            搜索
+          </Button>
         }
-        // actionName="搜一下"
         showActionButton
       />
   )
@@ -77,17 +79,16 @@ function Demo() {
         onClear={()=>setValue('')}
         value={value}
         placeholder="请输入搜索关键字"
+        showActionButton
         searchRender={
           <Button
-            style={{  marginLeft: 20 }}
-            type="light"
-            onPress={()=>{
-            console.log(inputRef.current.inputRef)
-          }}
-        >获取 输入框 Ref</Button>
-      }
-        actionName="搜一下"
-        showActionButton
+            style={{  marginLeft: 15, background: 'rgb(240, 244, 247)' }}
+            textStyle={{color:'block'}}
+            type="link"
+          >
+            获取输入框Ref
+          </Button>
+        }
       />
    </View>
   )
