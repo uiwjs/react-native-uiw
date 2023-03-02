@@ -85,9 +85,9 @@ function Demo() {
     <Slider
       value={value}
       onChange={(cValue) => setValue(cValue)}
-      thumbTintColor="pink"
-      maximumTrackTintColor="pink"
-      minimumTrackTintColor="purple"
+      thumbTintColor="#008ef0"
+      maximumTrackTintColor="#333"
+      minimumTrackTintColor="white"
     />
   );
 }

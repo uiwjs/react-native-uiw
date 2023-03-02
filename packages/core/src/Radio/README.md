@@ -16,7 +16,6 @@ function Demo() {
       <Radio>Radio</Radio>
       <Radio checked>Radio checked</Radio>
     </>
-
   );
 }
 
@@ -66,7 +65,7 @@ export default Demo
 
 ### 单选
 
-```jsx   mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,  { useState } from 'react';
 import { View } from 'react-native';
 import { Radio } from '@uiw/react-native';
