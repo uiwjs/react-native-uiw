@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   TabsContainer: {
     backgroundColor: '#fff',
-    minWidth: 1 * MainWidth,
+    maxWidth: 1 * MainWidth,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
