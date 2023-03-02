@@ -5,7 +5,7 @@ QuickList 快速请求列表
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useRef, useState } from 'react';
 import { SafeAreaView, Image, View, Text } from 'react-native';
 import QuickList from '@uiw/react-native/lib/QuickList';

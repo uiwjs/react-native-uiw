@@ -3,7 +3,7 @@ Spacing 间距
 组件上下留一点间距
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Fragment } from 'react';
 import { Spacing, Button } from '@uiw/react-native';
 
@@ -24,7 +24,7 @@ export default Demo
 
 间距大小，可选值或者数字，默认间距 `10`
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Fragment } from 'react';
 import { Spacing, Button } from '@uiw/react-native';
 

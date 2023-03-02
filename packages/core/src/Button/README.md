@@ -10,7 +10,7 @@ Button 按钮
 
 ### 基础实例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import  { Button, Spacing, Icon } from '@uiw/react-native';
 import { Text} from 'react-native';
@@ -40,7 +40,7 @@ export default Demo
 
 ### 按钮圆角设置
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
 
@@ -60,7 +60,7 @@ export default Demo
 
 ### 不同颜色
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
 
@@ -89,7 +89,7 @@ export default Demo
 
 ### 自定义颜色
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
 
@@ -111,7 +111,7 @@ export default Demo
 ### 加载中
 
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
 
@@ -129,7 +129,7 @@ export default Demo
 
 ### 显示边框
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 
 import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
@@ -149,7 +149,7 @@ export default Demo
 ```
 ### 按钮尺寸
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 
 import React,{ Component } from "react"
 import  { Button, Spacing } from '@uiw/react-native';
@@ -173,7 +173,7 @@ export default Demo
 
 ### 自定义图标
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 
 import React,{ Component } from "react"
 import  { Button, Spacing, Icon } from '@uiw/react-native';

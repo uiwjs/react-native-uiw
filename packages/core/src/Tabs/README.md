@@ -8,111 +8,88 @@ Tabs 选项卡
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment } from 'react';
 import { Tabs } from '@uiw/react-native';
 const { Item } = Tabs
 function Demo() {
+  const [value,setValue]= useState(0)
   return (
-    <Fragment>
-      <Tabs >
-        <Item
-          title="喜欢"
-        />
-        <Tabs.Item
-          title="关注"
-        />
-        <Tabs.Item
-          title="信息"
-        />
-        <Tabs.Item
-          title="我的"
-        />
-        <Tabs.Item
-          title="偏好"
-        />
+      <Tabs onChange={(value)=>setValue(value)} value={value}>
+        <Item title="喜欢" />
+        <Tabs.Item title="关注" />
+        <Tabs.Item title="信息" />
+        <Tabs.Item title="我的" />
+        <Tabs.Item title="偏好" />
       </Tabs>
-    </Fragment>
   );
 }
 export default Demo
 ```
 ### 使用 Icon
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment } from 'react';
 import { Tabs, Icon } from '@uiw/react-native';
 function Demo() {
+  const [value,setValue]= useState(0)
   return (
-    <Fragment>
-     <Tabs>
-      <Tabs.Item
-        title="喜欢"
-        icon='heart-on'
-      />
-      <Tabs.Item
-        title="关注"
-        icon={<Icon name='star-on' color="#fff" size={24} />}
-      />
-      <Tabs.Item
-        title="信息"
-        icon='mail'
-      />
+     <Tabs onChange={(value)=>setValue(value)} value={value}>
+      <Tabs.Item title="喜欢" icon='heart-on' />
+      <Tabs.Item title="关注" icon={<Icon name='star-on' color={value===1?'#035bb6':'red'} size={24} />} />
+      <Tabs.Item title="信息" icon='mail' />
     </Tabs>
-    </Fragment>
   );
 }
 export default Demo
 ```
 
-### 使用文字和不使用文字
+### 修改默认色
 
-```jsx  mdx:preview
+```jsx
+import React, { useState } from 'react';
+import { Tabs, Icon } from '@uiw/react-native';
+function Demo() {
+  const [value,setValue]= useState(0)
+  return (
+     <Tabs onChange={(value)=>setValue(value)} value={value} defaultColor="red">
+      <Tabs.Item title="喜欢" icon='heart-on' />
+      <Tabs.Item title="关注" icon={<Icon name='star-on' color={value===1?'#035bb6':'red'} size={24} />} />
+      <Tabs.Item title="信息" icon='mail' />
+    </Tabs>
+  );
+}
+export default Demo
+```
+
+### 选中色更改
+
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment } from 'react';
 import { Tabs, Icon } from '@uiw/react-native';
-import Spacing from '@uiw/react-native/lib/Spacing';
-
 function Demo() {
+  const [value,setValue]= useState(0)
   return (
-    <Fragment>
-     <Tabs>
-      <Tabs.Item
-        icon='home'
-      />
-      <Tabs.Item
-        icon={<Icon name='bell' color="#fff" size={24} />}
-      />
-      <Tabs.Item
-        icon='user'
-      />
+     <Tabs onChange={(value)=>setValue(value)} value={value} activeColor="red">
+      <Tabs.Item title="喜欢" icon='heart-on' />
+      <Tabs.Item title="关注" icon={<Icon name='star-on' color={value===1?'#035bb6':'red'} size={24} />} />
+      <Tabs.Item title="信息" icon='mail' />
     </Tabs>
-    <Spacing />
-    <Tabs>
-      <Tabs.Item
-        title='主页'
-        icon='home'
-      />
-      <Tabs.Item
-        title='提醒'
-        icon={<Icon name='bell' color="#fff" size={24} />}
-      />
-      <Tabs.Item
-        title='我的'
-        icon='user'
-      />
-    </Tabs>
-    </Fragment>
   );
 }
 export default Demo
 ```
 ### Tabs Props
 
-继承原生 View 属性 [`ViewProps`](https://reactnative.dev/docs/view) 
+继承原生 View 属性 [`ViewProps`](https://reactnative.dev/docs/view)
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `children` | 子元素 | JSX.Element | - |
 | `style` | 容器样式 | `ViewStyle` | - |
+| `value` | 值 | `number` | - |
+| `onChange` | 点击tab栏变化 | `(value: number) => void` | - |
+| `activeColor` | 选中后颜色 | `string` | `#035bb6` |
+| `defaultColor` | 组件默认眼色 | `string` | `#035bb6` |
 
 ### Tabs.Item Props
 
@@ -120,22 +97,17 @@ export default Demo
 |------|------|-----|------|
 | `title` | 显示的文字 | string | - |
 | `style` | 样式集合,具体项见下表 | TabsItemStyle | - |
-| `onPress` | 点击时触发 | (title: string) => void | - |
 | `icon` | 图标 | JSX.Element, React.ReactNode, React.ReactElement, IconsName | - |
-| `border` | 是否显示下边框 | boolean | - |
+
 
 ### TabsItemStyle
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `width` | 宽度 | number | - |
-| `titleColor` | 文字颜色 | string | - |
 | `titleFontWeight` | 文字粗细 |`'100' \| '200' \| '300' \| '400' \| '500' \| '600' \| '700' \| '800' \| '900' \| 'bold' \| 'normal'`| - |
 | `titleSize` | 文字大小 | number | - |
-| `iconColor` | icon 颜色 | string | - |
 | `iconSize` | icon 大小 | number | - |
 | `borderWidth` | border 宽度 | number | - |
-| `borderColor` | border 颜色 | string | - |
-| `borderBottom` | border 底部距离 | number | - |
 | `borderHeight` | border 粗细 | number | - |
 
 

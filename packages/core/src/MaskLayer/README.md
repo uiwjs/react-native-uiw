@@ -9,7 +9,7 @@ MaskLayer 遮罩层
 ### 基础示例
 
 <!--DemoStart-->
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment, useState } from 'react';
 import { Text,  SafeAreaView } from 'react-native';
 import { Button, MaskLayer,Grid,Icon } from '@uiw/react-native';
@@ -45,7 +45,7 @@ export default Demo
 
 ### Props
 
-继承原生 Modal 属性 [`ModalProps`](https://facebook.github.io/react-native/docs/modal.html#props) 
+继承原生 Modal 属性 [`ModalProps`](https://facebook.github.io/react-native/docs/modal.html#props)
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|

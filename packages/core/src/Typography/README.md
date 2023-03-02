@@ -7,7 +7,7 @@ Typography 排版
 
 ### 标题
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View } from 'react-native';
 import H1 from '@uiw/react-native/lib/Typography/H1';
@@ -35,7 +35,7 @@ export default function Demo() {
 
 `<S>` 标签是 `<strike>` 标签的缩写版本
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View } from 'react-native';
 import Del from '@uiw/react-native/lib/Typography/S';
@@ -53,7 +53,7 @@ export default function Demo() {
 
 ### 下划线
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View } from 'react-native';
 import U from '@uiw/react-native/lib/Typography/U';
@@ -67,7 +67,7 @@ export default function Demo() {
 
 ### 加粗
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View } from 'react-native';
 import Strong from '@uiw/react-native/lib/Typography/Strong';
@@ -81,7 +81,7 @@ export default function Demo() {
 
 ### 换行
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { Text } from 'react-native';
 import Br from '@uiw/react-native/lib/Typography/Br';
@@ -95,7 +95,7 @@ export default function Demo() {
 
 ### 段落
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import P from '@uiw/react-native/lib/Typography/P';
 
@@ -111,7 +111,7 @@ export default function Demo() {
 
 ### Div
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View, Text } from 'react-native';
 import Div from '@uiw/react-native/lib/Typography/Div';
@@ -132,7 +132,7 @@ export default function Demo() {
 
 ### 水平线
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View, Text } from 'react-native';
 import Hr from '@uiw/react-native/lib/Typography/Hr';
@@ -150,7 +150,7 @@ export default function Demo() {
 
 ### 可高亮文本 RnText
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { View } from 'react-native';
 import RnText from '@uiw/react-native/lib/Typography/RnText';

@@ -7,7 +7,7 @@ Ellipsis 超出省略
 ### 基础示例
 
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { Ellipsis } from '@uiw/react-native';
 
@@ -24,7 +24,7 @@ export default Demo;
 ### 自定义占位符
 
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from "react"
 import { Ellipsis } from '@uiw/react-native';
 

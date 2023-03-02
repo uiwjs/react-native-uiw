@@ -6,7 +6,7 @@ TextArea 多行输入框
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import TextArea from '@uiw/react-native/lib/TextArea';
 
@@ -22,7 +22,7 @@ export default Demo
 ```
 
 ### 监听输入内容
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import TextArea from '@uiw/react-native/lib/TextArea';
 
@@ -46,7 +46,7 @@ export default Demo
 
 ### 只读状态
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import TextArea from '@uiw/react-native/lib/TextArea';
 
@@ -66,7 +66,7 @@ export default Demo
 ```
 
 ### 显示输入文字数量
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import TextArea from '@uiw/react-native/lib/TextArea';
 
@@ -90,7 +90,7 @@ export default Demo
 ```
 
 ### 限制输入行数
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import TextArea from '@uiw/react-native/lib/TextArea';
 
@@ -114,7 +114,7 @@ export default Demo
 
 ### 根据内容自动调整高度
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import TextArea from '@uiw/react-native/lib/TextArea';
 
@@ -136,7 +136,7 @@ export default Demo
 ```
 
 ### 自定义输入框样式
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import TextArea from '@uiw/react-native/lib/TextArea';
 
@@ -164,7 +164,7 @@ export default Demo
 ```
 
 ### 文字定位
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import TextArea from '@uiw/react-native/lib/TextArea';
 

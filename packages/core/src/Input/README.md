@@ -5,7 +5,7 @@ Input 文本输入
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { View, Text } from 'react-native';
 import  { Input  }  from '@uiw/react-native';
@@ -28,7 +28,7 @@ export default Demo
 
 ### 设置边框
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { View, Text } from 'react-native';
 import  { Input }  from '@uiw/react-native';
@@ -48,7 +48,7 @@ export default BasicInputExample
 
 ### 禁用输入框
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { View, Text } from 'react-native';
 import  { Input }  from '@uiw/react-native';
@@ -65,7 +65,7 @@ export default BasicInputExample
 ```
 
 ### 限制文本框中最多的字符数
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { View, Text } from 'react-native';
 import  { Input }  from '@uiw/react-native';
@@ -83,7 +83,7 @@ export default BasicInputExample
 
 ### 清除按钮
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { View, Text } from 'react-native';
 import  { Input  }  from '@uiw/react-native';
@@ -100,7 +100,7 @@ export default Demo
 
 ### 每次输入清除内容
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { View, Text } from 'react-native';
 import  { Input  }  from '@uiw/react-native';
@@ -116,7 +116,7 @@ export default Demo
 
 ### 校验输入内容
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { View, Text } from 'react-native';
 import  { Input }  from '@uiw/react-native';

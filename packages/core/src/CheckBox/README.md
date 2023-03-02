@@ -6,7 +6,7 @@ CheckBox 复选框
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Badge, List, CheckBox } from '@uiw/react-native';
 import React from 'react';
 
@@ -35,10 +35,10 @@ function Demo() {
 export default Demo
 ```
 
-### 设置颜色	
+### 设置颜色
 
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { CheckBox } from '@uiw/react-native';
 import React from 'react';
 
@@ -54,7 +54,7 @@ export default Demo
 ### 自定义图标
 
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { CheckBox, Icon } from '@uiw/react-native';
 import React from 'react';
 
@@ -68,7 +68,7 @@ export default Demo
 ```
 ### 禁用状态
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import { Badge, List, CheckBox } from '@uiw/react-native';
 import React from 'react';
 

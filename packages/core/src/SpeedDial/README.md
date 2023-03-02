@@ -10,17 +10,18 @@ SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示�
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment } from 'react';
 import { SpeedDial, Icon } from '@uiw/react-native';
 import { View, Text, Dimensions } from 'react-native';
 
 function Demo() {
   return (
-    <View style={{ height: 800, background: '#ddd' }}>
+    <View style={{ height: 180, background: '#ddd' }}>
       <SpeedDial
         onOpen={()=>console.log('onOpen2')}
         onClose={()=>console.log('onClose')}
+        bottom={750}
         children={[
           {
             icon: 'plus',
@@ -49,18 +50,19 @@ export default Demo
 
 ### 设置动画时间
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { Fragment } from 'react';
 import { SpeedDial, Icon } from '@uiw/react-native';
 import { View, Text, Dimensions } from 'react-native';
 
 function Demo() {
   return (
-    <View style={{ height: 800, background: '#ddd' }}>
+    <View style={{ height: 180, background: '#ddd' }}>
       <SpeedDial
        transitionDuration={2000}
         onOpen={()=>console.log('onOpen')}
         onClose={()=>console.log('onClose')}
+        bottom={750}
         children={[
           {
             icon: 'plus',

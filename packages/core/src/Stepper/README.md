@@ -7,7 +7,7 @@ Stepper 步进器
 
 ### 基础示例
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Stepper } from '@uiw/react-native';
 
@@ -31,7 +31,7 @@ export default Demo
 ### 尺寸
 可选尺寸`small` `default` `large`：
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Stepper } from '@uiw/react-native';
 import { View } from 'react-native';
@@ -71,7 +71,7 @@ export default Demo
 
 ### 按钮禁止点击
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Stepper } from '@uiw/react-native';
 
@@ -97,7 +97,7 @@ export default Demo
 ### 长按增加
 长按按钮自动增长数值
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Stepper } from '@uiw/react-native';
 
@@ -123,7 +123,7 @@ export default Demo
 ### 限制取值范围
 最大值`20`,最小值`10`
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Stepper } from '@uiw/react-native';
 
@@ -148,7 +148,7 @@ export default Demo
 ### 设置步进数
 每次单击增长值 `5`
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Stepper } from '@uiw/react-native';
 
@@ -172,7 +172,7 @@ export default Demo
 
 ### 禁止手动输入
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { Stepper } from '@uiw/react-native';
 

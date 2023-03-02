@@ -6,24 +6,26 @@ WingBlank 两翼留白
 ### 基础示例
 
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component} from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { WingBlank } from '@uiw/react-native';
 
 function Demo() {
   return (
-    <WingBlank>
-      <Text>两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留白两翼留两翼留白两翼留白两翼留白两翼留白</Text>
-    </WingBlank>
+    <View>
+      <WingBlank size="small">
+        <Text>两翼留白</Text>
+      </WingBlank>
+    </View>
   );
 }
 export default Demo
 ```
 
-size两翼留白的间距,默认`default`
+`size`两翼留白的间距,默认`default`
 
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React,{Component,Fragment} from 'react';
 import { Text } from 'react-native';
 import { WingBlank } from '@uiw/react-native';
@@ -32,13 +34,38 @@ function Demo() {
   return (
   <Fragment>
     <WingBlank size='small'>
-      <Text>两翼留白两翼留白</Text>
+      <Text>两翼留白</Text>
     </WingBlank>
     <WingBlank size='default'>
-      <Text>两翼留白两翼留白</Text>
+      <Text>两翼留白</Text>
     </WingBlank>
     <WingBlank size='large'>
-      <Text>两翼留白两翼留白</Text>
+      <Text>两翼留白</Text>
+    </WingBlank>
+  </Fragment>
+  );
+}
+export default Demo
+```
+
+两翼留白不换行
+
+```jsx mdx:preview&background=#bebebe29
+import React,{Component,Fragment} from 'react';
+import { Text } from 'react-native';
+import { WingBlank } from '@uiw/react-native';
+
+function Demo() {
+  return (
+  <Fragment>
+    <WingBlank size='small' style={{ display: 'inline' }}>
+      <Text>两翼留白</Text>
+    </WingBlank>
+    <WingBlank size='small' style={{ display: 'inline' }}>
+      <Text>两翼留白</Text>
+    </WingBlank>
+    <WingBlank size='small' style={{ display: 'inline' }}>
+      <Text>两翼留白</Text>
     </WingBlank>
   </Fragment>
   );

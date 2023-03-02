@@ -6,7 +6,7 @@ List 列表
 
 ### 基础示例
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 
 import { View, Text } from 'react-native';
 import { List } from '@uiw/react-native';
@@ -33,7 +33,7 @@ export default Demo
 
 ### 设置头部
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 
 import { View, Text } from 'react-native';
 import { List } from '@uiw/react-native';
@@ -65,7 +65,7 @@ export default function Demo() {
 
 ### 设置单元格大小
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 
 import { View, Text } from 'react-native';
 import { List } from '@uiw/react-native';
@@ -109,7 +109,7 @@ export default function Demo() {
 
 ### 展示右侧内容
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 
 import { View, Text } from 'react-native';
 import { List } from '@uiw/react-native';
@@ -136,7 +136,7 @@ export default Demo
 
 ### 自定义渲染列表
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 
 import { View, Text } from 'react-native';
 import { List } from '@uiw/react-native';
@@ -205,7 +205,7 @@ export default function Demo() {
 
 | 参数 | 说明 | 类型 | 默认值|
 |------|------|-----|------|
-| `size` | 单元格大小 | `small`, `default`, `large` | `default` | 
+| `size` | 单元格大小 | `small`, `default`, `large` | `default` |
 | `extra` | 额外内容，展示右侧内容 | ReactNode | - |
 | `extraStyle` | 设置 `extra` 包裹样式 | ViewProps['style'] | TextProps['style'] | - |
 | `paddingLeft` | 左边补白 | Number | `16` |

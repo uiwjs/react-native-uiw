@@ -7,7 +7,7 @@ Progress 进度条
 ### 基础示例
 
 <!--DemoStart-->
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import {  SafeAreaView } from 'react-native';
 import { Progress } from '@uiw/react-native';
@@ -26,7 +26,7 @@ export default Demo
 ### 自定义颜色
 
 <!--DemoStart-->
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import {  SafeAreaView } from 'react-native';
 import { Progress } from '@uiw/react-native';
@@ -47,7 +47,7 @@ export default Demo
 ### 自定义百分比,展示进度
 
 <!--DemoStart-->
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import {  SafeAreaView } from 'react-native';
 import { Progress } from '@uiw/react-native';

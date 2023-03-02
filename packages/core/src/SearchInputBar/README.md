@@ -8,7 +8,7 @@ SearchInputBar 搜索栏
 
 
 ### 基础示例
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import { SearchInputBar } from '@uiw/react-native';
 
@@ -32,7 +32,7 @@ export default Demo
 ```
 
 ### 自定义搜索按钮
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import SearchInputBar from '@uiw/react-native/lib/SearchInputBar';
 
@@ -55,7 +55,7 @@ export default Demo
 
 
 ### 获取输入框 Ref
-```jsx  mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React, { useState, Fragment, useRef } from 'react';
 import { SearchInputBar, Button } from '@uiw/react-native';
 

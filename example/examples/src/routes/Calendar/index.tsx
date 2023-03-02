@@ -24,7 +24,7 @@ export default class CalendarView extends React.Component<CalendarViewProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Calendar />
+            <Calendar onChange={date => console.log('date', date)} />
             <Spacing size={'large'} />
             <Calendar color="red" lunarHoliday={true} />
             <Spacing size={'large'} />
