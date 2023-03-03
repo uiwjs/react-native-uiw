@@ -38,6 +38,7 @@ const DirText = (props: DirTextProps) => {
         {
           minWidth: containerSize[size],
           borderColor: borderColor,
+          backgroundColor: '#fff',
           paddingHorizontal: icon ? 0 : 5,
           opacity: disabled ? disabledStyle : disabledStyle - 0.2,
         },

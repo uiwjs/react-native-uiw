@@ -13,6 +13,7 @@ import TextArea from '@uiw/react-native/lib/TextArea';
 function Demo() {
   return (
     <TextArea
+      fontStyle={{ color:'#aaa' }}
       value={"Hello TextArea \nplease input word"}
       placeholder='请输入'
     />
@@ -35,6 +36,7 @@ function Demo() {
         console.log('输入内容: ', value);
         setValue(value);
       }}
+      fontStyle={{ color:'#aaa' }}
       value={value}
       placeholder='请输入'
     />
@@ -55,6 +57,7 @@ function Demo() {
 
   return (
     <TextArea
+      fontStyle={{ color:'#aaa' }}
       editable={false}
       value={value}
       placeholder='请输入'
@@ -78,6 +81,7 @@ function Demo() {
       onChange={(value) => {
         setValue(value);
       }}
+      fontStyle={{ color:'#aaa' }}
       maxLength={100}
       showWords={true}
       value={value}
@@ -102,6 +106,7 @@ function Demo() {
       onChange={(value) => {
         setValue(value);
       }}
+      fontStyle={{ color:'#aaa' }}
       numberOfLines={3}
       value={value}
       placeholder='请输入'
@@ -127,6 +132,7 @@ function Demo() {
       onChange={(value) => {
         setValue(value);
       }}
+      fontStyle={{ color:'#aaa' }}
       placeholder='请输入'
       autoSize
     />
@@ -177,6 +183,7 @@ function Demo() {
         setValue(value);
       }}
       textAlignVertical="center"
+      fontStyle={{ color:'#aaa' }}
       value={value}
       placeholder='请输入'
     />
