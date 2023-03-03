@@ -35,6 +35,7 @@ export default Demo
 ```jsx mdx:preview&background=#bebebe29
 import React, { useState } from 'react';
 import SearchInputBar from '@uiw/react-native/lib/SearchInputBar';
+import { Button } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = useState('')
@@ -44,8 +45,15 @@ function Demo() {
         onClear={()=>setValue('')}
         value={value}
         placeholder="请输入搜索关键字"
-        searchRender={<div style={{ display:'flex', alignItems:'center' }}><label>搜索</label></div>}
-        actionName="搜一下"
+        searchRender={
+          <Button
+            style={{  marginLeft: 15, background: 'rgb(240, 244, 247)' }}
+            textStyle={{color:'block'}}
+            type="link"
+          >
+            搜索
+          </Button>
+        }
         showActionButton
       />
   )
@@ -57,33 +65,32 @@ export default Demo
 ### 获取输入框 Ref
 ```jsx mdx:preview&background=#bebebe29
 import React, { useState, Fragment, useRef } from 'react';
+import { View } from 'react-native';
 import { SearchInputBar, Button } from '@uiw/react-native';
 
 function Demo() {
   const inputRef = useRef()
   const [value, setValue] = useState('')
   return (
-    <Fragment>
+    <View>
       <SearchInputBar
         ref={inputRef}
         onChangeText={setValue}
         onClear={()=>setValue('')}
         value={value}
         placeholder="请输入搜索关键字"
-        actionName="搜一下"
         showActionButton
-        button={{
-          onPress() {
-            // 点击搜索按钮触法
-          }
-        }}
+        searchRender={
+          <Button
+            style={{  marginLeft: 15, background: 'rgb(240, 244, 247)' }}
+            textStyle={{color:'block'}}
+            type="link"
+          >
+            获取输入框Ref
+          </Button>
+        }
       />
-      <Button
-        onPress={()=>{
-          console.log(inputRef.current.inputRef)
-        }}
-      >获取 输入框 Ref</Button>
-   </Fragment>
+   </View>
   )
 }
 export default Demo

@@ -44,9 +44,9 @@ import React from 'react';
 function Demo() {
   return (
     <Switch
-      color="red"
-      thumbStyle={{backgroundColor: 'skyblue'}}
-      trackStyle={{backgroundColor: 'pink'}}
+      color="#008ef055"
+      thumbStyle={{backgroundColor: '#333a'}}
+      trackStyle={{backgroundColor: '#008ef0'}}
     />
   );
 }

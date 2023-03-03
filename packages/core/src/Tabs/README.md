@@ -9,7 +9,7 @@ Tabs 选项卡
 ### 基础示例
 
 ```jsx mdx:preview&background=#bebebe29
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Tabs } from '@uiw/react-native';
 const { Item } = Tabs
 function Demo() {
@@ -29,7 +29,7 @@ export default Demo
 ### 使用 Icon
 
 ```jsx mdx:preview&background=#bebebe29
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Tabs, Icon } from '@uiw/react-native';
 function Demo() {
   const [value,setValue]= useState(0)
@@ -65,7 +65,7 @@ export default Demo
 ### 选中色更改
 
 ```jsx mdx:preview&background=#bebebe29
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Tabs, Icon } from '@uiw/react-native';
 function Demo() {
   const [value,setValue]= useState(0)
