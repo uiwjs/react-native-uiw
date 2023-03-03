@@ -18,7 +18,7 @@ function Demo() {
   return (
     <Fragment>
        <TransitionImage
-        source={{  uri: 'https://img11.51tietu.net/pic/2016-071418/20160714181543xyu10ukncwf221991.jpg' }}
+        source={{  uri: 'https://avatars.githubusercontent.com/u/24369183?v=4' }}
         style={{ width: 200, height: 200, }}
         onPress={()=> console.log('点击图片回调事件')}
         onLongPress={()=> console.log('长按组件回调事件')}
@@ -41,10 +41,10 @@ function Demo() {
   return (
     <Fragment>
        <TransitionImage
-        source={{  uri: 'https://img11.51tietu.net/pic/2016-071418/20160714181543xyu10ukncwf221991.jpg' }}
+        source={{  uri: 'https://avatars.githubusercontent.com/u/24369183?v=4' }}
         style={{ width: 200, height: 200, }}
         PlaceholderContent={<ActivityIndicator />}
-        placeholderStyle={{backgroundColor: 'red'}}
+        placeholderStyle={{backgroundColor: '#000a'}}
         containerStyle={{backgroundColor:'#eee',}}
         transition={true}
         transitionDuration={1000}

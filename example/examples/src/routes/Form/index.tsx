@@ -75,16 +75,19 @@ const FormDemo = () => {
     },
     {
       type: 'search',
-      field: 'search',
-      name: '搜索',
+      field: 'project',
+      required: false,
+      name: '项目',
       options: [
-        {label: '上海', value: 1},
-        {label: '南京', value: 2},
+        {label: '测试系统管理', value: 1},
+        {label: '后台管理', value: 2},
       ],
       attr: {
-        labelInValue: true,
         showClear: true,
+        labelInValue: true,
       },
+      placeholder: '请输入',
+      validate: (val: any) => (!val ? '请输入项目' : ''),
     },
     {
       type: 'stepper',

@@ -35,6 +35,7 @@ export interface ListProps extends Omit<FlatListProps<{}>, 'renderItem'> {
    */
   extra?: React.ReactNode;
   titleStyle?: StyleProp<ViewStyle>;
+  titleLabelStyle?: StyleProp<ViewStyle>;
   paddingLeft?: ListItemProps['paddingLeft'];
   size?: ListItemProps['size'];
 }
@@ -88,6 +89,7 @@ export default class List extends React.PureComponent<ListProps, ListState> {
       data,
       children,
       titleStyle,
+      titleLabelStyle,
       paddingLeft,
       flat,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -113,7 +115,7 @@ export default class List extends React.PureComponent<ListProps, ListState> {
         <View style={[{ paddingLeft, paddingVertical: 12 }, titleStyle]}>
           {typeof title === 'string' ? (
             // eslint-disable-next-line
-            <Text style={{ color: '#808080' }}>{title}</Text>
+            <Text style={[{ fontWeight: '500' }, titleLabelStyle]}>{title}</Text>
           ) : (
             <View>{title}</View>
           )}

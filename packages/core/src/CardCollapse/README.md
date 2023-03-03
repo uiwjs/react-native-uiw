@@ -31,7 +31,6 @@ function Demo() {
   }
     return (
     <ScrollView style={{ flex: 1 }}>
-      <Header description={'基本使用'} />
       <CardCollapse
        isCollapsed={true}//是否折叠
         disablePresses={true}//卡片是否可以点击
@@ -78,7 +77,6 @@ function Demo() {
   }
     return (
     <ScrollView style={{ flex: 1 }}>
-      <Header description={'基本使用'} />
       <CardCollapse
        isCollapsed={false}//是否折叠
         disablePresses={true}//卡片是否可以点击
@@ -124,7 +122,6 @@ function Demo() {
   }
     return (
     <ScrollView style={{ flex: 1 }}>
-      <Header description={'基本使用'} />
       <CardCollapse
         isCollapsed={true}//是否折叠
         disablePresses={true}//卡片是否可以点击

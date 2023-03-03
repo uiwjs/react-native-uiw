@@ -143,6 +143,8 @@ export default Demo
 | placeholder | 搜索框默认文本 | String | - |
 | extra | 图标 | JSX.Element | - |
 | showClear | 是否展示清除图标 | boolean | - |
+| contentStyle | 容器样式 | StyleProp<`ViewStyle`> | - |
+
 
 ### OptionsStateProps
 

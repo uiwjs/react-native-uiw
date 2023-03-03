@@ -46,7 +46,7 @@ export default Demo
 
 ### 默认选中及总数
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Rating, Icon } from '@uiw/react-native';
 function Demo() {
@@ -68,7 +68,7 @@ export default Demo
 
 ### 评分组件加上文案展示及样式修改
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Rating, Icon } from '@uiw/react-native';
 
@@ -83,7 +83,7 @@ export default Demo
 
 ### 只读
 
-```jsx mdx:preview
+```jsx mdx:preview&background=#bebebe29
 import React from 'react';
 import { Rating, Icon } from '@uiw/react-native';
 function Demo() {

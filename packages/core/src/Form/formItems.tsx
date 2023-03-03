@@ -20,7 +20,7 @@ const FormItems = ({ schema = [] }: Pick<FormProps, 'schema'>) => {
 
   const change = (field: KeyType, value: unknown) => {
     updateStore?.({ store: { ...store, [field]: value } });
-    watch[field]?.(value);
+    watch && watch[field]?.(value);
   };
 
   const _renderComponent = (v: FormItemsProps) => {

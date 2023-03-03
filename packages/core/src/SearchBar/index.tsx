@@ -24,9 +24,9 @@ interface SearchBarProps {
   onBlur?: (e: any | string) => void;
   labelInValue?: Boolean;
   disabled?: Boolean;
-  value?: String;
+  value?: string | OptionsState;
   loading?: Boolean;
-  placeholder?: String;
+  placeholder?: string;
   extra?: JSX.Element;
   showClear?: boolean;
   contentStyle?: StyleProp<ViewStyle>;
@@ -55,15 +55,17 @@ function SearchBar({
 }: SearchBarProps) {
   const [curValue, setCurValue] = useState<any>(value);
   const [visible, setVisivble] = useState(false);
-  const textValue = labelInValue ? curValue && curValue.label : curValue;
+  let textValue;
+  if (labelInValue) {
+    textValue = curValue?.label;
+  } else {
+    const { label }: any = options.find((item) => item.value === curValue);
+    textValue = label;
+  }
 
   useEffect(() => {
     setCurValue(value);
   }, [value]);
-
-  // useEffect(() => {
-  //   visible && onFocus;
-  // }, [visible]);
 
   // 搜索
   const onHandleChangeText = (val: string) => {
@@ -134,9 +136,9 @@ function SearchBar({
                   const selectValue:
                     | any
                     | {
-                      key: string;
-                      label: string;
-                    } = labelInValue ? { key: itm.value, label: itm.label } : itm.value;
+                        key: string;
+                        label: string;
+                      } = labelInValue ? { key: itm.value, label: itm.label } : itm.value;
                   onChange && onChange(selectValue);
                   setCurValue(selectValue);
                   setVisivble(false);
