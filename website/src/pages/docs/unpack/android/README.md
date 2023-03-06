@@ -112,3 +112,42 @@ Android Studio 打包
 记得选择生成目录 `<项目所在目录>/android/app/build/outputs/apk`
 
 ![](./img/image5.png)<!--rehype:style=max-width: 650px;width: 100%;-->
+
+## react-native android9.0以上打包APK后HTTP请求不到解决方法
+
+错误原因：android9.0默认禁止访问不安全的请求，比如http。
+
+### 解决方案：
+方法1：  使用认证过的https（我用的是阿里云免费证书，因为使用https还得配置，所以用了http）
+
+方法2： 分为两步
+
+第一步：在res下新增加一个xml目录，然后创建一个名为network_security_config.xml文件
+
+![](./img/image6.png)<!--rehype:style=max-width: 650px;width: 100%;-->
+
+```bash
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
+```
+
+第二步：
+
+  在androidManifiest.xml文件中添加
+```bash
+android:networkSecurityConfig="@xml/network_security_config"
+```
+![](./img/image7.png)<!--rehype:style=max-width: 650px;width: 100%;-->
+
+> ⚠️ 下面还有一种方式 本质上跟第二种方法一样，简便但不规范  建议用上面的方法<!--rehype:style=background: #F08800; color: #fff;-->
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+在项目/android/app/src/main/AndroidManifest.xml文件中的application节点下添加
+
+```bash
+android:usesCleartextTraffic="true"
+```
+
+![](./img/image8.png)<!--rehype:style=max-width: 650px;width: 100%;-->
