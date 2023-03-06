@@ -1,5 +1,5 @@
 import React, { useImperativeHandle, forwardRef, useRef } from 'react';
-import { Animated, StyleSheet, View, Text, I18nManager } from 'react-native';
+import { Animated, StyleSheet, View, Text, I18nManager, ViewStyle } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import Swipeable, { SwipeableProps } from 'react-native-gesture-handler/Swipeable';
 
@@ -23,6 +23,8 @@ export interface SwipeActionProps extends SwipeableProps {
   left?: Array<Column>;
   /** 按钮宽度 默认60 */
   buttonWidth?: number;
+  actionViewStyle?: ViewStyle;
+  rectButtonStyle?: ViewStyle;
   children?: React.ReactNode;
 }
 
@@ -30,7 +32,7 @@ const SwipeAction = (
   props: SwipeActionProps,
   ref: React.ForwardedRef<Partial<React.LegacyRef<Swipeable>> | undefined | null>,
 ) => {
-  const { right = [], left = [], buttonWidth = 60, children, ...others } = props;
+  const { right = [], left = [], buttonWidth = 60, children, actionViewStyle, rectButtonStyle, ...others } = props;
   const swipeableRef: React.MutableRefObject<null> = useRef(null);
 
   useImperativeHandle(ref, () => ({ swipeable: swipeableRef.current }));
@@ -48,7 +50,7 @@ const SwipeAction = (
     const length = buttons.length;
     const width = buttonWidth * length;
     return (
-      <View style={[styles.viewActions, { width: width }]}>
+      <View style={[styles.viewActions, { width: width, ...actionViewStyle }]}>
         {buttons &&
           buttons.map(({ text, color, onPress, disabled, render }, idx) => {
             const x = isLeft ? -idx * buttonWidth : (length - idx) * buttonWidth;
@@ -60,7 +62,7 @@ const SwipeAction = (
             return (
               <Animated.View key={idx} style={{ flex: 1, transform: [{ translateX: trans }] }}>
                 <RectButton
-                  style={[styles.rightAction, { backgroundColor: color }]}
+                  style={[styles.rightAction, { backgroundColor: color, ...rectButtonStyle }]}
                   onPress={() => {
                     if (disabled && disabled) {
                       return;

@@ -133,6 +133,9 @@ export default Demo;
 | `right` | 右边滑动出来的元素 | Array<`ColumnProps`> | - |
 | `left` | 左边滑动出来的元素 | Array<`ColumnProps`> | - |
 | `buttonWidth` | 按钮宽度 |  number | 60 |
+| `actionViewStyle` | 弹出框样式 |  ViewStyle | - |
+| `rectButtonStyle` | 弹出button样式 |  ViewStyle | - |
+
 
 ### ColumnProps
 | 参数 | 说明 | 类型 | 默认值 |
