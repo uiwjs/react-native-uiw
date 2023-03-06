@@ -82,9 +82,7 @@ export default function ActionSheet(props: ActionSheetProps) {
     }
   };
 
-  const onClose = () => {
-    setState({ stateVisible: false, control: 'state' });
-  };
+  const onClose = () => onCancel?.();
 
   return (
     <Modal
@@ -95,7 +93,7 @@ export default function ActionSheet(props: ActionSheetProps) {
       visible={state.stateVisible}
       onClosed={onModalClose}
     >
-      <>
+      <View>
         {React.Children.toArray(children).map((item, index) => (
           <View key={index}>
             {index !== 0 && <View style={StyleSheet.flatten([styles.itemDivider, dividerStyle?.itemDivider])} />}
@@ -114,7 +112,7 @@ export default function ActionSheet(props: ActionSheetProps) {
           containerStyle={containerStyle}
           textStyle={textStyle}
         />
-      </>
+      </View>
     </Modal>
   );
 }
