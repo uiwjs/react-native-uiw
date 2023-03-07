@@ -17,7 +17,7 @@ function Demo() {
   return (
     <Fragment>
      <Button onPress={()=>setVisible(true)}>打开 ActionSheet</Button>
-      <ActionSheet visible={visible}>
+      <ActionSheet visible={visible} onCancel={()=>setVisible(false)}>
         <ActionSheetItem onPress={()=>console.log('按钮一')}>按钮一</ActionSheetItem>
         <ActionSheetItem onPress={()=>console.log('按钮二')}>按钮二</ActionSheetItem>
       </ActionSheet>
@@ -38,11 +38,7 @@ function Demo() {
   return (
     <Fragment>
      <Button onPress={()=>setVisible(true)}>打开 ActionSheet</Button>
-      <ActionSheet
-        visible={visible}
-        onCancel={true}
-        cancelText='关闭弹层'
-      >
+      <ActionSheet visible={visible} onCancel={()=>setVisible(false)} cancelText="关闭弹层">
         <ActionSheetItem onPress={()=>console.log('按钮一')}>按钮一</ActionSheetItem>
         <ActionSheetItem onPress={()=>console.log('按钮二')}>按钮二</ActionSheetItem>
       </ActionSheet>
