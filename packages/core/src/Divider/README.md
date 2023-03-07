@@ -8,16 +8,14 @@ Divider 分割线
 ```jsx mdx:preview&background=#bebebe29
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
-import  { Divider }  from '@uiw/react-native';
+import  { Divider, Spacing }  from '@uiw/react-native';
 
 function Demo() {
   return (
     <Fragment>
-      <Text >分割线</Text>
       <Divider label="OR" />
-      <Text >横向分割线</Text>
+      <Spacing type='vertical' />
       <Divider />
-      <Text >分割线</Text>
     </Fragment>
   );
 }
@@ -32,14 +30,13 @@ export default Demo
 ```jsx mdx:preview&background=#bebebe29
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
-import  { Divider }  from '@uiw/react-native';
+import  { Divider, Spacing }  from '@uiw/react-native';
 
 function Demo() {
   return (
     <Fragment>
-      <Text >分割线</Text>
       <Divider label="OR" gutter={50} />
-      <Text >分割线</Text>
+      <Spacing type='vertical' />
       <Divider label="OR" gutter={100} />
     </Fragment>
   );
@@ -53,16 +50,15 @@ export default Demo
 ```jsx mdx:preview&background=#bebebe29
 import React,{Component, Fragment } from "react"
 import { View, Text } from 'react-native';
-import  { Divider }  from '@uiw/react-native';
+import  { Divider, Spacing }  from '@uiw/react-native';
 
 function Demo() {
   return (
     <Fragment>
-      <Text >分割线</Text>
       <Divider label="left" orientation="left" labelStyle={{ fontWeight: 'bold' }} />
-      <Text >分割线</Text>
+      <Spacing type='vertical' />
       <Divider label="center" labelStyle={{ fontWeight: 'bold',}} />
-      <Text >分割线</Text>
+      <Spacing type='vertical' />
       <Divider label="right" orientation="right" labelStyle={{ fontWeight: 'bold' }} />
     </Fragment>
   );
