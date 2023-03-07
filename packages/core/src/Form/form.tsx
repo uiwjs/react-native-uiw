@@ -19,9 +19,11 @@ const Form = (baseProps: FormProps) => {
     form,
     initialValues = {},
     mode = 'default',
+    type = 'json',
     watch,
     customComponentList = {},
     changeValidate = false,
+    children,
   } = baseProps;
 
   const isMount = useRef<boolean>();
@@ -57,11 +59,7 @@ const Form = (baseProps: FormProps) => {
     changeValidate: changeValidate,
   };
 
-  return (
-    <Provider contextProps={contextProps}>
-      <FormItems schema={schema} />
-    </Provider>
-  );
+  return <Provider contextProps={contextProps}>{type === 'json' ? <FormItems schema={schema} /> : children}</Provider>;
 };
 
 export default Form;

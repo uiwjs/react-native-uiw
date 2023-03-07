@@ -3,7 +3,7 @@ import { Context } from '../hooks/context';
 import { FormItemsProps } from '../types';
 import { Text } from 'react-native';
 
-const Tip = ({ v }: { v: FormItemsProps }) => {
+const Tip = ({ v }: { v: Partial<FormItemsProps> & { field: string } }) => {
   const {
     innerMethods: { store = {}, validator },
   } = useContext(Context);
