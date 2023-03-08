@@ -1,7 +1,7 @@
 DragDrawer 拖曳抽屉
 ---
 
-![](https://user-images.githubusercontent.com/66067296/143187302-bee614b4-7799-49d1-9cab-470ad8228372.gif)
+<img src="https://user-images.githubusercontent.com/66067296/143187302-bee614b4-7799-49d1-9cab-470ad8228372.gif" style="width:300px;height:620px"/>
 
 可自定义拖曳抽屉高度。
 

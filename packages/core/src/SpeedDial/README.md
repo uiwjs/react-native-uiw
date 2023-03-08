@@ -11,17 +11,27 @@ SpeedDial 悬浮标记组件按下时，浮动动作按钮可以以快速显示�
 ### 基础示例
 
 ```jsx mdx:preview&background=#bebebe29
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { SpeedDial, Icon } from '@uiw/react-native';
 import { View, Text, Dimensions } from 'react-native';
 
+const bodyHeight = window.screen.height
+
 function Demo() {
+  const refs = useRef()
+  const [position, usePosition]= useState(0)
+  useEffect(() => {
+      const parent= refs.current.getBoundingClientRect();
+      console.log('parent: ', parent);
+      usePosition(parent.y)
+  },[refs.current])
+
   return (
-    <View style={{ height: 180, background: '#ddd' }}>
+    <div ref={refs} style={{ height: 200 }}>
       <SpeedDial
         onOpen={()=>console.log('onOpen2')}
         onClose={()=>console.log('onClose')}
-        bottom={750}
+        bottom={bodyHeight-position}
         children={[
           {
             icon: 'plus',
@@ -29,20 +39,20 @@ function Demo() {
             onPress:()=>console.log('Add')
           },
           {
-            icon: <Icon name='star-on' color="#fff" size={18} />,
+            icon: <Icon name='star-on' size={18} />,
             title: 'Star'
           },
           {
-            icon: <Icon name='mail' color="#fff" size={18} />,
+            icon: <Icon name='mail' size={18} />,
             title: 'Mail'
           },
           {
-            icon: <Icon name='share' color="#fff" size={18} />,
+            icon: <Icon name='share' size={18} />,
             title: 'Share'
           }
         ]}
       />
-    </View>
+    </div>
   );
 }
 export default Demo
@@ -51,18 +61,26 @@ export default Demo
 ### 设置动画时间
 
 ```jsx mdx:preview&background=#bebebe29
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { SpeedDial, Icon } from '@uiw/react-native';
 import { View, Text, Dimensions } from 'react-native';
 
+const bodyHeight = window.screen.height
 function Demo() {
+  const refs = useRef()
+  const [position, usePosition]= useState(0)
+  useEffect(() => {
+      const parent= refs.current.getBoundingClientRect();
+      usePosition(parent.y)
+  },[refs.current])
+
   return (
-    <View style={{ height: 180, background: '#ddd' }}>
+    <div ref={refs} style={{ height: 200 }}>
       <SpeedDial
        transitionDuration={2000}
         onOpen={()=>console.log('onOpen')}
         onClose={()=>console.log('onClose')}
-        bottom={750}
+        bottom={bodyHeight-(position/2)}
         children={[
           {
             icon: 'plus',
@@ -70,20 +88,20 @@ function Demo() {
             onPress:()=>console.log('Add')
           },
           {
-            icon: <Icon name='star-on' color="#fff" size={18} />,
+            icon: <Icon name='star-on' size={18} />,
             title: 'Star'
           },
           {
-            icon: <Icon name='mail' color="#fff" size={18} />,
+            icon: <Icon name='mail' size={18} />,
             title: 'Mail'
           },
           {
-            icon: <Icon name='share' color="#fff" size={18} />,
+            icon: <Icon name='share' size={18} />,
             title: 'Share'
           }
         ]}
       />
-    </View>
+    </div>
   );
 }
 export default Demo
