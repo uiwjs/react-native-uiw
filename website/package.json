@@ -28,7 +28,7 @@
     "color": "4.2.3",
     "lodash": "4.17.21",
     "react": "~18.2.0",
-    "react-code-preview-layout": "~2.0.7",
+    "react-code-preview-layout": "~3.0.0",
     "react-dom": "~18.2.0",
     "react-native": "0.69.7",
     "react-native-gesture-handler": "2.8.0",

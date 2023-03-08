@@ -34,6 +34,9 @@ const getBooleanValue = (param, field, defaultValue) => {
 };
 
 const Preview = ({ path, ...mdData }) => {
+  const Preview = CodeLayout.Preview;
+  const Code = CodeLayout.Code;
+  const Toolbar = CodeLayout.Toolbar;
   const $dom = useRef(null);
   return (
     <Wrapper ref={$dom}>
@@ -65,17 +68,15 @@ const Preview = ({ path, ...mdData }) => {
               return (
                 <CodeLayout
                   disableCheckered={getBooleanValue(param, 'disableCheckered', true)}
-                  disableToolbar={getBooleanValue(param, 'disableToolbar', false)}
-                  disableCode={getBooleanValue(param, 'disableCode', false)}
-                  disablePreview={getBooleanValue(param, 'disablePreview', false)}
                   bordered={getBooleanValue(param, 'bordered', true)}
-                  copied={getBooleanValue(param, 'copied', true)}
-                  background={param.background}
-                  toolbar={param.title || '示例'}
-                  code={<code {...rest} />}
-                  text={code}
                 >
-                  <Child />
+                  <Preview>
+                    <Child />
+                  </Preview>
+                  <Toolbar text={code} copied={getBooleanValue(param, 'copied', true)}>
+                    {param.title || '示例'}
+                  </Toolbar>
+                  <Code>{code}</Code>
                 </CodeLayout>
               );
             }
