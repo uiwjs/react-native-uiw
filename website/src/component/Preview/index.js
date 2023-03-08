@@ -34,9 +34,6 @@ const getBooleanValue = (param, field, defaultValue) => {
 };
 
 const Preview = ({ path, ...mdData }) => {
-  const Preview = CodeLayout.Preview;
-  const Code = CodeLayout.Code;
-  const Toolbar = CodeLayout.Toolbar;
   const $dom = useRef(null);
   return (
     <Wrapper ref={$dom}>
