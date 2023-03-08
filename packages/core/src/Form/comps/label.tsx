@@ -16,7 +16,7 @@ const Label = ({ v }: { v: Partial<FormItemsProps> }) => {
 
 const styles = StyleSheet.create({
   label: {
-    width: 110,
+    width: 'auto',
     fontSize: 16,
     color: '#434343',
     fontWeight: '500',
