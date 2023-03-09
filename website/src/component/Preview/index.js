@@ -76,7 +76,9 @@ const Preview = ({ path, ...mdData }) => {
                   <Toolbar text={code} copied={getBooleanValue(param, 'copied', true)}>
                     {param.title || '示例'}
                   </Toolbar>
-                  <Code>{code}</Code>
+                  <Code>
+                    <code {...rest} />
+                  </Code>
                 </CodeLayout>
               );
             }
