@@ -46,45 +46,41 @@ const Preview = ({ path, ...mdData }) => {
         // transformImageUri={transformImageUri}
         source={mdData.source}
         rehypeRewrite={(node, index, parent) => {
-          if (node.type === 'element' && node.tagName === 'pre' && node.children[0].data?.meta) {
-            const meta = node.children[0].data?.meta;
-            if (isMeta(meta)) {
-              node.tagName = 'div';
-              if (!node.properties) {
-                node.properties = {};
-              }
-              node.properties['data-md'] = meta;
-              node.properties['data-meta'] = 'preview';
+          if (node.type === 'element' && parent && parent.type === 'root' && /h(1|2|3|4|5|6)/.test(node.tagName)) {
+            const child = node.children && node.children[0];
+            if (child && child.properties && child.properties.ariaHidden === 'true') {
+              child.children = [];
             }
           }
         }}
         components={{
-          div: ({ node, ...props }) => {
-            const { 'data-meta': meta, 'data-md': metaData } = props;
-            if (meta === 'preview') {
-              const line = node.position?.start.line;
-              const metaId = getMetaId(meta) || String(line);
-              const Child = mdData.components[`${metaId}`];
-              if (metaId && typeof Child === 'function') {
-                const code = mdData.data[metaId].value || '';
-                const param = getURLParameters(metaData);
-                return (
-                  <CodeLayout
-                    disableCheckered={getBooleanValue(param, 'disableCheckered', true)}
-                    bordered={getBooleanValue(param, 'bordered', true)}
-                  >
-                    <Preview>
-                      <Child />
-                    </Preview>
-                    <Toolbar text={code} copied={getBooleanValue(param, 'copied', true)}>
-                      {param.title || '示例'}
-                    </Toolbar>
-                    <Code>{code}</Code>
-                  </CodeLayout>
-                );
-              }
+          code: ({ inline, node, ...props }) => {
+            const { 'data-meta': meta, ...rest } = props;
+            if (inline || !isMeta(meta)) {
+              return <code {...props} />;
             }
-            return <div {...props} />;
+            const line = node.position?.start.line;
+            const metaId = getMetaId(meta) || String(line);
+            const Child = mdData.components[`${metaId}`];
+            if (metaId && typeof Child === 'function') {
+              const code = mdData.data[metaId].value || '';
+              const param = getURLParameters(meta);
+              return (
+                <CodeLayout
+                  disableCheckered={getBooleanValue(param, 'disableCheckered', true)}
+                  bordered={getBooleanValue(param, 'bordered', true)}
+                >
+                  <Preview>
+                    <Child />
+                  </Preview>
+                  <Toolbar text={code} copied={getBooleanValue(param, 'copied', true)}>
+                    {param.title || '示例'}
+                  </Toolbar>
+                  <Code>{code}</Code>
+                </CodeLayout>
+              );
+            }
+            return <code {...rest} />;
           },
         }}
       />
