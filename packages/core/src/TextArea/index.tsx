@@ -42,6 +42,7 @@ export interface TextAreaProps extends ViewProps {
   fontStyle?: StyleProp<TextStyle>;
   /** 自适应内容高度 */
   autoSize?: boolean;
+  height?: number;
 }
 
 function TextArea(props: TextAreaProps) {
@@ -58,11 +59,12 @@ function TextArea(props: TextAreaProps) {
     autoSize = false,
     style,
     fontStyle,
+    height: defaultHeight = 0,
     ...other
   } = props;
 
   const [defaultText, setDefaultText] = useState<string>('');
-  const [height = 0, setHeight] = useState<number>(0);
+  const [height = 0, setHeight] = useState<number>(defaultHeight);
 
   const onChangeValue = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
     if (autoSize) {
