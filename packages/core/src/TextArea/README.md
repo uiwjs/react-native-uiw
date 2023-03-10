@@ -193,6 +193,25 @@ function Demo() {
 export default Demo
 ```
 
+### 允许拖拽
+
+```jsx mdx:preview&background=#bebebe29
+import React from 'react';
+import TextArea from '@uiw/react-native/lib/TextArea';
+
+function Demo() {
+  return (
+    <TextArea
+      draggable={true}
+      fontStyle={{ color:'#aaa' }}
+      value={"Hello TextArea \nplease input word"}
+      placeholder='请输入'
+    />
+  )
+}
+export default Demo
+```
+
 ### props
 
 组件继承 [`TextInput`](https://www.react-native.cn/docs/textinput)
@@ -210,3 +229,5 @@ export default Demo
 | `showWords` | 是否展示字数 | `boolean` | `false` |
 | `fontStyle` | 输入框文字样式 | ` StyleProp<TextStyle>` | - |
 | `height` | 输入框高度 | `number` | 0 |
+| `draggable` | 是否允许拖拽 | `boolean` | `false` |
+
