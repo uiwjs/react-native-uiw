@@ -146,20 +146,21 @@ function SpeedDial(props: SpeedDialProps) {
         ]}
         // {...panResponder.panHandlers}
       >
-        {children.map((item, i) => (
-          <Animated.View
-            style={[
-              styles.fadingContainer,
-              {
-                // Bind opacity to animated value
-                opacity: fadeAnim[i],
-              },
-            ]}
-            key={i}
-          >
-            <Item {...item} move={panResponder.panHandlers} />
-          </Animated.View>
-        ))}
+        {success &&
+          children.map((item, i) => (
+            <Animated.View
+              style={[
+                styles.fadingContainer,
+                {
+                  // Bind opacity to animated value
+                  opacity: fadeAnim[i],
+                },
+              ]}
+              key={i}
+            >
+              <Item {...item} move={panResponder.panHandlers} />
+            </Animated.View>
+          ))}
 
         <View {...panResponder.panHandlers} style={{ alignItems: 'flex-end' }}>
           <TouchableOpacity activeOpacity={1} onPress={onOpenHome}>
