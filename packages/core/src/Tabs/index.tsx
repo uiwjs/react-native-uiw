@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, StatusBar, ScrollView, ViewProps, View, ViewStyle, Dimensions } from 'react-native';
 
 import Item from './TabsItem';
-
-let MainWidth = Dimensions.get('window').width;
 
 export interface TabsProps extends ViewProps {
   /** 子元素 */
@@ -18,9 +16,24 @@ export interface TabsProps extends ViewProps {
 
 function Tabs(props: TabsProps) {
   const { style, children, onChange, activeColor, value, defaultColor = '#035bb6' } = props;
+  const scrollViewRef = useRef<ScrollView>(null);
+  const [scrollViewWidth, setScrollViewWidth] = useState<number>(Dimensions.get('window').width);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScrollViewWidth(Dimensions.get('window').width);
+    };
+    Dimensions.addEventListener('change', handleResize);
+
+    return () => {
+      Dimensions.removeEventListener('change', handleResize);
+    };
+  }, []);
+
   if (!children) {
     return null;
   }
+
   if (
     Array.isArray(children) &&
     children.find((item) => typeof item.type !== 'function' || !item.type.prototype.isclxItem)
@@ -36,10 +49,30 @@ function Tabs(props: TabsProps) {
     throw new Error('Child elements of tabs components must be Tabs.Item');
   }
 
+  const handleTabChange = (tabIndex: number) => {
+    scrollViewRef.current?.scrollTo({
+      x: tabIndex * 50,
+      y: 0,
+      animated: true,
+    });
+    onChange && onChange(tabIndex);
+  };
+
   return (
     <SafeAreaView>
       <View style={[styles.TabsContainer, style]}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <ScrollView
+          ref={scrollViewRef}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+          onContentSizeChange={() => {
+            setScrollViewWidth(Dimensions.get('window').width);
+          }}
+        >
           {children &&
             React.Children.toArray(children).map((child, index) => {
               if (!React.isValidElement(child)) {
@@ -49,7 +82,7 @@ function Tabs(props: TabsProps) {
                 ...child.props,
                 ...{
                   value: value,
-                  onChange: onChange,
+                  onChange: handleTabChange,
                   index: index,
                   activeColor: activeColor,
                   defaultColor: defaultColor,
@@ -74,10 +107,6 @@ function Tabs(props: TabsProps) {
 const styles = StyleSheet.create({
   TabsContainer: {
     backgroundColor: '#fff',
-    maxWidth: 1 * MainWidth,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     paddingVertical: 15,
   },
 });
