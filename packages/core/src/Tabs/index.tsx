@@ -37,7 +37,7 @@ function Tabs(props: TabsProps) {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView>
       <View style={[styles.TabsContainer, style]}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {children &&
@@ -58,23 +58,27 @@ function Tabs(props: TabsProps) {
             })}
         </ScrollView>
       </View>
+      {children &&
+        React.Children.toArray(children).map((child, index) => {
+          if (!React.isValidElement(child)) {
+            return;
+          }
+          if (value === index) {
+            return child.props?.children;
+          }
+        })}
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
   TabsContainer: {
     backgroundColor: '#fff',
     maxWidth: 1 * MainWidth,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: 15,
-    paddingBottom: 20,
+    paddingVertical: 15,
   },
 });
 
