@@ -48,7 +48,7 @@ function Demo() {
 export default Demo
 ```
 
-两翼留白不换行
+## 两翼留白不换行
 
 ```jsx mdx:preview&background=#bebebe29
 import React,{Component,Fragment} from 'react';
