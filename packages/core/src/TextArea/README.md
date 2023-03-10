@@ -154,8 +154,8 @@ function Demo() {
       onChange={(value) => {
         setValue(value);
       }}
+      height={150}
       style={{
-        height: 150,
         borderColor: 'green',
         borderWidth: 2,
       }}
@@ -200,12 +200,13 @@ export default Demo
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `textAlignVertical` | 文本位置 | "top" \| "center" \| "auto" \| "bottom" | `top` |
-| `placeholder` | 默认提示语 | String | |
+| `placeholder` | 默认提示语 | String | - |
 | `placeholderTextColor` | 提示语颜色 | `string` | `#989FB2` |
 | `maxLength` | 最大字符数 | `number` | `100` |
 | `numberOfLines` | 输入框的行数(Android) | `number` | `30` |
 | `editable` | 是否禁用 | `boolean` | `true` |
-| `onChange` | 文本域内容变化时触发 | `(val: string) => void` |  |
-| `value` | 文本框中的文字内容 | `string` |  |
+| `onChange` | 文本域内容变化时触发 | `(val: string) => void` | - |
+| `value` | 文本框中的文字内容 | `string` | - |
 | `showWords` | 是否展示字数 | `boolean` | `false` |
-| `fontStyle` | 输入框文字样式 | ` StyleProp<TextStyle>` |  |
+| `fontStyle` | 输入框文字样式 | ` StyleProp<TextStyle>` | - |
+| `height` | 输入框高度 | `number` | 0 |
