@@ -82,6 +82,10 @@ export const routeData = [
         component: lazy(() => import('../pages/docs/react-native-template/log-management')),
       },
       {
+        path: '/docs/questions',
+        component: lazy(() => import('../pages/docs/questions')),
+      },
+      {
         path: '/components/about',
         component: lazy(() => import('../pages/components/about')),
       },
