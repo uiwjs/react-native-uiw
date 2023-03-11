@@ -1,23 +1,19 @@
-import React from 'react';
-import { View, ViewProps, Image, ImageProps, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, ViewProps, Image, ImageProps, StyleSheet, ActivityIndicator } from 'react-native';
 
 const styles = StyleSheet.create({
-  defalut: {
+  default: {
     backgroundColor: '#e4e4e4',
     overflow: 'hidden',
-  },
-  logo: {
-    width: 66,
-    height: 58,
   },
 });
 
 const defaultImage = require('./assets/user.png');
 
 export interface AvatarProps extends ViewProps {
-  /** React Native `Image` 组件 Props */
+  /* React Native `Image` 组件 Props */
   imageProps?: ImageProps;
-  /** 图像源（远程URL或本地文件资源）。 */
+  /* 图像源（远程URL或本地文件资源） */
   src?: string | number;
   /**
    * 尺寸
@@ -36,31 +32,35 @@ export interface AvatarProps extends ViewProps {
   shape?: 'circle' | 'square';
 }
 
-export default function Avatar(props: AvatarProps) {
-  const { style, src, size, shape, rounded, imageProps, ...otherProps } = props;
+const Avatar: React.FC<AvatarProps> = (props) => {
+  const { style, src = defaultImage, size = 40, shape = 'square', rounded = 3, imageProps, ...otherProps } = props;
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <View
       style={[
-        styles.defalut,
+        styles.default,
         style,
-        { width: size, height: size },
-        { borderRadius: shape === 'circle' ? size! / 2 : rounded },
+        { width: size, height: size, borderRadius: shape === 'circle' ? size / 2 : rounded },
       ]}
       {...otherProps}
     >
+      <View
+        style={[
+          styles.default,
+          { justifyContent: 'center', alignItems: 'center', flexDirection: 'row', width: size, height: size },
+        ]}
+      >
+        {!imageLoaded && <ActivityIndicator size="small" color="gray" />}
+      </View>
       <Image
-        style={{ width: size, height: size }}
+        style={{ width: size, height: size, position: 'absolute', top: 0, left: 0 }}
         source={typeof src === 'number' ? src : { uri: src as string }}
+        onLoad={() => setImageLoaded(true)}
         {...imageProps}
       />
     </View>
   );
-}
+};
 
-Avatar.defaultProps = {
-  src: defaultImage,
-  shape: 'square',
-  rounded: 3,
-  size: 40,
-} as AvatarProps;
+export default Avatar;
