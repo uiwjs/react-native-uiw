@@ -55,7 +55,7 @@ export default class Index extends Component<IndexProps, IndexState> {
               </Tabs.Item>
               <Tabs.Item title="兴趣">
                 <View>
-                  <Text>喜欢</Text>
+                  <Text>兴趣</Text>
                 </View>
               </Tabs.Item>
               <Tabs.Item title="爱好">
