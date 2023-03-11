@@ -1,4 +1,5 @@
 import { RulesOption } from '@validator.tool/hook';
+import React from 'react';
 import Validator from 'validator.tool';
 
 type KeyType = string | number | symbol;
@@ -34,6 +35,8 @@ interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], Field
   watch?: Partial<Record<string, (value: unknown) => void>>;
   customComponentList?: Partial<Record<string, JSX.Element>>;
   changeValidate?: boolean;
+  type?: 'json' | 'custom';
+  children?: React.ReactElement;
 }
 
 interface actionProps {

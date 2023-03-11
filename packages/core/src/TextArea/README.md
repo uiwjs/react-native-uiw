@@ -13,6 +13,7 @@ import TextArea from '@uiw/react-native/lib/TextArea';
 function Demo() {
   return (
     <TextArea
+      fontStyle={{ color:'#aaa' }}
       value={"Hello TextArea \nplease input word"}
       placeholder='请输入'
     />
@@ -35,6 +36,7 @@ function Demo() {
         console.log('输入内容: ', value);
         setValue(value);
       }}
+      fontStyle={{ color:'#aaa' }}
       value={value}
       placeholder='请输入'
     />
@@ -55,6 +57,7 @@ function Demo() {
 
   return (
     <TextArea
+      fontStyle={{ color:'#aaa' }}
       editable={false}
       value={value}
       placeholder='请输入'
@@ -78,6 +81,7 @@ function Demo() {
       onChange={(value) => {
         setValue(value);
       }}
+      fontStyle={{ color:'#aaa' }}
       maxLength={100}
       showWords={true}
       value={value}
@@ -102,6 +106,7 @@ function Demo() {
       onChange={(value) => {
         setValue(value);
       }}
+      fontStyle={{ color:'#aaa' }}
       numberOfLines={3}
       value={value}
       placeholder='请输入'
@@ -127,6 +132,7 @@ function Demo() {
       onChange={(value) => {
         setValue(value);
       }}
+      fontStyle={{ color:'#aaa' }}
       placeholder='请输入'
       autoSize
     />
@@ -148,8 +154,8 @@ function Demo() {
       onChange={(value) => {
         setValue(value);
       }}
+      height={150}
       style={{
-        height: 150,
         borderColor: 'green',
         borderWidth: 2,
       }}
@@ -177,12 +183,32 @@ function Demo() {
         setValue(value);
       }}
       textAlignVertical="center"
+      fontStyle={{ color:'#aaa' }}
       value={value}
       placeholder='请输入'
     />
   )
 }
 
+export default Demo
+```
+
+### 允许拖拽
+
+```jsx mdx:preview&background=#bebebe29
+import React from 'react';
+import TextArea from '@uiw/react-native/lib/TextArea';
+
+function Demo() {
+  return (
+    <TextArea
+      draggable={true}
+      fontStyle={{ color:'#aaa' }}
+      value={"Hello TextArea \nplease input word"}
+      placeholder='请输入'
+    />
+  )
+}
 export default Demo
 ```
 
@@ -193,12 +219,15 @@ export default Demo
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `textAlignVertical` | 文本位置 | "top" \| "center" \| "auto" \| "bottom" | `top` |
-| `placeholder` | 默认提示语 | String | |
+| `placeholder` | 默认提示语 | String | - |
 | `placeholderTextColor` | 提示语颜色 | `string` | `#989FB2` |
 | `maxLength` | 最大字符数 | `number` | `100` |
 | `numberOfLines` | 输入框的行数(Android) | `number` | `30` |
 | `editable` | 是否禁用 | `boolean` | `true` |
-| `onChange` | 文本域内容变化时触发 | `(val: string) => void` |  |
-| `value` | 文本框中的文字内容 | `string` |  |
+| `onChange` | 文本域内容变化时触发 | `(val: string) => void` | - |
+| `value` | 文本框中的文字内容 | `string` | - |
 | `showWords` | 是否展示字数 | `boolean` | `false` |
-| `fontStyle` | 输入框文字样式 | ` StyleProp<TextStyle>` |  |
+| `fontStyle` | 输入框文字样式 | ` StyleProp<TextStyle>` | - |
+| `height` | 输入框高度 | `number` | 0 |
+| `draggable` | 是否允许拖拽 | `boolean` | `false` |
+

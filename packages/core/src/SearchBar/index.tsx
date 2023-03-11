@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo, useCallback } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import {
   View,
   Text,
@@ -9,14 +9,14 @@ import {
   Pressable,
   StyleProp,
   ViewStyle,
+  ColorValue,
 } from 'react-native';
 import MaskLayer from '../MaskLayer';
-import SearchInputBar from '../SearchInputBar';
+import SearchInputBar, { SearchInputBarProps } from '../SearchInputBar';
 import List from '../List';
-import { down } from './svg';
 import Icon from '../Icon';
 
-interface SearchBarProps {
+interface SearchBarProps extends Omit<SearchInputBarProps, 'onChange' | 'value'> {
   onChangeText?: (value: string) => void;
   options?: Array<OptionsState>;
   onChange?: (value: string | null) => void;
@@ -24,12 +24,13 @@ interface SearchBarProps {
   onBlur?: (e: any | string) => void;
   labelInValue?: Boolean;
   disabled?: Boolean;
-  value?: String;
+  value?: string | OptionsState;
   loading?: Boolean;
-  placeholder?: String;
+  placeholder?: string;
   extra?: JSX.Element;
   showClear?: boolean;
   contentStyle?: StyleProp<ViewStyle>;
+  placeholderColor?: ColorValue;
 }
 
 interface OptionsState {
@@ -52,18 +53,22 @@ function SearchBar({
   extra,
   showClear = true,
   contentStyle = {},
+  placeholderColor,
+  ...searchInputBarProps
 }: SearchBarProps) {
   const [curValue, setCurValue] = useState<any>(value);
   const [visible, setVisivble] = useState(false);
-  const textValue = labelInValue ? curValue && curValue.label : curValue;
+  let textValue;
+  if (labelInValue) {
+    textValue = curValue?.label;
+  } else {
+    const { label }: any = options.find((item) => item.value === curValue);
+    textValue = label;
+  }
 
   useEffect(() => {
     setCurValue(value);
   }, [value]);
-
-  // useEffect(() => {
-  //   visible && onFocus;
-  // }, [visible]);
 
   // 搜索
   const onHandleChangeText = (val: string) => {
@@ -81,7 +86,7 @@ function SearchBar({
   return !visible ? (
     <Pressable onPress={showSearchBar}>
       <View style={[disabled ? styles.disabled : styles.content, contentStyle]}>
-        <Text style={styles.contentTitle}>{textValue ? textValue : placeholder}</Text>
+        <Text style={[styles.contentTitle, { color: placeholderColor }]}>{textValue ? textValue : placeholder}</Text>
         {React.isValidElement(extra) ? (
           extra
         ) : curValue && showClear ? (
@@ -122,6 +127,7 @@ function SearchBar({
               </View>
             </TouchableWithoutFeedback>
           }
+          {...searchInputBarProps}
         />
         {loading ? (
           <ActivityIndicator color="#0A0258" size="large" style={styles.loading} />
@@ -134,9 +140,9 @@ function SearchBar({
                   const selectValue:
                     | any
                     | {
-                      key: string;
-                      label: string;
-                    } = labelInValue ? { key: itm.value, label: itm.label } : itm.value;
+                        key: string;
+                        label: string;
+                      } = labelInValue ? { key: itm.value, label: itm.label } : itm.value;
                   onChange && onChange(selectValue);
                   setCurValue(selectValue);
                   setVisivble(false);

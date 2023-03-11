@@ -45,6 +45,7 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
             <Card title="左右滑动，显示按钮" style={styles.card}>
               <SwipeAction
                 buttonWidth={80}
+                rectButtonStyle={{marginLeft: -20, marginRight: 20}}
                 ref={ref => (this.newRef = ref)}
                 right={right}
                 onSwipeableRightOpen={() => console.log('right')}
@@ -71,5 +72,7 @@ const styles = StyleSheet.create({
   },
   view: {
     height: 30,
+    backgroundColor: 'red',
+    marginRight: 20,
   },
 });

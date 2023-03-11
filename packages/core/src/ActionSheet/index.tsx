@@ -27,7 +27,7 @@ export interface ActionSheetProps extends ModalProps {
   /** 取消的文本 */
   cancelText?: React.ReactNode;
   /** 蒙层关闭回调 */
-  onCancel?: () => void;
+  onCancel: () => void;
 }
 
 interface ActionSheetState {
@@ -82,10 +82,6 @@ export default function ActionSheet(props: ActionSheetProps) {
     }
   };
 
-  const onClose = () => {
-    setState({ stateVisible: false, control: 'state' });
-  };
-
   return (
     <Modal
       placement="bottom"
@@ -95,7 +91,7 @@ export default function ActionSheet(props: ActionSheetProps) {
       visible={state.stateVisible}
       onClosed={onModalClose}
     >
-      <>
+      <View>
         {React.Children.toArray(children).map((item, index) => (
           <View key={index}>
             {index !== 0 && <View style={StyleSheet.flatten([styles.itemDivider, dividerStyle?.itemDivider])} />}
@@ -109,12 +105,12 @@ export default function ActionSheet(props: ActionSheetProps) {
         <ActionSheetItem
           activeOpacity={activeOpacity}
           underlayColor={underlayColor}
-          onPress={onClose}
+          onPress={() => onCancel?.()}
           children={cancelText}
           containerStyle={containerStyle}
           textStyle={textStyle}
         />
-      </>
+      </View>
     </Modal>
   );
 }

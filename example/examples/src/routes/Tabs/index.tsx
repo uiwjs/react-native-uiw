@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import Layout, {Container} from '../../Layout';
 import {Tabs, IconsName} from '@uiw/react-native';
 import {ComProps} from '../../routes';
@@ -43,12 +43,36 @@ export default class Index extends Component<IndexProps, IndexState> {
           <Header title={title} description={description} />
           <Body>
             <Tabs value={this.state.flag} onChange={value => this.setState({flag: value})}>
-              <Tabs.Item title="喜欢" />
-              <Tabs.Item title="关注" />
-              <Tabs.Item title="兴趣" />
-              <Tabs.Item title="爱好" />
-              <Tabs.Item title="gitlabl" />
-              <Tabs.Item title="github" />
+              <Tabs.Item title="喜欢">
+                <View>
+                  <Text>喜欢</Text>
+                </View>
+              </Tabs.Item>
+              <Tabs.Item title="关注">
+                <View>
+                  <Text>关注</Text>
+                </View>
+              </Tabs.Item>
+              <Tabs.Item title="兴趣">
+                <View>
+                  <Text>喜欢</Text>
+                </View>
+              </Tabs.Item>
+              <Tabs.Item title="爱好">
+                <View>
+                  <Text>爱好</Text>
+                </View>
+              </Tabs.Item>
+              <Tabs.Item title="gitlabl">
+                <View>
+                  <Text>gitlabl</Text>
+                </View>
+              </Tabs.Item>
+              <Tabs.Item title="github">
+                <View>
+                  <Text>github</Text>
+                </View>
+              </Tabs.Item>
             </Tabs>
 
             <View style={styles.divider} />

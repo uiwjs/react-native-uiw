@@ -2,7 +2,7 @@ SwipeAction 滑动操作组件。
 ---
 结合手势操作，从屏幕一侧唤出操作。
 
-![](https://user-images.githubusercontent.com/57083007/146733663-6c83fca4-72df-424d-8364-47533f57ece6.gif)
+<img src="https://user-images.githubusercontent.com/57083007/146733663-6c83fca4-72df-424d-8364-47533f57ece6.gif" style="width:300px;height:620px"/>
 
 ### 基础示例
 
@@ -133,6 +133,9 @@ export default Demo;
 | `right` | 右边滑动出来的元素 | Array<`ColumnProps`> | - |
 | `left` | 左边滑动出来的元素 | Array<`ColumnProps`> | - |
 | `buttonWidth` | 按钮宽度 |  number | 60 |
+| `actionViewStyle` | 弹出框样式 |  ViewStyle | - |
+| `rectButtonStyle` | 弹出button样式 |  ViewStyle | - |
+
 
 ### ColumnProps
 | 参数 | 说明 | 类型 | 默认值 |

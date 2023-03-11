@@ -41,7 +41,7 @@ function Demo() {
         </div>
      )}
     >
-      <Icon name='apple' color="red" />
+      <Icon name='apple' color="#035bb6" />
     </Tooltip>
   );
 }

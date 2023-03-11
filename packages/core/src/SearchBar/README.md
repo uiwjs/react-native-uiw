@@ -128,7 +128,63 @@ export default Demo
 
 ```
 
+### 修改搜索文本默认颜色
+
+```jsx mdx:preview&background=#bebebe29
+import { SearchBar } from '@uiw/react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <SearchBar
+      showClear
+      labelInValue
+      options={[
+        {label:'上海',value:1},
+        {label:'南京',value:2}
+      ]}
+      onFocus={()=>{}}
+      onChange={val=>console.log('val',val)}
+      placeholder="请输入搜索"
+      placeholderColor="red"
+    />
+  );
+}
+
+export default Demo
+
+```
+
+### 继承了 SearchInputBar的属性
+
+```jsx mdx:preview&background=#bebebe29
+import { SearchBar } from '@uiw/react-native';
+import { Text } from 'react-native';
+import React from 'react';
+
+function Demo() {
+  return (
+    <SearchBar
+      showClear
+      labelInValue
+      options={[
+        {label:'上海',value:1},
+        {label:'南京',value:2}
+      ]}
+      onFocus={()=>{}}
+      onChange={val=>console.log('val',val)}
+      placeholder="请输入搜索"
+      searchRender={<Text>自定义搜索</Text>}
+    />
+  );
+}
+
+export default Demo
+
+```
+
 ### Props
+集成继承 `SearchInputBar` 属性 
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
@@ -143,6 +199,10 @@ export default Demo
 | placeholder | 搜索框默认文本 | String | - |
 | extra | 图标 | JSX.Element | - |
 | showClear | 是否展示清除图标 | boolean | - |
+| contentStyle | 容器样式 | StyleProp<`ViewStyle`> | - |
+| placeholderColor | 搜索框默认文本颜色 | ColorValue | - |
+
+
 
 ### OptionsStateProps
 

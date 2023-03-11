@@ -67,8 +67,8 @@ export default class TextAreaView extends Component<TextAreaProps> {
             </Card>
             <Card title="自定义输入框样式" style={styles.card}>
               <TextArea
+                height={150}
                 style={{
-                  height: 150,
                   borderColor: 'blue',
                   borderWidth: 2,
                 }}

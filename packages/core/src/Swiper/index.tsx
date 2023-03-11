@@ -89,7 +89,10 @@ const Swiper = (porps: SwiperProps) => {
 
   // 开始拖拽终止定时器
   const onScrollBeginDrag = () => {
-    if (autoplay) clearInterval(timer.current as unknown as number);
+    if (autoplay) {
+      clearInterval(timer.current as unknown as number);
+      // setCurIndex(0);
+    }
   };
 
   // 停止拖拽开启定时器
@@ -97,14 +100,20 @@ const Swiper = (porps: SwiperProps) => {
     if (autoplay) autoPlay();
   };
 
-  // 拖拽成功
   const onMomentumScrollEnd = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     e.persist();
     let offSetX = e.nativeEvent.contentOffset.x;
     let mentWidth = e.nativeEvent.layoutMeasurement.width;
     let page = offSetX / mentWidth;
-    setCurIndex(page);
+
+    if (page === dataSource.length) {
+      setCurIndex(0);
+      scrollToRef.current.scrollTo({ x: 0, y: 0, animated: false });
+    } else {
+      setCurIndex(page);
+    }
   };
+
   // 点击原点跳转
   const onClickDot = (index: number) => {
     setCurIndex(index);
@@ -123,7 +132,7 @@ const Swiper = (porps: SwiperProps) => {
           onMomentumScrollEnd={onMomentumScrollEnd}
           onContentSizeChange={onContentSizeChange}
         >
-          {dataSource.map((item: dataSourceType, index: number) => {
+          {[...dataSource, dataSource[0]].map((item: dataSourceType, index: number) => {
             return (
               <View key={index} style={{ width, height }}>
                 <View style={{ padding: 12 }}>

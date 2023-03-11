@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import React, { useCallback, useEffect, useMemo, useRef, useImperativeHandle } from 'react';
+import { View, StyleSheet, Text, TouchableOpacity, Animated } from 'react-native';
 
 import Icon, { IconsName } from '../Icon';
 
@@ -38,10 +38,29 @@ export interface TabsItemProps {
   onChange?: (value: number) => void;
   index?: number;
   defaultColor?: string;
+  children?: React.ReactNode;
 }
 
 function TabsItem(props: TabsItemProps) {
-  const { activeColor, icon, index, value, onChange, defaultColor } = props;
+  const { activeColor, icon, index, value, onChange, defaultColor, children } = props;
+  const opacity = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (value === index) {
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(opacity, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [value]);
+
   const style = useCallback(() => {
     const { style = {} } = props;
     const titleBoxStyle = {
@@ -92,7 +111,15 @@ function TabsItem(props: TabsItemProps) {
     if (value === index) {
       return (
         <View style={styles.bottomView}>
-          <View style={[styles.bottom, { ...style().borderColor }]} />
+          <Animated.View
+            style={[
+              styles.bottom,
+              {
+                ...style().borderColor,
+                opacity,
+              },
+            ]}
+          />
         </View>
       );
     }
@@ -100,14 +127,16 @@ function TabsItem(props: TabsItemProps) {
   }, [value]);
 
   return (
-    <View style={styles.TabsItemContainer}>
-      <TouchableOpacity onPress={() => (index === 0 || index) && onChange?.(index)}>
-        {IconDom}
-        <View style={[styles.titleBox, { ...style().titleBoxStyle }]}>
-          <Text style={[styles.title, { ...style().titleStyle }]}>{props.title}</Text>
-        </View>
-        {BorderDom}
-      </TouchableOpacity>
+    <View>
+      <View style={styles.TabsItemContainer}>
+        <TouchableOpacity onPress={() => (index === 0 || index) && onChange?.(index)}>
+          <Animated.View style={[styles.titleBox, { ...style().titleBoxStyle }]}>
+            {IconDom}
+            <Text style={[styles.title, { ...style().titleStyle }]}>{props.title}</Text>
+          </Animated.View>
+          {BorderDom}
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

@@ -268,6 +268,45 @@ const FormComponent = Form.create(FormDemo)
 export default FormComponent;
 ```
 
+### Form.Item
+
+<!--DemoStart-->
+```jsx mdx:preview&background=#bebebe29
+import React from 'react';
+import { SafeAreaView,TextInput } from 'react-native';
+import { Form } from '@uiw/react-native';
+
+const Input = ({ value, onChange, ...others }) => {
+  return (
+    <TextInput
+      value={value}
+      onChangeText={(value) => {
+        onChange?.(value);
+      }}
+      {...others}
+    />
+  );
+};
+
+const FormDemo = () => {
+  const form = Form.useForm();
+  const watch = {
+    name: (value) => console.log('value', value)
+  }
+  return (
+    <SafeAreaView>
+      <Form type="custom" form={form}  watch={watch} changeValidate={true}>
+        <Form.Item required field="name" name="姓名" validate={(val) => (!val ? '请输入姓名' : '')}>
+          <Input placeholder='请输入' />
+        </Form.Item>
+      </Form>
+    </SafeAreaView>
+  );
+};
+export default FormDemo
+```
+<!--End-->
+
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
@@ -276,16 +315,18 @@ export default FormComponent;
 | `form` | 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建 | FormInstance<`FormData`, `FieldValue`, `FieldKey`> | - |
 | `initialValues` | 表单默认值，只有初始化以及重置时生效 | Partial<`FormData`> | - |
 | `mode` | 支持默认和卡片两种模式 | `default` \| `card` | | default |
+| `type` | 表单布局模式 | `json` \| `custom` | `json` |
 | `changeValidate` | 表单是否在onChange时进行验证 | boolean | false |
 | `watch` | 监听表单字段变化 | Partial<Record<string, (value: unknown) => void>> | - |
 | `customComponentList` | 自定义组件 | Partial<Record<string, JSX.Element>> | - |
+
 
 ### FormItemsProps
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `field` | 字段名 | string | - |
-| `type` | 字段类型(默认继承了react-native-uiw中的 input | textArea | slider | rate | radio | search | switch | checkBox | stepper ｜ cardList   ) | string | - |
+| `type` | 字段类型(`input` \| `textArea`  \| `slider` \| `rate` \| `radio` \| `search`\| `switch`\| `checkBox`\| `stepper`\| `cardList`) | string | - |
 | `name` | 标签名 | string | - |
 | `validate` | 验证规则 | RulesOption['validate'] | - |
 | `options` | 集合 | Array<{ label: string; value: KeyType }> | - |

@@ -88,7 +88,7 @@ export default class ListItem extends React.PureComponent<ListItemProps> {
 
 const styles = StyleSheet.create({
   warpper: {
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
   },
   border: {
     borderBottomWidth: StyleSheet.hairlineWidth,

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
 import {SearchBar} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout from '../../Layout';
@@ -40,6 +40,9 @@ const SearchBarDemo = (props: ComProps) => {
         labelInValue
         options={data}
         onChange={val => console.log('val', val)}
+        placeholderColor="#333"
+        placeholder="请输入"
+        searchRender={<Text>请搜索111</Text>}
       />
     </SafeAreaView>
   );

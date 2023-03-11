@@ -3,7 +3,7 @@ import Flex from '../../Flex';
 import { FormItemsProps } from '../types';
 import { Text, StyleSheet } from 'react-native';
 
-const Label = ({ v }: { v: FormItemsProps }) => {
+const Label = ({ v }: { v: Partial<FormItemsProps> }) => {
   return (
     <Flex>
       {v.required && <Text style={{ color: 'red', marginRight: 5 }}>*</Text>}
@@ -16,7 +16,7 @@ const Label = ({ v }: { v: FormItemsProps }) => {
 
 const styles = StyleSheet.create({
   label: {
-    width: 110,
+    width: 'auto',
     fontSize: 16,
     color: '#434343',
     fontWeight: '500',

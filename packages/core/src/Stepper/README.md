@@ -83,7 +83,6 @@ function Demo() {
       value={value}
       disabled={true}
       width={150}
-      color={{color: '#ccc',borderColor: '#999',controlColor: 'red',valueColor: '#000'}}
       onChange={(value)=>{
         setValue(value)
       }}

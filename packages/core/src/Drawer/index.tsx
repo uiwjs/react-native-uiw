@@ -33,7 +33,6 @@ export interface DrawerState {
 }
 
 export default function Drawer(props: DrawerProps) {
-  console.log(333);
   const getInitPosition = () => {
     const { drawerWidth, placement, drawerHeight } = props;
     const xy = { x: 0, y: 0 };
