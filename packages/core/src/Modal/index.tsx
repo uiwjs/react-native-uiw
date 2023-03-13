@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef } from 'react';
-import { Animated, StyleSheet, LayoutChangeEvent, Dimensions } from 'react-native';
+import { Animated, StyleSheet, LayoutChangeEvent, Dimensions, ViewStyle } from 'react-native';
 import MaskLayer, { MaskLayerProps } from '../MaskLayer';
 
 let MainWidth = Dimensions.get('window').width;
@@ -8,10 +8,11 @@ let MainHeight = Dimensions.get('window').height;
 export interface ModalProps extends MaskLayerProps {
   placement?: 'top' | 'right' | 'bottom' | 'left';
   onClosed?: () => void;
+  containerStyle?: ViewStyle;
 }
 
 const Modal = (props: ModalProps = {}) => {
-  const { onClosed, visible, children, placement = 'bottom', ...otherProps } = props;
+  const { onClosed, visible, children, placement = 'bottom', containerStyle, ...otherProps } = props;
   const AnimatedOpacity: Animated.Value = useRef(new Animated.Value(0)).current;
   // const [display] = useState<'none' | 'flex'>('none');
   let [layoutHeight, setLayoutHeight] = useState(0);
@@ -89,7 +90,9 @@ const Modal = (props: ModalProps = {}) => {
     translateStyle.translateX = translateValue;
   }
   const child = (
-    <Animated.View style={[styles.content, placement && styles[placement], { opacity: AnimatedOpacity }]}>
+    <Animated.View
+      style={[styles.content, placement && styles[placement], { opacity: AnimatedOpacity }, containerStyle]}
+    >
       <Animated.View
         onLayout={measureContainer}
         style={[
