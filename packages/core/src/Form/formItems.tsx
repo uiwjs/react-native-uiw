@@ -46,13 +46,12 @@ const FormItems = ({ schema = [] }: Pick<FormProps, 'schema'>) => {
 
   const _render = () => {
     return schema.map((v: FormItemsProps, i: number) => {
-      const last = schema.length - 1 === i;
       if (v.hide) {
         return null;
       }
       return (
         <View key={i} style={styles.form_items_container}>
-          <View style={[styles.form_items, last && styles.border_none]}>
+          <View style={[styles.form_items]}>
             <Label v={v} />
             {_renderComponent(v)}
             <Tip v={v} />
