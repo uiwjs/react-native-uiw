@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, ViewProps, Image, ImageProps, StyleSheet, ActivityIndicator } from 'react-native';
+import React from 'react';
+import { View, ViewProps, Image, ImageProps, StyleSheet, ActivityIndicator, Text } from 'react-native';
 
 const styles = StyleSheet.create({
   default: {
@@ -30,12 +30,20 @@ export interface AvatarProps extends ViewProps {
    * @default square
    */
   shape?: 'circle' | 'square';
+  loading?: boolean;
 }
 
 const Avatar: React.FC<AvatarProps> = (props) => {
-  const { style, src = defaultImage, size = 40, shape = 'square', rounded = 3, imageProps, ...otherProps } = props;
-  const [imageLoaded, setImageLoaded] = useState(false);
-
+  const {
+    style,
+    src = defaultImage,
+    size = 40,
+    shape = 'square',
+    rounded = 3,
+    imageProps,
+    loading = false,
+    ...otherProps
+  } = props;
   return (
     <View
       style={[
@@ -48,15 +56,22 @@ const Avatar: React.FC<AvatarProps> = (props) => {
       <View
         style={[
           styles.default,
-          { justifyContent: 'center', alignItems: 'center', flexDirection: 'row', width: size, height: size },
+          {
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+            width: size,
+            height: size,
+            zIndex: loading ? 2023 : 0,
+          },
         ]}
       >
-        {!imageLoaded && <ActivityIndicator size="small" color="gray" />}
+        {loading && <ActivityIndicator size="small" color="gray" />}
       </View>
+
       <Image
         style={{ width: size, height: size, position: 'absolute', top: 0, left: 0 }}
         source={typeof src === 'number' ? src : { uri: src as string }}
-        onLoad={() => setImageLoaded(true)}
         {...imageProps}
       />
     </View>
