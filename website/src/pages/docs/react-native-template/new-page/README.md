@@ -93,3 +93,116 @@ const styles = StyleSheet.create({
 })
 ```
 具体请参照官方文档[样式](https://reactnative.cn/docs/style)
+
+## Rematch
+
+### 第一步:建立models
+
+```bash
+  mocker
+  ...
+src
+  models
+  +     home.js
+  pages
+...
+package.json
+```
+
+```js
+export default {
+  name: 'home',
+  // initial state
+  state: {
+    num:0
+  }, 
+  reducers: {
+   update: (state, payload) => ({ ...state, ...payload }),
+  },
+  effects: (dispatch) => ({
+    // 可以进行异步请求
+  }),
+};
+```
+
+### 第二步:初始化store
+
+```js
+import { init } from '@rematch/core';
+import createLoadingPlugin from '@rematch/loading';
+import * as home from './home';
+
+
+const loadingPlugin = createLoadingPlugin({});
+
+export const store = init({
+  models: {
+    home: home.default,
+  },
+  plugins: [loadingPlugin],
+});
+
+```
+
+### 第三步:页面中使用
+```js
+import React, { useState } from 'react';
+import { View,Text } from 'react-native'
+import { Button } from '@uiw/react-native';
+import { connect } from 'react-redux';
+
+const Demo = ({ num,update }) => {
+  const click = ()=>{
+    update({
+      num:10
+    })
+  }
+  return (
+     <View>
+      <Text>{num}</Text>
+      <Button onPress={click}>点击</Button>
+    </View>
+  );
+}
+
+export default connect(
+  ({ home }) => ({
+    num:home.num
+  }),
+  ({ home }) => ({
+    update: home.update
+  }),
+)(Demo);
+
+```
+
+我们也可以使用hooks调用
+```js
+import React, { useState } from 'react';
+import { View,Text } from 'react-native'
+import { Button } from '@uiw/react-native';
+import { useSelector,useDispatch } from 'react-redux';
+
+const Demo = () => {
+  const dispatch = useDispatch();
+  const { num } =useSelector(state=>state.home)
+  const click = ()=>{
+    dispatch({
+      type:'home/update',
+      payload:{
+        num:10
+      }
+    })
+  }
+  return (
+    <View>
+      <Text>{num}</Text>
+      <Button onPress={click}>点击</Button>
+    </View>
+  );
+}
+
+export default Demo
+
+```
+具体请参照官方文档[Rematch](https://rematchjs.org/docs/)

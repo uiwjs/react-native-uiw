@@ -55,10 +55,7 @@ const Demo = ({ update }) => {
     },
   })
 
-  const { mutate, isLoading } = login({
-    update,
-    formData,
-  })
+  const { mutate, isLoading } = login({ formData })
 
   return (
      <Button
@@ -73,12 +70,7 @@ const Demo = ({ update }) => {
   );
 }
 
-export default connect(
-  ({}) => ({}),
-  ({ global }) => ({
-    update: global.update
-  }),
-)(Demo);
+export default Demo
 
 ```
 ### 三、使用react-query调用api
@@ -89,7 +81,7 @@ import { userLogin } from '../services/users';
 import { useQuery, useMutation } from 'react-query'
 
 // 登录
-export const login = ({ config = {}, update, formData }) => {
+export const login = ({ config = {}, formData }) => {
   const mutation = useMutation({
     mutationFn: userLogin,
     onSuccess: async (data) => {
