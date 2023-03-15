@@ -91,7 +91,7 @@ export const docsMenus: MenuData[] = [
   { path: '/docs/react-native-template/menu-route', name: '菜单路由管理' },
   { path: '/docs/react-native-template/new-page', name: '新增页面' },
   { path: '/docs/react-native-template/mock-data', name: 'Mock 数据' },
-  { path: '/docs/react-native-template/log-management', name: '日志管理' },
+  { path: '/docs/react-native-template/log-management', name: '更新日志' },
   { divider: true, name: '发布应用商店' },
   { path: '/docs/app-store/ios', name: '发布 iOS 应用商店' },
   { path: '/docs/app-store/android', name: '发布 Android 应用商店' },
