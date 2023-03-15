@@ -1,7 +1,10 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import { usePropsValue } from '../utils/hooks';
 import { getTreeDeep } from '../utils/tree-select';
-import { View, Text, TouchableOpacity, ScrollView, ColorValue } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, ColorValue, Pressable, StyleProp, ViewStyle } from 'react-native';
+import Icon from '../Icon';
+import Ellipsis from '../Ellipsis';
+import Modal, { ModalProps } from '../Modal';
 import { style } from './styles';
 
 export interface TreeSelectOption {
@@ -15,6 +18,14 @@ export type TreeSelectProps = {
   onChange?: (value: string[], extend: { options: TreeSelectOption[] }) => void;
   fieldNames?: { label: string; value: string; children: string } | any;
   activeColor?: ColorValue;
+  disabled?: boolean;
+  placeholder?: string;
+  extra?: JSX.Element;
+  showClear?: boolean;
+  contentStyle?: StyleProp<ViewStyle>;
+  placeholderColor?: ColorValue;
+  height?: number;
+  modalProps?: ModalProps;
 };
 
 const defaultProps = {
@@ -22,6 +33,14 @@ const defaultProps = {
   fieldNames: {},
   defaultValue: [],
   activeColor: '#5847FF',
+  placeholder: '请选择',
+  extra: undefined,
+  showClear: true,
+  contentStyle: {},
+  placeholderColor: '',
+  disabled: false,
+  height: 300,
+  modalProps: {},
 };
 
 export const TreeSelect: FC<TreeSelectProps> = (p) => {
@@ -30,11 +49,11 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
   const valueName = props.fieldNames.value || 'value';
   const childrenName = props.fieldNames.children || 'children';
 
+  const [visible, setVisible] = useState(false);
   const [value, setValue] = usePropsValue({
     value: props.value,
     defaultValue: props.defaultValue,
   });
-
   const [deep, optionsMap, optionsParentMap] = useMemo(() => {
     const deep = getTreeDeep(props.options, childrenName);
     const optionsMap = new Map<string, TreeSelectOption>();
@@ -53,6 +72,19 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
     return [deep, optionsMap, optionsParentMap];
   }, [props.options]);
 
+  const initialLabelValues = useMemo(() => {
+    const labels: string[] = [];
+    props.defaultValue?.forEach((defaultValue) => {
+      const defaultOption = optionsMap.get(defaultValue);
+      if (defaultOption) {
+        labels.push(defaultOption[labelName]);
+      }
+    });
+    return labels;
+  }, [props.defaultValue, optionsMap, labelName]);
+
+  const [labelValues, setLabelValues] = useState<string[]>(initialLabelValues);
+
   const onItemSelect = (node: TreeSelectOption) => {
     // 找到父级节点
     const parentNodes: TreeSelectOption[] = [];
@@ -64,6 +96,8 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
     }
 
     const values = parentNodes.map((i) => i[valueName]);
+    const labels = parentNodes.map((i) => i[labelName]);
+    setLabelValues(labels);
     setValue(values);
     props.onChange?.(values, {
       options: parentNodes,
@@ -149,5 +183,42 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
     return columns;
   };
 
-  return <View style={{ flex: 1, flexDirection: 'row' }}>{renderColumns()}</View>;
+  return (
+    <React.Fragment>
+      <Pressable
+        onPress={() => {
+          if (props.disabled) return;
+          setVisible(true);
+        }}
+      >
+        <View style={[props.disabled ? style.disabled : style.content, props.contentStyle]}>
+          <Ellipsis style={[style.contentTitle, { color: props.placeholderColor }]} maxLen={30}>
+            {labelValues.join() || props.placeholder}
+          </Ellipsis>
+          {React.isValidElement(props.extra) ? (
+            props.extra
+          ) : value && props.showClear ? (
+            <Pressable
+              onPress={() => {
+                setValue([]);
+                setLabelValues([]);
+                props.onChange?.([], {
+                  options: [],
+                });
+              }}
+              style={{ paddingRight: 3 }}
+            >
+              <Icon name="circle-close-o" size={18} color="#ccc" />
+            </Pressable>
+          ) : (
+            <Icon name="right" size={18} color="#A19EA0" />
+          )}
+        </View>
+      </Pressable>
+      <Modal visible={visible} onClosed={() => setVisible(false)} {...props.modalProps}>
+        <View style={{ marginBottom: 10 }} />
+        <View style={{ height: props.height, flexDirection: 'row' }}>{renderColumns()}</View>
+      </Modal>
+    </React.Fragment>
+  );
 };

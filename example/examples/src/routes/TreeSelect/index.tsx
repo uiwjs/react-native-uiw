@@ -52,21 +52,14 @@ export default class TreeSelectDemo extends React.Component<TreeSelectViewProps>
     ];
     return (
       <React.Fragment>
-        <DragDrawer drawerHeight={500}>
-          <TreeSelect
-            defaultValue={['01', '01-1', '01-1-1']}
-            activeColor="red"
-            options={option}
-            onChange={(value: any, nodes: any) => {
-              console.log(value, nodes);
-            }}
-          />
-        </DragDrawer>
-        <Container>
-          <Layout>
-            <Header title={title} description={description} />
-          </Layout>
-        </Container>
+        <TreeSelect
+          defaultValue={['01', '01-1', '01-1-1']}
+          activeColor="red"
+          options={option}
+          onChange={(value: any, nodes: any) => {
+            console.log(value, nodes);
+          }}
+        />
       </React.Fragment>
     );
   }
