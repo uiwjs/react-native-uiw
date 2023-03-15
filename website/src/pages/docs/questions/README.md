@@ -5,29 +5,6 @@ React Native
 
 一些 React Native 开发上遇到的问题简单记录。
 
-<!--idoc:ignore:start-->
-
-## 目录
-
-- [修改 App 在手机上展示的名称](https://github.com/jaywcjlove/react-native#%E4%BF%AE%E6%94%B9-app-%E5%9C%A8%E6%89%8B%E6%9C%BA%E4%B8%8A%E5%B1%95%E7%A4%BA%E7%9A%84%E5%90%8D%E7%A7%B0)
-- [修改 App 在手机上展示的图标](https://github.com/jaywcjlove/react-native#%E4%BF%AE%E6%94%B9-app-%E5%9C%A8%E6%89%8B%E6%9C%BA%E4%B8%8A%E5%B1%95%E7%A4%BA%E7%9A%84%E5%9B%BE%E6%A0%87)
-- [判断 Release/Debug 用于调试](https://github.com/jaywcjlove/react-native#%E5%88%A4%E6%96%AD-releasedebug-%E7%94%A8%E4%BA%8E%E8%B0%83%E8%AF%95)
-- [开发模式弹出开发者菜单刷新应用](https://github.com/jaywcjlove/react-native#%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E5%BC%B9%E5%87%BA%E5%BC%80%E5%8F%91%E8%80%85%E8%8F%9C%E5%8D%95%E5%88%B7%E6%96%B0%E5%BA%94%E7%94%A8)
-- [设置允许 HTTP 请求访问](https://github.com/jaywcjlove/react-native#%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8-http-%E8%AF%B7%E6%B1%82%E8%AE%BF%E9%97%AE)
-- [真机配置 IP 调试](https://github.com/jaywcjlove/react-native#%E7%9C%9F%E6%9C%BA%E9%85%8D%E7%BD%AE-ip-%E8%B0%83%E8%AF%95)
-- [Xcode 不用数据线真机调试](https://github.com/jaywcjlove/react-native#xcode-%E4%B8%8D%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BA%BF%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95)
-- [打包修改 APP 版本号](https://github.com/jaywcjlove/react-native#%E6%89%93%E5%8C%85%E4%BF%AE%E6%94%B9-app-%E7%89%88%E6%9C%AC%E5%8F%B7)
-- [常见错误](https://github.com/jaywcjlove/react-native#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF)
-  - [应用反应缓慢出现卡顿问题](https://github.com/jaywcjlove/react-native#%E5%BA%94%E7%94%A8%E5%8F%8D%E5%BA%94%E7%BC%93%E6%85%A2%E5%87%BA%E7%8E%B0%E5%8D%A1%E9%A1%BF%E9%97%AE%E9%A2%98)
-  - [Android: Gradle project sync failed](https://github.com/jaywcjlove/react-native#android-gradle-project-sync-failed)
-  - [Android: The device needs more free storage to install the application](https://github.com/jaywcjlove/react-native#android-the-device-needs-more-free-storage-to-install-the-application)
-  - [Android: Cannot convert string value 'UNIFIED_TEST_PLATFORM'](https://github.com/jaywcjlove/react-native#android-cannot-convert-string-value-unified_test_platform)
-  - [iOS: library not found for -lDoubleConversion](https://github.com/jaywcjlove/react-native#ios-library-not-found-for--ldoubleconversion)
-  - [iOS: symbol(s) not found for architecture i386](https://github.com/jaywcjlove/react-native#ios-symbols-not-found-for-architecture-i386)
-  - [iOS: Command PhaseScriptExecution failed with a nonzero exit code](https://github.com/jaywcjlove/react-native#ios-command-phasescriptexecution-failed-with-a-nonzero-exit-code)
-
-<!--idoc:ignore:end-->
-
 ## 修改 App 在手机上展示的名称
 
 #### Android
