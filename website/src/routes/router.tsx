@@ -38,6 +38,10 @@ export const routeData = [
         component: lazy(() => import('../pages/docs/environment-setup/ios-phone')),
       },
       {
+        path: '/docs/environment-setup/android-phone',
+        component: lazy(() => import('../pages/docs/environment-setup/android-phone')),
+      },
+      {
         path: '/docs/app-store/ios',
         component: lazy(() => import('../pages/docs/app-store/ios')),
       },

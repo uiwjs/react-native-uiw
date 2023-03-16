@@ -1,18 +1,18 @@
 iOS 真机环境安装
 ===
 
-在真机上仔细测试 app 后再发布给用户总是不会错的。本文档将指导你通过必须的步骤在设备上运行 React Native app，为生产做准备
+本文档将指导你通过必须的步骤在设备上运行 React Native app，为生产做准备。
 
 
 ## 在 iOS 设备上运行应用
 
-### 1. 通过 USB 数据线连接设备
+### `1. 通过 USB 数据线连接设备`
 
 使用 USB 闪电数据线连接 iOS 设备到 Mac。导航到工程的ios文件夹，然后用 Xcode 打开.xcworkspace文件，如果是 0.60 以前的版本则打开.xcodeproj文件。
 
 如果这是第一次在 iOS 设备上运行 app，需要注册开发设备。从 Xcode 菜单栏打开Product菜单，然后前往Destination。从列表中查找并选择设备。Xcode 将注册为开发设备。
 
-### 2. 配置代码签名
+### `2. 配置代码签名`
 
 如果没有[Apple developer account](https://developer.apple.com/)，先注册。
 
@@ -20,7 +20,7 @@ iOS 真机环境安装
 
 ![Xcode Project](./001.png)<!--rehype:style=max-width: 480px;-->
 
-### 3. 编译并运行应用
+### `3. 编译并运行应用`
 
 如果一切设置正确，设备会在 Xcode toolbar 中被列为 build target，也会出现在设备面板里(⇧⌘2)。现在可以按下 Build and run 按钮(⌘R)或从Product菜单中选择Run。app 会立刻启动在设备上。
 
@@ -35,7 +35,7 @@ iOS 真机环境安装
 
 ![Developer menu](./003.png)<!--rehype:style=max-width: 480px;-->
 
-### 常见问题
+## 常见问题
 
 > 🚧 注意：如果您有任何问题，请确保您的Mac和设备位于同一网络上，并且可以相互连接。许多具有捕获入口的开放式无线网络被配置为防止设备到达网络上的其他设备。在这种情况下，您可以使用设备的个人热点功能。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
@@ -47,11 +47,11 @@ iOS 真机环境安装
 
 解决这个问题检查以下几点。
 
-### 1. Wi-Fi 网络
+### `1. Wi-Fi 网络`
 
-确保笔记本电脑和电话在`同一个`Wi-Fi 网络
+确保笔记本电脑和电话在`同一个`<!--rehype:style=color: red;background: #ffd2d2;-->Wi-Fi 网络
 
-### 2. IP 地址
+### `2. IP 地址`
 
 确保编译脚本正确检测到机器的 IP 地址(e.g. 10.0.1.123)。
 
