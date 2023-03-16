@@ -47,7 +47,7 @@ interface SearchInputBarState {
   showIcon: boolean;
 }
 
-function SearchInputBar(props: SearchInputBarProps) {
+const SearchInputBar = (props: SearchInputBarProps) => {
   const inputRef = React.createRef<TextInput>();
 
   const [state, setState] = useState<SearchInputBarState>({
@@ -131,9 +131,9 @@ function SearchInputBar(props: SearchInputBarProps) {
       </View>
     </Loader>
   );
-}
+};
 
-export default React.forwardRef(SearchInputBar);
+export default SearchInputBar;
 
 const styles = StyleSheet.create({
   centerFlex: {
