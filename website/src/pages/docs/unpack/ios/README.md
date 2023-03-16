@@ -6,6 +6,26 @@ iOS 打包
 > 2. 📦 如果没有开发者账号，可进入[Developer苹果开发者官网](https://developer.apple.com),点击“Account”登录/注册会员。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
+## 打包前修改 APP 版本号
+### 修改 `ios/<应用名称>/Info.plist` 配置
+
+```xml
+<key>CFBundleShortVersionString</key>
+<string>1.2.0</string>
+```
+
+## iOS打包后HTTP请求不到解决方法
+
+修改 `ios/<应用名称>/Info.plist` 配置
+
+```xml
+<key>NSAppTransportSecurity</key>
+<dict>
+  <key>NSAllowsArbitraryLoads</key>
+  <true/>
+</dict>
+```
+
 ## 一. 配置iOS证书
 ### `配置证书`<!--rehype:style=color: white; background: #1c7bd0;-->
 

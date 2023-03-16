@@ -2,7 +2,60 @@ Android 打包
 ===
 官方教程 https://reactnative.dev/docs/signed-apk-android/
 
+
 Android要求所有应用都必须先使用证书进行数字签名，然后才能安装。 为了通过Google Play商店分发您的Android应用，需要使用发布密钥对其进行签名，然后再将其用于以后的所有更新。 自2017年以来，借助Google Play的应用签名功能，Google Play可以自动管理签名发布。 但是，在将应用程序二进制文件上传到Google Play之前，需要使用上传密钥对其进行签名。 Android Developers文档上的[“签署应用程序”](https://developer.android.com/tools/publishing/app-signing.html)页面详细描述了该主题。 本指南简要介绍了该过程，并列出了打包JavaScript捆绑包所需的步骤。
+
+## 打包修改 APP 版本号
+### 修改 `android/app/build.gradle` 配置
+
+```xml
+android {
+  .....
+  defaultConfig {
+    ....
+    versionName "2.1.1"
+  }
+}
+```
+
+## Android9.0以上打包APK后HTTP请求不到解决方法
+
+错误原因：android9.0默认禁止访问不安全的请求，比如http。
+
+### 解决方案：
+方法1：  使用认证过的https（我用的是阿里云免费证书，因为使用https还得配置，所以用了http）
+
+方法2： 分为两步
+
+第一步：在res下新增加一个xml目录，然后创建一个名为network_security_config.xml文件
+
+![](./img/image6.png)<!--rehype:style=max-width: 650px;width: 100%;-->
+
+```bash
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
+```
+
+第二步：
+
+  在androidManifiest.xml文件中添加
+```bash
+android:networkSecurityConfig="@xml/network_security_config"
+```
+![](./img/image7.png)<!--rehype:style=max-width: 650px;width: 100%;-->
+
+> ⚠️ 下面还有一种方式 本质上跟第二种方法一样，简便但不规范  建议用上面的方法<!--rehype:style=background: #F08800; color: #fff;-->
+<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+在项目/android/app/src/main/AndroidManifest.xml文件中的application节点下添加
+
+```bash
+android:usesCleartextTraffic="true"
+```
+
+![](./img/image8.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
 ## 生成上传需要的秘钥
 
@@ -112,42 +165,3 @@ Android Studio 打包
 记得选择生成目录 `<项目所在目录>/android/app/build/outputs/apk`
 
 ![](./img/image5.png)<!--rehype:style=max-width: 650px;width: 100%;-->
-
-## react-native android9.0以上打包APK后HTTP请求不到解决方法
-
-错误原因：android9.0默认禁止访问不安全的请求，比如http。
-
-### 解决方案：
-方法1：  使用认证过的https（我用的是阿里云免费证书，因为使用https还得配置，所以用了http）
-
-方法2： 分为两步
-
-第一步：在res下新增加一个xml目录，然后创建一个名为network_security_config.xml文件
-
-![](./img/image6.png)<!--rehype:style=max-width: 650px;width: 100%;-->
-
-```bash
-<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-    <base-config cleartextTrafficPermitted="true" />
-</network-security-config>
-```
-
-第二步：
-
-  在androidManifiest.xml文件中添加
-```bash
-android:networkSecurityConfig="@xml/network_security_config"
-```
-![](./img/image7.png)<!--rehype:style=max-width: 650px;width: 100%;-->
-
-> ⚠️ 下面还有一种方式 本质上跟第二种方法一样，简便但不规范  建议用上面的方法<!--rehype:style=background: #F08800; color: #fff;-->
-<!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
-
-在项目/android/app/src/main/AndroidManifest.xml文件中的application节点下添加
-
-```bash
-android:usesCleartextTraffic="true"
-```
-
-![](./img/image8.png)<!--rehype:style=max-width: 650px;width: 100%;-->
