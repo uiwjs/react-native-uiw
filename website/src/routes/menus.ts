@@ -83,6 +83,8 @@ export const docsMenus: MenuData[] = [
   { path: '/docs/environment-setup/ios', name: 'iOS 环境安装' },
   { path: '/docs/environment-setup/android', name: 'Android(Mac) 环境安装' },
   { path: '/docs/environment-setup/android-windows', name: 'Android(Windows) 环境安装' },
+  { path: '/docs/environment-setup/ios-phone', name: 'iOS 真机环境安装' },
+
   { divider: true, name: 'APP 打包' },
   { path: '/docs/unpack/ios', name: 'iOS 打包' },
   { path: '/docs/unpack/android', name: 'Android(Mac) 打包' },

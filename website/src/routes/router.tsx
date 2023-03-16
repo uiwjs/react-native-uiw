@@ -34,6 +34,10 @@ export const routeData = [
         component: lazy(() => import('../pages/docs/environment-setup/android-windows')),
       },
       {
+        path: '/docs/environment-setup/ios-phone',
+        component: lazy(() => import('../pages/docs/environment-setup/ios-phone')),
+      },
+      {
         path: '/docs/app-store/ios',
         component: lazy(() => import('../pages/docs/app-store/ios')),
       },
