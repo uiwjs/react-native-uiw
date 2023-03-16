@@ -17,7 +17,7 @@ export interface ActionSheetProps extends ModalProps {
   /** 分割线样式 */
   dividerStyle?: DividerStyle;
   /** 取消的容器样式 */
-  containerStyle?: StyleProp<ViewStyle>;
+  containerStyle?: ViewStyle;
   /** 取消的文本样式 */
   textStyle?: StyleProp<TextStyle>;
   /** 动作在被触摸操作激活时以多少不透明度显示 默认 1 */
@@ -44,7 +44,7 @@ export default function ActionSheet(props: ActionSheetProps) {
     cancelText = '取消',
     dividerStyle,
     isCancel = true,
-    containerStyle,
+    containerStyle = {},
     textStyle,
     onCancel,
     ...other
