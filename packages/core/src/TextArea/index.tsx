@@ -15,10 +15,7 @@ import {
   TextInputContentSizeChangeEventData,
   PanResponder,
   PanResponderInstance,
-  LayoutChangeEvent,
 } from 'react-native';
-
-import Icon, { IconsName } from '../Icon';
 
 export interface TextAreaProps extends ViewProps {
   /** 文本位置 */
@@ -92,13 +89,13 @@ function TextArea(props: TextAreaProps) {
 
   const onChangeValue = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
     if (autoSize) {
-      setDefaultText(event.nativeEvent.text);
+      setDefaultText(event?.nativeEvent?.text);
     }
   };
 
   const onContentSizeChange = (event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => {
     if (autoSize) {
-      setHeight(event.nativeEvent.contentSize.height + 20);
+      setHeight(event?.nativeEvent?.contentSize?.height + 20);
     }
   };
 
