@@ -11,7 +11,7 @@ const DEMO = () => (
   <Preview
     {...md}
     transformImageUri={transformImageUri}
-    path="website/src/pages/docs/environment-setup/android-phone/README.md"
+    path="website/src/pages/docs/phone-run/android-phone/README.md"
   />
 );
 export default DEMO;

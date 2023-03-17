@@ -1,4 +1,4 @@
-Android 真机环境安装
+Android 真机运行
 ===
 
 本文档将指导你通过必须的步骤在设备上运行 React Native app，为生产做准备 。
