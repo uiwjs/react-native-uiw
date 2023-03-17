@@ -1,6 +1,6 @@
 {
   "name": "@example/base",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@uiw/react-native": "3.2.0",
+    "@uiw/react-native": "3.2.1",
     "react": "18.0.0",
     "react-native": "0.69.7",
     "react-native-svg": "12.1.1"

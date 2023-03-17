@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Documentation site for React Native UIW.",
   "private": true,
   "scripts": {
@@ -19,7 +19,7 @@
     "@uiw/icons": "2.5.3",
     "@uiw/react-code-preview": "3.0.0",
     "@uiw/react-markdown-preview": "^4.1.6",
-    "@uiw/react-native": "3.2.0",
+    "@uiw/react-native": "3.2.1",
     "@uiw/react-native-template": "3.0.0",
     "@uiw/reset.css": "~1.0.6",
     "@validator.tool/hook": "2.2.4",
