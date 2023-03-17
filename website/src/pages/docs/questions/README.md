@@ -278,3 +278,34 @@ Xcode 打开工程文件错误，使用 `*.xcodeproj` 打开工程会报这个�
 打开 `Kaychain Access(钥匙串访问)` 应用删除 `Apple Worldwide Developer Relations Certification Authority` 证书
 
 ![](./img/img05.png)<!--rehype:style=max-width: 650px;width: 100%;-->
+
+## React Native 0.70 版本，在iOS模拟器中Open Debugger无法启动
+
+#### `版本:`
+
+```
+"react": "18.1.0",
+"react-native": "0.70.1",
+```
+
+#### `问题`
+
+`Cmd+D > Open Debugger > console logs`:
+
+```
+info Opening flipper://null/Hermesdebuggerrn?device=React%20Native...
+error Browser exited with error:, Error: invalid url, missing http/https protocol
+```
+![](./img/img06.png)<!--rehype:style=max-width: 650px;width: 100%;-->
+
+### `解决方案一`
+
+1. 搜索关键字:`hermes_enabled`，`true改为false` `:hermes_enabled => false`<!--rehype:style=color: red;background: #ffd2d2;-->
+2. 移除Hermes引擎 `cd ios && pod install && cd ..`
+3. 重启项目 `yarn run ios`
+
+### `解决方案二`
+
+RN版本使用0.69.0
+
+
