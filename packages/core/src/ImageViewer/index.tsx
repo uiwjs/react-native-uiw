@@ -1,8 +1,9 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { StyleSheet, ViewProps, Dimensions, View, Image, Animated } from 'react-native';
+import { StyleSheet, ViewProps, Dimensions, View, Image, Animated, Text, TouchableOpacity } from 'react-native';
 import TransitionImage from '../TransitionImage';
 import MaskLayer from '../MaskLayer';
 import Swiper from '../Swiper';
+import Icon from '../Icon';
 import { ActivityIndicator } from 'react-native';
 export let ImageMainWidth = Dimensions.get('window').width;
 export let ImageMainHeight = Dimensions.get('window').height;
@@ -19,6 +20,7 @@ export interface ImageViewerDataSourceProps {
   url: string;
   [key: string]: any;
 }
+
 export interface ImageViewerProps extends ViewProps {
   /** 图片宽度 */
   width?: number;
@@ -40,6 +42,9 @@ function ImageViewer(props: ImageViewerProps) {
   const scale = useRef(new Animated.Value(1)).current; // 初始缩放比例为 1
   const lastScale = useRef(1); // 上一次的缩放比例
 
+  const rotateAngle = useRef(new Animated.Value(0)).current; // 初始化旋转角度为 0
+  const lastAngle = useRef(0); // 保存上次的旋转角度
+
   const onPinchGestureEvent = (event: PinchGestureHandlerGestureEvent) => {
     if (event.nativeEvent.scale) {
       // 更新缩放比例
@@ -53,6 +58,15 @@ function ImageViewer(props: ImageViewerProps) {
       lastScale.current *= event.nativeEvent.scale;
       scale.setValue(lastScale.current);
     }
+  };
+
+  const onRotate = () => {
+    lastAngle.current += 90; // 旋转 90 度
+    Animated.timing(rotateAngle, {
+      useNativeDriver: true,
+      toValue: lastAngle.current,
+      duration: 250,
+    }).start();
   };
 
   useEffect(() => {
@@ -74,17 +88,25 @@ function ImageViewer(props: ImageViewerProps) {
     return src;
   }, [src]);
 
-  const PinchGestureHandlerChild = (url: string) =>
-    useMemo(
-      () => (
-        <PinchGestureHandler onGestureEvent={onPinchGestureEvent} onHandlerStateChange={onPinchHandlerStateChange}>
-          <Animated.View style={[{ transform: [{ scale }] }]}>
-            <Image style={{ width: '100%', height: '100%', resizeMode: 'contain' }} source={{ uri: url }} />
-          </Animated.View>
-        </PinchGestureHandler>
-      ),
-      [src, scale],
-    );
+  const PinchGestureHandlerChild = (url: string) => (
+    <PinchGestureHandler onGestureEvent={onPinchGestureEvent} onHandlerStateChange={onPinchHandlerStateChange}>
+      <Animated.View
+        style={[
+          {
+            transform: [
+              { scale },
+              { rotate: rotateAngle.interpolate({ inputRange: [0, 360], outputRange: ['0deg', '360deg'] }) },
+            ],
+          },
+          styles.imageContainer,
+        ]}
+      >
+        <Image style={styles.image} source={{ uri: url }} />
+      </Animated.View>
+    </PinchGestureHandler>
+  );
+
+  console.log('src', typeof src);
 
   return (
     <View style={{}}>
@@ -100,6 +122,15 @@ function ImageViewer(props: ImageViewerProps) {
         }}
       />
       <MaskLayer visible={visible} onDismiss={() => setVisible(false)} opacity={0.9}>
+        {typeof src === 'string' ? (
+          <View style={{ position: 'absolute', top: 50, right: 30 }}>
+            <TouchableOpacity onPress={onRotate}>
+              <Icon color="#fff" size={18} name="reload" />
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View />
+        )}
         <Animated.View style={[styles.content, { opacity: fadeAnim }]}>
           {Array.isArray(src) ? (
             <Swiper dataSource={src} height={200} autoplay={false} index={index} />
@@ -116,6 +147,16 @@ const styles = StyleSheet.create({
   content: {
     marginTop: ImageMainHeight / 3 - 20,
     height: ImageMainHeight / 3 - 20,
+  },
+  imageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
   },
 });
 
