@@ -8,10 +8,6 @@ const transformImageUri = (url: string) => {
 };
 
 const DEMO = () => (
-  <Preview
-    {...md}
-    transformImageUri={transformImageUri}
-    path="website/src/pages/docs/environment-setup/ios-phone/README.md"
-  />
+  <Preview {...md} transformImageUri={transformImageUri} path="website/src/pages/docs/phone-run/ios-phone/README.md" />
 );
 export default DEMO;

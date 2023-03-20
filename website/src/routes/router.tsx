@@ -34,16 +34,16 @@ export const routeData = [
         component: lazy(() => import('../pages/docs/environment-setup/android-windows')),
       },
       {
-        path: '/docs/environment-setup/ios-phone',
-        component: lazy(() => import('../pages/docs/environment-setup/ios-phone')),
+        path: '/docs/phone-run/ios-phone',
+        component: lazy(() => import('../pages/docs/phone-run/ios-phone')),
       },
       {
-        path: '/docs/environment-setup/android-phone',
-        component: lazy(() => import('../pages/docs/environment-setup/android-phone')),
+        path: '/docs/phone-run/android-phone',
+        component: lazy(() => import('../pages/docs/phone-run/android-phone')),
       },
       {
-        path: '/docs/environment-setup/android-windows-phone',
-        component: lazy(() => import('../pages/docs/environment-setup/android-phone')),
+        path: '/docs/phone-run/android-windows-phone',
+        component: lazy(() => import('../pages/docs/phone-run/android-phone')),
       },
       {
         path: '/docs/app-store/ios',
