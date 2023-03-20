@@ -30,7 +30,6 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
               onOk={() => this.setState({visible: false})}
               onClosed={() => this.setState({visible: false})}
               precision="second"
-              max="2021-11-30 23:50:50"
             />
           </Body>
           <Footer />
