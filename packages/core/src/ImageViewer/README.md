@@ -8,7 +8,7 @@ ImageViewer 图片查看
 
 ### 基础示例
 
-```jsx mdx:preview&background=#bebebe29
+```jsx
 import React, { Component } from 'react';
 import { ImageViewer } from '@uiw/react-native';
 
@@ -22,7 +22,7 @@ export default Demo
 
 ### 指定图片地址
 
-```jsx mdx:preview&background=#bebebe29
+```jsx
 import React from 'react';
 import { ImageViewer } from '@uiw/react-native';
 
@@ -40,7 +40,7 @@ export default Demo
 
 ### 展示多张图片
 
-```jsx mdx:preview&background=#bebebe29
+```jsx
 import React from 'react';
 import { ImageViewer } from '@uiw/react-native';
 
