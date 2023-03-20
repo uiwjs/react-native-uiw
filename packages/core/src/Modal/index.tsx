@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useRef, useLayoutEffect } from 'react';
-import { Animated, StyleSheet, LayoutChangeEvent, Dimensions, ViewStyle, LayoutAnimation } from 'react-native';
+import React, { useState, useMemo, useRef } from 'react';
+import { Animated, StyleSheet, LayoutChangeEvent, Dimensions, ViewStyle } from 'react-native';
 import MaskLayer, { MaskLayerProps } from '../MaskLayer';
 
 let MainWidth = Dimensions.get('window').width;
@@ -23,9 +23,7 @@ const Modal = (props: ModalProps = {}) => {
   function onDismiss() {
     onClosed && onClosed();
   }
-
   function measureContainer(event: LayoutChangeEvent) {
-    LayoutAnimation.linear(); //加入该函数进行布局平滑过渡动画
     const { height, width } = event.nativeEvent.layout;
     if (!layoutHeight && isVertical) {
       setLayoutHeight(height);
@@ -35,7 +33,7 @@ const Modal = (props: ModalProps = {}) => {
     }
   }
 
-  useLayoutEffect(() => {
+  useMemo(() => {
     function getTransformSize() {
       if (placement === 'top') {
         return -layoutHeight;
@@ -110,7 +108,6 @@ const Modal = (props: ModalProps = {}) => {
       </Animated.View>
     </Animated.View>
   );
-
   return (
     <MaskLayer {...otherProps} visible={visible} onDismiss={onDismiss}>
       {child}
