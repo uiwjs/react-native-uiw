@@ -286,3 +286,29 @@ error Browser exited with error:, Error: invalid url, missing http/https protoco
 RN版本使用0.69.0
 
 
+## React Native 0.70.0 iOs fresh project errors out on run-ios
+#### 请保证你的ruby版本为2.7.5或更高版本
+你可以使用 [ruby](https://github.com/rbenv/rbenv#readme) 来管理你的ruby版本
+
+```
+bundle install
+cd ios && bundle exec pod install
+```
+
+## MacBook Pro with a M1
+
+```bash
+# Install ffi
+sudo arch -x86_64 gem install ffi
+
+rm -rf Pods Podfile.lock
+
+# Clear pods.
+pod deintegrate
+# pod rm Podfile.lock
+arch -x86_64 pod install
+# Re-install pods
+arch -x86_64 pod install --repo-update --verbose
+
+yarn run ios # Run instructions for iOS
+```

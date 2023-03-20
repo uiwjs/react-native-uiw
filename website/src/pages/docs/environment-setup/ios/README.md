@@ -154,15 +154,36 @@ $ cd AwesomeProject  # 根目录运行
 $ yarn install # 安装node依赖
 ```
 
-React Naitve 0.70+ 运行下面命令
+**🚧🚧 如果你要运行 `react-native@0.70.0` or 或更高版本**
+[help](https://github.com/facebook/react-native/issues/34608#)
+#### 请保证你的ruby版本为2.7.5或更高版本
+你可以使用 [ruby](https://github.com/rbenv/rbenv#readme) 来管理你的ruby版本
 
-```bash
-$ cd ios # 进入 ios 目录
-$ bundle install # 安装 Bundler
-$ bundle exec pod install # 以安装 iOS 依赖项
+```
+bundle install
+cd ios && bundle exec pod install
 ```
 
-React Naitve 0.60+ 运行下面命令
+**🚧🚧 MacBook Pro with a M1 🚧🚧**
+
+```bash
+# Install ffi
+sudo arch -x86_64 gem install ffi
+
+rm -rf Pods Podfile.lock
+
+# Clear pods.
+pod deintegrate
+# pod rm Podfile.lock
+arch -x86_64 pod install
+# Re-install pods
+arch -x86_64 pod install --repo-update --verbose
+
+yarn run ios # Run instructions for iOS
+yarn run api
+```
+
+## React Naitve 0.60+ 运行下面命令
 
 ```bash
 $ cd ios # 进入 ios 目录
