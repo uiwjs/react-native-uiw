@@ -77,7 +77,22 @@ $ npx react-native run-android
 6. 输入你电脑的 `IP 地址和端口号`（譬如 10.0.1.1:8081）。`在 Mac 上`<!--rehype:style=color: red;background: #ffd2d2;-->，你可以在系统设置/网络里找查询你的 IP 地址。`在 Windows 上`<!--rehype:style=color: red;background: #ffd2d2;-->，打开命令提示符并输入`ipconfig`来查询你的 IP 地址。`在 Linux 上`<!--rehype:style=color: red;background: #ffd2d2;-->你可以在终端中输入`ifconfig`来查询你的 IP 地址。
 7. 回到`开发者菜单`<!--rehype:style=color: red;background: #ffd2d2;-->然后选择`Reload JS`。
 
-你现在可以从[开发者菜单](https://reactnative.cn/docs/debugging#accessing-the-in-app-developer-menu)启用实时重新加载。只要你的 JavaScript 代码发生更改，应用就会重新加载。
+你现在可以从开发者菜单启用实时重新加载。只要你的 JavaScript 代码发生更改，应用就会重新加载。
+## 开发模式弹出开发者菜单刷新应用
+
+命令行支持*打开开发者菜单*，和其它的一些操作
+
+- r - 重新加载应用
+- d - 打开开发者菜单
+- i - 在 iOS 上运行
+- a - 在 Android 上运行
+
+
+#### Android
+
+按两次 <kbd>R</kbd> 键或从开发者菜单(<kbd>⌘</kbd><kbd>M</kbd>)中选择重新加载(Reload)以预览您的更改。
+
+> 如果没有起作用可以在命令行使用 `adb shell input keyevent 82` 命令唤起**开发者菜单**
 
 ## 恭喜
 恭喜！ 你已经使用 React Native 构建了一个很棒的应用程序。
