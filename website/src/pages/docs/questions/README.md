@@ -286,7 +286,7 @@ error Browser exited with error:, Error: invalid url, missing http/https protoco
 RN版本使用0.69.0
 
 
-## React Native 0.70.0 iOs fresh project errors out on run-ios
+## React Native 0.70.0 ios fresh project errors out on run-ios
 #### 请保证你的ruby版本为2.7.5或更高版本
 你可以使用 [ruby](https://github.com/rbenv/rbenv#readme) 来管理你的ruby版本
 
