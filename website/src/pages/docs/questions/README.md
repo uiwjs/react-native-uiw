@@ -5,7 +5,7 @@ React Native
 
 一些 React Native 开发上遇到的问题简单记录。
 
-## 修改 App 在手机上展示的名称
+## 1.修改 App 在手机上展示的名称
 
 #### Android
 
@@ -26,7 +26,7 @@ React Native
 <string>这里填写名称</string>
 ```
 
-## 修改 App 在手机上展示的图标
+## 2.修改 App 在手机上展示的图标
 
 #### Android
 
@@ -42,7 +42,7 @@ React Native
 
 ![](./img/img01.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
-## 判断 Release/Debug 用于调试
+## 3.判断 Release/Debug 用于调试
 
 #### Android
 
@@ -77,7 +77,7 @@ if (__DEV__) {
 }
 ```
 
-## 开发模式弹出开发者菜单刷新应用
+## 4.开发模式弹出开发者菜单刷新应用
 
 命令行支持*打开开发者菜单*，和其它的一些操作
 
@@ -97,7 +97,7 @@ if (__DEV__) {
 
 使用 <kbd>⌘</kbd><kbd>R</kbd> 让您的 IOS 模拟器重新加载本地项目，使用 <kbd>⌘</kbd><kbd>T</kbd> 弹出开发者菜单。
 
-## 设置允许 HTTP 请求访问
+## 5.设置允许 HTTP 请求访问
 
 #### Android
 
@@ -136,7 +136,7 @@ if (__DEV__) {
 </dict>
 ```
 
-## 真机配置 IP 调试
+## 6.真机配置 IP 调试
 
 #### 配置说明
 
@@ -157,7 +157,7 @@ if (__DEV__) {
 
 > `Xcode` => `Product` => `Scheme` => `Edit Scheme...` => `Run` => `Info` => `Build Configuration` => `Debug`
 
-## Xcode 不用数据线真机调试
+## 7.Xcode 不用数据线真机调试
 
 通过菜单 `Xcode` => `Product` => `Destination` => `Add Additional Simulators...` 打开设置界面，勾选 `Connect via network`。
 
@@ -169,7 +169,7 @@ if (__DEV__) {
 2. 然后再去勾选 `connect via network`；
 3. 这时手机上会提示信任界面，点击确认即可。
 
-## 打包修改 APP 版本号
+## 8.打包修改 APP 版本号
 
 #### Android
 
@@ -194,7 +194,7 @@ android {
 <string>1.2.0</string>
 ```
 
-## 常见错误
+## 9.常见错误
 
 ### 应用反应缓慢，出现卡顿问题
 
@@ -256,7 +256,7 @@ Xcode 打开工程文件错误，使用 `*.xcodeproj` 打开工程会报这个�
 
 ![](./img/img05.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
-## React Native 0.70 版本，在iOS模拟器中Open Debugger无法启动
+## 10.React Native 0.70 版本，在iOS模拟器中Open Debugger无法启动
 
 #### `版本:`
 
@@ -286,16 +286,39 @@ error Browser exited with error:, Error: invalid url, missing http/https protoco
 RN版本使用0.69.0
 
 
-## React Native 0.70.0 ios fresh project errors out on run-ios
-#### 请保证你的ruby版本为2.7.5或更高版本
-你可以使用 [ruby](https://github.com/rbenv/rbenv#readme) 来管理你的ruby版本
+## 11.React Native 0.70.0 ios fresh project errors out on run-ios
+请保证你的ruby版本为`2.7.5`<!--rehype:style=color: red;background: #ffd2d2;-->或`更高版本`<!--rehype:style=color: red;background: #ffd2d2;-->,你可以使用 [rbenv](https://github.com/rbenv/rbenv#readme) 来管理你的ruby版本
 
+#### 1.`安装 rbenv`
+```
+$ brew install rbenv ruby-build # macOS
+# Debian、ubuntu 和其他衍生产品
+$ sudo apt install rbenv
+```
+
+#### 2.`管理 ruby`
+```
+# 列出最新的稳定版本
+$ rbenv install -l
+# 列出所有本地版本
+$ rbenv install -L
+# 安装 Ruby 版本
+$ rbenv install 3.1.2
+$ rbenv global 3.1.2 # 为这台机器设置默认Ruby版本
+# 或者
+$ rbenv local 3.1.2 # 设置此目录的 Ruby 版本
+$ rbenv local --unset
+$ rbenv version # 显示当前活动的 Ruby 版本
+=> 1.9.3-p327 (set by /Users/sam/.rbenv/version)
+```
+
+#### 3.`在项目中，输入以下命令`
 ```
 bundle install
 cd ios && bundle exec pod install
 ```
 
-## MacBook Pro with a M1
+## 12.MacBook Pro with a M1
 
 ```bash
 # Install ffi

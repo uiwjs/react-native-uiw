@@ -265,19 +265,6 @@ yarn react-native run-android
 
 如果您无法使其正常工作，请参阅[故障排除页面](https://reactnative.dev/docs/troubleshooting#content)。
 
-## 开发模式弹出开发者菜单刷新应用
-
-命令行支持*打开开发者菜单*，和其它的一些操作
-
-1. `r` - 重新加载应用
-2. `d` - 打开开发者菜单
-3. `i` - 在 iOS 上运行
-4. `a` - 在 Android 上运行
-
-按两次 <kbd>R</kbd> 键或从开发者菜单(<kbd>⌘</kbd><kbd>M</kbd>)中选择重新加载(Reload)以预览您的更改。
-
-> 如果没有起作用可以在命令行使用 `adb shell input keyevent 82` 命令唤起**开发者菜单**
-
 ## 修改你的应用
 
 现在您已成功运行该应用程序，让我们对其进行修改。
