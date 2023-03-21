@@ -269,10 +269,10 @@ yarn react-native run-android
 
 命令行支持*打开开发者菜单*，和其它的一些操作
 
-- r - 重新加载应用
-- d - 打开开发者菜单
-- i - 在 iOS 上运行
-- a - 在 Android 上运行
+1. `r` - 重新加载应用
+2. `d` - 打开开发者菜单
+3. `i` - 在 iOS 上运行
+4. `a` - 在 Android 上运行
 
 按两次 <kbd>R</kbd> 键或从开发者菜单(<kbd>⌘</kbd><kbd>M</kbd>)中选择重新加载(Reload)以预览您的更改。
 
