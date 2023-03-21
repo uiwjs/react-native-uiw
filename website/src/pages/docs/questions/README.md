@@ -287,7 +287,7 @@ RN版本使用0.69.0
 
 
 ## 11.React Native 0.70.0 ios fresh project errors out on run-ios
-请保证你的ruby版本为`2.7.5`<!--rehype:style=color: red;background: #ffd2d2;-->或`更高版本`<!--rehype:style=color: red;background: #ffd2d2;-->,你可以使用 [rbenv](https://github.com/rbenv/rbenv#readme) 来管理你的ruby版本
+请保证你的ruby版本为`2.7.5`<!--rehype:style=color: red;background: #ffd2d2;-->或`更高版本`<!--rehype:style=color: red;background: #ffd2d2;-->,你可以使用 [rbenv](https://github.com/rbenv/rbenv#readme) 或 [RVM ](https://www.ruby-lang.org/en/documentation/installation/#rvm) 来管理你的ruby版本
 
 #### 1.`安装 rbenv`
 ```
@@ -296,7 +296,7 @@ $ brew install rbenv ruby-build # macOS
 $ sudo apt install rbenv
 ```
 
-#### 2.`管理 ruby`
+#### 2.`管理 ruby版本`
 ```
 # 列出最新的稳定版本
 $ rbenv install -l
