@@ -38,7 +38,12 @@ export default function ActionSheetItem(props: ActionSheetItemProps) {
   } = props;
 
   return (
-    <TouchableHighlight activeOpacity={activeOpacity} underlayColor={underlayColor} onPress={onPress}>
+    <TouchableHighlight
+      style={styles.touchableHighlightItem}
+      activeOpacity={activeOpacity}
+      underlayColor={underlayColor}
+      onPress={onPress}
+    >
       <View style={StyleSheet.flatten([styles.actionSheetItem, containerStyle])}>
         <Text style={StyleSheet.flatten([styles.actionSheetItemText, textStyle])}>{children}</Text>
       </View>
@@ -49,12 +54,18 @@ export default function ActionSheetItem(props: ActionSheetItemProps) {
 const styles = StyleSheet.create({
   actionSheetItem: {
     width: MainWidth,
-    height: 50,
+    height: 60,
     justifyContent: 'center',
     alignItems: 'center',
   },
   actionSheetItemText: {
     fontSize: 20,
     fontWeight: '400',
+  },
+  touchableHighlightItem: {
+    borderTopRightRadius: 12,
+    borderTopLeftRadius: 12,
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
   },
 });
