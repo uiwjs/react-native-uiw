@@ -85,31 +85,34 @@ export default function ActionSheet(props: ActionSheetProps) {
   return (
     <Modal
       placement="bottom"
-      animationType="fade" // slide  none  fade
+      animationType="slide" // slide  none  fade
       transparent={true}
       {...other}
       visible={state.stateVisible}
       onClosed={onModalClose}
     >
-      <View>
-        {React.Children.toArray(children).map((item, index) => (
-          <View key={index}>
-            {index !== 0 && <View style={StyleSheet.flatten([styles.itemDivider, dividerStyle?.itemDivider])} />}
-            {React.cloneElement(item as React.DetailedReactHTMLElement<any, HTMLElement>, {
-              activeOpacity: activeOpacity,
-              underlayColor: underlayColor,
-            })}
-          </View>
-        ))}
-        <View style={StyleSheet.flatten([styles.actionDivider, dividerStyle?.actionDivider])} />
-        <ActionSheetItem
-          activeOpacity={activeOpacity}
-          underlayColor={underlayColor}
-          onPress={() => onCancel?.()}
-          children={cancelText}
-          containerStyle={containerStyle}
-          textStyle={textStyle}
-        />
+      <View style={styles.actionSheetModalView}>
+        <View style={styles.actionSheetModalViewContent}>
+          {React.Children.toArray(children).map((item, index) => (
+            <View key={index}>
+              {index !== 0 && <View style={StyleSheet.flatten([styles.itemDivider, dividerStyle?.itemDivider])} />}
+              {React.cloneElement(item as React.DetailedReactHTMLElement<any, HTMLElement>, {
+                activeOpacity: activeOpacity,
+                underlayColor: underlayColor,
+              })}
+            </View>
+          ))}
+        </View>
+        <View style={styles.actionSheetModalViewClose}>
+          <ActionSheetItem
+            activeOpacity={activeOpacity}
+            underlayColor={underlayColor}
+            onPress={() => onCancel?.()}
+            children={cancelText}
+            containerStyle={containerStyle}
+            textStyle={textStyle}
+          />
+        </View>
       </View>
     </Modal>
   );
@@ -117,13 +120,44 @@ export default function ActionSheet(props: ActionSheetProps) {
 
 const styles = StyleSheet.create({
   actionDivider: {
-    backgroundColor: 'rgba(197,217,232,.3)',
+    backgroundColor: 'rgba(95,95,95,.3)',
     width: MainWidth,
-    height: 6,
+    height: 10,
   },
   itemDivider: {
-    backgroundColor: 'rgba(197,217,232,.3)',
-    height: 2,
+    backgroundColor: 'rgba(95,95,95,.3)',
+    height: 1,
     width: MainWidth,
+    marginRight: 15,
+  },
+  actionSheetModalView: {
+    flex: 1,
+    backgroundColor: 'rgba(00,00,00,.6)',
+  },
+  // 取消
+  actionSheetModalViewClose: {
+    backgroundColor: '#fff',
+    marginTop: 8,
+    marginLeft: 8,
+    marginRight: 8,
+    marginBottom: 16,
+    borderTopRightRadius: 12,
+    borderTopLeftRadius: 12,
+    borderBottomRightRadius: 12,
+    borderBottomLeftRadius: 12,
+    outline: 'none',
+    boxShadow: 'none',
+  },
+  // 内容
+  actionSheetModalViewContent: {
+    marginLeft: 8,
+    marginRight: 8,
+    backgroundColor: '#fff',
+    borderTopRightRadius: 12,
+    borderTopLeftRadius: 12,
+    borderBottomRightRadius: 12,
+    borderBottomLeftRadius: 12,
+    outline: 'none',
+    boxShadow: 'none',
   },
 });
