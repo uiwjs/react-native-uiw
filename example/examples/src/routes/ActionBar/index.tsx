@@ -18,7 +18,7 @@ export default class ActionBarDemo extends React.Component<ActionBarProps> {
         <View style={{flex: 1}}>
           <ActionBar
             scroll={false}
-            backgroundColor="#5847FF"
+            // backgroundColor="#5847FF"
             actions={[
               {
                 label: 'Delete',

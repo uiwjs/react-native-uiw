@@ -1,3 +1,6 @@
+import theme from './theme';
+import ThemeProvider from './theme-provider';
+
 export { default as Avatar } from './Avatar';
 export * from './Avatar';
 export { default as Badge } from './Badge';
@@ -154,3 +157,5 @@ export * from './Typography/Div';
 export * from './Typography/Hr';
 export * from './Typography/Em';
 export * from './Typography/RnText';
+
+export { theme, ThemeProvider };
