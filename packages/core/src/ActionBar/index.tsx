@@ -20,6 +20,8 @@ import {
 import { useSetState } from 'ahooks';
 import RnText from '../Typography/RnText';
 import { last } from '../utils/utils';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
 
 export interface ActionBarActionsProps {
   label?: string;
@@ -39,18 +41,20 @@ export type ActionBarProps = {
   focusIndex?: number;
 };
 
-function ActionBar({
-  actions = [],
-  style,
-  keepAbsoulte = true,
-  height = 48,
-  backgroundColor = '#fff',
-  scroll = false,
-  useSafeArea = true,
-  focusIndex = 0,
-}: ActionBarProps) {
+function ActionBar(props: ActionBarProps) {
   const ios = Platform.OS === 'ios';
   const baseRef: any = useRef();
+  const theme = useTheme<Theme>();
+  const {
+    actions = [],
+    style,
+    keepAbsoulte = true,
+    height = 48,
+    backgroundColor = theme.colors.primary_background,
+    scroll = false,
+    useSafeArea = true,
+    focusIndex = 0,
+  } = props;
 
   const [state, setState] = useSetState<any>({
     itemsLayouts: {}, // items/layout
@@ -66,7 +70,11 @@ function ActionBar({
 
   const Component: any = scroll ? ScrollView : useSafeArea && ios ? SafeAreaView : View;
 
-  const styles = createStyles({ height: height, backgroundColor: backgroundColor });
+  const styles = createStyles({
+    height: height,
+    backgroundColor: backgroundColor,
+    shadowColor: theme.colors.gray300,
+  });
 
   useEffect(() => {
     scroll && onFocusIndex(focusIndex);
@@ -176,7 +184,7 @@ function ActionBar({
           style={{
             width: 76,
             height: heightToUse,
-            tintColor: '#fff',
+            tintColor: theme.colors.white,
             transform: imageTransform,
           }}
           resizeMode="stretch"
@@ -228,7 +236,13 @@ function ActionBar({
   );
 }
 
-function createStyles({ height, backgroundColor }: any) {
+type CreStyle = {
+  height: number;
+  backgroundColor: string;
+  shadowColor: string;
+};
+
+function createStyles({ height, backgroundColor, shadowColor }: CreStyle) {
   return StyleSheet.create({
     container: {
       height,
@@ -239,7 +253,7 @@ function createStyles({ height, backgroundColor }: any) {
       ...StyleSheet.absoluteFillObject,
       top: undefined,
       backgroundColor,
-      shadowColor: '#43515C',
+      shadowColor: shadowColor,
       shadowOpacity: 0.06,
       shadowRadius: 18.5,
     },
