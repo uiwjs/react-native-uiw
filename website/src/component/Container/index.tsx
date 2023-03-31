@@ -25,7 +25,7 @@ export default function Container(props: ContainerProps) {
       <Header enableStyle={/\/(team)/.test(path)} showBorder={/\/(home)/.test(path)} path={path} />
       <div className={styles.warpper}>
         {data && data.length > 0 && <SubMenus data={data} />}
-        <div className={styles.content} style={{ flex: 1, overflow: 'hidden' }}>
+        <div className={data && data.length > 0 ? styles.content : styles.home} style={{ flex: 1, overflow: 'hidden' }}>
           <Outlet />
         </div>
       </div>
