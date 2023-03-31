@@ -15,7 +15,6 @@ export interface IndexState {
 
 export default class Index extends Component<IndexProps, IndexState> {
   static state: IndexState;
-  ref = React.createRef<SearchInputBar>();
   constructor(props: IndexProps) {
     super(props);
     this.state = {
@@ -38,12 +37,9 @@ export default class Index extends Component<IndexProps, IndexState> {
       <Container keyboardShouldPersistTaps="always">
         <Layout>
           <Header title={title} description={description} />
-          <Body
-            keyboardShouldPersistTaps="always"
-            style={{paddingHorizontal: 10}}>
+          <Body keyboardShouldPersistTaps="always" style={{paddingHorizontal: 10}}>
             <View style={styles.divider} />
             <SearchInputBar
-              ref={this.ref}
               onChangeText={val => this.onChangeText(val, 'value')}
               onClear={() => this.onClear('value')}
               placeholder="请输入搜索关键字..."
@@ -58,7 +54,6 @@ export default class Index extends Component<IndexProps, IndexState> {
               }}
               touchProps={{
                 onPress: () => {
-                  console.log('object', this.ref);
                   this.setState({loading: true}, () => {
                     setTimeout(() => {
                       this.setState({loading: false});
