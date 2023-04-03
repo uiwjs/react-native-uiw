@@ -14,6 +14,8 @@ import {
   StyleProp,
 } from 'react-native';
 import Icon, { IconsName } from '../Icon';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -32,7 +34,8 @@ export interface DragDrawerProps extends ViewProps {
 }
 
 function DragDrawer(props: DragDrawerProps) {
-  const { drawerBackgroundColor = '#fff', drawerHeight = 300, children, icon, style } = props;
+  const theme = useTheme<Theme>();
+  const { drawerBackgroundColor = theme.colors.white, drawerHeight = 300, children, icon, style } = props;
 
   const [animatedViewHeight, setAnimatedViewHeight] = useState(new Animated.Value(drawerHeight));
   const [viewHeight, setViewHeight] = useState(drawerHeight);
@@ -109,9 +112,17 @@ function DragDrawer(props: DragDrawerProps) {
    *  */
   const IconCustom = (icon?: IconsName | React.ReactElement | React.ReactNode) => {
     if (icon) {
-      return <>{typeof icon === 'string' ? <Icon name={icon as IconsName} size={25} color="#8F8F8F" /> : icon}</>;
+      return (
+        <>
+          {typeof icon === 'string' ? (
+            <Icon name={icon as IconsName} size={25} color={theme.colors.primary_background} />
+          ) : (
+            icon
+          )}
+        </>
+      );
     } else {
-      return <Icon name="minus" size={25} color="#8F8F8F" />;
+      return <Icon name="minus" size={25} color={theme.colors.primary_background} />;
     }
   };
 

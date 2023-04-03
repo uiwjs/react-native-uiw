@@ -14,6 +14,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import Flex from '../Flex';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 interface MaybeTextOrViewProps {
   children?: React.ReactNode;
@@ -26,17 +28,23 @@ function MaybeTextOrView({ children, ...otherProps }: MaybeTextOrViewProps & Tex
   return <View {...otherProps}>{children}</View>;
 }
 
-const styles = StyleSheet.create({
-  defalut: {
-    backgroundColor: '#fff',
-  },
-  touchWarpper: {
-    flex: 1,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+type CreStyle = {
+  color: string;
+};
+
+function createStyles({ color }: CreStyle) {
+  return StyleSheet.create({
+    defalut: {
+      backgroundColor: color,
+    },
+    touchWarpper: {
+      flex: 1,
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
+}
 
 interface ItemData {
   icon?: React.ReactNode;
@@ -72,6 +80,12 @@ export interface GridProps extends ViewProps {
 }
 
 export default function Grid(props: GridProps) {
+  const theme = useTheme<Theme>();
+
+  const styles = createStyles({
+    color: theme.colors.white,
+  });
+
   const {
     style,
     data = [],
@@ -152,8 +166,8 @@ export default function Grid(props: GridProps) {
               itemBorderStyle.borderBottomWidth = childs.length - 1 === rowidx ? 0 : hairLineWidth;
               itemBorderStyle.borderRightWidth =
                 rowitem.length - 1 === idx && rowitem.length === columns ? 0 : hairLineWidth;
-              itemBorderStyle.borderBottomColor = '#ddd';
-              itemBorderStyle.borderRightColor = '#ddd';
+              itemBorderStyle.borderBottomColor = theme.colors.gray100;
+              itemBorderStyle.borderRightColor = theme.colors.gray100;
             }
             return React.cloneElement(item as React.ReactElement, {
               key: idx,
