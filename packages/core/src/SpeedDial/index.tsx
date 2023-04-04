@@ -14,6 +14,8 @@ import {
 import Icon, { IconsName } from '../Icon';
 import { icoType } from '../Rating';
 import Item, { SpeedDialItemProps } from './SpeedDialItem';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -51,6 +53,11 @@ export interface SpeedDialProps {
 }
 
 function SpeedDial(props: SpeedDialProps) {
+  const theme = useTheme<Theme>();
+
+  const styles = createStyles({
+    bgColor: theme.colors.primary_background,
+  });
   const {
     icon = ['plus', 'close'],
     style,
@@ -113,14 +120,14 @@ function SpeedDial(props: SpeedDialProps) {
     if (icon[0] instanceof Object) {
       return <React.Fragment>{icon[0]}</React.Fragment>;
     } else {
-      return <Icon name={icon[0] as IconsName} color="#fff" size={18} />;
+      return <Icon name={icon[0] as IconsName} color={theme.colors.white} size={18} />;
     }
   }, []);
   const CloseDom = useMemo(() => {
     if (icon[1] instanceof Object) {
       return <React.Fragment>{icon[1]}</React.Fragment>;
     } else {
-      return <Icon name={icon[1] as IconsName} color="#fff" size={18} />;
+      return <Icon name={icon[1] as IconsName} color={theme.colors.white} size={18} />;
     }
   }, []);
   const onOpenHome = () => {
@@ -174,24 +181,30 @@ function SpeedDial(props: SpeedDialProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  fadingContainer: {
-    alignItems: 'flex-end',
-    opacity: 0,
-  },
-  viewPosition: {
-    position: 'absolute',
-  },
+type CreStyle = {
+  bgColor: string;
+};
 
-  homeContainer: {
-    width: 60,
-    height: 60,
-    backgroundColor: '#b779e2',
-    borderRadius: 30,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+function createStyles({ bgColor }: CreStyle) {
+  return StyleSheet.create({
+    fadingContainer: {
+      alignItems: 'flex-end',
+      opacity: 0,
+    },
+    viewPosition: {
+      position: 'absolute',
+    },
+
+    homeContainer: {
+      width: 60,
+      height: 60,
+      backgroundColor: bgColor,
+      borderRadius: 30,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  });
+}
 
 export default SpeedDial;
