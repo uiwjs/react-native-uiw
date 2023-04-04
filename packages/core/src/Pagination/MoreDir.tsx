@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, ViewStyle, TextStyle, StyleSheet, Text, TextInput } from 'react-native';
 import { size } from './index';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export enum containerSize {
   small = 30,
@@ -21,6 +23,11 @@ export interface MoreDirProps {
 }
 
 const MoreDir = (props: MoreDirProps) => {
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    boxColor: theme.colors.primary_background,
+  });
+
   const { setCurrent, current } = props;
   const [jumpCurrent, setJumpCurrent] = useState(1);
 
@@ -51,23 +58,27 @@ const MoreDir = (props: MoreDirProps) => {
   );
 };
 
-export const containerStyle: ViewStyle = {
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginLeft: 5,
+type CreStyle = {
+  boxColor: string;
 };
-export const inputStyle: ViewStyle | TextStyle = {
-  height: 27,
-  width: 33,
-  borderColor: 'gray',
-  borderWidth: 0.5,
-  textAlign: 'center',
-  padding: 2,
-  marginHorizontal: 3,
-};
-const styles = StyleSheet.create({
-  containerStyle,
-  inputStyle,
-});
+
+function createStyles({ boxColor }: CreStyle) {
+  return StyleSheet.create({
+    containerStyle: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginLeft: 5,
+    },
+    inputStyle: {
+      height: 27,
+      width: 33,
+      borderColor: boxColor,
+      borderWidth: 0.5,
+      textAlign: 'center',
+      padding: 2,
+      marginHorizontal: 3,
+    },
+  });
+}
 export default MoreDir;
