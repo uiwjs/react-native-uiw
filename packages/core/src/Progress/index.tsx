@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Animated, View, StyleSheet, ViewProps, LayoutChangeEvent, Text } from 'react-native';
 import { run } from './svg';
 import Icon from '../Icon';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 type PositionType = 'fixed' | 'relative';
 
@@ -26,6 +28,7 @@ export interface ProgressProps extends ViewProps {
 }
 
 export default (props: ProgressProps) => {
+  const theme = useTheme<Theme>();
   const {
     iconShow = false,
     progressShow = true,
@@ -33,7 +36,7 @@ export default (props: ProgressProps) => {
     xml = run,
     style,
     progress = 0,
-    progressColor = '#108ee9',
+    progressColor = theme.colors.primary_background,
     position,
     animation = { duration: 500 },
   } = props;

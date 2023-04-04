@@ -15,6 +15,8 @@ import MaskLayer from '../MaskLayer';
 import SearchInputBar, { SearchInputBarProps } from '../SearchInputBar';
 import List from '../List';
 import Icon from '../Icon';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 interface SearchBarProps extends Omit<SearchInputBarProps, 'onChange' | 'value'> {
   onChangeText?: (value: string) => void;
@@ -56,6 +58,15 @@ function SearchBar({
   placeholderColor,
   ...searchInputBarProps
 }: SearchBarProps) {
+  const theme = useTheme<Theme>();
+
+  const styles = createStyles({
+    bgColor: theme.colors.gray50,
+    contentColor: theme.colors.black,
+    iconColor: theme.colors.white,
+    cancelColor: theme.colors.gray400,
+  });
+
   const [curValue, setCurValue] = useState<any>(value);
   const [visible, setVisivble] = useState(false);
   let textValue;
@@ -97,10 +108,10 @@ function SearchBar({
             }}
             style={{ paddingRight: 3 }}
           >
-            <Icon name="circle-close-o" size={18} color="#ccc" />
+            <Icon name="circle-close-o" size={18} color={theme.colors.gray200} />
           </Pressable>
         ) : (
-          <Icon name="right" size={18} color="#A19EA0" />
+          <Icon name="right" size={18} color={theme.colors.gray300} />
         )}
       </View>
     </Pressable>
@@ -109,7 +120,7 @@ function SearchBar({
       <SafeAreaView style={styles.container}>
         <SearchInputBar
           loading={loading}
-          containerStyle={{ backgroundColor: '#fff', marginHorizontal: 10 }}
+          containerStyle={{ backgroundColor: theme.colors.white, marginHorizontal: 10 }}
           autoFocus
           showActionButton
           placeholder="输入搜索..."
@@ -130,7 +141,7 @@ function SearchBar({
           {...searchInputBarProps}
         />
         {loading ? (
-          <ActivityIndicator color="#0A0258" size="large" style={styles.loading} />
+          <ActivityIndicator color={theme.colors.gray500} size="large" style={styles.loading} />
         ) : (
           <List style={styles.list}>
             {options.map((itm) => (
@@ -160,51 +171,60 @@ function SearchBar({
 
 export default memo(SearchBar);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F5F5',
-  },
-  contentTitle: {
-    fontSize: 16,
-    color: 'black',
-  },
-  icon: {
-    backgroundColor: '#fff',
-    paddingLeft: 10,
-    justifyContent: 'center',
-  },
-  cancel: {
-    color: '#7C7D7E',
-    paddingRight: 10,
-    justifyContent: 'center',
-  },
-  list: {
-    marginLeft: 10,
-    marginTop: 10,
-    marginRight: 10,
-  },
-  loading: {
-    position: 'absolute',
-    top: '20%',
-    left: '45%',
-  },
-  content: {
-    flexDirection: 'row',
-    height: 35,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingRight: 5,
-    backgroundColor: '#fff',
-    paddingHorizontal: 16,
-  },
-  disabled: {
-    flexDirection: 'row',
-    height: 35,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingRight: 5,
-    backgroundColor: '#f5f5f5',
-    paddingHorizontal: 16,
-  },
-});
+type CreStyle = {
+  bgColor: string;
+  contentColor: string;
+  iconColor: string;
+  cancelColor: string;
+};
+
+function createStyles({ bgColor, contentColor, iconColor, cancelColor }: CreStyle) {
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: bgColor,
+    },
+    contentTitle: {
+      fontSize: 16,
+      color: contentColor,
+    },
+    icon: {
+      backgroundColor: iconColor,
+      paddingLeft: 10,
+      justifyContent: 'center',
+    },
+    cancel: {
+      color: cancelColor,
+      paddingRight: 10,
+      justifyContent: 'center',
+    },
+    list: {
+      marginLeft: 10,
+      marginTop: 10,
+      marginRight: 10,
+    },
+    loading: {
+      position: 'absolute',
+      top: '20%',
+      left: '45%',
+    },
+    content: {
+      flexDirection: 'row',
+      height: 35,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingRight: 5,
+      backgroundColor: iconColor,
+      paddingHorizontal: 16,
+    },
+    disabled: {
+      flexDirection: 'row',
+      height: 35,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingRight: 5,
+      backgroundColor: bgColor,
+      paddingHorizontal: 16,
+    },
+  });
+}

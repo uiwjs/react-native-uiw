@@ -14,6 +14,8 @@ import {
   Platform,
   Pressable,
 } from 'react-native';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export interface PickerData {
   label?: string;
@@ -52,6 +54,13 @@ export interface PickerProps {
 }
 
 const Picker = (props: PickerProps) => {
+  const theme = useTheme<Theme>();
+
+  const styles = createStyles({
+    bgColor: theme.colors.gray100,
+    textColor: theme.colors.black,
+    acTextColor: theme.colors.primary_background,
+  });
   const {
     lines = 3,
     rowKey = 'label',
@@ -232,31 +241,39 @@ const Picker = (props: PickerProps) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 0,
-    paddingHorizontal: 0,
-  },
-  border: {
-    backgroundColor: '#E6E6E6',
-    height: 1,
-    position: 'relative',
-    zIndex: 999,
-    paddingVertical: 0,
-    paddingHorizontal: 0,
-  },
-  textStyle: {
-    fontSize: 20,
-    color: '#000',
-    paddingVertical: 0,
-    paddingHorizontal: 0,
-  },
-  acTextStyle: {
-    color: '#1677ff',
-  },
-});
+type CreStyle = {
+  bgColor: string;
+  textColor: string;
+  acTextColor: string;
+};
+
+function createStyles({ bgColor, textColor, acTextColor }: CreStyle) {
+  return StyleSheet.create({
+    container: {
+      height: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingVertical: 0,
+      paddingHorizontal: 0,
+    },
+    border: {
+      backgroundColor: bgColor,
+      height: 1,
+      position: 'relative',
+      zIndex: 999,
+      paddingVertical: 0,
+      paddingHorizontal: 0,
+    },
+    textStyle: {
+      fontSize: 20,
+      color: textColor,
+      paddingVertical: 0,
+      paddingHorizontal: 0,
+    },
+    acTextStyle: {
+      color: acTextColor,
+    },
+  });
+}
 
 export default Picker;
