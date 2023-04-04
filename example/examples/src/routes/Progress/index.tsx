@@ -27,17 +27,21 @@ const ProgressDemo = (props: any) => {
       <Header title={title} description={description} />
       <Body>
         <Header description={'基本使用'} />
-        <Progress progressColor="#5847FF" progress={40} progressShow={false} />
+        <Progress
+          // progressColor="#5847FF"
+          progress={40}
+          progressShow={false}
+        />
         <Header description={'展示进度图标'} />
         <Progress
-          progressColor="#5847FF"
+          // progressColor="#5847FF"
           progressShow={false}
           iconShow={true}
           progress={30}
         />
         <Header description={'改变进度图标'} />
         <Progress
-          progressColor="#5847FF"
+          // progressColor="#5847FF"
           iconShow={true}
           progressShow={false}
           progress={60}
@@ -51,11 +55,11 @@ const ProgressDemo = (props: any) => {
           }}>
           <Progress
             progress={val}
-            progressColor="#9185FF"
+            // progressColor="#9185FF"
             iconShow={true}
             xml={motorcycle}
           />
-          <Button color={'#5847FF'} onPress={onPress}>
+          <Button color={'#3578e5'} onPress={onPress}>
             (+-)10
           </Button>
         </View>
