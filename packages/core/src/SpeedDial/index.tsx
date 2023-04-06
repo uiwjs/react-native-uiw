@@ -56,7 +56,7 @@ function SpeedDial(props: SpeedDialProps) {
   const theme = useTheme<Theme>();
 
   const styles = createStyles({
-    bgColor: theme.colors.primary_background,
+    bgColor: theme.colors.primary_background || '#3578e5',
   });
   const {
     icon = ['plus', 'close'],
@@ -120,14 +120,14 @@ function SpeedDial(props: SpeedDialProps) {
     if (icon[0] instanceof Object) {
       return <React.Fragment>{icon[0]}</React.Fragment>;
     } else {
-      return <Icon name={icon[0] as IconsName} color={theme.colors.white} size={18} />;
+      return <Icon name={icon[0] as IconsName} color={theme.colors.white || '#fff'} size={18} />;
     }
   }, []);
   const CloseDom = useMemo(() => {
     if (icon[1] instanceof Object) {
       return <React.Fragment>{icon[1]}</React.Fragment>;
     } else {
-      return <Icon name={icon[1] as IconsName} color={theme.colors.white} size={18} />;
+      return <Icon name={icon[1] as IconsName} color={theme.colors.white || '#fff'} size={18} />;
     }
   }, []);
   const onOpenHome = () => {

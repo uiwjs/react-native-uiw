@@ -31,7 +31,7 @@ export interface AvatarProps extends ViewProps {
 const Avatar: React.FC<AvatarProps> = (props) => {
   const theme = useTheme<Theme>();
   const styles = createStyles({
-    color: theme.colors.gray100,
+    color: theme.colors.gray100 || '#e4e4e4',
   });
 
   const {
@@ -66,7 +66,7 @@ const Avatar: React.FC<AvatarProps> = (props) => {
           },
         ]}
       >
-        {loading && <ActivityIndicator size="small" color={theme.colors.gray300} />}
+        {loading && <ActivityIndicator size="small" color={theme.colors.gray300 || 'gray'} />}
       </View>
 
       <Image

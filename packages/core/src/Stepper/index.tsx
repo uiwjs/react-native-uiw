@@ -51,10 +51,10 @@ function Stepper(props: StepProps) {
   const {
     size = 'default',
     color = {
-      color: theme.colors.primary_background,
-      borderColor: theme.colors.primary_background,
-      controlColor: theme.colors.primary_background,
-      valueColor: theme.colors.primary_background,
+      color: theme.colors.primary_background || '#3578e5',
+      borderColor: theme.colors.primary_background || '#3578e5',
+      controlColor: theme.colors.primary_background || '#3578e5',
+      valueColor: theme.colors.primary_background || '#3578e5',
     },
     value = 0,
     step = 1,

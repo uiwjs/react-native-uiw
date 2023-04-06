@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, ScrollView, ViewProps, View, ViewStyle, Dimensions } from 'react-native';
-import { useTheme } from '@shopify/restyle';
-import { Theme } from '../theme';
-import Item from './TabsItem';
 
+import Item from './TabsItem';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 export interface TabsProps extends ViewProps {
   /** 子元素 */
   children?: JSX.Element | Array<JSX.Element>;
@@ -17,6 +17,9 @@ export interface TabsProps extends ViewProps {
 
 function Tabs(props: TabsProps) {
   const theme = useTheme<Theme>();
+  const styles = createStyles({
+    bgColor: theme.colors.white || 'white',
+  });
   const {
     style,
     children,
@@ -112,12 +115,18 @@ function Tabs(props: TabsProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  TabsContainer: {
-    backgroundColor: '#fff',
-    paddingVertical: 15,
-  },
-});
+type CreStyle = {
+  bgColor: string;
+};
+
+function createStyles({ bgColor }: CreStyle) {
+  return StyleSheet.create({
+    TabsContainer: {
+      backgroundColor: bgColor,
+      paddingVertical: 15,
+    },
+  });
+}
 
 Tabs.Item = Item;
 export default Tabs;

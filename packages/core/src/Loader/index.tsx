@@ -56,8 +56,8 @@ export default function Loader(props: LoaderProps) {
   const theme = useTheme<Theme>();
   const {
     children,
-    color: loaderColor = theme.colors.primary_background,
-    maskColor = theme.colors.white,
+    color: loaderColor = theme.colors.primary_background || '#3578e5',
+    maskColor = theme.colors.white || 'rgba(255, 255, 255, 0.85)',
     rounded,
     loading = true,
     tip,

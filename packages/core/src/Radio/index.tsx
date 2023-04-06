@@ -9,6 +9,8 @@ import {
   GestureResponderEvent,
   StyleSheet,
 } from 'react-native';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 interface MaybeTextOrViewProps {
   children?: React.ReactNode;
@@ -61,6 +63,7 @@ export interface RadioState {
 }
 
 export default function Radio(props: RadioProps) {
+  const theme = useTheme<Theme>();
   const [state, setState] = useState({
     checked: props.checked,
     sizeValue: new Animated.Value(0),
@@ -101,7 +104,16 @@ export default function Radio(props: RadioProps) {
     onPress && onPress(event);
   };
 
-  const { style, color, circleSize, thumbSize, disabled, checkedColor, borderColor: bdColor, ...otherProps } = props;
+  const {
+    style,
+    color,
+    circleSize,
+    thumbSize,
+    disabled,
+    checkedColor = theme.colors.primary_background || '#3578e5',
+    borderColor: bdColor,
+    ...otherProps
+  } = props;
   const sizeValue = state.sizeValue.interpolate({
     inputRange: [0, thumbSize!],
     outputRange: [0, thumbSize!],
@@ -138,7 +150,6 @@ export default function Radio(props: RadioProps) {
 Radio.defaultProps = {
   checked: false,
   circleSize: 20,
-  checkedColor: '#008EF0',
   borderColor: '#bdc1cc',
   color: '#c3c5c7',
   thumbSize: 12,

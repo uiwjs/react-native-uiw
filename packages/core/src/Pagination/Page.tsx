@@ -19,7 +19,7 @@ export interface PageProps {
 const Page = (props: PageProps) => {
   const theme = useTheme<Theme>();
   const styles = createStyles({
-    boxColor: theme.colors.primary_background,
+    boxColor: theme.colors.primary_background || '#3578e5',
   });
   const { size, currentColor, current, totalPage, renderPages, onCurrent, setCurrent, simple } = props;
 
@@ -31,7 +31,11 @@ const Page = (props: PageProps) => {
   const textSize = size === 'small' ? 1 : 2;
   if (renderPages) {
     return (
-      <TouchableHighlight activeOpacity={1} underlayColor={theme.colors.gray50} onPress={() => onCurrent?.(current)}>
+      <TouchableHighlight
+        activeOpacity={1}
+        underlayColor={theme.colors.gray50 || '#f1f1f1'}
+        onPress={() => onCurrent?.(current)}
+      >
         {renderPages(current, totalPage)}
       </TouchableHighlight>
     );
@@ -65,7 +69,7 @@ const Page = (props: PageProps) => {
           style={[
             styles.inputStyle,
             {
-              color: currentColor ?? theme.colors.primary_background,
+              color: currentColor ?? (theme.colors.primary_background || '#3578e5'),
               fontSize: contentSize[size],
               lineHeight: contentSize[size] + textSize,
             },
@@ -74,7 +78,7 @@ const Page = (props: PageProps) => {
       ) : (
         <Text
           style={{
-            color: currentColor ?? theme.colors.primary_background,
+            color: currentColor ?? (theme.colors.primary_background || '#3578e5'),
             fontSize: contentSize[size],
             lineHeight: contentSize[size] + textSize,
           }}
@@ -84,7 +88,7 @@ const Page = (props: PageProps) => {
       )}
       <Text
         style={{
-          color: currentColor ?? theme.colors.primary_background,
+          color: currentColor ?? (theme.colors.primary_background || '#3578e5'),
           fontSize: contentSize[size] - 1,
           lineHeight: contentSize[size] - textSize,
         }}
@@ -92,7 +96,11 @@ const Page = (props: PageProps) => {
         /
       </Text>
       <Text
-        style={{ color: theme.colors.gray500, fontSize: contentSize[size], lineHeight: contentSize[size] + textSize }}
+        style={{
+          color: theme.colors.gray500 || '#3d3d3d',
+          fontSize: contentSize[size],
+          lineHeight: contentSize[size] + textSize,
+        }}
       >
         {totalPage}
       </Text>

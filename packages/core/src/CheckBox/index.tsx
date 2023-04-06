@@ -12,6 +12,8 @@ import {
 import Icon, { IconsName } from '../Icon';
 import { color } from '../utils';
 import Div from '../Typography/Div';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export interface CheckBoxProps extends TouchableOpacityProps {
   textStyle?: StyleProp<TextStyle & ViewStyle>;
@@ -30,6 +32,7 @@ export interface CheckBoxState {
 }
 
 function CheckBox(props: CheckBoxProps) {
+  const theme = useTheme<Theme>();
   const [state, setState] = useState({
     checked: !!props.checked,
     controlChecked: 'props',
@@ -53,13 +56,13 @@ function CheckBox(props: CheckBoxProps) {
     children,
     style,
     textStyle,
-    checkedIcon,
-    unCheckedIcon,
+    checkedIcon = 'circle-check',
+    unCheckedIcon = 'circle-o',
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     checked,
     disabled,
-    color: $color,
-    size,
+    color: $color = theme.colors.primary_background || '#3578e5',
+    size = 16,
     ...otherProps
   } = props;
   const { checked: $checked } = state;
@@ -84,12 +87,13 @@ function CheckBox(props: CheckBoxProps) {
   );
 }
 
-CheckBox.defaultProps = {
-  checkedIcon: 'circle-check',
-  unCheckedIcon: 'circle-o',
-  color: '#008EF0',
-  size: 16,
-};
+// console.log('theme', theme);
+// CheckBox.defaultProps = {
+//   checkedIcon: 'circle-check',
+//   unCheckedIcon: 'circle-o',
+//   color: '#3578e5', //theme.colors.primary_background,
+//   size: 16,
+// };
 
 export default CheckBox;
 

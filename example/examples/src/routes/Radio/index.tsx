@@ -2,6 +2,7 @@ import React from 'react';
 import {Spacing, Radio} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
+import {View} from 'react-native';
 
 const {Header, Body, Card, Footer} = Layout;
 
@@ -11,10 +12,7 @@ export interface RadioViewState {
   value: number | null;
 }
 
-export default class RadioView extends React.Component<
-  RadioViewProps,
-  RadioViewState
-> {
+export default class RadioView extends React.Component<RadioViewProps, RadioViewState> {
   constructor(props: RadioViewProps) {
     super(props);
     this.state = {
@@ -39,41 +37,49 @@ export default class RadioView extends React.Component<
           <Header title={title} description={description} />
           <Body>
             <Card title="基础实例">
-              <Radio checkedColor="#fd8a00" borderColor="#fd8a00">
-                所有人可见
-              </Radio>
-              <Spacing />
-              <Radio>超级管理员</Radio>
+              <View style={{marginLeft: 15}}>
+                <Radio checkedColor="#fd8a00" borderColor="#fd8a00">
+                  所有人可见
+                </Radio>
+                <Spacing />
+                <Radio>超级管理员</Radio>
+              </View>
             </Card>
             <Card title={`受控组件 checked: ${this.state.checked}`}>
-              <Radio
-                checked={this.state.checked}
-                onPress={() => {
-                  this.setState({checked: !this.state.checked});
-                }}>
-                所有人可见
-              </Radio>
+              <View style={{marginLeft: 15}}>
+                <Radio
+                  checked={this.state.checked}
+                  onPress={() => {
+                    this.setState({checked: !this.state.checked});
+                  }}>
+                  所有人可见
+                </Radio>
+              </View>
             </Card>
             <Card title={`单选 value: ${this.state.value}`}>
-              {radioData.map((item, idx) => {
-                return (
-                  <Radio
-                    key={idx}
-                    checked={this.state.value === item.value}
-                    onPress={() => {
-                      this.setState({value: item.value});
-                    }}>
-                    {item.label}
-                  </Radio>
-                );
-              })}
+              <View style={{marginLeft: 15}}>
+                {radioData.map((item, idx) => {
+                  return (
+                    <Radio
+                      key={idx}
+                      checked={this.state.value === item.value}
+                      onPress={() => {
+                        this.setState({value: item.value});
+                      }}>
+                      {item.label}
+                    </Radio>
+                  );
+                })}
+              </View>
             </Card>
             <Card title="禁用 checked?: boolean;">
-              <Radio disabled>所有人可见</Radio>
-              <Spacing />
-              <Radio disabled checked={true}>
-                超级管理员
-              </Radio>
+              <View style={{marginLeft: 15}}>
+                <Radio disabled>所有人可见</Radio>
+                <Spacing />
+                <Radio disabled checked={true}>
+                  超级管理员
+                </Radio>
+              </View>
             </Card>
           </Body>
           <Footer />
