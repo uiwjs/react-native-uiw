@@ -29,7 +29,15 @@ export interface DirTextProps {
 const DirText = (props: DirTextProps) => {
   const theme = useTheme<Theme>();
 
-  const { size, direction, disabled, icon, onPageChange, borderColor = theme.colors.gray300, color } = props;
+  const {
+    size,
+    direction,
+    disabled,
+    icon,
+    onPageChange,
+    borderColor = theme.colors.gray300 || '#8d8d8d',
+    color,
+  } = props;
   const dirText: '上一页' | '下一页' = useRef<'上一页' | '下一页'>(direction === 'left' ? '上一页' : '下一页').current;
   const [disabledStyle, setDisabledStyle] = useState(1);
   useEffect(() => {
@@ -42,7 +50,7 @@ const DirText = (props: DirTextProps) => {
         {
           minWidth: containerSize[size],
           borderColor: borderColor,
-          backgroundColor: theme.colors.white,
+          backgroundColor: theme.colors.white || '#fff',
           paddingHorizontal: icon ? 0 : 5,
           opacity: disabled ? disabledStyle : disabledStyle - 0.2,
         },
@@ -57,9 +65,9 @@ const DirText = (props: DirTextProps) => {
         }}
       >
         {icon ? (
-          <Icon name={direction} size={contentSize[size]} color={color || theme.colors.gray500} />
+          <Icon name={direction} size={contentSize[size]} color={color || theme.colors.gray500 || '#3d3d3d'} />
         ) : (
-          <Text style={{ color: color || theme.colors.gray500 }}>{dirText}</Text>
+          <Text style={{ color: color || theme.colors.gray500 || '#3d3d3d' }}>{dirText}</Text>
         )}
       </Button>
     </View>

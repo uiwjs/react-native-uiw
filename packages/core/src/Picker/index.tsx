@@ -57,9 +57,9 @@ const Picker = (props: PickerProps) => {
   const theme = useTheme<Theme>();
 
   const styles = createStyles({
-    bgColor: theme.colors.gray100,
-    textColor: theme.colors.black,
-    acTextColor: theme.colors.primary_background,
+    bgColor: theme.colors.gray100 || '#E6E6E6',
+    textColor: theme.colors.black || '#000',
+    acTextColor: theme.colors.primary_background || '#3578e5',
   });
   const {
     lines = 3,

@@ -57,8 +57,8 @@ export interface MaskLayerProps extends RNModalProps {
 const MaskLayer = (props: MaskLayerProps = {}) => {
   const theme = useTheme<Theme>();
   const styles = createStyles({
-    whiteColor: theme.colors.white,
-    blackBackground: theme.colors.black,
+    whiteColor: theme.colors.white || '#fff',
+    blackBackground: theme.colors.black || '#000',
   });
 
   const {

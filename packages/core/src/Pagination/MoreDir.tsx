@@ -25,7 +25,7 @@ export interface MoreDirProps {
 const MoreDir = (props: MoreDirProps) => {
   const theme = useTheme<Theme>();
   const styles = createStyles({
-    boxColor: theme.colors.primary_background,
+    boxColor: theme.colors.primary_background || '#3578e5',
   });
 
   const { setCurrent, current } = props;

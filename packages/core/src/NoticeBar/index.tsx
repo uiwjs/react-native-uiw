@@ -19,8 +19,8 @@ export type NoticeBarProps = {
 const NoticeBar = (props: NoticeBarProps) => {
   const theme = useTheme<Theme>();
   const styles = createStyles({
-    bgColor: theme.colors.func100,
-    smalCol: theme.colors.func600,
+    bgColor: theme.colors.func100 || '#fffada',
+    smalCol: theme.colors.func600 || '#f4333c',
   });
   const [show, setShow] = useState(true);
 
@@ -36,7 +36,12 @@ const NoticeBar = (props: NoticeBarProps) => {
   let { children, mode, icon, style, action, marqueeProps, textStyle } = props;
 
   let operationDom: any = null;
-  icon = typeof icon === 'undefined' ? <Icon name="notification" color={theme.colors.func600} size={15} /> : icon;
+  icon =
+    typeof icon === 'undefined' ? (
+      <Icon name="notification" color={theme.colors.func600 || '#f4333c'} size={15} />
+    ) : (
+      icon
+    );
   if (mode === 'closable') {
     operationDom = (
       <TouchableWithoutFeedback onPress={onPress}>
