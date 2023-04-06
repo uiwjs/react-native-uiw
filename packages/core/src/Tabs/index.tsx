@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, StatusBar, ScrollView, ViewProps, View, ViewStyle, Dimensions } from 'react-native';
-
+import { StyleSheet, SafeAreaView, ScrollView, ViewProps, View, ViewStyle, Dimensions } from 'react-native';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
 import Item from './TabsItem';
 
 export interface TabsProps extends ViewProps {
@@ -15,7 +16,15 @@ export interface TabsProps extends ViewProps {
 }
 
 function Tabs(props: TabsProps) {
-  const { style, children, onChange, activeColor, value, defaultColor = '#035bb6' } = props;
+  const theme = useTheme<Theme>();
+  const {
+    style,
+    children,
+    onChange,
+    activeColor,
+    value,
+    defaultColor = theme.colors.primary_background || '#3578e5',
+  } = props;
   const scrollViewRef = useRef<ScrollView>(null);
   const [scrollViewWidth, setScrollViewWidth] = useState<number>(Dimensions.get('window').width);
 
