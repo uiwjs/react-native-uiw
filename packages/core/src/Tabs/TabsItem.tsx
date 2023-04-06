@@ -42,7 +42,7 @@ export interface TabsItemProps {
 }
 
 function TabsItem(props: TabsItemProps) {
-  const { activeColor, icon, index, value, onChange, defaultColor, children } = props;
+  const { activeColor, icon, index, value, onChange, defaultColor } = props;
   const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
