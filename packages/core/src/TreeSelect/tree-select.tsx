@@ -6,6 +6,8 @@ import Icon from '../Icon';
 import Ellipsis from '../Ellipsis';
 import Modal, { ModalProps } from '../Modal';
 import { style } from './styles';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export interface TreeSelectOption {
   [key: string]: any;
@@ -28,22 +30,24 @@ export type TreeSelectProps = {
   modalProps?: ModalProps;
 };
 
-const defaultProps = {
-  options: [],
-  fieldNames: {},
-  defaultValue: [],
-  activeColor: '#5847FF',
-  placeholder: '请选择',
-  extra: undefined,
-  showClear: true,
-  contentStyle: {},
-  placeholderColor: '',
-  disabled: false,
-  height: 300,
-  modalProps: {},
-};
-
 export const TreeSelect: FC<TreeSelectProps> = (p) => {
+  const theme = useTheme<Theme>();
+
+  const defaultProps = {
+    options: [],
+    fieldNames: {},
+    defaultValue: [],
+    activeColor: theme.colors.primary_background || '#3578e5',
+    placeholder: '请选择',
+    extra: undefined,
+    showClear: true,
+    contentStyle: {},
+    placeholderColor: '',
+    disabled: false,
+    height: 300,
+    modalProps: {},
+  };
+
   const props = { ...defaultProps, ...p };
   const labelName = props.fieldNames.label || 'label';
   const valueName = props.fieldNames.value || 'value';
