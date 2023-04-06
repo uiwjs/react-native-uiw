@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export function arrayTreeFilter<T>(
   data: T[],
   filterFn: (item: T, level: number) => boolean,
