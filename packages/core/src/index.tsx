@@ -1,5 +1,6 @@
 import theme from './theme';
 import ThemeProvider from './theme-provider';
+import type { Theme } from './theme';
 
 export { default as Avatar } from './Avatar';
 export * from './Avatar';
@@ -159,3 +160,4 @@ export * from './Typography/Em';
 export * from './Typography/RnText';
 
 export { theme, ThemeProvider };
+export type { Theme };
