@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, ViewProps } from 'react-native';
 import { TabsItemIconTypes } from '../Tabs/TabsItem';
 import Icon, { IconsName } from '../Icon';
 import { number } from 'prop-types';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
 
 export interface TimelineItemsProps {
   /** 标题 */
@@ -46,23 +48,31 @@ const Desc = (desc?: string | string[]) => {
   }
 };
 
-const IconCustom = (icon?: IconsName | React.ReactElement | React.ReactNode, size?: number, color?: string) => {
-  if (icon) {
-    return (
-      <>
-        {typeof icon === 'string' ? (
-          <Icon name={icon as IconsName} size={size ? size : 15} color={color ? color : 'red'} />
-        ) : (
-          icon
-        )}
-      </>
-    );
-  } else {
-    return <Icon name="circle-o" size={size ? size : 15} color={color ? color : '#e4e7ed'} />;
-  }
-};
-
 const TimeLine = (props: TimelineProps) => {
+  const theme = useTheme<Theme>();
+
+  const IconCustom = (icon?: IconsName | React.ReactElement | React.ReactNode, size?: number, color?: string) => {
+    if (icon) {
+      return (
+        <>
+          {typeof icon === 'string' ? (
+            <Icon name={icon as IconsName} size={size ? size : 15} color={color ? color : 'red'} />
+          ) : (
+            icon
+          )}
+        </>
+      );
+    } else {
+      return (
+        <Icon
+          name="circle-o"
+          size={size ? size : 15}
+          color={color ? color : theme.colors.primary_background || '#3578e5'}
+        />
+      );
+    }
+  };
+
   const { items = [], isReverse, style, mode } = props;
 
   const [lineItem, setLineItem] = useState<TimelineItemsProps[]>([]);

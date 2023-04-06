@@ -14,7 +14,7 @@ export const style = StyleSheet.create({
     backgroundColor: '#f6f7f9',
   },
   active_nth_item: {
-    backgroundColor: '#fef4f3',
+    backgroundColor: '#EEF4FF',
     borderWidth: 1,
     borderRadius: 5,
     marginLeft: 10,

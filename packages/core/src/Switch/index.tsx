@@ -9,6 +9,8 @@ import {
   LayoutChangeEvent,
   StyleSheet,
 } from 'react-native';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export interface SwitchProps extends SwitchPropsDefault {
   trackStyle?: ViewStyle;
@@ -35,14 +37,15 @@ export interface SwitchState {
 }
 
 function Switch(props: SwitchProps) {
+  const theme = useTheme<Theme>();
   const {
     style,
     size,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     checked = false,
-    color,
+    color = theme.colors.primary_background || '#3578e5',
     disabled,
-    thumbColor,
+    thumbColor = theme.colors.text_active || '#fff',
     trackStyle,
     thumbStyle,
     ...otherProps
@@ -196,8 +199,6 @@ function Switch(props: SwitchProps) {
 Switch.defaultProps = {
   checked: false,
   size: 'default',
-  thumbColor: '#fff',
-  color: '#4DD964',
   onValueChange: () => {},
 };
 

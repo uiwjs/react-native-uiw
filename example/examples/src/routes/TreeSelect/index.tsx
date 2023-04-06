@@ -54,7 +54,7 @@ export default class TreeSelectDemo extends React.Component<TreeSelectViewProps>
       <React.Fragment>
         <TreeSelect
           defaultValue={['01', '01-1', '01-1-1']}
-          activeColor="red"
+          // activeColor="red"
           options={option}
           onChange={(value: any, nodes: any) => {
             console.log(value, nodes);
