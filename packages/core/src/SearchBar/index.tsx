@@ -61,10 +61,10 @@ function SearchBar({
   const theme = useTheme<Theme>();
 
   const styles = createStyles({
-    bgColor: theme.colors.gray50,
-    contentColor: theme.colors.black,
-    iconColor: theme.colors.white,
-    cancelColor: theme.colors.gray400,
+    bgColor: theme.colors.gray50 || '#F5F5F5',
+    contentColor: theme.colors.black || '#000',
+    iconColor: theme.colors.white || '#fff',
+    cancelColor: theme.colors.gray400 || '#7C7D7E',
   });
 
   const [curValue, setCurValue] = useState<any>(value);
@@ -108,10 +108,10 @@ function SearchBar({
             }}
             style={{ paddingRight: 3 }}
           >
-            <Icon name="circle-close-o" size={18} color={theme.colors.gray200} />
+            <Icon name="circle-close-o" size={18} color={theme.colors.gray200 || '#ccc'} />
           </Pressable>
         ) : (
-          <Icon name="right" size={18} color={theme.colors.gray300} />
+          <Icon name="right" size={18} color={theme.colors.gray300 || '#A19EA0'} />
         )}
       </View>
     </Pressable>
@@ -120,7 +120,7 @@ function SearchBar({
       <SafeAreaView style={styles.container}>
         <SearchInputBar
           loading={loading}
-          containerStyle={{ backgroundColor: theme.colors.white, marginHorizontal: 10 }}
+          containerStyle={{ backgroundColor: theme.colors.white || '#fff', marginHorizontal: 10 }}
           autoFocus
           showActionButton
           placeholder="输入搜索..."
@@ -141,7 +141,7 @@ function SearchBar({
           {...searchInputBarProps}
         />
         {loading ? (
-          <ActivityIndicator color={theme.colors.gray500} size="large" style={styles.loading} />
+          <ActivityIndicator color={theme.colors.gray500 || '#0A0258'} size="large" style={styles.loading} />
         ) : (
           <List style={styles.list}>
             {options.map((itm) => (

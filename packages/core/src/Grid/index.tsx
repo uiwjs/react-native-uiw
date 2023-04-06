@@ -83,7 +83,7 @@ export default function Grid(props: GridProps) {
   const theme = useTheme<Theme>();
 
   const styles = createStyles({
-    color: theme.colors.white,
+    color: theme.colors.white || '#fff',
   });
 
   const {
@@ -166,8 +166,8 @@ export default function Grid(props: GridProps) {
               itemBorderStyle.borderBottomWidth = childs.length - 1 === rowidx ? 0 : hairLineWidth;
               itemBorderStyle.borderRightWidth =
                 rowitem.length - 1 === idx && rowitem.length === columns ? 0 : hairLineWidth;
-              itemBorderStyle.borderBottomColor = theme.colors.gray100;
-              itemBorderStyle.borderRightColor = theme.colors.gray100;
+              itemBorderStyle.borderBottomColor = theme.colors.gray100 || '#ddd';
+              itemBorderStyle.borderRightColor = theme.colors.gray100 || '#ddd';
             }
             return React.cloneElement(item as React.ReactElement, {
               key: idx,

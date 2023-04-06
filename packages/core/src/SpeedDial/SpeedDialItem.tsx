@@ -25,7 +25,7 @@ function SpeedDialItem(props: SpeedDialItemProps) {
   const theme = useTheme<Theme>();
 
   const styles = createStyles({
-    bgColor: theme.colors.primary_background,
+    bgColor: theme.colors.primary_background || '#3578e5',
   });
   const { title, icon, titleStyle, iconStyle, onPress } = props;
 

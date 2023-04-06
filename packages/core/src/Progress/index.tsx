@@ -36,7 +36,7 @@ export default (props: ProgressProps) => {
     xml = run,
     style,
     progress = 0,
-    progressColor = theme.colors.primary_background,
+    progressColor = theme.colors.primary_background || '#3578e5',
     position,
     animation = { duration: 500 },
   } = props;

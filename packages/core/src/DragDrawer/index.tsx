@@ -35,7 +35,7 @@ export interface DragDrawerProps extends ViewProps {
 
 function DragDrawer(props: DragDrawerProps) {
   const theme = useTheme<Theme>();
-  const { drawerBackgroundColor = theme.colors.white, drawerHeight = 300, children, icon, style } = props;
+  const { drawerBackgroundColor = theme.colors.white || '#fff', drawerHeight = 300, children, icon, style } = props;
 
   const [animatedViewHeight, setAnimatedViewHeight] = useState(new Animated.Value(drawerHeight));
   const [viewHeight, setViewHeight] = useState(drawerHeight);
@@ -115,14 +115,14 @@ function DragDrawer(props: DragDrawerProps) {
       return (
         <>
           {typeof icon === 'string' ? (
-            <Icon name={icon as IconsName} size={25} color={theme.colors.primary_background} />
+            <Icon name={icon as IconsName} size={25} color={theme.colors.primary_background || '#3578e5'} />
           ) : (
             icon
           )}
         </>
       );
     } else {
-      return <Icon name="minus" size={25} color={theme.colors.primary_background} />;
+      return <Icon name="minus" size={25} color={theme.colors.primary_background || '#3578e5'} />;
     }
   };
 
