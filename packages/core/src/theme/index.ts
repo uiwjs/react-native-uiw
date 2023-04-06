@@ -242,7 +242,7 @@ const darkTheme: Theme = {
     text: darkPalette.gray500,
     text_active: darkPalette.white,
     primary_text: palette.white,
-    primary_background: palette.black,
+    primary_background: '#3578e5',
   },
   theme: 'dark',
 };

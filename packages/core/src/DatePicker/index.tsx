@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, SafeAreaView, StyleProp, TextStyle } from 'react-native';
 import Modal, { ModalProps } from '../Modal';
-import { PickerProps } from '../Picker';
 import PickerView, { DateKey } from './component/PickerView';
 import Control from './component/Control';
 import {
@@ -48,7 +47,7 @@ export interface DatePickerProps {
   /** modal 属性 */
   modalProps?: ModalProps;
   /** picker 属性 */
-  pickerProps?: PickerProps;
+  pickerProps?: any;
 }
 interface DateIndex {
   year?: number;
