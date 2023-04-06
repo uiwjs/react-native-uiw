@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ViewStyle, TextStyle, Text } from 'react-native';
 import ButtonGroup, { ButtonGroupProps } from '../ButtonGroup';
 import Button from '../Button';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export interface TextColorType {
   actived?: string;
@@ -13,6 +15,7 @@ export interface SegmentedControlProps<T> extends ButtonGroupProps {
   renderItem?: (label: string | T, selectedIndex: number, props: ButtonGroupProps) => JSX.Element;
   onValueChange?: (label: string | T, selectedIndex: number) => void;
   textColor?: TextColorType;
+  colors?: string;
 }
 
 export interface SegmentedControlState {
@@ -20,6 +23,7 @@ export interface SegmentedControlState {
 }
 
 export default function SegmentedControl<T extends React.ReactPortal>(props: SegmentedControlProps<T>) {
+  const theme = useTheme<Theme>();
   const [state, setState] = useState({
     selectedIndex: props.selectedIndex || 0,
   });
@@ -37,9 +41,10 @@ export default function SegmentedControl<T extends React.ReactPortal>(props: Seg
     selectedIndex,
     renderItem,
     textColor = {
-      actived: '#fff',
-      unactived: props.color ?? '#108ee9',
+      actived: theme.colors.text_active || '#fff',
+      unactived: props.color ?? (theme.colors.primary_background || '#3578e5'),
     },
+    colors = props.color || theme.colors.primary_background || '#3578e5',
     ...otherProps
   } = props;
 
@@ -52,7 +57,7 @@ export default function SegmentedControl<T extends React.ReactPortal>(props: Seg
           let textStyleColor: string = textColor.actived!;
           if (state.selectedIndex !== key + 1) {
             styl.backgroundColor = '#fff';
-            textStyle.color = otherProps.color;
+            textStyle.color = colors;
             textStyleColor = textColor.unactived!;
           }
           const props: ButtonGroupProps = {
@@ -78,5 +83,4 @@ SegmentedControl.defaultProps = {
   value: [],
   size: 'small',
   selectedIndex: 0,
-  color: '#108ee9',
 } as SegmentedControlProps<{}>;
