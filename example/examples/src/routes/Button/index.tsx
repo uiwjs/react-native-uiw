@@ -152,7 +152,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               </Button>
               <Spacing />
               <Button bordered={false} type="danger">
-                <Icon name="warning" fill="#3f1e34" size={17} />
+                <Icon name="warning" fill="#fff" size={17} />
                 <Text> 菜单</Text>
               </Button>
             </Card>
