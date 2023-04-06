@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, TextProps, TouchableOpacity, ActivityIndicator, TouchableOpacityProps } from 'react-native';
-import { color, colors } from '../utils';
+import { colorF } from '../utils';
 import Div from '../Typography/Div';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
 
 export interface ButtonProps extends TouchableOpacityProps {
   color?: string;
@@ -49,59 +51,57 @@ export default function ButtonView<T>(props: ButtonProps) {
     loading,
     ...restProps
   } = props;
+  const theme = useTheme<Theme>();
   let backgroundColor, textColor, borderColor, borderWidth, borderRadius;
 
   switch (type) {
     case 'warning':
-      backgroundColor = colors.yellow;
+      backgroundColor = theme.colors.func200;
       break;
     case 'primary':
-      backgroundColor = colors.blue;
+      backgroundColor = theme.colors.func400;
       break;
     case 'success':
-      backgroundColor = colors.green;
+      backgroundColor = theme.colors.func300;
       break;
     case 'danger':
-      backgroundColor = colors.red;
+      backgroundColor = theme.colors.func600;
       break;
     case 'light':
-      backgroundColor = colors.white;
+      backgroundColor = theme.colors.white;
       break;
     case 'dark':
-      backgroundColor = colors.black;
+      backgroundColor = theme.colors.black;
       break;
     default:
       break;
   }
   if (backgroundColor) {
-    backgroundColor = color(backgroundColor).rgb().string();
+    backgroundColor = colorF(backgroundColor).rgb().string();
   }
-  if (type) {
-    textColor = color(backgroundColor).isLight()
-      ? color(colors.black).rgb().string()
-      : color(colors.white).rgb().string();
+  if ((type || backgroundColor || buttonColor) && type !== "light") {
+    textColor = colorF(theme.colors.white).rgb().string()
+  } else {
+    textColor = colorF(theme.colors.black).rgb().string();
   }
   if (!type) {
-    borderColor = color(colors.black).alpha(0.32).rgb().string();
+    borderColor = colorF(theme.colors.black).alpha(0.32).rgb().string();
     borderWidth = 1;
   }
   if (disabled) {
-    textColor = color(textColor).alpha(0.3).rgb().string();
+    textColor = colorF(textColor).alpha(0.3).rgb().string();
   }
   if (buttonColor) {
-    backgroundColor = color(buttonColor).rgb().string();
-    textColor = color(buttonColor).isLight()
-      ? color(buttonColor).darken(0.9).string()
-      : color(buttonColor).lighten(0.9).string();
+    backgroundColor = colorF(buttonColor).rgb().string();
   }
   if (rounded && (typeof rounded === 'number' || typeof rounded === 'boolean')) {
     borderRadius = rounded;
   }
   if (backgroundColor) {
-    borderColor = color(backgroundColor).darken(0.2).string();
+    borderColor = colorF(backgroundColor).alpha(0.2).string();
     borderWidth = 1;
   }
-  if (!bordered) {
+  if (!bordered || buttonColor) {
     borderWidth = 0;
   }
   const buttonStyle = {

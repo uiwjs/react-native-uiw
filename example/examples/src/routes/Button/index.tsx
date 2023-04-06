@@ -1,15 +1,15 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Button, Spacing, Icon, Flex} from '@uiw/react-native';
-import {ComProps} from '../../routes';
-import Layout, {Container} from '../../Layout';
-const {Header, Body, Card, Footer} = Layout;
+import { View, Text } from 'react-native';
+import { Button, Spacing, Icon, Flex } from '@uiw/react-native';
+import { ComProps } from '../../routes';
+import Layout, { Container } from '../../Layout';
+const { Header, Body, Card, Footer } = Layout;
 
-export interface ButtonViewProps extends ComProps {}
+export interface ButtonViewProps extends ComProps { }
 
 export default class ButtonView extends React.Component<ButtonViewProps> {
   render() {
-    const {route} = this.props;
+    const { route } = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
@@ -19,7 +19,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
           <Body>
             <Card title="基础实例">
               <Flex>
-                <Button>默认按钮</Button>
+                <Button type="primary">默认按钮</Button>
                 <Spacing type="horizontal" />
                 <Button>默认按钮</Button>
                 <Spacing type="horizontal" />
@@ -69,7 +69,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                 自定义圆角 {'rounded={23}'}
               </Button>
               <Spacing />
-              <Button rounded={10} color="#f6f8fa">
+              <Button rounded={10} color="#1EABCD">
                 自定义圆角 {'rounded={10}'}
               </Button>
               <Spacing />
@@ -84,7 +84,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Spacing />
               <Button color="#393E48">按钮尺寸 {'rounded={23}'}</Button>
               <Spacing />
-              <Button size="large" color="#f6f8fa">
+              <Button size="large" color="#F95C2B">
                 自定义圆角 {'size="large"'}
               </Button>
             </Card>
@@ -105,21 +105,21 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Spacing />
               <Button color="#dc3545">自定义颜色{'color="#dc3545"'}</Button>
               <Spacing />
-              <Button color="#f6f8fa">自定义颜色{'color="#f6f8fa"'}</Button>
+              <Button color="#a63d2c">自定义颜色{'color="#a63d2c"'}</Button>
             </Card>
             <Card title="文本样式">
-              <Button textStyle={{fontSize: 20}} color="yellow">
+              <Button textStyle={{ fontSize: 20 }} color="yellow">
                 字号调整{'textStyle = {{fontSize:20}}'}
               </Button>
               <Spacing />
-              <Button textStyle={{color: 'blue'}}>文本颜色{'textStyle={{color:"blue"}}'}</Button>
+              <Button textStyle={{ color: 'blue' }}>文本颜色{'textStyle={{color:"blue"}}'}</Button>
               <Spacing />
-              <Button color="#f6f8fa" textStyle={{letterSpacing: 2}}>
+              <Button color="#a63d2c" textStyle={{ letterSpacing: 2 }}>
                 文本间距{'textStyle={{letterSpacing:3}}'}
               </Button>
             </Card>
             <Card title="设置边框">
-              <Button bordered={false} color="#f6f8fa">
+              <Button bordered={false} color="#dc3545">
                 不显示边框{'bordered={false}'}
               </Button>
               <Spacing />
@@ -135,12 +135,12 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                   flexDirection: 'row',
                   flexWrap: 'wrap-reverse',
                 }}>
-                <Button bordered={false} color="#fff">
+                <Button bordered={false} color="#ffc107">
                   <Icon name="apple" size={17} />
                   <Text> 首页</Text>
                 </Button>
                 <Spacing type="horizontal" />
-                <Button bordered={false} color="#fff">
+                <Button bordered={false} color="#008EF0">
                   <Icon name="menu-fold" size={17} />
                   <Text> 菜单</Text>
                 </Button>
@@ -152,7 +152,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               </Button>
               <Spacing />
               <Button bordered={false} type="danger">
-                <Icon name="warning" fill="#fff" size={17} />
+                <Icon name="warning" fill="#3f1e34" size={17} />
                 <Text> 菜单</Text>
               </Button>
             </Card>
