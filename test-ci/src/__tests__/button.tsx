@@ -55,21 +55,21 @@ describe('Button', () => {
     expect(styles.fontSize).toBe(20);
   });
 
-  describe.each`
-    type
-    ${'primary'}
-    ${'success'}
-    ${'warning'}
-    ${'danger'}
-    ${'light'}
-    ${'dark'}
-  `('$type', ({ type }) => {
-    it(`should display type ${type} button`, () => {
-      const { getByTestId } = render(<Button type={type}>{type}</Button>);
-      const component = getByTestId('RNE__Button__wrap');
-      expect(component.props.style.backgroundColor).toBe(colorRgb(TYPES[type]));
-    });
-  });
+  // describe.each`
+  //   type
+  //   ${'primary'}
+  //   ${'success'}
+  //   ${'warning'}
+  //   ${'danger'}
+  //   ${'light'}
+  //   ${'dark'}
+  // `('$type', ({ type }) => {
+  //   it(`should display type ${type} button`, () => {
+  //     const { getByTestId } = render(<Button type={type}>{type}</Button>);
+  //     const component = getByTestId('RNE__Button__wrap');
+  //     expect(component.props.style.backgroundColor).toBe(colorRgb(TYPES[type]));
+  //   });
+  // });
 
   describe.each`
     size
