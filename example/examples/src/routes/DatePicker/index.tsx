@@ -1,4 +1,5 @@
 import React from 'react';
+import {View, Text} from 'react-native';
 import {DatePicker, Button} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
@@ -9,6 +10,8 @@ export interface BadgeViewProps extends ComProps {}
 export default class BadgeView extends React.Component<BadgeViewProps> {
   state = {
     visible: false,
+    value: undefined,
+    formatDate: undefined,
   };
   render() {
     const {route, navigation} = this.props;
@@ -23,13 +26,21 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
               onPress={() => {
                 this.setState({visible: true});
               }}>
-              年月日
+              打开
             </Button>
+            <View>
+              <Text>{this.state.formatDate}</Text>
+            </View>
             <DatePicker
+              title="请选择日期"
+              mode="datetime"
+              format="YYYY-MM-DD HH:mm:ss"
               visible={this.state.visible}
-              onOk={() => this.setState({visible: false})}
               onClosed={() => this.setState({visible: false})}
-              precision="second"
+              value={this.state.value}
+              onChange={(value, formatDate) => {
+                this.setState({value: value, formatDate: formatDate});
+              }}
             />
           </Body>
           <Footer />

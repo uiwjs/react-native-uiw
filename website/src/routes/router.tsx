@@ -326,6 +326,10 @@ export const routeData = [
         component: lazy(() => import('../pages/components/form')),
       },
       {
+        path: '/components/datepicker',
+        component: lazy(() => import('../pages/components/datepicker')),
+      },
+      {
         path: '/docs/changelog',
         component: lazy(() => import('../pages/docs/changelog')),
       },
