@@ -47,3 +47,10 @@ export function usePropsValue<T>(options: Options<T>) {
   });
   return [stateRef.current, setState] as const;
 }
+
+export function useLatest<T>(value: T) {
+  const ref = useRef<T>(value);
+  ref.current = value;
+
+  return ref;
+}

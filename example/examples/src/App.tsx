@@ -1,10 +1,10 @@
 import React from 'react';
+import {useColorScheme} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import {RootSiblingParent} from 'react-native-root-siblings';
-import {ThemeProvider} from '@uiw/react-native';
-
+import {ThemeProvider, theme} from '@uiw/react-native';
 import {stackPageData} from './routes';
 
 const Stack = createStackNavigator();
@@ -16,11 +16,13 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
+  const colorScheme = useColorScheme();
+  console.log('colorScheme', colorScheme);
   return (
     <RootSiblingParent>
       <SafeAreaView style={styles.block}>
         <StatusBar barStyle="dark-content" />
-        <ThemeProvider>
+        <ThemeProvider theme={colorScheme === 'light' ? {...theme.lightTheme} : {...theme.darkTheme}}>
           <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
               <Stack.Screen

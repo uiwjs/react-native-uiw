@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { usePersistFn } from 'ahooks';
 import dayjs, { Dayjs } from 'dayjs';
 import { ItemValue } from '../../../Picker/components/WheelPicker/type';
 import { CascadePickerItemProps, DatePickerPropsBase } from './type';
@@ -319,8 +320,8 @@ export default function useDatePicker({
   };
 
   return {
-    getValueCols: getValueCols,
-    onValueChange: onValueChange,
+    getValueCols: usePersistFn(getValueCols),
+    onValueChange: usePersistFn(onValueChange),
   };
 }
 
