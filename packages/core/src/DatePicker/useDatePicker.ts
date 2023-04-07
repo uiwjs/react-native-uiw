@@ -1,15 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { BackHandler } from 'react-native';
-import { useSafeState } from 'ahooks';
+import { useSafeState, usePersistFn } from 'ahooks';
+import { useLatest } from '../utils/hooks';
 import dayjs from 'dayjs';
 import { DatePickerPropsBase, ModalPickerProps } from './components/date-picker/type';
-
-function useLatest<T>(value: T) {
-  const ref = useRef<T>(value);
-  ref.current = value;
-
-  return ref;
-}
 
 export default function useDatePicker({
   onClosed,
@@ -52,8 +46,8 @@ export default function useDatePicker({
 
   return {
     date,
-    handleChange: handleChange,
-    handleOk: handleOk,
-    handleClose: handleClose,
+    handleChange: usePersistFn(handleChange),
+    handleOk: usePersistFn(handleOk),
+    handleClose: usePersistFn(handleClose),
   };
 }
