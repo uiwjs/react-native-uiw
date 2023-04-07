@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, TextProps } from 'react-native';
 import Icon from '../Icon';
 import Flex, { FlexProps } from '../Flex';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export const iconStr = `
 <svg width="64" height="41" viewBox="0 0 64 41">
@@ -40,19 +42,17 @@ export interface EmptyProps extends FlexProps {
 
 export default function Empty(props: EmptyProps) {
   const { size = 64, label = '暂无数据', xml = iconStr, labelStyle, children, ...otherProps } = props;
+  const theme = useTheme<Theme>();
+  const textColor = theme.colors.primary_text || 'rgba(0,0,0,0.25)';
   return (
     <Flex direction="column" justify="center" align="center" {...otherProps}>
       {xml && <Icon xml={xml} size={size} />}
       {!!children
         ? children
         : label &&
-          typeof label === 'string' && <Text style={StyleSheet.flatten([styles.label, labelStyle])}>{label}</Text>}
+          typeof label === 'string' && (
+            <Text style={StyleSheet.flatten([{ color: textColor }, labelStyle])}>{label}</Text>
+          )}
     </Flex>
   );
 }
-
-const styles = StyleSheet.create({
-  label: {
-    color: 'rgba(0,0,0,0.25)',
-  },
-});

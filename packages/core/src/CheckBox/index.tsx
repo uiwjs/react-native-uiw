@@ -74,26 +74,19 @@ function CheckBox(props: CheckBoxProps) {
   let colorIcon = $color;
   let divStyl: ViewProps['style'] = {};
   if (disabled) {
-    colorIcon = color(colorIcon).alpha(0.52).rgb().string();
+    colorIcon = theme.colors.disabled || color(colorIcon).alpha(0.52).rgb().string();
     divStyl.opacity = 0.5;
   }
+  const textColor = theme.colors.primary_text || 'black';
   return (
     <TouchableOpacity disabled={disabled} {...otherProps} style={[styles.default, style]} onPress={onPress}>
       <View style={[styIcon]}>
         {typeof iconName === 'string' ? <Icon size={size} fill={colorIcon} name={iconName} /> : iconName}
       </View>
-      {children && <Div children={children} style={[divStyl, textStyle]} />}
+      {children && <Div children={children} style={[divStyl, { color: textColor }, textStyle]} />}
     </TouchableOpacity>
   );
 }
-
-// console.log('theme', theme);
-// CheckBox.defaultProps = {
-//   checkedIcon: 'circle-check',
-//   unCheckedIcon: 'circle-o',
-//   color: '#3578e5', //theme.colors.primary_background,
-//   size: 16,
-// };
 
 export default CheckBox;
 

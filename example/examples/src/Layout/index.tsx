@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
 import {StyleSheet, View, ViewProps, ViewStyle, SafeAreaView, ScrollView, ScrollViewProps, Text, TextStyle, Image, StyleProp} from 'react-native';
 import PropTypes from 'prop-types';
+import {Theme} from '@uiw/react-native';
+import {useTheme} from '@shopify/restyle';
 
 export interface HeaderProps {
   title?: string;
@@ -36,8 +38,9 @@ export interface BodyProps extends ScrollViewProps {
 
 const Body = (props: BodyProps) => {
   const {children, style, isScroll, ...other} = props;
+  const theme = useTheme<Theme>();
   return (
-    <ScrollView style={[styles.body, style]} automaticallyAdjustContentInsets={false} {...other}>
+    <ScrollView style={[style, {backgroundColor: theme.colors.background || '#fff'}]} automaticallyAdjustContentInsets={false} {...other}>
       {children}
     </ScrollView>
   );
@@ -149,9 +152,6 @@ const styles = StyleSheet.create({
     // shadowRadius: 3,
     // shadowOpacity: 0.8,
     zIndex: 999,
-  },
-  body: {
-    backgroundColor: '#ededed',
   },
   logo: {
     flex: 1,
