@@ -81,11 +81,9 @@ export interface GridProps extends ViewProps {
 
 export default function Grid(props: GridProps) {
   const theme = useTheme<Theme>();
-
   const styles = createStyles({
-    color: theme.colors.white || '#fff',
+    color: theme.colors.background || '#fff',
   });
-
   const {
     style,
     data = [],

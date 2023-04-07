@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
 
 const App = () => {
   const colorScheme = useColorScheme();
-  console.log('colorScheme', colorScheme);
   return (
     <RootSiblingParent>
       <SafeAreaView style={styles.block}>

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   warpper: {
-    backgroundColor: '#fff5',
+    backgroundColor: '#fff',
   },
   form_items_container: {
     flex: 1,

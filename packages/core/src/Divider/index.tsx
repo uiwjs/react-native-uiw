@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ViewProps, TextProps, StyleSheet } from 'react-native';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export interface DividerProps extends ViewProps {
   label?: string;
@@ -24,6 +26,13 @@ export default function Divider(props: DividerProps) {
     orientation = 'center',
     ...restProps
   } = props;
+
+  const theme = useTheme<Theme>();
+
+  const styles = createStyles({
+    textColor: theme.colors.primary_text || 'rgba(0, 0, 0, 0.54)',
+  });
+
   if (typeof children === 'string') {
     label = children;
     children = null;
@@ -47,7 +56,7 @@ export default function Divider(props: DividerProps) {
       labelStyle = StyleSheet.flatten(labelStyle);
     }
     children = (
-      <Text testID="RNE__Divider__label" style={[styles.label, labelStyle]}>
+      <Text testID="RNE__Divider__label" style={[styles.label, labelStyle, {}]}>
         {' '}
         {label}{' '}
       </Text>
@@ -77,46 +86,52 @@ export default function Divider(props: DividerProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  warpper: {
-    alignItems: 'center',
-  },
-  horizontal: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    flexGrow: 1,
-    flexShrink: 1,
-  },
-  vertical: {
-    justifyContent: 'center',
-    flexDirection: 'column',
-    flexGrow: 1,
-    flexShrink: 1,
-  },
-  lineStart: {
-    backgroundColor: 'rgb(229, 229, 229)',
-    flexDirection: 'column',
-    flexShrink: 100,
-    flexGrow: 1,
-  },
-  lineEnd: {
-    backgroundColor: 'rgb(229, 229, 229)',
-    flexDirection: 'column',
-    flexShrink: 100,
-    flexGrow: 1,
-  },
-  lineHorizontal: {
-    height: 1,
-    minHeight: 1,
-    minWidth: 16,
-  },
-  lineVertical: {
-    width: 1,
-    minHeight: 16,
-    minWidth: 1,
-  },
-  label: {
-    color: 'rgba(0, 0, 0, 0.54)',
-    fontSize: 14,
-  },
-});
+type CreStyle = {
+  textColor: string;
+};
+
+function createStyles({ textColor }: CreStyle) {
+  return StyleSheet.create({
+    warpper: {
+      alignItems: 'center',
+    },
+    horizontal: {
+      justifyContent: 'center',
+      flexDirection: 'row',
+      flexGrow: 1,
+      flexShrink: 1,
+    },
+    vertical: {
+      justifyContent: 'center',
+      flexDirection: 'column',
+      flexGrow: 1,
+      flexShrink: 1,
+    },
+    lineStart: {
+      backgroundColor: 'rgb(229, 229, 229)',
+      flexDirection: 'column',
+      flexShrink: 100,
+      flexGrow: 1,
+    },
+    lineEnd: {
+      backgroundColor: 'rgb(229, 229, 229)',
+      flexDirection: 'column',
+      flexShrink: 100,
+      flexGrow: 1,
+    },
+    lineHorizontal: {
+      height: 1,
+      minHeight: 1,
+      minWidth: 16,
+    },
+    lineVertical: {
+      width: 1,
+      minHeight: 16,
+      minWidth: 1,
+    },
+    label: {
+      color: textColor,
+      fontSize: 14,
+    },
+  });
+}
