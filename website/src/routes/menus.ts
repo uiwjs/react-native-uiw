@@ -64,6 +64,7 @@ export const componentMenus: MenuData[] = [
   { divider: true, name: 'Test components' },
   { path: '/components/form', name: 'Form 表单 🚧' },
   { path: '/components/picker', name: 'Picker 选择器 🚧' },
+  { path: '/components/datepicker', name: 'DatePicker 日期选择器 🚧' },
   { path: '/components/treeSelect', name: 'TreeSelect 级联选择器 🚧' },
   { divider: true, name: '其它' },
   { href: 'https://github.com/uiwjs/react-native-alipay', name: 'Alipay 支付宝', target: '__blank' },

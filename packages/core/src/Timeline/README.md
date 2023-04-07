@@ -7,7 +7,7 @@ Timeline 时间轴
 
 ```jsx mdx:preview&background=#bebebe29
 import React from 'react'
-import { Card, Icon, WingBlank, Timeline  } from '@uiw/react-native';
+import { Card, Icon, WingBlank, Timeline } from '@uiw/react-native';
 
 function Demo() {
  const item = [

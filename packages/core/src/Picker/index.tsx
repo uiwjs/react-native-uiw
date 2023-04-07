@@ -9,7 +9,7 @@ import { CascadePickerItemProps, ItemValue, WheelPickerPropsBase } from './compo
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
 
-interface PickerProps extends WheelPickerPropsBase {
+export interface PickerProps extends WheelPickerPropsBase {
   /** 选择项列表 */
   data: CascadePickerItemProps[] | Array<CascadePickerItemProps[]>;
   /** 展示几列 */
@@ -18,12 +18,10 @@ interface PickerProps extends WheelPickerPropsBase {
   value?: ItemValue[];
   /** 修改事件 */
   onChange?: (value?: ItemValue[]) => void;
-  /** 选择器显示类型。view表示在页面显示；modal表示在弹窗中显示；默认为modal */
-  displayType?: 'view' | 'modal';
 }
 
 /** 弹窗Picker的属性 */
-interface ModalPickerProps {
+export interface ModalPickerProps {
   /** 选择器标题 */
   title?: string;
   /** 是否弹窗显示 */
@@ -34,6 +32,8 @@ interface ModalPickerProps {
   cancelText?: string;
   /** 确认按钮文本 */
   okText?: string;
+  /** 选择器显示类型。view表示在页面显示；modal表示在弹窗中显示；默认为modal */
+  displayType?: 'view' | 'modal';
 }
 
 export type ComPickerProps = Omit<PickerProps, 'data'> & {

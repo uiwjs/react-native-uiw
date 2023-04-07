@@ -1,6 +1,5 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { Animated, StyleSheet, Text } from 'react-native';
-
 import { WhellPickerItemProps } from './type';
 
 const opacityFunction = (val: number) => 1 / (1 + Math.abs(val));
