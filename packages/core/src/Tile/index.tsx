@@ -15,6 +15,8 @@ import {
 } from 'react-native';
 import Icon, { IconsProps } from '../Icon';
 import TransitionImage from '../TransitionImage';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export type TileProps = TouchableOpacityProps &
   TouchableNativeFeedbackProps & {
@@ -72,6 +74,11 @@ const Tile = ({
   ImageComponent = TransitionImage,
   ...attributes
 }: TileProps) => {
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    titleColor: theme.colors.primary_text,
+    captionColor: theme.colors.text,
+  });
   return (
     <TouchableOpacity
       {...attributes}
@@ -108,14 +115,14 @@ const Tile = ({
       >
         <Text
           testID="tileTitle"
-          style={StyleSheet.flatten([styles.text, titleStyle && titleStyle])}
+          style={StyleSheet.flatten([styles.titleText, titleStyle && titleStyle])}
           numberOfLines={titleNumberOfLines}
         >
           {title}
         </Text>
         <Text
           testID="tileText"
-          style={StyleSheet.flatten([styles.text, captionStyle && captionStyle])}
+          style={StyleSheet.flatten([styles.captionText, captionStyle && captionStyle])}
           numberOfLines={titleNumberOfLines}
         >
           {caption}
@@ -125,23 +132,35 @@ const Tile = ({
   );
 };
 
-const styles = StyleSheet.create({
-  imageContainer: {},
-  text: {
-    backgroundColor: 'rgba(0,0,0,0)',
-    marginBottom: 5,
-  },
-  contentContainer: {
-    paddingTop: 15,
-    paddingBottom: 5,
-    paddingLeft: 15,
-    paddingRight: 15,
-  },
-  iconContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-  },
-});
+type CreStyle = {
+  titleColor: string;
+  captionColor: string;
+};
+function createStyles({ titleColor, captionColor }: CreStyle) {
+  return StyleSheet.create({
+    imageContainer: {},
+    titleText: {
+      backgroundColor: 'rgba(0,0,0,0)',
+      marginBottom: 5,
+      color: titleColor,
+    },
+    captionText: {
+      backgroundColor: 'rgba(0,0,0,0)',
+      marginBottom: 5,
+      color: captionColor,
+    },
+    contentContainer: {
+      paddingTop: 15,
+      paddingBottom: 5,
+      paddingLeft: 15,
+      paddingRight: 15,
+    },
+    iconContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'center',
+    },
+  });
+}
 
 export default Tile;
