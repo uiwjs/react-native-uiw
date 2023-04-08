@@ -1,7 +1,6 @@
 import React, { useState, useEffect, memo } from 'react';
 import {
   View,
-  Text,
   SafeAreaView,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -15,6 +14,7 @@ import MaskLayer from '../MaskLayer';
 import SearchInputBar, { SearchInputBarProps } from '../SearchInputBar';
 import List from '../List';
 import Icon from '../Icon';
+import Text from '../Typography/Text';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
 
@@ -61,10 +61,12 @@ function SearchBar({
   const theme = useTheme<Theme>();
 
   const styles = createStyles({
-    bgColor: theme.colors.gray50 || '#F5F5F5',
-    contentColor: theme.colors.black || '#000',
-    iconColor: theme.colors.white || '#fff',
-    cancelColor: theme.colors.gray400 || '#7C7D7E',
+    maskBgColor: theme.colors.mask || '#F5F5F5',
+    bgColor: theme.colors.background || '#F5F5F5',
+    disabledColor: theme.colors.disabled || '#F5F5F5',
+    contentColor: theme.colors.background || '#000',
+    iconColor: theme.colors.primary_text || '#fff',
+    cancelColor: theme.colors.primary_text || '#7C7D7E',
   });
 
   const [curValue, setCurValue] = useState<any>(value);
@@ -108,10 +110,10 @@ function SearchBar({
             }}
             style={{ paddingRight: 3 }}
           >
-            <Icon name="circle-close-o" size={18} color={theme.colors.gray200 || '#ccc'} />
+            <Icon name="circle-close-o" size={18} color={theme.colors.primary_text || '#ccc'} />
           </Pressable>
         ) : (
-          <Icon name="right" size={18} color={theme.colors.gray300 || '#A19EA0'} />
+          <Icon name="right" size={18} color={theme.colors.primary_text || '#A19EA0'} />
         )}
       </View>
     </Pressable>
@@ -120,7 +122,7 @@ function SearchBar({
       <SafeAreaView style={styles.container}>
         <SearchInputBar
           loading={loading}
-          containerStyle={{ backgroundColor: theme.colors.white || '#fff', marginHorizontal: 10 }}
+          containerStyle={{ marginHorizontal: 10 }}
           autoFocus
           showActionButton
           placeholder="输入搜索..."
@@ -134,14 +136,14 @@ function SearchBar({
               }}
             >
               <View style={styles.cancel}>
-                <Text>取消</Text>
+                <Text color="primary_background">取消</Text>
               </View>
             </TouchableWithoutFeedback>
           }
           {...searchInputBarProps}
         />
         {loading ? (
-          <ActivityIndicator color={theme.colors.gray500 || '#0A0258'} size="large" style={styles.loading} />
+          <ActivityIndicator color={theme.colors.primary_background || '#0A0258'} size="large" style={styles.loading} />
         ) : (
           <List style={styles.list}>
             {options.map((itm) => (
@@ -159,7 +161,9 @@ function SearchBar({
                   setVisivble(false);
                 }}
               >
-                <Text style={{ fontSize: 16 }}>{itm.label}</Text>
+                <Text color="primary_text" style={{ fontSize: 16 }}>
+                  {itm.label}
+                </Text>
               </List.Item>
             ))}
           </List>
@@ -173,12 +177,14 @@ export default memo(SearchBar);
 
 type CreStyle = {
   bgColor: string;
+  maskBgColor: string;
   contentColor: string;
+  disabledColor: string;
   iconColor: string;
   cancelColor: string;
 };
 
-function createStyles({ bgColor, contentColor, iconColor, cancelColor }: CreStyle) {
+function createStyles({ maskBgColor, bgColor, contentColor, disabledColor, iconColor, cancelColor }: CreStyle) {
   return StyleSheet.create({
     container: {
       flex: 1,
@@ -214,7 +220,7 @@ function createStyles({ bgColor, contentColor, iconColor, cancelColor }: CreStyl
       alignItems: 'center',
       justifyContent: 'space-between',
       paddingRight: 5,
-      backgroundColor: iconColor,
+      backgroundColor: maskBgColor,
       paddingHorizontal: 16,
     },
     disabled: {
@@ -223,7 +229,7 @@ function createStyles({ bgColor, contentColor, iconColor, cancelColor }: CreStyl
       alignItems: 'center',
       justifyContent: 'space-between',
       paddingRight: 5,
-      backgroundColor: bgColor,
+      backgroundColor: disabledColor,
       paddingHorizontal: 16,
     },
   });

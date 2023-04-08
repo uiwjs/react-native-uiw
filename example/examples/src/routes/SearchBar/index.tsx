@@ -42,7 +42,6 @@ const SearchBarDemo = (props: ComProps) => {
         onChange={val => console.log('val', val)}
         placeholderColor="#333"
         placeholder="请输入"
-        searchRender={<Text>请搜索111</Text>}
       />
     </SafeAreaView>
   );
