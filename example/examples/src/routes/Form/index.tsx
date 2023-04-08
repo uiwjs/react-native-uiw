@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
-import {Form, Button, Toast, Slider, Flex} from '@uiw/react-native';
-import {Text, View} from 'react-native';
+import {Form, Button, Toast, Slider, Flex, Text} from '@uiw/react-native';
+import {View} from 'react-native';
 import Layout, {Container} from '../../Layout';
 const {Body, Footer} = Layout;
 
@@ -126,19 +126,19 @@ const FormDemo = () => {
       renderHeader: (i: number, {remove, moveUp, moveDown, moveToTop, moveToBottom}: actionProps) => (
         <View style={{marginTop: 12, display: 'flex', justifyContent: 'space-between', flexDirection: 'row'}}>
           <View>
-            <Text>{`联系人${i + 1}`}</Text>
+            <Text color="text">{`联系人${i + 1}`}</Text>
           </View>
           <Flex>
-            <Text style={{marginRight: 5}} onPress={() => moveUp()}>
+            <Text color="text" style={{marginRight: 5}} onPress={() => moveUp()}>
               上移
             </Text>
-            <Text style={{marginRight: 5}} onPress={() => moveDown()}>
+            <Text color="text" style={{marginRight: 5}} onPress={() => moveDown()}>
               下移
             </Text>
-            <Text style={{marginRight: 5}} onPress={() => moveToTop()}>
+            <Text color="text" style={{marginRight: 5}} onPress={() => moveToTop()}>
               置顶
             </Text>
-            <Text style={{marginRight: 5}} onPress={() => moveToBottom()}>
+            <Text color="text" style={{marginRight: 5}} onPress={() => moveToBottom()}>
               置底
             </Text>
             <Text onPress={() => remove()}>删除</Text>
@@ -165,7 +165,7 @@ const FormDemo = () => {
   return (
     <Container>
       <Layout>
-        <Body style={{backgroundColor: '#fff'}}>
+        <Body>
           <Form
             form={form}
             schema={schema}
@@ -179,7 +179,7 @@ const FormDemo = () => {
             changeValidate={true}
           />
           <View>
-            <Text>{JSON.stringify(state)}</Text>
+            <Text color="primary_text">{JSON.stringify(state)}</Text>
           </View>
           <Button
             type="primary"

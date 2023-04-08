@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, Platform, TextStyle, StyleProp } from 'react-native';
-import { colors } from '../utils';
+import { View, StyleSheet, Platform, TextStyle, StyleProp } from 'react-native';
 import Divider from '../Divider';
+import Text from '../Typography/Text';
 
 export type CardTitleProps = {
   title?: string;
@@ -13,7 +13,11 @@ const CardTitle = ({ title, titleStyle, children }: CardTitleProps) => {
   return (
     <View>
       {title && (
-        <Text testID="cardTitle" style={StyleSheet.flatten([styles.title, titleStyle]) as TextStyle}>
+        <Text
+          color="primary_text"
+          testID="cardTitle"
+          style={StyleSheet.flatten([styles.title, titleStyle]) as TextStyle}
+        >
           {title}
         </Text>
       )}
@@ -26,7 +30,6 @@ const CardTitle = ({ title, titleStyle, children }: CardTitleProps) => {
 const styles = StyleSheet.create({
   title: {
     fontSize: 14,
-    color: colors.colorsPalette.grey10,
     ...Platform.select({
       android: {
         fontFamily: 'sans-serif',

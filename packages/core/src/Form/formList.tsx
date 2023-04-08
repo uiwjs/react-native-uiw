@@ -7,6 +7,8 @@ import Label from './comps/label';
 import Tip from './comps/tip';
 import { View, SafeAreaView } from 'react-native';
 import styles from './styles';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
 
 interface FormListProps {
   formListValue: FormItemsProps;
@@ -23,7 +25,7 @@ const FormList = ({
     innerMethods: { store = {}, updateStore },
     customComponentList,
   } = useContext(Context);
-
+  const theme = useTheme<Theme>();
   const { field, items = [], renderAdd, renderHeader } = formListValue;
 
   const handleOperate = (type = '', index: number) => {
@@ -109,7 +111,7 @@ const FormList = ({
   };
 
   return (
-    <SafeAreaView style={styles.warpper}>
+    <SafeAreaView style={{ backgroundColor: theme.colors.background }}>
       {(store[field] || []).map((item: Record<string, unknown>, index: number) => (
         <React.Fragment key={index}>
           {renderHeader?.(index, {
