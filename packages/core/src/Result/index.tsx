@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, ViewProps, Text, TextProps, StyleSheet } from 'react-native';
+import { Theme } from '../theme';
+import { color, useTheme } from '@shopify/restyle';
 
 interface MaybeTextOrViewProps {
   children?: React.ReactNode;
@@ -11,28 +13,6 @@ function MaybeTextOrView({ children, ...otherProps }: MaybeTextOrViewProps & Tex
   }
   return <View {...otherProps}>{children}</View>;
 }
-
-const styles = StyleSheet.create({
-  defalut: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    paddingTop: 30,
-    paddingBottom: 21,
-  },
-  title: {
-    fontSize: 21,
-    marginTop: 15,
-    paddingHorizontal: 15,
-  },
-  message: {
-    fontSize: 16,
-    marginTop: 9,
-    paddingHorizontal: 15,
-    lineHeight: 18,
-    color: '#888',
-  },
-});
 
 export interface ResultProps extends ViewProps {
   /**
@@ -51,6 +31,12 @@ export interface ResultProps extends ViewProps {
 
 export default function Result(props: ResultProps) {
   const { style, title, message, img, ...otherProps } = props;
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    bgColor: theme.colors.mask,
+    textColor: theme.colors.primary_text,
+    messageColor: theme.colors.text,
+  });
   return (
     <View style={[styles.defalut, style]} {...otherProps}>
       {img}
@@ -61,3 +47,34 @@ export default function Result(props: ResultProps) {
 }
 
 Result.defaultProps = {} as ResultProps;
+
+type CreStyle = {
+  bgColor: string;
+  textColor: string;
+  messageColor: string;
+};
+
+function createStyles({ bgColor, textColor, messageColor }: CreStyle) {
+  return StyleSheet.create({
+    defalut: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: bgColor,
+      paddingTop: 30,
+      paddingBottom: 21,
+    },
+    title: {
+      fontSize: 21,
+      marginTop: 15,
+      paddingHorizontal: 15,
+      color: textColor,
+    },
+    message: {
+      fontSize: 16,
+      marginTop: 9,
+      paddingHorizontal: 15,
+      lineHeight: 18,
+      color: messageColor,
+    },
+  });
+}
