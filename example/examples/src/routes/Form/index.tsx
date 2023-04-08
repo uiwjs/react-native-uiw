@@ -2,7 +2,7 @@ import React, {useState, useRef} from 'react';
 import {Form, Button, Toast, Slider, Flex, Text} from '@uiw/react-native';
 import {View} from 'react-native';
 import Layout, {Container} from '../../Layout';
-const {Body, Footer} = Layout;
+const {Body, Footer, Card} = Layout;
 
 interface actionProps {
   remove: () => void;
@@ -166,45 +166,47 @@ const FormDemo = () => {
     <Container>
       <Layout>
         <Body>
-          <Form
-            form={form}
-            schema={schema}
-            initialValues={{name: '王滴滴', rate: 4}}
-            watch={{
-              name: (value: unknown) => console.log('value', value),
-            }}
-            customComponentList={{
-              render: <Slider />,
-            }}
-            changeValidate={true}
-          />
-          <View>
-            <Text color="primary_text">{JSON.stringify(state)}</Text>
-          </View>
-          <Button
-            type="primary"
-            onPress={() => {
-              form
-                .validateFields()
-                .then((values: any) => setStore(values))
-                .catch((errors: any) => Toast.warning(JSON.stringify(errors)));
-            }}>
-            确定
-          </Button>
-          <Button type="primary" onPress={() => form.setFieldValue('age', '456')}>
-            设置
-          </Button>
-          <Button type="primary" onPress={() => form.resetFieldValue()}>
-            重置
-          </Button>
-          <Button
-            type="primary"
-            onPress={() => {
-              const errors = form.validate();
-              Toast.warning(JSON.stringify(errors));
-            }}>
-            触发验证
-          </Button>
+          <Card title="基本使用">
+            <Form
+              form={form}
+              schema={schema}
+              initialValues={{name: '王滴滴', rate: 4}}
+              watch={{
+                name: (value: unknown) => console.log('value', value),
+              }}
+              customComponentList={{
+                render: <Slider />,
+              }}
+              changeValidate={true}
+            />
+            <View>
+              <Text color="primary_text">{JSON.stringify(state)}</Text>
+            </View>
+            <Button
+              type="primary"
+              onPress={() => {
+                form
+                  .validateFields()
+                  .then((values: any) => setStore(values))
+                  .catch((errors: any) => Toast.warning(JSON.stringify(errors)));
+              }}>
+              确定
+            </Button>
+            <Button type="primary" onPress={() => form.setFieldValue('age', '456')}>
+              设置
+            </Button>
+            <Button type="primary" onPress={() => form.resetFieldValue()}>
+              重置
+            </Button>
+            <Button
+              type="primary"
+              onPress={() => {
+                const errors = form.validate();
+                Toast.warning(JSON.stringify(errors));
+              }}>
+              触发验证
+            </Button>
+          </Card>
         </Body>
         <Footer />
       </Layout>
