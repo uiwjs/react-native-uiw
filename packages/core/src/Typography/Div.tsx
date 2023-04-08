@@ -1,11 +1,15 @@
 import React, { Fragment } from 'react';
 import { Text, TextProps, ViewProps } from 'react-native';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 interface DivProps {
   children?: React.ReactNode;
 }
 
 export default function Div<T>({ children, ...otherProps }: DivProps & TextProps & ViewProps): JSX.Element | null {
+  const theme = useTheme<Theme>();
+  const textColor = theme.colors.primary_text || '#ccc';
   if (!children) {
     return null;
   }
@@ -14,7 +18,7 @@ export default function Div<T>({ children, ...otherProps }: DivProps & TextProps
     return typeof item === 'string' || (item && (item as any).type && (item as any).type.displayName === 'Text');
   });
   if (someStr) {
-    return <Text {...otherProps} children={children} />;
+    return <Text {...otherProps} children={children} style={{ color: textColor }} />;
   }
   return (
     <Fragment>
