@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
 import {TextArea} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
@@ -28,7 +27,7 @@ export default class TextAreaView extends Component<TextAreaProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <Card title="基础实例" style={styles.card}>
+            <Card title="基础实例">
               <TextArea
                 onChange={(value: string) => {
                   this.setState({value});
@@ -37,7 +36,7 @@ export default class TextAreaView extends Component<TextAreaProps> {
                 placeholder="默认提示语"
               />
             </Card>
-            <Card title="根据内容自动调整高度" style={styles.card}>
+            <Card title="根据内容自动调整高度">
               <TextArea
                 onChange={(value5: string) => {
                   this.setState({value5});
@@ -47,7 +46,7 @@ export default class TextAreaView extends Component<TextAreaProps> {
                 autoSize
               />
             </Card>
-            <Card title="展示字数" style={styles.card}>
+            <Card title="展示字数">
               <TextArea
                 onChange={(value4: string) => {
                   this.setState({value4});
@@ -57,7 +56,7 @@ export default class TextAreaView extends Component<TextAreaProps> {
                 placeholder="默认展示字数"
               />
             </Card>
-            <Card title="只读状态" style={styles.card}>
+            <Card title="只读状态">
               <TextArea
                 editable={false}
                 onChange={(value1: string) => {
@@ -66,7 +65,7 @@ export default class TextAreaView extends Component<TextAreaProps> {
                 value={this.state.value1}
               />
             </Card>
-            <Card title="允许拖拽" style={styles.card}>
+            <Card title="允许拖拽">
               <TextArea
                 showWords={true}
                 onChange={(value6: string) => {
@@ -76,7 +75,7 @@ export default class TextAreaView extends Component<TextAreaProps> {
                 draggable
               />
             </Card>
-            <Card title="自定义输入框样式" style={styles.card}>
+            <Card title="自定义输入框样式">
               <TextArea
                 height={150}
                 style={{
@@ -101,9 +100,3 @@ export default class TextAreaView extends Component<TextAreaProps> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-  },
-});
