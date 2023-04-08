@@ -3,12 +3,10 @@ import {
   View,
   ViewProps,
   ViewStyle,
-  Text,
   TextStyle,
   StyleProp,
   Image,
   ImageStyle,
-  TextProps,
   TouchableOpacity,
   GestureResponderEvent,
   StyleSheet,
@@ -16,14 +14,19 @@ import {
 import Flex from '../Flex';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
+import Text, { BaseTextProps } from '../Typography/Text';
 
 interface MaybeTextOrViewProps {
   children?: React.ReactNode;
 }
 
-function MaybeTextOrView({ children, ...otherProps }: MaybeTextOrViewProps & TextProps & ViewProps) {
+function MaybeTextOrView({ children, ...otherProps }: MaybeTextOrViewProps & BaseTextProps & ViewProps) {
   if (typeof children === 'string' || (children && (children as any).type.displayName === 'Text')) {
-    return <Text {...otherProps}>{children}</Text>;
+    return (
+      <Text color="primary_text" {...otherProps}>
+        {children}
+      </Text>
+    );
   }
   return <View {...otherProps}>{children}</View>;
 }
@@ -96,7 +99,6 @@ export default function Grid(props: GridProps) {
     onPress,
     ...otherProps
   } = props;
-  const textColor = theme.colors.primary_text || '#ccc';
   if (!Array.isArray(data)) {
     return null;
   }
@@ -124,9 +126,7 @@ export default function Grid(props: GridProps) {
       const itemContent = (
         <Fragment>
           {icon && <MaybeTextOrView style={iconStyle}>{icon}</MaybeTextOrView>}
-          <MaybeTextOrView style={[{ marginTop: 9, fontSize: 12, color: textColor }, textStyle]}>
-            {item.text}
-          </MaybeTextOrView>
+          <MaybeTextOrView style={[{ marginTop: 9, fontSize: 12 }, textStyle]}>{item.text}</MaybeTextOrView>
         </Fragment>
       );
       childItem!.push(

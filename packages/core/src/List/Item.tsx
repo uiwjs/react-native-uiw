@@ -6,10 +6,10 @@ import {
   StyleProp,
   TextStyle,
   ViewStyle,
-  TouchableHighlight,
+  TouchableOpacity,
   TouchableWithoutFeedbackProps,
-  Text,
 } from 'react-native';
+import Text from '../Typography/Text';
 
 export interface ListItemProps extends ViewProps, TouchableWithoutFeedbackProps {
   underlayColor?: string;
@@ -50,7 +50,11 @@ export default class ListItem extends React.PureComponent<ListItemProps> {
         <View style={{ flex: 1, flexDirection: 'row' }}>
           {React.Children.toArray(children).map((child, idx) => {
             if (typeof children === 'string') {
-              return <Text key={idx}>{children}</Text>;
+              return (
+                <Text color="text" key={idx}>
+                  {children}
+                </Text>
+              );
             }
             if (!React.isValidElement(child)) {
               return null;
@@ -61,7 +65,9 @@ export default class ListItem extends React.PureComponent<ListItemProps> {
         {extra && (
           <View style={{ paddingRight: 10 }}>
             {typeof extra === 'string' ? (
-              <Text style={extraStyle}>{extra}</Text>
+              <Text color="primary_text" style={extraStyle}>
+                {extra}
+              </Text>
             ) : (
               <View style={[{ flexDirection: 'row', alignItems: 'center' }, extraStyle]}>{extra}</View>
             )}
@@ -72,14 +78,14 @@ export default class ListItem extends React.PureComponent<ListItemProps> {
 
     if (onPress) {
       return (
-        <TouchableHighlight
-          underlayColor={underlayColor}
+        <TouchableOpacity
+          // underlayColor={underlayColor}
           style={[styles.warpper, { paddingLeft }, touchableStyle]}
           onPress={onPress}
           {...otherProps}
         >
           {cell}
-        </TouchableHighlight>
+        </TouchableOpacity>
       );
     }
     return <View style={[{ paddingLeft }, styles.warpper]}>{cell}</View>;

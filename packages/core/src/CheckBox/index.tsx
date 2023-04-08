@@ -77,7 +77,7 @@ function CheckBox(props: CheckBoxProps) {
     colorIcon = theme.colors.disabled || color(colorIcon).alpha(0.52).rgb().string();
     divStyl.opacity = 0.5;
   }
-  const textColor = theme.colors.primary_text || 'black';
+  const textColor = theme.colors.text || 'black';
   return (
     <TouchableOpacity disabled={disabled} {...otherProps} style={[styles.default, style]} onPress={onPress}>
       <View style={[styIcon]}>
