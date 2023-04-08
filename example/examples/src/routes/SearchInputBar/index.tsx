@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import Layout, {Container} from '../../Layout';
-import {SearchInputBar, Toast} from '@uiw/react-native';
+import {SearchInputBar, Toast, Text} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 
 const {Header, Body, Footer} = Layout;
@@ -72,7 +72,7 @@ export default class Index extends Component<IndexProps, IndexState> {
               showActionButton={true}
               searchRender={
                 <View style={styles.search}>
-                  <Text>搜索</Text>
+                  <Text color="primary_background">搜索</Text>
                 </View>
               }
               touchProps={{
