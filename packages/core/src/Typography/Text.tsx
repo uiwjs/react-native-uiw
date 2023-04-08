@@ -1,36 +1,36 @@
-import React, { memo } from 'react';
-import { TextProps as RNTextProps } from 'react-native';
-import { createText, TextProps } from '@shopify/restyle';
+import { TextProps as RNTextProps, Text as BaseText, ColorValue } from 'react-native';
 import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
+import { isEmpty } from 'lodash';
 
-export type BaseTextProps = TextProps<Theme> &
-  RNTextProps & {
-    children?: React.ReactNode;
+type ColorSchemeProps = {
+  [key: string]: string;
+};
+
+export interface BaseTextProps extends RNTextProps {
+  color?: string;
+}
+
+const Text = (props: BaseTextProps) => {
+  const { color = 'text', children, style, ...others } = props;
+  const theme = useTheme<Theme>();
+
+  const getColorScheme = (): ColorSchemeProps => {
+    // app.ts 包裹了ThemeProvider传递了theme
+    if (!isEmpty(theme.colors)) {
+      return theme.colors;
+    }
+    return {
+      [color]: '#000',
+    };
   };
 
-const BaseText = createText<Theme>();
-
-const Text = memo((props: BaseTextProps) => {
-  const { children, style, ...others } = props;
   return (
-    <BaseText
-      selectable={true}
-      // @ts-ignore
-      userSelect="all"
-      {...others}
-      style={[
-        {
-          includeFontPadding: false,
-          textAlignVertical: 'center',
-          fontVariant: ['tabular-nums'],
-        },
-        style,
-      ]}
-    >
+    <BaseText style={[{ color: getColorScheme()[color] }, style]} {...others}>
       {children}
     </BaseText>
   );
-});
+};
 Text.displayName = 'Text';
 
 export default Text;

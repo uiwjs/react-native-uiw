@@ -1,6 +1,6 @@
 import React, {useState, Fragment} from 'react';
-import {ScrollView, Image, View, Text} from 'react-native';
-import {Card, Divider, Loader, Icon} from '@uiw/react-native';
+import {ScrollView, Image, View} from 'react-native';
+import {Card, Loader, Icon, Text} from '@uiw/react-native';
 import Layout from '../../Layout';
 const CardDemo = (props: any) => {
   const {Header} = Layout;
@@ -21,19 +21,19 @@ const CardDemo = (props: any) => {
         />
         <View style={{marginLeft: 10}}>
           <Text
+            color="primary_text"
             style={{
               marginBottom: 5,
               fontSize: 16,
               fontWeight: 'bold',
-              color: '#20303C',
             }}>
             @uiw/react-native Card
           </Text>
-          <Text style={{color: '#808080'}}>3 days ago</Text>
+          <Text color="primary_text">3 days ago</Text>
         </View>
       </View>
       <View style={{marginTop: 10}}>
-        <Text style={{color: '#20303C'}}>
+        <Text color="text">
           Welcome to @uiw/react-native! Title two is a long title that will not get cut by default, but can be limited, Title number three, Title number four,
           Title number five!
         </Text>
@@ -59,14 +59,14 @@ const CardDemo = (props: any) => {
           actions={[
             {
               text: '点赞',
-              icon: <Icon name="like-o" size={16} color="#5847FF" />,
+              icon: <Icon name="like-o" size={16} color="#3578e5" />,
               onPress: (e: any, index: number) => {
                 console.log('e', e, 'index', index);
               },
             },
             {
               text: '分享',
-              icon: <Icon name="share" size={16} color="#5847FF" />,
+              icon: <Icon name="share" size={16} color="#3578e5" />,
               onPress: (e: any, index: number) => {
                 console.log('e', e, 'index', index);
               },
@@ -74,29 +74,20 @@ const CardDemo = (props: any) => {
           ]}
         />
       </Card>
-      <Divider />
+      <View />
       <Header description={'带标题下划线圆角卡片'} />
       <Card borderRadius={12}>
         <Card.Title title="@uiw/react-native" />
         {basicRender}
       </Card>
-      <Divider />
+      <View />
       <Header description={'可点击选中卡片'} />
       <Card
         selected={selected}
         borderRadius={12}
         onPress={() => {
           setSelected(!selected);
-        }}
-        // 自定义选中状态
-        // selectedStyle={{
-        //   icon: null,
-        //   style: {
-        //     borderColor: "#fd8a00",
-        //   }
-        //   iconStyle: {alignItems: 'flex-end', justifyContent: 'flex-start'},
-        // }}
-      >
+        }}>
         {basicRender}
       </Card>
     </ScrollView>

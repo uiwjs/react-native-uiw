@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import {
   View,
   ViewProps,
@@ -23,7 +23,7 @@ interface MaybeTextOrViewProps {
 function MaybeTextOrView({ children, ...otherProps }: MaybeTextOrViewProps & BaseTextProps & ViewProps) {
   if (typeof children === 'string' || (children && (children as any).type.displayName === 'Text')) {
     return (
-      <Text color="primary_text" {...otherProps}>
+      <Text color="text" {...otherProps}>
         {children}
       </Text>
     );
