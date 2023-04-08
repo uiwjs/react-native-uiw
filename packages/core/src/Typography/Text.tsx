@@ -1,4 +1,4 @@
-import { TextProps as RNTextProps, Text as BaseText, ColorValue } from 'react-native';
+import { TextProps as RNTextProps, Text as BaseText } from 'react-native';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
 import { isEmpty } from 'lodash';

@@ -1,10 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
-  TouchableOpacity,
   ViewProps,
-  ViewStyle,
-  Dimensions,
   View,
   StyleProp,
   Text,
@@ -16,6 +13,8 @@ import {
   PanResponder,
   PanResponderInstance,
 } from 'react-native';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export interface TextAreaProps extends ViewProps {
   /** 文本位置 */
@@ -49,11 +48,12 @@ export interface TextAreaProps extends ViewProps {
 }
 
 function TextArea(props: TextAreaProps) {
+  const theme = useTheme<Theme>();
   const {
     draggable = false,
     textAlignVertical = 'top',
     placeholder = '',
-    placeholderTextColor = '#989FB2',
+    placeholderTextColor = theme.colors.gray200 || '#989FB2',
     numberOfLines = 30,
     onChange,
     maxLength = 50,
@@ -66,6 +66,12 @@ function TextArea(props: TextAreaProps) {
     height: defaultHeight = 0,
     ...other
   } = props;
+
+  const styles = createStyles({
+    backgroundColor: theme.colors.mask,
+    borderColor: theme.colors.border,
+    color: theme.colors.text,
+  });
 
   const [defaultText, setDefaultText] = useState<string>('');
   const [height, setHeight] = useState<number>(defaultHeight);
@@ -125,28 +131,30 @@ function TextArea(props: TextAreaProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  viewBody: {
-    marginHorizontal: 10,
-    borderColor: 'gray',
-    borderWidth: 0.2,
-    borderRadius: 2,
-    color: 'black',
-    backgroundColor: '#fff',
-  },
-  bodyLayout: {
-    padding: 10,
-  },
-  TextInput: {
-    backgroundColor: 'transparent',
-    borderWidth: 0,
-    fontSize: 16,
-  },
-  textWords: {
-    padding: 0,
-    color: 'gray',
-    textAlign: 'right',
-  },
-});
+function createStyles({ backgroundColor = '#fff', borderColor = 'gray', color = '#000' }) {
+  return StyleSheet.create({
+    viewBody: {
+      marginHorizontal: 10,
+      borderColor: borderColor,
+      borderWidth: 0.2,
+      borderRadius: 2,
+      backgroundColor: backgroundColor,
+    },
+    bodyLayout: {
+      padding: 10,
+    },
+    TextInput: {
+      backgroundColor: 'transparent',
+      borderWidth: 0,
+      fontSize: 16,
+      color: color,
+    },
+    textWords: {
+      padding: 0,
+      color: color,
+      textAlign: 'right',
+    },
+  });
+}
 
 export default TextArea;
