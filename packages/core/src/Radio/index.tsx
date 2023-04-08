@@ -23,27 +23,34 @@ function MaybeTextOrView({ children, ...otherProps }: MaybeTextOrViewProps & Tex
   return <View {...otherProps}>{children}</View>;
 }
 
-const styles = StyleSheet.create({
-  defalut: {},
-  checkBg: {
-    borderRadius: 999,
-    borderColor: 'rgb(189, 193, 204)',
-    borderWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  check: {
-    borderRadius: 999,
-    backgroundColor: '#4DD964',
-  },
-  touch: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  label: {
-    marginLeft: 6,
-  },
-});
+type CreStyle = {
+  textColor: string;
+};
+
+function createStyles({ textColor }: CreStyle) {
+  return StyleSheet.create({
+    defalut: {},
+    checkBg: {
+      borderRadius: 999,
+      borderColor: 'rgb(189, 193, 204)',
+      borderWidth: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    check: {
+      borderRadius: 999,
+      backgroundColor: '#4DD964',
+    },
+    touch: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    label: {
+      marginLeft: 6,
+      color: textColor,
+    },
+  });
+}
 
 export interface RadioProps extends ViewProps {
   checked?: boolean;
@@ -64,6 +71,9 @@ export interface RadioState {
 
 export default function Radio(props: RadioProps) {
   const theme = useTheme<Theme>();
+  const styles = createStyles({
+    textColor: theme.colors.primary_text || '#ccc',
+  });
   const [state, setState] = useState({
     checked: props.checked,
     sizeValue: new Animated.Value(0),
