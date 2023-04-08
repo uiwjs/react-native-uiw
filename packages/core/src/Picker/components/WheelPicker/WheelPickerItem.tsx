@@ -1,6 +1,8 @@
 import React from 'react';
 import { Animated, StyleSheet, Text } from 'react-native';
 import { WhellPickerItemProps } from './type';
+import { Theme } from '../.././../theme';
+import { useTheme } from '@shopify/restyle';
 
 const opacityFunction = (val: number) => 1 / (1 + Math.abs(val));
 const scaleFunction = (val: number) => 1 - 0.1 * Math.abs(val);
@@ -8,7 +10,8 @@ const rotationFunction = (val: number) => 20 * val;
 
 function WheelPickerItem({ textStyle, style, visibleRest, height, option, index, currentIndex }: WhellPickerItemProps) {
   const relativeScrollIndex = Animated.subtract(index, currentIndex);
-
+  const theme = useTheme<Theme>();
+  const textColor = theme.colors.primary_text || '#ccc';
   const inputRange = [0];
   for (let i = 1; i <= visibleRest + 1; i++) {
     inputRange.unshift(-i);
@@ -42,7 +45,7 @@ function WheelPickerItem({ textStyle, style, visibleRest, height, option, index,
 
   return (
     <Animated.View style={[styles.option, style, { height, opacity, transform: [{ rotateX }, { scale }] }]}>
-      <Text style={textStyle}>{option?.label}</Text>
+      <Text style={[{ color: textColor }, textStyle]}>{option?.label}</Text>
     </Animated.View>
   );
 }
