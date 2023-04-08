@@ -6,13 +6,15 @@ import {
   StyleSheet,
   NativeSyntheticEvent,
   TextInputFocusEventData,
-  Text,
   TouchableOpacity,
   StyleProp,
   TextStyle,
   ViewStyle,
 } from 'react-native';
 import Icon from '../Icon';
+import Text from '../Typography/Text';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 // StyleProp<ViewStyle>
 export interface InputProps extends TextInputProps {
@@ -79,7 +81,10 @@ const Input = (props: InputProps) => {
 
   const [defaultValue, setDefaultValue] = useState<string | undefined>(value);
   const [control, setControl] = useState<string>('state');
-
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    bgColor: theme.colors.mask,
+  });
   useEffect(() => {
     if (control === 'state' && value === defaultValue) {
       setControl('props');
@@ -131,7 +136,6 @@ const Input = (props: InputProps) => {
       style={[
         {
           flexDirection: 'row',
-          backgroundColor: '#fff',
           alignItems: 'center',
           paddingVertical: 0,
           height: minHeight,
@@ -141,10 +145,10 @@ const Input = (props: InputProps) => {
       testID="RNE__Input__wrap"
     >
       <View
-        style={[inputStyles.container, { flex: 1, borderColor: borderColor }, border ? inputStyles[border] : {}]}
+        style={[styles.container, { flex: 1, borderColor: borderColor }, border ? styles[border] : {}]}
         testID="RNE__Input__view"
       >
-        {typeof extraStart === 'string' ? <Text style={{ color: '#888888', fontSize }}>{extraStart}</Text> : extraStart}
+        {typeof extraStart === 'string' ? <Text color="primary_text" style={{ fontSize }}>{extraStart}</Text> : extraStart}
         <TextInput
           testID="RNE__Input__input"
           {...others}
@@ -153,9 +157,9 @@ const Input = (props: InputProps) => {
           value={defaultValue}
           onChangeText={onInputChange}
           onFocus={onInputFocus}
-          style={[{ fontSize }, inputStyles.input, style]}
+          style={[{ fontSize, color: theme.colors.text || '#000' }, styles.input, style]}
         />
-        {typeof extraEnd === 'string' ? <Text style={{ color: '#888888', fontSize }}>{extraEnd}</Text> : extraEnd}
+        {typeof extraEnd === 'string' ? <Text color="primary_text" style={{ fontSize }}>{extraEnd}</Text> : extraEnd}
         {error && (renderError || <Icon name="circle-close" color="#dc3545" />)}
       </View>
       {clear && (
@@ -166,48 +170,52 @@ const Input = (props: InputProps) => {
             onInputChange?.('');
           }}
         >
-          {renderClear || <Text style={[{ color: '#888888', fontSize }, clearStyle]}>清除</Text>}
+          {renderClear || <Text color="primary_text" style={[{ fontSize }, clearStyle]}>清除</Text>}
         </TouchableOpacity>
       )}
     </View>
   );
 };
 export default Input;
-
-const inputStyles = StyleSheet.create({
-  container: {
-    height: '100%',
-    marginTop: 0,
-    marginBottom: 0,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-    border: '1px solid',
-    paddingHorizontal: 5,
-  },
-  input: {
-    flex: 1,
-    color: '#000',
-    backgroundColor: 'transparent',
-    paddingVertical: 0,
-    paddingTop: 0,
-  },
-  always: {
-    borderWidth: 1,
-  },
-  bottom: {
-    borderBottomWidth: 1,
-  },
-  top: {
-    borderTopWidth: 1,
-  },
-  left: {
-    borderLeftWidth: 1,
-  },
-  right: {
-    borderRightWidth: 1,
-  },
-  inputErrorColor: {
-    color: '#f50',
-  },
-});
+type CreStyle = {
+  bgColor: string;
+};
+function createStyles({ bgColor }: CreStyle) {
+  return StyleSheet.create({
+    container: {
+      height: '100%',
+      marginTop: 0,
+      marginBottom: 0,
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: 'transparent',
+      border: '1px solid',
+      paddingHorizontal: 5,
+    },
+    input: {
+      flex: 1,
+      // color: 'red',
+      backgroundColor: 'transparent',
+      paddingVertical: 0,
+      paddingTop: 0,
+    },
+    always: {
+      borderWidth: 1,
+    },
+    bottom: {
+      borderBottomWidth: 1,
+    },
+    top: {
+      borderTopWidth: 1,
+    },
+    left: {
+      borderLeftWidth: 1,
+    },
+    right: {
+      borderRightWidth: 1,
+    },
+    inputErrorColor: {
+      color: '#f50',
+    },
+  });
+}
