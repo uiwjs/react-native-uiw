@@ -226,7 +226,7 @@ const darkPalette = {
   gray500: 'rgba(255, 255, 255, 0.8)',
   gray600: 'rgba(0, 0, 0, 0.4)',
   gray700: 'rgba(0, 0, 0, 0.04)',
-  gray800: 'rgba(30, 30, 40, 0.9)', // 苹果暗模式弹开颜色
+  gray800: '#1E1E28', // 苹果暗模式弹开颜色
   gray900: 'transparent',
 };
 
