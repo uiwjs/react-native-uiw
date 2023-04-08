@@ -125,13 +125,8 @@ export interface ContainerProps extends ScrollViewProps {
 export const Container = (props: ContainerProps) => {
   const {children, ...others} = props;
   const theme = useTheme<Theme>();
-  const styles = createStyles({
-    backgroundColor: theme.colors.background,
-    shadowColor: theme.colors.border,
-    color: theme.colors.primary_text,
-  });
   return (
-    <SafeAreaView style={{backgroundColor: '#ededed'}} {...others}>
+    <SafeAreaView style={{backgroundColor: theme.colors.background}} {...others}>
       <ScrollView style={{height: '100%'}} {...others}>
         {children}
       </ScrollView>
