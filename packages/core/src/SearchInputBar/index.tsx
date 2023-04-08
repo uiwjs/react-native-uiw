@@ -9,13 +9,15 @@ import {
   TextInput,
   TextInputFocusEventData,
   TextInputProps,
-  Text,
   TextStyle,
   TouchableWithoutFeedbackProps,
 } from 'react-native';
 import Icon, { IconsProps } from '../Icon';
 import Loader from '../Loader';
 import { colors } from '../utils';
+import Text from '../Typography/Text';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export interface SearchInputBarProps extends TextInputProps {
   /** 容器样式 */
@@ -49,7 +51,7 @@ interface SearchInputBarState {
 
 const SearchInputBar = (props: SearchInputBarProps) => {
   const inputRef = React.createRef<TextInput>();
-
+  const theme = useTheme<Theme>();
   const [state, setState] = useState<SearchInputBarState>({
     showIcon: false,
   });
@@ -76,7 +78,7 @@ const SearchInputBar = (props: SearchInputBarProps) => {
         searchRender
       ) : (
         <TouchableOpacity {...touchProps} style={[styles.search, { paddingHorizontal: 10 }]}>
-          <Text>{actionName}</Text>
+          <Text color="primary_background">{actionName}</Text>
         </TouchableOpacity>
       );
     }
@@ -98,16 +100,23 @@ const SearchInputBar = (props: SearchInputBarProps) => {
   return (
     <Loader loading={loading} rounded={5} maskColor="transparent">
       <View style={[styles.centerFlex]}>
-        <View style={StyleSheet.flatten([styles.searchContainer, styles.centerFlex, containerStyle])}>
+        <View
+          style={StyleSheet.flatten([
+            { backgroundColor: theme.colors.mask || '#fff' },
+            styles.searchContainer,
+            styles.centerFlex,
+            containerStyle,
+          ])}
+        >
           <TouchableOpacity onPress={() => needFocus('search')}>
-            <Icon name="search" size={14} color={colors.colorsPalette.grey40} height={'100%'} {...searchIcon} />
+            <Icon name="search" size={14} color={theme.colors.text} height={'100%'} {...searchIcon} />
           </TouchableOpacity>
           <TextInput
             {...other}
             value={value}
             onChangeText={onChangeText}
             ref={inputRef}
-            style={[styles.textInput, inputStyle]}
+            style={[{ color: theme.colors.primary_text || '#A6ACB1' }, styles.textInput, inputStyle]}
             onFocus={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
               if (showActionButton !== null) {
                 setState({ showIcon: true });
@@ -123,7 +132,13 @@ const SearchInputBar = (props: SearchInputBarProps) => {
           />
           {Boolean(value) && (
             <TouchableOpacity style={{}} onPress={() => needFocus('close')}>
-              <Icon name="close" size={14} color={colors.colorsPalette.grey40} height={'100%'} {...closeIcon} />
+              <Icon
+                name="close"
+                size={14}
+                color={theme.colors.primary_text || '#A6ACB1'}
+                height={'100%'}
+                {...closeIcon}
+              />
             </TouchableOpacity>
           )}
         </View>
@@ -146,7 +161,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flex: 1,
     paddingHorizontal: 15,
-    backgroundColor: colors.colorsPalette.grey70,
   },
   textInput: {
     paddingVertical: 0,
@@ -155,7 +169,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '400',
     paddingLeft: 10,
-    color: colors.colorsPalette.grey40,
   },
   search: {
     justifyContent: 'center',
