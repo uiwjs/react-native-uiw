@@ -46,7 +46,7 @@ function WheelPickerItem({ textStyle, style, visibleRest, height, option, index,
   return (
     <Animated.View style={[styles.option, style, { height, opacity, transform: [{ rotateX }, { scale }] }]}>
       <Text style={[{ color: textColor }, textStyle]}>{option?.label}</Text>
-    </Animated.View>
+    </Animated.View >
   );
 }
 
