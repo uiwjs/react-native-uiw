@@ -18,7 +18,7 @@ export interface TabsProps extends ViewProps {
 function Tabs(props: TabsProps) {
   const theme = useTheme<Theme>();
   const styles = createStyles({
-    bgColor: theme.colors.white || 'white',
+    bgColor: theme.colors.mask || '#fff',
   });
   const {
     style,
