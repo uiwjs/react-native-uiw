@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import Layout, {Container} from '../../Layout';
-import {Tabs, IconsName} from '@uiw/react-native';
+import {Tabs, IconsName, Text} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 
 const {Header, Body, Footer} = Layout;
@@ -45,32 +45,32 @@ export default class Index extends Component<IndexProps, IndexState> {
             <Tabs value={this.state.flag} onChange={value => this.setState({flag: value})}>
               <Tabs.Item title="喜欢">
                 <View>
-                  <Text>喜欢</Text>
+                  <Text color="text">喜欢</Text>
                 </View>
               </Tabs.Item>
               <Tabs.Item title="关注">
                 <View>
-                  <Text>关注</Text>
+                  <Text color="text">关注</Text>
                 </View>
               </Tabs.Item>
               <Tabs.Item title="兴趣">
                 <View>
-                  <Text>兴趣</Text>
+                  <Text color="text">兴趣</Text>
                 </View>
               </Tabs.Item>
               <Tabs.Item title="爱好">
                 <View>
-                  <Text>爱好</Text>
+                  <Text color="text">爱好</Text>
                 </View>
               </Tabs.Item>
               <Tabs.Item title="gitlabl">
                 <View>
-                  <Text>gitlabl</Text>
+                  <Text color="text">gitlabl</Text>
                 </View>
               </Tabs.Item>
               <Tabs.Item title="github">
                 <View>
-                  <Text>github</Text>
+                  <Text color="text">github</Text>
                 </View>
               </Tabs.Item>
             </Tabs>
