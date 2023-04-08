@@ -85,7 +85,7 @@ export default function ButtonView<T>(props: ButtonProps) {
   }
   if (disabled) {
     textColor = colorF(theme.colors.disabled).alpha(0.1).rgb().string();
-    backgroundColor = colorF(backgroundColor).rgb().string();
+    backgroundColor = colorF(theme.colors.disabled).rgb().string();
   }
   if (buttonColor) {
     backgroundColor = colorF(buttonColor).rgb().string();

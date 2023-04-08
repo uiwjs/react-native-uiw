@@ -16,29 +16,29 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{ padding: 15 }}>
             <Card title="基础实例">
               <Flex>
-                <Button type="primary">默认按钮</Button>
+                <Button type="primary">蓝色按钮</Button>
                 <Spacing type="horizontal" />
-                <Button>默认按钮</Button>
+                <Button>主题色按钮</Button>
                 <Spacing type="horizontal" />
-                <Button>按钮</Button>
+                <Button type="success">绿色按钮</Button>
               </Flex>
               <Spacing />
-              <Button>默认按钮</Button>
+              <Button>主题色按钮</Button>
               <Spacing />
-              <Button disabled>默认禁用按钮</Button>
+              <Button disabled>禁用按钮</Button>
               <Spacing />
               <Button type="primary">主要按钮 primary </Button>
               <Spacing />
-              <Button type="danger" disabled>
+              <Button type="danger">
                 错误按钮 danger
               </Button>
               <Spacing />
               <Button type="success">成功按钮 success</Button>
               <Spacing />
-              <Button type="warning" disabled>
+              <Button type="warning">
                 警告禁用按钮 warning
               </Button>
               <Spacing />
@@ -50,14 +50,14 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                 亮按钮 light
               </Button>
               <Spacing />
-              <Button type="dark" loading disabled>
+              <Button type="dark" loading >
                 暗按钮 dark
               </Button>
               <Spacing />
-              <Button loading>默认按钮</Button>
+              <Button loading>主题色按钮</Button>
               <Spacing />
               <Button loading disabled>
-                默认按钮 禁用
+                主题色按钮 禁用
               </Button>
             </Card>
             <Card title="按钮圆角设置">
