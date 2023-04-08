@@ -1,5 +1,6 @@
 import React from 'react';
-import { FlatList, FlatListProps, Text, StyleProp, ViewStyle, View } from 'react-native';
+import { FlatList, FlatListProps, StyleProp, ViewStyle, View } from 'react-native';
+import Text from '../Typography/Text';
 import Item, { ListItemProps } from './Item';
 
 const noop = () => null;
@@ -115,7 +116,9 @@ export default class List extends React.PureComponent<ListProps, ListState> {
         <View style={[{ paddingLeft, paddingVertical: 12 }, titleStyle]}>
           {typeof title === 'string' ? (
             // eslint-disable-next-line
-            <Text style={[{ fontWeight: '500' }, titleLabelStyle]}>{title}</Text>
+            <Text color="primary_text" style={[{ fontWeight: '500' }, titleLabelStyle]}>
+              {title}
+            </Text>
           ) : (
             <View>{title}</View>
           )}

@@ -1,0 +1,36 @@
+import React, { memo } from 'react';
+import { TextProps as RNTextProps } from 'react-native';
+import { createText, TextProps } from '@shopify/restyle';
+import { Theme } from '../theme';
+
+export type BaseTextProps = TextProps<Theme> &
+  RNTextProps & {
+    children?: React.ReactNode;
+  };
+
+const BaseText = createText<Theme>();
+
+const Text = memo((props: BaseTextProps) => {
+  const { children, style, ...others } = props;
+  return (
+    <BaseText
+      selectable={true}
+      // @ts-ignore
+      userSelect="all"
+      {...others}
+      style={[
+        {
+          includeFontPadding: false,
+          textAlignVertical: 'center',
+          fontVariant: ['tabular-nums'],
+        },
+        style,
+      ]}
+    >
+      {children}
+    </BaseText>
+  );
+});
+Text.displayName = 'Text';
+
+export default Text;

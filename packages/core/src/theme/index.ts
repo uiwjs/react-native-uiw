@@ -211,14 +211,14 @@ const darkPalette = {
   primary200: '#005DFF',
   primary300: 'rgba(0, 93, 255, 0.7)',
   primary400: 'rgba(0, 93, 255, 0.4)',
-  primary500: '#0D0D0D', // 苹果暗模式背景色
+  primary500: 'transparent', // 苹果暗模式背景色
   primary600: 'transparent',
   primary700: 'transparent',
   primary800: 'transparent',
   primary900: 'transparent',
 
   // 中性色
-  gray50: '#131C22',
+  gray50: '#0D0D0D',
   gray100: 'rgba(255, 255, 255, 0.15)',
   gray200: 'rgba(255, 255, 255, 0.25)',
   gray300: 'rgba(255, 255, 255, 0.4)',
@@ -234,7 +234,7 @@ const darkTheme: Theme = {
   ...lightTheme,
   colors: {
     ...darkPalette,
-    background: darkPalette.primary500,
+    background: darkPalette.gray50,
     mask: darkPalette.gray800,
     border: darkPalette.gray400,
     icon: darkPalette.gray300,
