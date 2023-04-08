@@ -2,10 +2,16 @@ import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {Picker, Button, Spacing} from '@uiw/react-native';
 import {ComProps} from '../../routes';
+import Layout, {Container} from '../../Layout';
+
+const {Header, Body, Card, Footer} = Layout;
 
 export interface PickerViewProps extends ComProps {}
 
 export default function (props: PickerViewProps) {
+  const {route} = props;
+  const description = route.params.description;
+  const title = route.params.title;
   const [value, setValue] = React.useState(['2', '22', '221']);
   const [value2, setValue2] = React.useState(['5']);
   const [visible, setVisible] = React.useState(false);
@@ -39,20 +45,28 @@ export default function (props: PickerViewProps) {
   ];
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <Button onPress={() => setVisible(true)}>打开</Button>
-      <Picker
-        title="标题"
-        displayType="modal"
-        value={value}
-        onChange={(val: any) => setValue(val)}
-        visible={visible}
-        cols={3}
-        onClosed={() => setVisible(false)}
-        data={arr as any}
-      />
-      <Spacing />
-      <Picker cols={1} displayType="view" data={arr2 as any} value={value2} onChange={(val2: any) => setValue2(val2)} />
-    </SafeAreaView>
+    <Container>
+      <Layout>
+        <Body>
+          <Header title={title} description={description} />
+          <Card title="基本使用">
+            <Picker cols={1} displayType="view" data={arr2 as any} value={value2} onChange={(val2: any) => setValue2(val2)} />
+          </Card>
+          <Card title="弹框picker">
+            <Button onPress={() => setVisible(true)}>打开</Button>
+            <Picker
+              title="标题"
+              displayType="modal"
+              value={value}
+              onChange={(val: any) => setValue(val)}
+              visible={visible}
+              cols={3}
+              onClosed={() => setVisible(false)}
+              data={arr as any}
+            />
+          </Card>
+        </Body>
+      </Layout>
+    </Container>
   );
 }
