@@ -1,6 +1,6 @@
 import React from 'react';
 import {useColorScheme} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme, DarkTheme} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import {RootSiblingParent} from 'react-native-root-siblings';
@@ -22,7 +22,7 @@ const App = () => {
       <SafeAreaView style={styles.block}>
         <StatusBar barStyle="dark-content" />
         <ThemeProvider theme={colorScheme === 'light' ? {...theme.lightTheme} : {...theme.darkTheme}}>
-          <NavigationContainer>
+          <NavigationContainer theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Stack.Navigator initialRouteName="Home">
               <Stack.Screen
                 name="Home"
