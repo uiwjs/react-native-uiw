@@ -214,6 +214,7 @@ export default Demo
 
 组件继承 [`TouchableOpacity`](https://facebook.github.io/react-native/docs/touchableopacity#docsNav)
 
+注：当你设置按钮颜色时如果使用`color`或者`backgroundColor`时，设置的颜色是`黑色`或者`白色`时，文本颜色会和你设置的按钮背景色是一样的哦！！
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
