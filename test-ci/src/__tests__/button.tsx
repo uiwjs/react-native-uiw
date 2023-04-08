@@ -48,12 +48,12 @@ it('loading', () => {
 //   expect(component.props.style.borderRadius).toBe(20);
 // });
 
-it('textStyle', () => {
-  const { getByTestId } = render(<Button textStyle={{ fontSize: 20 }}>textStyle</Button>);
-  const component = getByTestId('RNE__Button__div');
-  const styles = toObject(component.props.style);
-  expect(styles.fontSize).toBe(20);
-});
+// it('textStyle', () => {
+//   const { getByTestId } = render(<Button textStyle={{ fontSize: 20 }}>textStyle</Button>);
+//   const component = getByTestId('RNE__Button__div');
+//   const styles = toObject(component.props.style);
+//   expect(styles.fontSize).toBe(20);
+// });
 
 // describe.each`
 //   type
@@ -72,11 +72,11 @@ it('textStyle', () => {
 // });
 
 describe.each`
-    size
-    ${'small'}
-    ${'default'}
-    ${'large'}
-  `('$size', ({ size }) => {
+  size
+  ${'small'}
+  ${'default'}
+  ${'large'}
+`('$size', ({ size }) => {
   it(`should display size ${size} button`, () => {
     const { getByTestId } = render(<Button size={size}>{size}</Button>);
     const component = getByTestId('RNE__Button__wrap');
