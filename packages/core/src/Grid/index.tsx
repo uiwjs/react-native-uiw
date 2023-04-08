@@ -96,6 +96,7 @@ export default function Grid(props: GridProps) {
     onPress,
     ...otherProps
   } = props;
+  const textColor = theme.colors.primary_text || '#ccc';
   if (!Array.isArray(data)) {
     return null;
   }
@@ -123,7 +124,9 @@ export default function Grid(props: GridProps) {
       const itemContent = (
         <Fragment>
           {icon && <MaybeTextOrView style={iconStyle}>{icon}</MaybeTextOrView>}
-          <MaybeTextOrView style={[{ marginTop: 9, fontSize: 12 }, textStyle]}>{item.text}</MaybeTextOrView>
+          <MaybeTextOrView style={[{ marginTop: 9, fontSize: 12, color: textColor }, textStyle]}>
+            {item.text}
+          </MaybeTextOrView>
         </Fragment>
       );
       childItem!.push(

@@ -103,7 +103,7 @@ const lightTheme = createTheme({
   colors: {
     ...palette,
     background: palette.gray50,
-    mask: palette.gray600,
+    mask: palette.white,
     border: palette.gray200,
     icon: palette.gray300,
     disabled: palette.gray200,
@@ -226,7 +226,7 @@ const darkPalette = {
   gray500: 'rgba(255, 255, 255, 0.8)',
   gray600: 'rgba(0, 0, 0, 0.4)',
   gray700: 'rgba(0, 0, 0, 0.04)',
-  gray800: 'transparent',
+  gray800: 'rgba(30, 30, 40, 0.7)',
   gray900: 'transparent',
 };
 
@@ -235,7 +235,7 @@ const darkTheme: Theme = {
   colors: {
     ...darkPalette,
     background: darkPalette.gray50,
-    mask: darkPalette.gray600,
+    mask: darkPalette.gray800,
     border: darkPalette.gray400,
     icon: darkPalette.gray300,
     disabled: darkPalette.gray200,
