@@ -1,5 +1,5 @@
-import colorF from 'color';
+import color from 'color';
 import * as colors from './colors';
 
-export { colorF, colors };
+export { color, colors };
 export * from './hooks';

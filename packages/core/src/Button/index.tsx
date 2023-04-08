@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TextProps, TouchableOpacity, ActivityIndicator, TouchableOpacityProps } from 'react-native';
-import { colorF } from '../utils';
+import { color } from '../utils';
 import Div from '../Typography/Div';
 import { useTheme } from '@shopify/restyle';
 import { Theme } from '../theme';
@@ -77,24 +77,24 @@ export default function ButtonView<T>(props: ButtonProps) {
       break;
   }
   if (backgroundColor) {
-    backgroundColor = colorF(backgroundColor).rgb().string();
+    backgroundColor = color(backgroundColor).rgb().string();
   }
   if (!type) {
-    borderColor = colorF(theme.colors.black).alpha(0.32).rgb().string();
+    borderColor = color(theme.colors.black).alpha(0.32).rgb().string();
     borderWidth = 1;
   }
   if (disabled) {
-    textColor = colorF(theme.colors.disabled).alpha(0.1).rgb().string();
-    backgroundColor = colorF(theme.colors.disabled).rgb().string();
+    textColor = color(theme.colors.disabled).alpha(0.1).rgb().string();
+    backgroundColor = color(theme.colors.disabled).rgb().string();
   }
   if (buttonColor) {
-    backgroundColor = colorF(buttonColor).rgb().string();
+    backgroundColor = color(buttonColor).rgb().string();
   }
   if (rounded && (typeof rounded === 'number' || typeof rounded === 'boolean')) {
     borderRadius = rounded;
   }
   if (backgroundColor) {
-    borderColor = colorF(backgroundColor).alpha(0.2).string();
+    borderColor = color(backgroundColor).alpha(0.2).string();
     borderWidth = 1;
   }
   if (!bordered || buttonColor) {
@@ -107,9 +107,9 @@ export default function ButtonView<T>(props: ButtonProps) {
     borderRadius,
   };
   if ((type || backgroundColor || buttonColor || buttonStyle.backgroundColor) && type !== "light") {
-    textColor = colorF(theme.colors.white).rgb().string()
+    textColor = color(theme.colors.white).rgb().string()
   } else {
-    textColor = colorF(theme.colors.black).rgb().string();
+    textColor = color(theme.colors.black).rgb().string();
   }
   const textStyle = { color: textColor };
   let sizeStyle = {};
