@@ -3,6 +3,8 @@ import { Text as RNText, StyleSheet, TextProps as RNTextProps, TextStyle, Animat
 import _ from 'lodash';
 import Tooltip from '../Tooltip';
 import { rnTextType, getTextPartsByHighlight, sliceText } from '../utils/rn-text';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export type RnTextProps = RNTextProps & {
   // header:Header标题 ｜ title:列表/From标题 ｜ label:正文,说明,备注label ｜ subLabel:辅助性文字
@@ -37,6 +39,10 @@ const TooltipContainer = ({ content, children }: { content?: string; children?: 
 };
 
 export default (props: RnTextProps) => {
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    textColor: theme.colors.primary_text || '#ccc',
+  });
   const {
     type,
     color,
@@ -107,22 +113,29 @@ export default (props: RnTextProps) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'transparent',
-    textAlign: 'left',
-  },
-  centered: {
-    textAlign: 'center',
-  },
-  uppercase: {
-    textTransform: 'uppercase',
-  },
-  highlight: {
-    color: '#333333',
-    fontSize: 14,
-  },
-  notHighlight: {
-    color: undefined,
-  },
-});
+const styles = StyleSheet.create({});
+type CreStyle = {
+  textColor: string;
+};
+
+function createStyles({ textColor }: CreStyle) {
+  return StyleSheet.create({
+    container: {
+      backgroundColor: 'transparent',
+      textAlign: 'left',
+    },
+    centered: {
+      textAlign: 'center',
+    },
+    uppercase: {
+      textTransform: 'uppercase',
+    },
+    highlight: {
+      color: textColor,
+      fontSize: 14,
+    },
+    notHighlight: {
+      color: undefined,
+    },
+  });
+}
