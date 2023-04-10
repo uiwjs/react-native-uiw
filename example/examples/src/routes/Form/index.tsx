@@ -85,8 +85,8 @@ const FormDemo = () => {
       attr: {
         showClear: true,
         labelInValue: true,
+        placeholder: '请选择',
       },
-      placeholder: '请输入',
     },
     {
       type: 'stepper',
@@ -153,6 +153,7 @@ const FormDemo = () => {
           {label: '4', value: '4'},
         ],
         showClear: true,
+        placeholder: '请选择',
       },
     },
     {

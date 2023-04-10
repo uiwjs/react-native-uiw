@@ -59,12 +59,10 @@ function SearchBar({
   ...searchInputBarProps
 }: SearchBarProps) {
   const theme = useTheme<Theme>();
-
   const styles = createStyles({
     maskBgColor: theme.colors.mask || '#F5F5F5',
     bgColor: theme.colors.background || '#F5F5F5',
     disabledColor: theme.colors.disabled || '#F5F5F5',
-    contentColor: theme.colors.background || '#000',
     iconColor: theme.colors.primary_text || '#fff',
     cancelColor: theme.colors.primary_text || '#7C7D7E',
   });
@@ -96,10 +94,14 @@ function SearchBar({
     setVisivble(true);
   };
 
+  const placeholderStyle = placeholderColor ? { color: placeholderColor } : {};
+
   return !visible ? (
     <Pressable onPress={showSearchBar}>
       <View style={[disabled ? styles.disabled : styles.content, contentStyle]}>
-        <Text style={[styles.contentTitle, { color: placeholderColor }]}>{textValue ? textValue : placeholder}</Text>
+        <Text color="text" style={{ fontSize: 16, ...placeholderStyle }}>
+          {textValue ? textValue : placeholder}
+        </Text>
         {React.isValidElement(extra) ? (
           extra
         ) : curValue && showClear ? (
@@ -178,21 +180,16 @@ export default memo(SearchBar);
 type CreStyle = {
   bgColor: string;
   maskBgColor: string;
-  contentColor: string;
   disabledColor: string;
   iconColor: string;
   cancelColor: string;
 };
 
-function createStyles({ maskBgColor, bgColor, contentColor, disabledColor, iconColor, cancelColor }: CreStyle) {
+function createStyles({ maskBgColor, bgColor, disabledColor, iconColor, cancelColor }: CreStyle) {
   return StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: bgColor,
-    },
-    contentTitle: {
-      fontSize: 16,
-      color: contentColor,
     },
     icon: {
       backgroundColor: iconColor,

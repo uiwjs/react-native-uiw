@@ -40,7 +40,6 @@ const SearchBarDemo = (props: ComProps) => {
         labelInValue
         options={data}
         onChange={val => console.log('val', val)}
-        placeholderColor="#333"
         placeholder="请输入"
       />
     </SafeAreaView>
