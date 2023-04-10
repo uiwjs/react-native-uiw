@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { ViewProps } from 'react-native';
 import Icon from '../Icon';
+import Text from '../Typography/Text';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
 
@@ -22,8 +23,8 @@ export interface StepsProps extends ViewProps {
 export default (props: StepsProps) => {
   const theme = useTheme<Theme>();
   const styles = createStyles({
-    bgColor: theme.colors.gray200 || '#ccc',
-    cirColor: theme.colors.gray100 || '#e5e5e5',
+    bgColor: theme.colors.text || '#ccc',
+    cirColor: theme.colors.primary_text || '#e5e5e5',
   });
   const { items = [], current = 0, onChange, ...others } = props;
 
@@ -65,8 +66,10 @@ export default (props: StepsProps) => {
             </View>
             {index < items.length - 1 && <View style={styles.rightLine}></View>}
           </View>
-          <Text>{item.title}</Text>
-          <Text style={styles.desc}>{item.desc}</Text>
+          <Text color="primary_text">{item.title}</Text>
+          <Text color="text" style={styles.desc}>
+            {item.desc}
+          </Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -123,7 +126,6 @@ function createStyles({ bgColor, cirColor }: CreStyle) {
       justifyContent: 'center',
     },
     desc: {
-      color: bgColor,
       fontSize: 12,
       textAlign: 'center',
       paddingLeft: 5,
