@@ -17,7 +17,6 @@ const Show = (props: ShowProps) => {
 const styles = StyleSheet.create({
   show: {
     borderRadius: 5,
-    backgroundColor: '#fff',
     marginHorizontal: 5,
     marginVertical: 10,
     paddingHorizontal: 10,

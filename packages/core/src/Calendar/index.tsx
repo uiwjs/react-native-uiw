@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ViewProps, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
+import { View, ViewProps, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import Icon from '../Icon';
 import Ellipsis from '../Ellipsis';
 import { getMonths, getWeeksArray, daysArrProps, getType, getNameLen } from './utils';
 import ShowDate from './show';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
+import Text from '../Typography/Text';
 
 export let MainWidth = Dimensions.get('window').width;
 export let MainHeight = Dimensions.get('window').height;
@@ -44,8 +47,14 @@ const Calendar = (props: CalendarProps) => {
     onPressBarLeft: undefined,
     render: undefined,
   };
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    bgColor: theme.colors.mask,
+    themeColor: theme.colors.primary_background,
+    themeText: theme.colors.text,
+  });
   const {
-    color = '#329BCB',
+    color = theme.colors.primary_background,
     lunarHoliday = false,
     bar = bars,
     showLunar = false,
@@ -97,15 +106,15 @@ const Calendar = (props: CalendarProps) => {
     <View style={[styles.header, { backgroundColor: color }]}>
       <TouchableOpacity style={styles.headerBtnWrap} onPress={() => onPressBarLeft && onPressBarLeft()}>
         <View style={styles.headerBtn}>
-          <Icon name="left" size={20} color={'#fff'} />
-          <Text style={styles.headerText}>{barRightText}</Text>
+          <Icon name="left" size={20} color={theme.colors.mask} />
+          <Text color="mask" style={styles.headerText}>{barRightText}</Text>
         </View>
       </TouchableOpacity>
       <View style={styles.headerTextWrap}>
-        <Text style={styles.headerText}>{title}</Text>
+        <Text color="mask" style={styles.headerText}>{title}</Text>
       </View>
       <TouchableOpacity style={styles.headerTextTouch} onPress={() => goToday()}>
-        <Text style={styles.headerText}>{barLeftText}</Text>
+        <Text color="mask" style={styles.headerText}>{barLeftText}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -156,10 +165,10 @@ const Calendar = (props: CalendarProps) => {
             lunarAll.type === 1
               ? [styles.dateBase, styles.otherMonth]
               : lunarAll.type === 2
-              ? [styles.currentMonth, styles.dateBase, { backgroundColor: color }]
-              : lunarAll.type === 3
-              ? [styles.selectMonth, styles.dateBase, { borderColor: color }]
-              : styles.dateBase
+                ? [styles.currentMonth, styles.dateBase, { backgroundColor: color }]
+                : lunarAll.type === 3
+                  ? [styles.selectMonth, styles.dateBase, { borderColor: color }]
+                  : styles.dateBase
           }
           onPress={() => goSelectDay(day)}
         >
@@ -169,7 +178,7 @@ const Calendar = (props: CalendarProps) => {
               style={[
                 styles.dayText,
                 {
-                  color: lunarAll.type === 1 ? '#B5B5B5' : lunarAll.type === 2 ? '#fff' : '#000',
+                  color: lunarAll.type === 1 ? theme.colors.disabled : lunarAll.type === 2 ? '#fff' : theme.colors.text,
                   lineHeight: lineHeight,
                   paddingTop: paddingTop,
                 },
@@ -182,7 +191,7 @@ const Calendar = (props: CalendarProps) => {
                 style={[
                   styles.dayText,
                   {
-                    color: lunarAll.type === 1 ? '#B5B5B5' : lunarAll.type === 2 ? '#fff' : colorType,
+                    color: lunarAll.type === 1 ? theme.colors.disabled : lunarAll.type === 2 ? '#fff' : colorType,
                     fontSize: 13,
                   },
                 ]}
@@ -257,26 +266,26 @@ const Calendar = (props: CalendarProps) => {
 
   return (
     <View style={{ flex: 1, position: 'relative' }}>
-      <View style={{ flex: 1, backgroundColor: '#fff' }}>
+      <View style={{ flex: 1, backgroundColor: theme.colors.mask }}>
         {showBar && renderBar}
         <View style={styles.calendarHeader}>
           <View style={styles.calendarHeaderItem}>
             <TouchableOpacity onPress={() => getCurrentYear('last')}>
-              <Icon name="left" size={20} color={'#333'} />
+              <Icon name="left" size={20} color={theme.colors.text} />
             </TouchableOpacity>
             <Text style={styles.calendarHeaderText}>{currentYear}年</Text>
             <TouchableOpacity onPress={() => getCurrentYear('next')}>
-              <Icon name="right" size={20} color={'#333'} />
+              <Icon name="right" size={20} color={theme.colors.text} />
             </TouchableOpacity>
           </View>
 
           <View style={styles.calendarHeaderItem}>
             <TouchableOpacity onPress={() => getCurrentMonth('last')}>
-              <Icon name="left" size={20} color={'#333'} />
+              <Icon name="left" size={20} color={theme.colors.text} />
             </TouchableOpacity>
             <Text style={styles.calendarHeaderText}>{currentMonth + 1}月</Text>
             <TouchableOpacity onPress={() => getCurrentMonth('next')}>
-              <Icon name="right" size={20} color={'#333'} />
+              <Icon name="right" size={20} color={theme.colors.text} />
             </TouchableOpacity>
           </View>
         </View>
@@ -288,100 +297,106 @@ const Calendar = (props: CalendarProps) => {
     </View>
   );
 };
-const styles = StyleSheet.create({
-  header: {
-    flex: 1,
-    display: 'flex',
-    backgroundColor: '#329BCB',
-    flexDirection: 'row',
-    padding: 10,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  headerBtnWrap: {
-    flex: 1,
-  },
-  headerBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    // width: 50,
-  },
-  headerTextWrap: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  headerTextTouch: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'row-reverse',
-  },
-  headerText: {
-    fontSize: 20,
-    color: '#fff',
-  },
-  calendarHeader: {
-    flexDirection: 'row',
-    padding: 10,
-    justifyContent: 'space-between',
-  },
-  calendarHeaderItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingTop: 10,
-  },
-  calendarHeaderText: {
-    paddingHorizontal: 30,
-    fontSize: 20,
-    fontWeight: '500',
-    color: '#000',
-  },
-  calendarWeekdays: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: MainWidth / 7 - 33,
-    paddingTop: 10,
-  },
-  calendarWedText: {
-    color: '#616161',
-    textAlign: 'center',
-  },
-  calendarDays: {
-    marginVertical: 10,
-  },
-  weekDay: {
-    flexDirection: 'row',
-    paddingHorizontal: 2,
-  },
-  dateBase: {
-    marginHorizontal: 2,
-    width: MainWidth / 7 - 4.5,
-    height: MainWidth / 7 - 4.5,
-    ...Platform.select({
-      ios: {},
-      android: {
-        justifyContent: 'center',
-      },
-    }),
-  },
-  currentMonth: {
-    backgroundColor: '#329BCB',
-    borderRadius: 50,
-  },
-  selectMonth: {
-    borderWidth: 1,
-    borderColor: '#329BCB',
-    borderRadius: 50,
-  },
-  otherMonth: {
-    borderRadius: 50,
-  },
-  dayText: {
-    textAlign: 'center',
-    fontSize: 17,
-    fontWeight: '500',
-  },
-});
+
+type CreStyle = {
+  bgColor: string;
+  themeColor: string;
+  themeText: string;
+};
+function createStyles({ bgColor, themeColor, themeText }: CreStyle) {
+  return StyleSheet.create({
+    header: {
+      flex: 1,
+      display: 'flex',
+      backgroundColor: themeColor,
+      flexDirection: 'row',
+      padding: 10,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    headerBtnWrap: {
+      flex: 1,
+    },
+    headerBtn: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      // width: 50,
+    },
+    headerTextWrap: {
+      flex: 1,
+      alignItems: 'center',
+    },
+    headerTextTouch: {
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'row-reverse',
+    },
+    headerText: {
+      fontSize: 20,
+    },
+    calendarHeader: {
+      flexDirection: 'row',
+      padding: 10,
+      justifyContent: 'space-between',
+    },
+    calendarHeaderItem: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingTop: 10,
+    },
+    calendarHeaderText: {
+      paddingHorizontal: 30,
+      fontSize: 20,
+      fontWeight: '500',
+      color: themeText,
+    },
+    calendarWeekdays: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingHorizontal: MainWidth / 7 - 33,
+      paddingTop: 10,
+    },
+    calendarWedText: {
+      textAlign: 'center',
+    },
+    calendarDays: {
+      marginVertical: 10,
+    },
+    weekDay: {
+      flexDirection: 'row',
+      paddingHorizontal: 2,
+    },
+    dateBase: {
+      marginHorizontal: 2,
+      width: MainWidth / 7 - 4.5,
+      height: MainWidth / 7 - 4.5,
+      ...Platform.select({
+        ios: {},
+        android: {
+          justifyContent: 'center',
+        },
+      }),
+    },
+    currentMonth: {
+      backgroundColor: themeColor,
+      borderRadius: 50,
+    },
+    selectMonth: {
+      borderWidth: 1,
+      borderColor: themeColor,
+      borderRadius: 50,
+    },
+    otherMonth: {
+      borderRadius: 50,
+    },
+    dayText: {
+      textAlign: 'center',
+      fontSize: 17,
+      fontWeight: '500',
+    },
+  });
+}
 
 export default Calendar;
