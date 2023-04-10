@@ -35,7 +35,7 @@ export interface DragDrawerProps extends ViewProps {
 
 function DragDrawer(props: DragDrawerProps) {
   const theme = useTheme<Theme>();
-  const { drawerBackgroundColor = theme.colors.white || '#fff', drawerHeight = 300, children, icon, style } = props;
+  const { drawerBackgroundColor = theme.colors.mask || '#fff', drawerHeight = 300, children, icon, style } = props;
 
   const [animatedViewHeight, setAnimatedViewHeight] = useState(new Animated.Value(drawerHeight));
   const [viewHeight, setViewHeight] = useState(drawerHeight);
