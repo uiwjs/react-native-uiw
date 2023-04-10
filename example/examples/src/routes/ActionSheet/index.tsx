@@ -62,7 +62,7 @@ export default class Index extends Component<IndexProps, IndexState> {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     paddingLeft: 20,
     paddingRight: 20,
   },
