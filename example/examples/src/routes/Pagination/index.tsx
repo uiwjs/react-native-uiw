@@ -10,6 +10,7 @@ export interface IndexProps extends ComProps {}
 export interface IndexState {
   current: number;
   current1: number;
+  current2: number;
 }
 
 export default class Index extends Component<IndexProps, IndexState> {
@@ -31,7 +32,7 @@ export default class Index extends Component<IndexProps, IndexState> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body style={{backgroundColor: '#fff'}}>
+          <Body>
             <Card title="使用跳转页码">
               <View style={{paddingHorizontal: 20}}>
                 <Pagination
@@ -97,7 +98,7 @@ export default class Index extends Component<IndexProps, IndexState> {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     paddingLeft: 20,
     paddingRight: 20,
   },

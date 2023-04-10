@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, ViewStyle, TextStyle, StyleSheet, Text, TextInput } from 'react-native';
+import { View, ViewStyle, TextStyle, StyleSheet, TextInput } from 'react-native';
 import { size } from './index';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
+import Text from '../Typography/Text';
 
 export enum containerSize {
   small = 30,
@@ -51,7 +52,12 @@ const MoreDir = (props: MoreDirProps) => {
             setJumpCurrent(textCurrent);
           }
         }}
-        style={styles.inputStyle}
+        style={[
+          styles.inputStyle,
+          {
+            color: theme.colors.text || '#000',
+          },
+        ]}
       />
       <Text>页</Text>
     </View>

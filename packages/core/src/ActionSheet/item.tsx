@@ -7,9 +7,12 @@ import {
   ViewStyle,
   TextStyle,
   StyleSheet,
-  Text,
   GestureResponderEvent,
+  useColorScheme,
 } from 'react-native';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
+import Text from '../Typography/Text';
 
 let MainWidth = Dimensions.get('window').width;
 export interface ActionSheetItemProps {
@@ -28,10 +31,12 @@ export interface ActionSheetItemProps {
 export interface ActionSheetItemState {}
 
 export default function ActionSheetItem(props: ActionSheetItemProps) {
+  const theme = useTheme<Theme>();
+  const colorScheme = useColorScheme();
   const {
     onPress = () => {},
     activeOpacity = 1,
-    underlayColor = '#f1f1f1',
+    underlayColor = colorScheme === 'light' ? theme.colors.background : '#1A1A22',
     containerStyle,
     textStyle,
     children,
