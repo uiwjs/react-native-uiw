@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
-import {Toast, Button} from '@uiw/react-native';
-import Layout, {Container} from '../../Layout';
-import {ComProps} from '../../routes';
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
+import { Toast, Button } from '@uiw/react-native';
+import Layout, { Container } from '../../Layout';
+import { ComProps } from '../../routes';
 
-const {Header, Body, Card, Footer} = Layout;
+const { Header, Body, Card, Footer } = Layout;
 
-export interface ToastProps extends ComProps {}
+export interface ToastProps extends ComProps { }
 
 export default class ToastView extends Component<ToastProps> {
   render() {
-    const {route} = this.props;
+    const { route } = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
@@ -60,7 +60,6 @@ export default class ToastView extends Component<ToastProps> {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
     paddingLeft: 20,
     paddingRight: 20,
   },

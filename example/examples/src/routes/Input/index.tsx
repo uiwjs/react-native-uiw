@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
-import {Input, Toast} from '@uiw/react-native';
-import Layout, {Container} from '../../Layout';
-import {ComProps} from '../../routes';
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
+import { Input, Toast } from '@uiw/react-native';
+import Layout, { Container } from '../../Layout';
+import { ComProps } from '../../routes';
 
-const {Header, Body, Card, Footer} = Layout;
+const { Header, Body, Card, Footer } = Layout;
 
-export interface InputProps extends ComProps {}
+export interface InputProps extends ComProps { }
 
 export default class InputView extends Component<InputProps> {
   state = {
@@ -14,7 +14,7 @@ export default class InputView extends Component<InputProps> {
     value2: '',
   };
   render() {
-    const {route} = this.props;
+    const { route } = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
@@ -29,7 +29,7 @@ export default class InputView extends Component<InputProps> {
                 clear
                 // disabled={true}
                 onChangeText={(value: string) => {
-                  this.setState({value});
+                  this.setState({ value });
                 }}
                 value={this.state.value}
               />
@@ -67,7 +67,7 @@ export default class InputView extends Component<InputProps> {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     paddingLeft: 20,
     paddingRight: 20,
   },

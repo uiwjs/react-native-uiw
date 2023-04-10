@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {SwipeAction} from '@uiw/react-native';
-import Layout, {Container} from '../../Layout';
-import {ComProps} from '../../routes';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { SwipeAction } from '@uiw/react-native';
+import Layout, { Container } from '../../Layout';
+import { ComProps } from '../../routes';
 
-const {Header, Body, Card, Footer} = Layout;
+const { Header, Body, Card, Footer } = Layout;
 
-export interface SwipeActionProps extends ComProps {}
+export interface SwipeActionProps extends ComProps { }
 
 export default class SwipeActionView extends Component<SwipeActionProps> {
   newRef: any;
   render() {
-    const {route} = this.props;
+    const { route } = this.props;
     const description = route.params.description;
     const title = route.params.title;
     const right = [
@@ -45,7 +45,7 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
             <Card title="左右滑动，显示按钮" style={styles.card}>
               <SwipeAction
                 buttonWidth={80}
-                rectButtonStyle={{marginLeft: -20, marginRight: 20}}
+                rectButtonStyle={{ marginLeft: -20, marginRight: 20 }}
                 ref={ref => (this.newRef = ref)}
                 right={right}
                 onSwipeableRightOpen={() => console.log('right')}
@@ -65,7 +65,6 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
     paddingLeft: 20,
     paddingRight: 20,
     paddingBottom: 30,

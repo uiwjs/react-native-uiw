@@ -36,7 +36,7 @@ function ExpandableSection(props: ExpandableSectionProps) {
   return (
     <View style={styles.container}>
       {top && expanded && children}
-      <TouchableOpacity onPress={onPress}>{sectionHeader}</TouchableOpacity>
+      <TouchableOpacity onPress={onPress} >{sectionHeader}</TouchableOpacity>
       {!top && expanded && children}
     </View>
   );

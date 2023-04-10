@@ -3,7 +3,8 @@ import { View, StyleSheet, Text, Animated, LayoutChangeEvent } from 'react-nativ
 import Item from './item';
 import Button, { ButtonProps } from '../Button';
 import Icon, { IconsName } from '../Icon';
-
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 export interface MenuDropdownProps extends ButtonProps {
   title: string;
 }
@@ -22,7 +23,10 @@ export default function MenuDropdown(props: MenuDropdownProps) {
     listHeightValue: new Animated.Value(0),
     listHeight: 0,
   });
-
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    bgColor: theme.colors.mask,
+  });
   const { title = '菜单', children, size, ...btnProps } = props;
   const { btnIcon, listHeightValue, listHeight, visibleMenu } = state;
 
@@ -60,10 +64,10 @@ export default function MenuDropdown(props: MenuDropdownProps) {
     });
   };
   return (
-    <View style={[styles.menuBox, { height: listHeight + 50 }]}>
+    <View style={[styles.menuBox, { height: listHeight + 40 }]}>
       <Button {...btnProps} color={btnProps.color} onPress={handleonPress} size={size}>
         <Text>{title}</Text>
-        <Icon name={btnIcon} size={17} />
+        <Icon fill='#FFF' name={btnIcon} size={17} />
       </Button>
       <Animated.View
         style={[
@@ -86,21 +90,27 @@ export default function MenuDropdown(props: MenuDropdownProps) {
 }
 
 MenuDropdown.Item = Item;
-
-const styles = StyleSheet.create({
-  menuBox: {},
-  list: {
-    position: 'absolute',
-    zIndex: 1000,
-    left: 0,
-    right: 0,
-    top: 0,
-    height: 100,
-    marginTop: 10,
-    borderColor: '#ddd',
-    borderWidth: 1,
-    borderRadius: 1,
-    backgroundColor: '#fff',
-    overflow: 'hidden',
-  },
-});
+type CreStyle = {
+  bgColor: string;
+};
+function createStyles({ bgColor }: CreStyle) {
+  return StyleSheet.create({
+    menuBox: {
+      backgroundColor: bgColor,
+    },
+    list: {
+      position: 'absolute',
+      zIndex: 1000,
+      left: 0,
+      right: 0,
+      top: 0,
+      height: 100,
+      marginTop: 10,
+      borderColor: bgColor,
+      borderWidth: 1,
+      borderRadius: 1,
+      backgroundColor: bgColor,
+      overflow: 'hidden',
+    },
+  });
+}
