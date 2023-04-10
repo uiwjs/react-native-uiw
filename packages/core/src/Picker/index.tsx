@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, TouchableOpacity, View } from 'react-native';
 import { arrayTreeFilter } from '../utils/utils';
 import Flex from '../Flex';
-import H6 from '../Typography/H6';
+import Text from '../Typography/Text';
 import Modal from '../Modal';
 import WheelPicker from './components/WheelPicker';
 import { CascadePickerItemProps, ItemValue, WheelPickerPropsBase } from './components/WheelPicker/type';
@@ -145,15 +145,21 @@ function Picker(props: ComPickerProps) {
             <Flex justify="between">
               <Flex.Item>
                 <TouchableOpacity activeOpacity={0.5} onPress={handleClose}>
-                  <H6 style={{ color: theme.colors.primary_background || '#3578e5' }}>{cancelText}</H6>
+                  <Text color="primary_background" style={{ fontSize: 16 }}>
+                    {cancelText}
+                  </Text>
                 </TouchableOpacity>
               </Flex.Item>
               <Flex.Item>
-                <H6 style={{ color: theme.colors.primary_background || '#3578e5' }}>{title}</H6>
+                <Text color="primary_background" style={{ fontSize: 16 }}>
+                  {title}
+                </Text>
               </Flex.Item>
               <Flex.Item>
                 <TouchableOpacity activeOpacity={0.5} onPress={handleOk}>
-                  <H6 style={{ color: theme.colors.primary_background || '#3578e5' }}>{okText}</H6>
+                  <Text color="primary_background" style={{ fontSize: 16 }}>
+                    {okText}
+                  </Text>
                 </TouchableOpacity>
               </Flex.Item>
             </Flex>

@@ -87,7 +87,6 @@ const FormDemo = () => {
         labelInValue: true,
       },
       placeholder: '请输入',
-      validate: (val: any) => (!val ? '请输入项目' : ''),
     },
     {
       type: 'stepper',
@@ -112,6 +111,48 @@ const FormDemo = () => {
       name: '滑块输入条',
       attr: {
         step: 0.2,
+      },
+    },
+    {
+      type: 'treeSelect',
+      field: 'treeSelect',
+      name: 'treeSelect',
+      attr: {
+        options: [
+          {
+            label: '2月23日(今天)',
+            value: '01',
+            children: [
+              {
+                label: '9:00-10:00',
+                value: '01-1',
+                children: [{label: '00:00', value: '01-1-1'}],
+              },
+              {
+                label: '10:00-11:00',
+                value: '01-2',
+              },
+              {
+                label: '11:00-12:00',
+                value: '01-3',
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      type: 'picker',
+      field: 'picker',
+      name: 'picker选择器',
+      attr: {
+        options: [
+          {label: '1', value: '1'},
+          {label: '2', value: '2'},
+          {label: '3', value: '3'},
+          {label: '4', value: '4'},
+        ],
+        showClear: true,
       },
     },
     {
@@ -170,7 +211,7 @@ const FormDemo = () => {
             <Form
               form={form}
               schema={schema}
-              initialValues={{name: '王滴滴', rate: 4}}
+              initialValues={{name: '王滴滴', rate: 4, picker: ['2']}}
               watch={{
                 name: (value: unknown) => console.log('value', value),
               }}

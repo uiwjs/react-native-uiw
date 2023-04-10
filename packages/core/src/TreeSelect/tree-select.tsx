@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { usePropsValue } from '../utils/hooks';
 import { getTreeDeep } from '../utils/tree-select';
 import { View, Text, TouchableOpacity, ScrollView, ColorValue, Pressable, StyleProp, ViewStyle } from 'react-native';

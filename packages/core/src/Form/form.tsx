@@ -7,11 +7,13 @@ import TextArea from '../TextArea';
 import Slider from '../Slider';
 import SearchBar from '../SearchBar';
 import Stepper from '../Stepper';
+import TreeSelect from '../TreeSelect';
 import Input from './comps/input';
 import Rating from './comps/rate';
 import Radio from './comps/radio';
 import Switch from './comps/switch';
 import CheckBox from './comps/checkBox';
+import Picker from './comps/picker';
 
 const Form = (baseProps: FormProps) => {
   const {
@@ -55,6 +57,8 @@ const Form = (baseProps: FormProps) => {
       switch: <Switch />,
       checkBox: <CheckBox />,
       stepper: <Stepper value={0} onChange={() => {}} />,
+      treeSelect: <TreeSelect options={[]} />,
+      picker: <Picker options={[]} />,
     },
     changeValidate: changeValidate,
   };
