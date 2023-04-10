@@ -105,8 +105,11 @@ export { default as Pagination } from './Pagination';
 export * from './Pagination';
 export { default as Picker } from './Picker';
 export * from './Picker';
-export { default as DatePicker } from './DatePicker';
-export * from './DatePicker';
+export { default as DatePicker } from './DatePicker/date-picker';
+export * from './DatePicker/date-picker';
+
+export { default as DatePeriodInput } from './DatePicker/date-period-input';
+export * from './DatePicker/date-period-input';
 
 export { default as Calendar } from './Calendar';
 export * from './Calendar';

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {DatePicker, Button, Text} from '@uiw/react-native';
+import {DatePicker, DatePeriodInput, Button, Text} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
 const {Header, Body, Footer, Card} = Layout;
@@ -12,6 +12,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
     visible: false,
     value: undefined,
     formatDate: undefined,
+    value2: undefined,
   };
   render() {
     const {route, navigation} = this.props;
@@ -36,6 +37,14 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
                 value={this.state.value}
                 onChange={(value, formatDate) => {
                   this.setState({value: value, formatDate: formatDate});
+                }}
+              />
+            </Card>
+            <Card title="日期区间选择器">
+              <DatePeriodInput
+                value={this.state.value2}
+                onChange={date => {
+                  this.setState({value2: date});
                 }}
               />
             </Card>

@@ -1,13 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import FormItems from './formItems';
 import { Provider } from './hooks/context';
-import { FormProps, KeyType } from './types';
+import { FormProps } from './types';
 import { cloneDeep } from './utils';
 import TextArea from '../TextArea';
 import Slider from '../Slider';
 import SearchBar from '../SearchBar';
 import Stepper from '../Stepper';
 import TreeSelect from '../TreeSelect';
+import DatePeriodInput from '../DatePicker/date-period-input';
 import Input from './comps/input';
 import Rating from './comps/rate';
 import Radio from './comps/radio';
@@ -61,6 +62,7 @@ const Form = (baseProps: FormProps) => {
       treeSelect: <TreeSelect options={[]} />,
       picker: <Picker />,
       datePicker: <DatePicker />,
+      datePeriodInput: <DatePeriodInput />,
     },
     changeValidate: changeValidate,
   };

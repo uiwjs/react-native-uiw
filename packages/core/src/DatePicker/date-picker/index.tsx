@@ -1,13 +1,13 @@
 import React, { forwardRef, useImperativeHandle } from 'react';
 import { TouchableOpacity, SafeAreaView, View } from 'react-native';
-import Flex from '../Flex';
-import Modal from '../Modal';
-import Text from '../Typography/Text';
+import Flex from '../../Flex';
+import Modal from '../../Modal';
+import Text from '../../Typography/Text';
 import dayjs from 'dayjs';
-import DatePickerRN from './components/date-picker';
-import { DatePickerPropsBase, ModalPickerProps } from './components/date-picker/type';
+import DatePickerRN from '../components/basic-date-picker';
+import { DatePickerPropsBase, ModalPickerProps } from '../components/basic-date-picker/type';
 import useDatePicker from './useDatePicker';
-import { Theme } from '../theme';
+import { Theme } from '../../theme';
 import { useTheme } from '@shopify/restyle';
 
 export type DatePickerRef = {

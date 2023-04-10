@@ -9,7 +9,7 @@ DatePicker
 ```jsx
 import { useState } from 'react'
 import { View,Text } from 'react-native';
-import { Picker } from '@uiw/react-native';
+import { DatePicker } from '@uiw/react-native';
 function Demo() {
   const [visible,setVisible] = useState(false)
   const [formatDate,setFormatDate] = useState('')
@@ -54,3 +54,46 @@ export default Demo
 | onChange | 日期修改事件  | (date?: Date, formatDate?: string) => void | - |
 | minDate | 最小日期  | string | - |
 | maxDate | 最大日期  | string | - |
+
+
+DatePeriodInput 
+---
+时间区间选择器
+
+### 基础示例
+ 
+```jsx
+import { useState } from 'react'
+import { View,Text } from 'react-native';
+import { DatePeriodInput } from '@uiw/react-native';
+function Demo() {
+  const [value,setValue] = useState(undefined)
+  return (
+    <View style={{ flex: 1 }}>
+      <DatePeriodInput
+        title="请选择日期"
+        mode="datetime"
+        format='YYYY-MM-DD HH:mm:ss'
+        value={value}
+        onChange={(value) => setValue(value)}
+      />
+    </View>
+  )
+}
+export default Demo
+```
+
+### props
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|-----|------|
+| mode | 显示模式  | `datetime | date | time| month | year` | datetime  |
+| labelUnit | 单位文字  |  { year: string; month: string; day: string; hour: string; minute: string } | { year: '年', month: '月', day: '日', hour: '时', minute: '分' }  |
+| format | 日期格式化  | string | YYYY-MM-DD HH:mm  |
+| value | 当前日期  | [Date | undefined, Date | undefined] | - |
+| onChange | 日期修改事件  | (date?:[Date | undefined, Date | undefined]) => void | - |
+| cancelText | 取消按钮文本  | string | 取消  |
+| okText | 确认按钮文本  | string | 确认  |
+| placeholder | 默认提示语  | [string, string] | ['请选择', '请选择']  |
+| allowClear | 是否允许清除  | boolean | true  |
+| disabled | 是否禁用  | boolean | false  |

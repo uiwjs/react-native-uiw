@@ -114,11 +114,36 @@ const FormDemo = () => {
       },
     },
     {
+      type: 'picker',
+      field: 'picker',
+      name: '选择器',
+      attr: {
+        options: [
+          {label: '1', value: '1'},
+          {label: '2', value: '2'},
+          {label: '3', value: '3'},
+          {label: '4', value: '4'},
+        ],
+        showClear: true,
+        placeholder: '请选择',
+      },
+    },
+    {
       type: 'datePicker',
       field: 'datePicker',
-      name: 'datePicker时间选择器',
+      name: '时间选择器',
       attr: {
         placeholder: '请选择',
+        mode: 'date',
+        format: 'YYYY-MM-DD',
+      },
+    },
+    {
+      type: 'datePeriodInput',
+      field: 'datePeriodInput',
+      name: '时间区间选择器',
+      attr: {
+        placeholder: ['请选择1', '请选择1'],
         mode: 'date',
         format: 'YYYY-MM-DD',
       },
@@ -149,21 +174,6 @@ const FormDemo = () => {
             ],
           },
         ],
-      },
-    },
-    {
-      type: 'picker',
-      field: 'picker',
-      name: 'picker选择器',
-      attr: {
-        options: [
-          {label: '1', value: '1'},
-          {label: '2', value: '2'},
-          {label: '3', value: '3'},
-          {label: '4', value: '4'},
-        ],
-        showClear: true,
-        placeholder: '请选择',
       },
     },
     {

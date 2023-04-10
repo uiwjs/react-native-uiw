@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { Pressable, SafeAreaView, View, StyleSheet } from 'react-native';
-import DatePicker, { DatePickerProps } from '../../DatePicker';
+import { Pressable, SafeAreaView, View, StyleSheet, ViewStyle } from 'react-native';
+import DatePicker, { DatePickerProps } from '../../DatePicker/date-picker';
 import Ellipsis from '../../Ellipsis';
 import Icon from '../../Icon';
 import { Theme } from '../../theme';
 import { useTheme } from '@shopify/restyle';
 import dayjs from 'dayjs';
+
+export interface RnDatePickerProps extends DatePickerProps {
+  disabled?: boolean;
+  placeholder?: string;
+  contentStyle?: ViewStyle;
+  extra?: JSX.Element;
+  showClear?: boolean;
+}
 
 const FormDatePicker = ({
   disabled,
@@ -17,7 +25,7 @@ const FormDatePicker = ({
   onChange,
   format = 'YYYY-MM-DD HH:mm:ss',
   ...attr
-}: any) => {
+}: RnDatePickerProps) => {
   console.log('format', format);
   const [visible, setVisible] = useState(false);
   const theme = useTheme<Theme>();
@@ -33,7 +41,7 @@ const FormDatePicker = ({
     }
     if (value && showClear) {
       return (
-        <Pressable onPress={() => onChange?.('')} style={{ paddingRight: 3 }} disabled={disabled}>
+        <Pressable onPress={() => onChange?.(undefined)} style={{ paddingRight: 3 }} disabled={disabled}>
           <Icon name="circle-close-o" size={18} color={theme.colors.primary_text || '#ccc'} />
         </Pressable>
       );
