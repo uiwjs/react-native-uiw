@@ -1,13 +1,14 @@
 import React, { FC, useMemo, useState } from 'react';
 import { usePropsValue } from '../utils/hooks';
 import { getTreeDeep } from '../utils/tree-select';
-import { View, Text, TouchableOpacity, ScrollView, ColorValue, Pressable, StyleProp, ViewStyle } from 'react-native';
+import { View, TouchableOpacity, ScrollView, ColorValue, Pressable, StyleProp, ViewStyle } from 'react-native';
 import Icon from '../Icon';
 import Ellipsis from '../Ellipsis';
 import Modal, { ModalProps } from '../Modal';
-import { style } from './styles';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
+import { StyleSheet } from 'react-native';
+import Text from '../Typography/Text';
 
 export interface TreeSelectOption {
   [key: string]: any;
@@ -32,7 +33,16 @@ export type TreeSelectProps = {
 
 export const TreeSelect: FC<TreeSelectProps> = (p) => {
   const theme = useTheme<Theme>();
-
+  const style = createStyles({
+    bgColor: theme.colors.mask,
+    themeColor: theme.colors.primary_background,
+    themeText: theme.colors.text,
+  });
+  type CreStyle = {
+    bgColor: string;
+    themeColor: string;
+    themeText: string;
+  };
   const defaultProps = {
     options: [],
     fieldNames: {},
@@ -107,7 +117,6 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
       options: parentNodes,
     });
   };
-
   // item样式
   const activeStyles = (index: number, isActive: boolean, isLast: boolean) => {
     let styles;
@@ -144,11 +153,12 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
   const renderItems = (columnOptions: TreeSelectOption[] = [], index: number) => {
     return columnOptions.map((item) => {
       const isActive = item[valueName] === value[index];
-      const active_font_color = index === 0 ? '#333' : props.activeColor;
+      const active_font_color = index === 0 ? theme.colors.primary_text : props.activeColor;
       // 是否是最后一列
       const isLast = deep - 1 === index;
       return (
         <TouchableOpacity
+          activeOpacity={0.9}
           key={item[valueName]}
           onPress={() => {
             if (!isActive) {
@@ -157,7 +167,7 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
           }}
           style={[style.item, { ...activeStyles(index, isActive, isLast) }]}
         >
-          <Text style={isActive ? { color: active_font_color, fontWeight: 'bold' } : { color: '#666' }}>
+          <Text style={isActive ? { color: active_font_color, fontWeight: 'bold' } : { color: theme.colors.text }}>
             {item[labelName]}
           </Text>
         </TouchableOpacity>
@@ -178,7 +188,7 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
         width = `66.67%`;
       }
       const column = (
-        <ScrollView key={i} style={{ width, flex: 1, backgroundColor: i === 0 ? '#f6f7f9' : '#fff' }}>
+        <ScrollView key={i} style={{ width, flex: 1, backgroundColor: i === 0 ? theme.colors.gray100 : theme.colors.mask, }}>
           {renderItems(i === 0 ? props.options : optionsMap.get(value[i - 1])?.[childrenName], i)}
         </ScrollView>
       );
@@ -196,7 +206,7 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
         }}
       >
         <View style={[props.disabled ? style.disabled : style.content, props.contentStyle]}>
-          <Ellipsis style={[style.contentTitle, { color: props.placeholderColor }]} maxLen={30}>
+          <Ellipsis style={[style.contentTitle, { color: props.placeholderColor || theme.colors.text }]} maxLen={30}>
             {labelValues.join() || props.placeholder}
           </Ellipsis>
           {React.isValidElement(props.extra) ? (
@@ -212,7 +222,7 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
               }}
               style={{ paddingRight: 3 }}
             >
-              <Icon name="circle-close-o" size={18} color="#ccc" />
+              <Icon name="circle-close-o" size={18} color={theme.colors.text} />
             </Pressable>
           ) : (
             <Icon name="right" size={18} color="#A19EA0" />
@@ -225,4 +235,58 @@ export const TreeSelect: FC<TreeSelectProps> = (p) => {
       </Modal>
     </React.Fragment>
   );
+
+  function createStyles({ bgColor, themeText }: CreStyle) {
+    return StyleSheet.create({
+      item: {
+        minHeight: 50,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      active_first_item: {
+        backgroundColor: bgColor,
+      },
+      not_active_first_item: {
+        backgroundColor: bgColor,
+      },
+      active_nth_item: {
+        backgroundColor: bgColor,
+        borderWidth: 1,
+        borderRadius: 5,
+        marginLeft: 10,
+        marginBottom: 10,
+      },
+      not_active_nth_item: {
+        backgroundColor: bgColor,
+        borderColor: bgColor,
+        borderWidth: 1,
+        borderRadius: 5,
+        marginLeft: 10,
+        marginBottom: 10,
+      },
+      content: {
+        flexDirection: 'row',
+        height: 35,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingRight: 5,
+        backgroundColor: bgColor,
+        paddingHorizontal: 16,
+      },
+      disabled: {
+        flexDirection: 'row',
+        height: 35,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingRight: 5,
+        backgroundColor: bgColor,
+        paddingHorizontal: 16,
+      },
+      contentTitle: {
+        fontSize: 16,
+        color: themeText,
+      },
+    });
+  }
 };
