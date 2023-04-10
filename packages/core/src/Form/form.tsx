@@ -14,6 +14,7 @@ import Radio from './comps/radio';
 import Switch from './comps/switch';
 import CheckBox from './comps/checkBox';
 import Picker from './comps/picker';
+import DatePicker from './comps/datePicker';
 
 const Form = (baseProps: FormProps) => {
   const {
@@ -58,7 +59,8 @@ const Form = (baseProps: FormProps) => {
       checkBox: <CheckBox />,
       stepper: <Stepper value={0} onChange={() => {}} />,
       treeSelect: <TreeSelect options={[]} />,
-      picker: <Picker options={[]} />,
+      picker: <Picker />,
+      datePicker: <DatePicker />,
     },
     changeValidate: changeValidate,
   };

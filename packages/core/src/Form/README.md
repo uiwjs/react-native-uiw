@@ -326,7 +326,7 @@ export default FormDemo
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
 | `field` | 字段名 | string | - |
-| `type` | 字段类型(`input` \| `textArea`  \| `slider` \| `rate` \| `radio` \| `search`\| `switch`\| `checkBox`\| `stepper`\| `picker`\| `treeSelect`\ | `cardList`) | string | - |
+| `type` | 字段类型(`input` \| `textArea`  \| `slider` \| `rate` \| `radio` \| `search`\| `switch`\| `checkBox`\| `stepper`\| `picker`\| `treeSelect`\ | `datePicker`\ | `cardList`) | string | - |
 | `name` | 标签名 | string | - |
 | `validate` | 验证规则 | RulesOption['validate'] | - |
 | `options` | 集合 | Array<{ label: string; value: KeyType }> | - |

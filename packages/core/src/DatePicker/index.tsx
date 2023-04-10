@@ -2,7 +2,7 @@ import React, { forwardRef, useImperativeHandle } from 'react';
 import { TouchableOpacity, SafeAreaView, View } from 'react-native';
 import Flex from '../Flex';
 import Modal from '../Modal';
-import H6 from '../Typography/H6';
+import Text from '../Typography/Text';
 import dayjs from 'dayjs';
 import DatePickerRN from './components/date-picker';
 import { DatePickerPropsBase, ModalPickerProps } from './components/date-picker/type';
@@ -21,7 +21,7 @@ const DatePicker = forwardRef<DatePickerRef, DatePickerProps>((props, ref) => {
     displayType = 'modal',
     visible = false,
     onClosed,
-    format = 'YYYY-MM-DD HH:mm',
+    format = 'YYYY-MM-DD HH:mm:ss',
     labelUnit = { year: '年', month: '月', day: '日', hour: '时', minute: '分' },
     mode = 'date',
     minDate,
@@ -71,15 +71,21 @@ const DatePicker = forwardRef<DatePickerRef, DatePickerProps>((props, ref) => {
             <Flex justify="between">
               <Flex.Item>
                 <TouchableOpacity activeOpacity={0.5} onPress={handleClose}>
-                  <H6 style={{ color: theme.colors.primary_background || '#3578e5' }}>{cancelText}</H6>
+                  <Text color="primary_background" style={{ fontSize: 16 }}>
+                    {cancelText}
+                  </Text>
                 </TouchableOpacity>
               </Flex.Item>
               <Flex.Item>
-                <H6 style={{ color: theme.colors.primary_background || '#3578e5' }}>{title}</H6>
+                <Text color="primary_background" style={{ fontSize: 16 }}>
+                  {title}
+                </Text>
               </Flex.Item>
               <Flex.Item>
                 <TouchableOpacity activeOpacity={0.5} onPress={handleOk}>
-                  <H6 style={{ color: theme.colors.primary_background || '#3578e5' }}>{okText}</H6>
+                  <Text color="primary_background" style={{ fontSize: 16 }}>
+                    {okText}
+                  </Text>
                 </TouchableOpacity>
               </Flex.Item>
             </Flex>

@@ -114,6 +114,14 @@ const FormDemo = () => {
       },
     },
     {
+      type: 'datePicker',
+      field: 'datePicker',
+      name: 'datePicker时间选择器',
+      attr: {
+        placeholder: '请选择',
+      },
+    },
+    {
       type: 'treeSelect',
       field: 'treeSelect',
       name: 'treeSelect',
@@ -212,7 +220,7 @@ const FormDemo = () => {
             <Form
               form={form}
               schema={schema}
-              initialValues={{name: '王滴滴', rate: 4, picker: ['2']}}
+              initialValues={{name: '王滴滴', rate: 4, datePicker: new Date(), picker: ['2']}}
               watch={{
                 name: (value: unknown) => console.log('value', value),
               }}

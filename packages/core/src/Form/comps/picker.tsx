@@ -8,7 +8,7 @@ import { Theme } from '../../theme';
 import { useTheme } from '@shopify/restyle';
 import { getTreeDeep } from '../../utils/tree-select';
 
-export interface RnPickerProps extends PickerProps {
+export interface RnPickerProps extends Omit<PickerProps, 'data'> {
   disabled?: boolean;
   placeholder?: string;
   contentStyle?: ViewStyle;
