@@ -51,7 +51,7 @@ const DirText = (props: DirTextProps) => {
           minWidth: containerSize[size],
           borderColor: borderColor,
           backgroundColor: theme.colors.white || '#fff',
-          paddingHorizontal: icon ? 0 : 5,
+          // paddingHorizontal: icon ? 0 : 5,
           opacity: disabled ? disabledStyle : disabledStyle - 0.2,
         },
       ]}
@@ -65,9 +65,9 @@ const DirText = (props: DirTextProps) => {
         }}
       >
         {icon ? (
-          <Icon name={direction} size={contentSize[size]} color={color || theme.colors.gray500 || '#3d3d3d'} />
+          <Icon name={direction} size={contentSize[size]} color={color || '#3d3d3d'} />
         ) : (
-          <Text style={{ color: color || theme.colors.gray500 || '#3d3d3d' }}>{dirText}</Text>
+          <Text style={{ color: color || '#3d3d3d' }}>{dirText}</Text>
         )}
       </Button>
     </View>
@@ -77,7 +77,7 @@ const DirText = (props: DirTextProps) => {
 export const containerStyle: ViewStyle = {
   borderStyle: 'solid',
   borderWidth: 1,
-  borderRadius: 2,
+  borderRadius: 6,
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
