@@ -119,6 +119,8 @@ const FormDemo = () => {
       name: 'datePicker时间选择器',
       attr: {
         placeholder: '请选择',
+        mode: 'date',
+        format: 'YYYY-MM-DD',
       },
     },
     {
