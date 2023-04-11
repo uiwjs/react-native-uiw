@@ -16,10 +16,8 @@ export default class WingBlankView extends React.Component<WingBlankViewProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
-            <Card
-              title="左右留白: size?: 'small' | 'default' | 'large'"
-              bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
+            <Card title="左右留白: size?: 'small' | 'default' | 'large'" bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank size="large">
                 <Button>左右留白 size="large"</Button>
               </WingBlank>

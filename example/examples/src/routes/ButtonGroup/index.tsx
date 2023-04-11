@@ -15,7 +15,7 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础实例">
               <ButtonGroup>
                 <Button type="primary">警告</Button>
@@ -52,10 +52,7 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
                 <Button>警告</Button>
               </ButtonGroup>
               <Spacing />
-              <ButtonGroup
-                color="#F95C2B"
-                textStyle={{color: '#fff'}}
-                size="small">
+              <ButtonGroup color="#F95C2B" textStyle={{color: '#fff'}} size="small">
                 <Button>警告</Button>
                 <Button>警告</Button>
                 <Button>主要</Button>

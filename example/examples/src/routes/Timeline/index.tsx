@@ -61,7 +61,7 @@ export default (props: StepsViewProps) => {
   return (
     <Container>
       <Header title={route.params.title} description={route.params.description} />
-      <Body>
+      <Body style={{paddingLeft: 16, paddingRight: 16}}>
         <Card title="基础用法">
           <WingBlank>
             <Timeline items={item} />

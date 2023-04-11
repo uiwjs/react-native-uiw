@@ -25,7 +25,7 @@ const ProgressDemo = (props: any) => {
   return (
     <Container>
       <Header title={title} description={description} />
-      <Body>
+      <Body style={{paddingLeft: 16, paddingRight: 16}}>
         <Header description={'基本使用'} />
         <Progress
           // progressColor="#5847FF"

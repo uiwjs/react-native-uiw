@@ -22,7 +22,7 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
       <Container scrollEnabled={false}>
         <Layout>
           <Header title={title} description={description} />
-          <Body scrollEnabled={false}>
+          <Body scrollEnabled={false} style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基本使用">
               <Button onPress={() => this.setState({visible: true})}>打开</Button>
               <View>

@@ -1,22 +1,22 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { Button, Spacing, Icon, Flex } from '@uiw/react-native';
-import { ComProps } from '../../routes';
-import Layout, { Container } from '../../Layout';
-const { Header, Body, Card, Footer } = Layout;
+import {View, Text} from 'react-native';
+import {Button, Spacing, Icon, Flex} from '@uiw/react-native';
+import {ComProps} from '../../routes';
+import Layout, {Container} from '../../Layout';
+const {Header, Body, Card, Footer} = Layout;
 
-export interface ButtonViewProps extends ComProps { }
+export interface ButtonViewProps extends ComProps {}
 
 export default class ButtonView extends React.Component<ButtonViewProps> {
   render() {
-    const { route } = this.props;
+    const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body style={{ padding: 15 }}>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础实例">
               <Flex>
                 <Button type="primary">蓝色按钮</Button>
@@ -32,15 +32,11 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Spacing />
               <Button type="primary">主要按钮 primary </Button>
               <Spacing />
-              <Button type="danger">
-                错误按钮 danger
-              </Button>
+              <Button type="danger">错误按钮 danger</Button>
               <Spacing />
               <Button type="success">成功按钮 success</Button>
               <Spacing />
-              <Button type="warning">
-                警告禁用按钮 warning
-              </Button>
+              <Button type="warning">警告禁用按钮 warning</Button>
               <Spacing />
               <Button color="#1EABCD" loading>
                 加载中 loading
@@ -50,7 +46,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                 亮按钮 light
               </Button>
               <Spacing />
-              <Button type="dark" loading >
+              <Button type="dark" loading>
                 暗按钮 dark
               </Button>
               <Spacing />
@@ -108,13 +104,13 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Button color="#a63d2c">自定义颜色{'color="#a63d2c"'}</Button>
             </Card>
             <Card title="文本样式">
-              <Button textStyle={{ fontSize: 20 }} color="yellow">
+              <Button textStyle={{fontSize: 20}} color="yellow">
                 字号调整{'textStyle = {{fontSize:20}}'}
               </Button>
               <Spacing />
-              <Button textStyle={{ color: 'blue' }}>文本颜色{'textStyle={{color:"blue"}}'}</Button>
+              <Button textStyle={{color: 'blue'}}>文本颜色{'textStyle={{color:"blue"}}'}</Button>
               <Spacing />
-              <Button color="#a63d2c" textStyle={{ letterSpacing: 2 }}>
+              <Button color="#a63d2c" textStyle={{letterSpacing: 2}}>
                 文本间距{'textStyle={{letterSpacing:3}}'}
               </Button>
             </Card>

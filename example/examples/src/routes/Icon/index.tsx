@@ -287,7 +287,7 @@ export default class IconPage extends React.Component<IconPageProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="自定义图标">
               <Icon name="apple" size={18} color="#50CB42" />
               <Icon

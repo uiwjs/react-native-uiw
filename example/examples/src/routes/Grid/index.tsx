@@ -30,12 +30,8 @@ export default class GridView extends React.Component<GridViewProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
-            <Grid
-              data={data}
-              itemStyle={{height: 100}}
-              onPress={() => navigation.goBack()}
-            />
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
+            <Grid data={data} itemStyle={{height: 100}} onPress={() => navigation.goBack()} />
             <Spacing />
             <Grid data={data2} columns={3} />
           </Body>

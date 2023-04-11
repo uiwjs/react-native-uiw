@@ -16,7 +16,7 @@ export default class DividerView extends React.Component<DividerViewProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="默认基础实例">
               <WingBlank>
                 <Ellipsis maxLen={5}>用于文本过长，超出长度显示</Ellipsis>

@@ -17,7 +17,7 @@ const datas = [
 ];
 
 const SearchBarDemo = (props: ComProps) => {
-  const {Header} = Layout;
+  const {Header, Body} = Layout;
   const {route} = props;
   const description = route.params.description;
   const title = route.params.title;
@@ -26,22 +26,24 @@ const SearchBarDemo = (props: ComProps) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <Header title={title} description={description} />
-      <SearchBar
-        onFocus={() => setData(datas)}
-        onChangeText={text => {
-          let search;
-          if (text) {
-            search = data.filter(item => item.label === text);
-          } else {
-            search = datas;
-          }
-          setData(search);
-        }}
-        labelInValue
-        options={data}
-        onChange={val => console.log('val', val)}
-        placeholder="请输入"
-      />
+      <Body style={{paddingLeft: 16, paddingRight: 16}}>
+        <SearchBar
+          onFocus={() => setData(datas)}
+          onChangeText={text => {
+            let search;
+            if (text) {
+              search = data.filter(item => item.label === text);
+            } else {
+              search = datas;
+            }
+            setData(search);
+          }}
+          labelInValue
+          options={data}
+          onChange={val => console.log('val', val)}
+          placeholder="请输入"
+        />
+      </Body>
     </SafeAreaView>
   );
 };

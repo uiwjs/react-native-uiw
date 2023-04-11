@@ -227,7 +227,7 @@ const FormDemo = () => {
   return (
     <Container>
       <Layout>
-        <Body>
+        <Body style={{paddingLeft: 16, paddingRight: 16}}>
           <Card title="基本使用">
             <Form
               form={form}

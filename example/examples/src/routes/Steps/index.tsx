@@ -40,11 +40,8 @@ export default (props: StepsViewProps) => {
 
   return (
     <Container>
-      <Header
-        title={route.params.title}
-        description={route.params.description}
-      />
-      <Body>
+      <Header title={route.params.title} description={route.params.description} />
+      <Body style={{paddingLeft: 16, paddingRight: 16}}>
         <Card title="基础用法">
           <WingBlank>
             <Steps
@@ -53,9 +50,7 @@ export default (props: StepsViewProps) => {
               // onChange={onChange}
             />
           </WingBlank>
-          <Button
-            style={{marginLeft: 20, marginRight: 20}}
-            onPress={onBtnPress}>
+          <Button style={{marginLeft: 20, marginRight: 20}} onPress={onBtnPress}>
             下一步
           </Button>
         </Card>
