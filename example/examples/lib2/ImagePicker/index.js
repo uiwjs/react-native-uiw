@@ -31,8 +31,6 @@ const ImagePicker = ({
   },
   launchLibraryText = '打开相册',
   launchCameraText = '打开摄像头',
-  previewImgText = '预览图片',
-  deleteImgText = '删除图片',
 }) => {
   const theme = useTheme();
   const styles = createStyles({
@@ -94,11 +92,6 @@ const ImagePicker = ({
               <View style={styles.box}>
                 <TouchableOpacity
                   activeOpacity={0.5}
-                  // onPress={() => {
-                  //   if (loading) return;
-                  //   setCurrent(key)
-                  //   handleLongPress()
-                  // }}
                   disabled={true}
                   style={{
                     justifyContent: 'center',

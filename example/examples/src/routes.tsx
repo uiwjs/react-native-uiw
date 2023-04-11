@@ -498,4 +498,12 @@ export const stackPageData: Routes[] = [
       description: '图片上传',
     },
   },
+  {
+    name: 'Accordion',
+    component: require('./routes/Accordion').default,
+    params: {
+      title: 'Accordion 手风琴',
+      description: '可以折叠/展开的内容区域。',
+    },
+  },
 ];

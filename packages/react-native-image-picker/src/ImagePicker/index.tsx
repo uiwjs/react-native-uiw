@@ -51,10 +51,6 @@ export type ImagePickerProps = PropsWithChildren<{
   launchLibraryText?: string;
   /** 打开摄像头文本 */
   launchCameraText?: string;
-  /** 预览图片文本 */
-  previewImgText?: string;
-  /** 删除图片文本 */
-  deleteImgText?: string;
 }>;
 
 const ImagePicker = ({
@@ -85,8 +81,6 @@ const ImagePicker = ({
   },
   launchLibraryText = '打开相册',
   launchCameraText = '打开摄像头',
-  previewImgText = '预览图片',
-  deleteImgText = '删除图片',
 }: ImagePickerProps) => {
   const theme = useTheme<Theme>();
   const styles = createStyles({
@@ -144,11 +138,6 @@ const ImagePicker = ({
               <View style={styles.box}>
                 <TouchableOpacity
                   activeOpacity={0.5}
-                  // onPress={() => {
-                  //   if (loading) return;
-                  //   setCurrent(key)
-                  //   handleLongPress()
-                  // }}
                   disabled={true}
                   style={{ justifyContent: 'center', alignItems: 'center', width, height }}
                 >
