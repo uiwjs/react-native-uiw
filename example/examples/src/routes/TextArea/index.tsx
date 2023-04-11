@@ -26,7 +26,7 @@ export default class TextAreaView extends Component<TextAreaProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础实例">
               <TextArea
                 onChange={(value: string) => {

@@ -34,94 +34,80 @@ export default class StepperExample extends React.Component<IndexProps, IndexSta
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础实例">
-              <View style={{marginLeft: 15}}>
-                <Stepper
-                  value={this.state.value}
-                  onChange={value => {
-                    this.setState({value});
-                  }}
-                />
-              </View>
+              <Stepper
+                value={this.state.value}
+                onChange={value => {
+                  this.setState({value});
+                }}
+              />
             </Card>
 
             <Card title="尺寸控制(size: small | default | large)：">
-              <View style={{marginLeft: 15}}>
-                <Stepper
-                  size="small"
-                  value={this.state.value}
-                  onChange={value => {
-                    this.setState({value});
-                  }}
-                />
-              </View>
+              <Stepper
+                size="small"
+                value={this.state.value}
+                onChange={value => {
+                  this.setState({value});
+                }}
+              />
             </Card>
 
             <Card title="按钮开启长按(disabledLongPress: boolean)：">
-              <View style={{marginLeft: 15}}>
-                <Stepper
-                  disabledLongPress={true}
-                  value={this.state.value2}
-                  onChange={value2 => {
-                    this.setState({value2});
-                  }}
-                />
-              </View>
+              <Stepper
+                disabledLongPress={true}
+                value={this.state.value2}
+                onChange={value2 => {
+                  this.setState({value2});
+                }}
+              />
             </Card>
 
             <Card title="自定义宽度(width: number)：">
-              <View style={{marginLeft: 15}}>
-                <Stepper
-                  width={120}
-                  value={this.state.value2}
-                  onChange={value2 => {
-                    this.setState({value2});
-                  }}
-                />
-              </View>
+              <Stepper
+                width={120}
+                value={this.state.value2}
+                onChange={value2 => {
+                  this.setState({value2});
+                }}
+              />
             </Card>
 
             <Card title="自定义颜色(color: Color)：">
-              <View style={{marginLeft: 15}}>
-                <Stepper
-                  value={this.state.value}
-                  color={{
-                    color: '#ccc',
-                    borderColor: '#999',
-                    controlColor: 'red',
-                    valueColor: '#000',
-                  }}
-                  onChange={value => {
-                    this.setState({value});
-                  }}
-                />
-              </View>
+              <Stepper
+                value={this.state.value}
+                color={{
+                  color: '#ccc',
+                  borderColor: '#999',
+                  controlColor: 'red',
+                  valueColor: '#000',
+                }}
+                onChange={value => {
+                  this.setState({value});
+                }}
+              />
             </Card>
 
             <Card title="不禁止输入(disabledInput: boolean)：">
-              <View style={{marginLeft: 15}}>
-                <Stepper
-                  disabledInput={false}
-                  value={this.state.value1}
-                  onChange={value1 => {
-                    this.setState({value1});
-                  }}
-                />
-              </View>
+              <Stepper
+                disabledInput={false}
+                value={this.state.value1}
+                onChange={value1 => {
+                  this.setState({value1});
+                }}
+              />
             </Card>
 
             <Card title="禁止点击(disabled: boolean)：">
-              <View style={{marginLeft: 15}}>
-                <Stepper
-                  disabled={true}
-                  disabledInput={false}
-                  value={this.state.value1}
-                  onChange={value1 => {
-                    this.setState({value1});
-                  }}
-                />
-              </View>
+              <Stepper
+                disabled={true}
+                disabledInput={false}
+                value={this.state.value1}
+                onChange={value1 => {
+                  this.setState({value1});
+                }}
+              />
             </Card>
           </Body>
           <Footer />

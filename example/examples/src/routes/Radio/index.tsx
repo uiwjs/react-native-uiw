@@ -35,51 +35,43 @@ export default class RadioView extends React.Component<RadioViewProps, RadioView
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础实例">
-              <View style={{marginLeft: 15}}>
-                <Radio checkedColor="#fd8a00" borderColor="#fd8a00">
-                  所有人可见
-                </Radio>
-                <Spacing />
-                <Radio>超级管理员</Radio>
-              </View>
+              <Radio checkedColor="#fd8a00" borderColor="#fd8a00">
+                所有人可见
+              </Radio>
+              <Spacing />
+              <Radio>超级管理员</Radio>
             </Card>
             <Card title={`受控组件 checked: ${this.state.checked}`}>
-              <View style={{marginLeft: 15}}>
-                <Radio
-                  checked={this.state.checked}
-                  onPress={() => {
-                    this.setState({checked: !this.state.checked});
-                  }}>
-                  所有人可见
-                </Radio>
-              </View>
+              <Radio
+                checked={this.state.checked}
+                onPress={() => {
+                  this.setState({checked: !this.state.checked});
+                }}>
+                所有人可见
+              </Radio>
             </Card>
             <Card title={`单选 value: ${this.state.value}`}>
-              <View style={{marginLeft: 15}}>
-                {radioData.map((item, idx) => {
-                  return (
-                    <Radio
-                      key={idx}
-                      checked={this.state.value === item.value}
-                      onPress={() => {
-                        this.setState({value: item.value});
-                      }}>
-                      {item.label}
-                    </Radio>
-                  );
-                })}
-              </View>
+              {radioData.map((item, idx) => {
+                return (
+                  <Radio
+                    key={idx}
+                    checked={this.state.value === item.value}
+                    onPress={() => {
+                      this.setState({value: item.value});
+                    }}>
+                    {item.label}
+                  </Radio>
+                );
+              })}
             </Card>
             <Card title="禁用 checked?: boolean;">
-              <View style={{marginLeft: 15}}>
-                <Radio disabled>所有人可见</Radio>
-                <Spacing />
-                <Radio disabled checked={true}>
-                  超级管理员
-                </Radio>
-              </View>
+              <Radio disabled>所有人可见</Radio>
+              <Spacing />
+              <Radio disabled checked={true}>
+                超级管理员
+              </Radio>
             </Card>
           </Body>
           <Footer />

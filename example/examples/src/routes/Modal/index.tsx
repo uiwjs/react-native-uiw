@@ -31,12 +31,10 @@ export default class ModalView extends Component<ModalViewProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础实例">
               <Modal
-                placement={
-                  this.state.direction as 'left' | 'right' | 'top' | 'bottom'
-                }
+                placement={this.state.direction as 'left' | 'right' | 'top' | 'bottom'}
                 // maskClosable={false}
                 visible={this.state.modalVisible}
                 onClosed={() => this.setState({modalVisible: false})}
@@ -47,32 +45,15 @@ export default class ModalView extends Component<ModalViewProps> {
                 <SafeAreaView>
                   <View>
                     <Text>Hello World!</Text>
-                    <Button
-                      onPress={() =>
-                        this.setModalVisible(!this.state.modalVisible)
-                      }>
-                      隐藏模态框
-                    </Button>
+                    <Button onPress={() => this.setModalVisible(!this.state.modalVisible)}>隐藏模态框</Button>
                     <Text>Hello World!</Text>
-                    <Button
-                      onPress={() =>
-                        this.setModalVisible(!this.state.modalVisible)
-                      }>
-                      隐藏模态框
-                    </Button>
+                    <Button onPress={() => this.setModalVisible(!this.state.modalVisible)}>隐藏模态框</Button>
                     <Text>Hello World!</Text>
-                    <Button
-                      onPress={() =>
-                        this.setModalVisible(!this.state.modalVisible)
-                      }>
-                      隐藏模态框
-                    </Button>
+                    <Button onPress={() => this.setModalVisible(!this.state.modalVisible)}>隐藏模态框</Button>
                   </View>
                 </SafeAreaView>
               </Modal>
-              <Button onPress={() => this.setModalVisible(true)}>
-                显示模态框
-              </Button>
+              <Button onPress={() => this.setModalVisible(true)}>显示模态框</Button>
               <View style={{flexDirection: 'row'}}>
                 {this.radioData.map(item => {
                   return (

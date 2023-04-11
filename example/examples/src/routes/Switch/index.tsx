@@ -28,10 +28,10 @@ export default class SwitchView extends React.Component<SwitchViewProps, SwitchV
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title={`实例展示，value=${this.state.checked}`} bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank>
-                <Flex direction="row" style={{marginLeft: 15}}>
+                <Flex direction="row">
                   <Switch checked={this.state.checked} onValueChange={this.handleChange} />
                   <Spacing type="horizontal" />
                   <Switch checked={this.state.checked} onValueChange={this.handleChange} />
@@ -40,7 +40,7 @@ export default class SwitchView extends React.Component<SwitchViewProps, SwitchV
             </Card>
             <Card title={'禁用无法切换，disabled={true}'} bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank>
-                <Flex direction="row" style={{marginLeft: 15}}>
+                <Flex direction="row">
                   <Switch checked={this.state.checked} onValueChange={this.handleChange} disabled />
                   <Spacing type="horizontal" />
                   <Switch checked={this.state.checked} onValueChange={this.handleChange} disabled />
@@ -56,7 +56,7 @@ export default class SwitchView extends React.Component<SwitchViewProps, SwitchV
             <Spacing />
             <Card title={'设置颜色，color|trackStyle|thumbColor'} bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank>
-                <Flex direction="row" style={{marginLeft: 15}}>
+                <Flex direction="row">
                   <Switch thumbColor="#ffe9a6" />
                   <Spacing type="horizontal" />
                   <Switch trackStyle={{backgroundColor: 'red', borderColor: 'red'}} />
@@ -67,7 +67,7 @@ export default class SwitchView extends React.Component<SwitchViewProps, SwitchV
             </Card>
             <Card title={"尺寸大小，size?: 'small' | 'default' | 'large';"} bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank>
-                <Flex direction="row" style={{marginLeft: 15}}>
+                <Flex direction="row">
                   <Switch size="small" />
                   <Spacing type="horizontal" />
                   <Switch />
@@ -78,7 +78,7 @@ export default class SwitchView extends React.Component<SwitchViewProps, SwitchV
             </Card>
             <Card title={'尺寸大小，通过设置高宽来定制尺寸'} bodyStyle={{paddingLeft: 0, paddingRight: 0}}>
               <WingBlank>
-                <Flex direction="row" style={{marginLeft: 15}}>
+                <Flex direction="row">
                   <Switch style={{height: 23, width: 34}} />
                   <Spacing type="horizontal" />
                   <Switch style={{height: 28, width: 42}} />

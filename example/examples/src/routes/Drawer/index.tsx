@@ -53,7 +53,7 @@ export default function DrawerView({route}: DrawerViewProps) {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <WingBlank>
               <Button onPress={() => setVisible(!visible)}>左边打开抽屉</Button>
               <Spacing />

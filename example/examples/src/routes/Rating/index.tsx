@@ -31,7 +31,7 @@ export default class Index extends Component<IndexProps, IndexState> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基本使用">
               <Rating />
             </Card>
@@ -60,12 +60,7 @@ export default class Index extends Component<IndexProps, IndexState> {
               <Rating tooltips={desc} defaultRating={1} />
             </Card>
             <Card title="评分文案样式修改">
-              <Rating
-                tooltips={descs}
-                defaultRating={3}
-                color="blue"
-                tooltipsStyle={{fontSize: 25, color: 'blue'}}
-              />
+              <Rating tooltips={descs} defaultRating={3} color="blue" tooltipsStyle={{fontSize: 25, color: 'blue'}} />
             </Card>
             <Card title="只读">
               <Rating defaultRating={3} color="green" disabled />

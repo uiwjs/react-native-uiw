@@ -18,7 +18,7 @@ export default function DividerView(props: DividerViewProps) {
     <Container>
       <Layout style={{backgroundColor: theme.colors.background}}>
         <Header title={title} description={description} />
-        <Body>
+        <Body style={{paddingLeft: 16, paddingRight: 16}}>
           <Card title="横向分割线" style={{backgroundColor: theme.colors.background}}>
             <Divider label="OR" />
             <Text />

@@ -37,7 +37,7 @@ export default class Index extends Component<IndexProps, IndexState> {
       <Container keyboardShouldPersistTaps="always">
         <Layout>
           <Header title={title} description={description} />
-          <Body keyboardShouldPersistTaps="always" style={{paddingHorizontal: 10}}>
+          <Body keyboardShouldPersistTaps="always" style={{paddingHorizontal: 16}}>
             <View style={styles.divider} />
             <SearchInputBar
               onChangeText={val => this.onChangeText(val, 'value')}

@@ -16,7 +16,7 @@ export default class TypographyView extends React.Component<TypographyViewProps>
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="一段文本排版">
               <H1>这是标题一</H1>
               <H2>这是标题二</H2>

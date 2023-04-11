@@ -134,7 +134,7 @@ function TextArea(props: TextAreaProps) {
 function createStyles({ backgroundColor = '#fff', borderColor = 'gray', color = '#000' }) {
   return StyleSheet.create({
     viewBody: {
-      marginHorizontal: 10,
+      // marginHorizontal: 10,
       borderColor: borderColor,
       borderWidth: 0.2,
       borderRadius: 2,
