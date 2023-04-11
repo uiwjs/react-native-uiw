@@ -490,4 +490,12 @@ export const stackPageData: Routes[] = [
       description: 'form',
     },
   },
+  {
+    name: 'ImagePicker',
+    component: require('./routes/ImagePicker').default,
+    params: {
+      title: 'ImagePicker 图片上传',
+      description: '图片上传',
+    },
+  },
 ];

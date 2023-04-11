@@ -1,6 +1,5 @@
 import React from 'react';
 import {ActionBar} from '@uiw/react-native';
-import {ImagePicker} from '@uiw/react-native-image-picker';
 import {View, Alert} from 'react-native';
 import {ComProps} from '../../routes';
 import Layout from '../../Layout';
@@ -38,7 +37,6 @@ export default class ActionBarDemo extends React.Component<ActionBarProps> {
               },
             ]}
           />
-          <ImagePicker />
         </View>
       </React.Fragment>
     );
