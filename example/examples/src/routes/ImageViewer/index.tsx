@@ -17,7 +17,7 @@ export default class Index extends Component<IndexProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body style={{backgroundColor: '#fff'}}>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础使用">
               <ImageViewer />
             </Card>

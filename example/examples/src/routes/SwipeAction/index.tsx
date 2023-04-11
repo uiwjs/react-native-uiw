@@ -82,8 +82,8 @@ export default class SwipeActionView extends Component<SwipeActionProps> {
 
 const styles = StyleSheet.create({
   card: {
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 16,
+    paddingRight: 16,
     paddingBottom: 30,
   },
   view: {

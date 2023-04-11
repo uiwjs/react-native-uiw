@@ -16,7 +16,7 @@ export default class AvatarView extends React.Component<AvatarViewProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="默认头像">
               <Flex>
                 <Avatar />

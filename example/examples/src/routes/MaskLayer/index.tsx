@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {Button, MaskLayer} from '@uiw/react-native';
+import {View, StyleSheet} from 'react-native';
+import {Button, MaskLayer, Text} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
 
@@ -59,12 +59,12 @@ export default function MenuDropdownView(props: MenuDropdownProps) {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
-    paddingLeft: 20,
-    paddingRight: 20,
+    // backgroundColor: '#fff',
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   color: {
-    color: '#fff',
+    // color: '#fff',
   },
   top: {
     top: 100,

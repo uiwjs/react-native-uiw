@@ -41,7 +41,7 @@ export default class Index extends Component<IndexProps, IndexState> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Tabs value={this.state.flag} onChange={value => this.setState({flag: value})}>
               <Tabs.Item title="喜欢">
                 <View>

@@ -55,7 +55,7 @@ export default class FlexView extends React.Component<FlexViewProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="主轴为水平方向，起点在左端: direction='row'">
               <Flex>
                 <Flex.Item>
@@ -135,20 +135,17 @@ export default class FlexView extends React.Component<FlexViewProps> {
             </Card>
             <Card title="起点对齐 align='start'">
               <Flex align="start">
-                <Square size={30} /> <Square size={26} /> <Square size={22} />{' '}
-                <Square size={18} />
+                <Square size={30} /> <Square size={26} /> <Square size={22} /> <Square size={18} />
               </Flex>
             </Card>
             <Card title="中点对齐 align='center'">
               <Flex align="center">
-                <Square size={30} /> <Square size={26} /> <Square size={22} />{' '}
-                <Square size={18} />
+                <Square size={30} /> <Square size={26} /> <Square size={22} /> <Square size={18} />
               </Flex>
             </Card>
             <Card title="终点对齐 align='end'">
               <Flex align="end">
-                <Square size={30} /> <Square size={26} /> <Square size={22} />{' '}
-                <Square size={18} />
+                <Square size={30} /> <Square size={26} /> <Square size={22} /> <Square size={18} />
               </Flex>
             </Card>
             <Card title="如果项目未设置高度或设为auto，将占满整个容器的高度 align='stretch'">

@@ -16,7 +16,7 @@ export default class ResultView extends React.Component<ResultViewProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Result
               img={<Icon name="pay-circle-o" size={60} fill="#008EF0" />}
               title="支付成功"
@@ -27,29 +27,13 @@ export default class ResultView extends React.Component<ResultViewProps> {
               }
             />
             <Spacing />
-            <Result
-              img={<Icon name="time" size={60} fill="#1EABCD" />}
-              title="等待处理"
-              message="已提交申请，等待银行处理"
-            />
+            <Result img={<Icon name="time" size={60} fill="#1EABCD" />} title="等待处理" message="已提交申请，等待银行处理" />
             <Spacing />
-            <Result
-              img={<Icon name="circle-check" size={60} fill="#008EF0" />}
-              title="验证成功"
-              message="所提交内容已成功完成验证"
-            />
+            <Result img={<Icon name="circle-check" size={60} fill="#008EF0" />} title="验证成功" message="所提交内容已成功完成验证" />
             <Spacing />
-            <Result
-              img={<Icon name="circle-close" size={60} fill="#dc3545" />}
-              title="支付失败"
-              message="所选银行卡余额不足"
-            />
+            <Result img={<Icon name="circle-close" size={60} fill="#dc3545" />} title="支付失败" message="所选银行卡余额不足" />
             <Spacing />
-            <Result
-              img={<Icon name="warning" size={60} fill="#ffc107" />}
-              title="无法完成操作"
-              message="由于你的账号未认证，请先确认认证后，再进行操作。"
-            />
+            <Result img={<Icon name="warning" size={60} fill="#ffc107" />} title="无法完成操作" message="由于你的账号未认证，请先确认认证后，再进行操作。" />
             <Footer />
           </Body>
         </Layout>

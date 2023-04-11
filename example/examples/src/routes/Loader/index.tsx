@@ -16,7 +16,7 @@ export default class LoaderView extends Component<LoaderViewProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础实例" bodyStyle={{minHeight: 60}}>
               <Loader rounded={5} tip="加载中..." />
             </Card>
@@ -87,11 +87,7 @@ export default class LoaderView extends Component<LoaderViewProps> {
                   flexDirection: 'row',
                   flexWrap: 'wrap-reverse',
                 }}>
-                <Loader
-                  maskColor="#00000082"
-                  rounded={5}
-                  color="#fff"
-                  loading={true}>
+                <Loader maskColor="#00000082" rounded={5} color="#fff" loading={true}>
                   <Button>默认按钮</Button>
                 </Loader>
               </View>
