@@ -23,20 +23,20 @@
   ],
   "dependencies": {
     "@babel/runtime": "~7.20.7",
-    "@types/lodash": "~4.14.191",
     "@types/react-native": "0.69.1",
+    "prop-types": "15.7.2",
     "@uiw/icons": "2.5.3",
     "ahooks": "2.10.14",
-    "lodash": "4.17.21",
-    "prop-types": "15.7.2",
-    "react-native-svg": "12.1.1",
     "@shopify/restyle":"~2.4.2",
-    "@uiw/react-native":"~3.2.3"
+    "@uiw/react-native":"~3.2.3",
+    "react-native-svg": "12.1.1",
+    "react-native-image-picker":"^4.10.0"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
     "react-native": ">=0.60.0",
-    "react-native-svg": ">=9.9.3"
+    "react-native-svg": ">=9.9.3",
+    "react-native-image-picker":">= 4.0.0"
   },
   "devDependencies": {
     "@babel/core": "~7.20.7",

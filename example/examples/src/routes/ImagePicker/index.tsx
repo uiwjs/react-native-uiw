@@ -19,7 +19,7 @@ export default function MenuDropdownView(props: ImagePickerProps) {
         <Header title={title} description={description} />
         <Body>
           <Card title="基础实例">
-            <ImagePicker />
+            <ImagePicker upload={(file: any) => file.uri} />
           </Card>
         </Body>
         <Footer />
