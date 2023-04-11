@@ -294,6 +294,10 @@ export const routeData = [
         component: lazy(() => import('../pages/components/cardcollapse')),
       },
       {
+        path: '/components/accordion',
+        component: lazy(() => import('../pages/components/accordion')),
+      },
+      {
         path: '/components/actionSheet',
         component: lazy(() => import('../pages/components/actionSheet')),
       },

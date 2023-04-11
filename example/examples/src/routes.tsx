@@ -1,4 +1,4 @@
-import {StackNavigationProp, StackNavigationOptions} from '@react-navigation/stack';
+import { StackNavigationProp, StackNavigationOptions } from '@react-navigation/stack';
 
 type ModalStackNavigation = StackNavigationProp<{}>;
 
@@ -496,6 +496,14 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'ImagePicker 图片上传',
       description: '图片上传',
+    },
+  },
+  {
+    name: 'Accordion',
+    component: require('./routes/Accordion').default,
+    params: {
+      title: 'Accordion 手风琴',
+      description: '可以折叠/展开的内容区域。',
     },
   },
 ];
