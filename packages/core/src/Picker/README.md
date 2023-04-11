@@ -10,14 +10,14 @@ Picker 选择器
 
 ### 基础示例
 
-```jsx mdx:preview&background=#bebebe29
+```jsx
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { Picker } from '@uiw/react-native';
 
 function Demo() {
   const [value, setValue] = React.useState(['5'])
-  const arr1 = [
+  const arr = [
     { label: '3', value: '3' },
     { label: '4', value: '4' },
     { label: '5', value: '5' },
@@ -28,7 +28,7 @@ function Demo() {
         cols={1}
         value={value}
         displayType="view"
-        data={arr2}
+        data={arr}
         onChange={val => setValue(val)}
       />
     </SafeAreaView>
@@ -39,7 +39,7 @@ export default Demo
 
 ### modal弹框 & 联动
 
-```jsx mdx:preview&background=#bebebe29
+```jsx
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { Picker,Button } from '@uiw/react-native';

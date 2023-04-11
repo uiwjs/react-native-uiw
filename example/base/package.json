@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@uiw/react-native": "3.2.3",
-    "react": "18.0.0",
+    "@uiw/react-native-image-picker": "3.2.3",
+    "react": "18.2.0",
     "react-native": "0.69.7",
     "react-native-svg": "12.1.1"
   },

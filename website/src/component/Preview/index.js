@@ -34,7 +34,7 @@ const getBooleanValue = (param, field, defaultValue) => {
 };
 
 const Preview = ({ path, ...mdData }) => {
-  // const Preview = CodeLayout.Preview;
+  const Preview = CodeLayout.Preview;
   const Code = CodeLayout.Code;
   const Toolbar = CodeLayout.Toolbar;
   const $dom = useRef(null);
@@ -70,9 +70,9 @@ const Preview = ({ path, ...mdData }) => {
                   disableCheckered={getBooleanValue(param, 'disableCheckered', true)}
                   bordered={getBooleanValue(param, 'bordered', true)}
                 >
-                  {/* <Preview>
+                  <Preview>
                     <Child />
-                  </Preview> */}
+                  </Preview>
                   <Toolbar collapse={false} text={code} copied={getBooleanValue(param, 'copied', true)}>
                     {param.title || '示例'}
                   </Toolbar>
