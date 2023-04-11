@@ -2,6 +2,7 @@ import { MenuData } from '../component/SubMenus';
 
 export const componentMenus: MenuData[] = [
   { path: '/components/about', name: '关于 UIW' },
+  { path: '/components/theme', name: 'Theme' },
   { divider: true, name: '通用' },
   { path: '/components/button', name: 'Button 按钮' },
   { path: '/components/buttongroup', name: 'ButtonGroup 按钮组' },

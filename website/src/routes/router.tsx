@@ -102,6 +102,10 @@ export const routeData = [
         component: lazy(() => import('../pages/components/about')),
       },
       {
+        path: '/components/theme',
+        component: lazy(() => import('../pages/components/theme')),
+      },
+      {
         path: '/components/divider',
         component: lazy(() => import('../pages/components/divider')),
       },
