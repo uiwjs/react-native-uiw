@@ -24,6 +24,7 @@ export const componentMenus: MenuData[] = [
   { path: '/components/swipeaction', name: 'SwipeAction 滑动操作组件' },
   { path: '/components/expandablesection', name: 'ExpandableSection 展开缩放组件' },
   { path: '/components/cardcollapse', name: 'CardCollapse 可折叠卡片列表' },
+  { path: '/components/accordion', name: 'Accordion 可折叠/展开的内容区域' },
   { divider: true, name: 'Data Entry' },
   { path: '/components/form', name: 'Form 表单 🚧' },
   { path: '/components/checkbox', name: 'CheckBox 复选框' },

@@ -1,17 +1,15 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 const ImagePicker = () => {
-  return (
-    <View style={styles.tree}>
+  return <View style={styles.tree}>
       <Text>ImagePicker</Text>
-    </View>
-  );
+    </View>;
 };
 const styles = StyleSheet.create({
   tree: {
     paddingHorizontal: 10,
     paddingVertical: 5,
-    backgroundColor: '#fff',
-  },
+    backgroundColor: '#fff'
+  }
 });
 export default ImagePicker;
