@@ -45,6 +45,20 @@ npx react-native init AwesomeProject --template @uiw/react-native-template
 yarn add @uiw/react-native react-native-svg@12.1.1 react-native-root-siblings@4.1.1  react-native-gesture-handler@2.8.0
 ```
 
+## Theme Configuration
+  项目App.tsx文件配置
+
+```jsx
+//...其他import
+import { ThemeProvider } from '@td-design/react-native';
+
+const App = () => {
+  return <ThemeProvider>{/** 其他Provider */}</ThemeProvider>;
+};
+
+export default App;
+```
+
 ## Basic Usage
 
 ```jsx
