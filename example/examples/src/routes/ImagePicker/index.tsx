@@ -1,6 +1,4 @@
-import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Button, MaskLayer, Text} from '@uiw/react-native';
+import React from 'react';
 import {ImagePicker} from '@uiw/react-native-image-picker';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
@@ -19,7 +17,7 @@ export default function MenuDropdownView(props: ImagePickerProps) {
         <Header title={title} description={description} />
         <Body>
           <Card title="基础实例">
-            <ImagePicker upload={(file: any) => file.uri} />
+            <ImagePicker upload={async file => await file.uri} />
           </Card>
         </Body>
         <Footer />
