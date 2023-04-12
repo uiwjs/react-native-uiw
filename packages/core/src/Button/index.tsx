@@ -56,22 +56,22 @@ export default function ButtonView<T>(props: ButtonProps) {
 
   switch (type) {
     case 'warning':
-      backgroundColor = theme.colors.func200;
+      backgroundColor = theme.colors.func200 || '#FFD21D';
       break;
     case 'primary':
-      backgroundColor = theme.colors.func400;
+      backgroundColor = theme.colors.func400 || '#1890FF';
       break;
     case 'success':
-      backgroundColor = theme.colors.func300;
+      backgroundColor = theme.colors.func300 || '#52C41A';
       break;
     case 'danger':
-      backgroundColor = theme.colors.func600;
+      backgroundColor = theme.colors.func600 || '#F4333C';
       break;
     case 'light':
-      backgroundColor = theme.colors.white;
+      backgroundColor = theme.colors.white || '#FFFFFF';
       break;
     case 'dark':
-      backgroundColor = theme.colors.black;
+      backgroundColor = theme.colors.black || '#000000';
       break;
     default:
       break;
@@ -79,13 +79,13 @@ export default function ButtonView<T>(props: ButtonProps) {
   if (backgroundColor) {
     backgroundColor = color(backgroundColor).rgb().string();
   }
-  if (!type) {
-    borderColor = color(theme.colors.black).alpha(0.32).rgb().string();
-    borderWidth = 1;
-  }
+  // if (!type) {
+  //   borderColor = color(theme.colors.black).alpha(0.32).rgb().string();
+  //   borderWidth = 1;
+  // }
   if (disabled) {
-    textColor = color(theme.colors.disabled).alpha(0.1).rgb().string();
-    backgroundColor = color(theme.colors.disabled).rgb().string();
+    textColor = color(theme.colors.disabled || '#CCCCCC').alpha(0.1).rgb().string();
+    backgroundColor = color(theme.colors.disabled || '#CCCCCC').rgb().string();
   }
   if (buttonColor) {
     backgroundColor = color(buttonColor).rgb().string();
@@ -93,13 +93,13 @@ export default function ButtonView<T>(props: ButtonProps) {
   if (rounded && (typeof rounded === 'number' || typeof rounded === 'boolean')) {
     borderRadius = rounded;
   }
-  if (backgroundColor) {
-    borderColor = color(backgroundColor).alpha(0.2).string();
+  if (bordered) {
+    borderColor = color(theme.colors.black || '#000000').alpha(0.1).rgb().string();
     borderWidth = 1;
   }
-  if (!bordered || buttonColor) {
-    borderWidth = 0;
-  }
+  // if (!bordered || buttonColor) {
+  //   borderWidth = 0;
+  // }
   const buttonStyle = {
     backgroundColor: backgroundColor || "#3578e5",
     borderColor,
@@ -107,9 +107,9 @@ export default function ButtonView<T>(props: ButtonProps) {
     borderRadius,
   };
   if ((type || backgroundColor || buttonColor || buttonStyle.backgroundColor) && type !== "light") {
-    textColor = color(theme.colors.white).rgb().string()
+    textColor = color(theme.colors.white || '#FFFFFF').rgb().string()
   } else {
-    textColor = color(theme.colors.black).rgb().string();
+    textColor = color(theme.colors.black || '#000000').rgb().string();
   }
   const textStyle = { color: textColor };
   let sizeStyle = {};
@@ -146,7 +146,7 @@ export default function ButtonView<T>(props: ButtonProps) {
 ButtonView.defaultProps = {
   activeOpacity: 0.5,
   rounded: 5,
-  bordered: true,
+  bordered: false,
   size: 'default',
 } as ButtonProps;
 
