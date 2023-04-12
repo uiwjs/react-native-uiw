@@ -26,7 +26,7 @@ function filterSource(source: string[] = []) {
 export default function useImagePicker({
   value,
   options,
-  showUploadImg = true,
+  selectionLimit,
   beforeUpload,
   upload,
   uploadFinish,
@@ -45,7 +45,7 @@ export default function useImagePicker({
   /** loading */
   const [loading, setLoading] = useSafeState(false);
   /** 预览照片地址 */
-  const [previewSrc, setPreviewSrc] = useSafeState<string | undefined>(undefined); // 选中的图片下标
+  const [current, setCurrent] = useSafeState<number | undefined>(undefined); // 选中的图片下标
   // 刷新
   const [refresh, setRefresh] = useState(false);
 
@@ -81,6 +81,7 @@ export default function useImagePicker({
     setTimeout(() => {
       launchImageLibrary(
         {
+          selectionLimit: selectionLimit,
           ...initialOptions,
           ...options,
         },
@@ -120,26 +121,30 @@ export default function useImagePicker({
         onFail?.(response);
       } else {
         if (!response.assets || response.assets.length === 0) return;
-        const file: File = {
-          fileName: response.assets[0].fileName!,
-          fileType: response.assets[0].type!,
-          uri: response.assets[0].uri!,
-          fileSize: response.assets[0].fileSize!,
-        };
+        let imageFiles: File[] = [];
+        response.assets.forEach((item) => {
+          const file: File = {
+            fileName: item.fileName!,
+            fileType: item.type!,
+            uri: item.uri!,
+            fileSize: item.fileSize!,
+          };
+          imageFiles.push(file);
+        });
         // 执行上传前的操作及判断
         if (beforeUpload) {
-          const result = await beforeUpload(file);
+          const result = await beforeUpload(imageFiles);
           if (!result) {
             return;
           }
         }
         setLoading(true);
-        const result = await upload?.(file);
+        const result = upload?.(imageFiles);
         setLoading(false);
         uploadFinish?.(result);
         setLaunchVisibleFalse();
-        if (result) {
-          const datas = [...currentImgSource, result];
+        if (result && result.length > 0) {
+          const datas = [...currentImgSource, ...result];
           setCurrentImgSource(datas);
         }
       }
@@ -151,13 +156,13 @@ export default function useImagePicker({
 
   // 预览照片
   const previewImage = (key: number) => {
-    setPreviewSrc(currentImgSource[key]);
+    setCurrent(key);
     setPreviewVisibleTrue();
   };
 
   // 关闭预览照片
   const closePreviewImage = () => {
-    setPreviewSrc(undefined);
+    setCurrent(undefined);
     setPreviewVisibleFalse();
   };
 
@@ -167,7 +172,7 @@ export default function useImagePicker({
     setCurrentImgSource(currentImgSource);
     // 刷新页面
     setRefresh(!refresh);
-    uploadFinish?.('');
+    uploadFinish?.(undefined);
   };
 
   // 打开上传
@@ -178,7 +183,7 @@ export default function useImagePicker({
 
   return {
     currentImgSource,
-    previewSrc,
+    current,
     loading,
     launchLibrary,
     launchCamera,

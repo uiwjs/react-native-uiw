@@ -10,12 +10,15 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@uiw/react-native": "3.2.3",
-    "@uiw/react-native-image-picker": "3.2.3",
     "react": "18.2.0",
     "react-native": "0.69.7",
+    "@uiw/react-native": "3.2.3",
+    "@uiw/react-native-image-picker": "3.2.3",
     "react-native-svg": "12.1.1",
-    "react-native-image-picker":"^4.10.0"
+    "react-native-gesture-handler": "2.8.0",
+    "react-native-root-siblings": "4.1.1",
+    "react-native-image-picker":"^5.3.1",
+    "react-native-image-viewing":"~0.2.2"
   },
   "devDependencies": {
     "@babel/core": "~7.20.7",
