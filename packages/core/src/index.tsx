@@ -115,6 +115,8 @@ export { default as Calendar } from './Calendar';
 export * from './Calendar';
 export { default as DragDrawer } from './DragDrawer';
 export * from './DragDrawer';
+export { default as Tree } from './Tree';
+export * from './Tree';
 export { default as TreeSelect } from './TreeSelect';
 export * from './TreeSelect';
 export { default as TextArea } from './TextArea';

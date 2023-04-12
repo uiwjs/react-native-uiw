@@ -451,6 +451,14 @@ export const stackPageData: Routes[] = [
     },
   },
   {
+    name: 'Tree',
+    component: require('./routes/Tree').default,
+    params: {
+      title: 'Tree 树形展示',
+      description: '树形展示',
+    },
+  },
+  {
     name: 'TreeSelect',
     component: require('./routes/TreeSelect').default,
     params: {
