@@ -42,4 +42,4 @@ export default Demo
 | `onEnd` | 倒计时结束后的回调 | `() => void` | - |
 | `outerStyle` | 输入框外层自定义样式 | `StyleProp<ViewStyle>` | - |
 | `buttonStyle` | 按钮自定义样式 | `StyleProp<ViewStyle>` | - |
-| `placeholder` | 输入框空白时自定义展示 | string | - |
+| `placeholder` | 输入框空白时自定义展示 | string | `请输入验证码` |
