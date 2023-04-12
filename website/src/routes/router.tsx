@@ -298,6 +298,10 @@ export const routeData = [
         component: lazy(() => import('../pages/components/accordion')),
       },
       {
+        path: '/components/verificationCode',
+        component: lazy(() => import('../pages/components/verificationCode')),
+      },
+      {
         path: '/components/actionSheet',
         component: lazy(() => import('../pages/components/actionSheet')),
       },

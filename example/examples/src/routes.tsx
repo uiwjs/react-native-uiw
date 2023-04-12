@@ -506,4 +506,12 @@ export const stackPageData: Routes[] = [
       description: '可以折叠/展开的内容区域。',
     },
   },
+  {
+    name: 'VerificationCode',
+    component: require('./routes/VerificationCode').default,
+    params: {
+      title: 'VerificationCode 验证码倒计时',
+      description: '验证码倒计时组件',
+    },
+  },
 ];

@@ -33,9 +33,9 @@ const Accordion: FC<AccordionProps> = (props) => {
   const [activeIndex, setActiveIndex] = useState<number[] | number>(isMultiple ? [] : -1);
   const theme = useTheme<Theme>();
   const styles = createStyles({
-    bgColor: theme.colors.mask,
-    headerColor: theme.colors.background,
-    borderColor: theme.colors.border,
+    bgColor: theme.colors.mask || '#FFFFFF',
+    headerColor: theme.colors.background || '#F5F5F5',
+    borderColor: theme.colors.border || '#CCCCCC',
   });
   const animatedController = useRef(new Animated.Value(0)).current;
 
@@ -79,28 +79,16 @@ const Accordion: FC<AccordionProps> = (props) => {
           >
             <View style={styles.titleBy} key={index}>
               {item.title}
-              {iconShow && (
-                <Animated.View
-                  style={{
-                    transform: [
-                      {
-                        rotateZ:
-                          activeIndex === index || (Array.isArray(activeIndex) && activeIndex.indexOf(index) > -1)
-                            ? rotateZ
-                            : '0deg',
-                      },
-                    ],
-                  }}
-                >
-                  <Icon name="right" size={iconSize} color={theme.colors.border} />
-                </Animated.View>
-              )}
+              {iconShow &&
+                <Animated.View style={{ transform: [{ rotateZ: activeIndex === index || (Array.isArray(activeIndex) && activeIndex.indexOf(index) > -1) ? rotateZ : '0deg' }] }}>
+                  <Icon name="right" size={iconSize} color={theme.colors.border || '#CCCCCC'} />
+                </Animated.View>}
             </View>
           </TouchableOpacity>
           {((isMultiple && Array.isArray(activeIndex) && activeIndex.indexOf(index) > -1) ||
             (!isMultiple && activeIndex === index)) && (
-            <View style={[styles.content, contentStyle]}>{item.content}</View>
-          )}
+              <View style={[styles.content, contentStyle]}>{item.content}</View>
+            )}
         </View>
       ))}
     </View>

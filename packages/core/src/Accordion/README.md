@@ -1,13 +1,16 @@
 Accordion 手风琴组件
 ---
-可以折叠/展开的内容区域。
 
+可以折叠/展开的内容区域。
 ### 基础示例
+
 
 ```jsx mdx:preview&background=#bebebe29
 import React,{ Component } from "react"
 import { View, Text,Image,Card } from 'react-native';
 import { Accordion } from '@uiw/react-native';
+
+function Demo() {
 
   const contents = [
   {
@@ -39,16 +42,17 @@ import { Accordion } from '@uiw/react-native';
   },
 ];
 
-function Demo() {
   return (
   <View style={{ marginTop: 50 }}>
         <Accordion sections={contents} />
     </View>
   );
 }
-```
 
-### Props
+export default Demo;
+
+```
+### Props 
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
@@ -58,4 +62,3 @@ function Demo() {
 | `contentStyle` | 点击展开内容样式 | ViewStyle | - |
 | `iconShow` | 是否展示图标 | boolean | true |
 | `iconSize` | 设置图标尺寸 | number | - |
-
