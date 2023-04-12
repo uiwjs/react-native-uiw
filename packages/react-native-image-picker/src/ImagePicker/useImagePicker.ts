@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { Keyboard, PermissionsAndroid, Platform, Animated } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Keyboard, PermissionsAndroid, Platform } from 'react-native';
 import {
   CameraOptions,
   ImagePickerResponse,
@@ -45,7 +45,9 @@ export default function useImagePicker({
   /** loading */
   const [loading, setLoading] = useSafeState(false);
   /** 预览照片地址 */
-  const [previewSrc, setPreviewSrc] = useSafeState<string | undefined>(''); // 选中的图片下标
+  const [previewSrc, setPreviewSrc] = useSafeState<string | undefined>(undefined); // 选中的图片下标
+  // 刷新
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     if (value && value.length > 0) {
@@ -153,10 +155,18 @@ export default function useImagePicker({
     setPreviewVisibleTrue();
   };
 
+  // 关闭预览照片
+  const closePreviewImage = () => {
+    setPreviewSrc(undefined);
+    setPreviewVisibleFalse();
+  };
+
   // 删除照片
   const deleteImage = (key: number) => {
     currentImgSource.splice(key, 1);
     setCurrentImgSource(currentImgSource);
+    // 刷新页面
+    setRefresh(!refresh);
     uploadFinish?.('');
   };
 
@@ -173,12 +183,12 @@ export default function useImagePicker({
     launchLibrary,
     launchCamera,
     launchVisible,
+    previewVisible,
     previewImage,
+    closePreviewImage,
     deleteImage,
     handlePress,
-    previewVisible,
     setLaunchVisibleFalse,
-    setPreviewVisibleFalse,
-    setPreviewSrc,
+    refresh,
   };
 }

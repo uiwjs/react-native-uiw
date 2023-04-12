@@ -1,18 +1,10 @@
-import React, { PropsWithChildren } from 'react';
-import {
-  View,
-  StyleSheet,
-  Rationale,
-  TouchableOpacity,
-  ActivityIndicator,
-  Dimensions,
-  Image,
-  Text,
-} from 'react-native';
+import React, { PropsWithChildren, useMemo } from 'react';
+import { View, StyleSheet, Rationale, TouchableOpacity, Dimensions, Image } from 'react-native';
 import { CameraOptions, ImagePickerResponse } from 'react-native-image-picker';
-import { Theme, Flex, ActionSheet, ActionSheetItem, MaskLayer, TransitionImage, Icon } from '@uiw/react-native';
+import { Theme, Flex, ActionSheet, ActionSheetItem, MaskLayer, TransitionImage, Icon, Text } from '@uiw/react-native';
 import { useTheme } from '@shopify/restyle';
 import useImagePicker from './useImagePicker';
+
 export interface File {
   fileName: string;
   fileType: string;
@@ -89,6 +81,7 @@ const ImagePicker = ({
     borderColor: theme.colors.border,
     backgroundColor: theme.colors.mask,
   });
+
   const {
     currentImgSource,
     previewSrc,
@@ -97,12 +90,11 @@ const ImagePicker = ({
     launchCamera,
     launchVisible,
     previewImage,
+    closePreviewImage,
     deleteImage,
     handlePress,
     previewVisible,
     setLaunchVisibleFalse,
-    setPreviewVisibleFalse,
-    setPreviewSrc,
   } = useImagePicker({
     value,
     options,
@@ -115,6 +107,35 @@ const ImagePicker = ({
     cameraRationale,
     libraryRationale,
   });
+
+  const pictureList = useMemo(() => {
+    if (showUploadImg && currentImgSource && currentImgSource.length > 0) {
+      return currentImgSource.map((item, index) => (
+        <Flex.Item key={index}>
+          <View style={styles.box}>
+            <View style={{ justifyContent: 'center', alignItems: 'center', width, height }}>
+              <TransitionImage
+                source={{ uri: item }}
+                style={{ width, height, borderRadius: 2 }}
+                PlaceholderContent={<Text color="text">加载失败</Text>}
+                transition={true}
+              />
+              <View style={styles.previewBox}>
+                <TouchableOpacity disabled={loading} onPress={() => previewImage(index)} style={styles.previewIcon}>
+                  <Icon name="eye" color={theme.colors.primary_background || '#3578e5'} size={16} />
+                </TouchableOpacity>
+                <TouchableOpacity disabled={loading} onPress={() => deleteImage(index)} style={styles.previewIcon}>
+                  <Icon name="delete" color={theme.colors.primary_background || '#3578e5'} size={16} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Flex.Item>
+      ));
+    }
+    return null;
+  }, [showUploadImg, JSON.stringify(currentImgSource)]);
+
   return (
     <View>
       <Flex justify="start" wrap="wrap">
@@ -130,67 +151,13 @@ const ImagePicker = ({
             </TouchableOpacity>
           </View>
         </Flex.Item>
-        {showUploadImg &&
-          currentImgSource &&
-          currentImgSource.length > 0 &&
-          currentImgSource.map((item, key) => (
-            <Flex.Item key={key}>
-              <View style={styles.box}>
-                <TouchableOpacity
-                  activeOpacity={0.5}
-                  disabled={true}
-                  style={{ justifyContent: 'center', alignItems: 'center', width, height }}
-                >
-                  <TransitionImage
-                    source={{ uri: item }}
-                    style={{ width, height, borderRadius: 2 }}
-                    PlaceholderContent={<ActivityIndicator />}
-                    transition={true}
-                  />
-                  <View style={[styles.btns, { height: height, width: width }]}>
-                    <TouchableOpacity
-                      onPress={() => previewImage(key)}
-                      style={[
-                        styles.delete,
-                        {
-                          width: width * 0.375,
-                          height: height * 0.375,
-                        },
-                      ]}
-                    >
-                      <Icon name="eye" color={theme.colors.primary_background || '#3578e5'} size={16} />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => deleteImage(key)}
-                      style={[
-                        styles.delete,
-                        {
-                          width: width * 0.375,
-                          height: height * 0.375,
-                        },
-                      ]}
-                    >
-                      <Icon name="delete" color={theme.colors.primary_background || '#3578e5'} size={16} />
-                    </TouchableOpacity>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </Flex.Item>
-          ))}
+        {pictureList}
       </Flex>
       <ActionSheet onCancel={setLaunchVisibleFalse} visible={launchVisible} style={{ zIndex: 99 }}>
         <ActionSheetItem onPress={launchLibrary}>{launchLibraryText}</ActionSheetItem>
         <ActionSheetItem onPress={launchCamera}>{launchCameraText}</ActionSheetItem>
       </ActionSheet>
-      <MaskLayer
-        visible={previewVisible}
-        style={{ zIndex: 999 }}
-        onDismiss={() => {
-          setPreviewVisibleFalse();
-          setPreviewSrc('');
-        }}
-        opacity={0.9}
-      >
+      <MaskLayer visible={previewVisible} style={{ zIndex: 999 }} onDismiss={closePreviewImage} opacity={0.9}>
         <View style={styles.content}>
           <Image style={styles.image} source={{ uri: previewSrc }} />
         </View>
@@ -222,17 +189,21 @@ function createStyles({ width = 100, height = 100, borderColor = '#CCCCCC', back
       height: '100%',
       resizeMode: 'contain',
     },
-    btns: {
+    previewBox: {
       position: 'absolute',
       left: 0,
       top: 0,
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
+      height: height,
+      width: width,
     },
-    delete: {
+    previewIcon: {
       alignItems: 'center',
       justifyContent: 'center',
+      width: width * 0.375,
+      height: height * 0.375,
     },
   });
 }
