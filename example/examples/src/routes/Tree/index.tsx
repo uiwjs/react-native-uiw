@@ -11,57 +11,65 @@ export default class TreeDemo extends React.Component<TreeViewProps> {
     const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
-    const option = [
+    const option: any = [
       {
-        label: '一栋',
-        value: '01',
+        title: '一栋',
+        key: '01',
         children: [
           {
-            label: '一单元',
-            value: '01-1',
-            children: [{label: '一层', value: '01-1-1', children: [{label: '101', value: '01-1-1-1'}]}],
+            title: '一单元',
+            key: '01-1',
+            children: [{title: '一层', key: '01-1-1', children: [{title: '101', key: '01-1-1-1'}]}],
           },
           {
-            label: '一单元1',
-            value: '01-2',
+            title: '一单元1',
+            key: '01-2',
           },
           {
-            label: '一单元2',
-            value: '01-3',
+            title: '一单元2',
+            key: '01-3',
           },
         ],
       },
       {
-        label: '二栋',
-        value: '02',
+        title: '二栋',
+        key: '02',
         children: [
           {
-            label: '二单元',
-            value: '02-1',
+            title: '二单元',
+            key: '02-1',
           },
           {
-            label: '二单元1',
-            value: '02-2',
+            title: '二单元1',
+            key: '02-2',
           },
           {
-            label: '二单元2',
-            value: '02-3',
+            title: '二单元2',
+            key: '02-3',
           },
         ],
       },
     ];
+
     return (
       <Container>
         <Layout>
           <Header title={title} description={description} />
           <React.Fragment>
             <Body style={{paddingLeft: 16, paddingRight: 16}}>
-              <Tree
+              {/* <Tree
                 defaultValue={['01', '01-1', '01-1-1', '01-1-1-1']}
                 // activeColor="red"
                 options={option}
-                onChange={(value: any, nodes: any) => {
-                  console.log(value, nodes);
+                onChange={(key: any, nodes: any) => {
+                  // console.log(key, nodes);
+                }}
+              /> */}
+              <Tree
+                treeData={option}
+                defaultExpandAll
+                onCheck={e => {
+                  console.log(e);
                 }}
               />
             </Body>
