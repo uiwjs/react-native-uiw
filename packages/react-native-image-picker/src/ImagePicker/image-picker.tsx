@@ -124,7 +124,7 @@ const ImagePicker = ({
         </View>
       </Flex.Item>
     );
-  }, [readOnly, maxCount, JSON.stringify(currentImgSource), disabled]);
+  }, [readOnly, maxCount, JSON.stringify(currentImgSource), disabled, theme]);
 
   const previewImages = useMemo(() => {
     return currentImgSource.map((item) => ({ uri: item }));
