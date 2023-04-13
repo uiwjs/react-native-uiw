@@ -1,5 +1,4 @@
-import { Tree } from './tree';
+import Tree from './components/Tree';
+import TreeModal from './components/TreeModal';
 
-export type { TreeProps, TreeOption } from './tree';
-
-export default Tree;
+export default Object.assign(Tree, { TreeModal });
