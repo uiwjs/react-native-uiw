@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
 export interface TreeItemProps {
-  key: string;
-  title: string;
+  value: string;
+  label: string;
   children?: Array<TreeItemProps | ReactNode>;
   disabled?: boolean;
   icon?: (checked: boolean) => ReactNode;
@@ -15,8 +15,8 @@ export interface DataNode {
   disabled?: boolean;
   disableCheckbox?: boolean;
   icon?: (checked: boolean) => ReactNode;
-  key: string;
-  title?: React.ReactNode | string;
+  value: string;
+  label?: React.ReactNode | string;
   switcherIcon?: ReactNode;
   show?: boolean;
 }
@@ -82,7 +82,7 @@ export interface TreeNodeProps {
   /** 是否选中 */
   checked?: boolean;
   /** 标题 */
-  title?: React.ReactNode;
+  label?: React.ReactNode;
   /** 节点的数据 */
   data: DataNode;
   /** 是否显示展开图标 */

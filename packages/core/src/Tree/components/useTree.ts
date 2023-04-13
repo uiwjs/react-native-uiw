@@ -86,16 +86,16 @@ export function useTree(props: TreeProps) {
    * 节点展开,回调上层的onExpand事件
    */
   const handleNodeExpand = (treeNode: EventDataNode) => {
-    const { key, expanded } = treeNode;
+    const { value, expanded } = treeNode;
 
     let arrKeys: string[] = [];
 
     const targetExpanded = !expanded;
 
     if (targetExpanded) {
-      arrKeys = arrAdd(expandedKeys, key);
+      arrKeys = arrAdd(expandedKeys, value);
     } else {
-      arrKeys = arrDel(expandedKeys, key);
+      arrKeys = arrDel(expandedKeys, value);
     }
     updateExpandedKeys(arrKeys);
     onExpandRef.current?.(treeNode);
@@ -107,7 +107,7 @@ export function useTree(props: TreeProps) {
    * 选中处理
    */
   const handlerCheck = (treeNode: EventDataNode) => {
-    const { key, checked } = treeNode;
+    const { value, checked } = treeNode;
 
     let arrKeys: string[] = [];
     const targetChecked = !checked;
@@ -115,16 +115,16 @@ export function useTree(props: TreeProps) {
     //判断是否需要关联父子节点
     if (checkStrictly) {
       if (targetChecked) {
-        arrKeys = arrAdd(checkedKeys, key);
+        arrKeys = arrAdd(checkedKeys, value);
       } else {
-        arrKeys = arrDel(checkedKeys, key);
+        arrKeys = arrDel(checkedKeys, value);
       }
     } else {
-      arrKeys = conductCheck([...checkedKeys, key], keyEntities || {}, true);
+      arrKeys = conductCheck([...checkedKeys, value], keyEntities || {}, true);
 
       if (checked) {
         const keySet = new Set(checkedKeys);
-        keySet.delete(key);
+        keySet.delete(value);
         arrKeys = conductCheck(Array.from(keySet), keyEntities || {}, { checked: false });
       }
     }
