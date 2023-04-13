@@ -26,6 +26,7 @@ export interface ActionSheetItemProps {
   underlayColor?: string;
   onPress?: (event: GestureResponderEvent) => void;
   children?: React.ReactNode;
+  disabled?: boolean;
 }
 
 export interface ActionSheetItemState {}
@@ -39,6 +40,7 @@ export default function ActionSheetItem(props: ActionSheetItemProps) {
     underlayColor = colorScheme === 'light' ? theme.colors.background : '#1A1A22',
     containerStyle,
     textStyle,
+    disabled = false,
     children,
   } = props;
 
@@ -48,6 +50,7 @@ export default function ActionSheetItem(props: ActionSheetItemProps) {
       activeOpacity={activeOpacity}
       underlayColor={underlayColor}
       onPress={onPress}
+      disabled={disabled}
     >
       <View style={StyleSheet.flatten([styles.actionSheetItem, containerStyle])}>
         <Text style={StyleSheet.flatten([styles.actionSheetItemText, textStyle])}>{children}</Text>

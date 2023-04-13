@@ -73,4 +73,5 @@ import { ImageProps } from 'react-native';
 | placeholderStyle | 占位符容器的附加样式（可选） | StyleProp<ViewStyle> | - |
 | transition | 在图像加载时执行淡入淡出过渡 | boolean | - |
 | transitionDuration | 图像加载时执行淡入淡出过渡时间 | boolean | - |
+| disabled | 禁止点击 | boolean | false |
 

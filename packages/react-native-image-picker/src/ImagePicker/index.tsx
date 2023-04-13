@@ -9,7 +9,7 @@ import {
   ImageRequireSource,
 } from 'react-native';
 import { CameraOptions, ImagePickerResponse } from 'react-native-image-picker';
-import { Theme, Flex, ActionSheet, ActionSheetItem, TransitionImage, Icon, Text } from '@uiw/react-native';
+import { Theme, Flex, ActionSheet, ActionSheetItem, TransitionImage, Icon } from '@uiw/react-native';
 import ImageView from 'react-native-image-viewing';
 import { useTheme } from '@shopify/restyle';
 import useImagePicker from './useImagePicker';
@@ -149,15 +149,13 @@ const ImagePicker = ({
               <TransitionImage
                 source={{ uri: item }}
                 style={{ width, height, borderRadius: 2 }}
-                PlaceholderContent={<Text color="text">加载失败</Text>}
                 transition={true}
+                disabled={loading}
+                onPress={() => previewImage(index)}
               />
-              <View style={styles.previewBox}>
-                <TouchableOpacity disabled={loading} onPress={() => previewImage(index)} style={styles.previewIcon}>
-                  <Icon name="eye" color={theme.colors.primary_background || '#3578e5'} size={16} />
-                </TouchableOpacity>
-                <TouchableOpacity disabled={loading} onPress={() => deleteImage(index)} style={styles.previewIcon}>
-                  <Icon name="delete" color={theme.colors.primary_background || '#3578e5'} size={16} />
+              <View style={styles.deleteBox}>
+                <TouchableOpacity disabled={loading} onPress={() => deleteImage(index)}>
+                  <Icon name="close" color="#fff" size={10} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -184,14 +182,18 @@ const ImagePicker = ({
               disabled={loading}
               style={{ justifyContent: 'center', alignItems: 'center', width, height }}
             >
-              <Icon name="plus-square-o" color={theme.colors.text || '#A9A9A9'} size={20} />
+              <Icon name="camera-o" color={theme.colors.gray300 || '#ccc'} size={24} />
             </TouchableOpacity>
           </View>
         </Flex.Item>
       </Flex>
       <ActionSheet onCancel={setLaunchVisibleFalse} visible={launchVisible}>
-        <ActionSheetItem onPress={launchLibrary}>{launchLibraryText}</ActionSheetItem>
-        <ActionSheetItem onPress={launchCamera}>{launchCameraText}</ActionSheetItem>
+        <ActionSheetItem disabled={loading} onPress={launchLibrary}>
+          {launchLibraryText}
+        </ActionSheetItem>
+        <ActionSheetItem disabled={loading} onPress={launchCamera}>
+          {launchCameraText}
+        </ActionSheetItem>
       </ActionSheet>
       <ImageView
         visible={previewVisible}
@@ -218,21 +220,20 @@ function createStyles({ width = 100, height = 100, borderColor = '#CCCCCC', back
       backgroundColor: backgroundColor,
       margin: 4,
     },
-    previewBox: {
+    deleteBox: {
       position: 'absolute',
-      left: 0,
+      right: 0,
       top: 0,
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      height: height,
-      width: width,
-    },
-    previewIcon: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: width * 0.375,
-      height: height * 0.375,
+      height: 18,
+      width: 18,
+      backgroundColor: 'rgba(0, 0, 0, .7)',
+      borderTopLeftRadius: 0,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+      borderBottomLeftRadius: 12,
     },
   });
 }
