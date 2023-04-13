@@ -69,7 +69,6 @@ function Demo() {
 export default Demo
 
 ```
-
 ### 指定头像的形状
 
 circle  圆头像
@@ -92,6 +91,25 @@ function Demo() {
 export default Demo
 
 ```
+
+### loading
+
+```jsx mdx:preview&background=#bebebe29
+import React from 'react';
+import { View } from 'react-native';
+import { Avatar } from '@uiw/react-native';
+
+function Demo() {
+  return (
+    <View style={{ flexDirection: 'row',justifyContent:'space-around' }}>
+      <Avatar shape='circle' src="https://avatars.githubusercontent.com/u/24369183?v=4" loading={true} />
+    </View>
+  );
+}
+
+export default Demo
+
+```
 ### Props
 
 继承 [View](https://facebook.github.io/react-native/docs/view#props) 组件。
@@ -104,3 +122,4 @@ export default Demo
 | `size` | 尺寸 | number | - |
 | `rounded` | 设置圆角 | number | - |
 | `shape` |指定头像的形状 | `circle｜square` | - |
+| `loading` | 是否加载 | `boolean` | `false` |

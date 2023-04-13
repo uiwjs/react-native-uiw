@@ -217,10 +217,19 @@ export default Demo
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
-| options | 级联数据 | TreeSelectOption[] | - |
-| defaultValue | 默认选中项 | string[] | - |
+| options | 级联数据 | `TreeSelectOption[]` | - |
+| defaultValue | 默认选中项 | `string[]` | - |
 | value | 选中项 | string[] | - |
-| onChange | value 变化时触发 | (value: string[], extend: { options: TreeSelectOption[] }) => void | - |
-| fieldNames | 自定义 options 中 label value children 的字段 | {{ label: string, value: string, children: string }} \| any | - |
+| onChange | value 变化时触发 | `(value: string[], extend: { options: TreeSelectOption[] }) => void` | - |
+| fieldNames | 自定义 options 中 label value children 的字段 | `{{ label: string, value: string, children: string }} | any` | - |
 | activeColor | 选中文本颜色 | `string` | - |
+| activeColor | 是否禁用 | `boolean` | `false` |
+| placeholder | 占位符 | `string` | `请选择` |
+| extra | 图标 | `JSX.Element` | - |
+| showClear | 是否展示删除图标 | `boolean` | `true` |
+| contentStyle | 容器样式 | `StyleProp<ViewStyle>` | - |
+| placeholderColor | 搜索框默认文本颜色 | `ColorValue` | - |
+| height | 弹出框高度 | `number` | `300` |
+| modalProps | Modal组件参数 | `ModalProps` | `300` |
+
 

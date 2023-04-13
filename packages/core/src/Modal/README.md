@@ -23,7 +23,14 @@ function ButtonGroupView() {
   });
   return (
     <Fragment>
-      <Modal visible={lowerModal}>
+      <Modal 
+        visible={lowerModal} 
+        containerStyle={{ 
+          borderTopRightRadius:10,
+          borderTopLeftRadius:10,
+          overflow: 'hidden',
+        }}
+      >
         <SafeAreaView>
           <View>
             <Button onPress={() => setLowerModal(false)}>
@@ -92,4 +99,6 @@ export default ButtonGroupView
 |------|------|-----|------|
 | placement | 模态框的方向 | `'top' \| 'right' \| 'bottom' \| 'left'` | bottom |
 | onClosed | 关闭函数 | `() => void` | - |
+| containerStyle | 样式 | `ViewStyle` | - |
+
 

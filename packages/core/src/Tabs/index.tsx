@@ -23,10 +23,9 @@ function Tabs(props: TabsProps) {
     const handleResize = () => {
       setScrollViewWidth(Dimensions.get('window').width);
     };
-    Dimensions.addEventListener('change', handleResize);
-
+    const subscription = Dimensions.addEventListener('change', handleResize);
     return () => {
-      Dimensions.removeEventListener('change', handleResize);
+      subscription.remove();
     };
   }, []);
 

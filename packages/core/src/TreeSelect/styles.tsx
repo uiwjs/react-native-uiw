@@ -28,4 +28,26 @@ export const style = StyleSheet.create({
     marginLeft: 10,
     marginBottom: 10,
   },
+  content: {
+    flexDirection: 'row',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingRight: 5,
+    backgroundColor: '#fff',
+    paddingHorizontal: 16,
+  },
+  disabled: {
+    flexDirection: 'row',
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingRight: 5,
+    backgroundColor: '#f5f5f5',
+    paddingHorizontal: 16,
+  },
+  contentTitle: {
+    fontSize: 16,
+    color: 'black',
+  },
 });

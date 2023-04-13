@@ -15,6 +15,7 @@ export default class TextAreaView extends Component<TextAreaProps> {
     value3: '自定义输入框样式',
     value4: '',
     value5: '',
+    value6: '',
   };
 
   render() {
@@ -63,6 +64,16 @@ export default class TextAreaView extends Component<TextAreaProps> {
                   this.setState({value1});
                 }}
                 value={this.state.value1}
+              />
+            </Card>
+            <Card title="允许拖拽" style={styles.card}>
+              <TextArea
+                showWords={true}
+                onChange={(value6: string) => {
+                  this.setState({value6});
+                }}
+                value={this.state.value6}
+                draggable
               />
             </Card>
             <Card title="自定义输入框样式" style={styles.card}>

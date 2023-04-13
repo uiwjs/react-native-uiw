@@ -165,7 +165,7 @@ const FormDemo = () => {
   return (
     <Container>
       <Layout>
-        <Body>
+        <Body style={{backgroundColor: '#fff'}}>
           <Form
             form={form}
             schema={schema}

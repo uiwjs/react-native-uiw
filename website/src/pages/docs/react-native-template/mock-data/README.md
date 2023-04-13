@@ -55,10 +55,7 @@ const Demo = ({ update }) => {
     },
   })
 
-  const { mutate, isLoading } = login({
-    update,
-    formData,
-  })
+  const { mutate, isLoading } = login({ formData })
 
   return (
      <Button
@@ -73,12 +70,7 @@ const Demo = ({ update }) => {
   );
 }
 
-export default connect(
-  ({}) => ({}),
-  ({ global }) => ({
-    update: global.update
-  }),
-)(Demo);
+export default Demo
 
 ```
 ### 三、使用react-query调用api
@@ -89,7 +81,7 @@ import { userLogin } from '../services/users';
 import { useQuery, useMutation } from 'react-query'
 
 // 登录
-export const login = ({ config = {}, update, formData }) => {
+export const login = ({ config = {}, formData }) => {
   const mutation = useMutation({
     mutationFn: userLogin,
     onSuccess: async (data) => {
@@ -117,6 +109,55 @@ export const login = ({ config = {}, update, formData }) => {
 
 注：mock功能只推荐在开发模式下开启。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
+
+## 使用rematch调用接口
+
+### 一、rematch中异步方法
+
+```
+export default {
+  name: 'home',
+  state: {
+    formData:{}
+  }, 
+  reducers: {
+   update: (state, payload) => ({ ...state, ...payload }),
+  },
+  effects: (dispatch) => ({
+    async userLogin(payload) {
+      const { data,code } = await userLogin(payload);
+      if (code===200) {
+        this.update({ formData: data || {} });
+      } else {
+       
+      }
+    },
+  }),
+};
+
+```
+### 二、页面中调用
+```js
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Button } from '@uiw/react-native';
+
+const Demo = ({ update }) => {
+  const dispatch = useDispatch()
+
+  return (
+     <Button
+       onPress={() => {
+        dispatch({ type:'home/userLogin',payload:{}})
+       }}>
+       Sign In
+     </Button>
+  );
+}
+
+export default Demo
+
+```
 
 ## License
 
