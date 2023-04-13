@@ -49,7 +49,7 @@ const TreeNode: FC<TreeNodeProps> = (props) => {
         <View
           style={{
             height: 55,
-            backgroundColor: '#F5F5F5',
+            backgroundColor: theme.colors.mask,
             borderBottomWidth: StyleSheet.hairlineWidth,
             borderBottomColor: '#CCCCCC',
             paddingHorizontal: 12,
@@ -61,10 +61,7 @@ const TreeNode: FC<TreeNodeProps> = (props) => {
             </TouchableOpacity>
 
             <View style={{ flex: 1, marginLeft: 4 }}>
-              <Text
-                style={{ fontSize: 14, lineHeight: 19 }}
-                color={disabled ? 'rgba(255, 255, 255, 0.25)' : 'rgba(255, 255, 255, 0.8)'}
-              >
+              <Text style={{ fontSize: 14, lineHeight: 19 }} color={disabled ? 'rgba(255, 255, 255, 0.25)' : 'text'}>
                 {label}
               </Text>
             </View>
