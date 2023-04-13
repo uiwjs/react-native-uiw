@@ -11,7 +11,7 @@ export function flattenTreeData(treeNodeList: TreeItemProps[] = [], expandedKeys
   //递归遍历每一个节点
   function dig(list: DataNode[], parent: FlattenNode | null = null, show?: boolean): FlattenNode[] {
     return list.map((treeNode) => {
-      const mergedKey = treeNode.key;
+      const mergedKey = treeNode.value;
 
       const flattenNode: FlattenNode = {
         ...treeNode,
@@ -81,18 +81,18 @@ export function getTreeNodeLevel(treeData: TreeItemProps[] = []) {
     const children = node ? node.children : treeData;
 
     if (node) {
-      nodeLevel[node.key] = {
+      nodeLevel[node.value] = {
         level: parent ? parent.level + 1 : 0,
         parent: parent,
         children: children,
         data: node,
-        key: node.key,
+        value: node.value,
       };
     }
 
     if (children) {
       children.forEach((subNode) => {
-        processNode(subNode as TreeItemProps, node ? nodeLevel[node?.key] : null);
+        processNode(subNode as TreeItemProps, node ? nodeLevel[node?.value] : null);
       });
     }
   }
@@ -114,7 +114,7 @@ function fillConductCheck(keys: Set<string>, levelEntities: Map<number, Set<Enti
 
       if (checkedKeys.has(key)) {
         children?.forEach((childEntity) => {
-          checkedKeys.add(childEntity.key);
+          checkedKeys.add(childEntity.value);
         });
       }
     });
@@ -129,18 +129,18 @@ function fillConductCheck(keys: Set<string>, levelEntities: Map<number, Set<Enti
 
       let allChecked = true;
 
-      (parent?.children || []).forEach(({ key }) => {
-        const checked = checkedKeys.has(key);
+      (parent?.children || []).forEach(({ value }) => {
+        const checked = checkedKeys.has(value);
         if (allChecked && !checked) {
           allChecked = false;
         }
       });
 
       if (allChecked) {
-        checkedKeys.add(parent.key);
+        checkedKeys.add(parent.value);
       }
 
-      visitedKeys.add(parent.key);
+      visitedKeys.add(parent.value);
     });
   }
 
@@ -161,7 +161,7 @@ function cleanConductCheck(keys: Set<string>, levelEntities: Map<number, Set<Ent
 
       if (!checkedKeys.has(key)) {
         children?.forEach((childEntity) => {
-          checkedKeys.delete(childEntity.key);
+          checkedKeys.delete(childEntity.value);
         });
       }
     });
@@ -177,18 +177,18 @@ function cleanConductCheck(keys: Set<string>, levelEntities: Map<number, Set<Ent
 
       let allChecked = true;
 
-      (parent.children || []).forEach(({ key }) => {
-        const checked = checkedKeys.has(key);
+      (parent.children || []).forEach(({ value }) => {
+        const checked = checkedKeys.has(value);
         if (allChecked && !checked) {
           allChecked = false;
         }
       });
 
       if (!allChecked) {
-        checkedKeys.delete(parent.key);
+        checkedKeys.delete(parent.value);
       }
 
-      visitedKeys.add(parent.key);
+      visitedKeys.add(parent.value);
     });
   }
 

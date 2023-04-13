@@ -5,7 +5,7 @@ import { TreeNodeProps } from '../type';
 export function useTreeNode({
   expanded = false,
   eventKey,
-  title,
+  label,
   checked = false,
   disabled,
   onCheck,
@@ -28,7 +28,7 @@ export function useTreeNode({
   };
 
   const handlerCheck = () => {
-    onCheckRef.current?.({ expanded, key: data.key, eventKey, title, checked, disabled });
+    onCheckRef.current?.({ expanded, value: data.value, eventKey, label, checked, disabled });
   };
 
   return { progress, heightProgress, style, handlerCheck: handlerCheck, onClick: onClickRef.current };

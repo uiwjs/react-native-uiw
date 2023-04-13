@@ -19,7 +19,7 @@ const TreeNode: FC<TreeNodeProps> = (props) => {
     disabled,
     checkable,
     expanded = false,
-    title,
+    label,
     checked = false,
     data,
     showIcon,
@@ -51,7 +51,7 @@ const TreeNode: FC<TreeNodeProps> = (props) => {
       <TouchableOpacity
         disabled={disabled}
         onPress={() => {
-          onClick?.({ expanded, key: data.key, title, checked, disabled });
+          onClick?.({ expanded, value: data.value, label, checked, disabled });
         }}
       >
         <View
@@ -73,14 +73,10 @@ const TreeNode: FC<TreeNodeProps> = (props) => {
                 style={{ fontSize: px(14), lineHeight: px(19) }}
                 color={disabled ? 'rgba(255, 255, 255, 0.25)' : 'rgba(255, 255, 255, 0.8)'}
               >
-                {title}
+                {label}
               </Text>
             </View>
-            {!!data.children && !!showIcon && (
-              <Chevron {...{ progress }}>
-                <Icon name={checked ? 'up' : 'down'} color="#999999" />
-              </Chevron>
-            )}
+            {!!data.children && !!showIcon && <Icon name={expanded ? 'up' : 'down'} color="#999999" size={18} />}
           </Flex>
         </View>
       </TouchableOpacity>

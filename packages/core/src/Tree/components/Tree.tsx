@@ -21,12 +21,12 @@ const Tree: FC<TreeProps> = (props) => {
   } = useTree(props);
 
   const treeRender = (item: FlattenNode) => {
-    const treeNodeProps = getTreeNodeProps(item.key, {
+    const treeNodeProps = getTreeNodeProps(item.value, {
       expandedKeys,
       checkedKeys: checkedKeys,
     });
-    const level = keyEntities?.[item.key].level;
-    const itemIcon = keyEntities?.[item.key].data.icon || icon;
+    const level = keyEntities?.[item.value].level;
+    const itemIcon = keyEntities?.[item.value].data.icon || icon;
     return (
       <TreeNode
         icon={itemIcon}
