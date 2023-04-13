@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Theme, Flex, ActionSheet, ActionSheetItem, TransitionImage, Icon } from '@uiw/react-native';
 import ImageView from 'react-native-image-viewing';
 import { useTheme } from '@shopify/restyle';
@@ -59,6 +59,7 @@ const ImagePicker = ({
     handlePress,
     previewVisible,
     setLaunchVisibleFalse,
+    saveImage,
   } = useImagePicker({
     value,
     options,
@@ -72,6 +73,15 @@ const ImagePicker = ({
     libraryRationale,
     selectionLimit,
   });
+  const savePhotos = (url = '') => {
+    Alert.alert('保存图片', '', [
+      { text: '取消', style: 'cancel' },
+      {
+        text: '确认',
+        onPress: () => saveImage(url),
+      },
+    ]);
+  };
 
   const pictureList = useMemo(() => {
     if (showUploadImg && currentImgSource && currentImgSource.length > 0) {
@@ -146,9 +156,11 @@ const ImagePicker = ({
       </ActionSheet>
       <ImageView
         visible={previewVisible}
+        keyExtractor={(_, index) => index + ''}
         onRequestClose={closePreviewImage}
         imageIndex={current || 0}
         images={previewImages}
+        onLongPress={(image: any) => savePhotos(image.uri)}
         {...others}
       />
     </View>
