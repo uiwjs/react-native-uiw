@@ -31,7 +31,8 @@
     "@uiw/react-native":"~3.2.3",
     "react-native-svg": "12.1.1",
     "react-native-image-picker":"^5.3.1",
-    "react-native-image-viewing":"~0.2.2"
+    "react-native-image-viewing":"~0.2.2",
+    "@react-native-camera-roll/camera-roll":"～5.3.1"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
