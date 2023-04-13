@@ -7,7 +7,7 @@ import {
   launchCamera as launchRNCamera,
 } from 'react-native-image-picker';
 import { useBoolean, useSafeState } from 'ahooks';
-import type { File, ImagePickerProps } from '.';
+import type { File, ImagePickerProps } from './types';
 
 function getSource(value?: string) {
   if (value && (value.startsWith('http') || value.startsWith('file:'))) {

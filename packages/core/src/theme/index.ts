@@ -27,7 +27,7 @@ const palette = {
   primary200: '#005DFF',
   primary300: 'rgba(0, 93, 255, 0.7)',
   primary400: 'rgba(0, 93, 255, 0.4)',
-  primary500: 'transparent',
+  primary500: '#ebedf0',
   primary600: 'transparent',
   primary700: 'transparent',
   primary800: 'transparent',
@@ -211,7 +211,7 @@ const darkPalette = {
   primary200: '#005DFF',
   primary300: 'rgba(0, 93, 255, 0.7)',
   primary400: 'rgba(0, 93, 255, 0.4)',
-  primary500: 'transparent', // 苹果暗模式背景色
+  primary500: '#1E1E28', // 苹果暗模式背景色
   primary600: 'transparent',
   primary700: 'transparent',
   primary800: 'transparent',
