@@ -23,7 +23,7 @@
     "react-native-image-picker":"^5.3.1",
     "react-native-image-viewing":"~0.2.2",
     "@uiw/react-native-image-picker": "3.2.3",
-    "@react-native-camera-roll/camera-roll":"～5.3.1"
+    "@react-native-camera-roll/camera-roll":"5.3.1"
   },
   "devDependencies": {
     "@babel/core": "~7.20.7",
