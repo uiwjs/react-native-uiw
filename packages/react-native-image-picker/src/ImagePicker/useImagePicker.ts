@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Keyboard, PermissionsAndroid, Platform } from 'react-native';
+import { Alert, Keyboard, PermissionsAndroid, Platform } from 'react-native';
 import {
   CameraOptions,
   ImagePickerResponse,
@@ -7,6 +7,7 @@ import {
   launchCamera as launchRNCamera,
 } from 'react-native-image-picker';
 import { useBoolean, useSafeState } from 'ahooks';
+import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import type { File, ImagePickerProps } from './types';
 
 function getSource(value?: string) {
@@ -181,6 +182,30 @@ export default function useImagePicker({
     setLaunchVisibleTrue();
   };
 
+  // 保存图片
+  const saveImage = async (url?: string | undefined) => {
+    // 检查android权限
+    if (Platform.OS === 'android') {
+      const permission =
+        Platform.Version >= 33
+          ? PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES
+          : PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE;
+      const granted = await PermissionsAndroid.request(permission);
+      if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+        // 如果权限未获得，进行提示或者打开应用设置页面
+        return;
+      }
+    }
+    if (url) {
+      try {
+        await CameraRoll.save(getSource(url));
+        Alert.alert('保存成功', '', [{ text: '确定' }]);
+      } catch (error) {
+        Alert.alert('保存失败！\n' + error, '', [{ text: '确定' }]);
+      }
+    }
+  };
+
   return {
     currentImgSource,
     current,
@@ -194,6 +219,6 @@ export default function useImagePicker({
     deleteImage,
     handlePress,
     setLaunchVisibleFalse,
-    refresh,
+    saveImage,
   };
 }
