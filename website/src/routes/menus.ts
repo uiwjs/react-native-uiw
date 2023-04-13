@@ -41,6 +41,7 @@ export const componentMenus: MenuData[] = [
   { path: '/components/stepper', name: 'Stepper 步进器' },
   { path: '/components/picker', name: 'Picker 选择器 🚧' },
   { path: '/components/datepicker', name: 'DatePicker 日期选择器 🚧' },
+  { path: '/components/tree', name: 'Tree 树形控件 🚧' },
   { path: '/components/treeSelect', name: 'TreeSelect 级联选择器 🚧' },
   { divider: true, name: 'Data Display' },
   { path: '/components/avatar', name: 'Avatar 头像' },
