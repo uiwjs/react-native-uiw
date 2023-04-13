@@ -1,7 +1,7 @@
 {
   "name": "@uiw/react-native-image-picker",
   "version": "3.2.3",
-  "description": "UIW for React Native",
+  "description": "基于 React Native 的上传图片组件",
   "homepage": "https://uiwjs.github.io/react-native-uiw/",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -23,20 +23,21 @@
   ],
   "dependencies": {
     "@babel/runtime": "~7.20.7",
-    "@types/lodash": "~4.14.191",
     "@types/react-native": "0.69.1",
+    "prop-types": "15.7.2",
     "@uiw/icons": "2.5.3",
     "ahooks": "2.10.14",
-    "lodash": "4.17.21",
-    "prop-types": "15.7.2",
-    "react-native-svg": "12.1.1",
     "@shopify/restyle":"~2.4.2",
-    "@uiw/react-native":"~3.2.3"
+    "@uiw/react-native":"~3.2.3",
+    "react-native-svg": "12.1.1",
+    "react-native-image-picker":"^5.3.1",
+    "react-native-image-viewing":"~0.2.2"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
     "react-native": ">=0.60.0",
-    "react-native-svg": ">=9.9.3"
+    "react-native-svg": ">=9.9.3",
+    "react-native-image-picker":">= 5.0.0"
   },
   "devDependencies": {
     "@babel/core": "~7.20.7",

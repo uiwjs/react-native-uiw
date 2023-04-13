@@ -127,7 +127,10 @@ export { default as ImageViewer } from './ImageViewer';
 export * from './ImageViewer';
 export { default as Form } from './Form';
 export * from './Form';
-
+export { default as Accordion } from './Accordion';
+export * from './Accordion';
+export { default as VerificationCode } from './VerificationCode';
+export * from './VerificationCode';
 /**
  * Typography
  */

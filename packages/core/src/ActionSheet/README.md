@@ -73,4 +73,5 @@ export default Demo
 | containerStyle | 容器样式 | `StyleProp<ViewStyle>` | - |
 | textStyle | 文本样式 | `StyleProp<ViewStyle>` | - |
 | onPress | 点击 ActionSheetItem 触发的事件 | `(event: GestureResponderEvent) => void` | - |
+| disabled | 禁止点击 | `boolean` | `false` |
 

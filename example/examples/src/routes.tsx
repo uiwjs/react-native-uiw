@@ -498,4 +498,28 @@ export const stackPageData: Routes[] = [
       description: 'form',
     },
   },
+  {
+    name: 'ImagePicker',
+    component: require('./routes/ImagePicker').default,
+    params: {
+      title: 'ImagePicker 图片上传',
+      description: '图片上传',
+    },
+  },
+  {
+    name: 'Accordion',
+    component: require('./routes/Accordion').default,
+    params: {
+      title: 'Accordion 手风琴',
+      description: '可以折叠/展开的内容区域。',
+    },
+  },
+  {
+    name: 'VerificationCode',
+    component: require('./routes/VerificationCode').default,
+    params: {
+      title: 'VerificationCode 验证码倒计时',
+      description: '验证码倒计时组件',
+    },
+  },
 ];

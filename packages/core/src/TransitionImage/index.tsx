@@ -9,34 +9,46 @@ import {
   ViewStyle,
   StyleProp,
   ImageStyle,
+  NativeSyntheticEvent,
+  ImageLoadEventData,
+  ImageErrorEventData,
+  ActivityIndicator,
+  Text,
 } from 'react-native';
+import Icon from '../Icon';
 
 export type ImageProps = RNImageProps & {
   Component?: typeof React.Component;
   onPress?(): void;
   onLongPress?(): void;
-  ImageComponent?: React.ComponentType<any>;
+  ImageComponent?: React.ComponentType<ImageProps>;
   PlaceholderContent?: React.ReactElement<any>;
   containerStyle?: StyleProp<ViewStyle>;
   childrenContainerStyle?: StyleProp<ViewStyle>;
   placeholderStyle?: StyleProp<ViewStyle>;
   transition?: boolean;
   transitionDuration?: number;
+  disabled?: boolean;
   children?: React.ReactNode;
 };
 
 type ImageState = {
   placeholderOpacity: Animated.Value;
+  isLoading: boolean;
+  hasError: boolean;
 };
 
 export default function TransitionImage(props: ImageProps & Partial<ImageProps>) {
-  const [state, _] = useState<ImageState>({
+  const [state, setState] = useState<ImageState>({
     placeholderOpacity: new Animated.Value(1),
+    isLoading: true,
+    hasError: false,
   });
 
-  const onLoad = (e: any) => {
+  const onLoad = (e: NativeSyntheticEvent<ImageLoadEventData>) => {
     const { transition, onLoad, transitionDuration } = props;
     if (!transition) {
+      setState({ ...state, isLoading: false });
       state.placeholderOpacity.setValue(0);
       return;
     }
@@ -46,7 +58,12 @@ export default function TransitionImage(props: ImageProps & Partial<ImageProps>)
       duration: transitionDuration,
       useNativeDriver: true,
     }).start();
+    setState({ ...state, isLoading: false });
     onLoad && onLoad(e);
+  };
+
+  const onError = (e: NativeSyntheticEvent<ImageErrorEventData>) => {
+    setState({ ...state, isLoading: false, hasError: true });
   };
 
   const {
@@ -60,11 +77,26 @@ export default function TransitionImage(props: ImageProps & Partial<ImageProps>)
     style = {},
     ImageComponent = ImageNative,
     children,
+    disabled = false,
     ...attributes
   } = props;
 
   const hasImage = Boolean(attributes.source);
   const { width, height, ...styleProps } = StyleSheet.flatten(style);
+
+  const PlaceholderContentLoading = (
+    <View style={styles.errorContainer}>
+      <ActivityIndicator />
+      <Text style={{ color: '#fff', marginTop: 8 }}>加载中...</Text>
+    </View>
+  );
+
+  const PlaceholderContentError = (
+    <View style={styles.errorContainer}>
+      <Icon name="circle-close-o" color="#fff" size={24} />
+      <Text style={{ color: '#fff', marginTop: 8 }}>加载失败</Text>
+    </View>
+  );
 
   return (
     <Component
@@ -72,6 +104,7 @@ export default function TransitionImage(props: ImageProps & Partial<ImageProps>)
       onLongPress={onLongPress}
       accessibilityIgnoresInvertColors={true}
       style={StyleSheet.flatten([styles.container, containerStyle])}
+      disabled={disabled || state.isLoading || state.hasError}
     >
       <ImageComponent
         testID="RNE__Image"
@@ -79,6 +112,7 @@ export default function TransitionImage(props: ImageProps & Partial<ImageProps>)
         transitionDuration={360}
         {...attributes}
         onLoad={onLoad}
+        onError={onError}
         style={StyleSheet.flatten([
           StyleSheet.absoluteFill,
           {
@@ -104,7 +138,9 @@ export default function TransitionImage(props: ImageProps & Partial<ImageProps>)
           testID="RNE__Image__placeholder"
           style={StyleSheet.flatten([style, styles.placeholder, placeholderStyle])}
         >
-          {PlaceholderContent}
+          {state.isLoading && PlaceholderContentLoading}
+          {state.hasError && PlaceholderContentError}
+          {!state.isLoading && !state.hasError && PlaceholderContent}
         </View>
       </Animated.View>
 
@@ -136,5 +172,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#bdbdbd',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  errorContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(50, 50, 51, .88)',
+    height: '100%',
+    width: '100%',
   },
 });
