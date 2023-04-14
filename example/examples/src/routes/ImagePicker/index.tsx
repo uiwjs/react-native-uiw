@@ -28,27 +28,21 @@ export default function MenuDropdownView(props: ImagePickerProps) {
           </Card>
           <Card title="文件预览">
             <ImagePicker
-              value={[
-                'https://iknow-pic.cdn.bcebos.com/810a19d8bc3eb135828572d2ab1ea8d3fd1f441d',
-                'https://iknow-pic.cdn.bcebos.com/810a19d8bc3eb135828572d2ab1ea8d3fd1f441d',
-              ]}
+              value={['https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg', 'https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg']}
               readOnly={true}
             />
           </Card>
           <Card title="自定义图片大小">
             <ImagePicker
-              value={[
-                'https://iknow-pic.cdn.bcebos.com/810a19d8bc3eb135828572d2ab1ea8d3fd1f441d',
-                'https://iknow-pic.cdn.bcebos.com/810a19d8bc3eb135828572d2ab1ea8d3fd1f441d',
-              ]}
+              value={['https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg', 'https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg']}
               readOnly={true}
-              height={50}
-              width={50}
+              height={70}
+              width={70}
             />
           </Card>
           <Card title="限制上传数量">
             <ImagePicker
-              value={['https://iknow-pic.cdn.bcebos.com/810a19d8bc3eb135828572d2ab1ea8d3fd1f441d']}
+              value={['https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg']}
               maxCount={2}
               upload={(file: File[]) => {
                 let imageList: string[] = [];

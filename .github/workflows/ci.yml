@@ -70,6 +70,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
 
+       - name: 📦 @uiw/react-native-image-picker publish to NPM
+        run: npm publish
+        working-directory: packages/react-native-image-picker
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
