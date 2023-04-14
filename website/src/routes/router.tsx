@@ -102,6 +102,10 @@ export const routeData = [
         component: lazy(() => import('../pages/components/about')),
       },
       {
+        path: '/components/changelog',
+        component: lazy(() => import('../pages/components/changelog')),
+      },
+      {
         path: '/components/theme',
         component: lazy(() => import('../pages/components/theme')),
       },
