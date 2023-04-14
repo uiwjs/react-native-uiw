@@ -20,6 +20,7 @@ jobs:
 
       - run: yarn install
       - run: npm run build
+      - run: npm run prepare
       - run: npm run test
       - run: npm run doc
       - run: rm -rf packages/docs/doc
