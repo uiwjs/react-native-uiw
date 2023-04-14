@@ -82,7 +82,6 @@ const ImagePicker = ({
       },
     ]);
   };
-
   const pictureList = useMemo(() => {
     if (showUploadImg && currentImgSource && currentImgSource.length > 0) {
       return currentImgSource.map((item, index) => (

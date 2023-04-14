@@ -11,7 +11,7 @@ import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import type { File, ImagePickerProps } from './types';
 
 function getSource(value?: string) {
-  if (value && (value.startsWith('http') || value.startsWith('file:'))) {
+  if (value && (value.startsWith('http') || value.startsWith('file:') || value.startsWith('https'))) {
     return value;
   }
   return '';
@@ -52,7 +52,7 @@ export default function useImagePicker({
 
   useEffect(() => {
     if (value && value.length > 0) {
-      const source = value.map((value) => getSource(value));
+      const source = value.map((value: string | undefined) => getSource(value));
       setCurrentImgSource(source);
     }
   }, [value]);
@@ -186,10 +186,11 @@ export default function useImagePicker({
   const saveImage = async (url?: string | undefined) => {
     // 检查android权限
     if (Platform.OS === 'android') {
-      const permission =
-        Platform.Version >= 33
-          ? PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES
-          : PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE;
+      // const permission =
+      //   Platform.Version >= 33
+      //     ? PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES
+      //     : PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE;
+      const permission = PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE;
       const granted = await PermissionsAndroid.request(permission);
       if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
         // 如果权限未获得，进行提示或者打开应用设置页面
