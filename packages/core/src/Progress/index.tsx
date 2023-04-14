@@ -1,36 +1,46 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, Animated } from 'react-native';
-import Svg, { Circle, G } from 'react-native-svg';
+import Svg, { Circle, G, Line, Rect, Defs, LinearGradient, Stop } from 'react-native-svg';
 
 interface ProgressProps {
   type: 'line' | 'circle';
-  color?: string | [string, string];
-  bgColor?: string;
-  strokeWidth?: number;
-  value?: number;
-  showLabel?: boolean;
-  labelPosition?: 'right' | 'top';
-  label?: React.ReactNode;
-  showUnit?: boolean;
-  innerWidth?: number;
+  /**设置进度圈大小，进度条长度*/
   width?: number;
+  /**颜色 */
+  color?: string | [string, string];
+  /**背景色 */
+  bgColor?: string;
+  /**设置进度圈外环宽度，进度条的高*/
+  strokeWidth?: number;
+  /**值*/
+  value?: number;
+  /**是否显示值文本 */
+  showLabel?: boolean;
+  /**自定义标签 */
+  label?: React.ReactNode;
+  /**是否显示单位 */
+  showUnit?: boolean;
+  /**自定义文本位置 */
+  top?: string;
+  left?: string;
 }
 
 const Progress: React.FC<ProgressProps> = ({
-  type,
-  color = '#3578e5',
+  type = 'circle',
+  width = 100,
+  color = ['#3578e5', '#00c6ff'],
   bgColor = '#e5e5e5',
-  strokeWidth = 20,
-  value = 50,
+  strokeWidth = 10,
+  value = 0,
   showLabel = true,
-  labelPosition = 'right',
   label,
   showUnit = true,
-  innerWidth = 15,
-  width = 100,
+  top = "50%",
+  left = "11%",
 }) => {
   const progressValue = useRef(new Animated.Value(0)).current;
 
+  const [fontSize, setFontSize] = useState(18);
   useEffect(() => {
     try {
       Animated.timing(progressValue, {
@@ -43,37 +53,65 @@ const Progress: React.FC<ProgressProps> = ({
     }
   }, [value]);
 
+  useEffect(() => {
+    setFontSize(width / 5);
+  }, [width]);
+
   if (type === 'line') {
+    const progress = progressValue.interpolate({
+      inputRange: [0, 100],
+      outputRange: ['0%', '100%'],
+    });
+    const AnimatedRect = Animated.createAnimatedComponent(Rect);
     const progressLabel = showLabel && (
       <Text
         style={{
-          position: 'absolute', [labelPosition]: 0,
-          paddingHorizontal: 5,
-          top: '50%',
-          transform: [{ translateY: -7.5 }]
+          position: 'absolute',
+          top: top,
+          left: left,
+          transform: [
+            { translateX: 0 },
+            { translateY: 0 },
+          ],
+          fontSize: fontSize,
+          fontWeight: 'bold',
+          color: typeof color === 'string' ? color : color[1],
         }}>
         {label ?? `${value}${showUnit ? '%' : ''}`}
-      </Text>
+      </Text >
     );
+
     return (
-      <View style={{ height: strokeWidth, width: width, backgroundColor: bgColor, borderRadius: 15 }}>
-        <Animated.View
-          style={{
-            backgroundColor: color,
-            height: strokeWidth,
-            borderRadius: 15,
-            width: `${value}%`,
-            transform: [{
-              translateX: progressValue.interpolate({
-                inputRange: [0, 100],
-                outputRange: [-strokeWidth / 2, strokeWidth / 2]
-              })
-            }]
-          }}>
-          <View style={{ height: strokeWidth, borderRadius: 15 }} />
-        </Animated.View>
+      <View>
+        <Svg width={width} height={width / 3} >
+          <Defs>
+            <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0" >
+              <Stop offset="0" stopColor={typeof color === 'string' ? color : color[0]} stopOpacity="1" />
+              <Stop offset="1" stopColor={typeof color === 'string' ? color : color[1]} stopOpacity="1" />
+            </LinearGradient>
+          </Defs>
+          <G origin={`${width / 2}, ${width / 2}`}>
+            <Rect
+              x={0}
+              y={0}
+              width={width}
+              height={strokeWidth}
+              rx={strokeWidth / 2}
+              fill={bgColor}
+            />
+            <AnimatedRect
+              x={0}
+              y={0}
+              width={progress}
+              height={strokeWidth}
+              rx={strokeWidth / 2}
+              fill="url(#grad)"
+            >
+            </AnimatedRect>
+          </G>
+        </Svg>
         {progressLabel}
-      </View>
+      </View >
     );
   } else if (type === 'circle') {
     const radius = (width - strokeWidth) / 2;
@@ -87,57 +125,57 @@ const Progress: React.FC<ProgressProps> = ({
       outputRange: [circumference, 0],
     });
     const AnimatedCircle = Animated.createAnimatedComponent(Circle);
-
     const progressLabel = showLabel && (
       <Text
         style={{
           position: 'absolute',
-          top: '50%',
-          left: width / 2,
-          transform: [{ translateX: -15 }, { translateY: -10 }],
-          fontSize: 18,
+          top: top,
+          left: left,
+          transform: [{ translateX: -fontSize / 2 }, { translateY: -fontSize / 2 }],
+          fontSize: fontSize,
           fontWeight: 'bold',
           color: typeof color === 'string' ? color : color[1],
-        }}>
+        }
+        }>
         {label ?? `${value}${showUnit ? '%' : ''}`}
-      </Text>
+      </Text >
     );
 
     return (
-      <View>
-        {progressLabel}
+      <View >
         <Svg width={width} height={width}>
+          <Defs>
+            <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+              <Stop offset="0" stopColor={typeof color === 'string' ? color : color[0]} stopOpacity="1" />
+              <Stop offset="1" stopColor={typeof color === 'string' ? color : color[1]} stopOpacity="1" />
+            </LinearGradient>
+          </Defs>
           <G rotation="-90" origin={`${width / 2}, ${width / 2}`}>
             <Circle
               cx={width / 2}
               cy={width / 2}
               r={radius}
               stroke={bgColor}
-              strokeWidth={innerWidth > strokeWidth ? strokeWidth : innerWidth}
-              strokeOpacity={1}
+              strokeWidth={strokeWidth}
               fill="none"
             />
             <AnimatedCircle
               cx={width / 2}
               cy={width / 2}
               r={radius}
-              stroke={typeof color === 'string' ? color : color[1]}
-              strokeWidth={innerWidth}
-              strokeDasharray={`${circumference}, ${circumference}`}
+              stroke="url(#grad)"
+              strokeWidth={strokeWidth}
+              strokeDasharray={circumference}
               strokeDashoffset={progressDashoffset}
               strokeLinecap="round"
               fill="none"
             />
           </G>
         </Svg>
+        {progressLabel}
       </View>
     );
-  } else {
-    return null;
   }
 };
 
 export default Progress;
-
-
-
