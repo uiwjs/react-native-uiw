@@ -56,7 +56,8 @@
     "react": "18.2.0",
     "react-native": "0.69.7",
     "electron-to-chromium": "^1.4.365",
-    "@babel/plugin-transform-modules-commonjs": "^7.21.2"
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "@babel/plugin-transform-classes": "^7.21.0"
   },
   "dependencies": {
     "husky": "^8.0.1",
