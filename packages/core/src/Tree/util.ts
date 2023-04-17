@@ -19,6 +19,7 @@ export function flattenTreeData(treeNodeList: TreeItemProps[] = [], expandedKeys
         parent,
         children: null,
         data: treeNode,
+        key: mergedKey,
       };
 
       flattenList.push(flattenNode);

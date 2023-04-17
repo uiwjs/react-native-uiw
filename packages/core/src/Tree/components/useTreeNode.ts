@@ -27,7 +27,7 @@ export function useTreeNode({
   };
 
   const handlerCheck = () => {
-    onCheckRef.current?.({ expanded, value: data.value, eventKey, label, checked, disabled });
+    onCheckRef.current?.({ expanded, key: data?.value, value: data.value, eventKey, label, checked, disabled });
   };
 
   return { progress, heightProgress, style, handlerCheck: handlerCheck, onClick: onClickRef.current };

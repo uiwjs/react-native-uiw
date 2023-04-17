@@ -43,7 +43,7 @@ const TreeNode: FC<TreeNodeProps> = (props) => {
       <TouchableOpacity
         disabled={disabled}
         onPress={() => {
-          onClick?.({ expanded, value: data.value, label, checked, disabled });
+          onClick?.({ expanded, key: data?.value, value: data.value, label, checked, disabled });
         }}
       >
         <View
