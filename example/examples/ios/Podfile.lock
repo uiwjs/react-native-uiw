@@ -284,6 +284,10 @@ PODS:
   - React-jsinspector (0.69.7)
   - React-logger (0.69.7):
     - glog
+  - react-native-cameraroll (5.3.1):
+    - React-Core
+  - react-native-image-picker (5.3.1):
+    - React-Core
   - react-native-safe-area-context (4.3.4):
     - RCT-Folly
     - RCTRequired
@@ -413,6 +417,8 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - "react-native-cameraroll (from `../node_modules/@react-native-camera-roll/camera-roll`)"
+  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -489,6 +495,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-cameraroll:
+    :path: "../node_modules/@react-native-camera-roll/camera-roll"
+  react-native-image-picker:
+    :path: "../node_modules/react-native-image-picker"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-perflogger:
@@ -559,6 +569,8 @@ SPEC CHECKSUMS:
   React-jsiexecutor: a73bec0218ba959fc92f811b581ad6c2270c6b6f
   React-jsinspector: 8134ee22182b8dd98dc0973db6266c398103ce6c
   React-logger: 1e7ac909607ee65fd5c4d8bea8c6e644f66b8843
+  react-native-cameraroll: f3050460fe1708378698c16686bfaa5f34099be2
+  react-native-image-picker: ec9b713e248760bfa0f879f0715391de4651a7cb
   react-native-safe-area-context: dfe5aa13bee37a0c7e8059d14f72ffc076d120e9
   React-perflogger: 8e832d4e21fdfa613033c76d58d7e617341e804b
   React-RCTActionSheet: 9ca778182a9523991bff6381045885b6e808bb73
@@ -580,6 +592,6 @@ SPEC CHECKSUMS:
   Yoga: 0b84a956f7393ef1f37f3bb213c516184e4a689d
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 36745b97236db17730b2d687b78fe071003a4a52
+PODFILE CHECKSUM: d4d2826c3f25f928be9b489778a443d49118b6c5
 
 COCOAPODS: 1.11.3

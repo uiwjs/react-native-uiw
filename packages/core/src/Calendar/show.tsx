@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, ViewProps, StyleSheet } from 'react-native';
+import { View, ViewProps, StyleSheet } from 'react-native';
 // import Icon from '../Icon';
+import Text from '../Typography/Text';
 
 export interface ShowProps extends ViewProps {
   iconColor?: string;

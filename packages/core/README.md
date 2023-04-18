@@ -50,7 +50,7 @@ yarn add @uiw/react-native react-native-svg@12.1.1 react-native-root-siblings@4.
 
 ```jsx
 //...其他import
-import { ThemeProvider } from '@td-design/react-native';
+import { ThemeProvider } from '@uiw/react-native';
 
 const App = () => {
   return <ThemeProvider>{/** 其他Provider */}</ThemeProvider>;

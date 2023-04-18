@@ -33,7 +33,7 @@ export default class Index extends Component<IndexProps, IndexState> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <View style={styles.divider} />
             <Button onPress={this.onOpen}>打开 ActionSheet</Button>
             <ActionSheet

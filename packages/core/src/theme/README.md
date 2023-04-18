@@ -173,7 +173,7 @@
 ### 1. 在应用中定义你自己的主题颜色文件：
 
 ```ts | pure
-import { theme, Theme } from '@td-design/react-native';
+import { theme, Theme } from '@uiw/react-native';
 
 export const lightTheme: Theme = {
   ...theme.lightTheme,
@@ -196,7 +196,7 @@ export const darkTheme: Theme = {
 
 ```jsx | pure
 // 其他import
-import { ThemeProvider } from '@td-design/react-native';
+import { ThemeProvider } from '@uiw/react-native';
 import { lightTheme, darkTheme } from './theme';
 
 export default () => {
@@ -210,7 +210,7 @@ export default () => {
 
 ```jsx | pure
 // 其他import
-import { ThemeProvider } from '@td-design/react-native';
+import { ThemeProvider } from '@uiw/react-native';
 import { lightTheme, darkTheme } from './theme';
 
 export default () => {

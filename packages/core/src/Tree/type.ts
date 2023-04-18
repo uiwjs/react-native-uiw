@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface TreeItemProps {
+  key: string;
   value: string;
   label: string;
   children?: Array<TreeItemProps | ReactNode>;
@@ -15,6 +16,7 @@ export interface DataNode {
   disabled?: boolean;
   disableCheckbox?: boolean;
   icon?: (checked: boolean) => ReactNode;
+  key: string;
   value: string;
   label?: React.ReactNode | string;
   switcherIcon?: ReactNode;

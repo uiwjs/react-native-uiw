@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, ScrollView, ViewProps, View, ViewStyle, Dimensions } from 'react-native';
-
 import Item from './TabsItem';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
