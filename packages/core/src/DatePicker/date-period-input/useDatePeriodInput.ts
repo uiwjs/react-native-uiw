@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { Keyboard } from 'react-native';
-import { useBoolean, useSafeState, usePersistFn } from 'ahooks';
+import { useBoolean, useSafeState, useMemoizedFn } from 'ahooks';
 import { useLatest } from '../../utils/hooks';
 import dayjs from 'dayjs';
 
@@ -90,11 +90,11 @@ export default function useDatePeriodInput({
     maxDate,
     clearIconStyle1,
     clearIconStyle2,
-    setFalse: usePersistFn(setFalse),
-    handleStartPress: usePersistFn(handleStartPress),
-    handleEndPress: usePersistFn(handleEndPress),
-    handleChange: usePersistFn(handleChange),
-    handleInputClear1: usePersistFn(handleInputClear1),
-    handleInputClear2: usePersistFn(handleInputClear2),
+    setFalse: useMemoizedFn(setFalse),
+    handleStartPress: useMemoizedFn(handleStartPress),
+    handleEndPress: useMemoizedFn(handleEndPress),
+    handleChange: useMemoizedFn(handleChange),
+    handleInputClear1: useMemoizedFn(handleInputClear1),
+    handleInputClear2: useMemoizedFn(handleInputClear2),
   };
 }
