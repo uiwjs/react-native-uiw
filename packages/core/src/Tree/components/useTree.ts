@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLatest } from '../../utils/hooks';
-import { deviceHeight } from '../util';
 import { EntityNode, EventDataNode, FlattenNode, TreeProps } from '../type';
 import { arrAdd, arrDel, conductCheck, flattenTreeData, getTreeNodeLevel } from '../util';
 
 export function useTree(props: TreeProps) {
   const {
-    height = deviceHeight,
+    height,
     treeData = [],
     disabled = false,
     onExpand,

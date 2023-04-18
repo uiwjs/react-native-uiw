@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
-import {Modal, Button, Radio} from '@uiw/react-native';
+import {View, SafeAreaView} from 'react-native';
+import {Modal, Button, Radio, Text} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
 

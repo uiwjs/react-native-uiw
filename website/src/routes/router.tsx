@@ -102,6 +102,10 @@ export const routeData = [
         component: lazy(() => import('../pages/components/about')),
       },
       {
+        path: '/components/changelog',
+        component: lazy(() => import('../pages/components/changelog')),
+      },
+      {
         path: '/components/theme',
         component: lazy(() => import('../pages/components/theme')),
       },
@@ -320,6 +324,10 @@ export const routeData = [
       {
         path: '/components/dragdrawer',
         component: lazy(() => import('../pages/components/dragdrawer')),
+      },
+      {
+        path: '/components/tree',
+        component: lazy(() => import('../pages/components/tree')),
       },
       {
         path: '/components/treeSelect',

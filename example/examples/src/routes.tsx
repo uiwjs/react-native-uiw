@@ -446,8 +446,8 @@ export const stackPageData: Routes[] = [
     name: 'Tree',
     component: require('./routes/Tree').default,
     params: {
-      title: 'Tree 树形展示',
-      description: '树形展示',
+      title: 'Tree 树形控件',
+      description: '树形控件',
     },
   },
   {

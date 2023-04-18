@@ -1,5 +1,4 @@
 import { useLatest } from '../../utils/hooks';
-import { px } from '../util';
 import { TreeNodeProps } from '../type';
 
 export function useTreeNode({
@@ -19,7 +18,7 @@ export function useTreeNode({
   const heightProgress = !!show ? 1 : 0;
 
   // tree item 高度变化
-  const height = px(55);
+  const height = 55;
   const style = () => {
     const value = 0 * (1 - heightProgress) + 1 * heightProgress;
     return {
@@ -28,7 +27,7 @@ export function useTreeNode({
   };
 
   const handlerCheck = () => {
-    onCheckRef.current?.({ expanded, value: data.value, eventKey, label, checked, disabled });
+    onCheckRef.current?.({ expanded, key: data?.value, value: data.value, eventKey, label, checked, disabled });
   };
 
   return { progress, heightProgress, style, handlerCheck: handlerCheck, onClick: onClickRef.current };

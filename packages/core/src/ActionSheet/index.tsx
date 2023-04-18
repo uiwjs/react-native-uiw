@@ -7,7 +7,6 @@ import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
 
 let MainWidth = Dimensions.get('window').width;
-
 export interface DividerStyle {
   itemDivider?: StyleProp<ViewStyle>;
   actionDivider?: StyleProp<ViewStyle>;
