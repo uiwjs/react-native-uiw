@@ -1,142 +1,159 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Animated, View, StyleSheet, ViewProps, LayoutChangeEvent, Text } from 'react-native';
-import { run } from './svg';
-import Icon from '../Icon';
-import { Theme } from '../theme';
-import { useTheme } from '@shopify/restyle';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, Animated } from 'react-native';
+import Svg, { Circle, G, Line, Rect, Defs, LinearGradient, Stop } from 'react-native-svg';
 
-type PositionType = 'fixed' | 'relative';
-
-// 组件的属性定义
-export interface ProgressProps extends ViewProps {
-  /** 当前进度百分比， 0 - 100, 默认0 */
-  progress?: number;
-  /** 颜色 */
-  progressColor?: string;
-  /** 位置 */
-  position?: PositionType;
-  /** 动画持续的时间 */
-  animation?: { duration?: number } | boolean;
-  /** 图标源 */
-  xml?: string;
-  /** 是否展示图标 */
-  iconShow?: boolean;
-  /** 图标尺寸 */
-  size?: number;
-  /** 是否展示进度提示字 */
-  progressShow?: boolean;
+interface ProgressProps {
+  type: 'line' | 'circle';
+  /**设置进度圈大小，进度条长度*/
+  width?: number;
+  /**颜色 */
+  color?: string | [string, string];
+  /**背景色 */
+  bgColor?: string;
+  /**设置进度圈外环宽度，进度条的高*/
+  strokeWidth?: number;
+  /**值*/
+  value?: number;
+  /**是否显示值文本 */
+  showLabel?: boolean;
+  /**自定义标签 */
+  label?: React.ReactNode;
+  /**是否显示单位 */
+  showUnit?: boolean;
+  /**自定义文本位置 */
+  top?: string;
+  left?: string;
 }
 
-export default (props: ProgressProps) => {
-  const theme = useTheme<Theme>();
-  const {
-    iconShow = false,
-    progressShow = true,
-    size = 25,
-    xml = run,
-    style,
-    progress = 0,
-    progressColor = theme.colors.primary_background || '#3578e5',
-    position,
-    animation = { duration: 500 },
-  } = props;
+const Progress: React.FC<ProgressProps> = ({
+  type = 'circle',
+  width = 100,
+  color = ['#3578e5', '#00c6ff'],
+  bgColor = '#e5e5e5',
+  strokeWidth = 10,
+  value = 0,
+  showLabel = true,
+  label,
+  showUnit = true,
+  top = '50%',
+  left = '11%',
+}) => {
+  const progressValue = useRef(new Animated.Value(0)).current;
 
-  const progWidth = useRef<any>(new Animated.Value(0)).current;
-  const [wrapWidth, setWrapWidth] = useState<number>(0);
+  const [fontSize, setFontSize] = useState(18);
+  useEffect(() => {
+    try {
+      Animated.timing(progressValue, {
+        toValue: value,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [value]);
 
   useEffect(() => {
-    if (wrapWidth && progress) {
-      startAnimation();
-    }
-  }, [wrapWidth, progress]);
+    setFontSize(width / 5);
+  }, [width]);
 
-  const startAnimation = () => {
-    Animated.timing(progWidth, {
-      toValue: getWidth(),
-      duration: typeof animation !== 'boolean' ? animation.duration : 1000,
-      useNativeDriver: false,
-    }).start();
-  };
-
-  const onLayout = (e: LayoutChangeEvent) => {
-    setWrapWidth(e.nativeEvent.layout.width);
-  };
-
-  const getWidth = (percent: number = progress) => {
-    return wrapWidth * (normalPercent(percent) / 100);
-  };
-
-  const normalPercent = (percent?: number) => {
-    let widthPercent: any = 0;
-    if (percent !== undefined && percent > 0) {
-      widthPercent = percent > 100 ? 100 : percent;
-    }
-    return widthPercent;
-  };
-
-  return (
-    <View style={[styles.container, style]}>
-      <View
-        onLayout={onLayout}
-        style={[
-          styles.pre,
-          position === 'fixed' ? { position: 'absolute', top: 0 } : {},
-          { borderColor: progressColor, height: progressShow === true ? 20 : 4 },
-        ]}
+  if (type === 'line') {
+    const progress = progressValue.interpolate({
+      inputRange: [0, 100],
+      outputRange: ['0%', '100%'],
+    });
+    const AnimatedRect = Animated.createAnimatedComponent(Rect);
+    const progressLabel = showLabel && (
+      <Text
+        style={{
+          position: 'absolute',
+          top: top,
+          left: left,
+          transform: [{ translateX: 0 }, { translateY: 0 }],
+          fontSize: fontSize,
+          fontWeight: 'bold',
+          color: typeof color === 'string' ? color : color[1],
+        }}
       >
-        {progressShow && progressShow === true && (
-          <View style={{ position: 'absolute', left: '45%', zIndex: 1000 }}>
-            <Text style={{ fontSize: 12 }}>{progress}%</Text>
-          </View>
-        )}
-        <Animated.View
-          style={[
-            styles.preOisn,
-            {
-              width: progWidth,
-              height: progressShow === true ? 20 : 4,
-              backgroundColor: progressColor,
-            },
-          ]}
-        ></Animated.View>
+        {label ?? `${value}${showUnit ? '%' : ''}`}
+      </Text>
+    );
+
+    return (
+      <View>
+        <Svg width={width} height={width / 3}>
+          <Defs>
+            <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+              <Stop offset="0" stopColor={typeof color === 'string' ? color : color[0]} stopOpacity="1" />
+              <Stop offset="1" stopColor={typeof color === 'string' ? color : color[1]} stopOpacity="1" />
+            </LinearGradient>
+          </Defs>
+          <G origin={`${width / 2}, ${width / 2}`}>
+            <Rect x={0} y={0} width={width} height={strokeWidth} rx={strokeWidth / 2} fill={bgColor} />
+            <AnimatedRect x={0} y={0} width={progress} height={strokeWidth} rx={strokeWidth / 2} fill="url(#grad)" />
+          </G>
+        </Svg>
+        {progressLabel}
       </View>
-      {iconShow && iconShow === true && (
-        <View onLayout={onLayout} style={[styles.preIcon, { height: size }]}>
-          <Animated.View
-            style={{
-              marginLeft: progress === 0 ? -50 : progress === 100 ? -20 : -35,
-              width: progWidth,
-            }}
-          ></Animated.View>
-          <Icon xml={xml} size={size} />
-        </View>
-      )}
-    </View>
-  );
+    );
+  } else if (type === 'circle') {
+    const radius = (width - strokeWidth) / 2;
+    const circumference = radius * 2 * Math.PI;
+    const progress = progressValue.interpolate({
+      inputRange: [0, 100],
+      outputRange: [0, 1],
+    });
+    const progressDashoffset = progress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [circumference, 0],
+    });
+    const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+    const progressLabel = showLabel && (
+      <Text
+        style={{
+          position: 'absolute',
+          top: top,
+          left: left,
+          transform: [{ translateX: -fontSize / 2 }, { translateY: -fontSize / 2 }],
+          fontSize: fontSize,
+          fontWeight: 'bold',
+          color: typeof color === 'string' ? color : color[1],
+        }}
+      >
+        {label ?? `${value}${showUnit ? '%' : ''}`}
+      </Text>
+    );
+
+    return (
+      <View>
+        <Svg width={width} height={width}>
+          <Defs>
+            <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+              <Stop offset="0" stopColor={typeof color === 'string' ? color : color[0]} stopOpacity="1" />
+              <Stop offset="1" stopColor={typeof color === 'string' ? color : color[1]} stopOpacity="1" />
+            </LinearGradient>
+          </Defs>
+          <G rotation="-90" origin={`${width / 2}, ${width / 2}`}>
+            <Circle cx={width / 2} cy={width / 2} r={radius} stroke={bgColor} strokeWidth={strokeWidth} fill="none" />
+            <AnimatedCircle
+              cx={width / 2}
+              cy={width / 2}
+              r={radius}
+              stroke="url(#grad)"
+              strokeWidth={strokeWidth}
+              strokeDasharray={circumference}
+              strokeDashoffset={progressDashoffset}
+              strokeLinecap="round"
+              fill="none"
+            />
+          </G>
+        </Svg>
+        {progressLabel}
+      </View>
+    );
+  } else {
+    return null;
+  }
 };
 
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    flex: 1,
-  },
-  pre: {
-    borderWidth: 1,
-    width: '100%',
-    borderRadius: 20,
-    marginBottom: 0,
-    marginTop: 0,
-    overflow: 'hidden',
-  },
-  preIcon: {
-    width: '100%',
-    overflow: 'hidden',
-    flexDirection: 'row',
-    paddingHorizontal: 20,
-  },
-  preOisn: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-  },
-});
+export default Progress;

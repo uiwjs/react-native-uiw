@@ -58,14 +58,14 @@
     "@uiw/icons": "2.5.3",
     "@validator.tool/hook": "2.2.4",
     "ahooks": "3.7.6",
-    "dayjs":"~1.11.7",
+    "dayjs": "~1.11.7",
     "color": "4.2.3",
     "lodash": "4.17.21",
     "prop-types": "15.7.2",
     "react-native-gesture-handler": "2.8.0",
     "react-native-root-siblings": "4.1.1",
-    "react-native-svg": "12.1.1",
-    "@shopify/restyle":"~2.4.2"
+    "react-native-svg": "13.0.0",
+    "@shopify/restyle": "~2.4.2"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
