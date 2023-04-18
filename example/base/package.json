@@ -1,6 +1,6 @@
 {
   "name": "@example/base",
-  "version": "3.2.3",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -12,8 +12,8 @@
   "dependencies": {
     "react": "18.0.0",
     "react-native": "0.69.7",
-    "@uiw/react-native": "3.2.3",
-    "@uiw/react-native-image-picker": "3.2.3",
+    "@uiw/react-native": "4.0.0",
+    "@uiw/react-native-image-picker": "4.0.0",
     "react-native-svg": "13.0.0",
     "react-native-gesture-handler": "2.8.0",
     "react-native-root-siblings": "4.1.1",

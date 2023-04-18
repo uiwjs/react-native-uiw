@@ -21,7 +21,7 @@ const Text = (props: BaseTextProps) => {
       return theme.colors;
     }
     return {
-      [color]: '#000',
+      [color]: '#ccc',
     };
   };
 
