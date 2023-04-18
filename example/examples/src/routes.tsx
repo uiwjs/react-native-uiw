@@ -362,14 +362,6 @@ export const stackPageData: Routes[] = [
       description: 'TransitionImage 图片过渡',
     },
   },
-  // {
-  //   name: 'Card',
-  //   component: require('./routes/Card').default,
-  //   params: {
-  //     title: 'Card 卡片',
-  //     description: 'QuickList 最基础的卡片容器，可承载文字、列表、图片、段落。',
-  //   },
-  // },
   {
     name: 'Progress',
     component: require('./routes/Progress').default,

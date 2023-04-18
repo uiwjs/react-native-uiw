@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { usePersistFn, useUpdate } from 'ahooks';
+import { useMemoizedFn, useUpdate } from 'ahooks';
 
 /**
  * 获取上一轮的 props 或 state
@@ -38,7 +38,7 @@ export function usePropsValue<T>(options: Options<T>) {
     stateRef.current = value;
   }
 
-  const setState = usePersistFn((v: T) => {
+  const setState = useMemoizedFn((v: T) => {
     if (value === undefined) {
       stateRef.current = v;
       update();

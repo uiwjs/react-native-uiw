@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { BackHandler } from 'react-native';
-import { useSafeState, usePersistFn } from 'ahooks';
+import { useSafeState, useMemoizedFn } from 'ahooks';
 import { useLatest } from '../../utils/hooks';
 import dayjs from 'dayjs';
 import { DatePickerPropsBase, ModalPickerProps } from '../components/basic-date-picker/type';
@@ -46,8 +46,8 @@ export default function useDatePicker({
 
   return {
     date,
-    handleChange: usePersistFn(handleChange),
-    handleOk: usePersistFn(handleOk),
-    handleClose: usePersistFn(handleClose),
+    handleChange: useMemoizedFn(handleChange),
+    handleOk: useMemoizedFn(handleOk),
+    handleClose: useMemoizedFn(handleClose),
   };
 }

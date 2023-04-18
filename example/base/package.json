@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "react": "18.2.0",
+    "react": "18.0.0",
     "react-native": "0.69.7",
     "@uiw/react-native": "3.2.3",
     "@uiw/react-native-image-picker": "3.2.3",
