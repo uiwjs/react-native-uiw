@@ -1,34 +1,76 @@
-# 更新日志
+从 V3 到 V4
+===
 
-<b><font face="微软雅黑" size=3 color=#3578e5 >V4.0.0</font></b>
+### 升级准备
+- 1.请先升级到 3.x 的最新版本。
 
-`2023-04-14`
+### 技术调整
+- 1.`react` 升级至 `18.0.0`
+- 2.`react-native` 升级至 `0.69.1`
+- 3.新增主题色和`theme`文档使用说明，支持明暗主题适配 ，主题色为 `#3578e5`
+- 4.组件调整
 
-**Bug Fixes**
+### 组件调整
 
-- Switch: 修复switch初始值(默认值)不能正确显示状态 [#583](https://github.com/uiwjs/react-native-uiw/pull/583)
-- ActionSheet: 优化弹窗按钮的点击区域 [#562](https://github.com/uiwjs/react-native-uiw/pull/562)
-- Input: 优化文本输入框组件文档 [#541](https://github.com/uiwjs/react-native-uiw/pull/541)
-- SpeedDial: 修复文档遮挡，无法点击问题 [#545](https://github.com/uiwjs/react-native-uiw/pull/545)
-- Tabs: 修复选项卡组件报错和展示溢出问题 [#550](https://github.com/uiwjs/react-native-uiw/pull/550)
-- SpeedDial: 修复层级较低组件无法选中问题 [#553](https://github.com/uiwjs/react-native-uiw/pull/553)
-- Form: 优化Form示例展示 [#2641](https://github.com/uiwjs/react-native-uiw/actions/runs/4644484377)
-- ImagePicker: 修复android保存图片报错 [#2696](https://github.com/uiwjs/react-native-uiw/actions/runs/4695870443)
-- Progress: 重构组件 变更参数 
+- 1.VerificationCode 验证码倒计时组件 [`589`](https://github.com/uiwjs/react-native-uiw/pull/589)
+- 2.Accordion 手风琴组件 [`588`](https://github.com/uiwjs/react-native-uiw/pull/588)
+- 3.List组件 titleLabelStyle 属性支持 [`548`](https://github.com/uiwjs/react-native-uiw/pull/548)
+- 4.ImagePicker 图片上传组件 [`2674`](https://github.com/uiwjs/react-native-uiw/actions/runs/4664460047)
+- 5.DatePeriodInput 日期区间选择器 [`553`](https://github.com/uiwjs/react-native-uiw/pull/553)
+- 6.Tree 树形控件 [`590`](https://github.com/uiwjs/react-native-uiw/pull/590)
+- 7.ImagePicker 图片保存功能 [`2691`](https://github.com/uiwjs/react-native-uiw/actions/runs/4687708113)
+- 8.重构Progress组件 变更参数  [`595`](https://github.com/uiwjs/react-native-uiw/pull/595)
 
-**Feature**
+### 修复功能
 
-- Theme: 新增主题色 和  theme文档使用说明，支持明暗主题适配 ([#586](https://github.com/uiwjs/react-native-uiw/pull/586))
-- VerificationCode: 新增 VerificationCode 验证码倒计时组件 和 文档示例 [#589](https://github.com/uiwjs/react-native-uiw/pull/589)
-- Tree: 新增 Tree 树形控件 和 文档示例 [#590](https://github.com/uiwjs/react-native-uiw/pull/590)
-- Accordion: 新增 Accordion 手风琴组件  [#588](https://github.com/uiwjs/react-native-uiw/pull/588)
-- Accordion: 新增 isMultiple、accordionStyle、iconShow、contentStyle、iconSize 文档示例 [#588](https://github.com/uiwjs/react-native-uiw/pull/588)
-- ImagePicker: 新增 ImagePicker 图片上传组件 [#2674](https://github.com/uiwjs/react-native-uiw/actions/runs/4664460047)
-- List: 新增 titleLabelStyle 属性支持 [#548](https://github.com/uiwjs/react-native-uiw/pull/548)
-- ImagePicker: 新增 ImagePicker 图片保存功能 [#2691](https://github.com/uiwjs/react-native-uiw/actions/runs/4687708113)
-- DatePeriodInput: 新增 DatePeriodInput 日期区间选择器 [#553](https://github.com/uiwjs/react-native-uiw/pull/553)
+- 🐞 fix: 修复Switch初始值(默认值)不能正确显示状态 [`583`](https://github.com/uiwjs/react-native-uiw/pull/583)
+- 🐞 fix: 修复SpeedDial文档遮挡，无法点击问题 [`545`](https://github.com/uiwjs/react-native-uiw/pull/545)
+- 🐞 fix: 修复选项卡组件报错和展示溢出问题 [`550`](https://github.com/uiwjs/react-native-uiw/pull/550)
+- 🐞 fix: 修复SpeedDial层级较低组件无法选中问题 [`553`](https://github.com/uiwjs/react-native-uiw/pull/553)
+- 🐞 fix: 修复android保存图片报错 [`86ac78f`](https://github.com/uiwjs/react-native-uiw/actions/runs/4695870443)
+- 🐞 fix: 修复ActionSheet弹窗按钮的点击区域 [`562`](https://github.com/uiwjs/react-native-uiw/pull/562)
+- 🐞 fix: 修复文本输入框组件文档 [`541`](https://github.com/uiwjs/react-native-uiw/pull/541)
 
-### 1.在app.tsx入口文件添加如下
+### 开始升级
+
+#### 依赖层升级
+```diff
+  "dependencies": {
+     ...
+     
+-    "@uiw/react-native": "3.2.3",
+-    "react-native-svg": "12.1.1",
+-    "react-native-gesture-handler": "~2.5.0",
++    "@uiw/react-native": "4.0.0",
++    "@uiw/react-native-image-picker": "4.0.0",
++    "react-native-svg": "13.0.0",
++    "react-native-gesture-handler": "2.8.0",
++    "react-native-image-picker":"^5.3.1",
++    "react-native-image-viewing":"~0.2.2",
++    "@react-native-camera-roll/camera-roll":"5.3.1" 
+  ...
+  }
+```
+
+#### 安装@uiw/react-native-image-picker
+`如果你要使用ImagePicker组件,你需要安装以下依赖`
+```diff
+  "dependencies": {
+     ...
++    "@uiw/react-native-image-picker": "4.0.0",
++    "react-native-image-picker":"^5.3.1",
++    "react-native-image-viewing":"~0.2.2",
++    "@react-native-camera-roll/camera-roll":"5.3.1" 
+  ...
+  }
+```
+
+
+#### 代码层修改
+
+#### ThemeProvider 基本用法
+
+使用 ThemeProvider 更好地支持动态主题。 在app.tsx入口文件添加如下
 
 ```diff
 import { ThemeProvider,theme } from '@uiw/react-native';
@@ -38,7 +80,7 @@ import { ThemeProvider,theme } from '@uiw/react-native';
 + </ThemeProvider>;
 ```
 
-### 2.VerificationCode 基本用法
+#### VerificationCode 基本用法
 
 ```diff
 import React from 'react';
@@ -61,7 +103,7 @@ const Demo = () => {
 }
 ```
 
-### 3.Tree 基本用法
+#### Tree 基本用法
 
 ```diff
 import React from 'react';
@@ -91,7 +133,7 @@ const Demo = () => {
 }
 ```
 
-### 4.Accordion 基本用法 及 新增属性
+#### Accordion 基本用法 及 新增属性
 
 ```diff
 import React from 'react';
@@ -136,12 +178,11 @@ const Demo = () => {
   }
 }
 ```
-
-### 5.ImagePicker 基本用法
+#### ImagePicker 基本用法
 
 ```diff
 import React from 'react';
-import { ImagePicker } from '@uiw/react-native'
+import ImagePicker, {File} from '@uiw/react-native-image-picker';
 import { View } from 'react-native';
 
 const Demo = () => {
@@ -161,7 +202,7 @@ const Demo = () => {
 }
 ```
 
-### 6.DatePeriodInput 基本用法
+#### DatePeriodInput 基本用法
 
 ```diff
 import React,{useState} from 'react';
