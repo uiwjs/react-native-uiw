@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Text, StyleSheet, Image, View} from 'react-native';
-import {ExpandableSection} from '@uiw/react-native';
+import {StyleSheet, Image, View} from 'react-native';
+import {ExpandableSection, Text, Icon} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
 import map from 'lodash/map';
@@ -21,34 +21,15 @@ export default class MenuDropdownView extends Component<ExpandableSection> {
   };
   getChevron() {
     if (this.state.expanded) {
-      return this.state.top ? (
-        <Image
-          style={styles.icon}
-          source={require('../../image/chevronDown.png')}
-        />
-      ) : (
-        <Image
-          style={styles.icon}
-          source={require('../../image/chevronUp.png')}
-        />
-      );
+      return this.state.top ? <Icon name="right" size={15} /> : <Icon name="down" size={15} />;
     }
-    return this.state.top ? (
-      <Image
-        style={styles.icon}
-        source={require('../../image/chevronUp.png')}
-      />
-    ) : (
-      <Image
-        style={styles.icon}
-        source={require('../../image/chevronDown.png')}
-      />
-    );
+    return this.state.top ? <Icon name="down" size={15} /> : <Icon name="right" size={15} />;
   }
+
   getHeaderElement() {
     return (
       <View style={styles.row}>
-        <Text>{!this.state.expanded ? '展开' : '折叠'}</Text>
+        <Text color="text">{!this.state.expanded ? '展开' : '折叠'}</Text>
         {this.getChevron()}
       </View>
     );
@@ -71,11 +52,7 @@ export default class MenuDropdownView extends Component<ExpandableSection> {
           <Header title={title} description={description} />
           <Body>
             <Card title="基础实例" style={styles.card}>
-              <ExpandableSection
-                expanded={expanded}
-                onPress={() => this.setState({expanded: !expanded})}
-                sectionHeader={this.getHeaderElement()}
-                top={top}>
+              <ExpandableSection expanded={expanded} onPress={() => this.setState({expanded: !expanded})} sectionHeader={this.getHeaderElement()} top={top}>
                 {map(contents, (item, index) => {
                   return this.renderItem(item, index);
                 })}
@@ -91,9 +68,8 @@ export default class MenuDropdownView extends Component<ExpandableSection> {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   icon: {
     alignSelf: 'center',

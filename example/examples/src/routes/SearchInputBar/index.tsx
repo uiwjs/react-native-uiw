@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import Layout, {Container} from '../../Layout';
-import {SearchInputBar, Toast} from '@uiw/react-native';
+import {SearchInputBar, Toast, Text} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 
 const {Header, Body, Footer} = Layout;
@@ -15,7 +15,6 @@ export interface IndexState {
 
 export default class Index extends Component<IndexProps, IndexState> {
   static state: IndexState;
-  ref = React.createRef<SearchInputBar>();
   constructor(props: IndexProps) {
     super(props);
     this.state = {
@@ -38,12 +37,9 @@ export default class Index extends Component<IndexProps, IndexState> {
       <Container keyboardShouldPersistTaps="always">
         <Layout>
           <Header title={title} description={description} />
-          <Body
-            keyboardShouldPersistTaps="always"
-            style={{paddingHorizontal: 10}}>
+          <Body keyboardShouldPersistTaps="always" style={{paddingHorizontal: 16}}>
             <View style={styles.divider} />
             <SearchInputBar
-              ref={this.ref}
               onChangeText={val => this.onChangeText(val, 'value')}
               onClear={() => this.onClear('value')}
               placeholder="请输入搜索关键字..."
@@ -58,7 +54,6 @@ export default class Index extends Component<IndexProps, IndexState> {
               }}
               touchProps={{
                 onPress: () => {
-                  console.log('object', this.ref);
                   this.setState({loading: true}, () => {
                     setTimeout(() => {
                       this.setState({loading: false});
@@ -77,7 +72,7 @@ export default class Index extends Component<IndexProps, IndexState> {
               showActionButton={true}
               searchRender={
                 <View style={styles.search}>
-                  <Text>搜索</Text>
+                  <Text color="primary_background">搜索</Text>
                 </View>
               }
               touchProps={{

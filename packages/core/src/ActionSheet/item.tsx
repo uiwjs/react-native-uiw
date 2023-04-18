@@ -7,9 +7,12 @@ import {
   ViewStyle,
   TextStyle,
   StyleSheet,
-  Text,
   GestureResponderEvent,
+  useColorScheme,
 } from 'react-native';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
+import Text from '../Typography/Text';
 
 let MainWidth = Dimensions.get('window').width;
 export interface ActionSheetItemProps {
@@ -23,22 +26,32 @@ export interface ActionSheetItemProps {
   underlayColor?: string;
   onPress?: (event: GestureResponderEvent) => void;
   children?: React.ReactNode;
+  disabled?: boolean;
 }
 
 export interface ActionSheetItemState {}
 
 export default function ActionSheetItem(props: ActionSheetItemProps) {
+  const theme = useTheme<Theme>();
+  const colorScheme = useColorScheme();
   const {
     onPress = () => {},
     activeOpacity = 1,
-    underlayColor = '#f1f1f1',
+    underlayColor = colorScheme === 'light' ? theme.colors.background : '#1A1A22',
     containerStyle,
     textStyle,
+    disabled = false,
     children,
   } = props;
 
   return (
-    <TouchableHighlight activeOpacity={activeOpacity} underlayColor={underlayColor} onPress={onPress}>
+    <TouchableHighlight
+      style={styles.touchableHighlightItem}
+      activeOpacity={activeOpacity}
+      underlayColor={underlayColor}
+      onPress={onPress}
+      disabled={disabled}
+    >
       <View style={StyleSheet.flatten([styles.actionSheetItem, containerStyle])}>
         <Text style={StyleSheet.flatten([styles.actionSheetItemText, textStyle])}>{children}</Text>
       </View>
@@ -49,12 +62,18 @@ export default function ActionSheetItem(props: ActionSheetItemProps) {
 const styles = StyleSheet.create({
   actionSheetItem: {
     width: MainWidth,
-    height: 50,
+    height: 60,
     justifyContent: 'center',
     alignItems: 'center',
   },
   actionSheetItemText: {
     fontSize: 20,
     fontWeight: '400',
+  },
+  touchableHighlightItem: {
+    borderTopRightRadius: 12,
+    borderTopLeftRadius: 12,
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
   },
 });

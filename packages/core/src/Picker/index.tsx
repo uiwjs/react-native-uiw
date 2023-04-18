@@ -1,262 +1,175 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
-import {
-  View,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-  LayoutChangeEvent,
-  Text,
-  ScrollView,
-  Animated,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
-  Platform,
-  Pressable,
-} from 'react-native';
+import React from 'react';
+import { SafeAreaView, TouchableOpacity, View } from 'react-native';
+import { arrayTreeFilter } from '../utils/utils';
+import Flex from '../Flex';
+import Text from '../Typography/Text';
+import Modal from '../Modal';
+import WheelPicker from './components/WheelPicker';
+import { CascadePickerItemProps, ItemValue, WheelPickerPropsBase } from './components/WheelPicker/type';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
-export interface PickerData {
-  label?: string;
-  render?: (key: string, record: PickerData, index: number) => React.ReactNode;
-  [key: string]: any;
+export interface PickerProps extends WheelPickerPropsBase {
+  /** 选择项列表 */
+  data: CascadePickerItemProps[] | Array<CascadePickerItemProps[]>;
+  /** 展示几列 */
+  cols?: number;
+  /** 当前值 */
+  value?: ItemValue[];
+  /** 修改事件 */
+  onChange?: (value?: ItemValue[]) => void;
 }
 
-export interface PickerProps {
-  /** 显示几行, 默认 3 */
-  lines?: number;
-  /** 指定需要显示的 key, 默认使用 data 的 label 属性 */
-  rowKey?: string;
-  /** 需要渲染的数据 */
-  data?: Array<PickerData>;
-  /** item 容器样式 */
-  containerStyle?: {
-    /** 激活的容器样式 */
-    actived?: StyleProp<ViewStyle>;
-    /** 未激活的容器样式 */
-    unactived?: StyleProp<ViewStyle>;
-  };
-  /** 容器的文本样式 */
-  textStyle?: {
-    /** 激活的文本样式 */
-    actived?: StyleProp<TextStyle>;
-    /** 未激活的文本样式 */
-    unactived?: StyleProp<TextStyle>;
-  };
-  /** 选中当前项的下标 */
-  value?: number;
-  /** 是否只读 */
-  readonly?: boolean;
-  /** value 改变时触发 */
-  onChange?: (value: number) => unknown;
-  onScrollEnd?: () => void;
+/** 弹窗Picker的属性 */
+export interface ModalPickerProps {
+  /** 选择器标题 */
+  title?: string;
+  /** 是否弹窗显示 */
+  visible?: boolean;
+  /** 弹窗关闭事件 */
+  onClosed?: () => void;
+  /** 取消按钮文本 */
+  cancelText?: string;
+  /** 确认按钮文本 */
+  okText?: string;
+  /** 选择器显示类型。view表示在页面显示；modal表示在弹窗中显示；默认为modal */
+  displayType?: 'view' | 'modal';
 }
 
-const Picker = (props: PickerProps) => {
-  const {
-    lines = 3,
-    rowKey = 'label',
-    data = new Array<PickerData>(),
-    containerStyle = {},
-    textStyle = {},
-    value = 0,
-    onChange,
-    readonly = false,
-    onScrollEnd,
-  } = props;
-  const Y = useRef(new Animated.Value(0)).current;
-  const scrollView = useRef<ScrollView>();
-  const ItemHeights = useRef<Array<number>>([]).current;
-  const saveY = useRef<number>(0);
-  const timer = useRef<NodeJS.Timeout>();
-  const onPressTimer = useRef<NodeJS.Timeout>();
-  const onPressORonScroll = useRef<'onPress' | 'onScroll'>('onScroll');
-  const currentY = useRef<number>(0);
-  const [current, setCurrent] = useState(0);
-  useEffect(() => {
-    onChange?.(current);
-    onPressORonScroll.current = 'onScroll';
-    clearTimeout(timer.current!);
-    timer.current = undefined;
-    clearTimeout(onPressTimer.current!);
-  }, [current]);
-  useEffect(() => {
-    if (value !== current) {
-      let leng = value > data.length - 1 ? data.length - 1 : value;
-      leng = leng < 0 ? 0 : leng;
-      location((style.containerHeight as number) * (leng + 1), leng);
-    }
-  }, [value]);
-  const style = useMemo(() => {
-    const containerUn = StyleSheet.flatten([styles.container, containerStyle.unactived]);
-    const containerAc = StyleSheet.flatten([styles.container, styles.border, containerStyle.actived]);
-    const textUn = StyleSheet.flatten([styles.textStyle, textStyle.unactived]);
-    const textAc = StyleSheet.flatten([styles.textStyle, styles.acTextStyle, textStyle.unactived, textStyle.actived]);
-    const containerHeight = containerUn.height || 50;
-    return {
-      containerAc,
-      containerUn,
-      textUn,
-      textAc,
-      containerHeight,
-    };
-  }, [containerStyle, textStyle]);
-  const getItemHeight = (event: LayoutChangeEvent) => {
-    const { height } = event.nativeEvent.layout;
-    const round = Math.round(height);
-    ItemHeights.push(round * ItemHeights.length + round);
-  };
-  const location = (scrollY: number, index: number) => {
-    saveY.current = scrollY - (style.containerHeight as number);
-    currentY.current = index;
-    let an = Platform.OS === 'android' && { duration: 0 };
-    let os = Platform.OS === 'ios' && { animated: false };
-    scrollView.current?.scrollTo({ x: 0, y: scrollY - (style.containerHeight as number), ...an, ...os });
-  };
-  const setScrollHandle = (val: number) => {
-    const spot = val / ItemHeights[0];
-    if (spot <= 0.6) {
-      scrollView.current?.scrollTo({ x: 0, y: 0, animated: true });
-      setCurrent(0);
-      return false;
-    }
-    const stringSpot = spot + '.0';
-    const integer = Math.floor(spot);
-    const decimal = Number(stringSpot[stringSpot.indexOf('.') + 1]);
-    const itemIndex = decimal >= 6 ? integer + 1 : integer;
-    scrollView.current?.scrollTo({ x: 0, y: ItemHeights[itemIndex] - ItemHeights[0], animated: true });
-    saveY.current = ItemHeights[itemIndex] - ItemHeights[0];
-    setCurrent(itemIndex);
-    clearTimeout(timer.current!);
-    timer.current = undefined;
-  };
-  const listener = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    if (onPressORonScroll.current === 'onPress') {
-      clearTimeout(onPressTimer.current!);
-      onPressTimer.current = setTimeout(() => {
-        setCurrent(currentY.current);
-        clearTimeout(onPressTimer.current!);
-      }, 16);
-      return;
-    }
-    saveY.current = event.nativeEvent.contentOffset.y;
-    if (timer.current) {
-      clearTimeout(timer.current!);
-      timer.current = undefined;
-    }
-    timer.current = setTimeout(() => {
-      setScrollHandle(saveY.current);
-    }, 160);
-  };
-  const onTouchEnd = () => {
-    if (readonly) return;
-    if (Platform.OS === 'ios') {
-      if (onPressORonScroll.current === 'onPress') {
-        setCurrent(currentY.current);
-        return;
+export type ComPickerProps = Omit<PickerProps, 'data'> & {
+  data: CascadePickerItemProps[];
+} & ModalPickerProps;
+
+const generateNextValue = (data: CascadePickerItemProps[], value?: ItemValue[], cols?: number): ItemValue[] => {
+  let d = data;
+  let level = 0;
+  const nextValue: ItemValue[] = [];
+
+  if (value && value.length) {
+    do {
+      const index = d.findIndex((item) => item.value + '' === value[level] + '');
+
+      if (index < 0) {
+        break;
       }
-      if (timer.current) return;
-      setScrollHandle(saveY.current);
-    }
-  };
-  const getBlankHeight = useMemo(() => {
-    if (lines % 2) {
-      return {
-        top: Math.floor(lines / 2),
-        center: Number((lines / 2).toFixed()),
-        bottom: Math.floor(lines / 2),
-      };
-    }
-    return {
-      top: lines / 2 - 1,
-      center: lines / 2 + 1,
-      bottom: lines / 2,
-    };
-  }, [lines]);
 
-  const onMomentumScrollEnd = () => {
-    onScrollEnd?.();
-  };
+      nextValue[level] = value[level] + '';
+      level += 1;
+      d = d[index].children || [];
+    } while (d.length > 0);
+  }
 
-  return (
-    <View style={{ paddingVertical: 0, height: (style.containerHeight as number) * lines }}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        ref={scrollView as React.LegacyRef<ScrollView>}
-        scrollEventThrottle={16}
-        onTouchEnd={Platform.OS === 'ios' ? onTouchEnd : undefined}
-        onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: Y } } }], {
-          listener,
-          useNativeDriver: false,
-        })}
-        scrollEnabled={!readonly}
-        onMomentumScrollEnd={onMomentumScrollEnd}
-      >
-        {
-          <Pressable
-            style={[style.containerUn, { height: (style.containerHeight as number) * getBlankHeight.top }]}
-            onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
-          />
-        }
-        {data.map((item, index) => (
-          <Pressable
-            onLayout={getItemHeight}
-            key={index}
-            onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
-            onPress={() => {
-              if (readonly) return;
-              // if (timer.current) return;
-              clearTimeout(onPressTimer.current!);
-              onPressORonScroll.current = 'onPress';
-              location(ItemHeights![index], index);
-            }}
-          >
-            {React.isValidElement(item.render?.(item[rowKey], item, index)) ? (
-              item.render?.(item[rowKey], item, index)
-            ) : (
-              <View style={style.containerUn}>
-                <Text style={current === index ? style.textAc : style.textUn}>{item[rowKey]}</Text>
-              </View>
-            )}
-          </Pressable>
-        ))}
-        {
-          <Pressable
-            style={[style.containerUn, { height: (style.containerHeight as number) * getBlankHeight.bottom }]}
-            onPressOut={Platform.OS === 'android' ? onTouchEnd : undefined}
-          />
-        }
-      </ScrollView>
-      <View style={[style.containerAc, { top: (-style.containerHeight as number) * getBlankHeight.center }]} />
-      <View style={[style.containerAc, { top: (-style.containerHeight as number) * (getBlankHeight.center - 1) }]} />
-    </View>
-  );
+  for (let i = level; i < cols!; i++) {
+    if (d && d.length) {
+      nextValue[i] = d[0].value! + '';
+      d = d[0].children || [];
+    } else {
+      break;
+    }
+  }
+  return nextValue;
 };
 
-const styles = StyleSheet.create({
-  container: {
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 0,
-    paddingHorizontal: 0,
-  },
-  border: {
-    backgroundColor: '#E6E6E6',
-    height: 1,
-    position: 'relative',
-    zIndex: 999,
-    paddingVertical: 0,
-    paddingHorizontal: 0,
-  },
-  textStyle: {
-    fontSize: 20,
-    color: '#000',
-    paddingVertical: 0,
-    paddingHorizontal: 0,
-  },
-  acTextStyle: {
-    color: '#1677ff',
-  },
-});
+function Picker(props: ComPickerProps) {
+  const {
+    cols = 1,
+    data = [],
+    visible = false,
+    displayType = 'view',
+    cancelText = '取消',
+    okText = '确定',
+    title,
+    onClosed,
+    onChange,
+    ...restProps
+  } = props;
+  const theme = useTheme<Theme>();
+
+  const [value, setValue] = React.useState(generateNextValue(data, props.value, cols));
+
+  React.useEffect(() => {
+    setValue(generateNextValue(data, props.value, cols));
+  }, [data, props.value]);
+
+  const onValueChange = (value: ItemValue | any, index: number) => {
+    // 修改当前的值，然后把后面的值都清掉
+    const newValue = [...value];
+    newValue[index] = value + '';
+    newValue.length = index + 1;
+    const nextValue = generateNextValue(data, newValue, cols);
+    setValue(nextValue);
+    if (displayType === 'view') {
+      onChange?.(value);
+    }
+  };
+
+  const getCols = () => {
+    const childrenTree = arrayTreeFilter(data, (c, level) => {
+      return c.value + '' === value[level] + '';
+    }).map((c) => c.children);
+    // in case the users data is async get when select change
+    const needPad = cols! - childrenTree.length;
+    if (needPad > 0) {
+      for (let i = 0; i < needPad; i++) {
+        childrenTree.push([]);
+      }
+    }
+    childrenTree.length = cols! - 1;
+    childrenTree.unshift(data);
+    return childrenTree.map((item: CascadePickerItemProps[] = [], level) => (
+      <WheelPicker
+        containerStyle={{ marginRight: level !== childrenTree.length - 1 ? 5 : 0 }}
+        key={level}
+        {...restProps}
+        {...{ data: item.map((el) => ({ ...el, value: `${el.value}` })), value: `${value[level]}` }}
+        onChange={(val) => onValueChange(val, level)}
+      />
+    ));
+  };
+
+  const handleOk = () => {
+    onChange?.(value);
+    onClosed?.();
+  };
+
+  const handleClose = () => {
+    onClosed?.();
+  };
+
+  const PickerComp = <Flex>{getCols()}</Flex>;
+  if (displayType === 'modal') {
+    return (
+      <Modal visible={visible} onClosed={handleClose}>
+        <SafeAreaView>
+          <View style={{ padding: theme.spacing.x2 }}>
+            <Flex justify="between">
+              <Flex.Item>
+                <TouchableOpacity activeOpacity={0.5} onPress={handleClose}>
+                  <Text color="primary_background" style={{ fontSize: 16 }}>
+                    {cancelText}
+                  </Text>
+                </TouchableOpacity>
+              </Flex.Item>
+              <Flex.Item>
+                <Text color="primary_background" style={{ fontSize: 16 }}>
+                  {title}
+                </Text>
+              </Flex.Item>
+              <Flex.Item>
+                <TouchableOpacity activeOpacity={0.5} onPress={handleOk}>
+                  <Text color="primary_background" style={{ fontSize: 16 }}>
+                    {okText}
+                  </Text>
+                </TouchableOpacity>
+              </Flex.Item>
+            </Flex>
+            <View style={{ height: '100%' }}>{PickerComp}</View>
+          </View>
+        </SafeAreaView>
+      </Modal>
+    );
+  }
+  return PickerComp;
+}
 
 export default Picker;

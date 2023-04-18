@@ -33,7 +33,7 @@ export default class Index extends Component<IndexProps, IndexState> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <View style={styles.divider} />
             <Button onPress={this.onOpen}>打开 ActionSheet</Button>
             <ActionSheet
@@ -62,7 +62,7 @@ export default class Index extends Component<IndexProps, IndexState> {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     paddingLeft: 20,
     paddingRight: 20,
   },

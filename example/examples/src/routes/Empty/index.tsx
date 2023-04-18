@@ -39,7 +39,7 @@ export default function DividerView(props: DividerViewProps) {
     <Container>
       <Layout>
         <Header title={title} description={description} />
-        <Body>
+        <Body style={{paddingLeft: 16, paddingRight: 16}}>
           <Card title="默认基础实例">
             <Empty />
           </Card>

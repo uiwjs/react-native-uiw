@@ -106,8 +106,6 @@ function ImageViewer(props: ImageViewerProps) {
     </PinchGestureHandler>
   );
 
-  console.log('src', typeof src);
-
   return (
     <View style={{}}>
       <TransitionImage

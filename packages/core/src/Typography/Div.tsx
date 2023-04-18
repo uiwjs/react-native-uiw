@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { Text, TextProps, ViewProps } from 'react-native';
+import { TextProps, ViewProps } from 'react-native';
+import Text from './Text';
 
 interface DivProps {
   children?: React.ReactNode;
@@ -14,7 +15,7 @@ export default function Div<T>({ children, ...otherProps }: DivProps & TextProps
     return typeof item === 'string' || (item && (item as any).type && (item as any).type.displayName === 'Text');
   });
   if (someStr) {
-    return <Text {...otherProps} children={children} />;
+    return <Text color="text" {...otherProps} children={children} />;
   }
   return (
     <Fragment>

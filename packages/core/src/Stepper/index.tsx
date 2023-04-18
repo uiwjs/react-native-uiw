@@ -3,6 +3,8 @@ import { View, TextInput } from 'react-native';
 import ControlValue from './ControlValue';
 import ShowValue from './ShowValue';
 import { styles as ControlStyle } from './ControlValue';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export interface Color {
   /** 组件主色调 #108ee9 */
@@ -45,13 +47,14 @@ export interface StepProps {
 }
 
 function Stepper(props: StepProps) {
+  const theme = useTheme<Theme>();
   const {
     size = 'default',
     color = {
-      color: '#108ee9',
-      borderColor: '#108ee9',
-      controlColor: '#108ee9',
-      valueColor: '#108ee9',
+      color: theme.colors.primary_background || '#3578e5',
+      borderColor: theme.colors.primary_background || '#3578e5',
+      controlColor: theme.colors.primary_background || '#3578e5',
+      valueColor: theme.colors.primary_background || '#3578e5',
     },
     value = 0,
     step = 1,

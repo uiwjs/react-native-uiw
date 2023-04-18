@@ -10,6 +10,7 @@ module.exports = {
   resolver: {
     extraNodeModules: {
       '@uiw/react-native': path.resolve(`${__dirname}/lib/`),
+      '@uiw/react-native-image-picker': path.resolve(`${__dirname}/lib2/`),
       // '@uiw/react-native': path.resolve(`${__dirname}/../../packages/core/`),
       // 'react-native-svg': path.resolve(
       //   `${__dirname}/../../node_modules/react-native-svg/`,

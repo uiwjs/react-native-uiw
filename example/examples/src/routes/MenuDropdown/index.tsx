@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import {MenuDropdown, Toast} from '@uiw/react-native';
+import {TouchableOpacity} from 'react-native';
+import {MenuDropdown, Toast, Text} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
 
@@ -17,22 +17,21 @@ export default class MenuDropdownView extends Component<MenuDropdownProps> {
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
-            <Card title="基础实例" style={styles.card}>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
+            <Card title="基础实例">
               <MenuDropdown title="菜单">
                 <MenuDropdown.Item>
-                  <Text>首页</Text>
+                  <Text color="text">首页</Text>
                 </MenuDropdown.Item>
                 <MenuDropdown.Item>
-                  <Text>个人中心</Text>
+                  <Text color="text">个人中心</Text>
                 </MenuDropdown.Item>
                 <MenuDropdown.Item>
-                  <Text>列表</Text>
+                  <Text color="text">列表</Text>
                 </MenuDropdown.Item>
                 <MenuDropdown.Item>
-                  <TouchableOpacity
-                    onPress={() => Toast.info('你点击了选择一', 2, 'info')}>
-                    <Text>选择一</Text>
+                  <TouchableOpacity onPress={() => Toast.info('你点击了选择一', 2, 'info')}>
+                    <Text color="text">选择一</Text>
                   </TouchableOpacity>
                 </MenuDropdown.Item>
               </MenuDropdown>
@@ -44,11 +43,3 @@ export default class MenuDropdownView extends Component<MenuDropdownProps> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-});

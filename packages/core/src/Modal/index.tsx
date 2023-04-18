@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useRef } from 'react';
 import { Animated, StyleSheet, LayoutChangeEvent, Dimensions, ViewStyle } from 'react-native';
 import MaskLayer, { MaskLayerProps } from '../MaskLayer';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 let MainWidth = Dimensions.get('window').width;
 let MainHeight = Dimensions.get('window').height;
@@ -13,6 +15,7 @@ export interface ModalProps extends MaskLayerProps {
 
 const Modal = (props: ModalProps = {}) => {
   const { onClosed, visible, children, placement = 'bottom', containerStyle, ...otherProps } = props;
+  const theme = useTheme<Theme>();
   const AnimatedOpacity: Animated.Value = useRef(new Animated.Value(0)).current;
   // const [display] = useState<'none' | 'flex'>('none');
   let [layoutHeight, setLayoutHeight] = useState(0);
@@ -89,24 +92,32 @@ const Modal = (props: ModalProps = {}) => {
   if (isHorizontal) {
     translateStyle.translateX = translateValue;
   }
-  const child = (
-    <Animated.View
-      style={[styles.content, placement && styles[placement], { opacity: AnimatedOpacity }, containerStyle]}
-    >
+  const child = React.useMemo(
+    () => (
       <Animated.View
-        onLayout={measureContainer}
-        style={[
-          styles.content,
-          placement && styles[placement],
-          // !layoutHeight && isVertical ? { display: display } : {},
-          // !layoutWidth && isHorizontal ? { display: display } : {},
-          // // getTransformStyle(),
-          { transform: [translateStyle], backgroundColor: '#fff', position: 'relative', zIndex: 10000 },
-        ]}
+        style={[styles.content, placement && styles[placement], { opacity: AnimatedOpacity }, containerStyle]}
       >
-        {children}
+        <Animated.View
+          onLayout={measureContainer}
+          style={[
+            styles.content,
+            placement && styles[placement],
+            // !layoutHeight && isVertical ? { display: display } : {},
+            // !layoutWidth && isHorizontal ? { display: display } : {},
+            // // getTransformStyle(),
+            {
+              transform: [translateStyle],
+              backgroundColor: theme.colors.mask || '#fff',
+              position: 'relative',
+              zIndex: 10000,
+            },
+          ]}
+        >
+          {children}
+        </Animated.View>
       </Animated.View>
-    </Animated.View>
+    ),
+    [children],
   );
   return (
     <MaskLayer {...otherProps} visible={visible} onDismiss={onDismiss}>

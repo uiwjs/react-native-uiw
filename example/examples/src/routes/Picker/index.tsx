@@ -1,60 +1,72 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {Picker, Button} from '@uiw/react-native';
+import {SafeAreaView} from 'react-native';
+import {Picker, Button, Spacing} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
-const {Header, Body, Footer} = Layout;
 
-export interface BadgeViewProps extends ComProps {}
+const {Header, Body, Card, Footer} = Layout;
 
-export default class BadgeView extends React.Component<BadgeViewProps> {
-  state = {
-    value: 1,
-  };
-  render() {
-    const {route, navigation} = this.props;
-    const description = route.params.description;
-    const title = route.params.title;
-    const arr = [];
-    for (let i = 0; i < 100; i++) {
-      arr.push({label: i});
-    }
-    return (
-      <Container scrollEnabled={false}>
-        <Layout>
-          <Header title={title} description={description} />
-          <Body scrollEnabled={false}>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                backgroundColor: '#fff',
-                marginTop: 20,
-                paddingVertical: 20,
-              }}>
-              <View style={{width: '50%'}}>
-                <Picker data={arr as any} value={17} />
-              </View>
-              <View style={{width: '50%'}}>
-                <Picker
-                  onChange={val => {
-                    console.log('val: ', val);
-                  }}
-                  data={arr as any}
-                  value={this.state.value}
-                />
-              </View>
-            </View>
-            <Button
-              onPress={() => {
-                this.setState({value: this.state.value + 1});
-              }}>
-              控制第二列value
-            </Button>
-          </Body>
-          <Footer />
-        </Layout>
-      </Container>
-    );
-  }
+export interface PickerViewProps extends ComProps {}
+
+export default function (props: PickerViewProps) {
+  const {route} = props;
+  const description = route.params.description;
+  const title = route.params.title;
+  const [value, setValue] = React.useState(['2', '22', '221']);
+  const [value2, setValue2] = React.useState(['5']);
+  const [visible, setVisible] = React.useState(false);
+  const arr = [
+    {
+      label: '江苏省',
+      value: '1',
+      children: [
+        {
+          label: '南京市',
+          value: '11',
+          children: [
+            {label: '宣武区', value: '111'},
+            {label: '雨花台区', value: '112'},
+          ],
+        },
+        {
+          label: '苏州市',
+          value: '12',
+          children: [{label: '苏州区', value: '121'}],
+        },
+      ],
+    },
+    {label: '北京市', value: '2', children: [{label: '北京市', value: '22', children: [{label: '朝阳区', value: '221'}]}]},
+  ];
+
+  const arr2 = [
+    {label: '3', value: '3'},
+    {label: '4', value: '4'},
+    {label: '5', value: '5'},
+  ];
+
+  return (
+    <Container>
+      <Layout>
+        <Header title={title} description={description} />
+        <Body style={{paddingLeft: 16, paddingRight: 16}}>
+          <Card title="基本使用">
+            <Picker cols={1} displayType="view" data={arr2 as any} value={value2} onChange={(val2: any) => setValue2(val2)} />
+          </Card>
+          <Card title="弹框picker">
+            <Button onPress={() => setVisible(true)}>打开</Button>
+            <Picker
+              title="标题"
+              displayType="modal"
+              value={value}
+              onChange={(val: any) => setValue(val)}
+              visible={visible}
+              cols={3}
+              onClosed={() => setVisible(false)}
+              data={arr as any}
+            />
+          </Card>
+        </Body>
+      </Layout>
+    </Container>
+  );
 }

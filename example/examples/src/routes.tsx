@@ -362,14 +362,6 @@ export const stackPageData: Routes[] = [
       description: 'TransitionImage 图片过渡',
     },
   },
-  // {
-  //   name: 'Card',
-  //   component: require('./routes/Card').default,
-  //   params: {
-  //     title: 'Card 卡片',
-  //     description: 'QuickList 最基础的卡片容器，可承载文字、列表、图片、段落。',
-  //   },
-  // },
   {
     name: 'Progress',
     component: require('./routes/Progress').default,
@@ -451,6 +443,14 @@ export const stackPageData: Routes[] = [
     },
   },
   {
+    name: 'Tree',
+    component: require('./routes/Tree').default,
+    params: {
+      title: 'Tree 树形控件',
+      description: '树形控件',
+    },
+  },
+  {
     name: 'TreeSelect',
     component: require('./routes/TreeSelect').default,
     params: {
@@ -488,6 +488,30 @@ export const stackPageData: Routes[] = [
     params: {
       title: 'form',
       description: 'form',
+    },
+  },
+  {
+    name: 'ImagePicker',
+    component: require('./routes/ImagePicker').default,
+    params: {
+      title: 'ImagePicker 图片上传',
+      description: '图片上传',
+    },
+  },
+  {
+    name: 'Accordion',
+    component: require('./routes/Accordion').default,
+    params: {
+      title: 'Accordion 手风琴',
+      description: '可以折叠/展开的内容区域。',
+    },
+  },
+  {
+    name: 'VerificationCode',
+    component: require('./routes/VerificationCode').default,
+    params: {
+      title: 'VerificationCode 验证码倒计时',
+      description: '验证码倒计时组件',
     },
   },
 ];

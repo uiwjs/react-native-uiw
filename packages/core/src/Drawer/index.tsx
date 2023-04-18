@@ -9,6 +9,8 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import { debounce } from 'lodash';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
@@ -33,6 +35,7 @@ export interface DrawerState {
 }
 
 export default function Drawer(props: DrawerProps) {
+  const theme = useTheme<Theme>();
   const getInitPosition = () => {
     const { drawerWidth, placement, drawerHeight } = props;
     const xy = { x: 0, y: 0 };
@@ -122,13 +125,12 @@ export default function Drawer(props: DrawerProps) {
     e.stopPropagation();
     closeDrawer();
   };
-
   const { style, drawerWidth, drawerBackgroundColor, maskProps, placement, drawerHeight } = props;
   const { isOpen, drawerValue, overlayValue, zIndexValue } = state;
   const isTopOrBottom = placement === 'top' || placement === 'bottom';
   const changeStyle = isTopOrBottom ? 'height' : 'width';
   const dynamicDrawerStyles: any = {
-    backgroundColor: drawerBackgroundColor,
+    backgroundColor: drawerBackgroundColor || theme.colors.mask,
   };
 
   if (isTopOrBottom) {
@@ -198,7 +200,7 @@ export default function Drawer(props: DrawerProps) {
 
 Drawer.defaultProps = {
   placement: 'left',
-  drawerBackgroundColor: '#fff',
+  drawerBackgroundColor: undefined,
   drawerWidth: 300,
   drawerHeight: 500,
   maskClosable: true,

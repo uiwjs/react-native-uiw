@@ -1,7 +1,6 @@
 import React, { useState, useEffect, memo } from 'react';
 import {
   View,
-  Text,
   SafeAreaView,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -15,6 +14,9 @@ import MaskLayer from '../MaskLayer';
 import SearchInputBar, { SearchInputBarProps } from '../SearchInputBar';
 import List from '../List';
 import Icon from '../Icon';
+import Text from '../Typography/Text';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 interface SearchBarProps extends Omit<SearchInputBarProps, 'onChange' | 'value'> {
   onChangeText?: (value: string) => void;
@@ -56,6 +58,15 @@ function SearchBar({
   placeholderColor,
   ...searchInputBarProps
 }: SearchBarProps) {
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    maskBgColor: theme.colors.mask || '#F5F5F5',
+    bgColor: theme.colors.background || '#F5F5F5',
+    disabledColor: theme.colors.disabled || '#F5F5F5',
+    iconColor: theme.colors.primary_text || '#fff',
+    cancelColor: theme.colors.primary_text || '#7C7D7E',
+  });
+
   const [curValue, setCurValue] = useState<any>(value);
   const [visible, setVisivble] = useState(false);
   let textValue;
@@ -83,10 +94,14 @@ function SearchBar({
     setVisivble(true);
   };
 
+  const placeholderStyle = placeholderColor ? { color: placeholderColor } : {};
+
   return !visible ? (
     <Pressable onPress={showSearchBar}>
       <View style={[disabled ? styles.disabled : styles.content, contentStyle]}>
-        <Text style={[styles.contentTitle, { color: placeholderColor }]}>{textValue ? textValue : placeholder}</Text>
+        <Text color="text" style={{ fontSize: 16, ...placeholderStyle }}>
+          {textValue ? textValue : placeholder}
+        </Text>
         {React.isValidElement(extra) ? (
           extra
         ) : curValue && showClear ? (
@@ -97,10 +112,10 @@ function SearchBar({
             }}
             style={{ paddingRight: 3 }}
           >
-            <Icon name="circle-close-o" size={18} color="#ccc" />
+            <Icon name="circle-close-o" size={18} color={theme.colors.primary_text || '#ccc'} />
           </Pressable>
         ) : (
-          <Icon name="right" size={18} color="#A19EA0" />
+          <Icon name="right" size={18} color={theme.colors.primary_text || '#A19EA0'} />
         )}
       </View>
     </Pressable>
@@ -109,7 +124,7 @@ function SearchBar({
       <SafeAreaView style={styles.container}>
         <SearchInputBar
           loading={loading}
-          containerStyle={{ backgroundColor: '#fff', marginHorizontal: 10 }}
+          containerStyle={{ marginHorizontal: 10 }}
           autoFocus
           showActionButton
           placeholder="输入搜索..."
@@ -123,14 +138,14 @@ function SearchBar({
               }}
             >
               <View style={styles.cancel}>
-                <Text>取消</Text>
+                <Text color="primary_background">取消</Text>
               </View>
             </TouchableWithoutFeedback>
           }
           {...searchInputBarProps}
         />
         {loading ? (
-          <ActivityIndicator color="#0A0258" size="large" style={styles.loading} />
+          <ActivityIndicator color={theme.colors.primary_background || '#0A0258'} size="large" style={styles.loading} />
         ) : (
           <List style={styles.list}>
             {options.map((itm) => (
@@ -148,7 +163,9 @@ function SearchBar({
                   setVisivble(false);
                 }}
               >
-                <Text style={{ fontSize: 16 }}>{itm.label}</Text>
+                <Text color="primary_text" style={{ fontSize: 16 }}>
+                  {itm.label}
+                </Text>
               </List.Item>
             ))}
           </List>
@@ -160,51 +177,57 @@ function SearchBar({
 
 export default memo(SearchBar);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F5F5',
-  },
-  contentTitle: {
-    fontSize: 16,
-    color: 'black',
-  },
-  icon: {
-    backgroundColor: '#fff',
-    paddingLeft: 10,
-    justifyContent: 'center',
-  },
-  cancel: {
-    color: '#7C7D7E',
-    paddingRight: 10,
-    justifyContent: 'center',
-  },
-  list: {
-    marginLeft: 10,
-    marginTop: 10,
-    marginRight: 10,
-  },
-  loading: {
-    position: 'absolute',
-    top: '20%',
-    left: '45%',
-  },
-  content: {
-    flexDirection: 'row',
-    height: 35,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingRight: 5,
-    backgroundColor: '#fff',
-    paddingHorizontal: 16,
-  },
-  disabled: {
-    flexDirection: 'row',
-    height: 35,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingRight: 5,
-    backgroundColor: '#f5f5f5',
-    paddingHorizontal: 16,
-  },
-});
+type CreStyle = {
+  bgColor: string;
+  maskBgColor: string;
+  disabledColor: string;
+  iconColor: string;
+  cancelColor: string;
+};
+
+function createStyles({ maskBgColor, bgColor, disabledColor, iconColor, cancelColor }: CreStyle) {
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: bgColor,
+    },
+    icon: {
+      backgroundColor: iconColor,
+      paddingLeft: 10,
+      justifyContent: 'center',
+    },
+    cancel: {
+      color: cancelColor,
+      paddingRight: 10,
+      justifyContent: 'center',
+    },
+    list: {
+      marginLeft: 10,
+      marginTop: 10,
+      marginRight: 10,
+    },
+    loading: {
+      position: 'absolute',
+      top: '20%',
+      left: '45%',
+    },
+    content: {
+      flexDirection: 'row',
+      height: 35,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingRight: 5,
+      backgroundColor: maskBgColor,
+      paddingHorizontal: 16,
+    },
+    disabled: {
+      flexDirection: 'row',
+      height: 35,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingRight: 5,
+      backgroundColor: disabledColor,
+      paddingHorizontal: 16,
+    },
+  });
+}

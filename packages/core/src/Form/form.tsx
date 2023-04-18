@@ -1,17 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import FormItems from './formItems';
 import { Provider } from './hooks/context';
-import { FormProps, KeyType } from './types';
+import { FormProps } from './types';
 import { cloneDeep } from './utils';
 import TextArea from '../TextArea';
 import Slider from '../Slider';
 import SearchBar from '../SearchBar';
 import Stepper from '../Stepper';
+import TreeSelect from '../TreeSelect';
+import DatePeriodInput from '../DatePicker/date-period-input';
 import Input from './comps/input';
 import Rating from './comps/rate';
 import Radio from './comps/radio';
 import Switch from './comps/switch';
 import CheckBox from './comps/checkBox';
+import Picker from './comps/picker';
+import DatePicker from './comps/datePicker';
 
 const Form = (baseProps: FormProps) => {
   const {
@@ -55,6 +59,10 @@ const Form = (baseProps: FormProps) => {
       switch: <Switch />,
       checkBox: <CheckBox />,
       stepper: <Stepper value={0} onChange={() => {}} />,
+      treeSelect: <TreeSelect options={[]} />,
+      picker: <Picker />,
+      datePicker: <DatePicker />,
+      datePeriodInput: <DatePeriodInput />,
     },
     changeValidate: changeValidate,
   };

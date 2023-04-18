@@ -2,6 +2,7 @@ import React from 'react';
 import {Spacing, Radio} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
+import {View} from 'react-native';
 
 const {Header, Body, Card, Footer} = Layout;
 
@@ -11,10 +12,7 @@ export interface RadioViewState {
   value: number | null;
 }
 
-export default class RadioView extends React.Component<
-  RadioViewProps,
-  RadioViewState
-> {
+export default class RadioView extends React.Component<RadioViewProps, RadioViewState> {
   constructor(props: RadioViewProps) {
     super(props);
     this.state = {
@@ -37,7 +35,7 @@ export default class RadioView extends React.Component<
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础实例">
               <Radio checkedColor="#fd8a00" borderColor="#fd8a00">
                 所有人可见

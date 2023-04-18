@@ -12,9 +12,10 @@ import {
 } from 'react-native';
 import Icon from '../Icon';
 import { checked } from './svg';
-import { colors } from '../utils';
 import CardTitle from './Card.Title';
 import CardActions from './Card.Actions';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
 
 export interface CardProps extends ViewProps {
   containerStyle?: StyleProp<ViewStyle>;
@@ -46,6 +47,12 @@ const Card = ({
   },
   ...attributes
 }: CardProps) => {
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    backgroundColor: theme.colors.mask,
+    shadowColor: theme.colors.gray300,
+    selectBorderColor: theme.colors.primary_background,
+  });
   const Container: any = onPress || onLongPress ? TouchableOpacity : View;
   // 获取卡片圆角度数
   const getBorderRadius = () => {
@@ -97,46 +104,45 @@ const Card = ({
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.white,
-    // borderWidth: 1,
-    padding: 15,
-    margin: 15,
-    marginBottom: 0,
-    borderColor: colors.colorsPalette.grey80,
-    ...Platform.select({
-      android: {
-        elevation: 1,
-      },
-      default: {
-        shadowColor: colors.colorsPalette.grey40,
-        shadowOffset: { height: 5, width: 0 },
-        shadowOpacity: 0.25,
-        shadowRadius: 12,
-      },
-    }),
-  },
-  selectedBorder: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 12,
-    borderWidth: 2,
-    borderColor: colors.colorsPalette.violet30,
-  },
-  selectedIndicator: {
-    // borderRadius: 999,
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    width: 20,
-    height: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  wrapper: {
-    backgroundColor: 'transparent',
-  },
-});
+function createStyles({ backgroundColor = '#fff', shadowColor = '#999', selectBorderColor = '#3578e5' }) {
+  return StyleSheet.create({
+    container: {
+      backgroundColor: backgroundColor,
+      padding: 15,
+      margin: 15,
+      marginBottom: 0,
+      ...Platform.select({
+        android: {
+          elevation: 1,
+        },
+        default: {
+          shadowColor: shadowColor,
+          shadowOffset: { height: 5, width: 0 },
+          shadowOpacity: 0.25,
+          shadowRadius: 12,
+        },
+      }),
+    },
+    selectedBorder: {
+      ...StyleSheet.absoluteFillObject,
+      borderRadius: 12,
+      borderWidth: 2,
+      borderColor: selectBorderColor,
+    },
+    selectedIndicator: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      width: 20,
+      height: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    wrapper: {
+      backgroundColor: 'transparent',
+    },
+  });
+}
 
 Card.Title = CardTitle;
 Card.Actions = CardActions;

@@ -1,14 +1,18 @@
 import React from 'react';
-import {DatePicker, Button} from '@uiw/react-native';
+import {View} from 'react-native';
+import {DatePicker, DatePeriodInput, Button, Text} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
-const {Header, Body, Footer} = Layout;
+const {Header, Body, Footer, Card} = Layout;
 
 export interface BadgeViewProps extends ComProps {}
 
 export default class BadgeView extends React.Component<BadgeViewProps> {
   state = {
     visible: false,
+    value: undefined,
+    formatDate: undefined,
+    value2: undefined,
   };
   render() {
     const {route, navigation} = this.props;
@@ -18,19 +22,32 @@ export default class BadgeView extends React.Component<BadgeViewProps> {
       <Container scrollEnabled={false}>
         <Layout>
           <Header title={title} description={description} />
-          <Body scrollEnabled={false}>
-            <Button
-              onPress={() => {
-                this.setState({visible: true});
-              }}>
-              年月日
-            </Button>
-            <DatePicker
-              visible={this.state.visible}
-              onOk={() => this.setState({visible: false})}
-              onClosed={() => this.setState({visible: false})}
-              precision="second"
-            />
+          <Body scrollEnabled={false} style={{paddingLeft: 16, paddingRight: 16}}>
+            <Card title="基本使用">
+              <Button onPress={() => this.setState({visible: true})}>打开</Button>
+              <View>
+                <Text color="text">{this.state.formatDate}</Text>
+              </View>
+              <DatePicker
+                title="请选择日期"
+                mode="datetime"
+                format="YYYY-MM-DD HH:mm:ss"
+                visible={this.state.visible}
+                onClosed={() => this.setState({visible: false})}
+                value={this.state.value}
+                onChange={(value, formatDate) => {
+                  this.setState({value: value, formatDate: formatDate});
+                }}
+              />
+            </Card>
+            <Card title="日期区间选择器">
+              <DatePeriodInput
+                value={this.state.value2}
+                onChange={date => {
+                  this.setState({value2: date});
+                }}
+              />
+            </Card>
           </Body>
           <Footer />
         </Layout>

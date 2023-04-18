@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, TextProps } from 'react-native';
+import { TextProps } from 'react-native';
+import Text from '../Typography/Text';
 
 export interface EllipsisProps extends TextProps {
   children?: React.ReactNode;

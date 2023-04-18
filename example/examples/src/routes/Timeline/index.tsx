@@ -60,32 +60,21 @@ export default (props: StepsViewProps) => {
 
   return (
     <Container>
-      <Header
-        title={route.params.title}
-        description={route.params.description}
-      />
-      <Body>
+      <Header title={route.params.title} description={route.params.description} />
+      <Body style={{paddingLeft: 16, paddingRight: 16}}>
         <Card title="基础用法">
           <WingBlank>
-            <Timeline style={{backgroundColor: '#fff'}} items={item} />
+            <Timeline items={item} />
           </WingBlank>
         </Card>
         <Card title="展示在左边">
           <WingBlank>
-            <Timeline
-              style={{backgroundColor: '#fff'}}
-              items={item}
-              mode="left"
-            />
+            <Timeline items={item} mode="left" />
           </WingBlank>
         </Card>
         <Card title={`交替展现 & 自定义图标`}>
           <WingBlank>
-            <Timeline
-              style={{backgroundColor: '#fff'}}
-              items={item1}
-              mode="alternate"
-            />
+            <Timeline items={item1} mode="alternate" />
           </WingBlank>
         </Card>
       </Body>

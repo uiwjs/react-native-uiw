@@ -1,3 +1,7 @@
+import theme from './theme';
+import ThemeProvider from './theme-provider';
+import type { Theme } from './theme';
+
 export { default as Avatar } from './Avatar';
 export * from './Avatar';
 export { default as Badge } from './Badge';
@@ -101,13 +105,18 @@ export { default as Pagination } from './Pagination';
 export * from './Pagination';
 export { default as Picker } from './Picker';
 export * from './Picker';
-export { default as DatePicker } from './DatePicker';
-export * from './DatePicker';
+export { default as DatePicker } from './DatePicker/date-picker';
+export * from './DatePicker/date-picker';
+
+export { default as DatePeriodInput } from './DatePicker/date-period-input';
+export * from './DatePicker/date-period-input';
 
 export { default as Calendar } from './Calendar';
 export * from './Calendar';
 export { default as DragDrawer } from './DragDrawer';
 export * from './DragDrawer';
+export { default as Tree } from './Tree';
+export * from './Tree';
 export { default as TreeSelect } from './TreeSelect';
 export * from './TreeSelect';
 export { default as TextArea } from './TextArea';
@@ -118,6 +127,10 @@ export { default as ImageViewer } from './ImageViewer';
 export * from './ImageViewer';
 export { default as Form } from './Form';
 export * from './Form';
+export { default as Accordion } from './Accordion';
+export * from './Accordion';
+export { default as VerificationCode } from './VerificationCode';
+export * from './VerificationCode';
 /**
  * Typography
  */
@@ -137,6 +150,7 @@ export { default as Div } from './Typography/Div';
 export { default as Hr } from './Typography/Hr';
 export { default as Em } from './Typography/Em';
 export { default as RnText } from './Typography/RnText';
+export { default as Text } from './Typography/Text';
 
 export * from './Typography/H1';
 export * from './Typography/H2';
@@ -154,3 +168,7 @@ export * from './Typography/Div';
 export * from './Typography/Hr';
 export * from './Typography/Em';
 export * from './Typography/RnText';
+export * from './Typography/Text';
+
+export { theme, ThemeProvider };
+export type { Theme };

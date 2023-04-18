@@ -1,7 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { ViewProps } from 'react-native';
 import Icon from '../Icon';
+import Text from '../Typography/Text';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 type statusType = 'success' | 'error' | string;
 
@@ -18,6 +21,11 @@ export interface StepsProps extends ViewProps {
 }
 
 export default (props: StepsProps) => {
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    bgColor: theme.colors.text || '#ccc',
+    cirColor: theme.colors.primary_text || '#e5e5e5',
+  });
   const { items = [], current = 0, onChange, ...others } = props;
 
   const onStepsPress = (index: number) => {
@@ -35,16 +43,21 @@ export default (props: StepsProps) => {
               style={[
                 styles.circular,
                 {
-                  backgroundColor: current >= index && !item?.status ? '#008EF0' : '#e5e5e5',
+                  backgroundColor:
+                    current >= index && !item?.status
+                      ? theme.colors.primary_background || '#3578e5'
+                      : theme.colors.gray100 || '#e5e5e5',
                 },
               ]}
             >
-              {item?.status === 'error' && <Icon name="circle-close" size={22} fill="#dc3545" />}
-              {item?.status === 'success' && <Icon name="circle-check" size={22} fill="#008EF0" />}
+              {item?.status === 'error' && <Icon name="circle-close" size={22} fill={theme.colors.func600} />}
+              {item?.status === 'success' && (
+                <Icon name="circle-check" size={22} fill={theme.colors.primary_background || '#3578e5'} />
+              )}
               {!item?.status && (
                 <Text
                   style={{
-                    color: current >= index ? '#fff' : '#333',
+                    color: current >= index ? theme.colors.white : theme.colors.gray500,
                   }}
                 >
                   {index + 1}
@@ -53,64 +66,72 @@ export default (props: StepsProps) => {
             </View>
             {index < items.length - 1 && <View style={styles.rightLine}></View>}
           </View>
-          <Text>{item.title}</Text>
-          <Text style={styles.desc}>{item.desc}</Text>
+          <Text color="primary_text">{item.title}</Text>
+          <Text color="text" style={styles.desc}>
+            {item.desc}
+          </Text>
         </TouchableOpacity>
       ))}
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  steps: {
-    flexDirection: 'row',
-    paddingTop: 10,
-    paddingBottom: 10,
-  },
-  item: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  wrap: {
-    position: 'relative',
-    alignItems: 'center',
-    width: '100%',
-    marginBottom: 10,
-  },
-  leftLine: {
-    backgroundColor: '#ccc',
-    position: 'absolute',
-    width: '50%',
-    top: '50%',
-    height: 1,
-    left: '0%',
-  },
-  rightLine: {
-    backgroundColor: '#ccc',
-    position: 'absolute',
-    width: '50%',
-    top: '50%',
-    height: 1,
-    right: '0%',
-  },
-  circular: {
-    width: 25,
-    height: 25,
-    backgroundColor: '#e5e5e5',
-    borderRadius: 20,
-    position: 'relative',
-    zIndex: 3,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  desc: {
-    color: '#ccc',
-    fontSize: 12,
-    textAlign: 'center',
-    paddingLeft: 5,
-    paddingRight: 5,
-    marginTop: 10,
-    lineHeight: 18,
-  },
-});
+type CreStyle = {
+  bgColor: string;
+  cirColor: string;
+};
+
+function createStyles({ bgColor, cirColor }: CreStyle) {
+  return StyleSheet.create({
+    steps: {
+      flexDirection: 'row',
+      paddingTop: 10,
+      paddingBottom: 10,
+    },
+    item: {
+      flex: 1,
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    wrap: {
+      position: 'relative',
+      alignItems: 'center',
+      width: '100%',
+      marginBottom: 10,
+    },
+    leftLine: {
+      backgroundColor: bgColor,
+      position: 'absolute',
+      width: '50%',
+      top: '50%',
+      height: 1,
+      left: '0%',
+    },
+    rightLine: {
+      backgroundColor: bgColor,
+      position: 'absolute',
+      width: '50%',
+      top: '50%',
+      height: 1,
+      right: '0%',
+    },
+    circular: {
+      width: 25,
+      height: 25,
+      backgroundColor: cirColor,
+      borderRadius: 20,
+      position: 'relative',
+      zIndex: 3,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    desc: {
+      fontSize: 12,
+      textAlign: 'center',
+      paddingLeft: 5,
+      paddingRight: 5,
+      marginTop: 10,
+      lineHeight: 18,
+    },
+  });
+}

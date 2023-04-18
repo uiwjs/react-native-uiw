@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, ViewProps, StyleSheet } from 'react-native';
+import { View, ViewProps, StyleSheet } from 'react-native';
 // import Icon from '../Icon';
+import Text from '../Typography/Text';
 
 export interface ShowProps extends ViewProps {
   iconColor?: string;
@@ -17,7 +18,6 @@ const Show = (props: ShowProps) => {
 const styles = StyleSheet.create({
   show: {
     borderRadius: 5,
-    backgroundColor: '#fff',
     marginHorizontal: 5,
     marginVertical: 10,
     paddingHorizontal: 10,

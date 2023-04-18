@@ -1,25 +1,34 @@
 import React, { useState, useMemo } from 'react';
 import { Modal, ModalProps as RNModalProps, Animated, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePrevious } from '../utils';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
-const styles = StyleSheet.create({
-  position: {
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    zIndex: 9998,
-  },
-  backdrop: {
-    backgroundColor: '#000',
-  },
-  content: {
-    backgroundColor: '#fff',
-    position: 'absolute',
-  },
-});
+type CreStyle = {
+  whiteColor: string;
+  blackBackground: string;
+};
+
+function createStyles({ whiteColor, blackBackground }: CreStyle) {
+  return StyleSheet.create({
+    position: {
+      position: 'absolute',
+      backgroundColor: 'transparent',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      zIndex: 9998,
+    },
+    backdrop: {
+      backgroundColor: blackBackground,
+    },
+    content: {
+      backgroundColor: whiteColor,
+      position: 'absolute',
+    },
+  });
+}
 
 export interface MaskLayerProps extends RNModalProps {
   /**
@@ -46,6 +55,12 @@ export interface MaskLayerProps extends RNModalProps {
 }
 
 const MaskLayer = (props: MaskLayerProps = {}) => {
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    whiteColor: theme.colors.white || '#fff',
+    blackBackground: theme.colors.black || '#000',
+  });
+
   const {
     maskClosable = true,
     children,

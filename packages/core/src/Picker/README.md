@@ -3,8 +3,6 @@ Picker 选择器
 
 解决 ios 与 android 和用户交互方式不同问题.
 > 🚧测试版本
-> 避免出现样式错乱问题, 请尽量使用统一整数数字高度。
-> 激活状态尽量不要改变高度, 只是修改颜色作为标记。
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
 <!-- ![](https://user-images.githubusercontent.com/66067296/139409471-846bdddb-99cc-4b2d-b2da-278da81b0c22.gif) -->
@@ -12,50 +10,80 @@ Picker 选择器
 
 ### 基础示例
 
-```jsx mdx:preview&background=#bebebe29
+```jsx
 import React from 'react';
-import { View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { Picker } from '@uiw/react-native';
 
 function Demo() {
+  const [value, setValue] = React.useState(['5'])
+  const arr = [
+    { label: '3', value: '3' },
+    { label: '4', value: '4' },
+    { label: '5', value: '5' },
+  ]
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <Picker
-        data={[
-          {label: '1'},
-          {label: '2'},
-          {label: '3'},
-          {label: '4'},
-          {label: '5'},
-        ]}
+        cols={1}
+        value={value}
+        displayType="view"
+        data={arr}
+        onChange={val => setValue(val)}
       />
-    </View>
+    </SafeAreaView>
   )
 }
 export default Demo
 ```
 
-### 使用自定义元素
+### modal弹框 & 联动
 
-```jsx mdx:preview&background=#bebebe29
+```jsx
 import React from 'react';
-import { View, Text } from 'react-native';
-import { Picker } from '@uiw/react-native';
+import { SafeAreaView } from 'react-native';
+import { Picker,Button } from '@uiw/react-native';
 
 function Demo() {
+  const [value, setValue] = React.useState(['2', '22', '221'])
+  const [visible, setVisible] = React.useState(false)
+  const arr = [
+    {
+      label: '江苏省',
+      value: '1',
+      children: [
+        {
+          label: '南京市', value: '11',
+          children: [
+            { label: '宣武区', value: '111' },
+            { label: '雨花台区', value: '112' }
+          ]
+        },
+        {
+          label: '苏州市',
+          value: '12',
+          children: [
+            { label: '苏州区', value: '121' }
+          ]
+        }
+      ]
+    },
+    { label: '北京市', value: '2', children: [{ label: '北京市', value: '22', children: [{ label: '朝阳区', value: '221' }] }] }
+  ];
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Button onPress={() => setVisible(true)}>打开</Button>
       <Picker
-        data={[
-          {label: '1'},
-          {label: '2'},
-          {label: '3'},
-          {label: '4'},
-          {label: '5'},
-          {label: '5',render: (label, record, index)=><Text>end</Text>},
-        ]}
+        title="标题"
+        displayType="modal"
+        value={value}
+        onChange={val => setValue(val)}
+        visible={visible} 
+        cols={3}
+        onClosed={() => setVisible(false)}
+        data={arr}
       />
-    </View>
+    </SafeAreaView>
   )
 }
 export default Demo
@@ -65,12 +93,14 @@ export default Demo
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| lines   | 显示行数   | number |  3  |
-| rowKey    | 在开始位置设置图标  |  string | - |
-| data   | 需要渲染的数据   | Array |  -  |
-| containerStyle   | item 容器样式   | obj |  -  |
-| textStyle    | 容器的文本样式  | TextStyle | -  |
-| value | 选中当前项的下标   | number | -  |
-| onChange | value 改变时触发       | fn | -  |
-| readonly | 是否只读  | fn | -  |
+| data   | 选择项列表   | `CascadePickerItemProps[]` | `Array<CascadePickerItemProps[]>` |  []  |
+| cols    | 展示几列  |  `number` | 1 |
+| value   | 当前值   | `ItemValue[]` |  []  |
+| displayType   | 选择器显示类型。view表示在页面显示；modal表示在弹窗中显示；默认为modal   | `view | modal` |  view  |
+| onChange    | 修改事件  | `(value?: ItemValue[]) => void` | -  |
+| title | 选中当前项的下标   | number | -  |
+| visible | 是否弹窗显示       | boolean | false  |
+| onClosed | 弹窗关闭事件  | () => void | -  |
+| cancelText | 取消按钮文本  | string | 取消  |
+| okText | 确认按钮文本  | string | 确认  |
 

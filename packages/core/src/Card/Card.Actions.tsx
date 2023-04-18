@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   StyleProp,
   ViewStyle,
@@ -12,7 +11,7 @@ import {
 } from 'react-native';
 import Divider from '../Divider';
 import map from 'lodash/map';
-import { colors } from '../utils';
+import Text from '../Typography/Text';
 
 export type CardActionsProps = {
   actions?: Array<{
@@ -40,7 +39,11 @@ const CardActions = ({ actions = [], actionsContainerStyle, children, driver = t
               onPress={(event) => item.onPress && item.onPress(event, index)}
             >
               {item.icon && item.icon}
-              {item.text && <Text style={[styles.actionsTitle, item.actionsTextStyle]}>{item.text}</Text>}
+              {item.text && (
+                <Text color="primary_background" style={[styles.actionsTitle, item.actionsTextStyle]}>
+                  {item.text}
+                </Text>
+              )}
             </TouchableOpacity>
           );
         })}
@@ -62,7 +65,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   actionsTitle: {
-    color: colors.colorsPalette.violet30,
     ...Platform.select({
       android: {
         fontFamily: 'sans-serif',

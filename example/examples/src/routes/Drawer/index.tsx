@@ -16,12 +16,9 @@ export default function DrawerView({route}: DrawerViewProps) {
   const [visible4, setVisible4] = useState(false);
   return (
     <Fragment>
-      <Drawer
-        isOpen={visible2}
-        placement="right"
-        onChange={(isOpen: boolean) => setVisible2(isOpen)}>
+      <Drawer isOpen={visible2} placement="right" onChange={(isOpen: boolean) => setVisible2(isOpen)} drawerBackgroundColor="red">
         <View>
-          <Text>右边打开抽屉内容</Text>
+          <Text style={{color: '#ccc'}}>右边打开抽屉内容</Text>
         </View>
       </Drawer>
       <Drawer
@@ -30,7 +27,7 @@ export default function DrawerView({route}: DrawerViewProps) {
           setVisible(isOpen);
         }}>
         <View>
-          <Text>左边打开抽屉内容</Text>
+          <Text style={{color: '#ccc'}}>左边打开抽屉内容</Text>
         </View>
       </Drawer>
       <Drawer
@@ -40,7 +37,7 @@ export default function DrawerView({route}: DrawerViewProps) {
           setVisible3(isOpen);
         }}>
         <View>
-          <Text>上边打开抽屉内容</Text>
+          <Text style={{color: '#ccc'}}>上边打开抽屉内容</Text>
         </View>
       </Drawer>
       <Drawer
@@ -50,27 +47,21 @@ export default function DrawerView({route}: DrawerViewProps) {
           setVisible4(isOpen);
         }}>
         <View>
-          <Text>下边打开抽屉内容</Text>
+          <Text style={{color: '#ccc'}}>下边打开抽屉内容</Text>
         </View>
       </Drawer>
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <WingBlank>
               <Button onPress={() => setVisible(!visible)}>左边打开抽屉</Button>
               <Spacing />
-              <Button onPress={() => setVisible2(!visible2)}>
-                右边打开抽屉
-              </Button>
+              <Button onPress={() => setVisible2(!visible2)}>右边打开抽屉(自定义颜色)</Button>
               <Spacing />
-              <Button onPress={() => setVisible3(!visible3)}>
-                上边打开抽屉
-              </Button>
+              <Button onPress={() => setVisible3(!visible3)}>上边打开抽屉</Button>
               <Spacing />
-              <Button onPress={() => setVisible4(!visible4)}>
-                下边打开抽屉
-              </Button>
+              <Button onPress={() => setVisible4(!visible4)}>下边打开抽屉</Button>
             </WingBlank>
           </Body>
           <Footer />

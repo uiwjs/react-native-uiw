@@ -1,63 +1,59 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Button, Spacing, Icon, Flex} from '@uiw/react-native';
-import {ComProps} from '../../routes';
-import Layout, {Container} from '../../Layout';
-const {Header, Body, Card, Footer} = Layout;
+import { View, Text } from 'react-native';
+import { Button, Spacing, Icon, Flex } from '@uiw/react-native';
+import { ComProps } from '../../routes';
+import Layout, { Container } from '../../Layout';
+const { Header, Body, Card, Footer } = Layout;
 
-export interface ButtonViewProps extends ComProps {}
+export interface ButtonViewProps extends ComProps { }
 
 export default class ButtonView extends React.Component<ButtonViewProps> {
   render() {
-    const {route} = this.props;
+    const { route } = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{ paddingLeft: 16, paddingRight: 16 }}>
             <Card title="基础实例">
               <Flex>
-                <Button>默认按钮</Button>
+                <Button type="primary">蓝色按钮</Button>
                 <Spacing type="horizontal" />
-                <Button>默认按钮</Button>
+                <Button>主题色按钮</Button>
                 <Spacing type="horizontal" />
-                <Button>按钮</Button>
+                <Button type="success">绿色按钮</Button>
               </Flex>
               <Spacing />
-              <Button>默认按钮</Button>
+              <Button>主题色按钮</Button>
               <Spacing />
-              <Button disabled>默认禁用按钮</Button>
+              <Button disabled>禁用按钮</Button>
               <Spacing />
               <Button type="primary">主要按钮 primary </Button>
               <Spacing />
-              <Button type="danger" disabled>
-                错误按钮 danger
-              </Button>
+              <Button type="danger">错误按钮 danger</Button>
               <Spacing />
               <Button type="success">成功按钮 success</Button>
               <Spacing />
-              <Button type="warning" disabled>
-                警告禁用按钮 warning
-              </Button>
+              <Button type="warning">警告禁用按钮 warning</Button>
               <Spacing />
               <Button color="#1EABCD" loading>
                 加载中 loading
               </Button>
               <Spacing />
-              <Button type="light" loading>
+              <Button type="light" bordered={true} loading>
                 亮按钮 light
               </Button>
               <Spacing />
-              <Button type="dark" loading disabled>
+              <Button type="dark" loading>
                 暗按钮 dark
               </Button>
               <Spacing />
-              <Button loading>默认按钮</Button>
+              <Button loading>主题色按钮</Button>
               <Spacing />
               <Button loading disabled>
-                默认按钮 禁用
+                主题色按钮 禁用
               </Button>
             </Card>
             <Card title="按钮圆角设置">
@@ -69,7 +65,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                 自定义圆角 {'rounded={23}'}
               </Button>
               <Spacing />
-              <Button rounded={10} color="#f6f8fa">
+              <Button rounded={10} color="#1EABCD">
                 自定义圆角 {'rounded={10}'}
               </Button>
               <Spacing />
@@ -84,7 +80,7 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Spacing />
               <Button color="#393E48">按钮尺寸 {'rounded={23}'}</Button>
               <Spacing />
-              <Button size="large" color="#f6f8fa">
+              <Button size="large" color="#F95C2B">
                 自定义圆角 {'size="large"'}
               </Button>
             </Card>
@@ -105,25 +101,25 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Spacing />
               <Button color="#dc3545">自定义颜色{'color="#dc3545"'}</Button>
               <Spacing />
-              <Button color="#f6f8fa">自定义颜色{'color="#f6f8fa"'}</Button>
+              <Button color="#a63d2c">自定义颜色{'color="#a63d2c"'}</Button>
             </Card>
             <Card title="文本样式">
-              <Button textStyle={{fontSize: 20}} color="yellow">
+              <Button textStyle={{ fontSize: 20 }} color="yellow">
                 字号调整{'textStyle = {{fontSize:20}}'}
               </Button>
               <Spacing />
-              <Button textStyle={{color: 'blue'}}>文本颜色{'textStyle={{color:"blue"}}'}</Button>
+              <Button textStyle={{ color: 'blue' }}>文本颜色{'textStyle={{color:"blue"}}'}</Button>
               <Spacing />
-              <Button color="#f6f8fa" textStyle={{letterSpacing: 2}}>
+              <Button color="#a63d2c" textStyle={{ letterSpacing: 2 }}>
                 文本间距{'textStyle={{letterSpacing:3}}'}
               </Button>
             </Card>
             <Card title="设置边框">
-              <Button bordered={false} color="#f6f8fa">
+              <Button bordered={false} color="#dc3545">
                 不显示边框{'bordered={false}'}
               </Button>
               <Spacing />
-              <Button bordered={false} color="#28a745">
+              <Button bordered={true} color="#28a745">
                 不显示边框{'bordered={false}'}
               </Button>
             </Card>
@@ -135,12 +131,12 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
                   flexDirection: 'row',
                   flexWrap: 'wrap-reverse',
                 }}>
-                <Button bordered={false} color="#fff">
+                <Button bordered={false} color="#ffc107">
                   <Icon name="apple" size={17} />
                   <Text> 首页</Text>
                 </Button>
                 <Spacing type="horizontal" />
-                <Button bordered={false} color="#fff">
+                <Button bordered={false} color="#008EF0">
                   <Icon name="menu-fold" size={17} />
                   <Text> 菜单</Text>
                 </Button>

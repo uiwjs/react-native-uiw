@@ -38,11 +38,7 @@ export default class InputView extends Component<InputProps> {
               <Input style={styles.input} autoFocus />
             </Card>
             <Card title="额外的内容" style={styles.card}>
-              <Input
-                style={styles.input}
-                extraStart="https://"
-                extraEnd=".com"
-              />
+              <Input style={styles.input} extraStart="https://" extraEnd=".com" />
             </Card>
             <Card title="报错" style={styles.card}>
               <Input style={styles.input} error />
@@ -51,11 +47,7 @@ export default class InputView extends Component<InputProps> {
               <Input style={styles.input} keyboardType="numeric" />
             </Card>
             <Card title="校验" style={styles.card}>
-              <Input
-                style={styles.input}
-                rule={/\d/}
-                wrongfulHandle={() => Toast.info('内容不合法', 2, 'info')}
-              />
+              <Input style={styles.input} rule={/\d/} wrongfulHandle={() => Toast.info('内容不合法', 2, 'info')} />
             </Card>
           </Body>
           <Footer />
@@ -67,9 +59,9 @@ export default class InputView extends Component<InputProps> {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
-    paddingLeft: 20,
-    paddingRight: 20,
+    // backgroundColor: '#fff',
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   input: {
     // backgroundColor: '#ccc'

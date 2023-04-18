@@ -60,8 +60,7 @@ export default class ToastView extends Component<ToastProps> {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 16,
+    paddingRight: 16,
   },
 });

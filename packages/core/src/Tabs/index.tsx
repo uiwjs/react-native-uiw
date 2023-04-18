@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, StatusBar, ScrollView, ViewProps, View, ViewStyle, Dimensions } from 'react-native';
-
+import { StyleSheet, SafeAreaView, ScrollView, ViewProps, View, ViewStyle, Dimensions } from 'react-native';
 import Item from './TabsItem';
-
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 export interface TabsProps extends ViewProps {
   /** 子元素 */
   children?: JSX.Element | Array<JSX.Element>;
@@ -15,7 +15,18 @@ export interface TabsProps extends ViewProps {
 }
 
 function Tabs(props: TabsProps) {
-  const { style, children, onChange, activeColor, value, defaultColor = '#035bb6' } = props;
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    bgColor: theme.colors.mask || '#fff',
+  });
+  const {
+    style,
+    children,
+    onChange,
+    activeColor,
+    value,
+    defaultColor = theme.colors.primary_background || '#3578e5',
+  } = props;
   const scrollViewRef = useRef<ScrollView>(null);
   const [scrollViewWidth, setScrollViewWidth] = useState<number>(Dimensions.get('window').width);
 
@@ -103,12 +114,18 @@ function Tabs(props: TabsProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  TabsContainer: {
-    backgroundColor: '#fff',
-    paddingVertical: 15,
-  },
-});
+type CreStyle = {
+  bgColor: string;
+};
+
+function createStyles({ bgColor }: CreStyle) {
+  return StyleSheet.create({
+    TabsContainer: {
+      backgroundColor: bgColor,
+      paddingVertical: 15,
+    },
+  });
+}
 
 Tabs.Item = Item;
 export default Tabs;

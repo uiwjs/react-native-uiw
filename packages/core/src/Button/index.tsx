@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, TextProps, TouchableOpacity, ActivityIndicator, TouchableOpacityProps } from 'react-native';
-import { color, colors } from '../utils';
+import { color } from '../utils';
 import Div from '../Typography/Div';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
 
 export interface ButtonProps extends TouchableOpacityProps {
   color?: string;
@@ -49,26 +51,27 @@ export default function ButtonView<T>(props: ButtonProps) {
     loading,
     ...restProps
   } = props;
+  const theme = useTheme<Theme>();
   let backgroundColor, textColor, borderColor, borderWidth, borderRadius;
 
   switch (type) {
     case 'warning':
-      backgroundColor = colors.yellow;
+      backgroundColor = theme.colors.func200 || '#FFD21D';
       break;
     case 'primary':
-      backgroundColor = colors.blue;
+      backgroundColor = theme.colors.func400 || '#1890FF';
       break;
     case 'success':
-      backgroundColor = colors.green;
+      backgroundColor = theme.colors.func300 || '#52C41A';
       break;
     case 'danger':
-      backgroundColor = colors.red;
+      backgroundColor = theme.colors.func600 || '#F4333C';
       break;
     case 'light':
-      backgroundColor = colors.white;
+      backgroundColor = theme.colors.white || '#FFFFFF';
       break;
     case 'dark':
-      backgroundColor = colors.black;
+      backgroundColor = theme.colors.black || '#000000';
       break;
     default:
       break;
@@ -76,40 +79,38 @@ export default function ButtonView<T>(props: ButtonProps) {
   if (backgroundColor) {
     backgroundColor = color(backgroundColor).rgb().string();
   }
-  if (type) {
-    textColor = color(backgroundColor).isLight()
-      ? color(colors.black).rgb().string()
-      : color(colors.white).rgb().string();
-  }
-  if (!type) {
-    borderColor = color(colors.black).alpha(0.32).rgb().string();
-    borderWidth = 1;
-  }
+  // if (!type) {
+  //   borderColor = color(theme.colors.black).alpha(0.32).rgb().string();
+  //   borderWidth = 1;
+  // }
   if (disabled) {
-    textColor = color(textColor).alpha(0.3).rgb().string();
+    textColor = color(theme.colors.disabled || '#CCCCCC').alpha(0.1).rgb().string();
+    backgroundColor = color(theme.colors.disabled || '#CCCCCC').rgb().string();
   }
   if (buttonColor) {
     backgroundColor = color(buttonColor).rgb().string();
-    textColor = color(buttonColor).isLight()
-      ? color(buttonColor).darken(0.9).string()
-      : color(buttonColor).lighten(0.9).string();
   }
   if (rounded && (typeof rounded === 'number' || typeof rounded === 'boolean')) {
     borderRadius = rounded;
   }
-  if (backgroundColor) {
-    borderColor = color(backgroundColor).darken(0.2).string();
+  if (bordered) {
+    borderColor = color(theme.colors.black || '#000000').alpha(0.1).rgb().string();
     borderWidth = 1;
   }
-  if (!bordered) {
-    borderWidth = 0;
-  }
+  // if (!bordered || buttonColor) {
+  //   borderWidth = 0;
+  // }
   const buttonStyle = {
-    backgroundColor: backgroundColor || '#fff5',
+    backgroundColor: backgroundColor || "#3578e5",
     borderColor,
     borderWidth,
     borderRadius,
   };
+  if ((type || backgroundColor || buttonColor || buttonStyle.backgroundColor) && type !== "light") {
+    textColor = color(theme.colors.white || '#FFFFFF').rgb().string()
+  } else {
+    textColor = color(theme.colors.black || '#000000').rgb().string();
+  }
   const textStyle = { color: textColor };
   let sizeStyle = {};
   if (size && styles[size]) {
@@ -145,7 +146,7 @@ export default function ButtonView<T>(props: ButtonProps) {
 ButtonView.defaultProps = {
   activeOpacity: 0.5,
   rounded: 5,
-  bordered: true,
+  bordered: false,
   size: 'default',
 } as ButtonProps;
 

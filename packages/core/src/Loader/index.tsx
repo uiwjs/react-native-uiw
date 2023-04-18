@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, ViewProps, Text, StyleSheet, ActivityIndicator, ActivityIndicatorProps } from 'react-native';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 const styles = StyleSheet.create({
   defalut: {
@@ -51,10 +53,11 @@ export interface LoaderProps extends ViewProps {
 }
 
 export default function Loader(props: LoaderProps) {
+  const theme = useTheme<Theme>();
   const {
     children,
-    color: loaderColor = 'gray',
-    maskColor = 'rgba(255, 255, 255, 0.85)',
+    color: loaderColor = theme.colors.primary_background || '#3578e5',
+    maskColor = theme.colors.white || 'rgba(255, 255, 255, 0.85)',
     rounded,
     loading = true,
     tip,

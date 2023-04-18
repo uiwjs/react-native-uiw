@@ -1,42 +1,53 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import {
   View,
   ViewProps,
   ViewStyle,
-  Text,
   TextStyle,
   StyleProp,
   Image,
   ImageStyle,
-  TextProps,
   TouchableOpacity,
   GestureResponderEvent,
   StyleSheet,
 } from 'react-native';
 import Flex from '../Flex';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
+import Text, { BaseTextProps } from '../Typography/Text';
 
 interface MaybeTextOrViewProps {
   children?: React.ReactNode;
 }
 
-function MaybeTextOrView({ children, ...otherProps }: MaybeTextOrViewProps & TextProps & ViewProps) {
+function MaybeTextOrView({ children, ...otherProps }: MaybeTextOrViewProps & BaseTextProps & ViewProps) {
   if (typeof children === 'string' || (children && (children as any).type.displayName === 'Text')) {
-    return <Text {...otherProps}>{children}</Text>;
+    return (
+      <Text color="text" {...otherProps}>
+        {children}
+      </Text>
+    );
   }
   return <View {...otherProps}>{children}</View>;
 }
 
-const styles = StyleSheet.create({
-  defalut: {
-    backgroundColor: '#fff',
-  },
-  touchWarpper: {
-    flex: 1,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+type CreStyle = {
+  color: string;
+};
+
+function createStyles({ color }: CreStyle) {
+  return StyleSheet.create({
+    defalut: {
+      backgroundColor: color,
+    },
+    touchWarpper: {
+      flex: 1,
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
+}
 
 interface ItemData {
   icon?: React.ReactNode;
@@ -72,6 +83,10 @@ export interface GridProps extends ViewProps {
 }
 
 export default function Grid(props: GridProps) {
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    color: theme.colors.background || '#fff',
+  });
   const {
     style,
     data = [],
@@ -152,8 +167,8 @@ export default function Grid(props: GridProps) {
               itemBorderStyle.borderBottomWidth = childs.length - 1 === rowidx ? 0 : hairLineWidth;
               itemBorderStyle.borderRightWidth =
                 rowitem.length - 1 === idx && rowitem.length === columns ? 0 : hairLineWidth;
-              itemBorderStyle.borderBottomColor = '#ddd';
-              itemBorderStyle.borderRightColor = '#ddd';
+              itemBorderStyle.borderBottomColor = theme.colors.gray100 || '#ddd';
+              itemBorderStyle.borderRightColor = theme.colors.gray100 || '#ddd';
             }
             return React.cloneElement(item as React.ReactElement, {
               key: idx,

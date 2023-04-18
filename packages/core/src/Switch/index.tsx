@@ -8,7 +8,10 @@ import {
   ViewStyle,
   LayoutChangeEvent,
   StyleSheet,
+  useColorScheme,
 } from 'react-native';
+import { Theme } from '../theme';
+import { useTheme } from '@shopify/restyle';
 
 export interface SwitchProps extends SwitchPropsDefault {
   trackStyle?: ViewStyle;
@@ -35,20 +38,25 @@ export interface SwitchState {
 }
 
 function Switch(props: SwitchProps) {
+  const theme = useTheme<Theme>();
+  const colorScheme = useColorScheme();
+  const styles = createStyles({
+    color: colorScheme === 'dark' ? theme.colors.mask : '#E6E6E6',
+  });
   const {
     style,
     size,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     checked = false,
-    color,
+    color = theme.colors.primary_background || '#3578e5',
     disabled,
-    thumbColor,
+    thumbColor = theme.colors.text_active || '#fff',
     trackStyle,
     thumbStyle,
     ...otherProps
   } = props;
-  const [height, setHeight] = useState(16);
-  const [translateXValue, setTranslateXValue] = useState(2);
+  const [height, setHeight] = useState(11);
+  const [translateXValue, setTranslateXValue] = useState(14);
 
   const animatedStart = (checked: boolean) => {
     const obj = {
@@ -196,59 +204,63 @@ function Switch(props: SwitchProps) {
 Switch.defaultProps = {
   checked: false,
   size: 'default',
-  thumbColor: '#fff',
-  color: '#4DD964',
   onValueChange: () => {},
 };
 
 export default Switch;
 
-const styles = StyleSheet.create({
-  warpper: {
-    position: 'relative',
-    borderRadius: 16,
-    backgroundColor: '#E6E6E6',
-  },
-  disabled: {
-    // backgroundColor: 'rgba(255, 255, 255, 0.6)',
-    backgroundColor: '#0001',
-    borderRadius: 16,
-    zIndex: 22,
-  },
-  bg: {
-    borderRadius: 16,
-    borderWidth: 2,
-    borderColor: '#E6E6E6',
-  },
-  position: {
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  grip: {
-    top: 2,
-    borderRadius: 16,
-  },
-  shadowDisable: {
-    shadowColor: '#000',
-    background: '#0001',
-    shadowOffset: {
-      width: 5,
-      height: 4,
+type CreStyle = {
+  color: string;
+};
+
+function createStyles({ color }: CreStyle) {
+  return StyleSheet.create({
+    warpper: {
+      position: 'relative',
+      borderRadius: 16,
+      backgroundColor: color,
     },
-    shadowOpacity: 0.3,
-    shadowRadius: 2,
-  },
-  shadow: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 4,
-      height: 4,
+    disabled: {
+      // backgroundColor: 'rgba(255, 255, 255, 0.6)',
+      backgroundColor: '#0001',
+      borderRadius: 16,
+      zIndex: 22,
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-  },
-});
+    bg: {
+      borderRadius: 16,
+      borderWidth: 2,
+      borderColor: color,
+    },
+    position: {
+      position: 'absolute',
+      backgroundColor: 'transparent',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    },
+    grip: {
+      top: 2,
+      borderRadius: 16,
+    },
+    shadowDisable: {
+      shadowColor: '#000',
+      background: '#0001',
+      shadowOffset: {
+        width: 5,
+        height: 4,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 2,
+    },
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 4,
+        height: 4,
+      },
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+    },
+  });
+}

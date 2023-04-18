@@ -1,23 +1,6 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  S,
-  Del,
-  U,
-  P,
-  Strong,
-  Br,
-  Div,
-  Hr,
-  Em,
-  RnText,
-} from '@uiw/react-native';
+import {View} from 'react-native';
+import {H1, H2, H3, H4, H5, H6, S, Del, U, P, Strong, Br, Div, Hr, Em, RnText, Text} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
 const {Header, Body, Card, Footer} = Layout;
@@ -33,7 +16,7 @@ export default class TypographyView extends React.Component<TypographyViewProps>
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="一段文本排版">
               <H1>这是标题一</H1>
               <H2>这是标题二</H2>
@@ -48,7 +31,7 @@ export default class TypographyView extends React.Component<TypographyViewProps>
               <Div>这是一段文本{'<Div>'}</Div>
               <Div>
                 <View>
-                  <Text>既可以是 View/Text 组件 也可以是纯字符串 </Text>
+                  <Text color="text">既可以是 View/Text 组件 也可以是纯字符串 </Text>
                 </View>
               </Div>
             </Card>
@@ -56,35 +39,26 @@ export default class TypographyView extends React.Component<TypographyViewProps>
               <Strong>这段文本加粗的{'<Strong>'}</Strong>
             </Card>
             <Card title="换行<Br />">
-              <Text>
+              <Text color="text">
                 文本开始
                 <Br />
                 换行结束
               </Text>
-              <Text>
-                上面两行文本使用 {'<Text>文本开始<Br />换行结束</Text>'}{' '}
-                组件换行
-              </Text>
+              <Text color="text">上面两行文本使用 {'<Text>文本开始<Br />换行结束</Text>'} 组件换行</Text>
             </Card>
             <Card title="斜体强调<Em />">
               <Em>斜体强调 fontStyle: 'italic' 中文失效</Em>
             </Card>
             <Card title="水平线<Hr />">
-              <Text>一段文本</Text>
+              <Text color="text">一段文本</Text>
               <Hr />
-              <Text>一段文本</Text>
+              <Text color="text">一段文本</Text>
             </Card>
             <Card title="可高亮文字<RnText />">
               <RnText type="header" label="react-native-uiw" />
               <RnText type="title" label="react-native-uiw" />
               <RnText type="subLabel" label="react-native-uiw" />
-              <RnText
-                type="header"
-                uppercase
-                label="react-native-uiw"
-                highlightText="native"
-                highlightTextStyle={{fontSize: 24, color: 'red'}}
-              />
+              <RnText type="header" uppercase label="react-native-uiw" highlightText="native" highlightTextStyle={{fontSize: 24, color: 'red'}} />
               <RnText
                 style={{fontSize: 14}}
                 type="label"

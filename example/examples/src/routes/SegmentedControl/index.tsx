@@ -15,73 +15,31 @@ export default class SegmentedControlView extends React.Component<SegmentedContr
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title={'设置间距 disabled?: boolean;'}>
-              <SegmentedControl
-                inline
-                gutter={10}
-                selectedIndex={2}
-                value={['申请', '审批', '提交', '申请', '审批', '提交']}
-              />
+              <SegmentedControl inline gutter={10} selectedIndex={2} value={['申请', '审批', '提交', '申请', '审批', '提交']} />
             </Card>
             <Card title="默认实例">
-              <SegmentedControl
-                selectedIndex={1}
-                value={['申请', '审批', '提交']}
-              />
+              <SegmentedControl selectedIndex={1} value={['申请', '审批', '提交']} />
             </Card>
             <Card title={'设置颜色 color?: string'}>
-              <SegmentedControl
-                color="#dc3545"
-                selectedIndex={2}
-                value={['申请', '审批', '提交']}
-              />
+              <SegmentedControl color="#dc3545" selectedIndex={2} value={['申请', '审批', '提交']} />
             </Card>
-            <Card
-              title={
-                '设置自定义文本颜色 textColor?: {actived?: string, unactived?: string}'
-              }>
-              <SegmentedControl
-                textColor={{actived: '#333', unactived: '#ccc'}}
-                color="#999"
-                selectedIndex={2}
-                value={['申请', '审批', '提交']}
-              />
+            <Card title={'设置自定义文本颜色 textColor?: {actived?: string, unactived?: string}'}>
+              <SegmentedControl textColor={{actived: '#333', unactived: '#ccc'}} color="#999" selectedIndex={2} value={['申请', '审批', '提交']} />
             </Card>
             <Card title={'设置间距 gutter?: number'}>
-              <SegmentedControl
-                gutter={10}
-                selectedIndex={2}
-                value={['申请', '审批', '提交']}
-              />
+              <SegmentedControl gutter={10} selectedIndex={2} value={['申请', '审批', '提交']} />
             </Card>
             <Card title={'设置间距 disabled?: boolean;'}>
-              <SegmentedControl
-                gutter={10}
-                selectedIndex={2}
-                value={['申请', '审批', '提交']}
-              />
+              <SegmentedControl gutter={10} selectedIndex={2} value={['申请', '审批', '提交']} />
             </Card>
             <Card title={"设置尺寸 size?: 'small' | 'default' | 'large';"}>
-              <SegmentedControl
-                size="large"
-                gutter={10}
-                selectedIndex={1}
-                value={['申请', '审批', '提交']}
-              />
+              <SegmentedControl size="large" gutter={10} selectedIndex={1} value={['申请', '审批', '提交']} />
               <Spacing />
-              <SegmentedControl
-                size="default"
-                selectedIndex={2}
-                value={['申请', '审批', '提交']}
-              />
+              <SegmentedControl size="default" selectedIndex={2} value={['申请', '审批', '提交']} />
               <Spacing />
-              <SegmentedControl
-                size="small"
-                gutter={10}
-                selectedIndex={2}
-                value={['申请', '审批', '提交']}
-              />
+              <SegmentedControl size="small" gutter={10} selectedIndex={2} value={['申请', '审批', '提交']} />
               <Spacing />
               <SegmentedControl
                 gutter={10}

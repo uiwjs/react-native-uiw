@@ -102,6 +102,14 @@ export const routeData = [
         component: lazy(() => import('../pages/components/about')),
       },
       {
+        path: '/components/changelog',
+        component: lazy(() => import('../pages/components/changelog')),
+      },
+      {
+        path: '/components/theme',
+        component: lazy(() => import('../pages/components/theme')),
+      },
+      {
         path: '/components/divider',
         component: lazy(() => import('../pages/components/divider')),
       },
@@ -290,6 +298,14 @@ export const routeData = [
         component: lazy(() => import('../pages/components/cardcollapse')),
       },
       {
+        path: '/components/accordion',
+        component: lazy(() => import('../pages/components/accordion')),
+      },
+      {
+        path: '/components/verificationCode',
+        component: lazy(() => import('../pages/components/verificationCode')),
+      },
+      {
         path: '/components/actionSheet',
         component: lazy(() => import('../pages/components/actionSheet')),
       },
@@ -310,6 +326,10 @@ export const routeData = [
         component: lazy(() => import('../pages/components/dragdrawer')),
       },
       {
+        path: '/components/tree',
+        component: lazy(() => import('../pages/components/tree')),
+      },
+      {
         path: '/components/treeSelect',
         component: lazy(() => import('../pages/components/treeSelect')),
       },
@@ -324,6 +344,10 @@ export const routeData = [
       {
         path: '/components/form',
         component: lazy(() => import('../pages/components/form')),
+      },
+      {
+        path: '/components/datepicker',
+        component: lazy(() => import('../pages/components/datepicker')),
       },
       {
         path: '/docs/changelog',

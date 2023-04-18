@@ -1,12 +1,7 @@
 import React from 'react';
 import { View, ViewProps, Image, ImageProps, StyleSheet, ActivityIndicator, Text } from 'react-native';
-
-const styles = StyleSheet.create({
-  default: {
-    backgroundColor: '#e4e4e4',
-    overflow: 'hidden',
-  },
-});
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
 
 const defaultImage = require('./assets/user.png');
 
@@ -34,6 +29,11 @@ export interface AvatarProps extends ViewProps {
 }
 
 const Avatar: React.FC<AvatarProps> = (props) => {
+  const theme = useTheme<Theme>();
+  const styles = createStyles({
+    color: theme.colors.gray100 || '#e4e4e4',
+  });
+
   const {
     style,
     src = defaultImage,
@@ -66,7 +66,7 @@ const Avatar: React.FC<AvatarProps> = (props) => {
           },
         ]}
       >
-        {loading && <ActivityIndicator size="small" color="gray" />}
+        {loading && <ActivityIndicator size="small" color={theme.colors.gray300 || 'gray'} />}
       </View>
 
       <Image
@@ -79,3 +79,16 @@ const Avatar: React.FC<AvatarProps> = (props) => {
 };
 
 export default Avatar;
+
+type CreStyle = {
+  color: string;
+};
+
+function createStyles({ color }: CreStyle) {
+  return StyleSheet.create({
+    default: {
+      backgroundColor: color,
+      overflow: 'hidden',
+    },
+  });
+}
