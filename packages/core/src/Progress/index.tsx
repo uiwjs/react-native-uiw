@@ -35,8 +35,8 @@ const Progress: React.FC<ProgressProps> = ({
   showLabel = true,
   label,
   showUnit = true,
-  top = "50%",
-  left = "11%",
+  top = '50%',
+  left = '11%',
 }) => {
   const progressValue = useRef(new Animated.Value(0)).current;
 
@@ -69,49 +69,32 @@ const Progress: React.FC<ProgressProps> = ({
           position: 'absolute',
           top: top,
           left: left,
-          transform: [
-            { translateX: 0 },
-            { translateY: 0 },
-          ],
+          transform: [{ translateX: 0 }, { translateY: 0 }],
           fontSize: fontSize,
           fontWeight: 'bold',
           color: typeof color === 'string' ? color : color[1],
-        }}>
+        }}
+      >
         {label ?? `${value}${showUnit ? '%' : ''}`}
-      </Text >
+      </Text>
     );
 
     return (
       <View>
-        <Svg width={width} height={width / 3} >
+        <Svg width={width} height={width / 3}>
           <Defs>
-            <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0" >
+            <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
               <Stop offset="0" stopColor={typeof color === 'string' ? color : color[0]} stopOpacity="1" />
               <Stop offset="1" stopColor={typeof color === 'string' ? color : color[1]} stopOpacity="1" />
             </LinearGradient>
           </Defs>
           <G origin={`${width / 2}, ${width / 2}`}>
-            <Rect
-              x={0}
-              y={0}
-              width={width}
-              height={strokeWidth}
-              rx={strokeWidth / 2}
-              fill={bgColor}
-            />
-            <AnimatedRect
-              x={0}
-              y={0}
-              width={progress}
-              height={strokeWidth}
-              rx={strokeWidth / 2}
-              fill="url(#grad)"
-            >
-            </AnimatedRect>
+            <Rect x={0} y={0} width={width} height={strokeWidth} rx={strokeWidth / 2} fill={bgColor} />
+            <AnimatedRect x={0} y={0} width={progress} height={strokeWidth} rx={strokeWidth / 2} fill="url(#grad)" />
           </G>
         </Svg>
         {progressLabel}
-      </View >
+      </View>
     );
   } else if (type === 'circle') {
     const radius = (width - strokeWidth) / 2;
@@ -135,14 +118,14 @@ const Progress: React.FC<ProgressProps> = ({
           fontSize: fontSize,
           fontWeight: 'bold',
           color: typeof color === 'string' ? color : color[1],
-        }
-        }>
+        }}
+      >
         {label ?? `${value}${showUnit ? '%' : ''}`}
-      </Text >
+      </Text>
     );
 
     return (
-      <View >
+      <View>
         <Svg width={width} height={width}>
           <Defs>
             <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
@@ -151,14 +134,7 @@ const Progress: React.FC<ProgressProps> = ({
             </LinearGradient>
           </Defs>
           <G rotation="-90" origin={`${width / 2}, ${width / 2}`}>
-            <Circle
-              cx={width / 2}
-              cy={width / 2}
-              r={radius}
-              stroke={bgColor}
-              strokeWidth={strokeWidth}
-              fill="none"
-            />
+            <Circle cx={width / 2} cy={width / 2} r={radius} stroke={bgColor} strokeWidth={strokeWidth} fill="none" />
             <AnimatedCircle
               cx={width / 2}
               cy={width / 2}
@@ -175,6 +151,8 @@ const Progress: React.FC<ProgressProps> = ({
         {progressLabel}
       </View>
     );
+  } else {
+    return null;
   }
 };
 
