@@ -8,6 +8,7 @@ import Slider from '../Slider';
 import SearchBar from '../SearchBar';
 import Stepper from '../Stepper';
 import TreeSelect from '../TreeSelect';
+import VerificationCode from '../VerificationCode';
 import DatePeriodInput from '../DatePicker/date-period-input';
 import Input from './comps/input';
 import Rating from './comps/rate';
@@ -63,6 +64,7 @@ const Form = (baseProps: FormProps) => {
       picker: <Picker />,
       datePicker: <DatePicker />,
       datePeriodInput: <DatePeriodInput />,
+      verificationCode: <VerificationCode outerStyle={{ backgroundColor: '#FFF' }} />,
     },
     changeValidate: changeValidate,
   };
