@@ -21,6 +21,9 @@
     "src",
     "README.md"
   ],
+  "publishConfig":{
+    "access": "public"
+  },
   "dependencies": {
     "@babel/runtime": "~7.20.7",
     "@react-native-camera-roll/camera-roll": "5.3.1",
