@@ -26,7 +26,6 @@ const FormDatePicker = ({
   format = 'YYYY-MM-DD HH:mm:ss',
   ...attr
 }: RnDatePickerProps) => {
-  console.log('format', format);
   const [visible, setVisible] = useState(false);
   const theme = useTheme<Theme>();
   const style = createStyles({
