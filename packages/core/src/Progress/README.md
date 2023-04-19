@@ -24,6 +24,7 @@ function Demo() {
 }
 export default Demo
 ```
+<img src="https://s1.ax1x.com/2023/04/19/p9FcJvd.png" style="width:300px;height:620px"/>
 
 ### 自定义颜色
 
@@ -42,6 +43,8 @@ function Demo() {
 }
 export default Demo
 ```
+<img src="https://s1.ax1x.com/2023/04/19/p9Fc88e.png" style="width:300px;height:620px"/>
+
 ### 自定义百分比,展示进度
 
 <!--DemoStart-->
@@ -60,6 +63,7 @@ function Demo() {
 }
 export default Demo
 ```
+<img src="https://s1.ax1x.com/2023/04/19/p9FcGgH.png" style="width:300px;height:620px"/>
 
 ### Props
 
