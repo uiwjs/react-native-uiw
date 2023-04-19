@@ -14,12 +14,11 @@ Progress 进度条
 import React from 'react';
 import {  SafeAreaView } from 'react-native';
 import { Progress } from '@uiw/react-native';
-import { motorcycle } from './svg';
 
 function Demo() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-     <Progress type='circle' />
+     <Progress type='circle' value={50}/>
     </SafeAreaView>
   )
 }
@@ -37,7 +36,7 @@ import { Progress } from '@uiw/react-native';
 function Demo() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Progress type='circle' color={['#FFD080', 'red']} />
+      <Progress type='circle' color={['#FFD080', 'red']} value={50} />
     </SafeAreaView>
   )
 }

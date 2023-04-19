@@ -1,22 +1,22 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { Button, Spacing, Icon, Flex } from '@uiw/react-native';
-import { ComProps } from '../../routes';
-import Layout, { Container } from '../../Layout';
-const { Header, Body, Card, Footer } = Layout;
+import {View, Text} from 'react-native';
+import {Button, Spacing, Icon, Flex} from '@uiw/react-native';
+import {ComProps} from '../../routes';
+import Layout, {Container} from '../../Layout';
+const {Header, Body, Card, Footer} = Layout;
 
-export interface ButtonViewProps extends ComProps { }
+export interface ButtonViewProps extends ComProps {}
 
 export default class ButtonView extends React.Component<ButtonViewProps> {
   render() {
-    const { route } = this.props;
+    const {route} = this.props;
     const description = route.params.description;
     const title = route.params.title;
     return (
       <Container>
         <Layout>
           <Header title={title} description={description} />
-          <Body style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础实例">
               <Flex>
                 <Button type="primary">蓝色按钮</Button>
@@ -104,23 +104,23 @@ export default class ButtonView extends React.Component<ButtonViewProps> {
               <Button color="#a63d2c">自定义颜色{'color="#a63d2c"'}</Button>
             </Card>
             <Card title="文本样式">
-              <Button textStyle={{ fontSize: 20 }} color="yellow">
+              <Button textStyle={{fontSize: 20}} color="yellow">
                 字号调整{'textStyle = {{fontSize:20}}'}
               </Button>
               <Spacing />
-              <Button textStyle={{ color: 'blue' }}>文本颜色{'textStyle={{color:"blue"}}'}</Button>
+              <Button textStyle={{color: 'blue'}}>文本颜色{'textStyle={{color:"blue"}}'}</Button>
               <Spacing />
-              <Button color="#a63d2c" textStyle={{ letterSpacing: 2 }}>
+              <Button color="#a63d2c" textStyle={{letterSpacing: 2}}>
                 文本间距{'textStyle={{letterSpacing:3}}'}
               </Button>
             </Card>
             <Card title="设置边框">
-              <Button bordered={false} color="#dc3545">
-                不显示边框{'bordered={false}'}
+              <Button bordered={true} color="#ffc107">
+                显示边框{'bordered={false}'}
               </Button>
               <Spacing />
-              <Button bordered={true} color="#28a745">
-                不显示边框{'bordered={false}'}
+              <Button bordered={true} color="#1EABCD">
+                显示边框{'bordered={false}'}
               </Button>
             </Card>
             <Card title="显示图标">

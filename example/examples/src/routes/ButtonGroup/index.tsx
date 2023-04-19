@@ -66,7 +66,7 @@ export default class ButtonGroupView extends Component<ButtonGroupViewProps> {
                 <Button>边框</Button>
               </ButtonGroup>
               <Spacing />
-              <ButtonGroup bordered={false} color="#ffc107">
+              <ButtonGroup bordered={true} color="#ffc107">
                 <Button>警告</Button>
                 <Button>警告</Button>
                 <Button>警告</Button>
