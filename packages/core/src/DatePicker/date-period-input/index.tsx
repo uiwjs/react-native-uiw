@@ -88,7 +88,7 @@ const DatePeriodInput: FC<DatePeriodInputProps> = ({
             <Icon name="date" size={16} color={theme.colors.primary_text || '#ccc'} />
             <Text
               color={disabled ? 'disabled' : 'text'}
-              style={{ ...theme.textVariants.p1, marginLeft: theme.spacing.x2 || 8 }}
+              style={[p1, { marginLeft: 8 }]} //...theme.textVariants.p1
             >
               {dates[0] ? dayjs(dates[0]).format(format) : placeholder[0]}
             </Text>
@@ -103,8 +103,8 @@ const DatePeriodInput: FC<DatePeriodInputProps> = ({
             </AnimatedTouchableIcon>
           )}
         </TouchableOpacity>
-        <View style={{ marginHorizontal: theme.spacing.x2 || 8 }}>
-          <Text color="text" style={{ ...(theme.textVariants.p1 || p1) }}>
+        <View style={{ marginHorizontal: 8 }}>
+          <Text color="text" style={p1}>
             ~
           </Text>
         </View>
@@ -126,10 +126,7 @@ const DatePeriodInput: FC<DatePeriodInputProps> = ({
         >
           <Flex style={{ alignItems: 'center' }}>
             <Icon size={16} name="date" color={theme.colors.primary_text || '#ccc'} />
-            <Text
-              color={disabled ? 'disabled' : 'text'}
-              style={{ ...(theme.textVariants.p1 || p1), marginLeft: theme.spacing.x2 || 8 }}
-            >
+            <Text color={disabled ? 'disabled' : 'text'} style={[p1, { marginLeft: 8 }]}>
               {dates[1] ? dayjs(dates[1]).format(format) : placeholder[1]}
             </Text>
           </Flex>
