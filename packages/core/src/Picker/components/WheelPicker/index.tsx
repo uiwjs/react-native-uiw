@@ -78,7 +78,7 @@ export default function WheelPicker({
             transform: [{ translateY: -itemHeight / 2 }],
             height: itemHeight,
             backgroundColor: indicatorBackgroundColor ?? theme.colors.gray100,
-            borderRadius: theme.borderRadii.x2 || 2,
+            borderRadius: 2,
           },
         ]}
       />
