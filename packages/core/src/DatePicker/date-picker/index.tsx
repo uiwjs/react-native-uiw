@@ -67,7 +67,7 @@ const DatePicker = forwardRef<DatePickerRef, DatePickerProps>((props, ref) => {
     return (
       <Modal visible={visible} onClosed={handleClose}>
         <SafeAreaView>
-          <View style={{ padding: theme.spacing.x2 }}>
+          <View style={{ padding: 8 }}>
             <Flex justify="between">
               <Flex.Item>
                 <TouchableOpacity activeOpacity={0.5} onPress={handleClose}>

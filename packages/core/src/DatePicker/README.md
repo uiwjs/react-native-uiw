@@ -6,10 +6,11 @@ DatePicker
 
 ### 基础示例
  
-```jsx
-import { useState } from 'react'
+```jsx mdx:preview&background=#bebebe29
+import { Button } from '@uiw/react-native';
+import React,{ useState } from 'react';
 import { View,Text } from 'react-native';
-import { DatePicker } from '@uiw/react-native';
+import  DatePicker  from '@uiw/react-native/lib/DatePicker/date-picker';
 function Demo() {
   const [visible,setVisible] = useState(false)
   const [formatDate,setFormatDate] = useState('')
@@ -62,10 +63,10 @@ DatePeriodInput
 
 ### 基础示例
  
-```jsx
-import { useState } from 'react'
-import { View,Text } from 'react-native';
-import { DatePeriodInput } from '@uiw/react-native';
+```jsx mdx:preview&background=#bebebe29
+import React,{ useState }  from 'react';
+import { View} from 'react-native';
+import  DatePeriodInput  from '@uiw/react-native/lib/DatePicker/date-period-input';
 function Demo() {
   const [value,setValue] = useState(undefined)
   return (
