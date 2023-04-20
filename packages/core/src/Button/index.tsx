@@ -84,8 +84,13 @@ export default function ButtonView<T>(props: ButtonProps) {
   //   borderWidth = 1;
   // }
   if (disabled) {
-    textColor = color(theme.colors.disabled || '#CCCCCC').alpha(0.1).rgb().string();
-    backgroundColor = color(theme.colors.disabled || '#CCCCCC').rgb().string();
+    textColor = color(theme.colors.disabled || '#CCCCCC')
+      .alpha(0.1)
+      .rgb()
+      .string();
+    backgroundColor = color(theme.colors.disabled || '#CCCCCC')
+      .rgb()
+      .string();
   }
   if (buttonColor) {
     backgroundColor = color(buttonColor).rgb().string();
@@ -94,22 +99,29 @@ export default function ButtonView<T>(props: ButtonProps) {
     borderRadius = rounded;
   }
   if (bordered) {
-    borderColor = color(theme.colors.black || '#000000').alpha(0.1).rgb().string();
+    borderColor = color(theme.colors.gray200 || backgroundColor)
+      .alpha(1)
+      .rgb()
+      .string();
     borderWidth = 1;
   }
   // if (!bordered || buttonColor) {
   //   borderWidth = 0;
   // }
   const buttonStyle = {
-    backgroundColor: backgroundColor || "#3578e5",
+    backgroundColor: backgroundColor || '#3578e5',
     borderColor,
     borderWidth,
     borderRadius,
   };
-  if ((type || backgroundColor || buttonColor || buttonStyle.backgroundColor) && type !== "light") {
-    textColor = color(theme.colors.white || '#FFFFFF').rgb().string()
+  if ((type || backgroundColor || buttonColor || buttonStyle.backgroundColor) && type !== 'light') {
+    textColor = color(theme.colors.white || '#FFFFFF')
+      .rgb()
+      .string();
   } else {
-    textColor = color(theme.colors.black || '#000000').rgb().string();
+    textColor = color(theme.colors.black || '#000000')
+      .rgb()
+      .string();
   }
   const textStyle = { color: textColor };
   let sizeStyle = {};

@@ -14,17 +14,17 @@ Progress 进度条
 import React from 'react';
 import {  SafeAreaView } from 'react-native';
 import { Progress } from '@uiw/react-native';
-import { motorcycle } from './svg';
 
 function Demo() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-     <Progress type='circle' />
+     <Progress type='circle' value={50}/>
     </SafeAreaView>
   )
 }
 export default Demo
 ```
+<img src="https://s1.ax1x.com/2023/04/19/p9FcJvd.png" style="width:300px;height:620px"/>
 
 ### 自定义颜色
 
@@ -37,12 +37,14 @@ import { Progress } from '@uiw/react-native';
 function Demo() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Progress type='circle' color={['#FFD080', 'red']} />
+      <Progress type='circle' color={['#FFD080', 'red']} value={50} />
     </SafeAreaView>
   )
 }
 export default Demo
 ```
+<img src="https://s1.ax1x.com/2023/04/19/p9Fc88e.png" style="width:300px;height:620px"/>
+
 ### 自定义百分比,展示进度
 
 <!--DemoStart-->
@@ -61,6 +63,7 @@ function Demo() {
 }
 export default Demo
 ```
+<img src="https://s1.ax1x.com/2023/04/19/p9FcGgH.png" style="width:300px;height:620px"/>
 
 ### Props
 

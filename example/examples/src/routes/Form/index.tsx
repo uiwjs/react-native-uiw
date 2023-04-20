@@ -142,11 +142,11 @@ const FormDemo = () => {
       type: 'datePeriodInput',
       field: 'datePeriodInput',
       name: '时间区间选择器',
-      attr: {
-        placeholder: ['请选择1', '请选择1'],
-        mode: 'date',
-        format: 'YYYY-MM-DD',
-      },
+    },
+    {
+      type: 'verificationCode',
+      field: 'verificationCode',
+      name: '验证码倒计时',
     },
     {
       type: 'treeSelect',
