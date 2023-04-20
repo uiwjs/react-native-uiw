@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {Form, Button, Toast, Slider, Flex, Text} from '@uiw/react-native';
+import {Form, Button, Toast, Slider, Flex, Text, Spacing} from '@uiw/react-native';
 import {View} from 'react-native';
 import Layout, {Container} from '../../Layout';
 const {Body, Footer, Card} = Layout;
@@ -21,10 +21,98 @@ const FormDemo = () => {
     {
       type: 'input',
       field: 'name',
+      name: '姓名',
+      attr: {},
+      required: true,
+      validate: (val: any) => (!val ? `请输入name` : ''),
+    },
+    {
+      type: 'input',
+      field: 'phone',
+      name: '电话',
+      attr: {},
+      required: true,
+      validate: (val: any) => (!val ? `请输入电话` : ''),
+    },
+    {
+      type: 'radio',
+      field: 'sex',
+      name: '单选框',
+      options: [
+        {label: '四川菜', value: 1},
+        {label: '湖北菜', value: 2},
+        {label: '西北菜', value: 3},
+        {label: '新疆菜', value: 4},
+        {label: '东北菜', value: 5},
+        {label: '四川菜', value: 6},
+        {label: '湖北菜', value: 7},
+        {label: '西北菜', value: 8},
+        {label: '新疆菜', value: 9},
+        {label: '东北菜', value: 10},
+      ],
+    },
+  ];
+
+  const schemaCard = [
+    {
+      type: 'input',
+      field: 'name',
       name: '输入框',
       attr: {},
       required: true,
       validate: (val: any) => (!val ? `请输入name` : ''),
+    },
+    {
+      type: 'radio',
+      field: 'sex',
+      name: '单选框',
+      options: [
+        {label: '四川菜', value: 1},
+        {label: '湖北菜', value: 2},
+        {label: '西北菜', value: 3},
+        {label: '新疆菜', value: 4},
+        {label: '东北菜', value: 5},
+        {label: '四川菜', value: 6},
+        {label: '湖北菜', value: 7},
+        {label: '西北菜', value: 8},
+        {label: '新疆菜', value: 9},
+        {label: '东北菜', value: 10},
+      ],
+    },
+    {
+      type: 'checkBox',
+      field: 'fruit',
+      name: '多选框',
+      options: [
+        {label: '香蕉', value: 1},
+        {label: '西瓜', value: 2},
+        {label: '猕猴桃', value: 3},
+        {label: '新疆菜', value: 4},
+        {label: '东北菜', value: 5},
+        {label: '四川菜', value: 6},
+        {label: '湖北菜', value: 7},
+        {label: '西北菜', value: 8},
+        {label: '新疆菜', value: 9},
+        {label: '东北菜', value: 10},
+      ],
+    },
+  ];
+  const schemaType = [
+    {
+      type: 'input',
+      field: 'name',
+      name: '姓名',
+      attr: {},
+      required: true,
+      validate: (val: any) => (!val ? `请输入name` : ''),
+    },
+    {
+      type: 'input',
+      field: 'phone',
+      name: '电话',
+      attr: {},
+      required: true,
+      validate: (val: any) => (!val ? `请输入电话` : ''),
     },
     {
       type: 'radio',
@@ -232,7 +320,7 @@ const FormDemo = () => {
             <Form
               form={form}
               schema={schema}
-              initialValues={{name: '王滴滴', rate: 4, datePicker: new Date(), picker: ['2']}}
+              initialValues={{name: '王滴滴'}}
               watch={{
                 name: (value: unknown) => console.log('value', value),
               }}
@@ -241,9 +329,6 @@ const FormDemo = () => {
               }}
               changeValidate={true}
             />
-            <View>
-              <Text color="primary_text">{JSON.stringify(state)}</Text>
-            </View>
             <Button
               type="primary"
               onPress={() => {
@@ -254,12 +339,70 @@ const FormDemo = () => {
               }}>
               确定
             </Button>
+          </Card>
+          <Card title="卡片模式">
+            <Form
+              form={form}
+              schema={schemaCard}
+              mode="card"
+              initialValues={{name: '王滴滴', rate: 4}}
+              watch={{
+                name: (value: unknown) => console.log('value', value),
+              }}
+              customComponentList={{
+                render: <Slider />,
+              }}
+              changeValidate={true}
+            />
+            <Spacing />
+            <Button
+              type="primary"
+              onPress={() => {
+                form
+                  .validateFields()
+                  .then((values: any) => setStore(values))
+                  .catch((errors: any) => Toast.warning(JSON.stringify(errors)));
+              }}>
+              确定
+            </Button>
+          </Card>
+          <Card title="表单项类型">
+            <Form
+              form={form}
+              schema={schemaType}
+              initialValues={{name: '王滴滴', rate: 4}}
+              watch={{
+                name: (value: unknown) => console.log('value', value),
+              }}
+              customComponentList={{
+                render: <Slider />,
+              }}
+              changeValidate={true}
+            />
+            <Spacing />
+            <View>
+              <Text color="primary_text">{JSON.stringify(state)}</Text>
+            </View>
+            <Spacing />
+            <Button
+              type="primary"
+              onPress={() => {
+                form
+                  .validateFields()
+                  .then((values: any) => setStore(values))
+                  .catch((errors: any) => Toast.warning(JSON.stringify(errors)));
+              }}>
+              确定
+            </Button>
+            <Spacing />
             <Button type="primary" onPress={() => form.setFieldValue('age', '456')}>
               设置
             </Button>
+            <Spacing />
             <Button type="primary" onPress={() => form.resetFieldValue()}>
               重置
             </Button>
+            <Spacing />
             <Button
               type="primary"
               onPress={() => {
