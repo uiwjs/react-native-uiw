@@ -3,6 +3,8 @@ import FormItems from './formItems';
 import { Provider } from './hooks/context';
 import { FormProps } from './types';
 import { cloneDeep } from './utils';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
 import TextArea from '../TextArea';
 import Slider from '../Slider';
 import SearchBar from '../SearchBar';
@@ -31,7 +33,7 @@ const Form = (baseProps: FormProps) => {
     changeValidate = false,
     children,
   } = baseProps;
-
+  const theme = useTheme<Theme>();
   const isMount = useRef<boolean>();
 
   const innerMethods = form.getInnerMethods(true);
@@ -65,7 +67,7 @@ const Form = (baseProps: FormProps) => {
       picker: <Picker />,
       datePicker: <DatePicker />,
       datePeriodInput: <DatePeriodInput />,
-      verificationCode: <VerificationCode outerStyle={{ backgroundColor: '#FFF' }} />,
+      verificationCode: <VerificationCode outerStyle={{ backgroundColor: theme.colors.mask }} />,
       tree: <Tree />,
     },
     changeValidate: changeValidate,

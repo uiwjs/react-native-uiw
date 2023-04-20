@@ -108,8 +108,8 @@ function createStyles({ backgroundColor = '#fff', shadowColor = '#999', selectBo
   return StyleSheet.create({
     container: {
       backgroundColor: backgroundColor,
-      padding: 15,
-      margin: 15,
+      padding: 10,
+      // margin: 10,
       marginBottom: 0,
       ...Platform.select({
         android: {
