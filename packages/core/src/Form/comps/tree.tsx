@@ -1,13 +1,17 @@
+import Tree from '../../Tree';
+import { KeyType } from '../types';
 import React, { useState } from 'react';
-import { Pressable, SafeAreaView, View, StyleSheet, ViewStyle } from 'react-native';
-import DatePicker, { DatePickerProps } from '../../DatePicker/date-picker';
+import { Pressable, SafeAreaView, View, StyleSheet, ViewStyle, ScrollView } from 'react-native';
 import Ellipsis from '../../Ellipsis';
+import Modal from '../../Modal';
 import Icon from '../../Icon';
 import { Theme } from '../../theme';
 import { useTheme } from '@shopify/restyle';
-import dayjs from 'dayjs';
 
-export interface RnDatePickerProps extends DatePickerProps {
+interface FormTreeProps {
+  value?: any;
+  onChange?: (value: KeyType) => void;
+  options?: Array<{ label: string; value: KeyType }>;
   disabled?: boolean;
   placeholder?: string;
   contentStyle?: ViewStyle;
@@ -15,17 +19,29 @@ export interface RnDatePickerProps extends DatePickerProps {
   showClear?: boolean;
 }
 
-const FormDatePicker = ({
+interface entity {
+  value: KeyType;
+  label: string;
+  children?: children[];
+}
+interface children {
+  value: KeyType;
+  label: string;
+  children?: children[];
+}
+
+const FormTree = ({
+  value,
+  onChange,
+  options = [],
+  // ...others,
   disabled,
-  placeholder,
+  placeholder = '请选择',
   contentStyle,
   extra,
   showClear,
-  value,
-  onChange,
-  format = 'YYYY-MM-DD HH:mm:ss',
   ...attr
-}: RnDatePickerProps) => {
+}: FormTreeProps) => {
   const [visible, setVisible] = useState(false);
   const theme = useTheme<Theme>();
   const style = createStyles({
@@ -34,20 +50,38 @@ const FormDatePicker = ({
     title: theme.colors.primary_text,
   });
 
+  function treeToArray(tree: any) {
+    var res: any = [];
+    for (const item of tree) {
+      const { children, ...i } = item;
+      if (children && children.length) {
+        res = res.concat(treeToArray(children));
+      }
+      res.push(i);
+    }
+    return res;
+  }
+  let arrTools = treeToArray(options).filter((filItem: any) =>
+    value?.some((somItem: any) => Object.is(filItem.value, somItem)),
+  );
+
+  const labelVal = arrTools.map((a: any) => {
+    return a.label;
+  });
+
   const extraContent = React.useMemo(() => {
     if (React.isValidElement(extra)) {
       return extra;
     }
     if (value && showClear) {
       return (
-        <Pressable onPress={() => onChange?.(undefined)} style={{ paddingRight: 3 }} disabled={disabled}>
+        <Pressable onPress={() => onChange} style={{ paddingRight: 3 }} disabled={disabled}>
           <Icon name="circle-close-o" size={18} color={theme.colors.primary_text || '#ccc'} />
         </Pressable>
       );
     }
     return <Icon name="right" size={18} color={theme.colors.text || '#ccc'} />;
   }, [extra, value, showClear]);
-
   return (
     <SafeAreaView>
       <Pressable
@@ -58,28 +92,27 @@ const FormDatePicker = ({
       >
         <View style={[disabled ? style.disabled : style.content, contentStyle]}>
           <Ellipsis style={[style.contentTitle]} maxLen={30}>
-            {(value && dayjs(value).format(format)) || placeholder}
+            {(labelVal.length > 0 && labelVal) || placeholder}
           </Ellipsis>
           {extraContent}
         </View>
       </Pressable>
-      <DatePicker
-        title="请选择日期"
-        mode="datetime"
-        visible={visible}
-        value={value}
-        onClosed={() => setVisible(false)}
-        onChange={(value) => {
-          onChange?.(value);
-        }}
-        format={format}
-        {...attr}
-      />
+      <Modal visible={visible} placement="bottom" onClosed={() => setVisible(false)}>
+        <ScrollView style={{ height: 400 }}>
+          <Tree
+            treeData={options}
+            defaultExpandAll
+            onCheck={(value: any) => {
+              onChange?.(value);
+            }}
+          />
+        </ScrollView>
+      </Modal>
     </SafeAreaView>
   );
 };
 
-export default FormDatePicker;
+export default FormTree;
 
 function createStyles({ backgroundColor = '#fff', disabled = '#f5f5f5', title = '#000' }) {
   return StyleSheet.create({

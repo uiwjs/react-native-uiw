@@ -66,12 +66,24 @@ export default class TreeDemo extends React.Component<TreeViewProps> {
                 <Button onPress={() => this.setState({visible: true})}>打开</Button>
                 <Modal visible={this.state.visible} placement="bottom" onClosed={() => this.setState({visible: false})}>
                   <ScrollView style={{height: 500}}>
-                    <Tree treeData={option} defaultExpandAll />
+                    <Tree
+                      treeData={option}
+                      defaultExpandAll
+                      onCheck={(value: any) => {
+                        console.log('onCheck', value);
+                      }}
+                    />
                   </ScrollView>
                 </Modal>
               </Card>
               <Card title="树形选择">
-                <Tree treeData={option} defaultExpandAll />
+                <Tree
+                  treeData={option}
+                  defaultExpandAll
+                  onCheck={(value: any) => {
+                    console.log('onCheck', value);
+                  }}
+                />
               </Card>
             </Body>
           </React.Fragment>

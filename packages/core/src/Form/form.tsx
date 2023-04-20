@@ -19,6 +19,7 @@ import Switch from './comps/switch';
 import CheckBox from './comps/checkBox';
 import Picker from './comps/picker';
 import DatePicker from './comps/datePicker';
+import Tree from './comps/tree';
 
 const Form = (baseProps: FormProps) => {
   const {
@@ -67,6 +68,7 @@ const Form = (baseProps: FormProps) => {
       datePicker: <DatePicker />,
       datePeriodInput: <DatePeriodInput />,
       verificationCode: <VerificationCode outerStyle={{ backgroundColor: theme.colors.mask }} />,
+      tree: <Tree />,
     },
     changeValidate: changeValidate,
   };

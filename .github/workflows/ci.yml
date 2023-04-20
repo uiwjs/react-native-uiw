@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          registry-url: 'https://registry.npmjs.org'
 
       - run: yarn install
       - run: npm run build
@@ -69,7 +70,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
 
-       - name: 📦 @uiw/react-native-image-picker publish to NPM
+      - name: 📦 @uiw/react-native-image-picker publish to NPM
         run: npm publish
         working-directory: packages/react-native-image-picker
         continue-on-error: true
