@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {H1, H2, H3, H4, H5, H6, S, Del, U, P, Strong, Br, Div, Hr, Em, RnText, Text} from '@uiw/react-native';
+import {H1, H2, H3, H4, H5, H6, S, Del, U, P, Strong, Br, Div, Hr, Em, RnText, Text, Box} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
 const {Header, Body, Card, Footer} = Layout;
@@ -68,6 +68,11 @@ export default class TypographyView extends React.Component<TypographyViewProps>
                   content: '这一段可以截取并且,支持toopTip的文本',
                 }}
               />
+            </Card>
+            <Card title="盒子 <Box />">
+              <Box backgroundColor="primary_background">
+                <Text color="text">一段文本</Text>
+              </Box>
             </Card>
           </Body>
           <Footer />
