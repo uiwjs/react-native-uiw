@@ -149,6 +149,49 @@ const FormDemo = () => {
       name: '验证码倒计时',
     },
     {
+      type: 'tree',
+      field: 'tree',
+      name: '树形控件',
+      attr: {
+        options: [
+          {
+            label: '今天',
+            value: '01',
+            children: [
+              {
+                label: '上午',
+                value: '01-1',
+                children: [
+                  {
+                    label: '9点',
+                    value: '01-1-1',
+                  },
+                  {
+                    label: '10点',
+                    value: '01-1-2',
+                  },
+                  {
+                    label: '11点',
+                    value: '01-1-3',
+                  },
+                ],
+              },
+              {
+                label: '下午',
+                value: '02-1',
+                children: [
+                  {
+                    label: '14点',
+                    value: '02-1-1',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
       type: 'treeSelect',
       field: 'treeSelect',
       name: 'treeSelect',
