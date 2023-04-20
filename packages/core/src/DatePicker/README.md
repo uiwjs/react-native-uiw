@@ -6,7 +6,7 @@ DatePicker
 
 ### 基础示例
  
-```jsx mdx:preview&background=#bebebe29
+```jsx
 import { Button } from '@uiw/react-native';
 import React,{ useState } from 'react';
 import { View,Text } from 'react-native';
@@ -63,7 +63,7 @@ DatePeriodInput
 
 ### 基础示例
  
-```jsx mdx:preview&background=#bebebe29
+```jsx
 import React,{ useState }  from 'react';
 import { View} from 'react-native';
 import  DatePeriodInput  from '@uiw/react-native/lib/DatePicker/date-period-input';

@@ -29,11 +29,10 @@ const TreeNode: FC<TreeNodeProps> = (props) => {
       return customIcon(checked);
     }
     return (
-      <CheckBox
-        checked={checked}
-        onChange={(checked) => {
-          console.log(checked, 'checked');
-        }}
+      <Icon
+        size={16}
+        name={checked ? 'circle-check' : 'circle-o'}
+        color={checked ? theme.colors.primary200 : theme.colors.gray300}
       />
     );
   };
