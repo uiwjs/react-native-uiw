@@ -100,6 +100,7 @@ const FormTree = ({
       <Modal visible={visible} placement="bottom" onClosed={() => setVisible(false)}>
         <ScrollView style={{ height: 400 }}>
           <Tree
+            defaultCheckedKeys={value}
             treeData={options}
             defaultExpandAll
             onCheck={(value: any) => {
