@@ -19,7 +19,7 @@ function Demo() {
     <Fragment>
        <TransitionImage
         source={{  uri: 'https://avatars.githubusercontent.com/u/24369183?v=4' }}
-        style={{ width: 200, height: 200, }}
+        style={{ width: 100, height: 100, }}
         onPress={()=> console.log('点击图片回调事件')}
         onLongPress={()=> console.log('长按组件回调事件')}
       />
@@ -42,7 +42,7 @@ function Demo() {
     <Fragment>
        <TransitionImage
         source={{  uri: 'https://avatars.githubusercontent.com/u/24369183?v=4' }}
-        style={{ width: 200, height: 200, }}
+        style={{ width: 100, height: 100, }}
         PlaceholderContent={<ActivityIndicator />}
         placeholderStyle={{backgroundColor: '#000a'}}
         containerStyle={{backgroundColor:'#eee',}}
@@ -50,6 +50,31 @@ function Demo() {
         transitionDuration={1000}
         onPress={()=> console.log('点击图片回调事件')}
         onLongPress={()=> console.log('长按组件回调事件')}
+      />
+    </Fragment>
+  );
+}
+export default Demo
+```
+
+### 失败加载
+
+```jsx mdx:preview&background=#bebebe29
+import React, { useState } from 'react';
+import { Fragment } from 'react';
+import { TransitionImage } from '@uiw/react-native';
+import { ActivityIndicator } from 'react-native';
+
+function Demo() {
+  return (
+    <Fragment>
+       <TransitionImage
+        source={{  uri: undefined }}
+        style={{ width: 100, height: 100 }}
+        placeholderStyle={{backgroundColor: '#000a'}}
+        containerStyle={{backgroundColor:'#eee',}}
+        transition={true}
+        transitionDuration={1000}
       />
     </Fragment>
   );
