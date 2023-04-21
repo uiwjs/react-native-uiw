@@ -23,15 +23,15 @@ interface VerificationCodeProps {
 }
 
 const VerificationCode: FC<VerificationCodeProps> = ({
-  bordered = true,
+  bordered = false,
   label = '获取验证码',
   resendLabel = '重新发送',
   count = 60,
   value = '',
-  onChange = () => { },
+  onChange = () => {},
   onBefore = async () => true,
   onSend = async () => true,
-  onEnd = () => { },
+  onEnd = () => {},
   outerStyle = {},
   buttonStyle = {},
   placeholder = '请输入验证码',
@@ -39,7 +39,6 @@ const VerificationCode: FC<VerificationCodeProps> = ({
   const [timer, setTimer] = useState(count);
   const [disabled, setDisabled] = useState(false);
   const theme = useTheme<Theme>();
-
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -66,13 +65,19 @@ const VerificationCode: FC<VerificationCodeProps> = ({
   return (
     <Input
       border={null}
-      containerStyle={[{ height: 50 }, outerStyle]}
+      containerStyle={[{ height: 40 }, outerStyle]}
       placeholder={placeholder}
       value={value}
       onChangeText={(text) => onChange(text)}
       extraEnd={
-        <Button bordered={bordered} disabled={disabled} onPress={handleClick} color={theme.colors.background || '#fff'} style={buttonStyle}>
-          <Text color={disabled ? "disabled" : "text"}>{disabled ? `${resendLabel}(${timer}s)` : label}</Text>
+        <Button
+          bordered={bordered}
+          disabled={disabled}
+          onPress={handleClick}
+          color={theme.colors.background || '#fff'}
+          style={buttonStyle}
+        >
+          <Text color={disabled ? 'disabled' : 'text'}>{disabled ? `${resendLabel}(${timer}s)` : label}</Text>
         </Button>
       }
     />
@@ -80,4 +85,3 @@ const VerificationCode: FC<VerificationCodeProps> = ({
 };
 
 export default VerificationCode;
-
