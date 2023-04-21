@@ -9,16 +9,27 @@ import { useTheme } from '@shopify/restyle';
 interface VerificationCodeProps {
   /**是否展示按钮边框 */
   bordered?: boolean;
+  /**自定义验证码文字 */
   label?: string;
+  /**自定义重新发送文字 */
   resendLabel?: string;
+  /**默认倒计时秒数 */
   count?: number;
+  /**验证码值 */
   value?: string;
+  /**输入改变事件 */
   onChange?: (value: string) => void;
+  /**发验证码之前的回调 */
   onBefore?: () => Promise<boolean>;
+  /**发验证码时的回调 */
   onSend?: () => Promise<boolean>;
+  /**发验证码之后的回调 */
   onEnd?: () => void;
+  /**输入框外层自定义样式 */
   outerStyle?: StyleProp<ViewStyle>;
+  /**按钮自定义样式 */
   buttonStyle?: StyleProp<ViewStyle>;
+  /**输入框空白时自定义展示 */
   placeholder?: string;
 }
 
