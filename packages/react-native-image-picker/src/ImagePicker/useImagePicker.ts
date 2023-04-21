@@ -140,7 +140,7 @@ export default function useImagePicker({
           }
         }
         setLoading(true);
-        const result = upload?.(imageFiles);
+        const result = await upload?.(imageFiles);
         setLoading(false);
         uploadFinish?.(result);
         setLaunchVisibleFalse();
