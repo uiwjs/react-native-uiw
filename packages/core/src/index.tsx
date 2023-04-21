@@ -1,5 +1,5 @@
 import theme from './theme';
-import ThemeProvider from './theme-provider';
+import ThemeProvider, { useTheme } from './theme-provider';
 import type { Theme } from './theme';
 
 export { default as Avatar } from './Avatar';
@@ -151,6 +151,7 @@ export { default as Hr } from './Typography/Hr';
 export { default as Em } from './Typography/Em';
 export { default as RnText } from './Typography/RnText';
 export { default as Text } from './Typography/Text';
+export { default as Box } from './Typography/Box';
 
 export * from './Typography/H1';
 export * from './Typography/H2';
@@ -169,6 +170,7 @@ export * from './Typography/Hr';
 export * from './Typography/Em';
 export * from './Typography/RnText';
 export * from './Typography/Text';
+export * from './Typography/Box';
 
-export { theme, ThemeProvider };
+export { theme, ThemeProvider, useTheme };
 export type { Theme };

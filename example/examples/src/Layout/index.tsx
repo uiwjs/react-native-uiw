@@ -1,8 +1,7 @@
-import React, { PureComponent } from 'react';
-import { StyleSheet, View, ViewProps, ViewStyle, SafeAreaView, ScrollView, ScrollViewProps, Text, TextStyle, Image, StyleProp } from 'react-native';
+import React, {PureComponent} from 'react';
+import {StyleSheet, View, ViewProps, ViewStyle, SafeAreaView, ScrollView, ScrollViewProps, Text, TextStyle, Image, StyleProp} from 'react-native';
 import PropTypes from 'prop-types';
-import { Theme } from '@uiw/react-native';
-import { useTheme } from '@shopify/restyle';
+import {Theme, useTheme} from '@uiw/react-native';
 
 export interface HeaderProps {
   title?: string;
@@ -15,8 +14,8 @@ export interface HeaderProps {
 }
 
 const Header = (props: HeaderProps) => {
-  const { children, title, description, style, hasLogo, titleStyle, descriptionStyle } = props;
-  const theme = useTheme<Theme>();
+  const {children, title, description, style, hasLogo, titleStyle, descriptionStyle} = props;
+  const theme = useTheme() as Theme;
   const styles = createStyles({
     backgroundColor: theme.colors.background,
     shadowColor: theme.colors.border,
@@ -27,7 +26,7 @@ const Header = (props: HeaderProps) => {
       {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
       {hasLogo && (
         <View style={styles.logo}>
-          <Image source={require('../image/logo.png')} style={{ width: 103, height: 18 }} />
+          <Image source={require('../image/logo.png')} style={{width: 103, height: 18}} />
         </View>
       )}
       {description && <Text style={[styles.description, descriptionStyle]}>{description}</Text>}
@@ -43,8 +42,8 @@ export interface BodyProps extends ScrollViewProps {
 }
 
 const Body = (props: BodyProps) => {
-  const { children, style, isScroll, ...other } = props;
-  const theme = useTheme<Theme>();
+  const {children, style, isScroll, ...other} = props;
+  const theme = useTheme() as Theme;
   const styles = createStyles({
     backgroundColor: theme.colors.background,
     shadowColor: theme.colors.border,
@@ -65,8 +64,8 @@ export interface FooterProps {
 }
 
 const Footer = (props: FooterProps) => {
-  const { children, copyright, style, isShowCopyRight, ...other } = props;
-  const theme = useTheme<Theme>();
+  const {children, copyright, style, isShowCopyRight, ...other} = props;
+  const theme = useTheme() as Theme;
   const styles = createStyles({
     backgroundColor: theme.colors.background,
     shadowColor: theme.colors.border,
@@ -91,8 +90,8 @@ export interface CardProps extends ViewProps {
 }
 
 const Card = (props: CardProps) => {
-  const { title, titleStyle, bodyStyle, children, style, showTitle, extra, ...other } = props;
-  const theme = useTheme<Theme>();
+  const {title, titleStyle, bodyStyle, children, style, showTitle, extra, ...other} = props;
+  const theme = useTheme() as Theme;
   const styles = createStyles({
     backgroundColor: theme.colors.background,
     shadowColor: theme.colors.border,
@@ -103,7 +102,7 @@ const Card = (props: CardProps) => {
       {extra ? (
         <View style={[styles.extra, styles.cardTitle]}>
           {showTitle && (
-            <View style={{ flex: 2 }}>
+            <View style={{flex: 2}}>
               <Text style={[titleStyle]}>{title}</Text>
             </View>
           )}
@@ -123,18 +122,18 @@ export interface ContainerProps extends ScrollViewProps {
 }
 
 export const Container = (props: ContainerProps) => {
-  const { children, ...others } = props;
-  const theme = useTheme<Theme>();
+  const {children, ...others} = props;
+  const theme = useTheme() as Theme;
   return (
-    <SafeAreaView style={{ backgroundColor: theme.colors.background }} {...others}>
-      <ScrollView style={{ height: '100%' }} {...others}>
+    <SafeAreaView style={{backgroundColor: theme.colors.background}} {...others}>
+      <ScrollView style={{height: '100%'}} {...others}>
         {children}
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-export interface LayoutProps extends ViewProps { }
+export interface LayoutProps extends ViewProps {}
 
 export default class Layout extends PureComponent<LayoutProps> {
   static Header = Header;
@@ -142,13 +141,13 @@ export default class Layout extends PureComponent<LayoutProps> {
   static Footer = Footer;
   static Card = Card;
   render() {
-    const { children, style } = this.props;
+    const {children, style} = this.props;
     const styles = createStyles({});
     return <View style={[styles.container, style]}>{children}</View>;
   }
 }
 
-function createStyles({ backgroundColor = '#F7F7F7', shadowColor = '#E6E6E6', color = '#9A9A9A' }) {
+function createStyles({backgroundColor = '#F7F7F7', shadowColor = '#E6E6E6', color = '#9A9A9A'}) {
   return StyleSheet.create({
     container: {
       backgroundColor: backgroundColor,
@@ -162,7 +161,7 @@ function createStyles({ backgroundColor = '#F7F7F7', shadowColor = '#E6E6E6', co
       paddingRight: 16,
       shadowColor: shadowColor,
       backgroundColor: backgroundColor,
-      shadowOffset: { width: 0, height: 3 },
+      shadowOffset: {width: 0, height: 3},
       shadowRadius: 3,
       // shadowOpacity: 0.8,
       shadowOpacity: 0,
