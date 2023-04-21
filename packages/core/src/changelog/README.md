@@ -33,7 +33,7 @@
 
 ### 开始升级
 
-#### 依赖层升级
+#### @uiw/react-native依赖层升级
 ```diff
   "dependencies": {
      ...
@@ -41,13 +41,9 @@
 -    "@uiw/react-native": "3.2.3",
 -    "react-native-svg": "12.1.1",
 -    "react-native-gesture-handler": "~2.5.0",
-+    "@uiw/react-native": "4.0.0",
-+    "@uiw/react-native-image-picker": "4.0.0",
++    "@uiw/react-native": "4.0.1",
 +    "react-native-svg": "13.0.0",
 +    "react-native-gesture-handler": "2.8.0",
-+    "react-native-image-picker":"^5.3.1",
-+    "react-native-image-viewing":"~0.2.2",
-+    "@react-native-camera-roll/camera-roll":"5.3.1" 
   ...
   }
 ```
