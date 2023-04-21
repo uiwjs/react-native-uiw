@@ -30,7 +30,7 @@
     "@shopify/restyle": "~2.4.2",
     "@types/react-native": "0.69.1",
     "@uiw/icons": "2.5.3",
-    "@uiw/react-native": "~3.2.3",
+    "@uiw/react-native": "4.0.1",
     "ahooks": "3.7.6",
     "prop-types": "15.7.2",
     "react-native-image-picker": "^5.3.1",

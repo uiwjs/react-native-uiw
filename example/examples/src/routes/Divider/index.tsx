@@ -1,9 +1,8 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import {Divider, Theme} from '@uiw/react-native';
+import {Divider, useTheme, Theme} from '@uiw/react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
-import {useTheme} from '@shopify/restyle';
 
 const {Header, Body, Card, Footer} = Layout;
 
@@ -13,7 +12,7 @@ export default function DividerView(props: DividerViewProps) {
   const {route} = props;
   const description = route.params.description;
   const title = route.params.title;
-  const theme = useTheme<Theme>();
+  const theme = useTheme() as Theme;
   return (
     <Container>
       <Layout style={{backgroundColor: theme.colors.background}}>

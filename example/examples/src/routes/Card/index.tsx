@@ -10,6 +10,7 @@ const CardDemo = (props: any) => {
   const TITLE = 'Welcome to @uiw';
   const [selected, setSelected] = useState(false);
   const [loading, setLoad] = useState(true);
+
   const basicRender = (
     <Fragment>
       <View style={{display: 'flex', alignItems: 'center', flexDirection: 'row'}}>

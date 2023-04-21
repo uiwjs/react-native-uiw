@@ -1,5 +1,5 @@
 import theme from './theme';
-import ThemeProvider from './theme-provider';
+import ThemeProvider, { useTheme } from './theme-provider';
 import type { Theme } from './theme';
 
 export { default as Avatar } from './Avatar';
@@ -172,5 +172,5 @@ export * from './Typography/RnText';
 export * from './Typography/Text';
 export * from './Typography/Box';
 
-export { theme, ThemeProvider };
+export { theme, ThemeProvider, useTheme };
 export type { Theme };
