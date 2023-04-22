@@ -17,22 +17,23 @@ export interface dataSourceType {
 }
 export type dotType = 'dot' | 'block';
 export interface SwiperProps {
-  // 数据源
+  /** 图片数据源 */
   dataSource?: dataSourceType[];
-  // 轮播图宽度
+  /** 轮播图宽度 */
   width?: number;
-  // 轮播图高度
+  /** 轮播图高度 */
   height?: number;
-  // 播放时间
+  /** 播放时间 */
   time?: number;
-  // 圆角边框
+  /** 圆角边框 */
   borderRadius?: number;
-  // 是否开启自动播放
+  /** 是否开启自动播放 */
   autoplay?: boolean;
-  // 指示点样式 dot: 圆点  block: 方块
+  /** 指示点样式 dot: 圆点  block: 方块 */
   dotStyle?: dotType;
-  // 初始位置
+  /** 初始位置 */
   index?: number;
+  /** 是否加载中 */
   loading?: boolean;
 }
 const Swiper = (porps: SwiperProps) => {
@@ -105,7 +106,12 @@ const Swiper = (porps: SwiperProps) => {
     let offSetX = e.nativeEvent.contentOffset.x;
     let mentWidth = e.nativeEvent.layoutMeasurement.width;
     let page = offSetX / mentWidth;
-
+    // 第一张图片
+    if (page === 0 && offSetX <= 0) {
+      setCurIndex(dataSource.length - 1);
+      scrollToRef.current.scrollTo({ x: dataSource.length * width, y: 0, animated: false }); // 让 ScrollView 定位到最后一张图片
+    }
+    // 最后一张图片
     if (page === dataSource.length) {
       setCurIndex(0);
       scrollToRef.current.scrollTo({ x: 0, y: 0, animated: false });
