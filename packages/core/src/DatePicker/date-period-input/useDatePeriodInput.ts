@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { Keyboard } from 'react-native';
-import { useBoolean, useSafeState, useMemoizedFn } from 'ahooks';
+import { useBoolean, useSafeState } from 'ahooks';
 import { useLatest } from '../../utils/hooks';
 import dayjs from 'dayjs';
 
@@ -43,6 +43,10 @@ export default function useDatePeriodInput({
       setMinDate(undefined);
       setMaxDate(dayjs(dates[1]).format(format));
     }
+    if (!dates[1]) {
+      setMinDate(undefined);
+      setMaxDate(undefined);
+    }
     setTrue();
   };
 
@@ -53,19 +57,21 @@ export default function useDatePeriodInput({
       setMinDate(dayjs(dates[0]).format(format));
       setMaxDate(undefined);
     }
+    if (!dates[0]) {
+      setMinDate(undefined);
+      setMaxDate(undefined);
+    }
     setTrue();
   };
 
   const handleInputClear1 = () => {
     const [, secondDate] = value ?? [, undefined];
-
     setDates((draft) => [undefined, draft[1]]);
     onChangeRef.current?.([undefined, secondDate]);
   };
 
   const handleInputClear2 = () => {
     const [firstDate] = value ?? [undefined];
-
     setDates((draft) => [draft[0], undefined]);
     onChangeRef.current?.([firstDate, undefined]);
   };
@@ -90,11 +96,11 @@ export default function useDatePeriodInput({
     maxDate,
     clearIconStyle1,
     clearIconStyle2,
-    setFalse: useMemoizedFn(setFalse),
-    handleStartPress: useMemoizedFn(handleStartPress),
-    handleEndPress: useMemoizedFn(handleEndPress),
-    handleChange: useMemoizedFn(handleChange),
-    handleInputClear1: useMemoizedFn(handleInputClear1),
-    handleInputClear2: useMemoizedFn(handleInputClear2),
+    setFalse: setFalse,
+    handleStartPress: handleStartPress,
+    handleEndPress: handleEndPress,
+    handleChange: handleChange,
+    handleInputClear1: handleInputClear1,
+    handleInputClear2: handleInputClear2,
   };
 }
