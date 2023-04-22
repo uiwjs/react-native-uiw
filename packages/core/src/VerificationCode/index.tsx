@@ -9,29 +9,40 @@ import { useTheme } from '@shopify/restyle';
 interface VerificationCodeProps {
   /**是否展示按钮边框 */
   bordered?: boolean;
+  /**自定义验证码文字 */
   label?: string;
+  /**自定义重新发送文字 */
   resendLabel?: string;
+  /**默认倒计时秒数 */
   count?: number;
+  /**验证码值 */
   value?: string;
+  /**输入改变事件 */
   onChange?: (value: string) => void;
+  /**发验证码之前的回调 */
   onBefore?: () => Promise<boolean>;
+  /**发验证码时的回调 */
   onSend?: () => Promise<boolean>;
+  /**发验证码之后的回调 */
   onEnd?: () => void;
+  /**输入框外层自定义样式 */
   outerStyle?: StyleProp<ViewStyle>;
+  /**按钮自定义样式 */
   buttonStyle?: StyleProp<ViewStyle>;
+  /**输入框空白时自定义展示 */
   placeholder?: string;
 }
 
 const VerificationCode: FC<VerificationCodeProps> = ({
-  bordered = true,
+  bordered = false,
   label = '获取验证码',
   resendLabel = '重新发送',
   count = 60,
   value = '',
-  onChange = () => { },
+  onChange = () => {},
   onBefore = async () => true,
   onSend = async () => true,
-  onEnd = () => { },
+  onEnd = () => {},
   outerStyle = {},
   buttonStyle = {},
   placeholder = '请输入验证码',
@@ -39,7 +50,6 @@ const VerificationCode: FC<VerificationCodeProps> = ({
   const [timer, setTimer] = useState(count);
   const [disabled, setDisabled] = useState(false);
   const theme = useTheme<Theme>();
-
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -66,13 +76,19 @@ const VerificationCode: FC<VerificationCodeProps> = ({
   return (
     <Input
       border={null}
-      containerStyle={[{ height: 50 }, outerStyle]}
+      containerStyle={[{ height: 40 }, outerStyle]}
       placeholder={placeholder}
       value={value}
       onChangeText={(text) => onChange(text)}
       extraEnd={
-        <Button bordered={bordered} disabled={disabled} onPress={handleClick} color={theme.colors.background || '#fff'} style={buttonStyle}>
-          <Text color={disabled ? "disabled" : "text"}>{disabled ? `${resendLabel}(${timer}s)` : label}</Text>
+        <Button
+          bordered={bordered}
+          disabled={disabled}
+          onPress={handleClick}
+          color={theme.colors.background || '#fff'}
+          style={buttonStyle}
+        >
+          <Text color={disabled ? 'disabled' : 'text'}>{disabled ? `${resendLabel}(${timer}s)` : label}</Text>
         </Button>
       }
     />
@@ -80,4 +96,3 @@ const VerificationCode: FC<VerificationCodeProps> = ({
 };
 
 export default VerificationCode;
-

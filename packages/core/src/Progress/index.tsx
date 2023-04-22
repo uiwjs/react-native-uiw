@@ -3,10 +3,11 @@ import { View, Text, Animated } from 'react-native';
 import Svg, { Circle, G, Line, Rect, Defs, LinearGradient, Stop } from 'react-native-svg';
 
 interface ProgressProps {
+  /**设置是进度条还是进度圈*/
   type: 'line' | 'circle';
   /**设置进度圈大小，进度条长度*/
   width?: number;
-  /**颜色 */
+  /**颜色 支持渐变色*/
   color?: string | [string, string];
   /**背景色 */
   bgColor?: string;
@@ -22,6 +23,7 @@ interface ProgressProps {
   showUnit?: boolean;
   /**自定义文本位置 */
   top?: string;
+  /**自定义文本位置 */
   left?: string;
 }
 

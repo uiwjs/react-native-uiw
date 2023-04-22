@@ -62,7 +62,7 @@ const Form = (baseProps: FormProps) => {
       search: <SearchBar />,
       switch: <Switch />,
       checkBox: <CheckBox />,
-      stepper: <Stepper value={0} onChange={() => {}} />,
+      stepper: <Stepper value={0} onChange={() => { }} />,
       treeSelect: <TreeSelect options={[]} />,
       picker: <Picker />,
       datePicker: <DatePicker />,

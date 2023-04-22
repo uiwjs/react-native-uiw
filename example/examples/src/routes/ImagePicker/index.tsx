@@ -18,9 +18,9 @@ export default function MenuDropdownView(props: ImagePickerProps) {
         <Body>
           <Card title="基础实例">
             <ImagePicker
-              upload={(file: File[]) => {
+              upload={async (file: File[]) => {
                 let imageList: string[] = [];
-                file.forEach(file => imageList.push(file.uri));
+                await file.forEach(file => imageList.push(file.uri));
                 return imageList;
               }}
               selectionLimit={2}
@@ -44,9 +44,9 @@ export default function MenuDropdownView(props: ImagePickerProps) {
             <ImagePicker
               value={['https://wx3.sinaimg.cn/mw690/4718260ely1gt2cg7t5udj23dw1wkhdu.jpg']}
               maxCount={2}
-              upload={(file: File[]) => {
+              upload={async (file: File[]) => {
                 let imageList: string[] = [];
-                file.forEach(file => imageList.push(file.uri));
+                await file.forEach(file => imageList.push(file.uri));
                 return imageList;
               }}
             />
@@ -56,9 +56,9 @@ export default function MenuDropdownView(props: ImagePickerProps) {
           </Card>
           <Card title="上传前置处理">
             <ImagePicker
-              upload={(file: File[]) => {
+              upload={async (file: File[]) => {
                 let imageList: string[] = [];
-                file.forEach(file => imageList.push(file.uri));
+                await file.forEach(file => imageList.push(file.uri));
                 return imageList;
               }}
               beforeUpload={(file: File[]) => {

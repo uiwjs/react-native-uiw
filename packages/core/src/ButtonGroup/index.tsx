@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { ButtonProps } from '../Button';
 import Flex, { FlexProps } from '../Flex';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../theme';
 
 const styles = StyleSheet.create({
   default: {
@@ -43,6 +45,7 @@ export default function ButtonGroup(props: ButtonGroupProps) {
   const porps = { color, type, bordered, disabled, textStyle };
   const flexProps = { direction, justify, align, wrap };
   const childs = React.Children.toArray(children);
+  const theme = useTheme<Theme>();
 
   if (inline) {
     flexProps.direction = 'row';
@@ -77,9 +80,11 @@ export default function ButtonGroup(props: ButtonGroupProps) {
         if (bordered && !gutter) {
           if ((idx > 0 && idx < (children as ButtonProps[]).length - 1) || idx === 0) {
             childStyle.borderRightWidth = StyleSheet.hairlineWidth;
+            childStyle.borderColor = theme.colors.text_active;
           }
           if (idx > 0 && idx < (children as ButtonProps[]).length) {
             childStyle.borderLeftWidth = StyleSheet.hairlineWidth;
+            childStyle.borderColor = theme.colors.text_active;
           }
         }
         if (gutter && inline) {
