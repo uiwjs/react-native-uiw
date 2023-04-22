@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import { TouchableOpacity, Animated, View } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 import Flex from '../../Flex';
@@ -57,7 +57,6 @@ const DatePeriodInput: FC<DatePeriodInputProps> = ({
     lineHeight: 19,
     fontFamily: 'PingFang SC',
   };
-
   return (
     <View>
       <Flex
