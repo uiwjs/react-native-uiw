@@ -1,11 +1,11 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { Animated, StyleSheet, LayoutChangeEvent, Dimensions, ViewStyle } from 'react-native';
 import MaskLayer, { MaskLayerProps } from '../MaskLayer';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
 
-let MainWidth = Dimensions.get('window').width;
-let MainHeight = Dimensions.get('window').height;
+const MainWidth = Dimensions.get('window').width;
+const MainHeight = Dimensions.get('window').height;
 
 export interface ModalProps extends MaskLayerProps {
   placement?: 'top' | 'right' | 'bottom' | 'left';
@@ -16,27 +16,14 @@ export interface ModalProps extends MaskLayerProps {
 const Modal = (props: ModalProps = {}) => {
   const { onClosed, visible, children, placement = 'bottom', containerStyle, ...otherProps } = props;
   const theme = useTheme<Theme>();
-  const AnimatedOpacity: Animated.Value = useRef(new Animated.Value(0)).current;
-  // const [display] = useState<'none' | 'flex'>('none');
-  let [layoutHeight, setLayoutHeight] = useState(0);
-  let [layoutWidth, setLayoutWidth] = useState(0);
+  const AnimatedOpacity = useRef(new Animated.Value(0)).current;
+  const [layoutHeight, setLayoutHeight] = useState(0);
+  const [layoutWidth, setLayoutWidth] = useState(0);
   const [translateValue] = useState(new Animated.Value(0));
   const isVertical = /^(top|bottom)$/.test(placement);
   const isHorizontal = /^(left|right)$/.test(placement);
-  function onDismiss() {
-    onClosed && onClosed();
-  }
-  function measureContainer(event: LayoutChangeEvent) {
-    const { height, width } = event.nativeEvent.layout;
-    if (!layoutHeight && isVertical) {
-      setLayoutHeight(height);
-    }
-    if (!layoutWidth && isHorizontal) {
-      setLayoutWidth(width);
-    }
-  }
 
-  useMemo(() => {
+  useEffect(() => {
     function getTransformSize() {
       if (placement === 'top') {
         return -layoutHeight;
@@ -56,20 +43,18 @@ const Modal = (props: ModalProps = {}) => {
     if (!result) return;
     if (visible) {
       translateValue.setValue(result);
-      // AnimatedOpacity
-      Animated.timing(AnimatedOpacity, {
-        toValue: 1,
-        duration: 0,
-        useNativeDriver: false,
-      }).start(({ finished }) => {
-        Animated.parallel([
-          Animated.spring(translateValue, {
-            toValue: 0,
-            overshootClamping: true,
-            useNativeDriver: true,
-          }),
-        ]).start();
-      });
+      Animated.parallel([
+        Animated.timing(AnimatedOpacity, {
+          toValue: 1,
+          duration: 0,
+          useNativeDriver: false,
+        }),
+        Animated.spring(translateValue, {
+          toValue: 0,
+          overshootClamping: true,
+          useNativeDriver: true,
+        }),
+      ]).start();
     }
     if (!visible) {
       Animated.parallel([
@@ -78,10 +63,15 @@ const Modal = (props: ModalProps = {}) => {
           overshootClamping: true,
           useNativeDriver: true,
         }),
+        Animated.timing(AnimatedOpacity, {
+          toValue: 0,
+          duration: 0,
+          useNativeDriver: false,
+        }),
       ]).start();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible, layoutHeight, layoutWidth]);
+  }, [visible, layoutHeight, layoutWidth, placement, translateValue, AnimatedOpacity]);
+
   const translateStyle = {} as {
     translateY: Animated.Value;
     translateX: Animated.Value;
@@ -92,19 +82,25 @@ const Modal = (props: ModalProps = {}) => {
   if (isHorizontal) {
     translateStyle.translateX = translateValue;
   }
-  const child = React.useMemo(
+
+  const child = useMemo(
     () => (
       <Animated.View
         style={[styles.content, placement && styles[placement], { opacity: AnimatedOpacity }, containerStyle]}
       >
         <Animated.View
-          onLayout={measureContainer}
+          onLayout={(event: LayoutChangeEvent) => {
+            const { height, width } = event.nativeEvent.layout;
+            if (!layoutHeight && isVertical) {
+              setLayoutHeight(height);
+            }
+            if (!layoutWidth && isHorizontal) {
+              setLayoutWidth(width);
+            }
+          }}
           style={[
             styles.content,
             placement && styles[placement],
-            // !layoutHeight && isVertical ? { display: display } : {},
-            // !layoutWidth && isHorizontal ? { display: display } : {},
-            // // getTransformStyle(),
             {
               transform: [translateStyle],
               backgroundColor: theme.colors.mask || '#fff',
@@ -117,10 +113,22 @@ const Modal = (props: ModalProps = {}) => {
         </Animated.View>
       </Animated.View>
     ),
-    [children],
+    [
+      children,
+      AnimatedOpacity,
+      containerStyle,
+      isHorizontal,
+      isVertical,
+      layoutHeight,
+      layoutWidth,
+      placement,
+      theme.colors.mask,
+      translateStyle,
+    ],
   );
+
   return (
-    <MaskLayer {...otherProps} visible={visible} onDismiss={onDismiss}>
+    <MaskLayer {...otherProps} visible={visible} onDismiss={onClosed}>
       {child}
     </MaskLayer>
   );
