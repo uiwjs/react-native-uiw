@@ -43,7 +43,7 @@ export default class ModalView extends Component<ModalViewProps> {
                   // Alert.alert('Modal has been closed.');
                 }}>
                 <SafeAreaView>
-                  <View>
+                  <View style={{height: 400}}>
                     <Text>Hello World!</Text>
                     <Button onPress={() => this.setModalVisible(!this.state.modalVisible)}>隐藏模态框</Button>
                     <Text>Hello World!</Text>
