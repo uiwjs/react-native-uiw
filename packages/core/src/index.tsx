@@ -131,6 +131,8 @@ export { default as Accordion } from './Accordion';
 export * from './Accordion';
 export { default as VerificationCode } from './VerificationCode';
 export * from './VerificationCode';
+export { default as LoginPage } from './LoginPage';
+export * from './LoginPage';
 /**
  * Typography
  */
