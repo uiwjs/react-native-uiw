@@ -51,12 +51,8 @@ export default function WheelPicker({
   const currentScrollIndex = Animated.add(Animated.divide(scrollY, itemHeight), 2);
 
   const handleMomentumScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    // Due to list bounciness when scrolling to the start or the end of the list
-    // the offset might be negative or over the last item.
-    // We therefore clamp the offset to the supported range.
     const offsetY = Math.min(itemHeight * (data.length - 1), Math.max(event.nativeEvent.contentOffset.y, 0));
     let index = offsetY / itemHeight + 1;
-
     const currentItem = data[index - 1];
     if (currentItem) {
       onChange?.(currentItem.value);

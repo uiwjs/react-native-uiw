@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Animated, StyleSheet, Text } from 'react-native';
 import { WhellPickerItemProps } from './type';
 import { Theme } from '../.././../theme';
@@ -46,11 +46,10 @@ function WheelPickerItem({ textStyle, style, visibleRest, height, option, index,
   return (
     <Animated.View style={[styles.option, style, { height, opacity, transform: [{ rotateX }, { scale }] }]}>
       <Text style={[{ color: textColor }, textStyle]}>{option?.label}</Text>
-    </Animated.View >
+    </Animated.View>
   );
 }
-
-export default WheelPickerItem;
+export default memo(WheelPickerItem, () => true);
 
 const styles = StyleSheet.create({
   option: {
