@@ -35,7 +35,7 @@ const formchildItem = (props: Partial<FormItemsProps> & { field: string; childre
   return (
     <Container mode={mode}>
       <View style={styles.form_items_container}>
-        <View style={[styles.form_items, styles.border_none]}>
+        <View style={[styles.form_items]}>
           <Label v={{ name: name, required: required }} />
           {_renderComponent(children)}
           <Tip v={{ validate: validate, field: field }} />

@@ -91,7 +91,6 @@ const FormList = ({
 
   const _render = (index: number) => {
     return items.map((v: Omit<FormItemsProps, 'validate' | 'required'>, i: number) => {
-      const last = items.length - 1 === i;
       if (v.hide) {
         return null;
       }
@@ -100,7 +99,7 @@ const FormList = ({
       }
       return (
         <View key={i} style={styles.form_items_container}>
-          <View style={[styles.form_items, last && styles.border_none]}>
+          <View style={[styles.form_items]}>
             <Label v={v} />
             {_renderComponent(v, index)}
             <Tip v={v} />

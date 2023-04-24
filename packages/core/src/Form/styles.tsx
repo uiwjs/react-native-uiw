@@ -11,10 +11,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     borderBottomWidth: 0.5,
-    borderBottomColor: '#eee',
-  },
-  border_none: {
-    borderBottomWidth: 0,
+    borderBottomColor: '#ccc',
   },
 });
 
