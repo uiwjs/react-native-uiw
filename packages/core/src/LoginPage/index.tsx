@@ -7,13 +7,21 @@ import { useTheme } from '@shopify/restyle';
 import { logSvg, cEyes, oEyes } from './svg';
 
 interface LoginPageProps {
+  /** 自定义账号输入框为空时显示的文字 */
   usernamePlaceholder?: string;
+  /** 自定义账号，密码，验证码输入框样式 */
   inputContainerStyle?: object;
+  /** 登录按钮自定义样式 */
   buttonStyle?: object;
+  /** 登录页自定义最外层样式 */
   containerStyle?: object;
+  /** 登录按钮自定义文字 */
   buttonText?: string;
+  /** 自定义忘记密码，切换登录方式 */
   customContent?: React.ReactNode;
+  /** 登录按钮事件 */
   onLogin?: (username: string, password: string) => void;
+  /** 忘记密码按钮事件 */
   onForgetPassword?: () => void;
 }
 
@@ -92,18 +100,20 @@ const LoginPage: React.FC<LoginPageProps> = ({
             outerStyle={[styles.inputContainer, styles.inputC, inputContainerStyle]}
           />
         )}
-        {customContent ? (
-          customContent
-        ) : (
-          <View style={styles.textSty1}>
-            <TouchableOpacity onPress={onForgetPassword}>
-              <Text style={styles.textSty}>忘记密码</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setShowCode(!showCode)}>
-              <Text style={styles.textSty}>{`${showCode ? '用户名' : '验证码'}登录`}</Text>
-            </TouchableOpacity>
-          </View>
-        )}
+
+        <View>
+          {customContent || (
+            <View style={styles.textSty1}>
+              <TouchableOpacity onPress={onForgetPassword}>
+                <Text style={styles.textSty}>忘记密码</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => setShowCode(!showCode)}>
+                <Text style={styles.textSty}>{`${showCode ? '用户名' : '验证码'}登录`}</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
+
         <TouchableOpacity style={[styles.button, buttonStyle]} onPress={handleLogin}>
           <Text style={[styles.buttonText, styles.buttonTextStyle]}>{buttonText}</Text>
         </TouchableOpacity>
@@ -160,6 +170,7 @@ function createStyles({ border, putCol }: CreStyle) {
     button: {
       backgroundColor: '#1890ff',
       height: 40,
+      marginTop: 5,
       borderRadius: 5,
       justifyContent: 'center',
       alignItems: 'center',
@@ -178,7 +189,6 @@ function createStyles({ border, putCol }: CreStyle) {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      marginBottom: 30,
     },
   });
 }

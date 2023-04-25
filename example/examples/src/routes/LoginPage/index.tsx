@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Layout, {Container} from '../../Layout';
 import {LoginPage} from '@uiw/react-native';
 import {ComProps} from '../../routes';
+import {View} from 'react-native';
 const {Header, Body, Card, Footer} = Layout;
 
 export interface LoginPageProps extends ComProps {}
@@ -16,7 +17,7 @@ export default class LoginPageView extends Component<LoginPageProps> {
         <Layout>
           <Header title={title} description={description} />
           <Body>
-            <LoginPage showPassword={true} />
+            <LoginPage />
           </Body>
           <Footer />
         </Layout>
