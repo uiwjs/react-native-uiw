@@ -1,41 +1,21 @@
-MaskLayer 遮罩层
+LoginPage 登录页
 ---
 
-用于模态对话框，中的遮罩层。
-
-<!-- ![](https://user-images.githubusercontent.com/66067296/139398306-d038225d-0fee-4009-a4f7-a06c7beabf45.gif) -->
-<!--rehype:style=zoom: 33%;float: right; margin-left: 15px;-->
-
+用于项目的登录页面
 ### 基础示例
 
 <!--DemoStart-->
 ```jsx mdx:preview&background=#bebebe29
-import React, { Fragment, useState } from 'react';
-import { Text,  SafeAreaView } from 'react-native';
-import { Button, MaskLayer,Grid,Icon } from '@uiw/react-native';
+import React,{Fragment} from 'react';
+import { View} from 'react-native';
+import { LoginPage } from '@uiw/react-native';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
-    const data = Array.from(new Array(24)).map((_val, i) => {
-    return { icon: <Icon name="heart-on" color="red" />, text: `${i}`}
-  });
   return (
     <Fragment>
-      <MaskLayer
-        visible={visible}
-        onDismiss={() => {
-          setVisible(!visible);
-        }}>
-        <SafeAreaView style={{alignItems:'center'}}>
-            <Grid style={{width:500,heigth:500,}} data={data} columns='6' hasLine={false}/>
-        </SafeAreaView>
-      </MaskLayer>
-      <Button
-        onPress={() => {
-          setVisible(true);
-        }}>
-        {visible ? '隐藏模态框' : '显示模态框'}
-      </Button>
+        <View>
+         <LoginPage />
+        </View>
     </Fragment>
   );
 }
@@ -45,14 +25,15 @@ export default Demo
 
 ### Props
 
-继承原生 Modal 属性 [`ModalProps`](https://facebook.github.io/react-native/docs/modal.html#props)
-
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
-| `maskClosable` | 遮罩层是否禁止点击 | `Boolean` | `true` |
-| `visible` | 遮罩层是否隐藏 |`Boolean` | - |
-| `opacity` | 遮罩层透明度 | - | 0.6 |
-| `onDismiss` | 隐藏消除回调事件 | () => void | - |
-| `children` | 子元素 | JSX.Element |  |
+| `usernamePlaceholder` | 自定义账号输入框为空时显示的文字 | `string` | - |
+| `inputContainerStyle` | 自定义账号，密码，验证码输入框样式 |`Boolean` | - |
+| `buttonStyle` | 登录按钮自定义样式 | `Object` | - |
+| `containerStyle` | 登录页自定义最外层样式 | `object` | - |
+| `buttonText` | 登录按钮自定义文字 | `string` | - |
+| `customContent` | 自定义忘记密码，切换登录方式 | `React.ReactNode` | - |
+| `onLogin` | 登录按钮事件 | `(username: string, password: string) => void` | - |
+| `onForgetPassword` | 忘记密码按钮事件 | `() => void` | - |
 
 

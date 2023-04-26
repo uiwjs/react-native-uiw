@@ -157,7 +157,7 @@ $ yarn install # 安装node依赖
 **🚧🚧 如果你要运行 `react-native@0.70.0` or 或更高版本**
 [help](https://github.com/facebook/react-native/issues/34608#)
 #### 请保证你的ruby版本为2.7.5或更高版本
-你可以使用 [ruby](https://github.com/rbenv/rbenv#readme) 来管理你的ruby版本
+你可以使用 [rbenv](https://github.com/rbenv/rbenv#readme) 来管理你的ruby版本
 
 ```
 bundle install

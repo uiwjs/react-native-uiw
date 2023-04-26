@@ -7,25 +7,38 @@ import { useTheme } from '@shopify/restyle';
 import { logSvg, cEyes, oEyes } from './svg';
 
 interface LoginPageProps {
-  showPassword?: boolean;
+  /** 自定义账号输入框为空时显示的文字 */
   usernamePlaceholder?: string;
+  /** 自定义账号，密码，验证码输入框样式 */
   inputContainerStyle?: object;
+  /** 登录按钮自定义样式 */
   buttonStyle?: object;
+  /** 登录页自定义最外层样式 */
   containerStyle?: object;
+  /** 登录按钮自定义文字 */
   buttonText?: string;
+  /** 自定义忘记密码，切换登录方式 */
+  customContent?: React.ReactNode;
+  /** 登录按钮事件 */
   onLogin?: (username: string, password: string) => void;
+  /** 忘记密码按钮事件 */
+  onForgetPassword?: () => void;
 }
 
 const LoginPage: React.FC<LoginPageProps> = ({
-  showPassword = true,
-  usernamePlaceholder = '请输入用户名',
+  usernamePlaceholder,
   inputContainerStyle = {},
   containerStyle = {},
   buttonStyle = {},
   buttonText = 'Login',
+  customContent,
   onLogin,
+  onForgetPassword,
 }) => {
-  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [showPsd, setShowPsd] = useState(false);
+  const [showCode, setShowCode] = useState(false); // added state
+  console.log('showCode', showCode);
+
   const theme = useTheme<Theme>();
   const styles = createStyles({
     border: theme.colors.border || '#CCC',
@@ -57,25 +70,26 @@ const LoginPage: React.FC<LoginPageProps> = ({
           <Icon xml={logSvg(theme)} size={30} />
           <Text style={styles.title}>Login</Text>
         </View>
-        <View style={[styles.inputContainer, inputContainerStyle]}>
+        <View style={[styles.inputContainer, { paddingHorizontal: 15 }, inputContainerStyle]}>
           <TextInput
-            placeholder={usernamePlaceholder}
-            placeholderTextColor={theme.colors.icon}
+            placeholder={usernamePlaceholder ? usernamePlaceholder : `请输入${showCode ? '手机号码' : '用户名'}`}
+            placeholderTextColor={theme.colors.border}
             style={styles.input}
+            keyboardType={showCode ? 'numeric' : 'default'}
             onChangeText={onChangeUsername}
           />
         </View>
-        {showPassword ? (
-          <View style={[styles.inputContainers, inputContainerStyle]}>
+        {!showCode ? (
+          <View style={[styles.inputContainer, styles.inputC, { paddingHorizontal: 15 }, inputContainerStyle]}>
             <TextInput
               placeholder="请输入密码"
-              placeholderTextColor={theme.colors.icon}
-              secureTextEntry={!isShowPassword}
+              placeholderTextColor={theme.colors.border}
+              secureTextEntry={!showPsd}
               style={[styles.input, { width: '92%' }]}
               onChangeText={onChangePassword}
             />
-            <TouchableOpacity onPress={() => setIsShowPassword(!isShowPassword)}>
-              <Icon xml={isShowPassword ? cEyes : oEyes} size={20} />
+            <TouchableOpacity onPress={() => setShowPsd(!showPsd)}>
+              <Icon xml={showPsd ? cEyes : oEyes} size={20} />
             </TouchableOpacity>
           </View>
         ) : (
@@ -83,17 +97,23 @@ const LoginPage: React.FC<LoginPageProps> = ({
             value={password}
             count={60}
             onChange={onChangePassword}
-            outerStyle={[styles.inputContainer, inputContainerStyle]}
+            outerStyle={[styles.inputContainer, styles.inputC, inputContainerStyle]}
           />
         )}
-        <View style={styles.textSty1}>
-          <TouchableOpacity>
-            <Text style={styles.textSty}>忘记密码</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textSty}>验证码登录</Text>
-          </TouchableOpacity>
+
+        <View>
+          {customContent || (
+            <View style={styles.textSty1}>
+              <TouchableOpacity onPress={onForgetPassword}>
+                <Text style={styles.textSty}>忘记密码</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => setShowCode(!showCode)}>
+                <Text style={styles.textSty}>{`${showCode ? '用户名' : '验证码'}登录`}</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
+
         <TouchableOpacity style={[styles.button, buttonStyle]} onPress={handleLogin}>
           <Text style={[styles.buttonText, styles.buttonTextStyle]}>{buttonText}</Text>
         </TouchableOpacity>
@@ -126,30 +146,22 @@ function createStyles({ border, putCol }: CreStyle) {
     title: {
       fontSize: 24,
       fontWeight: 'bold',
-      marginLeft: 20,
+      marginLeft: 15,
       color: putCol,
     },
     inputContainer: {
       height: 40,
-      marginBottom: 20,
       borderColor: border,
       borderWidth: 1,
       borderRadius: 5,
       justifyContent: 'center',
-      paddingHorizontal: 15,
       flexDirection: 'row',
       alignItems: 'center',
     },
-    inputContainers: {
-      height: 40,
+    inputC: {
+      paddingHorizontal: 10,
+      marginTop: 20,
       marginBottom: 5,
-      borderColor: border,
-      borderWidth: 1,
-      borderRadius: 5,
-      justifyContent: 'center',
-      paddingHorizontal: 15,
-      flexDirection: 'row',
-      alignItems: 'center',
     },
     input: {
       flex: 1,
@@ -158,6 +170,7 @@ function createStyles({ border, putCol }: CreStyle) {
     button: {
       backgroundColor: '#1890ff',
       height: 40,
+      marginTop: 5,
       borderRadius: 5,
       justifyContent: 'center',
       alignItems: 'center',
@@ -176,7 +189,6 @@ function createStyles({ border, putCol }: CreStyle) {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      marginBottom: 30,
     },
   });
 }
