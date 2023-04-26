@@ -78,6 +78,7 @@ const VerificationCode: FC<VerificationCodeProps> = ({
       border={null}
       containerStyle={[{ height: 40 }, outerStyle]}
       placeholder={placeholder}
+      placeholderTextColor={theme.colors.border}
       value={value}
       onChangeText={(text) => onChange(text)}
       extraEnd={
@@ -86,7 +87,7 @@ const VerificationCode: FC<VerificationCodeProps> = ({
           disabled={disabled}
           onPress={handleClick}
           color={theme.colors.background || '#fff'}
-          style={buttonStyle}
+          style={[buttonStyle]}
         >
           <Text color={disabled ? 'disabled' : 'text'}>{disabled ? `${resendLabel}(${timer}s)` : label}</Text>
         </Button>

@@ -514,4 +514,12 @@ export const stackPageData: Routes[] = [
       description: '验证码倒计时组件',
     },
   },
+  {
+    name: 'LoginPage',
+    component: require('./routes/LoginPage').default,
+    params: {
+      title: 'LoginPage 登录页组件',
+      description: '登录页组件',
+    },
+  },
 ];

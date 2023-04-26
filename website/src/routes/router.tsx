@@ -306,6 +306,10 @@ export const routeData = [
         component: lazy(() => import('../pages/components/verificationCode')),
       },
       {
+        path: '/components/loginPage',
+        component: lazy(() => import('../pages/components/loginPage')),
+      },
+      {
         path: '/components/actionSheet',
         component: lazy(() => import('../pages/components/actionSheet')),
       },
