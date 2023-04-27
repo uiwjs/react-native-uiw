@@ -5,7 +5,7 @@ import { routeData } from '../routes/router';
 import NotFound from '../component/NotFound';
 
 const Loading = (
-  <div style={{ textAlign: 'center', padding: '50px 0 50px 0' }}>
+  <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
     <Loader color="#333" tip="页面加载中..." />
   </div>
 );
