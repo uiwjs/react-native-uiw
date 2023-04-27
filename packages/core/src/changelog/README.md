@@ -66,7 +66,11 @@
 
 #### ThemeProvider 基本用法
 
-使用 ThemeProvider 更好地支持动态主题。 在app.tsx入口文件添加如下
+使用 ThemeProvider 更好地支持动态主题。   
+
+当然，也可以不使用 ThemeProvider，但是就没有更优美的动态主题呢。  
+
+在app.tsx入口文件添加如下  
 
 ```diff
 import { ThemeProvider,theme } from '@uiw/react-native';
