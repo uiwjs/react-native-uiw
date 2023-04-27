@@ -133,6 +133,8 @@ export { default as VerificationCode } from './VerificationCode';
 export * from './VerificationCode';
 export { default as LoginPage } from './LoginPage';
 export * from './LoginPage';
+export { default as ImageHeader } from './ImageHeader';
+export * from './ImageHeader';
 /**
  * Typography
  */

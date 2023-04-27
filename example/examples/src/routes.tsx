@@ -522,4 +522,12 @@ export const stackPageData: Routes[] = [
       description: '登录页组件',
     },
   },
+  {
+    name: 'ImageHeader',
+    component: require('./routes/ImageHeader').default,
+    params: {
+      title: 'ImageHeader 图片头部组件',
+      description: '图片头部组件',
+    },
+  },
 ];
