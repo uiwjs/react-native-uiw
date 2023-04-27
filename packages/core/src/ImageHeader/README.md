@@ -1,146 +1,70 @@
----
-title: ImageHeader - 图片头部组件
-nav:
-  title: RN组件
-  path: /react-native
-group:
-  title: Display
-  path: /display
----
-
 # ImageHeader 图片头部组件
 
 ## 效果演示
 
-### 1. 普通 ImageHeader
+### 1. 基础示例 ImageHeader
 
-```tsx | pure
-<ImageHeader headerBackgroundImg={require('../../assets/images/bg_rank.png')} headerHeight={px(161)} {...props}>
-  <Flex justifyContent="center" backgroundColor="white" height={100}>
-    <Text>111</Text>
-  </Flex>
-</ImageHeader>
-```
+```jsx
+import React, { Component } from 'react';
+import { ImageHeader,Avatar } from '@uiw/react-native';
+import { View, Text } from 'react-native';
 
-<center>
-  <figure>
-    <img
-      alt="header-ios1.png"
-      src="https://td-dev-public.oss-cn-hangzhou.aliyuncs.com/maoyes-app/1609999430064140139.png"
-      style="width: 375px; margin-right: 10px; border: 1px solid #ddd;"
-    />
-  </figure>
-</center>
-
-### 2. ImageHeader 配置 left、right 和 headerLeftColor
-
-```tsx | pure
-<ImageHeader
-  headerBackgroundImg={require('../../assets/images/bg_rank.png')}
-  headerHeight={px(161)}
-  headerLeftColor={theme.colors.white}
-  headerLeft="返回"
-  headerRight={<Icon name="delete" size={px(20)} color={theme.colors.white} />}
-  {...props}
->
-  <Flex justifyContent="center" backgroundColor="white" height={100}>
-    <Text>111</Text>
-  </Flex>
-</ImageHeader>
-```
-
-<center>
-  <figure>
-    <img
-      alt="header-ios2.png"
-      src="https://td-dev-public.oss-cn-hangzhou.aliyuncs.com/maoyes-app/1609999550703021067.png"
-      style="width: 375px; margin-right: 10px; border: 1px solid #ddd;"
-    />
-  </figure>
-</center>
-
-### 3. ImageHeader 配置 headerBackgroundColor
-
-```tsx | pure
-<ImageHeader
-  headerBackgroundImg={require('../../assets/images/bg_rank.png')}
-  headerHeight={px(161)}
-  headerBackgroundColor={theme.colors.white}
-  headerLeft="返回"
-  headerRight={<Icon name="delete" size={px(20)} color={theme.colors.white} />}
-  {...props}
->
-  <Flex justifyContent="center" height={100}>
-    <Text>111</Text>
-  </Flex>
-</ImageHeader>
-```
-
-<center>
-  <figure>
-    <img
-      alt="header-ios3.png"
-      src="https://td-dev-public.oss-cn-hangzhou.aliyuncs.com/maoyes-app/1610000705310241428.png"
-      style="width: 375px; margin-right: 10px; border: 1px solid #ddd;"
-    />
-  </figure>
-</center>
-
-### 4. AnimatedHeader
-
-```tsx | pure
-import { useScrollHandler } from 'react-native-redash';
-import Animated from 'react-native-reanimated';
-
-export default () => {
-  const { scrollHandler, y } = useScrollHandler();
-
+function Demo () {
   return (
-    <AnimateHeader
-        scrollY={y}
-        scrollHeight={200}
-        headerTitle="测试啊啊啊啊啊"
-        headerLeft="返回"
-        headerBackgroundColor={theme.colors.white}
-        {...props}
-        headerRight={
-          <TouchableOpacity activeOpacity={0.5} onPress={() => props.navigation.goBack()}>
-            <Icon name="delete" size={px(20)} color={theme.colors.primaryColor} />
-          </TouchableOpacity>
-        }
-      />
-      <Animated.ScrollView {...scrollHandler}>
-        <ImageHeader
-          headerBackgroundImg={require('../../assets/images/bg_rank.png')}
-          headerHeight={px(161)}
-          headerLeftColor={theme.colors.white}
-          headerRight={
-            <TouchableOpacity activeOpacity={0.5} onPress={() => props.navigation.goBack()}>
-              <Icon name="delete" size={px(20)} color={theme.colors.primaryColor} />
-            </TouchableOpacity>
-          }
-          {...props}
-        >
-          <Flex justifyContent="center" height={100}>
-            <Text>111</Text>
-          </Flex>
-        </ImageHeader>
-        <Box width={200} height={900} />
-      </Animated.ScrollView>
-  )
+  <ImageHeader
+        safeBgColor='#010101'
+        headerHeight={150}
+        headerLeft={<></>}
+      >
+        <View style={{
+          backgroundColor: '#010101',
+          overflow: 'hidden',
+          zIndex: 1,
+        }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              padding: 20,
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}
+          >
+            <View style={{ flexDirection: 'row' }}>
+              <Avatar style={{ marginRight: 10 }} size={70} shape="circle" src="https://avatars.githubusercontent.com/u/32630937?v=4" />
+              <View style={{ flexDirection: 'column' }}>
+                <Text style={{ fontSize: 17, color: '#fff', fontWeight: '500', lineHeight: 30 }}>
+                  胡意(huyi)
+                </Text>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: 14,
+                    fontWeight: '500',
+                  }}
+                >
+                  96313241@qq.com
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                  style={{
+                    width: 240,
+                    color: '#fff',
+                    fontSize: 12,
+                    lineHeight: 25,
+                  }}
+                >
+                  大屏素材库概要，集成一些常见的大屏组件及图表组件，统一样式。
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </ImageHeader>
+    );
 }
+export default Demo
 ```
-
-<center>
-  <figure>
-    <img
-      alt="header-ios4.gif"
-      src="https://td-dev-public.oss-cn-hangzhou.aliyuncs.com/maoyes-app/1608877076955547998.gif"
-      style="width: 375px; margin-right: 10px; border: 1px solid #ddd;"
-    />
-  </figure>
-</center>
-
 ## ImageHeader 组件 API
 
 | 属性                  | 必填    | 说明                 | 类型                  | 默认值                      |
