@@ -1,13 +1,5 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
-import {
-  Text,
-  ImageBackground,
-  ImageSourcePropType,
-  StatusBar,
-  TouchableOpacity,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import { Text, SafeAreaView, StatusBar, TouchableOpacity, View, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
@@ -29,8 +21,8 @@ export type ImageHeaderProps = PropsWithChildren<{
   headerLeftColor?: string;
   /** 头部底色，默认为透明 */
   headerBackgroundColor?: string;
-  /** 头部背景图片 */
-  headerBackgroundImg: ImageSourcePropType;
+  /** 设置全局背景色 */
+  safeBgColor?: string;
   /** 头部高度 */
   headerHeight?: number;
   /** 左侧点击事件 */
@@ -39,6 +31,7 @@ export type ImageHeaderProps = PropsWithChildren<{
   showLeft?: boolean;
   /** 头部title */
   headerTitle?: ReactNode;
+  /** 设置状态栏颜色 */
   statusBarStyle?: 'default' | 'dark-content' | 'light-content';
 }>;
 
@@ -51,13 +44,13 @@ const ImageHeader: FC<ImageHeaderProps> = (props) => {
     headerLeft,
     headerLeftColor = theme.colors.icon,
     headerBackgroundColor = theme.colors.transparent,
-    headerBackgroundImg,
     headerHeight,
     children,
     onPress,
     showLeft = true,
     headerTitle,
     statusBarStyle = 'default',
+    safeBgColor,
   } = props;
 
   let DefaultHeaderLeft: ReactNode = <Icon name="left" size={px(20)} color={headerLeftColor} />;
@@ -68,11 +61,14 @@ const ImageHeader: FC<ImageHeaderProps> = (props) => {
       DefaultHeaderLeft = headerLeft;
     }
   }
+  const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 70 : StatusBar.currentHeight;
 
   return (
     <>
-      <StatusBar barStyle={statusBarStyle} backgroundColor={headerBackgroundColor} />
-      <ImageBackground source={headerBackgroundImg} style={{ width: '100%', height: headerHeight }}>
+      <View style={{ height: STATUSBAR_HEIGHT, backgroundColor: safeBgColor }}>
+        <StatusBar translucent backgroundColor={safeBgColor} barStyle={statusBarStyle} />
+      </View>
+      <SafeAreaView style={{ width: '100%', height: headerHeight, backgroundColor: safeBgColor }}>
         <Flex
           style={{
             paddingTop: isIOS ? insets.top + theme.spacing.x2 : theme.spacing.x5,
@@ -89,7 +85,7 @@ const ImageHeader: FC<ImageHeaderProps> = (props) => {
             <Box flex={1} />
           )}
           {typeof headerTitle === 'string' ? (
-            <Text style={{ color: theme.colors.gray200, fontSize: px(16) }}>{headerTitle}</Text>
+            <Text style={{ color: headerLeftColor, fontSize: px(16) }}>{headerTitle}</Text>
           ) : (
             headerTitle
           )}
@@ -98,7 +94,7 @@ const ImageHeader: FC<ImageHeaderProps> = (props) => {
           </Box>
         </Flex>
         <WingBlank>{children}</WingBlank>
-      </ImageBackground>
+      </SafeAreaView>
     </>
   );
 };

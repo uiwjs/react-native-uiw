@@ -357,6 +357,10 @@ export const routeData = [
         path: '/docs/changelog',
         component: lazy(() => import('../pages/docs/changelog')),
       },
+      {
+        path: '/components/imageHeader',
+        component: lazy(() => import('../pages/components/imageHeader')),
+      },
     ],
   },
 ];
