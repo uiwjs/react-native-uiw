@@ -14,7 +14,6 @@ export default class ImageHeaderView extends React.Component<ImageHeaderProps> {
         headerLeftColor="#FFF"
         headerLeft="返回"
         headerRight={<Icon name="delete" size={20} color={'##FFF'} />}
-        statusBarColor="blue"
         statusBarStyle="dark-content">
         <Flex justify="center" style={{backgroundColor: 'white', height: 100, marginHorizontal: 20}}>
           <Text>111</Text>

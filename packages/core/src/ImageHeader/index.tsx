@@ -71,7 +71,7 @@ const ImageHeader: FC<ImageHeaderProps> = (props) => {
 
   return (
     <>
-      <StatusBar barStyle={statusBarStyle} />
+      <StatusBar barStyle={statusBarStyle} backgroundColor={headerBackgroundColor} />
       <ImageBackground source={headerBackgroundImg} style={{ width: '100%', height: headerHeight }}>
         <Flex
           style={{
