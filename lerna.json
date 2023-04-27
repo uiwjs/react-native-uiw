@@ -1,5 +1,5 @@
 {
-  "version": "4.0.2",
+  "version": "4.0.3",
   "packages": ["example/*", "packages/*", "website"],
   "npmClient": "yarn",
   "npmClientArgs": ["--production", "--no-optional"],
