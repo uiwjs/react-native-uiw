@@ -37,11 +37,9 @@ const App = () => {
                   <Stack.Screen
                     key={index}
                     {...props}
-                    // name="Home"
-                    // options={{
-                    //   header: () => null
-                    // }}
-                    // component={Home}
+                    options={{
+                      header: props.name === 'ImageHeader' ? () => null : props.header,
+                    }}
                   />
                 );
               })}

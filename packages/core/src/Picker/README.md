@@ -96,7 +96,7 @@ export default Demo
 | data   | 选择项列表   | `CascadePickerItemProps[]` | `Array<CascadePickerItemProps[]>` |  []  |
 | cols    | 展示几列  |  `number` | 1 |
 | value   | 当前值   | `ItemValue[]` |  []  |
-| displayType   | 选择器显示类型。view表示在页面显示；modal表示在弹窗中显示；默认为modal   | `view | modal` |  view  |
+| displayType   | 选择器显示类型。view表示在页面显示；modal表示在弹窗中显示；默认为modal   | `view ｜ modal` |  view  |
 | onChange    | 修改事件  | `(value?: ItemValue[]) => void` | -  |
 | title | 选中当前项的下标   | number | -  |
 | visible | 是否弹窗显示       | boolean | false  |

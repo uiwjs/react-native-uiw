@@ -190,7 +190,7 @@ export default Demo
 |------|------|-----|------|
 | onChangeText | 搜索框文字变化 | (value: string) => void | - |
 | options | 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能 | Array<`OptionsStateProps`> | - |
-| onChange | 事件变化回调 | string | (value: string) => void |
+| onChange | 事件变化回调 |  (value: string) => void | - |
 | onFocus | 获得焦点时回调 null = 永不显示 | (e: any) => void | - |
 | labelInValue | 是否把每个选项的 label 包装到 value 中，会把 Select 的 value 类型从 string 变为 { key: string, label: ReactNode } 的格式 | Boolean | - |
 | disabled | 是否禁用 | Boolean | - |

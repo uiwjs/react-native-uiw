@@ -144,7 +144,7 @@ export default Demo
 | `clearText` | 如果为 true，每次开始输入的时候都会清除文本框的内容。 | boolean  | - |
 | `error` | 显示错误 | boolean | - |
 | `renderError` | 自定义错误提示 | React.ReactNode | - |
-| `border` | 边框 | `'bottom'|'top'|'left'|'right'|null|'always'` | - |
+| `border` | 边框 | `'bottom'｜'top'｜'left'｜'right'｜null｜'always'` | - |
 | `borderColor` | 边框颜色 | string | - |
 | `clear` | 是否显示清除按钮 | boolean | - |
 | `clearStyle` | 清除按钮样式 | StyleProp<`TextStyle`> | - |
