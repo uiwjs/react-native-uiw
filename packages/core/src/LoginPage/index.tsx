@@ -4,7 +4,7 @@ import Icon from '../Icon';
 import VerificationCode from '../VerificationCode';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
-import { logSvg, cEyes, oEyes } from './svg';
+// import { logSvg, cEyes, oEyes } from './svg';
 
 interface LoginPageProps {
   /** 自定义账号输入框为空时显示的文字 */
@@ -19,6 +19,8 @@ interface LoginPageProps {
   buttonText?: string;
   /** 自定义忘记密码，切换登录方式 */
   customContent?: React.ReactNode;
+  /** 自定义登录logo和login文字 */
+  titleContent?: React.ReactNode;
   /** 登录按钮事件 */
   onLogin?: (username: string, password: string) => void;
   /** 忘记密码按钮事件 */
@@ -32,12 +34,12 @@ const LoginPage: React.FC<LoginPageProps> = ({
   buttonStyle = {},
   buttonText = 'Login',
   customContent,
+  titleContent,
   onLogin,
   onForgetPassword,
 }) => {
   const [showPsd, setShowPsd] = useState(false);
-  const [showCode, setShowCode] = useState(false); // added state
-  console.log('showCode', showCode);
+  const [showCode, setShowCode] = useState(false);
 
   const theme = useTheme<Theme>();
   const styles = createStyles({
@@ -48,12 +50,10 @@ const LoginPage: React.FC<LoginPageProps> = ({
   const [password, setPassword] = useState('');
 
   const onChangeUsername = (val: string) => {
-    console.log('onChange--> 输入改变事件	 ', val);
     setUsername(val);
   };
 
   const onChangePassword = (val: string) => {
-    console.log('onChange--> 输入改变事件	 ', val);
     setPassword(val);
   };
 
@@ -66,10 +66,12 @@ const LoginPage: React.FC<LoginPageProps> = ({
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }, containerStyle]}>
       <View style={styles.content}>
-        <View style={styles.center}>
-          <Icon xml={logSvg(theme)} size={30} />
-          <Text style={styles.title}>Login</Text>
-        </View>
+        {titleContent || (
+          <View style={styles.center}>
+            <Icon name="uiw" size={35} />
+            <Text style={styles.title}>Login</Text>
+          </View>
+        )}
         <View style={[styles.inputContainer, { paddingHorizontal: 15 }, inputContainerStyle]}>
           <TextInput
             placeholder={usernamePlaceholder ? usernamePlaceholder : `请输入${showCode ? '手机号码' : '用户名'}`}
@@ -80,7 +82,9 @@ const LoginPage: React.FC<LoginPageProps> = ({
           />
         </View>
         {!showCode ? (
-          <View style={[styles.inputContainer, styles.inputC, { paddingHorizontal: 15 }, inputContainerStyle]}>
+          <View
+            style={[styles.inputContainer, styles.inputC, { paddingLeft: 15, paddingRight: 15 }, inputContainerStyle]}
+          >
             <TextInput
               placeholder="请输入密码"
               placeholderTextColor={theme.colors.border}
@@ -89,7 +93,7 @@ const LoginPage: React.FC<LoginPageProps> = ({
               onChangeText={onChangePassword}
             />
             <TouchableOpacity onPress={() => setShowPsd(!showPsd)}>
-              <Icon xml={showPsd ? cEyes : oEyes} size={20} />
+              <Icon name={showPsd ? 'eye' : 'eye-o'} size={20} color="#8a8a8a" />
             </TouchableOpacity>
           </View>
         ) : (
@@ -97,10 +101,10 @@ const LoginPage: React.FC<LoginPageProps> = ({
             value={password}
             count={60}
             onChange={onChangePassword}
+            inputBorder={false}
             outerStyle={[styles.inputContainer, styles.inputC, inputContainerStyle]}
           />
         )}
-
         <View>
           {customContent || (
             <View style={styles.textSty1}>
@@ -113,7 +117,6 @@ const LoginPage: React.FC<LoginPageProps> = ({
             </View>
           )}
         </View>
-
         <TouchableOpacity style={[styles.button, buttonStyle]} onPress={handleLogin}>
           <Text style={[styles.buttonText, styles.buttonTextStyle]}>{buttonText}</Text>
         </TouchableOpacity>
@@ -159,7 +162,7 @@ function createStyles({ border, putCol }: CreStyle) {
       alignItems: 'center',
     },
     inputC: {
-      paddingHorizontal: 10,
+      paddingLeft: 10,
       marginTop: 20,
       marginBottom: 5,
     },
