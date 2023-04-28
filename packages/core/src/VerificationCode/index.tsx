@@ -31,6 +31,8 @@ interface VerificationCodeProps {
   buttonStyle?: StyleProp<ViewStyle>;
   /**输入框空白时自定义展示 */
   placeholder?: string;
+  /**是否展示输入框边框 */
+  inputBorder?: boolean;
 }
 
 const VerificationCode: FC<VerificationCodeProps> = ({
@@ -46,6 +48,7 @@ const VerificationCode: FC<VerificationCodeProps> = ({
   outerStyle = {},
   buttonStyle = {},
   placeholder = '请输入验证码',
+  inputBorder = true,
 }) => {
   const [timer, setTimer] = useState(count);
   const [disabled, setDisabled] = useState(false);
@@ -75,7 +78,7 @@ const VerificationCode: FC<VerificationCodeProps> = ({
 
   return (
     <Input
-      border={null}
+      border={inputBorder ? 'always' : null}
       containerStyle={[{ height: 40 }, outerStyle]}
       placeholder={placeholder}
       placeholderTextColor={theme.colors.border}
@@ -86,8 +89,9 @@ const VerificationCode: FC<VerificationCodeProps> = ({
           bordered={bordered}
           disabled={disabled}
           onPress={handleClick}
-          color={theme.colors.background || '#fff'}
+          color={theme.colors.background || 'transparent'}
           style={[buttonStyle]}
+          size="small"
         >
           <Text color={disabled ? 'disabled' : 'text'}>{disabled ? `${resendLabel}(${timer}s)` : label}</Text>
         </Button>
