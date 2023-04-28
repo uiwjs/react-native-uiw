@@ -4,7 +4,8 @@
 
 ### 1. 基础示例 ImageHeader
 
-```jsx
+<!--DemoStart-->
+```jsx mdx:preview&background=#bebebe29
 import React, { Component } from 'react';
 import { ImageHeader,Avatar } from '@uiw/react-native';
 import { View, Text } from 'react-native';
@@ -13,7 +14,7 @@ function Demo () {
   return (
   <ImageHeader
         safeBgColor='#010101'
-        headerHeight={150}
+        headerHeight={200}
         headerLeft={<></>}
       >
         <View style={{
@@ -65,6 +66,8 @@ function Demo () {
 }
 export default Demo
 ```
+<!--End-->
+
 ## ImageHeader 组件 API
 
 | 属性                  | 必填    | 说明                 | 类型                  | 默认值                      |
@@ -74,12 +77,13 @@ export default Demo
 | headerLeft            | `false` | 头部左侧内容         | `ReactNode`           |                             |
 | headerLeftColor       | `false` | 左侧返回键和字体颜色 | `string`              | `theme.colors.primaryColor` |
 | headerBackgroundColor | `false` | 头部背景颜色         | `string`              | `transparent`               |
-| headerBackgroundImg   | `true`  | 头部背景图片         | `ImageSourcePropType` |                             |
+| safeBgColor           | `true`  | 设置全局背景色         | `string`             |                             |
 | headerHeight          | `false` | 头部高度             | `number`              |                             |
 | onPress               | `false` | 左边图标点击事件     | `() => void`          |                             |
 | showLeft              | `false` | 是否显示左边图标     | `boolean`             | `true`                      |
+| statusBarStyle        | `false` | 设置状态栏颜色      | `'default' | 'dark-content' | 'light-content'` | `default` |
 
-## AnimateHeader 组件 API
+<!-- ## AnimateHeader 组件 API
 
 | 属性 | 必填 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- | --- |
@@ -93,4 +97,4 @@ export default Demo
 | headerLeftColor | `false` | 左侧返回键和字体颜色 | `string` | `theme.colors.primaryColor` |
 | headerBackgroundColor | `false` | 头部背景颜色 | `string` | `transparent` |
 | onPress | `false` | 左边按钮点击事件 | `() => void` |  |
-| showLeft | `false` | 是否显示左边图标 | `boolean` | `true` |
+| showLeft | `false` | 是否显示左边图标 | `boolean` | `true` | -->

@@ -43,7 +43,7 @@ export const componentMenus: MenuData[] = [
   { path: '/components/transitionImage', name: 'TransitionImage 图片过渡' },
   { path: '/components/verificationCode', name: 'VerificationCode  验证码倒计时组件' },
   { path: '/components/loginPage', name: 'LoginPage  登录页组件' },
-  { path: '/components/imageHeader', name: 'imageHeader  图片头部组件' },
+  { path: '/components/imageHeader', name: 'ImageHeader  图片头部组件' },
 
   { divider: true, name: 'Data Display 信息录入' },
   { path: '/components/checkbox', name: 'CheckBox 复选框' },
