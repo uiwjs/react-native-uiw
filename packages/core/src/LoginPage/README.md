@@ -5,7 +5,8 @@ LoginPage 登录页
 ### 基础示例
 
 <!--DemoStart-->
-```jsx 
+
+```jsx mdx:preview&background=#bebebe29
 import React,{Fragment} from 'react';
 import { View} from 'react-native';
 import { LoginPage } from '@uiw/react-native';
@@ -13,9 +14,7 @@ import { LoginPage } from '@uiw/react-native';
 const Demo = () => {
   return (
     <Fragment>
-        <View>
-         <LoginPage />
-        </View>
+        <LoginPage />
     </Fragment>
   );
 }

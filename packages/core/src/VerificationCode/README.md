@@ -19,7 +19,7 @@ function Demo() {
               value={value}
               count={60}
               onChange={(text) => onChange(text)}
-              outerStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: "#ccc" }}
+              outerStyle={{ backgroundColor: '#FFF' }}
             />
     </View>
   );
@@ -43,3 +43,4 @@ export default Demo
 | `outerStyle` | 输入框外层自定义样式 | `StyleProp<ViewStyle>` | - |
 | `buttonStyle` | 按钮自定义样式 | `StyleProp<ViewStyle>` | - |
 | `placeholder` | 输入框空白时自定义展示 | string | `请输入验证码` |
+| `inputBorder` | 是否展示输入框边框 | boolean | true |

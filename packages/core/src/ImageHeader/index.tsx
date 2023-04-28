@@ -1,6 +1,5 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 import { Text, SafeAreaView, StatusBar, TouchableOpacity, View, Platform } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
 
@@ -37,7 +36,6 @@ export type ImageHeaderProps = PropsWithChildren<{
 
 const ImageHeader: FC<ImageHeaderProps> = (props) => {
   const theme = useTheme<Theme>();
-  const insets = useSafeAreaInsets();
 
   const {
     headerRight,
@@ -71,7 +69,7 @@ const ImageHeader: FC<ImageHeaderProps> = (props) => {
       <SafeAreaView style={{ width: '100%', height: headerHeight, backgroundColor: safeBgColor }}>
         <Flex
           style={{
-            paddingTop: isIOS ? insets.top + theme.spacing.x2 : theme.spacing.x5,
+            paddingTop: isIOS ? theme.spacing.x2 : theme.spacing.x5,
             paddingBottom: theme.spacing.x2,
             paddingRight: theme.spacing.x3,
             backgroundColor: headerBackgroundColor,
