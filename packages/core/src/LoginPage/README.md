@@ -5,7 +5,7 @@ LoginPage 登录页
 ### 基础示例
 
 <!--DemoStart-->
-```jsx mdx:preview&background=#bebebe29
+```jsx 
 import React,{Fragment} from 'react';
 import { View} from 'react-native';
 import { LoginPage } from '@uiw/react-native';

@@ -58,6 +58,9 @@ const Swiper = (porps: SwiperProps) => {
     if (scrollToRef && scrollToRef.current && index !== 0) {
       setCurIndex(index);
       scrollToRef.current.scrollTo({ x: width * index, y: 0, animated: false });
+    } else if (scrollToRef && scrollToRef.current && index === 0) {
+      setCurIndex(index);
+      scrollToRef.current.scrollTo({ x: dataSource.length * width, y: 0, animated: false });
     }
   };
 
