@@ -21,7 +21,7 @@
     "src",
     "README.md"
   ],
-  "publishConfig":{
+  "publishConfig": {
     "access": "public"
   },
   "dependencies": {

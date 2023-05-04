@@ -49,8 +49,9 @@ function WheelPickerItem({ textStyle, style, visibleRest, height, option, index,
     </Animated.View>
   );
 }
-export default memo(WheelPickerItem, () => true);
-
+export default memo(WheelPickerItem, (prevProps, nextProps) => {
+  return prevProps.option === nextProps.option;
+});
 const styles = StyleSheet.create({
   option: {
     alignItems: 'center',

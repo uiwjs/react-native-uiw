@@ -8,7 +8,6 @@ import Flex from '../Flex';
 import Icon from '../Icon';
 import WingBlank from '../WingBlank';
 import helpers from './helpers';
-// import AnimateHeader from './AnimateHeader';
 
 const { px, isIOS } = helpers;
 export type ImageHeaderProps = PropsWithChildren<{
@@ -97,6 +96,3 @@ const ImageHeader: FC<ImageHeaderProps> = (props) => {
   );
 };
 export default ImageHeader;
-// ImageHeader.displayName = 'ImageHeader';
-
-// export default Object.assign(ImageHeader, { AnimateHeader });
