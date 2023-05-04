@@ -42,7 +42,7 @@
 -    "react-native-svg": "12.1.1",
 -    "react-native-gesture-handler": "~2.5.0",
 +    "@uiw/react-native": "4.0.1",
-+    "react-native-svg": "13.9.0",
++    "react-native-svg": "13.0.0",
 +    "react-native-gesture-handler": "2.8.0",
   ...
   }

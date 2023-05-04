@@ -19,7 +19,7 @@
     "react-native-image-picker": "^5.3.1",
     "react-native-image-viewing": "~0.2.2",
     "react-native-root-siblings": "4.1.1",
-    "react-native-svg": "13.9.0"
+    "react-native-svg": "13.0.0"
   },
   "devDependencies": {
     "@babel/core": "~7.20.7",
