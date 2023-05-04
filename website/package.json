@@ -35,7 +35,7 @@
     "react-native-gesture-handler": "2.8.0",
     "react-native-reanimated": "~2.13.0",
     "react-native-root-siblings": "4.1.1",
-    "react-native-svg": "13.0.0",
+    "react-native-svg": "13.9.0",
     "react-native-web": "0.18.10",
     "react-router-dom": "6.2.1",
     "styled-components": "^5.3.6",
