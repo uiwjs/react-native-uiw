@@ -36,7 +36,7 @@ npx react-native init AwesomeProject --template @uiw/react-native-template
 ## Install
 
 ```bash
-yarn add @uiw/react-native react-native-svg react-native-root-siblings
+yarn add @uiw/react-native react-native-svg@13.9.0 react-native-root-siblings@4.1.1  react-native-gesture-handler@2.8.0
 ```
 ## 文档本地预览
 
