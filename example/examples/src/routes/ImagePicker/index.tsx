@@ -1,7 +1,9 @@
 import React from 'react';
-import ImagePicker, {File} from '@uiw/react-native-image-picker';
+import {Text} from '@uiw/react-native';
+import ImagePicker, {File, useImage} from '@uiw/react-native-image-picker';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
+import {Pressable} from 'react-native';
 
 const {Header, Body, Card, Footer} = Layout;
 
@@ -11,6 +13,11 @@ export default function MenuDropdownView(props: ImagePickerProps) {
   const {route} = props || {};
   const description = route.params.description;
   const title = route.params.title;
+  const {launchLibrary, launchCamera} = useImage({
+    onSuccess: result => {
+      console.log('result', result);
+    },
+  });
   return (
     <Container>
       <Layout>
@@ -66,6 +73,14 @@ export default function MenuDropdownView(props: ImagePickerProps) {
                 return true;
               }}
             />
+          </Card>
+          <Card title="useImage">
+            <Pressable onPress={launchLibrary}>
+              <Text color="primary_background">打开相册</Text>
+            </Pressable>
+            <Pressable onPress={launchCamera}>
+              <Text color="primary_background">打开摄像头</Text>
+            </Pressable>
           </Card>
         </Body>
         <Footer />

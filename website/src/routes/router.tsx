@@ -102,8 +102,8 @@ export const routeData = [
         component: lazy(() => import('../pages/components/about')),
       },
       {
-        path: '/components/changelog',
-        component: lazy(() => import('../pages/components/changelog')),
+        path: '/docs/v3-v4',
+        component: lazy(() => import('../pages/docs/v3-v4')),
       },
       {
         path: '/components/theme',

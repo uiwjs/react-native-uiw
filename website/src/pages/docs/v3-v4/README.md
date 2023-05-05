@@ -20,6 +20,7 @@
 - 6.Tree 树形控件 [`590`](https://github.com/uiwjs/react-native-uiw/pull/590)
 - 7.ImagePicker 图片保存功能 [`2691`](https://github.com/uiwjs/react-native-uiw/actions/runs/4687708113)
 - 8.重构Progress组件 变更参数  [`595`](https://github.com/uiwjs/react-native-uiw/pull/595)
+- 9.新增useImage hooks
 
 ### 修复功能
 
@@ -41,7 +42,7 @@
 -    "@uiw/react-native": "3.2.3",
 -    "react-native-svg": "12.1.1",
 -    "react-native-gesture-handler": "~2.5.0",
-+    "@uiw/react-native": "4.0.1",
++    "@uiw/react-native": "4.0.6",
 +    "react-native-svg": "13.9.0",
 +    "react-native-gesture-handler": "2.8.0",
   ...
@@ -53,7 +54,7 @@
 ```diff
   "dependencies": {
      ...
-+    "@uiw/react-native-image-picker": "4.0.0",
++    "@uiw/react-native-image-picker": "4.0.6",
 +    "react-native-image-picker":"^5.3.1",
 +    "react-native-image-viewing":"~0.2.2",
 +    "@react-native-camera-roll/camera-roll":"5.3.1" 
@@ -92,11 +93,11 @@ const Demo = () => {
     return (
       <View>
 +        <VerificationCode
-+              value={value}
-+              count={3}
-+              onChange={(val) => console.log(val)}
-+              outerStyle={{ borderWidth: 1, borderColor: "#ccc" }}
-+            />
++           value={value}
++           count={3}
++           onChange={(val) => console.log(val)}
++           outerStyle={{ borderWidth: 1, borderColor: "#ccc" }}
++         />
       </View>
     )
   }
@@ -178,24 +179,30 @@ const Demo = () => {
   }
 }
 ```
-#### ImagePicker 基本用法
+#### ImagePicker 和 useImage 基本用法
 
 ```diff
 import React from 'react';
-import ImagePicker, {File} from '@uiw/react-native-image-picker';
-import { View } from 'react-native';
-
+import ImagePicker, { File,useImage } from '@uiw/react-native-image-picker';
+import { Pressable,View } from 'react-native';
 const Demo = () => {
+  const { launchLibrary, launchCamera } = useImage({
+    onSuccess: (result) => {
+      console.log('result', result);
+    }
+  })
    return (
       <View>
-+         <ImagePicker
-+              upload={(file: File[]) => {
-+                let imageList: string[] = [];
-+                file.forEach(file => imageList.push(file.uri));
-+                return imageList;
-+              }}
-+              selectionLimit={2}
-+            />
++       <ImagePicker
++          upload={async(file: File[]) => {
++            let imageList: string[] = [];
++            await file.forEach(file => imageList.push(file.uri));
++            return imageList;
++          }}
++          selectionLimit={2}
++       />
++        <Pressable onPress={launchLibrary}><Text color="primary_background">打开相册</Text></Pressable>
++        <Pressable onPress={launchCamera}><Text color="primary_background">打开摄像头</Text></Pressable>
       </View>
     )
   }
@@ -214,12 +221,10 @@ const Demo = () => {
   const [value, setValue] = useState('');
    return (
       <View>
-+          <DatePeriodInput
-+                value={value}
-+                onChange={date => {
-+                 setState(date);
-+                }}
-+              />
++       <DatePeriodInput
++         value={value}
++         onChange={date =>setState(date)}
++       />
       </View>
     )
   }

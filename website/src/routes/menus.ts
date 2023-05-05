@@ -90,7 +90,7 @@ export const componentMenus: MenuData[] = [
 
 export const docsMenus: MenuData[] = [
   { path: '/docs/getting-started', name: '快速上手' },
-  { path: '/components/changelog', name: '从 V3 到 V4 ' },
+  { path: '/docs/v3-v4', name: '从 V3 到 V4 ' },
   { path: '/docs/development/components', name: '参与组件开发' },
   { path: '/docs/development/document', name: '参与文档网站编辑开发' },
   { href: 'https://github.com/uiwjs/react-native-uiw/releases', name: '更新日志', target: '__blank' },
