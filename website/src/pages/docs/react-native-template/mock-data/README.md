@@ -39,13 +39,16 @@ module.exports = {
 };
 ```
 
-### 二、界面渲染
+### 二、界面渲染并且使用react-query调用接口
+[react-query](https://tanstack.com/query/latest) 更详细的使用，请参照官方文档
 
 ```js
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@uiw/react-native';
-import { login } from '../../hooks/users'
+import { userLogin } from '@/services/users';
+import { useMutation } from 'react-query'
+
 
 const Demo = ({ update }) => {
   const [store, setStore] = useState({
@@ -55,7 +58,12 @@ const Demo = ({ update }) => {
     },
   })
 
-  const { mutate, isLoading } = login({ formData })
+  const { mutate, isLoading } = useMutation({
+    mutationFn: userLogin,
+    onSuccess: async (data) => {
+      console.log('data',data)
+    },
+  })
 
   return (
      <Button
@@ -73,29 +81,8 @@ const Demo = ({ update }) => {
 export default Demo
 
 ```
-### 三、使用react-query调用api
-[react-query](https://tanstack.com/query/latest) 更详细的使用，请参照官方文档
 
-```js
-import { userLogin } from '../services/users';
-import { useQuery, useMutation } from 'react-query'
-
-// 登录
-export const login = ({ config = {}, formData }) => {
-  const mutation = useMutation({
-    mutationFn: userLogin,
-    onSuccess: async (data) => {
-      console.log('data',data)
-    },
-    ...config
-  })
-  return mutation
-}
-
-
-```
-
-### 四、services文件调用
+### 三、services文件调用
 
 > 配合系统封装的request进行mock数据请求。如需区分是mock数据，还是真实后端数据，调用真实数据时,注释mocker数据配置即可
 
@@ -114,7 +101,7 @@ export const login = ({ config = {}, formData }) => {
 
 ### 一、rematch中异步方法
 
-```
+```js
 export default {
   name: 'home',
   state: {
