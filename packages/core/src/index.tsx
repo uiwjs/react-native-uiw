@@ -135,6 +135,8 @@ export { default as LoginPage } from './LoginPage';
 export * from './LoginPage';
 export { default as ImageHeader } from './ImageHeader';
 export * from './ImageHeader';
+export { default as Skeleton } from './Skeleton';
+export * from './Skeleton';
 /**
  * Typography
  */
