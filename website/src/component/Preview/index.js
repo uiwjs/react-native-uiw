@@ -4,6 +4,7 @@ import { BackTop, Circle, Icon } from 'uiw';
 import { getMetaId, isMeta, getURLParameters } from 'markdown-react-code-preview-loader';
 import CodeLayout from 'react-code-preview-layout';
 import { useRef } from 'react';
+import Editor from './Footer';
 import Footer from '../Footer';
 
 const Wrapper = styled.div`
@@ -86,15 +87,11 @@ const Preview = ({ path, ...mdData }) => {
           },
         }}
       />
-      <Footer path={path} />
+      <Footer />
+      <Editor path={path} />
       <BackTop speed={500}>
         {({ percent, scrollToTop }) => (
-          <Circle
-            width={50}
-            onClick={() => scrollToTop()}
-            format={() => <Icon type="arrow-up" />}
-            percent={percent}
-          ></Circle>
+          <Circle width={50} onClick={() => scrollToTop()} format={() => <Icon type="arrow-up" />} percent={percent} />
         )}
       </BackTop>
     </Wrapper>
