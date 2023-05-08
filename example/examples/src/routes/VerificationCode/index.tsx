@@ -73,7 +73,7 @@ const VerificationCodeDemo: React.FC<VerificationCodeProps> = ({route}) => {
           <Card title="发验证码之前的回调">
             <VerificationCode value={value} count={3} onChange={(text: string) => onChange(text)} onBefore={onBefore} outerStyle={{borderColor: '#ccc'}} />
           </Card>
-          <Card title="发送验证码">
+          <Card title="发验证码时的回调">
             <VerificationCode value={value} count={3} onChange={(text: string) => onChange(text)} onSend={onSend} outerStyle={{borderColor: '#ccc'}} />
           </Card>
           <Card title="倒计时结束后的回调">
