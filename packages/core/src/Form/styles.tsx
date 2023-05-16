@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   form_items_container: {
-    flex: 1,
+    // flex: 1,
+    width: '100%',
   },
   form_items: {
     textAlign: 'center',
