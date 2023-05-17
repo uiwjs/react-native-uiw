@@ -530,4 +530,12 @@ export const stackPageData: Routes[] = [
       description: '图片头部组件',
     },
   },
+  {
+    name: 'Skeleton',
+    component: require('./routes/Skeleton').default,
+    params: {
+      title: 'Skeleton 骨架屏组件',
+      description: '骨架屏组件',
+    },
+  },
 ];
