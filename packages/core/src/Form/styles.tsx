@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   form_items: {
     textAlign: 'center',
-    margin: 10,
+    margin: 5,
     borderBottomWidth: 0.5,
     borderBottomColor: '#ccc',
   },

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Context } from '../hooks/context';
 import { FormItemsProps } from '../types';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 
 const Tip = ({ v }: { v: Partial<FormItemsProps> & { field: string } }) => {
   const {
@@ -11,7 +11,11 @@ const Tip = ({ v }: { v: Partial<FormItemsProps> & { field: string } }) => {
   const content = validator.message(v.field, store[v.field], {
     validate: v?.validate,
   });
-  return <Text style={{ color: 'red', marginBottom: content && 10, marginTop: content && 10 }}>{content}</Text>;
+  return (
+    <View style={{ marginTop: 5 }}>
+      {content && <Text style={{ color: 'red', marginBottom: content && 5 }}>{content}</Text>}
+    </View>
+  );
 };
 
 export default Tip;

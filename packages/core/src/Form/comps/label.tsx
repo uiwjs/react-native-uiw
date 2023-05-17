@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     width: 'auto',
     fontSize: 16,
     fontWeight: '500',
-    marginBottom: 10,
+    marginBottom: 5,
   },
 });
 
