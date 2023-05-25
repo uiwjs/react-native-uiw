@@ -22,6 +22,7 @@ export default class ModalView extends Component<ModalViewProps> {
     {label: 'left', value: 'left'},
     {label: 'top', value: 'top'},
     {label: 'bottom', value: 'bottom'},
+    {label: 'middle', value: 'middle'},
   ];
   render() {
     const {route} = this.props;
@@ -34,7 +35,7 @@ export default class ModalView extends Component<ModalViewProps> {
           <Body style={{paddingLeft: 16, paddingRight: 16}}>
             <Card title="基础实例">
               <Modal
-                placement={this.state.direction as 'left' | 'right' | 'top' | 'bottom'}
+                placement={this.state.direction as 'left' | 'right' | 'top' | 'bottom' | 'middle'}
                 // maskClosable={false}
                 visible={this.state.modalVisible}
                 onClosed={() => this.setState({modalVisible: false})}

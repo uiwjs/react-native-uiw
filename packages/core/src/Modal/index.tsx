@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useMemo, useRef, useEffect, useReducer } from 'react';
 import { Animated, StyleSheet, LayoutChangeEvent, Dimensions, ViewStyle } from 'react-native';
 import MaskLayer, { MaskLayerProps } from '../MaskLayer';
 import { Theme } from '../theme';
@@ -8,20 +8,35 @@ const MainWidth = Dimensions.get('window').width;
 const MainHeight = Dimensions.get('window').height;
 
 export interface ModalProps extends MaskLayerProps {
-  placement?: 'top' | 'right' | 'bottom' | 'left';
+  placement?: 'top' | 'right' | 'bottom' | 'left' | 'middle';
   onClosed?: () => void;
   containerStyle?: ViewStyle;
 }
+
+interface StoreType {
+  layoutHeight: number;
+  layoutWidth: number;
+}
+
+export const reducer: React.Reducer<StoreType, Partial<StoreType>> = (state, action) => {
+  return {
+    ...state,
+    ...action,
+  };
+};
 
 const Modal = (props: ModalProps = {}) => {
   const { onClosed, visible, children, placement = 'bottom', containerStyle, ...otherProps } = props;
   const theme = useTheme<Theme>();
   const AnimatedOpacity = useRef(new Animated.Value(0)).current;
-  const [layoutHeight, setLayoutHeight] = useState(0);
-  const [layoutWidth, setLayoutWidth] = useState(0);
+  const [{ layoutHeight, layoutWidth }, dispatch] = useReducer(reducer, { layoutHeight: 0, layoutWidth: 0 });
   const [translateValue] = useState(new Animated.Value(0));
-  const isVertical = /^(top|bottom)$/.test(placement);
-  const isHorizontal = /^(left|right)$/.test(placement);
+
+  const { isVertical, isHorizontal } = useMemo(() => {
+    const isVertical = /^(top|bottom)$/.test(placement);
+    const isHorizontal = /^(left|right)$/.test(placement);
+    return { isVertical, isHorizontal };
+  }, [placement]);
 
   useEffect(() => {
     function getTransformSize() {
@@ -35,6 +50,9 @@ const Modal = (props: ModalProps = {}) => {
         return -layoutWidth;
       }
       if (placement === 'right') {
+        return layoutWidth;
+      }
+      if (placement === 'middle') {
         return layoutWidth;
       }
       return 0;
@@ -82,20 +100,30 @@ const Modal = (props: ModalProps = {}) => {
   if (isHorizontal) {
     translateStyle.translateX = translateValue;
   }
+  if (placement === 'middle') {
+    translateStyle.translateY = translateValue;
+  }
 
   const child = useMemo(
     () => (
       <Animated.View
-        style={[styles.content, placement && styles[placement], { opacity: AnimatedOpacity }, containerStyle]}
+        style={[
+          styles.content,
+          placement && styles[placement],
+          placement === 'middle' && styles.middle_warp,
+          { opacity: AnimatedOpacity },
+          containerStyle,
+        ]}
       >
         <Animated.View
           onLayout={(event: LayoutChangeEvent) => {
             const { height, width } = event.nativeEvent.layout;
-            if (!layoutHeight && isVertical) {
-              setLayoutHeight(height);
-            }
-            if (!layoutWidth && isHorizontal) {
-              setLayoutWidth(width);
+            if (placement === 'middle') {
+              dispatch({ layoutHeight: height, layoutWidth: width });
+            } else if (!layoutHeight && isVertical) {
+              dispatch({ layoutHeight: height });
+            } else if (!layoutWidth && isHorizontal) {
+              dispatch({ layoutWidth: width });
             }
           }}
           style={[
@@ -164,5 +192,14 @@ const styles = StyleSheet.create({
     top: 0,
     height: MainHeight,
     right: 0,
+  },
+  middle: {},
+  middle_warp: {
+    bottom: 0,
+    top: 0,
+    right: 0,
+    left: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

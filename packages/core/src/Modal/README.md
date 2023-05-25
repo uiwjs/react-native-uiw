@@ -18,6 +18,7 @@ function ButtonGroupView() {
   const [topModal,setTopModal]= useState(false)
   const [leftModal,setLeftModal]= useState(false)
   const [rightModal,setRightModal]= useState(false)
+  const [middleModal,setMiddleModal]= useState(false)
   const data = Array.from(new Array(24)).map((_val, i) => {
     return { icon: <Icon name="heart-on" color="red" />, text: `${i}`}
   });
@@ -73,6 +74,16 @@ function ButtonGroupView() {
           </View>
         </SafeAreaView>
       </Modal>
+      <Modal visible={middleModal} placement='middle'>
+        <SafeAreaView style={{width:600}}>
+          <View>
+            <Grid data={data} columns='6' hasLine={false}/>
+            <Button onPress={() => setMiddleModal(false)}>
+              隐藏中间弹出的模态框
+            </Button>
+          </View>
+        </SafeAreaView>
+      </Modal>
       <Button onPress={() => setLowerModal(true)}>
         下面显示
       </Button>
@@ -84,6 +95,9 @@ function ButtonGroupView() {
       </Button>
          <Button onPress={() => setRightModal(true)}>
         右边显示
+      </Button>
+        <Button onPress={() => setMiddleModal(true)}>
+        中间显示
       </Button>
     </Fragment>
   );
@@ -97,7 +111,7 @@ export default ButtonGroupView
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|-----|------|
-| placement | 模态框的方向 | `'top' \| 'right' \| 'bottom' \| 'left'` | bottom |
+| placement | 模态框的方向 | `'top' \| 'right' \| 'bottom' \| 'left' \| 'middle'` | bottom |
 | onClosed | 关闭函数 | `() => void` | - |
 | containerStyle | 样式 | `ViewStyle` | - |
 
