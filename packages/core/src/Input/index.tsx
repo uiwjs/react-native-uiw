@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, PropsWithoutRef } from 'react';
 import {
   TextInput,
   TextInputProps,
@@ -47,7 +47,7 @@ export interface InputProps extends TextInputProps {
   /** 容器样式 */
   containerStyle?: StyleProp<ViewStyle>;
   /** 输入框 ref */
-  inputRef?: React.RefObject<TextInput>;
+  inputRef?: React.ForwardedRef<TextInput>;
 }
 
 interface InputState {
@@ -55,7 +55,7 @@ interface InputState {
   control: 'props' | 'state';
 }
 
-const Input = (props: InputProps) => {
+const Input = React.forwardRef<TextInput, PropsWithoutRef<InputProps>>((props, ref) => {
   const {
     wrongfulHandle,
     rule,
@@ -148,18 +148,30 @@ const Input = (props: InputProps) => {
         style={[styles.container, { flex: 1, borderColor: borderColor }, border ? styles[border] : {}]}
         testID="RNE__Input__view"
       >
-        {typeof extraStart === 'string' ? <Text color="primary_text" style={{ fontSize }}>{extraStart}</Text> : extraStart}
+        {typeof extraStart === 'string' ? (
+          <Text color="primary_text" style={{ fontSize }}>
+            {extraStart}
+          </Text>
+        ) : (
+          extraStart
+        )}
         <TextInput
           testID="RNE__Input__input"
           {...others}
-          ref={inputRef}
+          ref={ref || inputRef}
           editable={!disabled}
           value={defaultValue}
           onChangeText={onInputChange}
           onFocus={onInputFocus}
           style={[{ fontSize, color: theme.colors.text || '#000' }, styles.input, style]}
         />
-        {typeof extraEnd === 'string' ? <Text color="primary_text" style={{ fontSize }}>{extraEnd}</Text> : extraEnd}
+        {typeof extraEnd === 'string' ? (
+          <Text color="primary_text" style={{ fontSize }}>
+            {extraEnd}
+          </Text>
+        ) : (
+          extraEnd
+        )}
         {error && (renderError || <Icon name="circle-close" color="#dc3545" />)}
       </View>
       {clear && (
@@ -170,12 +182,16 @@ const Input = (props: InputProps) => {
             onInputChange?.('');
           }}
         >
-          {renderClear || <Text color="primary_text" style={[{ fontSize }, clearStyle]}>清除</Text>}
+          {renderClear || (
+            <Text color="primary_text" style={[{ fontSize }, clearStyle]}>
+              清除
+            </Text>
+          )}
         </TouchableOpacity>
       )}
     </View>
   );
-};
+});
 export default Input;
 type CreStyle = {
   bgColor: string;
