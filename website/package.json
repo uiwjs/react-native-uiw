@@ -18,7 +18,7 @@
     "@babel/runtime": "~7.20.7",
     "@shopify/restyle": "~2.4.2",
     "@uiw/icons": "2.5.3",
-    "@uiw/react-code-preview": "3.0.0",
+    "@uiw/react-code-preview": "3.0.1",
     "@uiw/react-markdown-preview": "^4.1.6",
     "@uiw/react-native": "4.0.10",
     "@uiw/react-native-template": "3.0.0",
