@@ -2,6 +2,5 @@
   "version": "4.0.10",
   "packages": ["example/*", "packages/*", "website"],
   "npmClient": "yarn",
-  "npmClientArgs": ["--production", "--no-optional"],
-  "useWorkspaces": true
+  "npmClientArgs": ["--production", "--no-optional"]
 }
