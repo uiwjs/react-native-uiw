@@ -1,0 +1,4 @@
+{
+  "@uiw/react-native": "../../packages/core/lib/index.js",
+  "@uiw/react-native-image-picker": "../../packages/react-native-image-picker/lib/index.js"
+}

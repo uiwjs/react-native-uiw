@@ -5,7 +5,13 @@
   "homepage": "https://uiwjs.github.io/react-native-uiw/",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "scripts": {},
+  "scripts": {
+    "watch": "npm run start",
+    "start": "tsbb watch src/*.tsx & npm run copy:watch",
+    "copy": "tsbb copy \"lib/**/*.{js,md,d.ts,png}\" --output ../../website/src/react-native",
+    "copy:watch": "tsbb copy \"lib/**/*.{js,md,d.ts,png}\" --output ../../website/src/react-native --watch",
+    "build": "tsbb build src/*.tsx && npm run copy"
+  },
   "keywords": [
     "uiw",
     "react-native",
