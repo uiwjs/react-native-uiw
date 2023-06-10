@@ -12,7 +12,7 @@
     "copy:watch": "tsbb copy \"lib/**/*.{js,md,d.ts,png}\" --output ../../website/src/react-native --watch",
     "copy:test": "tsbb copy \"lib/**/*.{js,md,d.ts,png}\" --output ../../test-ci/src",
     "copy:test:watch": "tsbb copy \"lib/**/*.{js,md,d.ts,png}\" --output ../../test-ci/src --watch",
-    "build": "tsbb build src/*.tsx && npm run copy"
+    "build": "tsbb build src/*.tsx && npm run copy && npm run copy:test"
   },
   "keywords": [
     "uiw",
