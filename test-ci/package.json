@@ -27,7 +27,7 @@
     "@typescript-eslint/parser": "^5.37.0",
     "@uiw/react-native": "4.0.10",
     "@uimjs/metro-config": "^1.0.2",
-    "babel-jest": "^29.3.1",
+    "@shopify/restyle": "~2.4.2",
     "eslint": "^7.32.0",
     "jest": "^29.3.1",
     "metro-react-native-babel-preset": "0.72.3",
@@ -43,8 +43,7 @@
     "prop-types": "15.7.2",
     "react-native-gesture-handler": "2.8.0",
     "react-native-root-siblings": "4.1.1",
-    "react-native-svg": "13.9.0",
-    "@shopify/restyle": "~2.4.2"
+    "react-native-svg": "13.9.0"
   },
   "jest": {
     "setupFiles": [
