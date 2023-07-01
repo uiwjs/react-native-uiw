@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {Form, Button, Toast, Slider, Flex, Text, Spacing} from '@uiw/react-native';
-import {View} from 'react-native';
+import {View, TextInput} from 'react-native';
 import Layout, {Container} from '../../Layout';
 const {Body, Footer, Card} = Layout;
 
@@ -11,6 +11,18 @@ interface actionProps {
   moveToTop: () => void;
   moveToBottom: () => void;
 }
+
+const Input = ({value, onChange, ...others}: any) => {
+  return (
+    <TextInput
+      value={value}
+      onChangeText={value => {
+        onChange?.(value);
+      }}
+      {...others}
+    />
+  );
+};
 
 const FormDemo = () => {
   const form = Form.useForm();
@@ -386,6 +398,9 @@ const FormDemo = () => {
           <Card title="卡片模式">
             <Form
               form={form}
+              cardProps={{borderRadius: 10}}
+              displayType="row"
+              labelStyle={{width: 120}}
               schema={schemaCard}
               mode="card"
               initialValues={{name: '王滴滴', rate: 4}}
@@ -408,6 +423,13 @@ const FormDemo = () => {
               }}>
               确定
             </Button>
+          </Card>
+          <Card title="Form.Item">
+            <Form type="custom" mode="card" displayType="row" labelStyle={{width: 120}} form={form} changeValidate={true}>
+              <Form.Item required field="name" name="姓名" validate={val => (!val ? '请输入姓名' : '')}>
+                <Input placeholder="请输入" />
+              </Form.Item>
+            </Form>
           </Card>
           <Card title="表单项类型">
             <Form

@@ -8,6 +8,7 @@ import FormList from './formList';
 import Container from './comps/container';
 import { View } from 'react-native';
 import styles from './styles';
+import Flex from '../Flex';
 
 const FormItems = ({ schema = [] }: Pick<FormProps, 'schema'>) => {
   const {
@@ -16,8 +17,11 @@ const FormItems = ({ schema = [] }: Pick<FormProps, 'schema'>) => {
     watch,
     customComponentList,
     changeValidate,
+    cardProps,
+    containerStyle,
+    displayType,
+    labelStyle,
   } = useContext(Context);
-
   const change = (field: KeyType, value: unknown) => {
     updateStore?.({ store: { ...store, [field]: value } });
     watch && watch[field]?.(value);
@@ -49,19 +53,37 @@ const FormItems = ({ schema = [] }: Pick<FormProps, 'schema'>) => {
       if (v.hide) {
         return null;
       }
-      return (
-        <View key={i} style={styles.form_items_container}>
+      let child = (
+        <View style={[styles.form_items]}>
+          <Label v={v} />
+          {_renderComponent(v)}
+          <Tip v={v} />
+        </View>
+      );
+      if (displayType === 'row') {
+        child = (
           <View style={[styles.form_items]}>
-            <Label v={v} />
-            {_renderComponent(v)}
+            <Flex justify="between" align="center">
+              <Label v={v} labelStyle={labelStyle} />
+              <View style={{ flex: 1 }}>{_renderComponent(v)}</View>
+            </Flex>
             <Tip v={v} />
           </View>
+        );
+      }
+      return (
+        <View key={i} style={styles.form_items_container}>
+          {child}
         </View>
       );
     });
   };
 
-  return <Container mode={mode}>{_render()}</Container>;
+  return (
+    <Container containerStyle={containerStyle} cardProps={cardProps} mode={mode}>
+      {_render()}
+    </Container>
+  );
 };
 
 export default FormItems;

@@ -31,6 +31,10 @@ const Form = (baseProps: FormProps) => {
     watch,
     customComponentList = {},
     changeValidate = false,
+    cardProps = {},
+    containerStyle,
+    displayType = 'column',
+    labelStyle = {},
     children,
   } = baseProps;
   const theme = useTheme<Theme>();
@@ -62,7 +66,7 @@ const Form = (baseProps: FormProps) => {
       search: <SearchBar />,
       switch: <Switch />,
       checkBox: <CheckBox />,
-      stepper: <Stepper value={0} onChange={() => { }} />,
+      stepper: <Stepper value={0} onChange={() => {}} />,
       treeSelect: <TreeSelect options={[]} />,
       picker: <Picker />,
       datePicker: <DatePicker />,
@@ -71,6 +75,10 @@ const Form = (baseProps: FormProps) => {
       tree: <Tree />,
     },
     changeValidate: changeValidate,
+    cardProps: cardProps,
+    containerStyle: containerStyle,
+    displayType: displayType,
+    labelStyle: labelStyle,
   };
 
   return <Provider contextProps={contextProps}>{type === 'json' ? <FormItems schema={schema} /> : children}</Provider>;

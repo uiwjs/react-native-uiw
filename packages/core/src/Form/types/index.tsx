@@ -1,6 +1,8 @@
 import { RulesOption } from '@validator.tool/hook';
 import React from 'react';
 import Validator from 'validator.tool';
+import { CardProps } from '../../Card';
+import { ViewStyle, TextStyle } from 'react-native';
 
 type KeyType = string | number | symbol;
 
@@ -37,6 +39,10 @@ interface FormProps<FormData = any, FieldValue = FormData[keyof FormData], Field
   changeValidate?: boolean;
   type?: 'json' | 'custom';
   children?: React.ReactElement;
+  cardProps?: CardProps;
+  containerStyle?: ViewStyle;
+  displayType?: 'row' | 'column';
+  labelStyle?: ViewStyle;
 }
 
 interface actionProps {
