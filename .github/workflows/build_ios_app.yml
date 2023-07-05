@@ -18,9 +18,11 @@ jobs:
       - run: npm run build
       - run: xcode-select -p
 
-      - run: pod install
+      - run: bundle install
+        working-directory: example/examples
+
+      - run: bundle exec pod install
         working-directory: example/examples/ios
-        name: Install pod dependencies
 
       # - name: Build iOS (debug)
       #   working-directory: example/examples
