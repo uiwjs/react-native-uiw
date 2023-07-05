@@ -7,9 +7,9 @@ Android要求所有应用都必须先使用证书进行数字签名，然后才�
 
 ## 打包修改 APP 版本号
 
-### 修改 `android/app/build.gradle` 配置
+修改 `android/app/build.gradle` 配置，每次发布之前更改版本号。
 
-```java
+```gradle
 android {
   .....
   defaultConfig {
@@ -180,13 +180,11 @@ keytool -importkeystore -srckeystore xx-key.keystore -destkeystore xx-key.keysto
 # " 迁移到行业标准格式 PKCS12。
 ```
 
-### 设置 Gradle 变量
+## Android Studio 打包
 
 ![](./img/image.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
 如果 Gradle 加载失败，https://gradle.org/ 点击下面按钮重新同步
-
-![](./img/image1.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
 Android Studio 打包
 
