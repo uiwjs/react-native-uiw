@@ -6,9 +6,10 @@ Android 打包
 Android要求所有应用都必须先使用证书进行数字签名，然后才能安装。 为了通过Google Play商店分发您的Android应用，需要使用发布密钥对其进行签名，然后再将其用于以后的所有更新。 自2017年以来，借助Google Play的应用签名功能，Google Play可以自动管理签名发布。 但是，在将应用程序二进制文件上传到Google Play之前，需要使用上传密钥对其进行签名。 Android Developers文档上的[“签署应用程序”](https://developer.android.com/tools/publishing/app-signing.html)页面详细描述了该主题。 本指南简要介绍了该过程，并列出了打包JavaScript捆绑包所需的步骤。
 
 ## 打包修改 APP 版本号
+
 ### 修改 `android/app/build.gradle` 配置
 
-```xml
+```java
 android {
   .....
   defaultConfig {
@@ -18,38 +19,70 @@ android {
 }
 ```
 
-## Android9.0以上打包APK后HTTP请求不到解决方法
+## Android9.0 以上打包APK后HTTP请求不到解决方法
 
-错误原因：android9.0默认禁止访问不安全的请求，比如http。
+错误原因：`android9.0` 默认禁止访问不安全的请求，比如 `http`。
 
-### 解决方案：
-方法1：  使用认证过的https（我用的是阿里云免费证书，因为使用https还得配置，所以用了http）
+### 解决方法 `1`：
 
-方法2： 分为两步
+使用认证过的 `https`（我用的是阿里云免费证书，因为使用 `https` 还得配置，所以用了 `http`）
 
-第一步：在res下新增加一个xml目录，然后创建一个名为network_security_config.xml文件
+### 解决方法 `2`：
+
+添加配置强制支持 `http`
+
+#### 第一步：
+
+在 `res` 下新增加一个 `xml` 目录，然后创建一个名为 `network_security_config.xml` 文件
 
 ![](./img/image6.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
-```bash
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <base-config cleartextTrafficPermitted="true" />
+  <base-config cleartextTrafficPermitted="true" />
 </network-security-config>
 ```
 
-第二步：
+#### 第二步：
 
-  在androidManifiest.xml文件中添加
-```bash
-android:networkSecurityConfig="@xml/network_security_config"
+在 `android/app/src/main/AndroidManifest.xml` 文件中添加
+
+```diff
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+      android:name=".MainApplication"
+      android:label="@string/app_name"
+      android:icon="@mipmap/ic_launcher"
+      android:allowBackup="false"
++      android:networkSecurityConfig="@xml/network_security_config"
+      android:theme="@style/AppTheme">
+      <activity
+        android:name=".MainActivity"
+        android:label="@string/app_name"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+        android:launchMode="singleTask"
+        android:windowSoftInputMode="adjustResize"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity>
+    </application>
+</manifest>
 ```
+
 ![](./img/image7.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
 > ⚠️ 下面还有一种方式 本质上跟第二种方法一样，简便但不规范  建议用上面的方法<!--rehype:style=background: #F08800; color: #fff;-->
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-在项目/android/app/src/main/AndroidManifest.xml文件中的application节点下添加
+在项目 `/android/app/src/main/AndroidManifest.xml` 文件中的 `application` 节点下添加
 
 ```bash
 android:usesCleartextTraffic="true"
@@ -66,12 +99,11 @@ android:usesCleartextTraffic="true"
 - Keytool命令行
 - Android Studio界面生成
 
-# Android Studio界面生成
-## 一. 创建签名文件
+### Android Studio 界面生成
 
-### `创建签名文件`<!--rehype:style=color: white; background: #1c7bd0;-->
+#### `创建签名文件`<!--rehype:style=color: white; background: #1c7bd0;-->
 
-用 `Android Studio`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->打开需要打包的项目,之后选择 `Build`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->中的`Generate Signed Bundle/APK`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->开始创建签名文件。
+用 `Android Studio`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->打开需要打包的项目,之后选择 `Build`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->中的 `Generate Signed Bundle/APK`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->开始创建签名文件。
 
 ![](./img/01.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
@@ -79,26 +111,27 @@ android:usesCleartextTraffic="true"
 
 ![](./img/02.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
-### `填写签名参数`<!--rehype:style=color: white; background: #1c7bd0;-->
+#### `填写签名参数`<!--rehype:style=color: white; background: #1c7bd0;-->
 
 ![](./img/03.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
-#### `1. 创建密钥库(已拥有密钥库跳过)`<!--rehype:style=color: white; background: #ffb703;-->
+##### `1. 创建密钥库(已拥有密钥库跳过)`<!--rehype:style=color: white; background: #ffb703;-->
 
 点击`Create new...”`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->按钮创建密钥库，填写相关信息后，点击`OK`创建成功。
 
 ![](./img/04.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
-#### `2.选择已存在密钥库及密钥`<!--rehype:style=color: white; background: #ffb703;-->
+##### `2.选择已存在密钥库及密钥`<!--rehype:style=color: white; background: #ffb703;-->
 
 点击`Choose existing...”`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->按钮找到密钥库文件。
 
 ![](./img/05.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
-> 密钥库文件地址在项目`Android/app/debug.keystore`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->目录下。
+> 密钥库文件地址在项目`Android/app/debug.keystore`<!--rehype:style=color: #1c7bd0; background: ##E6E6E6-->目录下。如果自己生成，请记住目录在生成的目录中找 `*.keystore` 密钥文件
 <!--rehype:style=border-left: 8px solid #ffe564;background-color: #ffe56440;padding: 12px 16px;-->
 
-# Keytool命令行生成
+### Keytool 命令行生成
+
 您可以使用keytool生成专用签名密钥。 在Windows上，必须从 `C:\Program Files\Java\jdkx.x.x_x\bin` 运行keytool。
 
 ```shell
@@ -147,7 +180,8 @@ keytool -importkeystore -srckeystore xx-key.keystore -destkeystore xx-key.keysto
 # " 迁移到行业标准格式 PKCS12。
 ```
 
-## 设置Gradle变量
+### 设置 Gradle 变量
+
 ![](./img/image.png)<!--rehype:style=max-width: 650px;width: 100%;-->
 
 如果 Gradle 加载失败，https://gradle.org/ 点击下面按钮重新同步
