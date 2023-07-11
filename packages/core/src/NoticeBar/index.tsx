@@ -4,6 +4,7 @@ import Icon from '../Icon';
 import Marquee, { MarqueeProps } from './Marquee';
 import { Theme } from '../theme';
 import { useTheme } from '@shopify/restyle';
+export { Marquee };
 
 export type NoticeBarProps = {
   children?: any;
