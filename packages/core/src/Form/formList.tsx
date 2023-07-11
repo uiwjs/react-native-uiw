@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { KeyType, FormItemsProps } from './types';
 import { isObjectEmpty } from './utils/is';
 import { Context } from './hooks/context';
@@ -9,6 +9,7 @@ import { View, SafeAreaView } from 'react-native';
 import styles from './styles';
 import { useTheme } from '@shopify/restyle';
 import { Theme } from '../theme';
+import { move } from '../utils/utils';
 
 interface FormListProps {
   formListValue: FormItemsProps;
@@ -28,35 +29,62 @@ const FormList = ({
   const theme = useTheme<Theme>();
   const { field, items = [], renderAdd, renderHeader } = formListValue;
 
+  const keyRef = useRef<{ keys: number[]; id: number }>({
+    keys: [],
+    id: 0,
+  });
+
+  const keyManager = keyRef.current;
+
+  console.log('keyManager', keyRef);
+
   const handleOperate = (type = '', index: number) => {
     let list = store[field] || [];
-    if (type === 'add') list.push({});
-    if (type === 'delete') list.splice(index, 1);
+    if (type === 'add') {
+      keyManager.id += 1;
+      list.push({});
+    }
+    if (type === 'delete') {
+      keyManager.keys = keyManager.keys.filter((_, keysIndex) => index !== keysIndex);
+      list.splice(index, 1);
+    }
     // 下移
     if (type === 'moveDown') {
       if (index !== list.length - 1) {
+        keyManager.keys = move(keyManager.keys, index, index + 1);
         list[index] = list.splice(index + 1, 1, list[index])[0];
       } else {
+        keyManager.keys = move(keyManager.keys, index, 0);
+
         list.unshift(list.splice(index, 1)[0]);
       }
     }
     // 上移
     if (type === 'moveUp') {
       if (index !== 0) {
+        keyManager.keys = move(keyManager.keys, index, index - 1);
+
         list[index] = list.splice(index - 1, 1, list[index])[0];
       } else {
+        keyManager.keys = move(keyManager.keys, index, 0);
+
         list.push(list.shift());
       }
     }
     // 置顶
     if (type === 'moveToTop') {
       if (index !== 0) {
+        keyManager.keys = move(keyManager.keys, index, 0);
         list.unshift(list.splice(index, 1)[0]);
       }
     }
     // 置底
     if (type === 'moveToBottom') {
       if (index !== list.length - 1) {
+        const lastIndex = keyManager.keys.length - 1;
+
+        keyManager.keys = move(keyManager.keys, index, lastIndex);
+
         list.push(list.splice(index, 1)[0]);
       }
     }
@@ -97,6 +125,7 @@ const FormList = ({
       if (v.type === 'cardList') {
         return;
       }
+
       return (
         <View key={i} style={styles.form_items_container}>
           <View style={[styles.form_items]}>
@@ -111,18 +140,26 @@ const FormList = ({
 
   return (
     <SafeAreaView style={{ backgroundColor: theme.colors.background }}>
-      {(store[field] || []).map((item: Record<string, unknown>, index: number) => (
-        <React.Fragment key={index}>
-          {renderHeader?.(index, {
-            remove: () => handleOperate('delete', index),
-            moveUp: () => handleOperate('moveUp', index),
-            moveDown: () => handleOperate('moveDown', index),
-            moveToTop: () => handleOperate('moveToTop', index),
-            moveToBottom: () => handleOperate('moveToBottom', index),
-          })}
-          <Card>{_render(index)}</Card>
-        </React.Fragment>
-      ))}
+      {(store[field] || []).map((item: Record<string, unknown>, index: number) => {
+        let key = keyManager.keys[index];
+        if (key === undefined) {
+          keyManager.keys[index] = keyManager.id;
+          key = keyManager.keys[index];
+          keyManager.id += 1;
+        }
+        return (
+          <React.Fragment key={key}>
+            {renderHeader?.(index, {
+              remove: () => handleOperate('delete', index),
+              moveUp: () => handleOperate('moveUp', index),
+              moveDown: () => handleOperate('moveDown', index),
+              moveToTop: () => handleOperate('moveToTop', index),
+              moveToBottom: () => handleOperate('moveToBottom', index),
+            })}
+            <Card>{_render(index)}</Card>
+          </React.Fragment>
+        );
+      })}
       {renderAdd?.({ add: () => handleOperate('add', 0) })}
     </SafeAreaView>
   );
