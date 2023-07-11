@@ -37,7 +37,7 @@
     "@uiw/react-native": "4.0.11",
     "ahooks": "3.7.6",
     "prop-types": "15.7.2",
-    "react-native-image-picker": "^5.3.1",
+    "react-native-image-picker": "~5.3.1",
     "react-native-image-viewing": "~0.2.2",
     "react-native-svg": "13.9.0"
   },

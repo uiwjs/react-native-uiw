@@ -55,7 +55,7 @@
   "dependencies": {
      ...
 +    "@uiw/react-native-image-picker": "4.0.6",
-+    "react-native-image-picker":"^5.3.1",
++    "react-native-image-picker":"~5.3.1",
 +    "react-native-image-viewing":"~0.2.2",
 +    "@react-native-camera-roll/camera-roll":"5.3.1" 
   ...
