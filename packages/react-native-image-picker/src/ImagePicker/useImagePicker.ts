@@ -36,6 +36,7 @@ export default function useImagePicker({
   onGrantFail,
   cameraRationale,
   libraryRationale,
+  onDelete,
 }: ImagePickerProps) {
   /** 打开相册或者摄像头的ActionSheet */
   const [launchVisible, { setTrue: setLaunchVisibleTrue, setFalse: setLaunchVisibleFalse }] = useBoolean(false);
@@ -174,6 +175,7 @@ export default function useImagePicker({
     // 刷新页面
     setRefresh(!refresh);
     uploadFinish?.(undefined);
+    onDelete?.(currentImgSource);
   };
 
   // 打开上传

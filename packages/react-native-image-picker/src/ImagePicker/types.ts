@@ -33,6 +33,8 @@ export declare type ImagePickerProps = PropsWithChildren<{
   onGrantFail?: () => void;
   /** 预览时长按图片保存回调 */
   onSave?: ((image: any) => void) | undefined;
+  /** 删除图片回调 */
+  onDelete?: (files: string[]) => void;
   /** 打开相册授权的文本 */
   libraryRationale?: Rationale;
   /** 打开摄像头授权的文本 */
@@ -86,4 +88,5 @@ export type useImageProps = {
   onGrantFail?: () => void;
   /** 其他图片自定义配置,详细参考react-native-image-picker的option配置 */
   options?: CameraOptions;
+  onDelete?: (files: string[]) => void;
 };

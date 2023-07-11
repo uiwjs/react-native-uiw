@@ -22,6 +22,7 @@ const ImagePicker = ({
   onCancel,
   onFail,
   onGrantFail,
+  onDelete,
   cameraRationale = {
     title: '获取摄像头权限',
     message: '若不允许，您将无法使用摄像头功能',
@@ -72,6 +73,7 @@ const ImagePicker = ({
     cameraRationale,
     libraryRationale,
     selectionLimit,
+    onDelete,
   });
   const savePhotos = (url = '') => {
     Alert.alert('保存图片', '', [
