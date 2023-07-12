@@ -83,18 +83,20 @@ const Progress: React.FC<ProgressProps> = ({
 
     return (
       <View>
-        <Svg width={width} height={width / 3}>
-          <Defs>
-            <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
-              <Stop offset="0" stopColor={typeof color === 'string' ? color : color[0]} stopOpacity="1" />
-              <Stop offset="1" stopColor={typeof color === 'string' ? color : color[1]} stopOpacity="1" />
-            </LinearGradient>
-          </Defs>
-          <G origin={`${width / 2}, ${width / 2}`}>
-            <Rect x={0} y={0} width={width} height={strokeWidth} rx={strokeWidth / 2} fill={bgColor} />
-            <AnimatedRect x={0} y={0} width={progress} height={strokeWidth} rx={strokeWidth / 2} fill="url(#grad)" />
-          </G>
-        </Svg>
+        <View>
+          <Svg width={width} height={showLabel ? width / 3 : strokeWidth}>
+            <Defs>
+              <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+                <Stop offset="0" stopColor={typeof color === 'string' ? color : color[0]} stopOpacity="1" />
+                <Stop offset="1" stopColor={typeof color === 'string' ? color : color[1]} stopOpacity="1" />
+              </LinearGradient>
+            </Defs>
+            <G origin={`${width / 2}, ${width / 2}`}>
+              <Rect x={0} y={0} width={width} height={strokeWidth} rx={strokeWidth / 2} fill={bgColor} />
+              <AnimatedRect x={0} y={0} width={progress} height={strokeWidth} rx={strokeWidth / 2} fill="url(#grad)" />
+            </G>
+          </Svg>
+        </View>
         {progressLabel}
       </View>
     );
