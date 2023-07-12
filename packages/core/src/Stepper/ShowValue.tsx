@@ -13,9 +13,9 @@ export interface ShowValueProps {
   onChange: (val: number | 'min') => unknown;
 }
 enum Width {
-  small = 50,
-  default = 70,
-  large = 100,
+  small = 42,
+  default = 62,
+  large = 92,
 }
 function ShowValue(props: ShowValueProps) {
   const { size, value, textInput, color, disabled, width, onChange } = props;

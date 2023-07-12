@@ -78,27 +78,27 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: 0,
   },
   small: {
+    height: 24,
+    width: 24,
+  },
+  default: {
     height: 30,
     width: 30,
   },
-  default: {
-    height: 36,
-    width: 36,
-  },
   large: {
-    height: 44,
-    width: 44,
+    height: 38,
+    width: 38,
   },
   smallText: {
-    fontSize: 24,
-    lineHeight: 26,
+    fontSize: 20,
+    lineHeight: 24,
   },
   defaultText: {
-    fontSize: 30,
-    lineHeight: 34,
+    fontSize: 24,
+    lineHeight: 30,
   },
   largeText: {
-    fontSize: 38,
+    fontSize: 28,
     lineHeight: 42,
   },
 });
