@@ -90,16 +90,16 @@ export const styles = StyleSheet.create({
     width: 38,
   },
   smallText: {
-    fontSize: 20,
-    lineHeight: 24,
+    fontSize: 18,
+    lineHeight: 20,
   },
   defaultText: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 22,
+    lineHeight: 28,
   },
   largeText: {
-    fontSize: 28,
-    lineHeight: 42,
+    fontSize: 26,
+    lineHeight: 40,
   },
 });
 
