@@ -26,30 +26,23 @@ export interface CheckBoxProps extends TouchableOpacityProps {
   onChange?: (checked: boolean) => void;
 }
 
-export interface CheckBoxState {
-  checked: boolean;
-  controlChecked: 'props' | 'state';
-}
-
 function CheckBox(props: CheckBoxProps) {
   const theme = useTheme<Theme>();
-  const [state, setState] = useState({
-    checked: !!props.checked,
-    controlChecked: 'props',
-  });
+
+  const [state, setState] = useState({ checked: !!props.checked });
 
   useEffect(() => {
-    if (state.controlChecked === 'props') {
-      setState({ ...state, checked: !!props.checked });
-    }
-    setState({ ...state, controlChecked: 'props' });
-  }, []);
+    setState({ checked: !!props.checked });
+  }, [props.checked]);
 
   const onPress = () => {
     const { onChange } = props;
-    setState({ checked: !state.checked, controlChecked: 'state' });
-
-    onChange && onChange(state.checked);
+    if (Reflect.has(props, 'checked')) {
+      onChange && onChange(state.checked);
+    } else {
+      setState({ checked: !state.checked });
+      onChange && onChange(state.checked);
+    }
   };
 
   const {
