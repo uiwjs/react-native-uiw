@@ -41,7 +41,7 @@ function CheckBox(props: CheckBoxProps) {
       onChange && onChange(state.checked);
     } else {
       setState({ checked: !state.checked });
-      onChange && onChange(state.checked);
+      onChange && onChange(!state.checked);
     }
   };
 
