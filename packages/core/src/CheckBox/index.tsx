@@ -38,7 +38,7 @@ function CheckBox(props: CheckBoxProps) {
   const onPress = () => {
     const { onChange } = props;
     if (Reflect.has(props, 'checked')) {
-      onChange && onChange(state.checked);
+      onChange && onChange(!state.checked);
     } else {
       setState({ checked: !state.checked });
       onChange && onChange(!state.checked);
