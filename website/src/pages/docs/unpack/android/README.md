@@ -49,7 +49,7 @@ android {
 在 `android/app/src/main/AndroidManifest.xml` 文件中添加
 
 ```diff
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -74,7 +74,7 @@ android {
         </intent-filter>
       </activity>
     </application>
-</manifest>
+ </manifest>
 ```
 
 ![](./img/image7.png)<!--rehype:style=max-width: 650px;width: 100%;-->
