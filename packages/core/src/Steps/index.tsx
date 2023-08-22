@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import { ViewProps } from 'react-native';
 import Icon from '../Icon';
 import Text from '../Typography/Text';
@@ -19,6 +19,7 @@ export interface StepsProps extends ViewProps {
   items: StepsItemsProps[];
   current?: number;
   onChange?: (value: number) => void;
+  lineStyle?: ViewStyle;
 }
 
 export default (props: StepsProps) => {
@@ -41,9 +42,9 @@ export default (props: StepsProps) => {
           return (
             <TouchableOpacity style={[styles.item]} key={index} onPress={() => onStepsPress(index)}>
               <View style={styles.wrap}>
-                {index !== 0 && <View style={styles.leftLine}></View>}
+                {index !== 0 && <View style={[styles.leftLine, { ...props.lineStyle }]}></View>}
                 {item.render}
-                {index < items.length - 1 && <View style={styles.rightLine}></View>}
+                {index < items.length - 1 && <View style={[styles.rightLine, { ...props.lineStyle }]}></View>}
               </View>
             </TouchableOpacity>
           );
@@ -51,7 +52,7 @@ export default (props: StepsProps) => {
         return (
           <TouchableOpacity style={[styles.item]} key={index} onPress={() => onStepsPress(index)}>
             <View style={styles.wrap}>
-              {index !== 0 && <View style={styles.leftLine}></View>}
+              {index !== 0 && <View style={[styles.leftLine, { ...props.lineStyle }]}></View>}
               <View
                 style={[
                   styles.circular,
@@ -77,7 +78,7 @@ export default (props: StepsProps) => {
                   </Text>
                 )}
               </View>
-              {index < items.length - 1 && <View style={styles.rightLine}></View>}
+              {index < items.length - 1 && <View style={[styles.rightLine, { ...props.lineStyle }]}></View>}
             </View>
             <Text color="primary_text">{item.title}</Text>
             <Text color="text" style={styles.desc}>
