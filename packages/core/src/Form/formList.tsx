@@ -125,10 +125,11 @@ const FormList = ({
       if (v.type === 'cardList') {
         return;
       }
-
+      const showList = items.filter((item: FormItemsProps) => !item.hide) || [];
+      const last = showList.length - 1 === i;
       return (
         <View key={i} style={styles.form_items_container}>
-          <View style={[styles.form_items]}>
+          <View style={[styles.form_items, { borderBottomWidth: last ? 0 : 0.5, ...v.formItemStyle }]}>
             <Label v={v} />
             {_renderComponent(v, index)}
             <Tip v={v} />

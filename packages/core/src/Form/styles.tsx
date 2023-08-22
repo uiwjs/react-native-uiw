@@ -5,14 +5,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   form_items_container: {
-    // flex: 1,
     width: '100%',
   },
   form_items: {
     textAlign: 'center',
-    margin: 5,
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#ccc',
+    marginVertical: 5,
+    borderBottomColor: '#F5F5F5',
   },
 });
 

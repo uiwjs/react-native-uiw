@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import {ComProps} from '../../routes';
 import Layout, {Container} from '../../Layout';
@@ -26,6 +26,29 @@ export default (props: StepsViewProps) => {
     {title: '步骤三', desc: '这里是', status: 'error'},
   ];
 
+  const items3 = [
+    {
+      render: (
+        <View>
+          <Text>1</Text>
+        </View>
+      ),
+    },
+    {
+      render: (
+        <View>
+          <Text>2</Text>
+        </View>
+      ),
+    },
+    {
+      render: (
+        <View>
+          <Text>3</Text>
+        </View>
+      ),
+    },
+  ];
   const onBtnPress = () => {
     let index = current + 1;
     if (index > item.length - 1) {
@@ -57,6 +80,11 @@ export default (props: StepsViewProps) => {
         <Card title="步骤状态">
           <WingBlank>
             <Steps items={item2} current={2} />
+          </WingBlank>
+        </Card>
+        <Card title="自定义render">
+          <WingBlank>
+            <Steps items={items3} />
           </WingBlank>
         </Card>
       </Body>

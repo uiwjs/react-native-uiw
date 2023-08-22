@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, StyleProp, TextStyle } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import Icon, { IconsName } from '../Icon';
 import { TabsItemIconTypes } from '../Tabs/TabsItem';
@@ -30,6 +30,7 @@ export interface RatingProps {
   tooltipsStyle?: StyleProp<TextStyle>;
   /** 只读模式 */
   disabled: boolean;
+  itemStyle?: ViewStyle;
 }
 
 export interface RatingState {
@@ -114,6 +115,7 @@ function Rating(props: RatingProps) {
                 }
               }}
               key={index}
+              style={{ marginRight: 5, ...props.itemStyle }}
             >
               {typeof item === 'string' ? <Icon name={item as IconsName} color={color} size={size} /> : item}
             </TouchableOpacity>

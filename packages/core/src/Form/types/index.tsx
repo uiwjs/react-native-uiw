@@ -65,6 +65,7 @@ interface FormItemsProps {
   renderAdd?: ({ add }: { add: () => void }) => React.ReactNode;
   items?: Omit<FormItemsProps, 'validate' | 'required'>[];
   hide?: boolean;
+  formItemStyle?: ViewStyle;
 }
 
 export type { FormProps, FormItemsProps, KeyType, FormInstance, InnerMethodsReturnType };

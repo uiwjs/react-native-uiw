@@ -53,8 +53,10 @@ const FormItems = ({ schema = [] }: Pick<FormProps, 'schema'>) => {
       if (v.hide) {
         return null;
       }
+      const showList = schema.filter((item: FormItemsProps) => !item.hide) || [];
+      const last = showList.length - 1 === i;
       let child = (
-        <View style={[styles.form_items]}>
+        <View style={[styles.form_items, { borderBottomWidth: last ? 0 : 0.5, ...v.formItemStyle }]}>
           <Label v={v} />
           {_renderComponent(v)}
           <Tip v={v} />
@@ -62,13 +64,17 @@ const FormItems = ({ schema = [] }: Pick<FormProps, 'schema'>) => {
       );
       if (displayType === 'row') {
         child = (
-          <View style={[styles.form_items]}>
-            <Flex justify="between" align="center">
+          <Flex
+            justify="center"
+            direction="column"
+            style={[styles.form_items, { borderBottomWidth: last ? 0 : 0.5, ...v.formItemStyle }]}
+          >
+            <Flex align="center" style={{ width: '100%', flex: 1 }}>
               <Label v={v} labelStyle={labelStyle} />
               <View style={{ flex: 1 }}>{_renderComponent(v)}</View>
             </Flex>
             <Tip v={v} />
-          </View>
+          </Flex>
         );
       }
       return (
