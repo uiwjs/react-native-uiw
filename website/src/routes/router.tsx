@@ -1,365 +1,377 @@
-import { lazy } from 'react';
+import { RouteObject, Navigate } from 'react-router-dom';
 
-export const routeData = [
+export const routeData: RouteObject[] = [
   {
     path: '/',
-    component: lazy(() => import('../component/Container')),
+    lazy: () => import('../component/Container'),
     children: [
       {
+        path: '/',
+        element: <Navigate replace to="/home" />,
+      },
+      {
+        path: '/docs',
+        element: <Navigate replace to="/docs/getting-started" />,
+      },
+      {
+        path: '/components',
+        element: <Navigate replace to="/components/about" />,
+      },
+      {
         path: '/home',
-        component: lazy(() => import('../pages/home')),
+        lazy: () => import('../pages/home'),
       },
       {
         path: '/team',
-        component: lazy(() => import('../pages/team')),
+        lazy: () => import('../pages/team'),
       },
       {
         path: '/docs/getting-started',
-        component: lazy(() => import('../pages/docs/getting-started')),
+        lazy: () => import('../pages/docs/getting-started'),
       },
       {
         path: '/docs/environment-setup',
-        component: lazy(() => import('../pages/docs/environment-setup')),
+        lazy: () => import('../pages/docs/environment-setup'),
       },
       {
         path: '/docs/environment-setup/ios',
-        component: lazy(() => import('../pages/docs/environment-setup/ios')),
+        lazy: () => import('../pages/docs/environment-setup/ios'),
       },
       {
         path: '/docs/environment-setup/android',
-        component: lazy(() => import('../pages/docs/environment-setup/android')),
+        lazy: () => import('../pages/docs/environment-setup/android'),
       },
       {
         path: '/docs/environment-setup/android-windows',
-        component: lazy(() => import('../pages/docs/environment-setup/android-windows')),
+        lazy: () => import('../pages/docs/environment-setup/android-windows'),
       },
       {
         path: '/docs/phone-run/ios-phone',
-        component: lazy(() => import('../pages/docs/phone-run/ios-phone')),
+        lazy: () => import('../pages/docs/phone-run/ios-phone'),
       },
       {
         path: '/docs/phone-run/android-phone',
-        component: lazy(() => import('../pages/docs/phone-run/android-phone')),
+        lazy: () => import('../pages/docs/phone-run/android-phone'),
       },
       {
         path: '/docs/phone-run/android-windows-phone',
-        component: lazy(() => import('../pages/docs/phone-run/android-phone')),
+        lazy: () => import('../pages/docs/phone-run/android-phone'),
       },
       {
         path: '/docs/app-store/ios',
-        component: lazy(() => import('../pages/docs/app-store/ios')),
+        lazy: () => import('../pages/docs/app-store/ios'),
       },
       {
         path: '/docs/app-store/android',
-        component: lazy(() => import('../pages/docs/app-store/android')),
+        lazy: () => import('../pages/docs/app-store/android'),
       },
       {
         path: '/docs/unpack/android',
-        component: lazy(() => import('../pages/docs/unpack/android')),
+        lazy: () => import('../pages/docs/unpack/android'),
       },
       {
         path: '/docs/unpack/ios',
-        component: lazy(() => import('../pages/docs/unpack/ios')),
+        lazy: () => import('../pages/docs/unpack/ios'),
       },
       {
         path: '/docs/development/document',
-        component: lazy(() => import('../pages/docs/development/document')),
+        lazy: () => import('../pages/docs/development/document'),
       },
       {
         path: '/docs/development/components',
-        component: lazy(() => import('../pages/docs/development/components')),
+        lazy: () => import('../pages/docs/development/components'),
       },
       {
         path: '/docs/awesome-react-native',
-        component: lazy(() => import('../pages/docs/awesome-react-native')),
+        lazy: () => import('../pages/docs/awesome-react-native'),
       },
       {
         path: '/docs/react-native-template/quickstart',
-        component: lazy(() => import('../pages/docs/react-native-template/quickstart')),
+        lazy: () => import('../pages/docs/react-native-template/quickstart'),
       },
       {
         path: '/docs/react-native-template/menu-route',
-        component: lazy(() => import('../pages/docs/react-native-template/menu-route')),
+        lazy: () => import('../pages/docs/react-native-template/menu-route'),
       },
       {
         path: '/docs/react-native-template/new-page',
-        component: lazy(() => import('../pages/docs/react-native-template/new-page')),
+        lazy: () => import('../pages/docs/react-native-template/new-page'),
       },
       {
         path: '/docs/react-native-template/mock-data',
-        component: lazy(() => import('../pages/docs/react-native-template/mock-data')),
+        lazy: () => import('../pages/docs/react-native-template/mock-data'),
       },
       {
         path: '/docs/react-native-template/log-management',
-        component: lazy(() => import('../pages/docs/react-native-template/log-management')),
+        lazy: () => import('../pages/docs/react-native-template/log-management'),
       },
       {
         path: '/docs/questions',
-        component: lazy(() => import('../pages/docs/questions')),
+        lazy: () => import('../pages/docs/questions'),
       },
       {
         path: '/components/about',
-        component: lazy(() => import('../pages/components/about')),
+        lazy: () => import('../pages/components/about'),
       },
       {
         path: '/docs/v3-v4',
-        component: lazy(() => import('../pages/docs/v3-v4')),
+        lazy: () => import('../pages/docs/v3-v4'),
       },
       {
         path: '/components/theme',
-        component: lazy(() => import('../pages/components/theme')),
+        lazy: () => import('../pages/components/theme'),
       },
       {
         path: '/components/divider',
-        component: lazy(() => import('../pages/components/divider')),
+        lazy: () => import('../pages/components/divider'),
       },
       {
         path: '/components/flex',
-        component: lazy(() => import('../pages/components/flex')),
+        lazy: () => import('../pages/components/flex'),
       },
       {
         path: '/components/table',
-        component: lazy(() => import('../pages/components/table')),
+        lazy: () => import('../pages/components/table'),
       },
       {
         path: '/components/spacing',
-        component: lazy(() => import('../pages/components/spacing')),
+        lazy: () => import('../pages/components/spacing'),
       },
       {
         path: '/components/winblank',
-        component: lazy(() => import('../pages/components/winblank')),
+        lazy: () => import('../pages/components/winblank'),
       },
       {
         path: '/components/drawer',
-        component: lazy(() => import('../pages/components/drawer')),
+        lazy: () => import('../pages/components/drawer'),
       },
       {
         path: '/components/menudropdown',
-        component: lazy(() => import('../pages/components/menudropdown')),
+        lazy: () => import('../pages/components/menudropdown'),
       },
       {
         path: '/components/swipeaction',
-        component: lazy(() => import('../pages/components/swipeaction')),
+        lazy: () => import('../pages/components/swipeaction'),
       },
       {
         path: '/components/expandablesection',
-        component: lazy(() => import('../pages/components/expandablesection')),
+        lazy: () => import('../pages/components/expandablesection'),
       },
       {
         path: '/components/button',
-        component: lazy(() => import('../pages/components/button')),
+        lazy: () => import('../pages/components/button'),
       },
       {
         path: '/components/buttongroup',
-        component: lazy(() => import('../pages/components/buttongroup')),
+        lazy: () => import('../pages/components/buttongroup'),
       },
       {
         path: '/components/checkbox',
-        component: lazy(() => import('../pages/components/checkbox')),
+        lazy: () => import('../pages/components/checkbox'),
       },
       {
         path: '/components/input',
-        component: lazy(() => import('../pages/components/input')),
+        lazy: () => import('../pages/components/input'),
       },
       {
         path: '/components/radio',
-        component: lazy(() => import('../pages/components/radio')),
+        lazy: () => import('../pages/components/radio'),
       },
       {
         path: '/components/rating',
-        component: lazy(() => import('../pages/components/rating')),
+        lazy: () => import('../pages/components/rating'),
       },
       {
         path: '/components/segmentedcontrol',
-        component: lazy(() => import('../pages/components/segmentedcontrol')),
+        lazy: () => import('../pages/components/segmentedcontrol'),
       },
       {
         path: '/components/slider',
-        component: lazy(() => import('../pages/components/slider')),
+        lazy: () => import('../pages/components/slider'),
       },
       {
         path: '/components/switch',
-        component: lazy(() => import('../pages/components/switch')),
+        lazy: () => import('../pages/components/switch'),
       },
       {
         path: '/components/searchbar',
-        component: lazy(() => import('../pages/components/searchbar')),
+        lazy: () => import('../pages/components/searchbar'),
       },
       {
         path: '/components/picker',
-        component: lazy(() => import('../pages/components/picker')),
+        lazy: () => import('../pages/components/picker'),
       },
       {
         path: '/components/avatar',
-        component: lazy(() => import('../pages/components/avatar')),
+        lazy: () => import('../pages/components/avatar'),
       },
       {
         path: '/components/badge',
-        component: lazy(() => import('../pages/components/badge')),
+        lazy: () => import('../pages/components/badge'),
       },
       {
         path: '/components/ellipsis',
-        component: lazy(() => import('../pages/components/ellipsis')),
+        lazy: () => import('../pages/components/ellipsis'),
       },
       {
         path: '/components/empty',
-        component: lazy(() => import('../pages/components/empty')),
+        lazy: () => import('../pages/components/empty'),
       },
       {
         path: '/components/grid',
-        component: lazy(() => import('../pages/components/grid')),
+        lazy: () => import('../pages/components/grid'),
       },
       {
         path: '/components/icon',
-        component: lazy(() => import('../pages/components/icon')),
+        lazy: () => import('../pages/components/icon'),
       },
       {
         path: '/components/list',
-        component: lazy(() => import('../pages/components/list')),
+        lazy: () => import('../pages/components/list'),
       },
       {
         path: '/components/typography',
-        component: lazy(() => import('../pages/components/typography')),
+        lazy: () => import('../pages/components/typography'),
       },
       {
         path: '/components/loader',
-        component: lazy(() => import('../pages/components/loader')),
+        lazy: () => import('../pages/components/loader'),
       },
       {
         path: '/components/modal',
-        component: lazy(() => import('../pages/components/modal')),
+        lazy: () => import('../pages/components/modal'),
       },
       {
         path: '/components/masklayer',
-        component: lazy(() => import('../pages/components/masklayer')),
+        lazy: () => import('../pages/components/masklayer'),
       },
       {
         path: '/components/result',
-        component: lazy(() => import('../pages/components/result')),
+        lazy: () => import('../pages/components/result'),
       },
       {
         path: '/components/toast',
-        component: lazy(() => import('../pages/components/toast')),
+        lazy: () => import('../pages/components/toast'),
       },
       {
         path: '/components/steps',
-        component: lazy(() => import('../pages/components/steps')),
+        lazy: () => import('../pages/components/steps'),
       },
       {
         path: '/components/timeLine',
-        component: lazy(() => import('../pages/components/timeLine')),
+        lazy: () => import('../pages/components/timeLine'),
       },
       {
         path: '/components/tabs',
-        component: lazy(() => import('../pages/components/tabs')),
+        lazy: () => import('../pages/components/tabs'),
       },
       {
         path: '/components/quicklist',
-        component: lazy(() => import('../pages/components/quicklist')),
+        lazy: () => import('../pages/components/quicklist'),
       },
       {
         path: '/components/speeddial',
-        component: lazy(() => import('../pages/components/speeddial')),
+        lazy: () => import('../pages/components/speeddial'),
       },
       {
         path: '/components/progress',
-        component: lazy(() => import('../pages/components/progress')),
+        lazy: () => import('../pages/components/progress'),
       },
       {
         path: '/components/card',
-        component: lazy(() => import('../pages/components/card')),
+        lazy: () => import('../pages/components/card'),
       },
       {
         path: '/components/noticebar',
-        component: lazy(() => import('../pages/components/noticebar')),
+        lazy: () => import('../pages/components/noticebar'),
       },
       {
         path: '/components/stepper',
-        component: lazy(() => import('../pages/components/stepper')),
+        lazy: () => import('../pages/components/stepper'),
       },
       {
         path: '/components/swiper',
-        component: lazy(() => import('../pages/components/swiper')),
+        lazy: () => import('../pages/components/swiper'),
       },
       {
         path: '/components/tooltip',
-        component: lazy(() => import('../pages/components/tooltip')),
+        lazy: () => import('../pages/components/tooltip'),
       },
       {
         path: '/components/tile',
-        component: lazy(() => import('../pages/components/tile')),
+        lazy: () => import('../pages/components/tile'),
       },
       {
         path: '/components/transitionImage',
-        component: lazy(() => import('../pages/components/transitionImage')),
+        lazy: () => import('../pages/components/transitionImage'),
       },
       {
         path: '/components/cardcollapse',
-        component: lazy(() => import('../pages/components/cardcollapse')),
+        lazy: () => import('../pages/components/cardcollapse'),
       },
       {
         path: '/components/accordion',
-        component: lazy(() => import('../pages/components/accordion')),
+        lazy: () => import('../pages/components/accordion'),
       },
       {
         path: '/components/verificationCode',
-        component: lazy(() => import('../pages/components/verificationCode')),
+        lazy: () => import('../pages/components/verificationCode'),
       },
       {
         path: '/components/loginPage',
-        component: lazy(() => import('../pages/components/loginPage')),
+        lazy: () => import('../pages/components/loginPage'),
       },
       {
         path: '/components/actionSheet',
-        component: lazy(() => import('../pages/components/actionSheet')),
+        lazy: () => import('../pages/components/actionSheet'),
       },
       {
         path: '/components/search-input-bar',
-        component: lazy(() => import('../pages/components/search-input-bar')),
+        lazy: () => import('../pages/components/search-input-bar'),
       },
       {
         path: '/components/pagination',
-        component: lazy(() => import('../pages/components/pagination')),
+        lazy: () => import('../pages/components/pagination'),
       },
       {
         path: '/components/calendar',
-        component: lazy(() => import('../pages/components/calendar')),
+        lazy: () => import('../pages/components/calendar'),
       },
       {
         path: '/components/dragdrawer',
-        component: lazy(() => import('../pages/components/dragdrawer')),
+        lazy: () => import('../pages/components/dragdrawer'),
       },
       {
         path: '/components/tree',
-        component: lazy(() => import('../pages/components/tree')),
+        lazy: () => import('../pages/components/tree'),
       },
       {
         path: '/components/treeSelect',
-        component: lazy(() => import('../pages/components/treeSelect')),
+        lazy: () => import('../pages/components/treeSelect'),
       },
       {
         path: '/components/textarea',
-        component: lazy(() => import('../pages/components/textarea')),
+        lazy: () => import('../pages/components/textarea'),
       },
       {
         path: '/components/imageViewer',
-        component: lazy(() => import('../pages/components/imageViewer')),
+        lazy: () => import('../pages/components/imageViewer'),
       },
       {
         path: '/components/form',
-        component: lazy(() => import('../pages/components/form')),
+        lazy: () => import('../pages/components/form'),
       },
       {
         path: '/components/datepicker',
-        component: lazy(() => import('../pages/components/datepicker')),
+        lazy: () => import('../pages/components/datepicker'),
       },
       {
         path: '/docs/changelog',
-        component: lazy(() => import('../pages/docs/changelog')),
+        lazy: () => import('../pages/docs/changelog'),
       },
       {
         path: '/components/imageHeader',
-        component: lazy(() => import('../pages/components/imageHeader')),
+        lazy: () => import('../pages/components/imageHeader'),
       },
     ],
   },

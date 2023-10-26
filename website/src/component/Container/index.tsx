@@ -10,7 +10,7 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   path?: string;
 }
 
-export default function Container(props: ContainerProps) {
+export const Component = (props: ContainerProps) => {
   const { path = '' } = props;
   const { pathname } = useLocation();
   let data: MenuData[] = [];
@@ -31,4 +31,4 @@ export default function Container(props: ContainerProps) {
       </div>
     </Fragment>
   );
-}
+};

@@ -5,7 +5,7 @@ import Footer from '../../component/Footer';
 import { ReactComponent as Waves } from './waves.svg';
 import styles from './index.module.less';
 
-export default function Home() {
+export const Component = () => {
   return (
     <Fragment>
       <div className={styles.header}>
@@ -30,4 +30,4 @@ export default function Home() {
       <Footer />
     </Fragment>
   );
-}
+};

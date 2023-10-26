@@ -7,11 +7,10 @@ const transformImageUri = (url: string) => {
   return urlAddr;
 };
 
-const DEMO = () => (
+export const Component = () => (
   <Preview
     {...md}
     transformImageUri={transformImageUri}
     path="website/src/pages/docs/environment-setup/android/README.md"
   />
 );
-export default DEMO;

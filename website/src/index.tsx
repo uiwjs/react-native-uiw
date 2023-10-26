@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import '@uiw/reset.css';
-import Controller from './routes/Controller';
+import { Fallback } from './component/Fallback';
+import { routeData } from './routes/router';
 import './index.css';
 
 export type DefaultProps = React.PropsWithChildren<any> & {};
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <HashRouter>
-    <Controller />
-  </HashRouter>,
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
+root.render(
+  <Fragment>
+    <RouterProvider router={createHashRouter(routeData)} fallbackElement={<Fallback />} />
+  </Fragment>,
 );

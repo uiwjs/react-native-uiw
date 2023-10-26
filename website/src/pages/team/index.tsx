@@ -21,7 +21,7 @@ const data: { username: string; nickname?: string }[] = [
   { username: 'huqiaoli', nickname: 'huqiaoli' },
 ];
 
-export default function Team() {
+export const Component = () => {
   return (
     <Fragment>
       <section className={styles.warpper}>
@@ -53,4 +53,4 @@ export default function Team() {
       <FooterTitle />
     </Fragment>
   );
-}
+};

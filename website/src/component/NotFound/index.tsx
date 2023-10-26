@@ -1,5 +1,5 @@
-import { Fragment } from 'react';
-import Footer from '../../component/Footer';
+import React, { Fragment } from 'react';
+import Footer from '../Footer';
 
 export default function NotFound() {
   return (
