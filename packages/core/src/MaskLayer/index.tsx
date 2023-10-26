@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Modal, ModalProps as RNModalProps, Animated, TouchableOpacity, StyleSheet } from 'react-native';
 import { usePrevious } from '../utils';
 import { Theme } from '../theme';
@@ -76,7 +76,7 @@ const MaskLayer = (props: MaskLayerProps = {}) => {
   const preVisible = usePrevious<boolean | undefined>(props.visible);
   const [visibleModal, setVisibleModal] = useState(false);
   const [bgOpacity] = useState(new Animated.Value(0));
-  useMemo(() => {
+  useEffect(() => {
     if (preVisible !== props.visible && props.visible) {
       setVisible(!!props.visible);
       setVisibleModal(false);
