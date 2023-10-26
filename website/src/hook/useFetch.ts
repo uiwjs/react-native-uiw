@@ -28,7 +28,6 @@ export function useFetch<T>(url: string, options?: RequestInit): UseFetchResult<
     return () => {
       mounted = false;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { response, error };
