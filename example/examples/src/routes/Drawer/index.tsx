@@ -1,6 +1,7 @@
 import React, {useState, Fragment} from 'react';
 import {View, Text} from 'react-native';
-import {Button, Drawer, Spacing, WingBlank} from '@uiw/react-native';
+import {RootSiblingPortal} from 'react-native-root-siblings';
+import {Button, Drawer, Spacing, WingBlank, Input} from '@uiw/react-native';
 import Layout, {Container} from '../../Layout';
 import {ComProps} from '../../routes';
 const {Header, Body, Footer} = Layout;
@@ -14,15 +15,13 @@ export default function DrawerView({route}: DrawerViewProps) {
   const [visible2, setVisible2] = useState(false);
   const [visible3, setVisible3] = useState(false);
   const [visible4, setVisible4] = useState(false);
+  const [value, setValue] = useState('');
+
   return (
     <Fragment>
-      <Drawer isOpen={visible2} placement="right" onChange={(isOpen: boolean) => setVisible2(isOpen)} drawerBackgroundColor="red">
-        <View>
-          <Text style={{color: '#ccc'}}>右边打开抽屉内容</Text>
-        </View>
-      </Drawer>
       <Drawer
         isOpen={visible}
+        drawerBackgroundColor="red"
         onChange={(isOpen: boolean) => {
           setVisible(isOpen);
         }}>
@@ -30,19 +29,44 @@ export default function DrawerView({route}: DrawerViewProps) {
           <Text style={{color: '#ccc'}}>左边打开抽屉内容</Text>
         </View>
       </Drawer>
-      <Drawer
-        isOpen={visible3}
-        placement="top"
-        onChange={(isOpen: boolean) => {
-          setVisible3(isOpen);
-        }}>
-        <View>
-          <Text style={{color: '#ccc'}}>上边打开抽屉内容</Text>
-        </View>
-      </Drawer>
+
+      <RootSiblingPortal>
+        <Drawer
+          drawerWidth={200}
+          drawerHeight={200}
+          isOpen={visible2}
+          placement="right"
+          onChange={(isOpen: boolean) => setVisible2(isOpen)}
+          drawerBackgroundColor="red">
+          <View>
+            <Input
+              onChangeText={(value: string) => {
+                setValue(value);
+              }}
+              value={value}
+            />
+            <Text style={{color: '#ccc'}}>右边打开抽屉内容</Text>
+          </View>
+        </Drawer>
+      </RootSiblingPortal>
+
+      <RootSiblingPortal>
+        <Drawer
+          isOpen={visible3}
+          placement="top"
+          drawerBackgroundColor="red"
+          onChange={(isOpen: boolean) => {
+            setVisible3(isOpen);
+          }}>
+          <View>
+            <Text style={{color: '#ccc'}}>上边打开抽屉内容</Text>
+          </View>
+        </Drawer>
+      </RootSiblingPortal>
       <Drawer
         isOpen={visible4}
         placement="bottom"
+        drawerBackgroundColor="red"
         onChange={isOpen => {
           setVisible4(isOpen);
         }}>
@@ -50,6 +74,7 @@ export default function DrawerView({route}: DrawerViewProps) {
           <Text style={{color: '#ccc'}}>下边打开抽屉内容</Text>
         </View>
       </Drawer>
+
       <Container>
         <Layout>
           <Header title={title} description={description} />

@@ -153,23 +153,6 @@ export default function Drawer(props: DrawerProps) {
   return (
     <Fragment>
       <Animated.View
-        style={[
-          styles.drawer,
-          dynamicDrawerStyles,
-          style,
-          // eslint-disable-next-line
-          {
-            [changeStyle]: isOpen ? (isTopOrBottom ? drawerHeight : drawerWidth) : 0,
-            transform: [
-              { translateX: drawerValue.x }, // x轴移动
-              { translateY: drawerValue.y }, // y轴移动
-            ],
-          },
-        ]}
-      >
-        {props.children}
-      </Animated.View>
-      <Animated.View
         pointerEvents={isOpen ? 'auto' : 'none'}
         style={[
           styles.overlay,
@@ -187,12 +170,30 @@ export default function Drawer(props: DrawerProps) {
             styles.positionFull,
             // eslint-disable-next-line
             {
-              zIndex: 3003,
+              zIndex: zIndexValue,
               position: 'absolute',
             },
           ]}
           onPress={onOverlayClick}
         />
+      </Animated.View>
+      <Animated.View
+        style={[
+          styles.drawer,
+          dynamicDrawerStyles,
+          style,
+          // eslint-disable-next-line
+          {
+            zIndex: zIndexValue + 1,
+            [changeStyle]: isOpen ? (isTopOrBottom ? drawerHeight : drawerWidth) : 0,
+            transform: [
+              { translateX: drawerValue.x }, // x轴移动
+              { translateY: drawerValue.y }, // y轴移动
+            ],
+          },
+        ]}
+      >
+        {props.children}
       </Animated.View>
     </Fragment>
   );
