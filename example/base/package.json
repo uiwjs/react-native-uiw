@@ -13,7 +13,7 @@
     "@react-native-camera-roll/camera-roll": "5.3.1",
     "@uiw/react-native": "4.1.1",
     "@uiw/react-native-image-picker": "4.1.1",
-    "react": "18.0.0",
+    "react": "18.3.1",
     "react-native": "0.69.7",
     "react-native-gesture-handler": "2.8.0",
     "react-native-image-picker": "~5.3.1",
@@ -30,7 +30,7 @@
     "eslint": "^7.32.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "0.73.6",
-    "react-test-renderer": "18.0.0"
+    "react-test-renderer": "18.3.1"
   },
   "jest": {
     "preset": "react-native"
