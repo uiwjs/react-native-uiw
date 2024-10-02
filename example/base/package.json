@@ -22,8 +22,8 @@
     "react-native-svg": "13.9.0"
   },
   "devDependencies": {
-    "@babel/core": "~7.20.7",
-    "@babel/runtime": "~7.20.7",
+    "@babel/core": "~7.25.0",
+    "@babel/runtime": "~7.25.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@uimjs/metro-config": "2.0.1",
     "babel-jest": "^26.6.3",
