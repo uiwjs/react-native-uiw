@@ -12,10 +12,10 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 24
           registry-url: 'https://registry.npmjs.org'
 
       - run: yarn install
@@ -57,35 +57,23 @@ jobs:
 
       - run: git status
 
-      - name: 📦 publish to NPM
-        uses: kktjs/npm-publish@main
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          workspaces: packages/*
+      - name: 📦 @uiw/react-native publish to NPM
+        run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
+        working-directory: packages/core
+        continue-on-error: true
 
-      # - name: 📦 @uiw/react-native publish to NPM
-      #   run: npm publish
-      #   working-directory: packages/core
-      #   continue-on-error: true
-      #   env:
-      #     NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
+      - name: 📦 @uiw/react-native-doc publish to NPM
+        run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
+        working-directory: packages/docs
+        continue-on-error: true
 
-      # - name: 📦 @uiw/react-native-doc publish to NPM
-      #   run: npm publish
-      #   working-directory: packages/docs
-      #   continue-on-error: true
-      #   env:
-      #     NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
-
-      # - name: 📦 @uiw/react-native-image-picker publish to NPM
-      #   run: npm publish
-      #   working-directory: packages/react-native-image-picker
-      #   continue-on-error: true
-      #   env:
-      #     NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
+      - name: 📦 @uiw/react-native-image-picker publish to NPM
+        run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
+        working-directory: packages/react-native-image-picker
+        continue-on-error: true
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website/build
@@ -93,7 +81,7 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
 
       - name: Deploy to uimjs.github.io
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN_UIM }}
           publish_dir: ./website/build
