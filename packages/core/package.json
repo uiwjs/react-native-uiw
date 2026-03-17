@@ -65,7 +65,7 @@
     "@types/lodash": "~4.14.191",
     "@types/react-native": "0.69.1",
     "@uiw/icons": "2.5.3",
-    "@validator.tool/hook": "2.2.4",
+    "@validator.tool/hook": "2.2.6",
     "ahooks": "3.7.6",
     "color": "4.2.3",
     "dayjs": "~1.11.7",
