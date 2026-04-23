@@ -23,7 +23,7 @@
     "@uiw/react-native": "4.1.1",
     "@uiw/react-native-template": "3.0.0",
     "@uiw/reset.css": "~1.0.6",
-    "@validator.tool/hook": "2.2.4",
+    "@validator.tool/hook": "2.2.6",
     "@wcj/dark-mode": "^1.0.15",
     "ahooks": "3.7.6",
     "color": "4.2.3",
